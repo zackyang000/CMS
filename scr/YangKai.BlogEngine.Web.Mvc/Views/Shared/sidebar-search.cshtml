@@ -1,0 +1,18 @@
+﻿<div class="widget">
+    <h3>搜索</h3>
+    <div>
+    <input type="text" maxlength="20" class="search"
+        onkeydown="SearchkeyDown(value);" 
+        onfocus="if (this.value == 'Press enter to search.') {this.value = '';}" 
+        onblur="if (this.value == '') {this.value = 'Press enter to search.';}" 
+        value="Press enter to search." />
+    </div>
+</div>
+<script type="text/javascript">
+    function SearchkeyDown(txt) {
+        if (window.event.keyCode == 13) {
+            event.returnValue = false;
+            location.href = '/@(ViewData["MainClassUrl"]??ViewData["channelUrl"])?k=' + txt;
+        }
+    }
+</script>

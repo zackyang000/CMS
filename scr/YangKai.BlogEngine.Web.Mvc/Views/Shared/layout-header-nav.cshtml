@@ -1,0 +1,42 @@
+﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Group>
+<div class="nav_top"></div>
+
+<table id="navigation" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="left"></td>
+        @if (Model != null)
+        {
+        <td class="div"></td>
+        <td class="link">@Html.ActionLink("全部", "Index", ViewData["channelUrl"] as string)</td>
+            foreach (var item in Model)
+            {
+        <td class="div"></td>
+        <td class="link">@Html.ActionLink(item.Name, "Index", item.Url)</td>
+            }
+        }
+        else
+        {
+            if ((ViewData["url"] as string).ToLower() == "board")
+            {
+        <td class="div"></td>
+        <td class="link">@Html.ActionLink("留言板", "Index", "Board")</td>
+            }
+            if ((ViewData["url"] as string).ToLower() == "about")
+            {
+        <td class="div"></td>
+        <td class="link">@Html.ActionLink("关于", "Index", "About")</td>
+            }
+        }
+        <td class="div"></td>
+        <td>&nbsp;</td>
+        @if (Model != null)
+        {
+       @* <td class="div"></td>
+        <td class="link">随便看看</td>*@
+        <td class="div"></td>
+        <td class="link">@Html.ActionLink("存档", "calendar", "Article", new { channelUrl = Model.First().Channel.Url }, null)</td>
+        }
+        <td class="div"></td>
+        <td class="right"></td>
+    </tr>
+</table>

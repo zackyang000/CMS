@@ -1,0 +1,12 @@
+﻿<div class="widget">
+    <h3>最新留言</h3>
+    <div id="div-sidebar-recentmessages-detail"><img src="/Content/Image/ajax-loader2.gif" alt="" /></div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $("#div-sidebar-recentmessages-detail").load("/board/recentmessages", function() {
+            $("#div-sidebar-recentmessages-detail").hide();
+            $("#div-sidebar-recentmessages-detail").fadeIn(1000);
+        });
+    });
+</script>

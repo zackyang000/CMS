@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the French language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>La demande n'a pas abouti. (Erreur %1)</errorUnknown>
+	<errors>
+		<error number="10">Commande invalide.</error>
+		<error number="11">Le type de ressource n'a pas été spécifié dans la commande.</error>
+		<error number="12">Le type de ressource n'est pas valide.</error>
+		<error number="102">Nom de fichier ou de dossier invalide.</error>
+		<error number="103">La demande n'a pas abouti : problème d'autorisations.</error>
+		<error number="104">La demande n'a pas abouti : problème de restrictions de permissions.</error>
+		<error number="105">Extension de fichier invalide.</error>
+		<error number="109">Demande invalide.</error>
+		<error number="110">Erreur inconnue.</error>
+		<error number="115">Un fichier ou un dossier avec ce nom existe déjà.</error>
+		<error number="116">Ce dossier n'existe pas. Veuillez rafraîchir la page et réessayer.</error>
+		<error number="117">Ce fichier n'existe pas. Veuillez rafraîchir la page et réessayer.</error>
+		<error number="118">Les chemins vers la source et la cible sont les mêmes.</error>
+		<error number="201">Un fichier avec ce nom existe déjà. Le fichier téléversé a été renommé en "%1"</error>
+		<error number="202">Fichier invalide</error>
+		<error number="203">Fichier invalide. La taille est trop grande.</error>
+		<error number="204">Le fichier téléversé est corrompu.</error>
+		<error number="205">Aucun dossier temporaire n'est disponible sur le serveur.</error>
+		<error number="206">Envoi interrompu pour raisons de sécurité. Le fichier contient des données de type HTML.</error>
+		<error number="207">El fichero subido ha sido renombrado como "%1"</error>
+		<error number="300">Le déplacement des fichiers a échoué.</error>
+		<error number="301">La copie des fichiers a échoué.</error>
+		<error number="500">L'interface de gestion des fichiers est désactivé. Contactez votre administrateur et vérifier le fichier de configuration de CKFinder.</error>
+		<error number="501">La fonction "miniatures" est désactivée.</error>
+	</errors>
+</messages>

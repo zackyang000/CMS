@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the English language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>リクエストの処理に失敗しました。 (Error %1)</errorUnknown>
+	<errors>
+		<error number="10">不正なコマンドです。</error>
+		<error number="11">リソースタイプが特定できませんでした。</error>
+		<error number="12">要求されたリソースのタイプが正しくありません。</error>
+		<error number="102">ファイル名/フォルダ名が正しくありません。</error>
+		<error number="103">リクエストを完了できませんでした。認証エラーです。</error>
+		<error number="104">リクエストを完了できませんでした。ファイルのパーミッションが許可されていません。</error>
+		<error number="105">拡張子が正しくありません。</error>
+		<error number="109">不正なリクエストです。</error>
+		<error number="110">不明なエラーが発生しました。</error>
+		<error number="115">同じ名前のファイル/フォルダがすでに存在しています。</error>
+		<error number="116">フォルダが見つかりませんでした。ページを更新して再度お試し下さい。</error>
+		<error number="117">ファイルが見つかりませんでした。ページを更新して再度お試し下さい。</error>
+		<error number="118">対象が移動元と同じ場所を指定されています。</error>
+		<error number="201">同じ名前のファイルがすでに存在しています。"%1" にリネームして保存されました。</error>
+		<error number="202">不正なファイルです。</error>
+		<error number="203">ファイルのサイズが大きすぎます。</error>
+		<error number="204">アップロードされたファイルは壊れています。</error>
+		<error number="205">サーバ内の一時作業フォルダが利用できません。</error>
+		<error number="206">セキュリティ上の理由からアップロードが取り消されました。このファイルにはHTMLに似たデータが含まれています。</error>
+		<error number="207">ファイルは "%1" にリネームして保存されました。</error>
+		<error number="300">ファイルの移動に失敗しました。</error>
+		<error number="301">ファイルのコピーに失敗しました。</error>
+		<error number="500">ファイルブラウザはセキュリティ上の制限から無効になっています。システム担当者に連絡をして、CKFinderの設定をご確認下さい。</error>
+		<error number="501">サムネイル機能は無効になっています。</error>
+	</errors>
+</messages>

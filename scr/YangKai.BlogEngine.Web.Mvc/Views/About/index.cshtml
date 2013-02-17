@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "关于" + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head{
+    <style>
+        #middle .body { background: url(/Content/Image/body_bg_no_line.png) }
+        #source{padding: 10px 40px 10px 40px;}
+        #green_title{font:15px/18px 'Lucida Sans Unicode', 'Lucida Grande', sans-serif; padding: 9px 5px 12px 55px;color: #3f5a04;background: #dfedc0 url(/content/admin/images/sprite.png) no-repeat 15px -841px;}
+        #green_content{font:12px/15px 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;padding: 9px 5px 12px 55px;color: #3f5a04;background: #dfedc0}
+        #source p{ font-size: 14px;padding:0 0 5px 0;}
+        #source ul{padding:0 0 20px 0;}
+        #source ul li{padding:0 0 0 20px;}
+        #source h3{padding:0 0 20px 0;}
+        #thanks{padding: 10px 40px 10px 40px;}
+    </style>
+}
+
+<div>
+    <div id="siteintro">
+        <p><b>(・´ｪ`・)……关于本站</b><br />
+            这是一个纯手工自制的个人站点，展示着不断更新的私家收藏。<br />
+            站长希望它能够带给大家欢乐与思考，也能够方便我们及时沟通。<br />
+            评论，留言，打分，分享，一应俱全，随时恭候各种指教，任何互动，无任欢迎。<br /><br />
+        </p>
+        <p><b>(・´ｪ`・)……建站原因</b><br />
+            当站长我不能控制的收藏着一切欢乐与技术的时候。<br />
+            当这些不能控制的好料，在收藏夹中越来越多、难以整理的时候。<br />
+            当一次次发现我的私家珍藏，因为种种原因被删除，而怒发冲冠屏幕前的时候。<br />
+            当第三方博客越来越缺乏大爱精神，越来越多相关人士关怀照顾，不便使用的时候。<br />
+            爱收藏爱分享的人，既然谁都伤不起，就让我在做爱做的事情之余，发挥点专业余热。<br />
+            就像SHELDON所说，Because I can…于是就有了这个网站…<br /><br />
+        </p>
+        <p><b>(・´ｪ`・)……关于频道</b><br />
+            娱乐频道，无限放送各种有趣的文章/图片/视频，博君一笑。<br />
+            技术频道，分享一些我在学习/工作中，收集到有帮助的文章，与君共勉。<br /><br />
+        </p>
+        <p>2008.12.06 建站</p>
+    </div>
+    <div id="sitetip">
+        <div class="header">关于技术</div>
+        <div class="content">基于:</div>
+        <ul>
+            <li><span><b>Domain-Driven Design</b></span></li>
+            <li><span>.NET framework 4.0</span></li>
+            <li><span>ASP.NET MVC 4.0</span></li>
+            <li><span>ADO.NET Entity Framework 5.0</span></li>
+            <li><span>Unity 2.0</span></li>
+        </ul>
+        <div class="footer"></div>
+    </div>
+    <div class="clear"></div>
+    
+    <div id="source">
+        <div id="green_title">
+            <b>本站源代码托管于</b><a href="https://github.com/TossShinHwa/BlogEngine">https://github.com/TossShinHwa/BlogEngine</a><b>欢迎获取.</b>
+        </div>
+        <div id="green_content">
+            <h3>基于领域驱动设计(Based Domain-Driven Design)的类博客系统。</h3>
+            <p>1)使用演示以下.NET技术：</p>
+            <ul>
+                <li>ASP.NET MVC 4</li>
+                <li>Microsoft Entity Framework 5.0 Code First</li>
+                <li>Microsoft Patterns & Practices Unity Application Block</li>
+                <li>Microsoft Patterns & Practices Policy Injection Application Block</li>
+            </ul>
+            <p>2)开发环境：</p>
+            <ul>
+                <li>A).Visual Studio 2012 Ultimate</li>
+                <li>或</li>
+                <li>B).Visual Studio 2010 Professional/Ultimate with SP1</li>
+                <li>ASP.NET MVC4 (<a href="http://www.microsoft.com/zh-cn/download/details.aspx?id=30683)">下载地址</a>)</li>
+                <li>IIS Express 7.5 (<a href="http://www.microsoft.com/zh-cn/download/details.aspx?id=1038)">下载地址</a>)</li>
+            </ul>
+            <p>3)启动：</p>
+            <ul>
+                <li>1.使用Visual Studio打开解决方案</li>
+                <li>2.修改YangKai.BlogEngine.Web.Mvc项目下的web.config文件中数据库链接字符串即可。(Microsoft SQL Server 2005及以上)</li>
+                <li>3.编译运行,程序将自动创建数据库并插入测试数据。</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="thanks">
+        <img alt="浏览器" src="/Content/Image/browser.png" /><br /><br />
+        感谢以下第三方开源组件:
+        <span><a href="http://bootstrapper.codeplex.com/">Bootstrapper</a></span>,
+        <span><a href="http://ckeditor.com/">CKEditor</a></span>,
+        <span><a href="http://ckfinder.com/">CKFinder</a></span>,
+        <span><a href="http://www.rssdotnet.com/">RSS.NET</a></span>,
+        <span><a href="http://code.google.com/p/elmah/">Elmah</a></span>,
+        <span><a href="http://www.webdiyer.com/Controls/MvcPager/">ASP.NET MVC Pager</a></span>
+    </div>
+</div>

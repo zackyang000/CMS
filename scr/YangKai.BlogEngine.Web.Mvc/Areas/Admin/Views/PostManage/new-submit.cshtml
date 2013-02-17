@@ -1,0 +1,66 @@
+﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+@*TODO:拆分3个页面到子页面*@
+<div id="submitbox" class="postbox submitbox">
+    <h3>发布</h3>
+    <div id="minor-publishing-actions">
+        <div id="save-action">
+            <input type="button" value="保存草稿" />
+            <img src="/Content/admin/images/wpspin_light.gif" class="ajax-loading" id="draft-ajax-loading" alt="" />
+        </div>
+        <div id="preview-action"><input type="button" value="预览" /></div>
+        <div class="clear"></div>
+    </div>
+    <div class="misc-pub-section">
+        状态：<span id="post-status-display">草稿</span> 
+        <a href="JavaScript:void(0)" class="post-status-action">编辑</a>
+        <div id="post-status-select">
+            <select id="post_status">
+                <option value="pending">等待复审</option>
+                <option selected="selected" value="draft">草稿</option>
+            </select>
+             <a href="JavaScript:void(0)" class="save-post-status">确定</a>
+             <a href="JavaScript:void(0)" class="cancel-post-status">取消</a>
+        </div>
+    </div>
+    <div class="misc-pub-section">
+        公开度：<b>发布</b> <a href="#">编辑</a>
+    </div>
+    <div class="misc-pub-section">
+        <span id="timestamp"><b>立即</b>发布</span>
+        <a href="JavaScript:void(0)" class="edit-timestamp">编辑</a>
+        <div id="timestamp-select-div">
+            <div id="timestamp-select">
+                @Html.TextBox("pubdate",  (Model == null ?DateTime.Now:Model.PubDate).ToString("yyyy-MM-dd")) @@ 
+                <input type="text" id="hh" name="hh" value="@((Model == null ?DateTime.Now:Model.PubDate).Hour.ToString("#00"))" size="2" maxlength="2" />
+                 ：
+                <input type="text" id="mm" name="mm" value="@((Model == null ?DateTime.Now:Model.PubDate).Minute.ToString("#00"))" size="2" maxlength="2" />
+            </div>
+            <div id="fast-later-publish">
+                延迟：
+                <a href="JavaScript:void(0)">1天</a>
+                <a href="JavaScript:void(0)">2天</a>
+                <a href="JavaScript:void(0)">3天</a>
+                <a href="JavaScript:void(0)">4天</a>
+                <a href="JavaScript:void(0)">5天</a>
+                <a href="JavaScript:void(0)">6天</a>
+                <a href="JavaScript:void(0)">7天</a>
+                <a href="JavaScript:void(0)">8天</a>
+                <a href="JavaScript:void(0)">9天</a>
+            </div>
+            <div>
+                 <a href="JavaScript:void(0)" class="save-timestamp">确定</a>
+                 <a href="JavaScript:void(0)" class="cancel-timestamp">取消</a>
+            </div>
+        </div>
+    </div>
+    <div id="major-publishing-actions">
+        <div id="delete-action">
+            <a class="submitdelete" href="#">移动到回收站</a>
+        </div>
+        <div id="publishing-action">
+            <img src="/Content/admin/images/wpspin_light.gif" class="ajax-loading" id="publishing-ajax-loading" alt="" />
+		    <input type="submit" name="publish" id="publish" value="发布" />
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

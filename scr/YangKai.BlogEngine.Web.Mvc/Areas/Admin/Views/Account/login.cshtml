@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>登录 @YangKai.BlogEngine.Common.Site.PAGE_TITLE</title>
+    <script src="/Content/scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script src="/Content/admin/js/common.js" type="text/javascript"></script>
+    <script>
+    function loginKeyDown() {
+        if (window.event.keyCode == 13) {
+            event.returnValue = false;
+            login();
+        }
+    }
+</script>
+<style type="text/css">
+* {margin: 0;padding: 0;}
+body {padding-top: 30px; font: 13px "Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif,"新宋体","宋体"; }
+label {color: #777;font-size: 13px;}
+#login {width: 320px;margin: 7em auto;}
+#login_error {background-color: #FFEBE8;border-color: #C00;margin: 0 0 16px 8px;border-width: 1px;border-style: solid;padding: 12px;-moz-border-radius: 3px;-khtml-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px; display:none;}
+h1 {display: block;font-size: 2em;-webkit-margin-before: 0.67em;-webkit-margin-after: 0.67em;-webkit-margin-start: 0px;-webkit-margin-end: 0px;font-weight: bold;}
+h1 a {width: 326px;height: 30px;overflow: hidden;padding-bottom: 15px;display: block;text-align:center;color: #21759B;}
+.form {margin-left: 8px;padding: 16px 16px 40px 16px;font-weight: normal;-moz-border-radius: 11px;-khtml-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;background: white;border: 1px solid #E5E5E5;-moz-box-shadow: rgba(200, 200, 200, 1) 0 4px 18px;-webkit-box-shadow: rgba(200, 200, 200, 1) 0 4px 18px;-khtml-box-shadow: rgba(200, 200, 200, 1) 0 4px 18px;box-shadow: rgba(200, 200, 200, 1) 0 4px 18px;}
+.form .input {font-size: 24px;width: 97%;padding: 3px;margin-top: 2px;margin-right: 6px;margin-bottom: 16px;border: 1px solid #E5E5E5;background: #FBFBFB;}
+.form .submit, .alignright {float: right;}
+.form .forgetmenot {font-weight: normal;float: left;margin-bottom: 0;}
+#nav {margin: 0 0 0 8px;padding: 16px;text-shadow: rgba(255, 255, 255, 1) 0 1px 0;}
+#nav a {color: #21759B!important;}
+#backtoblog {position: absolute;top: 0;left: 0;border-bottom: #C6C6C6 1px solid;background: #D9D9D9;background: -moz-linear-gradient(bottom,#D7D7D7,#E4E4E4);background: -webkit-gradient(linear,left bottom,left top,from(#D7D7D7),to(#E4E4E4));height: 30px;width: 100%;}
+#backtoblog a {text-decoration: none;display: block;padding: 8px 0 0 15px;color: #464646;}
+#submit:hover {border-color: #13455B;color: #EAF2FA;}
+#submit {padding: 3px 10px;border: none;font-size: 12px;border-style: solid;-moz-border-radius: 11px;-khtml-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;cursor: pointer;text-decoration: none;margin-top: -3px;border-width: 1px;border-color: #298CBA;font-weight: bold;color: white;background: #21759B url(/Content/Image/button-grad.png) repeat-x scroll left top;text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0;}
+</style>
+</head>
+<body>
+<div id="login">
+<h1><a href="@YangKai.BlogEngine.Common.Site.ROOT_URI" title="由 YangKai 架设">iShare Manage</a></h1>
+<div id="login_error"><strong>错误</strong>：无效用户名</div>
+<div class="form">
+<p><label>用户名<br /><input onkeydown="loginKeyDown();" type="text" id="user" class="input" size="20" tabindex="10" /></label></p>
+<p><label>密码<br /><input onkeydown="loginKeyDown();" type="password" id="pwd" class="input" value="" size="20" tabindex="20" /></label></p>
+<p class="forgetmenot"><label><input id="remember" type="checkbox" checked="checked" tabindex="90" /> 记住我的登录信息</label></p> 
+<p class="submit"><input id="submit" type="button" onclick="login();" value="登陆" tabindex="100" /></p>
+</div>
+<p id="nav"><a href="#" title="找回密码">忘记密码？</a></p>
+</div> 
+<p id="backtoblog"><a href="/" title="不知道自己在哪？">&larr; 回到 首页</a></p> 
+</body>
+</html>

@@ -1,0 +1,13 @@
+﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+<div class="postHeader">
+	<span class="date">@Model.PubDate.ToString("yyyy年MM月dd日")</span>
+	<span class="author">我是你的猪@*@Model.PubAdmin.UserName*@</span>
+    @if (YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin())
+    {
+    <span class="editpost"><a href="/admin/postmanage/edit/@Model.Url">编辑</a></span>
+    <span class="deletepost"><a href="JavaScript:post_delete('@Model.PostId');">删除</a></span>
+    }
+    <span class="comments">@(Model.ReplyCount > 0 ? Model.ReplyCount + " 条评论" : "没有评论")</span>
+    <span class="reviews">@Model.ViewCount 次点击  &nbsp;  &nbsp;</span>
+	<div class="clear"></div>
+</div>

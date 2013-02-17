@@ -1,0 +1,9 @@
+﻿@model IList<YangKai.BlogEngine.Model.PostStatInfo>
+<div class="widget">
+    <h3 onclick="side_slide('side_category')">文章分类</h3>
+    <ul id="side_category">
+    @foreach (var data in Model){
+        <li>@Html.ActionLink(data.Name + "(" + data.Count + ")", "Index", ViewData["MainClassUrl"] as string, new { c = data.Url }, new { title = data.Name })</li>
+    }
+    </ul>
+</div>

@@ -1,0 +1,53 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using YangKai.BlogEngine.Modules.PostModule.Objects
+@using YangKai.BlogEngine.ServiceProxy
+
+@{
+    Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
+    var channel = ViewBag.Channel as Channel;
+    var mainClass = ViewBag.MainClass as Group;
+}
+
+<div id="postnav">
+    @if (mainClass==null)
+    {
+        @channel.Name
+    }
+    else
+    {
+        <text>
+        @Html.ActionLink(channel.Name, "Index", channel.Url)
+        &gt;
+        @mainClass.Name
+        </text>
+    }
+</div>
+
+@if (YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin())
+{
+<div id="addpost" class="_add"><a href="/admin/postmanage/new">添加新文章</a></div>
+<div class="clear"></div>
+}
+@if (!string.IsNullOrEmpty(Request.QueryString["c"]))
+{
+    <div class="boxcaption"><h3>存档</h3></div>
+    <div class="box">‘@(QueryFactory.Post.GetCategory(Request.QueryString["c"]).Name)’ 分类的存档</div>
+}
+@if (!string.IsNullOrEmpty(Request.QueryString["t"]))
+{
+    <div class="boxcaption"><h3>存档</h3></div>
+    <div class="box">文章标签 ‘@Request.QueryString["t"]’</div>
+}
+else if (!string.IsNullOrEmpty(Request.QueryString["d"]))
+{
+    <div class="boxcaption"><h3>存档</h3></div>
+    <div class="box">‘@Request.QueryString["d"]’ 分类的存档</div>
+}
+else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
+{
+    <div class="boxcaption"><h3>搜索结果</h3></div>
+    <div class="box">关键字:‘@Request.QueryString["k"]’</div>
+}
+
+@Html.Action("index-list")
+

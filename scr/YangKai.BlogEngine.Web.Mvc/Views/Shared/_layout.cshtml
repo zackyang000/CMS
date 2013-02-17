@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta name="keywords" content="@ViewBag.Keywords" /> 
+    <meta name="description" content="@ViewBag.Description" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="/feed_comments.xml" />
+    <script src="/Content/scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script src="/Content/scripts/blog.js" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("Head", required: false)
+</head>
+
+<body>
+@Html.Partial("layout-header")
+<div id="middle">
+    <div class="body">
+        <div class="main">
+        @RenderBody()
+        </div>
+    </div>
+</div>
+@Html.Partial("layout-footer")
+@Html.Partial("_plugins")
+</body>
+</html>

@@ -1,0 +1,8 @@
+﻿1.添加迁移内容
+Add-Migration AddQrCode
+2.更新到数据库
+Update-Database
+
+发布时:
+获取升级脚本
+Update-Database -Script -SourceMigration:"InitialCreate" -TargetMigration:"AddQrCode"

@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Webdiyer.WebControls.Mvc</name>
+    </assembly>
+    <members>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.AutoHide">
+            <summary>
+            当总页数只有一页时是否自动隐藏
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.PageIndexOutOfRangeErrorMessage">
+            <summary>
+            页索引超出范围时显示的错误消息
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.InvalidPageIndexErrorMessage">
+            <summary>
+            页索引无效时显示的错误消息
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.PageIndexParameterName">
+            <summary>
+            url中页索引参数的名称
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.ShowPageIndexBox">
+            <summary>
+            是否显示页索引输入出选择框
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.PageIndexBoxType">
+            <summary>
+            页索引输入或选择框的类型
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.MaximumPageIndexItems">
+            <summary>
+            页索引下拉框中显示的最大页索引条数，该属性仅当PageIndexBoxType设为PageIndexBoxType.DropDownList时有效
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.ShowGoButton">
+            <summary>
+            是否显示跳转按钮
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.GoButtonText">
+            <summary>
+            跳转按钮上的文本
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.PageNumberFormatString">
+            <summary>
+            数字页索引格式字符串
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.CurrentPageNumberFormatString">
+            <summary>
+            当前页索引格式字符串
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.ContainerTagName">
+            <summary>
+            分页控件html容器标签名，默认为div
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.PagerItemWrapperFormatString">
+            <summary>
+            包容数字页、当前页及上、下、前、后分页元素的html文本格式字符串
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.NumericPagerItemWrapperFormatString">
+            <summary>
+            包容数字页索引分页元素的html文本格式字符串
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.CurrentPagerItemWrapperFormatString">
+            <summary>
+            包容当前页分页元素的html文本格式字符串
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.NavigationPagerItemWrapperFormatString">
+            <summary>
+            包容上页、下页、首页和尾首四个分页元素的html文本格式字符串
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.MorePagerItemWrapperFormatString">
+            <summary>
+            包容更多页分页元素的html文本格式字符串
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.PageIndexBoxWrapperFormatString">
+            <summary>
+            包容页索引输入或选择框的html文本格式字符串
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.GoToPageSectionWrapperFormatString">
+            <summary>
+            包容页索引框及跳转按钮所在区域的html文本框字符串
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.AlwaysShowFirstLastPageNumber">
+            <summary>
+            whether or not show first and last numeric page number
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.NumericPagerItemCount">
+            <summary>
+            显示的最大数字页索引按钮数
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.ShowPrevNext">
+            <summary>
+            是否显示上页和下页
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.PrevPageText">
+            <summary>
+            上一页文本
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.NextPageText">
+            <summary>
+            下一页文本
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.ShowNumericPagerItems">
+            <summary>
+            是否显示数字页索引按钮及更多页按钮
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.ShowFirstLast">
+            <summary>
+            是否显示第一页和最后一页
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.FirstPageText">
+            <summary>
+            第一页文本
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.LastPageText">
+            <summary>
+            最后一页文本
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.ShowMorePagerItems">
+            <summary>
+            是否显示更多页按钮
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.MorePageText">
+            <summary>
+            更多页按钮文本
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.Id">
+            <summary>
+            包含分页控件的div标签的ID
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.HorizontalAlign">
+            <summary>
+            水平对齐方式
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.CssClass">
+            <summary>
+            CSS样式类
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.ShowDisabledPagerItems">
+            <summary>
+            whether or not show disabled navigation buttons
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.SeparatorHtml">
+            <summary>
+            seperating item html
+            </summary>
+        </member>
+        <member name="P:Webdiyer.WebControls.Mvc.PagerOptions.UseJqueryAjax">
+            <summary>
+            是否使用jQuery实现Ajax分页(内部用)
+            </summary>
+        </member>
+        <member name="M:Webdiyer.WebControls.Mvc.PagerBuilder.#ctor(System.Web.Mvc.HtmlHelper,System.Web.Mvc.AjaxHelper,Webdiyer.WebControls.Mvc.PagerOptions,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            适用于PagedList为null时
+            </summary>
+        </member>
+        <member name="M:Webdiyer.WebControls.Mvc.PagerBuilder.GenerateUrl(System.Int32)">
+            <summary>
+            根据页索引生成分页导航Url
+            </summary>
+            <param name="pageIndex">要生成导航链接的页索引</param>
+            <returns>分页导航链接Url</returns>
+        </member>
+        <member name="M:Webdiyer.WebControls.Mvc.PagerBuilder.RenderPager">
+            <summary>
+            生成最终的分页Html代码
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

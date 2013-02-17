@@ -1,0 +1,20 @@
+﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
+@{
+    var channel = ViewBag.Channel as Channel;
+    var mainClass = ViewBag.MainClass as Group;
+    var mainClassUrl = (mainClass != null ? mainClass.Url : string.Empty);
+    var channelUrl = (channel != null ? channel.Url : string.Empty);
+}
+
+<div class="widget">
+    <h3>最新评论</h3>
+    <div id="div-sidebar-recentcomments-detail"><img src="/Content/Image/ajax-loader2.gif" alt="" /></div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $("#div-sidebar-recentcomments-detail").load("/comment/recentcomments?mainClassUrl=@mainClassUrl&channelUrl=@channelUrl", function () {
+            $("#div-sidebar-recentcomments-detail").hide();
+            $("#div-sidebar-recentcomments-detail").fadeIn(1000);
+        });
+    });
+</script>

@@ -1,0 +1,107 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using YangKai.BlogEngine.Modules.PostModule.Objects
+@model PagedList<Post>
+@{
+    ViewBag.Title = "文章";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var currentStatusIsAll = (Request.QueryString["status"] ?? "all") == "all";
+}
+
+@section Head{
+<script src="/Content/admin/js/post-manage.js" type="text/javascript"></script>
+}
+
+<div id="icon-post" class="icon32"><br /></div>
+<h2>文章</h2>
+
+<table class="widefat fixed" cellspacing="0">
+    <thead>
+        <tr>
+            <th id="thumbnail">缩略图</th>
+            <th id="title">标题</th>
+            <th id="author">作者</th>
+            <th id="channel">频道</th>
+            <th id="class">分组</th>
+            <th id="categories">分类目录</th>
+            <th id="tags">标签</th>
+            <th id="comments"><img alt="评论" src="/Content/Image/comment-bubble.png" /></th>
+            <th id="date">日期</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>缩略图</th>
+            <th>标题</th>
+            <th>作者</th>
+            <th>频道</th>
+            <th>分组</th>
+            <th>分类目录</th>
+            <th>标签</th>
+            <th><img alt="评论" src="/Content/Image/comment-bubble.png" /></th>
+            <th>日期</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var entity in Model)
+        {
+        <tr id="post-@entity.PostId">
+            <td class="column-thumbnail">
+            @if (entity.Thumbnail != null)
+            {
+                <img src="/upload/thumbnail/@entity.Thumbnail.Url" alt="@entity.Title" />
+            }
+            </td>
+            <td class="column-title">
+                <strong>@Html.ActionLink(entity.Title, "edit", new { id = entity.Url })</strong>
+                @if (currentStatusIsAll && entity.PostStatus != (int)PostStatusEnum.Publish)
+                {
+                    <span class="state-@entity.PostStatus">@entity.PostStatus</span>
+                }
+                <div class="row-actions">
+                @if (entity.PostStatus != (int)PostStatusEnum.Trash)
+                    {
+                //
+                    <span class="edit">@Html.ActionLink("编辑", "edit", new { id = entity.Url }, new { title = "编辑此项目" }) | </span>
+                    @*<span class="inline"><a href="#" title="实时编辑此项目">快速编辑</a> | </span>*@
+                    <span class="trash"><a href="JavaScript:void(0)" onclick="post_delete('@entity.PostId')" title="移动此项目到回收站">删除</a> | </span>
+                    <span class="view"><a href="/@entity.Group.Url-@entity.Url" title="查看“@entity.Title”" target="_blank">查看</a>@* | *@</span>
+                    @*<span class="view"><a href="#" title="预览 “@entity.Title”" rel="permalink">预览</a></span>*@
+                    }
+                else
+                {
+                    <span class="untrash"><a href="JavaScript:void(0)" onclick="post_renew('@entity.PostId')" title="从回收站中恢复此文章">还原</a> | </span>
+                    <span class="delete">永久删除</span>
+                }
+                </div>
+            </td>
+            <td>
+                <a href="#">@entity.PubAdmin.UserName</a>
+            </td>
+            <td>
+                <a href="#">@entity.Group.Channel.Name</a>
+            </td>
+            <td>
+                <a href="#">@entity.Group.Name</a>
+            </td>
+            <td>
+                @(Html.Raw(string.Join(",", entity.Categorys.Select(item => Html.ActionLink(item.Name, "Index", item.Group.Url, new { c = item.Url }, new { title = string.Format("查看 {0} 的全部文章", item.Name) })).ToList())))
+            </td>
+            <td>
+                @(Html.Raw(string.Join(",", entity.Tags.Select(item => Html.ActionLink(item.Name, "Index", item.Post.Group.Url, new { t = item.Name }, new { title = string.Format("查看 {0} 的全部文章", item.Name) })).ToList())))
+            </td>
+            <td class="column-comments">
+                <div class="post-com-count-wrapper">
+                    <a href="#" title="0 待审中" class="post-com-count">
+                        <span>@entity.ReplyCount</span></a>
+                </div>
+            </td>
+            <td>
+                <abbr title="@entity.PubDate.ToString("yyyy-MM-dd HH:mm:ss")">@entity.PubDate.ToString("yyyy-MM-dd")</abbr>
+                <br />@entity.PostStatus
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<div><span class="fr">共 @Model.TotalPageCount 页</span>@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "page", CurrentPagerItemWrapperFormatString = "<span class=\"cpb\">{0}</span>", NumericPagerItemWrapperFormatString = "<span class=\"item\">{0}</span>", CssClass = "pages", SeparatorHtml = "" })</div>

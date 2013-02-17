@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the Slovak language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>Server nemohol dokončiť spracovanie požiadavky. (Chyba %1)</errorUnknown>
+	<errors>
+		<error number="10">Neplatný príkaz.</error>
+		<error number="11">V požiadavke nebol špecifikovaný typ súboru.</error>
+		<error number="12">Nepodporovaný typ súboru.</error>
+		<error number="102">Neplatný názov súboru alebo adresára.</error>
+		<error number="103">Nebolo možné dokončiť spracovanie požiadavky kvôli nepostačujúcej úrovni oprávnení.</error>
+		<error number="104">Nebolo možné dokončiť spracovanie požiadavky kvôli obmedzeniam v prístupových právach ku súborom.</error>
+		<error number="105">Neplatná prípona súboru.</error>
+		<error number="109">Neplatná požiadavka.</error>
+		<error number="110">Neidentifikovaná chyba.</error>
+		<error number="115">Zadaný súbor alebo adresár už existuje.</error>
+		<error number="116">Adresár nebol nájdený. Aktualizujte obsah adresára (Znovunačítať) a skúste znovu.</error>
+		<error number="117">Súbor nebol nájdený. Aktualizujte obsah adresára (Znovunačítať) a skúste znovu.</error>
+		<error number="118">Source and target paths are equal.</error>
+		<error number="201">Súbor so zadaným názvom už existuje. Prekopírovaný súbor bol premenovaný na "%1"</error>
+		<error number="202">Neplatný súbor</error>
+		<error number="203">Neplatný súbor - súbor presahuje maximálnu povolenú veľkosť.</error>
+		<error number="204">Kopírovaný súbor je poškodený.</error>
+		<error number="205">Server nemá špecifikovaný dočasný adresár pre kopírované súbory.</error>
+		<error number="206">Kopírovanie prerušené kvôli nedostatočnému zabezpečeniu. Súbor obsahuje HTML data.</error>
+		<error number="207">Prekopírovaný súbor bol premenovaný na "%1"</error>
+		<error number="300">Moving file(s) failed.</error>
+		<error number="301">Copying file(s) failed.</error>
+		<error number="500">Prehliadanie súborov je zakázané kvôli bezpečnosti. Kontaktujte prosím administrátora a overte nastavenia v konfiguračnom súbore pre CKFinder.</error>
+		<error number="501">Momentálne nie je zapnutá podpora pre generáciu miniobrázkov.</error>
+	</errors>
+</messages>

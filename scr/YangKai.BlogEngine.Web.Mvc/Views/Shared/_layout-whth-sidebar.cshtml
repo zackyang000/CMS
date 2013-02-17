@@ -1,0 +1,17 @@
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@section Head{@RenderSection("Head", required: false)}
+<div id="content">
+    @RenderBody()
+</div>
+<div id="sidebar">
+    @*@Html.Action("GroupByCategory", "Article")*@
+    @Html.Partial("sidebar-feed")
+    @Html.Partial("sidebar-search")
+    @Html.Partial("sidebar-recentcomments")
+    @Html.Partial("sidebar-recentmessages")
+    @if (string.IsNullOrEmpty(ViewData["mainClassUrl"] as string))
+    {
+    @Html.Partial("sidebar-friendsLink")
+    }
+</div>
+<div class="clear"></div>

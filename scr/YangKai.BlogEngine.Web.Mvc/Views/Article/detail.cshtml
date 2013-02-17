@@ -1,0 +1,24 @@
+﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+
+@{
+    Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
+
+}
+
+@section Head{<link rel='canonical' href='http://www.woshinidezhu.com/@Model.Group.Url-@Model.Url' /> }
+
+<div id="postnav">
+	@Html.ActionLink(Model.Group.Channel.Name, "Index", Model.Group.Channel.Url)
+    &gt;
+    @Html.ActionLink(Model.Group.Name, "Index", Model.Group.Url, null, new { title = string.Format("查看 {0} 的全部文章", Model.Group.Name) })
+    &gt;
+    @Html.Raw(string.Join(",", Model.Categorys.Select(p => Html.ActionLink(p.Name, "Index", p.Group.Url, new { c = p.Url }, new { title = string.Format("查看 {0} 的全部文章", p.Name) })).ToList()))
+    &gt;
+    @Model.Title
+</div>
+
+@Html.Partial("DetailPost", Model)
+@Html.Action("PostRelated", new { postId = Model.PostId })
+@Html.Action("list", "Comment")
+@Html.Action("add", "Comment")
+@Html.Action("PostNavi", new { postId = Model.PostId })

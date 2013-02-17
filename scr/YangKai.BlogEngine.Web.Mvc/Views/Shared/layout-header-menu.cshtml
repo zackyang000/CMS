@@ -1,0 +1,14 @@
+﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Channel>
+<ul id="menu"> 
+    @*<li class="home"><a href="/"><span>主页</span></a></li>*@
+    @foreach (var entity in Model)
+    {
+        <li class="@entity.Url"><a href="@Url.Action("Index", entity.Url)"><span>@entity.Name</span></a></li>
+    }
+    <!--<li class="search"><a href=""><span>搜索</span></a></li> -->
+    <li class="board"><a href="@Url.Action("Index", "Board")"><span>留言板</span></a></li> 
+    <li class="about"><a href="@Url.Action("Index", "About")"><span>关于</span></a></li> 
+    @*<li class="about"><a href="@Url.Action("Index", "Labs")"><span>实验室</span></a></li> *@
+    <!--<li class="rssfeed"><a href=""><span>订阅</span></a></li>-->
+    <!--<li class="contact"><a href=""><span>联系</span></a></li>-->
+</ul> 

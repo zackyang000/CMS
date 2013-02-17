@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the Latvian language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>Nebija iespējams pabeigt pieprasījumu. (Kļūda %1)</errorUnknown>
+	<errors>
+		<error number="10">Nederīga komanda.</error>
+		<error number="11">Resursa veids netika norādīts pieprasījumā.</error>
+		<error number="12">Pieprasītais resursa veids nav derīgs.</error>
+		<error number="102">Nederīgs faila vai mapes nosaukums.</error>
+		<error number="103">Nav iespējams pabeigt pieprasījumu, autorizācijas aizliegumu dēļ.</error>
+		<error number="104">Nav iespējams pabeigt pieprasījumu, failu sistēmas atļauju ierobežojumu dēļ.</error>
+		<error number="105">Neatļauts faila paplašinājums.</error>
+		<error number="109">Nederīgs pieprasījums.</error>
+		<error number="110">Nezināma kļūda.</error>
+		<error number="115">Fails vai mape ar šādu nosaukumu jau pastāv.</error>
+		<error number="116">Mape nav atrasta. Lūdzu pārlādējiet šo logu un mēģiniet vēlreiz.</error>
+		<error number="117">Fails nav atrasts. Lūdzu pārlādējiet failu sarakstu un mēģiniet vēlreiz.</error>
+		<error number="118">Source and target paths are equal.</error>
+		<error number="201">Fails ar šādu nosaukumu jau eksistē. Augšupielādētais fails tika pārsaukts par "%1"</error>
+		<error number="202">Nederīgs fails</error>
+		<error number="203">Nederīgs fails. Faila izmērs pārsniedz pieļaujamo.</error>
+		<error number="204">Augšupielādētais fails ir bojāts.</error>
+		<error number="205">Neviena pagaidu mape nav pieejama priekš augšupielādēšanas uz servera.</error>
+		<error number="206">Augšupielāde atcelta drošības apsvērumu dēļ. Fails satur HTML veida datus.</error>
+		<error number="207">Augšupielādētais fails tika pārsaukts par "%1"</error>
+		<error number="300">Moving file(s) failed.</error>
+		<error number="301">Copying file(s) failed.</error>
+		<error number="500">Failu pārlūks ir atslēgts drošības apsvērumu dēļ. Lūdzu sazinieties ar šīs sistēmas tehnisko administratoru vai pārbaudiet CKFinder konfigurācijas failu.</error>
+		<error number="501">Sīkbilžu atbalsts ir atslēgts.</error>
+	</errors>
+</messages>

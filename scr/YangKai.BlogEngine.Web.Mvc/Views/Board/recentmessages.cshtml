@@ -1,0 +1,11 @@
+﻿@model IList<YangKai.BlogEngine.Modules.BoardModule.Objects.Board>
+<ul>
+@foreach (var data in Model){
+    <li>
+    @Html.ActionLink(data.Author, "Index", "Board", null, new { title = data.Content })
+    :@Html.Raw(data.Content.Replace("<br />", "&nbsp;&nbsp;").SubstringChinese(200))
+    </li>
+}
+</ul>
+
+

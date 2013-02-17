@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the Swedish language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>Begäran kunde inte utföras eftersom ett fel uppstod. (Error %1)</errorUnknown>
+	<errors>
+		<error number="10">Ogiltig begäran.</error>
+		<error number="11">Resursens typ var inte specificerad i förfrågan.</error>
+		<error number="12">Den efterfrågade resurstypen är inte giltig.</error>
+		<error number="102">Ogiltigt fil- eller mappnamn.</error>
+		<error number="103">Begäran kunde inte utföras p.g.a. restriktioner av rättigheterna.</error>
+		<error number="104">Begäran kunde inte utföras p.g.a. restriktioner av rättigheter i filsystemet.</error>
+		<error number="105">Ogiltig filändelse.</error>
+		<error number="109">Ogiltig begäran.</error>
+		<error number="110">Okänt fel.</error>
+		<error number="115">En fil eller mapp med aktuellt namn finns redan.</error>
+		<error number="116">Mappen kunde inte hittas. Var god uppdatera sidan och försök igen.</error>
+		<error number="117">Filen kunde inte hittas. Var god uppdatera sidan och försök igen.</error>
+		<error number="118">Source and target paths are equal.</error>
+		<error number="201">En fil med aktuellt namn fanns redan. Den uppladdade filen har döpts om till "%1"</error>
+		<error number="202">Ogiltig fil</error>
+		<error number="203">Ogiltig fil. Filen var för stor.</error>
+		<error number="204">Den uppladdade filen var korrupt.</error>
+		<error number="205">En tillfällig mapp för uppladdning är inte tillgänglig på servern.</error>
+		<error number="206">Uppladdningen stoppades av säkerhetsskäl. Filen innehåller HTML-liknande data.</error>
+		<error number="207">Den uppladdade filen har döpts om till "%1"</error>
+		<error number="300">Moving file(s) failed.</error>
+		<error number="301">Copying file(s) failed.</error>
+		<error number="500">Filhanteraren har stoppats av säkerhetsskäl. Var god kontakta administratören för att kontrollera konfigurationsfilen för CKFinder.</error>
+		<error number="501">Stöd för tumnaglar har stängts av.</error>
+	</errors>
+</messages>

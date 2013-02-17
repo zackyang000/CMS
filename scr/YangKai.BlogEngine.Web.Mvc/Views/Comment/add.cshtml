@@ -1,0 +1,64 @@
+﻿@using YangKai.BlogEngine.Common
+@model YangKai.BlogEngine.Modules.PostModule.Objects.Comment
+<!-- respond START -->
+<script type="text/javascript">
+    function change_author_info_display() {
+        $("#hide_author_info").toggle();
+        $("#show_author_info").toggle();
+        $("#author_info").toggle();
+    }
+    $(function () {
+        $("input:submit").bind("click", function () { add_comment('@ViewData["ArticleId"]', '@Model.Pic'); });
+        $("#show_author_info").hide();
+        if ($("#Author").val() != "") {
+            $("#show_author_info a,#hide_author_info a").bind("click", function () { change_author_info_display(); });
+            change_author_info_display();
+        }
+        else {
+            $("#author_welcome").hide();
+        }
+    });
+</script>
+<div id="respond">
+    <p id="author_welcome">
+        @if (WebMasterCookie.IsLogin)
+        {
+            <text>管理员:@WebMasterCookie.Load().Name</text>
+        }
+        else if (WebGuestCookie.IsLoginAPI)
+        {
+            <text>来自 <span class="api_qq">QQ登录</span> 的 
+                <img alt="" src="@WebGuestCookie.Load().Pic" /><strong>@WebGuestCookie.Load().Name</strong>，您好！
+                <a href="javascript:void(0);" onclick="guest_loginoff()">注销</a>
+            </text>
+        }
+        else
+        {
+            <text>欢迎回来, <strong>@Model.Author</strong></text>
+            <span id="show_author_info"><a href="javascript:void(0);">更改 »</a></span>
+            <span id="hide_author_info"><a href="javascript:void(0);">隐藏 »</a></span>
+        }
+    </p>
+    <div id="author_info">
+		<p style="line-height:30px;">
+			@Html.TextBoxFor(model => model.Author, new { style = "width:180px;", @class = "textfield" })
+            @Html.LabelFor(model => model.Author, "昵称(必填)")
+		</p>
+        <p>
+			@Html.TextBoxFor(model => model.Email, new { style = "width:180px;", @class = "textfield" })
+            @Html.LabelFor(model => model.Email, "电子邮箱 (我们会为您保密)")
+		</p>
+		<p>
+			@Html.TextBoxFor(model => model.Url, new { style = "width:180px;", @class = "textfield" })
+            @Html.LabelFor(model => model.Url, "网址")
+            <a href="@Url.Action("QZoneLogin", "API", new { url = Request.Url.AbsolutePath })" class="fr"><img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_2.png" alt="" /></a>
+		</p>
+	</div>
+    <p>@Html.TextAreaFor(model=>model.Content, new { style = "height:130px;width:600px;", Rows = "5" })</p>
+    <div id="submitbox">
+        <div class="submitbutton"><input id="submit" type="submit" class="submit" value="提交" /></div>
+        <div id="info"></div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!-- respond END -->

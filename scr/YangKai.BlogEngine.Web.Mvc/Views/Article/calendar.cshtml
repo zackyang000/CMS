@@ -1,0 +1,44 @@
+﻿@using YangKai.BlogEngine.Model
+@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Post>
+
+@{
+    Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
+    ViewBag.Title = "存档" + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
+    var calendarlist = (ViewBag.CalendarList as CalendarDictionary).Data.OrderByDescending(p => p.Key).ToDictionary(k => k.Key, v => v.Value);
+}
+
+@section Head{
+<script type="text/javascript">
+    $(function () {
+        //自动展开第一个列表
+        calendar_slide($("#calendar li").attr("id"));
+        //给所有列表绑定点击展开|关闭列表事件
+        $("#calendar h2").bind("click", function () { calendar_slide($(this).parent().attr("id")) });
+    });
+    function calendar_slide(id) {
+        //先展开|关闭列表,完成都显示|隐藏跳转链接
+        $("#" + id + " ul").slideToggle("normal", function () {
+            $("#" + id + " h2 a").toggle("normal");
+        });
+    }
+</script>
+}
+
+<ul id="calendar">
+@foreach (var calendar in calendarlist)
+{
+    string calendarEnFormat = calendar.Key.ToString("yyyy-MM");
+    string calendarCnFormat = calendar.Key.ToString("yyyy年MM月");
+    <li id="calendar-@calendarEnFormat">
+        <h2>@calendarEnFormat (@calendar.Value)<a href="@Url.Action("Index", "Article", new { channelUrl = Model.FirstOrDefault().Categorys.FirstOrDefault().Group.Channel.Url, d = calendarEnFormat })" title="@string.Format("转到 {0} 的文章列表", calendarCnFormat)"><span></span></a></h2>
+        <ul>
+        @foreach (var item in Model.Where(p => p.PubDate.Year == calendar.Key.Year && p.PubDate.Month == calendar.Key.Month))
+        {
+            <li class="_dot">[@item.Group.Name]@item.PubDate.ToString("dd")日:@Html.ActionLink(item.Title, "Detail", item.Group.Url, new { id = item.Url },null)</li>
+        }
+        </ul>
+    </li>
+}
+</ul>
+
+

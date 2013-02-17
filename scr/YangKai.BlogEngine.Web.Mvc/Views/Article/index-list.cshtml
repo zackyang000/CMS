@@ -1,0 +1,77 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using YangKai.BlogEngine.Modules.PostModule.Objects
+@model PagedList<YangKai.BlogEngine.Modules.PostModule.Objects.Post>
+           
+@{
+    var channel = ViewBag.Channel as Channel;
+    var mainClass = ViewBag.MainClass as Group;
+    var mainClassUrl = (mainClass != null ? mainClass.Url : string.Empty);
+    var channelUrl = (channel != null ? channel.Url : string.Empty);
+}
+
+<div id="posts-and-pager">
+<ul id="posts">
+ @foreach (var data in Model)
+ {
+    <li id="@("list" + data.PostId)">
+        <h2>
+        <strong>@Html.ActionLink(data.Title, "Detail", data.Group.Url, new { id = data.Url }, new { title = data.Title })</strong>
+        @if (data.PostStatus==(int)PostStatusEnum.Trash)
+        {
+        <span class="del">已删除</span>
+        }
+        @if (data.PostStatus == (int)PostStatusEnum.Draft)
+        {
+        <span class="draft">草稿</span>
+        }
+        @if (data.PostStatus == (int)PostStatusEnum.Pending)
+        {
+        <span class="audit">未审核</span>
+        }
+        @if (data.PubDate > DateTime.Now)
+        {
+        <span class="delay">延迟发布: @((data.PubDate - DateTime.Now).TotalHours.ToString("#0.00"))小时后</span>
+        }
+        <span class="showdetail fr" id="@("showdetail" + data.PostId)"><a href="JavaScript:void(0)" onclick="show_detail('@data.PostId')">展开 >></a></span>
+        <span class="hidedetail fr" id="@("hidedetail" + data.PostId)"><a href="JavaScript:void(0)" onclick="hide_detail('@data.PostId')">收起 >></a></span>
+        </h2>
+        <div class="clear"></div>
+        @Html.Partial("PostHeader", data)
+        <div class="postBody" id="post-body-@data.PostId">
+            <div id="post-body-desc-@data.PostId">
+                @if (data.Thumbnail != null)
+                {
+                    <div class="thumb"><a href="@Url.Action("Detail", data.Group.Url, new { id = data.Url })"><img src="/upload/thumbnail/@data.Thumbnail.Url" alt="@data.Thumbnail.Title" title="@data.Thumbnail.Title" style="width:160px; height:100px;" /></a></div>
+                }
+                @Html.Raw(data.Description)
+            </div>
+            <div id="post-body-detail-@data.PostId">
+            </div>
+            <div class="clear"></div>
+        </div>
+        @Html.Partial("PostFooter", data)
+    </li>
+ }
+</ul>
+
+@Html.AjaxPager(Model, null, new { mainClassUrl,  channelUrl },
+new PagerOptions
+    {
+        PageIndexParameterName = "id",
+        CurrentPagerItemWrapperFormatString = "<span class=\"cpb\">{0}</span>",
+        NumericPagerItemWrapperFormatString = "<span class=\"item\">{0}</span>",
+        CssClass = "pages",
+        SeparatorHtml = "",
+        ShowFirstLast = false,
+        NumericPagerItemCount = 7,
+        MorePagerItemWrapperFormatString = "...",
+        ShowDisabledPagerItems = false
+    },
+    new AjaxOptions()
+        {
+            UpdateTargetId = "posts-and-pager",
+            OnBegin = "function(){page_begin();}",
+            OnComplete = "function(){page_complete();}",
+            OnFailure = "function(){page_error();}"
+        })
+</div>

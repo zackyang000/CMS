@@ -1,0 +1,11 @@
+﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+<div id="sourcebox" class="postbox">
+    <h3>转载信息</h3>
+    <div class="inside">
+    <div>来源URL：</div>
+    <div>@Html.TextBox("sourceurl", Model != null && Model.Source != null?Model.Source.Url:string.Empty, new { @class = "text ui-widget-content ui-corner-all" })</div>
+    <div>来源标题：<img src="/Content/admin/images/wpspin_light.gif" class="ajax-loading" id="source-ajax-loading" alt="" /></div>
+    <div>@Html.TextBox("sourcetitle", Model != null && Model.Source != null?Model.Source.Title:string.Empty, new { @class = "text ui-widget-content ui-corner-all" })</div>
+    <div id="source-title-tip" class="validateTips"></div>
+    </div>
+</div>

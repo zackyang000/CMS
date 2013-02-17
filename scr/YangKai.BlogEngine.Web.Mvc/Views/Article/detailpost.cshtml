@@ -1,0 +1,50 @@
+﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
+@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+           
+@if (YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin())
+{
+    <div id="addpost" class="_add"><a href="/admin/postmanage/new">添加新文章</a></div>
+    <div class="clear"></div>
+}
+
+<ul id="posts">
+    <li id="@("list" + Model.PostId)">
+        <h2>
+        <strong>@Model.Title</strong>
+        @if (Model.PostStatus==(int)PostStatusEnum.Trash)
+        {
+        <span class="del">已删除</span>
+        }
+        @if (Model.PostStatus == (int)PostStatusEnum.Draft)
+        {
+        <span class="draft">草稿</span>
+        }
+        @if (Model.PostStatus == (int)PostStatusEnum.Pending)
+        {
+        <span class="audit">未审核</span>
+        }
+        @if (Model.PubDate > DateTime.Now)
+        {
+        <span class="delay">延迟发布: @((Model.PubDate - DateTime.Now).TotalHours.ToString("#0.00"))小时后</span>
+        }
+        </h2>
+        @Html.Partial("PostHeader", Model)
+        <div class="postBody">
+            @(new HtmlString(Model.Pages.First().Content))
+            <div class="clear"></div>
+            @if (Model.Source != null)
+            {
+                <div style="color:#aaa">本文转载于：<a href="@Model.Source.Url" style="color:#aaa">@Model.Source.Title</a></div>
+            }
+            @if(Model.QrCode!=null)
+            {
+                 <div><img src="/upload/qrcode/@Model.QrCode.Url" width="200" height="200" /></div>
+            }
+        @Html.Partial("PostFooter", Model)
+        @Html.Partial("_jiathis")
+        </div> 
+    </li>
+</ul>
+
+
+

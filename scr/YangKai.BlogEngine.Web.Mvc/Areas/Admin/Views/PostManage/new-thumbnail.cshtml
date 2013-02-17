@@ -1,0 +1,16 @@
+﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+<div id="thumbnailbox" class="postbox">
+    <h3>缩略图</h3>
+    <div class="inside">
+        <div><input name="uploadpic" type="file" /></div>
+        @if(Model!=null&&Model.Thumbnail!=null)
+        {
+        <div id="thumbnail-img">
+            <img alt="" src="/upload/thumbnail/@Model.Thumbnail.Url" title="@Model.Thumbnail.Title" />
+            <a href="JavaScript:void(0)" class="icon-del" id="del-thumbnail">删除图片</a>
+            @Html.Hidden("exist-thumbnail",true)
+        </div>
+        <div id="renew-div"><a href="JavaScript:void(0)" class="icon-renew" id="renew-thumbnail">恢复图片</a></div>
+        }
+    </div>
+</div>

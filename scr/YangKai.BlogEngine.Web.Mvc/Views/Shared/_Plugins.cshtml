@@ -1,0 +1,105 @@
+﻿@*菜单效果*@
+@*<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-7243260-2']);
+    _gaq.push(['_trackPageview']);
+    $(function () { menu(); });
+
+//菜单展开/收缩效果
+function menu() {
+    var d = 300;
+    $('#menu a').each(function() {
+        $(this).stop().animate({
+                'marginTop': '-80px'
+            }, d += 150);
+    });
+    $('#menu > li').hover(
+        function() {
+            $('a', $(this)).stop().animate({
+                    'marginTop': '-2px'
+                }, 200);
+        },
+        function() {
+            $('a', $(this)).stop().animate({
+                    'marginTop': '-80px'
+                }, 200);
+        });
+}
+</script>
+<style>
+    ul#menu li a {padding-top:80px;}
+    ul#menu .home a{background-image: url(/Content/Image/menu/home.png);}
+    ul#menu .funs a{background-image: url(/Content/Image/menu/television.png);}
+    ul#menu .about a{background-image: url(/Content/Image/menu/id_card.png);}
+    ul#menu .board a{background-image: url(/Content/Image/menu/mail.png);}
+    ul#menu .rssfeed a{background-image: url(/Content/Image/menu/rss.png);}
+    ul#menu .contact a{background-image: url(/Content/Image/menu/mail.png);}
+    ul#menu .technologies a{background-image: url(/Content/Image/menu/print.png);}
+    ul#menu .search a{background-image: url(/Content/Image/menu/search.png);}
+</style>*@
+
+@*导航*@
+<script type="text/javascript">
+    $(function () { navlock(); });
+</script>
+
+@* 代码高亮插件 *@
+<link href="/Content/syntaxhighlighter_3.0.83/styles/shCoreDefault.css" rel="stylesheet" type="text/css" />
+<script src="/Content/syntaxhighlighter_3.0.83/scripts/shCore.js" type="text/javascript"></script>
+<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js" type="text/javascript"></script>
+<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushCss.js" type="text/javascript"></script>
+<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js" type="text/javascript"></script>
+<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushSql.js" type="text/javascript"></script>
+<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushXml.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        SyntaxHighlighter.defaults['gutter'] = true;
+        SyntaxHighlighter.defaults['collapse'] = false;
+        SyntaxHighlighter.all();
+    });
+</script>
+
+@* 图片延迟加载插件*@
+<script src="/Content/scripts/jquery.lazyload.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#posts img").lazyload({
+                placeholder: "/Content/Image/grey.gif",
+                effect: "fadeIn"
+            });
+    });
+</script>
+
+@* 超链接title悬浮标签美化插件 *@
+@*<script src="/Content/jquery_tooltip_1.3/jquery.tooltip.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $('[title]').tooltip({
+        track: true,
+        delay: 0,
+        showURL: false,
+        showBody: " - ",
+        fade: 250
+    });
+</script>
+<style type="text/css">
+#tooltip{position: absolute;z-index: 5000;border:1px solid #a5bad4;color:#666;background: #FFF url(/Content/Image/tip_c.gif) top left no-repeat;padding:3px 8px;opacity: 0.85;}
+#tooltip h3, #tooltip div{ margin: 0; }
+</style>*@
+
+@* cnzz统计插件 *@
+<span style="display:none;"><script src="http://s96.cnzz.com/stat.php?id=1356515&web_id=1356515" language="JavaScript" type="text/javascript"></script></span>
+
+@* ClustrMaps统计插件 *@
+<span style="display:none;"><img src="http://www2.clustrmaps.com/counter/index2.php?url=http://www.woshinidezhu.com" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onerror="this.onerror=null; this.src='http://clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://clustrmaps.com';" /></span>
+
+@* 分享插件 *@
+<script type="text/javascript" >
+    var jiathis_config = {
+        data_track_clickback: true,
+        siteNum: 15,
+        summary: "",
+        hideMore: true
+    }
+</script>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=902651" charset="utf-8"></script>
+

@@ -1,0 +1,9 @@
+﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Comment>
+<ul id="side_comment">
+    @foreach (var data in Model){
+    <li>
+    @Html.ActionLink(data.Author, "Detail", data.Post.Group.Url, string.Empty, string.Empty, "comment-" + data.CommentId, new { id = data.Post.Url }, new { title = string.Format("《{0}》", data.Post.Title) })
+    : @Html.Raw(data.Content.Replace("<br />", "&nbsp;&nbsp;").SubstringChinese(200))
+    </li>
+    }
+</ul>

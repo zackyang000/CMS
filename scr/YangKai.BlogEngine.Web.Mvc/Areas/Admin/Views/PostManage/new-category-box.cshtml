@@ -1,0 +1,25 @@
+﻿<div id="categorybox" class="postbox">
+    <h3>分类目录</h3>
+    <div class="inside">
+    <ul id="category-tabs" class="category-tabs">
+		<li class="tab"><a href="JavaScript:void(0);">全部分类目录</a></li>
+		<li><a href="JavaScript:void(0);">最常用</a></li>
+    </ul>
+    <div id="category-all" class="category-panel tabs-panel">
+		<ul id="categorychecklist"></ul>
+    </div>
+    <div id="category-pop" class="category-panel tabs-panel">暂无</div>
+    @Html.Hidden("category")
+    <h4><a id="category-add-toggle" href="JavaScript:void(0);">+ 添加新分类目录</a></h4>
+    <div id="category-add">
+        <div>名称：</div>
+        <div>@Html.TextBox("add-category-name",  string.Empty, new { @class = "text ui-widget-content ui-corner-all" })</div>
+        <p>这将是它在站点上显示的名字。</p>
+        <div>别名：<img src="/Content/admin/images/wpspin_light.gif" class="ajax-loading" id="category-url-ajax-loading" alt="" /></div>
+        <div>@Html.TextBox("add-category-url", string.Empty, new { @class = "text ui-widget-content ui-corner-all" })</div>
+        <p>“别名”是对于 URL 友好的一个别称。它通常为小写并且只能包含字母，数字和连字符（-）。</p>
+        <div><input type="button" value="添加新分类目录" id="add-category-submit" /></div>
+        <div class="validateTips" id="add-category-tip"></div>
+    </div>
+    </div>
+</div>

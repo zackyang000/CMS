@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the Portuguese (Brazilian) language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>Não foi possível completer o seu pedido. (Erro %1)</errorUnknown>
+	<errors>
+		<error number="10">Comando inválido.</error>
+		<error number="11">O tipo de recurso não foi especificado na solicitação.</error>
+		<error number="12">O recurso solicitado não é válido.</error>
+		<error number="102">Nome do arquivo ou pasta inválido.</error>
+		<error number="103">Não foi possível completar a solicitação por restrições de acesso.</error>
+		<error number="104">Não foi possível completar a solicitação por restrições de acesso do sistema de arquivos.</error>
+		<error number="105">Extensão de arquivo inválida.</error>
+		<error number="109">Solicitação inválida.</error>
+		<error number="110">Erro desconhecido.</error>
+		<error number="115">Uma arquivo ou pasta já existe com esse nome.</error>
+		<error number="116">Pasta não encontrada. Atualize e tente novamente.</error>
+		<error number="117">Arquivo não encontrado. Atualize a lista de arquivos e tente novamente.</error>
+		<error number="118">Source and target paths are equal.</error>
+		<error number="201">Um arquivo com o mesmo nome já está disponível. O arquivo enviado foi renomeado para "%1"</error>
+		<error number="202">Arquivo inválido</error>
+		<error number="203">Arquivo inválido. O tamanho é muito grande.</error>
+		<error number="204">O arquivo enviado está corrompido.</error>
+		<error number="205">Nenhuma pasta temporária para envio está disponível no servidor.</error>
+		<error number="206">Transmissão cancelada por razões de segurança. O arquivo contem dados HTML.</error>
+		<error number="207">O arquivo enviado foi renomeado para "%1"</error>
+		<error number="300">Não foi possível mover o(s) arquivo(s).</error>
+		<error number="301">Não foi possível copiar o(s) arquivos(s).</error>
+		<error number="500">A navegação de arquivos está desativada por razões de segurança. Contacte o administrador do sistema.</error>
+		<error number="501">O suporte a miniaturas está desabilitado.</error>
+	</errors>
+</messages>

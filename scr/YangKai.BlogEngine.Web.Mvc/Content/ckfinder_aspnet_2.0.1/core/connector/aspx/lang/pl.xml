@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the Polish language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>Wykonanie operacji zakończyło się niepowodzeniem. (Błąd %1)</errorUnknown>
+	<errors>
+		<error number="10">Nieprawidłowe polecenie (command).</error>
+		<error number="11">Brak wymaganego parametru: źródło danych (type).</error>
+		<error number="12">Nieprawidłowe źródło danych (type).</error>
+		<error number="102">Nieprawidłowa nazwa pliku lub katalogu.</error>
+		<error number="103">Wykonanie operacji nie jest możliwe: brak autoryzacji.</error>
+		<error number="104">Wykonanie operacji nie powiodło się z powodu niewystarczających uprawnień do systemu plików.</error>
+		<error number="105">Nieprawidłowe rozszerzenie.</error>
+		<error number="109">Nieprawiłowe polecenie.</error>
+		<error number="110">Niezidentyfikowany błąd.</error>
+		<error number="115">Plik lub katalog o podanej nazwie już istnieje.</error>
+		<error number="116">Nie znaleziono ktalogu. Odśwież panel i spróbuj ponownie.</error>
+		<error number="117">Nie znaleziono pliku. Odśwież listę plików i spróbuj ponownie.</error>
+		<error number="118">Ścieżki źródłowa i docelowa są jednakowe.</error>
+		<error number="201">Plik o podanej nazwie już istnieje. Nazwa przesłanego pliku została zmieniona na "%1"</error>
+		<error number="202">Nieprawidłowy plik.</error>
+		<error number="203">Nieprawidłowy plik. Plik przekroczył dozwolony rozmiar.</error>
+		<error number="204">Przesłany plik jest uszkodzony.</error>
+		<error number="205">Brak folderu tymczasowego na serwerze do przesyłania plików.</error>
+		<error number="206">Przesyłanie pliku zakończyło się niepowodzeniem z powodów bezpieczeństwa. Plik zawiera dane przypominające HTML.</error>
+		<error number="207">Nazwa przesłanego pliku została zmieniona na "%1"</error>
+		<error number="300">Przenoszenie nie powiodło się.</error>
+		<error number="301">Kopiowanie nie powiodo się.</error>
+		<error number="500">Menedżer plików jest wyłączony z powodów bezpieczeństwa. Skontaktuj się z administratorem oraz sprawdź plik konfiguracyjny CKFindera.</error>
+		<error number="501">Tworzenie miniaturek jest wyłączone.</error>
+	</errors>
+</messages>
