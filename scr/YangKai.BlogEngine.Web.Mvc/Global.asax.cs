@@ -47,6 +47,31 @@ namespace YangKai.BlogEngine.Web.Mvc
 
         }
 
+        protected void Application_EndRequest(object sender, EventArgs e)
+        {
+//            HttpContext context = HttpContext.Current;
+//
+//            var temStatusCode = context.ApplicationInstance.Response.StatusCode;
+//            if (temStatusCode==500)
+//            {
+//                context.Response.Clear();
+//                context.Response.ClearHeaders();
+//
+//                context.Response.Expires = 0;
+//
+//                context.Response.StatusCode = 500;
+//            }
+//            if (temStatusCode == 401)
+//            {
+//                context.Response.Clear();
+//                context.Response.ClearHeaders();
+//
+//                context.Response.Expires = 0;
+//
+//                context.Response.StatusCode = 401;
+//            }
+        }
+
         protected void Application_Error(object sender, EventArgs e)
         {
 

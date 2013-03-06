@@ -27,6 +27,8 @@ img{border:none;}
 
 /* tb */
 input.textfield, textarea {background: white url(/Content/Image/textfield.gif) repeat-x 50% 0%;border: 1px solid #A6A6A6;font-family: Verdana, 'BitStream vera Sans', Tahoma, Helvetica, sans-serif;font-size: 12px;padding: 2px 1px;}
+input.textfield{width:180px;}
+textarea{height:130px;width:600px;}
 input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3px 2px; border: 1px solid #A6A6A6;font-family: Verdana, 'BitStream vera Sans', Tahoma, Helvetica, sans-serif;font-size: 12px;padding: 2px 0 2px 20px;}
 
 /* 提示框 */
@@ -63,37 +65,37 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 #header{margin:auto;}
 #header .top{background:url(/Content/Image/head_bg.png) repeat-x; height:168px;}
 #header .top .main{width:1002px; margin:auto;}
-#header .top .main #title{ height:132px;}
-#header .top .main #logo{float:left;padding:30px 0 0 20px;}
-#header .top .main #caption{float:left;padding:60px 0 0 0px;}
-#header .top .main #caption h1{font-size: 200%;color: white;height: 30px;text-decoration: none;}
-#header .top .main #caption a{color: white;height: 30px;text-decoration: none;}
-#header .top .main #tagline {border-top: 1px solid white;color: white;float: left;padding: 3px;}
-#header .top .main .nav_top{background:url(/Content/Image/nav_top.png) repeat-x; line-height:5px; height:5px;}
-#header .top .main #navigation{line-height:31px; height:31px;width:1002px;}
-#header .top .main #navigation td{background:url(/Content/Image/nav_bg.png) repeat-x; text-align:center; font-size:12px; font-weight:bold;}
-#header .top .main #navigation td a{text-decoration:none; display:block;color:#f2f2f2;}
-#header .top .main #navigation td.left{background:url(/Content/Image/nav_left.png) no-repeat; width:45px;}
-#header .top .main #navigation td.right{background:url(/Content/Image/nav_right.png) no-repeat; width:45px;}
-#header .top .main #navigation td.link{width:78px;}
-#header .top .main #navigation td.link a:hover{background:url(/Content/Image/nav_hover.png) repeat-x;}
-#header .top .main #navigation td.lock{width:78px;background:url(/Content/Image/nav_lock.png) repeat-x;}
-#header .top .main #navigation td.home{width:78px;background:url(/Content/Image/nav_home.png) no-repeat; }
-#header .top .main #navigation td.home a{padding-left:15px;}
-#header .top .main #navigation td.home a:hover{background:url(/Content/Image/nav_home_hover.png) repeat-x;}
-#header .top .main #navigation td.homelock{width:78px;background:url(/Content/Image/nav_home_lock.png) no-repeat;}
-#header .top .main #navigation td.homelock a{padding-left:15px;}
-#header .top .main #navigation td.board{width:78px;background:url(/Content/Image/nav_board.png) no-repeat; }
-#header .top .main #navigation td.board a{padding-left:15px;}
-#header .top .main #navigation td.board a:hover{background:url(/Content/Image/nav_board_hover.png) repeat-x;}
-#header .top .main #navigation td.boardlock{width:78px;background:url(/Content/Image/nav_board_lock.png) no-repeat;}
-#header .top .main #navigation td.boardlock a{padding-left:15px;}
-#header .top .main #navigation td.div{background:url(/Content/Image/nav_div.png) no-repeat; width:2px;}
+#header #title{ height:132px;}
+#header #logo{float:left;padding:30px 0 0 20px;}
+#header #caption{float:left;padding:60px 0 0 0px;}
+#header #caption h1{font-size: 200%;color: white;height: 30px;text-decoration: none;}
+#header #caption a{color: white;height: 30px;text-decoration: none;}
+#header #tagline {border-top: 1px solid white;color: white;float: left;padding: 3px;}
+#header .nav_top{background:url(/Content/Image/nav_top.png) repeat-x; line-height:5px; height:5px;}
+#header #navigation{line-height:31px; height:31px;width:1002px;}
+#header #navigation td{background:url(/Content/Image/nav_bg.png) repeat-x; text-align:center; font-size:12px; font-weight:bold;}
+#header #navigation td a{text-decoration:none; display:block;color:#f2f2f2;}
+#header #navigation td.left{background:url(/Content/Image/nav_left.png) no-repeat; width:45px;}
+#header #navigation td.right{background:url(/Content/Image/nav_right.png) no-repeat; width:45px;}
+#header #navigation td.link{width:78px;}
+#header #navigation td.link a:hover{background:url(/Content/Image/nav_hover.png) repeat-x;}
+#header #navigation td.lock{width:78px;background:url(/Content/Image/nav_lock.png) repeat-x;}
+#header #navigation td.home{width:78px;background:url(/Content/Image/nav_home.png) no-repeat; }
+#header #navigation td.home a{padding-left:15px;}
+#header #navigation td.home a:hover{background:url(/Content/Image/nav_home_hover.png) repeat-x;}
+#header #navigation td.homelock{width:78px;background:url(/Content/Image/nav_home_lock.png) no-repeat;}
+#header #navigation td.homelock a{padding-left:15px;}
+#header #navigation td.board{width:78px;background:url(/Content/Image/nav_board.png) no-repeat; }
+#header #navigation td.board a{padding-left:15px;}
+#header #navigation td.board a:hover{background:url(/Content/Image/nav_board_hover.png) repeat-x;}
+#header #navigation td.boardlock{width:78px;background:url(/Content/Image/nav_board_lock.png) no-repeat;}
+#header #navigation td.boardlock a{padding-left:15px;}
+#header #navigation td.div{background:url(/Content/Image/nav_div.png) no-repeat; width:2px;}
 #header #bannertop{background:url(/Content/Image/banner_top.png) repeat-x; line-height:11px; height:11px}
 #header #banner{text-align:center; background:#32363d;}
 #header #banner img{border:1px solid #32363d;width:973px; height:160px;}
 #header #bannerbottom{background:url(/Content/Image/banner_bottom.png) repeat-x; line-height:10px; height:10px}
-
+/* menu */
 ul#menu{position: absolute;margin: 0px;padding: 0px;top: 0px;right: 10px;list-style: none;z-index:999999;width:412px;}
 ul#menu li {width: 103px;display:inline;float:left;}
 ul#menu li a {display: block;float:left;margin-top: -2px;width: 100px;height: 25px;background-color:#E7F2F9;background-repeat:no-repeat;background-position:50% 10px;border:1px solid #BDDCEF;border-radius:0px 0px 10px 10px;-moz-border-radius:0px 0px 10px 10px;text-decoration:none;text-align:center;opacity: 0.7;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);  }
@@ -171,20 +173,15 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #thecomments li .pic {background:url(/Content/Image/commentpoint.gif) 100% 33% no-repeat;padding-right:14px;margin-top:10px;}
 #thecomments li .name {width:67px;padding-right:14px;font-weight:bolder;overflow:hidden; margin-top:2px;}
 #thecomments li .info {border-radius: 5px 5px;background:#fff;float:left;padding:10px 15px 0;width:494px;}
-
 #thecomments li.admincomment .author {float:right;}
 #thecomments li.admincomment .pic {background:url(/Content/Image/commentpoint.gif) 0% 33% no-repeat;padding-right:0;padding-left:12px;}
 #thecomments li.admincomment .name {padding-right:0;padding-left:12px;}
 #thecomments li.admincomment .info {float:right;}
-
 #thecomments li .avatar {padding:1px;border:1px solid #999;}
 #thecomments li .date {float:left;}
 #thecomments li .act {float:right;}
 #thecomments li .content {margin:0 -15px;padding:0 15px 10px;line-height:145%;}
 #thecomments li .content p {margin-top:10px;}
-
-
-
 /* respond */
 #respond {padding:10px 0 0;}
 #respond p {margin-bottom:5px;}
@@ -199,7 +196,6 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #sitetip .footer{background:url(/Content/Image/site_tip_footer.png) no-repeat;height:37px; line-height:37px; font-weight:bold; text-align:center;}
 #sitetip ul li{background:url(/Content/Image/site_tip_li.png) repeat-x;height:31px; line-height:31px;}
 #sitetip ul li span{background:url(/Content/Image/site_tip_li_check.png) no-repeat;height:31px; line-height:31px; display:block; margin-left:40px; padding-left:25px; padding-top:3px;}
-
 /* calendar */
 #calendar{margin-left:50px;}
 #calendar h2{font-weight:bold; cursor:pointer; background: url(/Content/Image/icons.gif) no-repeat 0px -48px;font-size: 11px;height: 16px;line-height: 16px;padding-left: 22px; margin-top:5px;}
@@ -207,15 +203,11 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #calendar h2 a span {background-position: 0px -288px;}
 #calendar h2 a{ display:none;}
 #calendar ul{display:none;margin-left:20px;}
-
 /* board */
-.board{ width:500px; margin:0px auto 0px auto;}
+.board{width:700px; margin:0px auto 0px auto;}
+.board #respond{width:605px;}
 .board .add{width:500px;text-align:left; font-size:12px;}
-.board .add p{ margin-bottom:5px;}
-.board ul li{font-size:12px; text-align:left; width:500px; margin-top:20px}
-.board ul li .content{margin: 2px 20px 20px 20px; font-size:14px; overflow:hidden;}
-.board ul li .content p{font-size:12px;margin:5px 20px 0 0px; padding:5px;}
-
+.board .add p{margin-bottom:5px;}
 /* refstat */
 .refstat{font-size: 12px;width: 900px;padding-top: 20px;margin-right: auto;margin-left: auto;overflow: auto;}
 .refstat .info{float: left;width: 240px;padding-left:20px;}

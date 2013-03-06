@@ -1,6 +1,6 @@
 ﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Post>
 @{
-    var title = Convert.ToBoolean(ViewData["IsExistPostRelated"].ToString()) ? "相关文章" : "随便看看";
+    var title = Convert.ToBoolean(ViewBag.IsExistRelatedPosts) ? "相关文章" : "随便看看";
 }
 <div id="related_posts">
     <div class="boxcaption"><h3>@title</h3></div>

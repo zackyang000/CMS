@@ -56,7 +56,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
                 channel.Items.Add(BuildPostRssItem(item));
             }
             feed.Channels.Add(channel);
-            feed.Write(HttpContext.Current.Server.MapPath(Site.POST_RSS_PATH));
+            feed.Write(HttpContext.Current.Server.MapPath(Config.ARTICLES_RSS_PATH));
         }
 
         private RssChannel BuildPostRssChannel()
@@ -64,8 +64,8 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
             var now = DateTime.Now;
             var channel = new RssChannel
                               {
-                                  Title = YangKai.BlogEngine.Common.Site.TITLE,
-                                  Link = new Uri(Site.ROOT_URI),
+                                  Title = Config.BASE_TITLE,
+                                  Link = new Uri(Config.BASE_URL),
                                   Description = Site.DESCRIPTION,
                                   PubDate = now,
                                   LastBuildDate = now,
@@ -79,7 +79,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
 
         private RssItem BuildPostRssItem(Post item)
         {
-            string link = string.Format("{0}/{1}/Detail/{2}", Site.ROOT_URI, item.Group.Url, item.Url);
+            string link = string.Format("{0}/{1}/Detail/{2}", Config.BASE_URL, item.Group.Url, item.Url);
 
             var rssItem = new RssItem
                               {
@@ -110,7 +110,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
                 channel.Items.Add(BuildCommentRssItem(item));
             }
             feed.Channels.Add(channel);
-            feed.Write(HttpContext.Current.Server.MapPath(Site.COMMENT_RSS_PATH));
+            feed.Write(HttpContext.Current.Server.MapPath(Config.COMMENTS_RSS_PATH));
         }
 
         private RssChannel BuildCommentRssChannel()
@@ -118,8 +118,8 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
             var now = DateTime.Now;
             var channel = new RssChannel
                               {
-                                  Title = string.Format("{0} - 评论", Site.TITLE),
-                                  Link = new Uri(Site.ROOT_URI),
+                                  Title = string.Format("{0} - 评论", Config.BASE_TITLE),
+                                  Link = new Uri(Config.BASE_URL),
                                   Description = string.Format("{0} - 评论", Site.DESCRIPTION),
                                   PubDate = now,
                                   LastBuildDate = now,
@@ -133,7 +133,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
 
         private RssItem BuildCommentRssItem(Comment item)
         {
-            var link = string.Format("{0}/{1}/Detail/{2}", Site.ROOT_URI, item.Post.Group.Url, item.Post.Url);
+            var link = string.Format("{0}/{1}/Detail/{2}", Config.BASE_URL, item.Post.Group.Url, item.Post.Url);
 
             var rssItem = new RssItem
                               {

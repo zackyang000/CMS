@@ -1,16 +1,16 @@
 ﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
 @{
-    Post PrePost = ViewData["PrePost"] as Post;
-    Post NextPost = ViewData["NextPost"] as Post;
+    var prePost = ViewBag.PrePost as Post;
+    var nextPost = ViewBag.NextPost as Post;
 }
 <div id="postnavi">
-    @if (PrePost != null)
+    @if (prePost != null)
     {
-        <div>@Html.ActionLink(PrePost.Title, "Detail", PrePost.Group.Url, new { id = PrePost.Url }, new { title = PrePost.Title, @class = "prev", rel = "prev" })</div>
+        <div>@Html.ActionLink(prePost.Title, "Detail", prePost.Group.Url, new { id = prePost.Url }, new { title = prePost.Title, @class = "prev", rel = "prev" })</div>
     }
-    @if (NextPost != null)
+    @if (nextPost != null)
     {
-        <div>@Html.ActionLink(NextPost.Title, "Detail", NextPost.Group.Url, new { id = NextPost.Url }, new { title = NextPost.Title, @class = "next", rel = "next" })</div>
+        <div>@Html.ActionLink(nextPost.Title, "Detail", nextPost.Group.Url, new { id = nextPost.Url }, new { title = nextPost.Title, @class = "next", rel = "next" })</div>
     }
     <div class="clear"></div>
 </div>

@@ -1,7 +1,7 @@
 ﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
 <div class="postFooter">
     <span class="categories">
-        @(Html.Raw(string.Join(",", Model.Categorys.Select(item => Html.ActionLink(item.Name, "Index", item.Group.Url, new { c = item.Url }, new { title = string.Format("查看 {0} 的全部文章", item.Name) })).ToList())))
+        @(Html.Raw(string.Join(",", Model.Categorys.Select(item => Html.ActionLink(item.Name, "Index", Model.Group.Url, new { c = item.Url }, new { title = string.Format("查看 {0} 的全部文章", item.Name) })).ToList())))
     </span>
     <span class="tags">
         @if (Model.Tags != null)

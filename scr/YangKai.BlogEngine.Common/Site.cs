@@ -9,20 +9,9 @@ namespace YangKai.BlogEngine.Common
     public class Site
     {
         /// <summary>
-        /// 网站根域名
-        /// </summary>
-        public const string ROOT_URI = "http://www.woshinidezhu.com";
-
-       
-        /// <summary>
         /// 物理根路径
         /// </summary>
         public static readonly string ROOT_PATH = System.Web.HttpContext.Current.Server.MapPath("~/");
-
-        /// <summary>
-        /// 网站标题
-        /// </summary>
-        public const string TITLE = "iShare";
 
         /// <summary>
         /// 页面标题(head_title)
@@ -47,7 +36,7 @@ namespace YangKai.BlogEngine.Common
         /// <summary>
         /// 站长EMail
         /// </summary>
-        public const string WEB_MASTER_EMAIL = "yangkai-13896222@sohu.com";
+        public const string WEB_MASTER_EMAIL = "zackyang@outlook.com";
 
         /// <summary>
         /// 站长头像
@@ -58,15 +47,5 @@ namespace YangKai.BlogEngine.Common
         /// 版权
         /// </summary>
         public const string COPYRIGHT = "&copy; Powered by 我是你的猪(YangKai), 2008-2011, All Rights Reserved.";
-
-        /// <summary>
-        /// 文章RSS保存路径
-        /// </summary>
-        public const string POST_RSS_PATH = "/feed.xml";
-
-        /// <summary>
-        /// 评论RSS保存路径
-        /// </summary>
-        public const string COMMENT_RSS_PATH = "/feed_comments.xml";
     }
 }

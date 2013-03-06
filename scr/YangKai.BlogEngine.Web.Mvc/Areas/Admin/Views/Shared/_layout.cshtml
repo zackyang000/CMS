@@ -3,15 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>@ViewBag.Title</title>
-        <script src="/Content/scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+        <script src="/Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="/Content/ckeditor_3.6.1/ckeditor.js" type="text/javascript"></script>
         <script src="/Content/ckfinder_aspnet_2.0.1/ckfinder.js" type="text/javascript"></script>
-        <script type="text/javascript" src="/Content/admin/jquery-ui-1.8.8.custom/js/jquery-ui-1.8.8.custom.min.js"></script>
+        <script src="/Content/admin/jquery-ui-1.8.8.custom/js/jquery-ui-1.8.8.custom.min.js" type="text/javascript"></script>
         <script src="/Content/admin/js/common.js" type="text/javascript"></script>
-        <script type="text/javascript" src="/Content/admin/js/jquery.main.js"></script>        <link href="/Content/admin/jquery-ui-1.8.8.custom/css/smoothness/jquery-ui-1.8.8.custom.css" rel="stylesheet" type="text/css" />
+        <script src="/Content/admin/js/jquery.main.js" type="text/javascript"></script>        <link href="/Content/admin/jquery-ui-1.8.8.custom/css/smoothness/jquery-ui-1.8.8.custom.css" rel="stylesheet" type="text/css" />
         <link href="/Content/admin/css/style.css" rel="stylesheet" type="text/css" />
         <link media="all" rel="stylesheet" type="text/css" href="/Content/admin/css/all.css" />        <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="/Content/admin/css/ie.css" /><![endif]-->
-        @RenderSection("Head", required: false)
     </head>
 <body>	<div id="wrapper">		<div id="content">			<div class="c1">				<div class="controls">					<nav class="links">
 						<ul>							<li><a href="/admin" class="ico1">控制面板 <span class="num">1</span></a></li>							<li><a href="/admin/postmanage" class="ico2">文章 <span class="num">2</span></a></li>							<li><a href="/admin/postmanage/new" class="ico3">添加 <span class="num">3</span></a></li>						</ul>

@@ -5,63 +5,46 @@ using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Modules.BoardModule.Events;
 using YangKai.BlogEngine.Modules.BoardModule.Objects;
 using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class BoardController : Controller
     {
         //
-        // 留言列表页面
+        // 留言页面
         // GET: /board
         [ActionName("index")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = QueryFactory.Board.FindAll(Int32.MaxValue);
-            return View(data);
-        }
-
-        //
-        // 最新留言页面
-        // GET: /board/sidebar-recent-messages
-        [ActionName("recentmessages")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        [OutputCache(Duration = 300)]
-        public PartialViewResult RecentMessages()
-        {
-            return PartialView(QueryFactory.Board.FindAll(10));
-        }
-
-        //
-        // 新增留言页面
-        // GET: /board/add
-        [ActionName("add")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public PartialViewResult Add()
-        {
             var cookie = WebGuestCookie.Load();
-            var entity = new Board
-                             {
-                                               Author = cookie.Name,
-                             };
+            var entity = new BoardViewModel { Author = cookie.Name };
             return PartialView(entity);
+        }
+
+        [ActionName("list")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult List()
+        {
+            var data = QueryFactory.Board.FindAll(Int32.MaxValue);
+            return Json(data.ToBoardViewModels(), JsonRequestBehavior.AllowGet);
         }
 
         //
         // 新增留言
-        // POST: /board/add
         [ActionName("add")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Add(Board data)
+        public JsonResult Add(BoardViewModel viewModel)
         {
-            data.Ip = Request.UserHostAddress;
-            data.Address = IpLocator.GetIpLocation(data.Ip);
+            var entity = viewModel.ToBoardEntity();
+            entity.Ip = Request.UserHostAddress;
+            entity.Address = IpLocator.GetIpLocation(entity.Ip);
 
             try
             {
-                CommandFactory.CreateBoard(data);
-                var index = QueryFactory.Board.Count();
-                return Json(new {result = true, index});
+                CommandFactory.CreateBoard(entity);
+                return Json(new { result = true, model = entity.ToBoardViewModel() });
             }
             catch (Exception e)
             {
@@ -71,10 +54,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         //
         // 删除留言
-        // POST: /board/delete
         [ActionName("delete")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Delete(Guid id)
+        public JsonResult Delete(Guid id)
         {
             try
             {
@@ -85,6 +67,17 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             {
                 return Json(new {result = false, reason = e.Message});
             }
+        }
+
+        //
+        // 最新留言页面
+        [ActionName("recentmessages")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ChildActionOnly]
+        [OutputCache(Duration = 300)]
+        public PartialViewResult RecentMessages()
+        {
+            return PartialView(QueryFactory.Board.FindAll(10));
         }
     }
 }

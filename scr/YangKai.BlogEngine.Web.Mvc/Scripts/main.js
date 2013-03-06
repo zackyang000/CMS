@@ -65,68 +65,6 @@ function hide_detail(id) {
     }, 300);
 }
 
-//增加留言
-function add_message() {
-    $("#info").css({ color: "", display: "block", background: "url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat" });
-    $("#info").html("正在提交");
-    $("#submit").attr({ "disabled": "disabled" });
-    var name = $("#Author").val();
-    var email = $("#Email").val();
-    var url = $("#Url").val();
-    var content = $("#Content").val();
-    name = $.trim(name);
-    email = $.trim(email);
-    url = $.trim(url);
-    if (!url.isUrl()) {
-        url = "";
-    }
-    $.ajax({
-        type: "POST",
-        url: "/Board/Add",
-        dataType: "json",
-        data: "Content=" + content + "&Author=" + name + "&Email=" + email + "&Url=" + url,
-        cache: false,
-        success: function (result) {
-            if (result.result) {
-                content = content.replace(/(\n)/g, "<br />");
-                var date = new Date();
-                var datetimeFormat = date.getYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
-                var newMessage = "<li><div class=\"gray\">#" + result.index;
-                newMessage += "&nbsp;" + name + "&nbsp;" + datetimeFormat;
-                newMessage += "</div>";
-                newMessage += "<div class=\"msg\">" + content + "</div></li>";
-                $("#new").html(newMessage + $("#new").html());
-                $("#Content").val("");
-                $("#info").html("");
-            }
-            else {
-                $("#info").css({ color: "red" });
-                $("#info").html(result.reason);
-            }
-        },
-        complete: function () {
-            $("#info").css({ background: "none" });
-            $("#submit").removeAttr("disabled");
-        }
-    });
-}
-
-//删除留言
-function delete_message(id) {
-    $.ajax({
-        url: "/board/delete",
-        type: "POST",
-        dataType: "json",
-        data: "id=" + id,
-        success: function (result) {
-            if (result.result) {
-                $("#" + id).hide();
-            }
-            else { alert(result.reason); }
-        }
-    });
-}
-
 //添加评论
 function add_comment(postId, pic) {
     $("#info").css({ color: "", display: "block", background: "url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat" });
@@ -226,16 +164,6 @@ function renew_comment(index, id) {
             }
             else { alert(result.reason); }
         }
-    });
-}
-
-//游客注销
-function guest_loginoff() {
-    $.ajax({
-        url: "/comment/login-off",
-        type: "POST",
-        dataType: "json",
-        success: function (result) { if (result.result) { alert("注销成功!"); window.location.reload(); } else { alert(result.reason); } }
     });
 }
 

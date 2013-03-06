@@ -135,7 +135,7 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Webdiyer.WebControls.Mvc">
-      <HintPath>..\AtomLab.Utility\Lib\Webdiyer.WebControls.Mvc.dll</HintPath>
+      <HintPath>..\..\..\..\F05-AtomLab\Source\AtomLab.By.YangKai\AtomLab.Resources\Lib\Third party open source libraries\Webdiyer.WebControls.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -157,6 +157,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BoardViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -827,6 +828,8 @@
     <Content Include="Content\Image\ajax-loader2.gif" />
     <Content Include="Content\Image\avatar.png" />
     <Content Include="Content\Image\banner.png" />
+    <Content Include="Content\Image\banner\funs.png" />
+    <Content Include="Content\Image\banner\technologies.png" />
     <Content Include="Content\Image\banner_bottom.png" />
     <Content Include="Content\Image\banner_top.png" />
     <Content Include="Content\Image\body_bg.png" />
@@ -844,19 +847,24 @@
     <Content Include="Content\Image\home_title.png" />
     <Content Include="Content\Image\icons.gif" />
     <Content Include="Content\Image\logo.gif" />
+    <Content Include="Content\Image\menu\board.png" />
     <Content Include="Content\Image\menu\camera.png" />
+    <Content Include="Content\Image\menu\comment.png" />
     <Content Include="Content\Image\menu\home.png" />
     <Content Include="Content\Image\menu\id_card.png" />
+    <Content Include="Content\Image\menu\info.png" />
     <Content Include="Content\Image\menu\ipod.png" />
     <Content Include="Content\Image\menu\mail.png" />
     <Content Include="Content\Image\menu\monitor.png" />
     <Content Include="Content\Image\menu\print.png" />
     <Content Include="Content\Image\menu\rss.png" />
+    <Content Include="Content\Image\menu\rss_s.png" />
     <Content Include="Content\Image\menu\search.png" />
     <Content Include="Content\Image\menu\telephone.png" />
     <Content Include="Content\Image\menu\television.png" />
     <Content Include="Content\Image\menu\toolbox.png" />
     <Content Include="Content\Image\menu\video_camera.png" />
+    <Content Include="Content\Image\menu\wired.png" />
     <Content Include="Content\Image\myAvatar.png" />
     <Content Include="Content\Image\nav_bg.png" />
     <Content Include="Content\Image\nav_board.png" />
@@ -1293,9 +1301,13 @@
     <Content Include="Content\admin\jquery-ui-1.8.8.custom\index.html" />
     <Content Include="Content\admin\jquery-ui-1.8.8.custom\js\jquery-1.4.4.min.js" />
     <Content Include="Content\admin\jquery-ui-1.8.8.custom\js\jquery-ui-1.8.8.custom.min.js" />
-    <Content Include="Content\scripts\blog.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\knockout-2.2.1.debug.js" />
+    <Content Include="Scripts\knockout-2.2.1.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Content\scripts\cnzz.js" />
-    <Content Include="Content\scripts\jquery-1.4.4.min.js" />
     <Content Include="Content\scripts\jquery-1.8.3.js" />
     <Content Include="Content\scripts\jquery-1.8.3.min.js" />
     <Content Include="Content\scripts\jquery.lazyload.js" />
@@ -1389,6 +1401,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -1398,6 +1411,8 @@
     <Folder Include="Content\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Release\" />
     <Folder Include="Content\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Debug\" />
     <Folder Include="Content\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Release\" />
+    <Folder Include="Images\" />
+    <Folder Include="Plugins\" />
     <Folder Include="UpLoad\files\" />
     <Folder Include="UpLoad\images\" />
     <Folder Include="UpLoad\offsite\" />
@@ -1479,7 +1494,7 @@
     <Content Include="Views\Article\postrelated.cshtml" />
     <Content Include="Views\Article\_notfound.cshtml" />
     <Content Include="Views\Article\_removed.cshtml" />
-    <Content Include="Views\Board\add.cshtml" />
+    <Content Include="Views\Board\index-add.cshtml" />
     <Content Include="Views\Board\index.cshtml" />
     <Content Include="Views\Board\recentmessages.cshtml" />
     <Content Include="Views\Comment\add.cshtml" />
@@ -1487,7 +1502,6 @@
     <Content Include="Views\Comment\recentcomments.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Labs\index.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header-caption.cshtml" />
     <Content Include="Views\Shared\layout-header-menu.cshtml" />
@@ -1502,9 +1516,11 @@
     <Content Include="Views\Shared\_jiathis.cshtml" />
     <Content Include="Views\Shared\_layout-whth-sidebar.cshtml" />
     <Content Include="Views\Shared\_layout.cshtml" />
-    <Content Include="Views\Shared\_Plugins.cshtml" />
+    <Content Include="Views\Shared\_plugins.cshtml" />
     <Content Include="Views\Web.config" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
+    <Content Include="Views\Shared\layout-header-banner.cshtml" />
+    <Content Include="Views\Board\index-list.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">
@@ -1586,6 +1602,24 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -1610,7 +1644,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -2,10 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
-
 }
-
-@section Head{<link rel='canonical' href='http://www.woshinidezhu.com/@Model.Group.Url-@Model.Url' /> }
 
 <div id="postnav">
 	@Html.ActionLink(Model.Group.Channel.Name, "Index", Model.Group.Channel.Url)

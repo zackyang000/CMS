@@ -26,7 +26,7 @@
                 </div>
                 <div class="info">
                     <span class="date" id="@("date" + commentIndex)">
-                        @entity.CreateDate.ToString("yyyy.MM.dd HH:mm") | #@commentIndex
+                        @entity.CreateDate.ToString("yyyy.MM.dd") | #@commentIndex
                         @if (entity.IsDeleted)
                         {
                             <span id="@("warningbox-" + entity.CommentId)" class="warningbox">该回复已删除,仅管理员可见.</span>

@@ -1,52 +1,66 @@
-﻿@model IList<YangKai.BlogEngine.Modules.BoardModule.Objects.Board>
+﻿@model YangKai.BlogEngine.Web.Mvc.Models.BoardViewModel
 @{
     ViewBag.Title = "留言板" + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
     Layout = "~/Views/Shared/_layout.cshtml";
 }
-<style>#middle .body{background:url(/Content/Image/body_bg_no_line.png);}</style>
+@section style {
+    <style>#middle .body { background: url(/Content/Image/body_bg_no_line.png); }</style>
+}
+@section scripts
+{
+    <script type="text/javascript">
+        function BoardViewModel() {
+            var self = this;
+            self.isNewGuest = ko.observable(@(string.IsNullOrWhiteSpace(Model.Author).ToString().ToLower()));
+            self.isShowWelcome = ko.observable(@((!string.IsNullOrWhiteSpace(Model.Author)).ToString().ToLower()));
+            self.board = ko.observableArray();
+            
+            self.delete = function (board) {
+                $.post("/board/delete", "id=" + board.BoardId, null, "json")
+                    .done(function (o) {
+                        if (o.result) {
+                            self.board.remove(board);
+                        } else {
+                            $("#info").css({ color: "red" });
+                            $("#info").html(o.reason);
+                        }
+                    });
+            };
 
+            self.add = function (formElement) {
+                $("#info").css({ color: "", display: "block", background: "url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat" });
+                $("#info").html("正在提交");
+                $("#submit").attr({ "disabled": "disabled" });
+                $.post("/board/add", $(formElement).serialize(), null, "json")
+                    .done(function (o) {
+                        if (o.result) {
+                            $("#Content").val("");
+                            $("#info").html("");
+                            self.board.unshift(o.model);
+                        } else {
+                            $("#info").css({ color: "red" });
+                            $("#info").html(o.reason);
+                        }
+                        $("#info").css({ background: "none" });
+                        $("#submit").removeAttr("disabled");
+                    });
+            };
 
+            self.change = function () {
+                var tip = $("#control_author_info a");
+                tip.html(tip.html() === "更改 »" ? "隐藏 »" : "更改 »");
+                $("#author_info").toggle();
+            };
 
-
-<div class="board"> 
-@*新增留言*@
-    @*@Html.Action("List")*@
-    @Html.Action("Add")
-
-    @*显示留言*@
-    <ul id="new">
-        @{int i = Model.Count();}
-        @foreach (var data in Model)
-        {
-        @*控制是否显示IP*@
-        <li id="@data.BoardId"  @if (YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin())
-        {@(new HtmlString(string.Format("title=\"IP:{0}&#13;物理地址:{1}\"", data.Ip, data.Address)))}>
-        <div class="gray">
-        @*楼层/作者/日期*@
-        #@i @data.Author @data.CreateDate.ToString("yyyy.MM.dd HH:mm")
-
-        @*控制回复按钮*@
-       @* @if (YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin())
-        {
-        <a href="JavaScript:Review('@data.BoardId')">[回复]</a>
-        }*@
-        @*控制删除按钮*@
-        @if (YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin())
-        {
-        <a href="JavaScript:delete_message('@data.BoardId');">[删除]</a>
+            $.getJSON('/board/list', self.board);
         }
-        
-        </div>
-        <div class="msg" id="@("msg" + data.BoardId)">
-        @Html.Raw(data.Content)
-        @*控制是否显示管理员回复内容*@
-        @*TODO:管理员回复功能@if (!string.IsNullOrEmpty(data.AdminReplyContent))
-        {
-        <p class="blue">@data.AdminReplyUser.UserName 回复:<span id="@("adminReview" + data.BoardId)">@data.AdminReplyContent</span></p>
-        } *@
-        </div>
-        </li>
-        i--;
-        }
-    </ul>
+
+        $(document).ready(function() {
+            ko.applyBindings(new BoardViewModel());
+        });
+    </script>
+}
+<div class="board">
+    @Html.Partial("index-add")
+    @Html.Partial("index-list")
 </div>

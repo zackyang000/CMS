@@ -140,7 +140,7 @@ namespace YangKai.BlogEngine.Modules.CommonModule.Objects
         #endregion
 
         /// <summary>
-        /// 判断是否是机器人
+        /// 是否是机器人
         /// </summary>
         /// <returns></returns>
         public bool IsRobot

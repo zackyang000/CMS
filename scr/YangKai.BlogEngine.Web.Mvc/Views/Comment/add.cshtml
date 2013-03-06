@@ -25,13 +25,6 @@
         {
             <text>管理员:@WebMasterCookie.Load().Name</text>
         }
-        else if (WebGuestCookie.IsLoginAPI)
-        {
-            <text>来自 <span class="api_qq">QQ登录</span> 的 
-                <img alt="" src="@WebGuestCookie.Load().Pic" /><strong>@WebGuestCookie.Load().Name</strong>，您好！
-                <a href="javascript:void(0);" onclick="guest_loginoff()">注销</a>
-            </text>
-        }
         else
         {
             <text>欢迎回来, <strong>@Model.Author</strong></text>
@@ -51,10 +44,9 @@
 		<p>
 			@Html.TextBoxFor(model => model.Url, new { style = "width:180px;", @class = "textfield" })
             @Html.LabelFor(model => model.Url, "网址")
-            <a href="@Url.Action("QZoneLogin", "API", new { url = Request.Url.AbsolutePath })" class="fr"><img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_2.png" alt="" /></a>
 		</p>
 	</div>
-    <p>@Html.TextAreaFor(model=>model.Content, new { style = "height:130px;width:600px;", Rows = "5" })</p>
+    <p>@Html.TextAreaFor(model=>model.Content, new { Rows = "5" })</p>
     <div id="submitbox">
         <div class="submitbutton"><input id="submit" type="submit" class="submit" value="提交" /></div>
         <div id="info"></div>

@@ -63,5 +63,28 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             return entities == null ? PartialView() : PartialView(entities);
         }
+
+        /// <summary>
+        /// banner显示
+        /// </summary>
+        [ActionName("layout-header-banner")]
+        [ChildActionOnly]
+        public PartialViewResult Banner(string channelUrl, string mainClassUrl)
+        {
+            string bannerUrl = null;
+
+            if (!string.IsNullOrEmpty(channelUrl))
+            {
+                var channel = QueryFactory.Post.GetChannel(channelUrl);
+                bannerUrl = channel.BannerUrl;
+            }
+            if (!string.IsNullOrEmpty(mainClassUrl))
+            {
+                var group = QueryFactory.Post.GetGroup(mainClassUrl);
+                bannerUrl = group.Channel.BannerUrl;
+            }
+
+            return PartialView((object)bannerUrl);
+        }
     }
 }

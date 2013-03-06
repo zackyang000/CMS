@@ -54,6 +54,11 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
         public string StyleConfigurePath { get; set; }
 
         /// <summary>
+        /// Banner图片地址.
+        /// </summary>
+        public string BannerUrl { get; set; }
+
+        /// <summary>
         /// 是否是默认频道.
         /// 所有频道有且仅有一个能为默认频道.默认频道将显示在未传频道信息的页面,如首页.
         /// </summary>
@@ -82,6 +87,8 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
         /// 频道所有分组信息.
         /// </summary>
         public virtual List<Group> Groups { get; set; }
+
+
 
         #endregion
 

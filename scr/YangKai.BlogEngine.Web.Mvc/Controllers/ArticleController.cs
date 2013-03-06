@@ -138,8 +138,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         //上一篇 && 下一篇
         public ActionResult PostNavi(Guid postId)
         {
-            ViewData["PrePost"] = QueryFactory.Post.PrePost(postId);
-            ViewData["NextPost"] = QueryFactory.Post.NextPost(postId);
+          ViewBag.PrePost = QueryFactory.Post.PrePost(postId);
+          ViewBag.NextPost = QueryFactory.Post.NextPost(postId);
             return View();
         }
 
@@ -147,11 +147,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         public ActionResult PostRelated(Guid postId)
         {
             var data = QueryFactory.Post.FindAllByTag(postId, 7);
-            ViewData["IsExistPostRelated"] = true;
+            ViewBag.IsExistPostRelated = true;
             if (data.Count == 0)
             {
                 data = QueryFactory.Post.FindAllByRandom(postId, 7);
-                ViewData["IsExistPostRelated"] = false;
+                ViewBag.IsExistRelatedPosts = false;
             }
             return View(data);
         }
@@ -189,31 +189,5 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         //}
 
         #endregion
-
-        //投票
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult Vote(FormCollection collection)
-        //{
-        //    Guid ArticleId = Guid.Parse(collection["id"].ToString());
-        //    bool vote = Convert.ToBoolean(Convert.ToInt32(collection["vote"]));
-        //    try
-        //    {
-        //        if (vote)
-        //        {
-        //            articleServices.UpdateSupport(ArticleId);
-        //        }
-        //        else
-        //        {
-        //            articleServices.UpdateOppose(ArticleId);
-        //        }
-        //        return Json(new { result = true });
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return Json(new { result = false, reason = e.Message });
-        //    }
-        //}
-
-        //删除文章
     }
 }

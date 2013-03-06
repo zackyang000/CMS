@@ -264,7 +264,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
             };
 
             var gRender = new GraphicsRenderer(new FixedModuleSize(30, QuietZoneModules.Four));
-            var fullUrl = Site.ROOT_URI + "/" + g.Url + "/" + data.Url.Replace(" ", "-") + ".png";
+            var fullUrl = Config.BASE_URL + "/" + g.Url + "/" + data.Url.Replace(" ", "-") + ".png";
             BitMatrix matrix = new QrEncoder().Encode(data.QrCode.Content + " | " + fullUrl).Matrix;
             using (var stream = new FileStream(Server.MapPath("/upload/qrcode/" + data.QrCode.Url.Replace(" ", "-")), FileMode.Create))
             {
