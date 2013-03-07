@@ -8,7 +8,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post
     {
         public QrCodeConfiguration()
         {
-            ToTable("P_二维码信息");
             HasKey(p => p.QrCodeId);
             Property(p => p.QrCodeId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Content).IsRequired().HasMaxLength(500);

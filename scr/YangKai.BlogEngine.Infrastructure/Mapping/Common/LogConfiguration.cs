@@ -8,7 +8,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Common
     {
         public LogConfiguration()
         {
-            ToTable("C_日志");
             HasKey(p => p.LogId);
             Property(p => p.LogId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.AppName).IsRequired().HasMaxLength(100);

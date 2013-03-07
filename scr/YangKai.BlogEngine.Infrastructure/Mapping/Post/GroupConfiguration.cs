@@ -8,7 +8,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post
     {
         public GroupConfiguration()
         {
-            ToTable("P_分组");
             HasKey(p => p.GroupId);
             Property(p => p.GroupId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Name).IsRequired().HasMaxLength(100);

@@ -44,12 +44,6 @@ namespace YangKai.BlogEngine.Infrastructure
             modelBuilder.Configurations.Add(new TagConfiguration());
             modelBuilder.Configurations.Add(new ThumbnailConfiguration());
             modelBuilder.Configurations.Add(new QrCodeConfiguration());
-
-            modelBuilder.Entity<Post>()
-                .HasMany(t => t.Categorys)
-                .WithMany(a => a.Posts)
-                .Map(c => c.ToTable("P_文章_分类"));
-
         }
     }
 }

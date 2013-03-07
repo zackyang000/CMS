@@ -8,7 +8,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post
     {
         public ThumbnailConfiguration()
         {
-            ToTable("P_缩略图信息");
             HasKey(p => p.ThumbnailId);
             Property(p => p.ThumbnailId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Title).IsRequired().HasMaxLength(500);

@@ -1,30 +1,26 @@
 ﻿@*菜单效果*@
 <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-7243260-2']);
-    _gaq.push(['_trackPageview']);
-    $(function () { menu(); });
+    $(function() { menu(); });
 
-//菜单展开/收缩效果
-function menu() {
-    var d = 300;
-    $('#menu a').each(function() {
-        $(this).stop().animate({
+    function menu() {
+        var d = 300;
+        $('#menu a').each(function() {
+            $(this).stop().animate({
                 'marginTop': '-80px'
             }, d += 150);
-    });
-    $('#menu > li').hover(
-        function() {
-            $('a', $(this)).stop().animate({
+        });
+        $('#menu > li').hover(
+            function() {
+                $('a', $(this)).stop().animate({
                     'marginTop': '-2px'
                 }, 200);
-        },
-        function() {
-            $('a', $(this)).stop().animate({
+            },
+            function() {
+                $('a', $(this)).stop().animate({
                     'marginTop': '-80px'
                 }, 200);
-        });
-}
+            });
+    }
 </script>
 <style>
     ul#menu li a {padding-top:80px; margin-top:-80px }
@@ -38,7 +34,7 @@ function menu() {
     ul#menu .search a{background-image: url(/Content/Image/menu/search.png);}
 </style>
 
-@*导航*@
+@* 导航 *@
 <script type="text/javascript">
     $(function () { navlock(); });
 </script>
@@ -59,7 +55,7 @@ function menu() {
     });
 </script>
 
-@* 图片延迟加载插件*@
+@* 图片延迟加载插件 *@
 <script src="/Content/scripts/jquery.lazyload.js" type="text/javascript"></script>
 <script type="text/javascript">
     jQuery(function ($) {

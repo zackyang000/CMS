@@ -7,7 +7,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Board
     {
         public BoardConfiguration()
         {
-            ToTable("B_留言");
             HasKey(p => p.BoardId);
             Property(p => p.BoardId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Content).IsRequired().HasMaxLength(1000);

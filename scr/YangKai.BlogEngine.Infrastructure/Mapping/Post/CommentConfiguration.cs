@@ -8,7 +8,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post
     {
         public CommentConfiguration()
         {
-            ToTable("P_评论");
             HasKey(p => p.CommentId);
             Property(p => p.CommentId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Content).IsRequired().HasMaxLength(1000);

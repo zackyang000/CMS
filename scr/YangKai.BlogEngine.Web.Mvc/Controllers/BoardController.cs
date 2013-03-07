@@ -19,8 +19,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         public ActionResult Index()
         {
             var cookie = WebGuestCookie.Load();
-            var entity = new BoardViewModel { Author = cookie.Name };
-            return PartialView(entity);
+            var viewModel = new BoardViewModel { Author = cookie.Name };
+            return View(viewModel);
         }
 
         [ActionName("list")]

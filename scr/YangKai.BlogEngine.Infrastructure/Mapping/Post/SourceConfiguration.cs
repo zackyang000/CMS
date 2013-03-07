@@ -8,7 +8,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post
     {
         public SourceConfiguration()
         {
-            ToTable("P_转载信息");
             HasKey(p => p.SourceId);
             Property(p => p.SourceId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Title).IsRequired().HasMaxLength(500);

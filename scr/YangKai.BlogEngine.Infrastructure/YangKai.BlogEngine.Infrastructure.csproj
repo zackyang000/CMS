@@ -108,6 +108,18 @@
     <Compile Include="Migrations\201302251110503_Add_Channel_BannerUrl.Designer.cs">
       <DependentUpon>201302251110503_Add_Channel_BannerUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201303061435211_UsedEnglishTableName.cs" />
+    <Compile Include="Migrations\201303061435211_UsedEnglishTableName.Designer.cs">
+      <DependentUpon>201303061435211_UsedEnglishTableName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303061438124_UsedEnglishTableNameRestPart.cs" />
+    <Compile Include="Migrations\201303061438124_UsedEnglishTableNameRestPart.Designer.cs">
+      <DependentUpon>201303061438124_UsedEnglishTableNameRestPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303061439196_UsedEnglishTableNameRestPart2.cs" />
+    <Compile Include="Migrations\201303061439196_UsedEnglishTableNameRestPart2.Designer.cs">
+      <DependentUpon>201303061439196_UsedEnglishTableNameRestPart2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Mapping\Board\BoardConfiguration.cs" />
     <Compile Include="Mapping\Common\LogConfiguration.cs" />
@@ -160,6 +172,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201302251110503_Add_Channel_BannerUrl.resx">
       <DependentUpon>201302251110503_Add_Channel_BannerUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303061435211_UsedEnglishTableName.resx">
+      <DependentUpon>201303061435211_UsedEnglishTableName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303061438124_UsedEnglishTableNameRestPart.resx">
+      <DependentUpon>201303061438124_UsedEnglishTableNameRestPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303061439196_UsedEnglishTableNameRestPart2.resx">
+      <DependentUpon>201303061439196_UsedEnglishTableNameRestPart2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post
     {
         public PostConfiguration()
         {
-            ToTable("P_文章");
             HasKey(p => p.PostId);
             Property(p => p.PostId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Url).IsRequired().HasMaxLength(500);       

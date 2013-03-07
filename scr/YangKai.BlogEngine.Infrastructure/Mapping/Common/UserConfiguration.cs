@@ -8,7 +8,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Common
     {
         public UserConfiguration()
         {
-            ToTable("C_用户");
             HasKey(p => p.UserId);
             Property(p => p.UserId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.UserName).IsRequired().HasMaxLength(100);

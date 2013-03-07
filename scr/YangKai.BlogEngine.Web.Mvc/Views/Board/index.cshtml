@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "留言板" + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
     Layout = "~/Views/Shared/_layout.cshtml";
+    var isNewGuest = string.IsNullOrWhiteSpace(Model.Author);
 }
 @section style {
     <style>#middle .body { background: url(/Content/Image/body_bg_no_line.png); }</style>
@@ -11,8 +12,8 @@
     <script type="text/javascript">
         function BoardViewModel() {
             var self = this;
-            self.isNewGuest = ko.observable(@(string.IsNullOrWhiteSpace(Model.Author).ToString().ToLower()));
-            self.isShowWelcome = ko.observable(@((!string.IsNullOrWhiteSpace(Model.Author)).ToString().ToLower()));
+            self.isNewGuest = ko.observable(@(isNewGuest.ToString().ToLower()));
+            self.isShowWelcome = ko.observable(@((!isNewGuest).ToString().ToLower()));
             self.board = ko.observableArray();
             
             self.delete = function (board) {

@@ -8,7 +8,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post
     {
         public PageConfiguration()
         {
-            ToTable("P_分页");
             HasKey(p => p.PageId);
             Property(p => p.PageId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Title).IsRequired().HasMaxLength(100);

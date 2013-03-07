@@ -8,7 +8,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post
     {
         public ChannelConfiguration()
         {
-            ToTable("P_频道");
             HasKey(p => p.ChannelId);
             Property(p => p.ChannelId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Name).IsRequired().HasMaxLength(100);
