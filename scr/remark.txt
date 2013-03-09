@@ -1,4 +1,4 @@
-此为 http://www.woshinidezhu.com 网站源码。 
+此为 http://www.woshinidezhu.com 网站源码。  
 
 基于领域驱动设计(Based Domain-Driven Design)的类博客系统，将逐步改进为CMS。
 
@@ -57,8 +57,6 @@ Analytics index.cshtml
 
 路径 /funs/videos/xxxxxxxx
 setting存sqlite
-
-A.where(p=>p.Id==id || string.isnullorempty(id)  
 
 路由规则
 RSSResult:ActionResult
