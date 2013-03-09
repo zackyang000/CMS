@@ -16,7 +16,7 @@ namespace YangKai.BlogEngine.Infrastructure
 {
     [DbModelBuilderVersion(DbModelBuilderVersion.V5_0_Net4)]
     public class BlogEngineContext : UnitOfWork
-    {
+    { 
         public DbSet<User> Users { get; set; }
         public DbSet<Log> Logs { get; set; }
 
