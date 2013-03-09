@@ -1,4 +1,4 @@
-此为 http://www.woshinidezhu.com 网站源码。
+此为 http://www.woshinidezhu.com 网站源码。 
 
 基于领域驱动设计(Based Domain-Driven Design)的类博客系统，将逐步改进为CMS。
 
