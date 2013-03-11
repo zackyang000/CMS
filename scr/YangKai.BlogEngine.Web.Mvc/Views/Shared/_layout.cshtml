@@ -1,3 +1,4 @@
+@using YangKai.BlogEngine.Common
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -5,8 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta name="keywords" content="@ViewBag.Keywords" /> 
     <meta name="description" content="@ViewBag.Description" />
-    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="@YangKai.BlogEngine.Common.Config.ARTICLES_RSS_PATH" />
-    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@YangKai.BlogEngine.Common.Config.COMMENTS_RSS_PATH" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="@Config.Path.ARTICLES_RSS_PATH" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@Config.Path.COMMENTS_RSS_PATH" />
     <link href="/Content/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/Scripts/knockout-2.2.1.js"></script>  

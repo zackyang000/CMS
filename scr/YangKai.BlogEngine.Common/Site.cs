@@ -42,10 +42,5 @@ namespace YangKai.BlogEngine.Common
         /// 站长头像
         /// </summary>
         public static readonly string AVATAR_PATH = HttpContext.Current.Server.MapPath("~/Content/Image/myAvatar.png");
-
-        /// <summary>
-        /// 版权
-        /// </summary>
-        public const string COPYRIGHT = "&copy; Powered by 我是你的猪(YangKai), 2008-2011, All Rights Reserved.";
     }
 }

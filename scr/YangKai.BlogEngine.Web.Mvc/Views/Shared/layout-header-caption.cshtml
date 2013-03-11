@@ -1,11 +1,11 @@
 ﻿@using YangKai.BlogEngine.Common
 <div id="title">
     <div id="logo">
-        <img src="@Config.LOGO_PIC_PATH" alt="iSHARE" />
+        <img src="@Config.Path.LOGO_PIC_PATH" alt="iSHARE" />
     </div>
     <div id="caption">
-        <h1><a href="@Config.BASE_URL">@Config.BASE_TITLE</a></h1>
-        <div id="tagline">SHARE·LINK·FUN - @(ViewBag.SubCaption ?? Config.BASE_URL)</div>
+        <h1><a href="@Config.URL.BASE_URL">@Config.Literal.BASE_TITLE</a></h1>
+        <div id="tagline">SHARE·LINK·FUN - @(ViewBag.SubCaption ?? Config.URL.BASE_URL)</div>
     </div>
     <div class="clear"></div>
 </div>

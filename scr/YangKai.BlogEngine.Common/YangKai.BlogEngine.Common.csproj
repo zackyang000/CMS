@@ -84,7 +84,7 @@
     <Compile Include="Cookie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveRemoteFile.cs" />
-    <Compile Include="Setting.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Site.cs" />
     <Compile Include="WebGuestCookie.cs" />
     <Compile Include="WebMasterCookie.cs" />
