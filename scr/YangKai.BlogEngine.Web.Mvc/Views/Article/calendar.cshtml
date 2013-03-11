@@ -7,7 +7,6 @@
     var calendarlist = (ViewBag.CalendarList as CalendarDictionary).Data.OrderByDescending(p => p.Key).ToDictionary(k => k.Key, v => v.Value);
 }
 
-@section Head{
 <script type="text/javascript">
     $(function () {
         //自动展开第一个列表
@@ -22,7 +21,6 @@
         });
     }
 </script>
-}
 
 <ul id="calendar">
 @foreach (var calendar in calendarlist)

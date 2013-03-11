@@ -5,13 +5,41 @@
     <description>iShare描述 - 评论</description>
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
-    <copyright>&amp;copy; Powered by 我是你的猪(YangKai), 2008-2011, All Rights Reserved.</copyright>
+    <copyright>&amp;copy; Powered by 我是你的猪(YangKai QQ:83448327), 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
     <managingEditor>zackyang@outlook.com</managingEditor>
     <webMaster>zackyang@outlook.com</webMaster>
-    <pubDate>Mon, 25 Feb 2013 23:15:32 GMT</pubDate>
-    <lastBuildDate>Mon, 25 Feb 2013 23:15:32 GMT</lastBuildDate>
+    <pubDate>Mon, 11 Mar 2013 14:06:25 GMT</pubDate>
+    <lastBuildDate>Mon, 11 Mar 2013 14:06:25 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>444</title>
+      <description>444&lt;br /&gt;发表于:8888888888</description>
+      <link>http://www.woshinidezhu.com/videos/Detail/8888888888</link>
+      <category>视频 - 早期数据</category>
+      <category>视频 - 欢乐</category>
+      <author>我是你的猪</author>
+      <guid>f2634f4f-b0e9-4642-8147-bbbff9d3abdf</guid>
+      <pubDate>Mon, 11 Mar 2013 14:06:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>99</title>
+      <description>99&lt;br /&gt;发表于:史上最“坑爹”的魔术表演</description>
+      <link>http://www.woshinidezhu.com/videos/Detail/history-of-the-most-father-magic-show</link>
+      <category>视频 - 欢乐</category>
+      <author>我是你的猪</author>
+      <guid>8e97053b-fd62-4313-809b-13b757030371</guid>
+      <pubDate>Mon, 11 Mar 2013 14:03:30 GMT</pubDate>
+    </item>
+    <item>
+      <title>88</title>
+      <description>88&lt;br /&gt;发表于:史上最“坑爹”的魔术表演</description>
+      <link>http://www.woshinidezhu.com/videos/Detail/history-of-the-most-father-magic-show</link>
+      <category>视频 - 欢乐</category>
+      <author>我是你的猪</author>
+      <guid>8e1d0acb-1d3a-451b-91f5-f3315fab9b1f</guid>
+      <pubDate>Mon, 11 Mar 2013 14:03:20 GMT</pubDate>
+    </item>
     <item>
       <title>333</title>
       <description>333&lt;br /&gt;发表于:哈士奇学狗叫</description>
@@ -438,34 +466,6 @@
       <author>匿名</author>
       <guid>37a3dabf-0db2-df11-99ad-000c29f1398f</guid>
       <pubDate>Sun, 14 Feb 2010 00:21:16 GMT</pubDate>
-    </item>
-    <item>
-      <title>牛</title>
-      <description>牛&lt;br /&gt;发表于:【神曲】WRONG HOLE</description>
-      <link>http://www.woshinidezhu.com/videos/Detail/wrong-hole</link>
-      <category>视频 - 早期数据</category>
-      <author>匿名</author>
-      <guid>26a3dabf-0db2-df11-99ad-000c29f1398f</guid>
-      <pubDate>Mon, 01 Feb 2010 12:01:19 GMT</pubDate>
-    </item>
-    <item>
-      <title>神作啊</title>
-      <description>神作啊&lt;br /&gt;发表于:【神曲】WRONG HOLE</description>
-      <link>http://www.woshinidezhu.com/videos/Detail/wrong-hole</link>
-      <category>视频 - 早期数据</category>
-      <author>匿名</author>
-      <guid>25a3dabf-0db2-df11-99ad-000c29f1398f</guid>
-      <pubDate>Mon, 01 Feb 2010 06:41:20 GMT</pubDate>
-    </item>
-    <item>
-      <title>是有点过了。。。。。。。。。。。。。</title>
-      <description>是有点过了。。。。。。。。。。。。。&lt;br /&gt;发表于:我被这篇文章的结尾惊呆了</description>
-      <link>http://www.woshinidezhu.com/topics/Detail/wenzhang-jingdaile</link>
-      <category>文章 - 蛋痛</category>
-      <category>文章 - 欢乐</category>
-      <author>匿名</author>
-      <guid>f7a2dabf-0db2-df11-99ad-000c29f1398f</guid>
-      <pubDate>Tue, 19 Jan 2010 23:08:18 GMT</pubDate>
     </item>
   </channel>
 </rss>

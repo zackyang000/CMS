@@ -13,7 +13,7 @@ namespace AtomLab.Domain.Infrastructure
     {
         private readonly DbContext _context;
 
-        public Repository(IUnitOfWork unitOfWork)
+        protected Repository(IUnitOfWork unitOfWork)
         {
             _context = unitOfWork as DbContext;
         }

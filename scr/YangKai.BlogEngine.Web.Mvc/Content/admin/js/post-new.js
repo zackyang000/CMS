@@ -117,7 +117,7 @@ $(function () {
 function publish_post() {
     set_category();
     if (submit_check()) {
-        $("#publish").attr("disabled", "disabled");
+        $("#publish").prop("disabled", true);
         $("#publishing-ajax-loading").removeClass("ajax-loading");
         if ($("#isnew").val() == "True") {
             $("#isAudit").val("true");
@@ -132,7 +132,7 @@ function publish_post() {
 function save_draft_pending_post() {
     set_category();
     if (draft_check()) {
-        $("#save-action input").attr("disabled", "disabled");
+        $("#save-action input").prop("disabled", true);
         $("#draft-ajax-loading").removeClass("ajax-loading");
         $("form").submit();
     }
@@ -149,7 +149,7 @@ function save_deleted_post() {
 function set_category() {
     var categorylist = "";
     $("#categorychecklist li").each(function () {
-        if ($(this).children("label").children("input").attr("checked")) {
+        if ($(this).children("label").children("input").prop("checked")) {
             categorylist += ",";
             categorylist += $(this).children("label").children("input").val();
         }
@@ -310,7 +310,7 @@ function channel_tab_click(a) {
     $("#channel-tabs li").removeClass("tab");
     $(a).parent().addClass("tab");
     $("#channelbox .tabs-panel").hide();
-    $("#mainclass-" + $(a).parent().attr("id").substring(12)).show();
+    $("#mainclass-" + $(a).parent().prop("id").substring(12)).show();
 }
 
 //mainClass单选按钮点击事件
@@ -366,7 +366,7 @@ function bind_category(mainClassUrl) {
                     var currentCategoryInput = $(this).children("label").children("input");
                     $.each(categories, function (i) {
                         if (currentCategoryInput.val() == categories[i]) {
-                            currentCategoryInput.attr("checked", "checked");
+                            currentCategoryInput.prop("checked", true);
                         }
                     });
                 });
@@ -513,7 +513,7 @@ $(function () {
     if ($("#isnew").val() == "False") {
         post_timestamp_change();
         $("#channel-tab-" + $("#edit-channel").val() + " a").click();
-        $("input[name='mainclassRadio'][value='" + $("#edit-mainclass").val() + "']").attr("checked", true);
+        $("input[name='mainclassRadio'][value='" + $("#edit-mainclass").val() + "']").prop("checked", true);
         mainclass_radio_click();
 
         var state = $("#edit-state").val();

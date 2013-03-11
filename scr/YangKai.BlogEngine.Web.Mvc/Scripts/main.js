@@ -69,7 +69,7 @@ function hide_detail(id) {
 function add_comment(postId, pic) {
     $("#info").css({ color: "", display: "block", background: "url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat" });
     $("#info").html("正在提交");
-    $("#submit").attr({ "disabled": "disabled" });
+    $("#submit").prop("disabled", true);
     var name = $("#Author").val();
     var email = $("#Email").val();
     var url = $("#Url").val();
@@ -123,7 +123,7 @@ function add_comment(postId, pic) {
         },
         complete: function () {
             $("#info").css({ background: "none" });
-            $("#submit").removeAttr("disabled");
+            $("#submit").prop("disabled",false);
         }
     });
 }
