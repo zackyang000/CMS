@@ -120,7 +120,6 @@
     <Compile Include="Services\Rss.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

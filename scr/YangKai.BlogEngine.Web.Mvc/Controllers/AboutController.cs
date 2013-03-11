@@ -7,15 +7,15 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         //
         // πÿ”⁄±æ’æ
-        // Get: /About
+        // Get: /about
         public ActionResult Index()
         {
             return View();
         }
 
         //
-        // RazirÃΩ’Î
-        // Get: /About/Probe
+        // ÃΩ’Î
+        // Get: /about/probe
         public ActionResult Probe()
         {
             return View();

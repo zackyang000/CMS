@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Modules.BoardModule.Events;
-using YangKai.BlogEngine.Modules.BoardModule.Objects;
 using YangKai.BlogEngine.ServiceProxy;
 using YangKai.BlogEngine.Web.Mvc.Models;
 
@@ -73,7 +72,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         // 最新留言页面
         [ActionName("recentmessages")]
         [AcceptVerbs(HttpVerbs.Get)]
-        [ChildActionOnly]
         [OutputCache(Duration = 300)]
         public PartialViewResult RecentMessages()
         {

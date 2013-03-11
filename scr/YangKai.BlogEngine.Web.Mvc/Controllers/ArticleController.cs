@@ -28,7 +28,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
             ViewBag.MainClass = mainClass;
             ViewBag.Channel= channel;
-            ViewBag.Title = channel.Name + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
+            ViewBag.Title = channel.Name + Common.Site.PAGE_TITLE;
             ViewBag.Keywords = string.Empty;
             ViewBag.Description = channel.Description;
             ViewBag.SubCaption = channel.Description;
@@ -40,35 +40,19 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         /// 供Ajax分页使用
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="channelUrl"></param>
-        /// <param name="mainClassUrl"></param>
-        /// <param name="c"></param>
-        /// <param name="t"></param>
-        /// <param name="d"></param>
-        /// <param name="k"></param>
+        /// <param name="channelUrl">Channel</param>
+        /// <param name="mainClassUrl">Group</param>
+        /// <param name="c">Category</param>
+        /// <param name="t">Tag</param>
+        /// <param name="d">Date</param>
+        /// <param name="k">Key</param>
         /// <returns></returns>
         [ActionName("index-list")]
         public ActionResult List(int? id, string channelUrl, string mainClassUrl, string c, string t, string d, string k)
         {
-            DateTime? calendar = null;
-            if (!string.IsNullOrEmpty(d))
-            {
-                int year;
-                int month;
-                //TODO:正则
-                bool a1 = Int32.TryParse(d.Substring(0, 4), out year);
-                bool a2 = Int32.TryParse(d.Substring(5, 2), out month);
-                bool a3 = d.Length == 7;
-                bool a4 = d.Substring(4, 1) == "-";
-                //TODO:错误提示,用户体验.
-                if (!(a1 && a2 && a3 && a4)) return HttpNotFound();
-                calendar = new DateTime(year, month, 1);
-            }
             var data = QueryFactory.User.IsLogin()
-                           ? QueryFactory.Post.FindAll(id ?? 1, 20, channelUrl, mainClassUrl, c, t, calendar, k)
-                           : QueryFactory.Post.FindAllByNormal(id ?? 1, 20, channelUrl, mainClassUrl, c, t,
-                                                           calendar, k);
-          
+                           ? QueryFactory.Post.FindAll(id ?? 1, 20, channelUrl, mainClassUrl, c, t, null, k)
+                           : QueryFactory.Post.FindAllByNormal(id ?? 1, 20, channelUrl, mainClassUrl, c, t, null, k);
             //搜索记录
             if (!string.IsNullOrEmpty(k))
             {
@@ -77,7 +61,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
 
             var pagedList = new PagedList<Post>(data.DataList, id ?? 1, 20, data.TotalCount);
-
             return View(pagedList);
         }
 
@@ -85,7 +68,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             Post data = QueryFactory.Post.Find(id);
 
-            if (!YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin())
+            if (!QueryFactory.User.IsLogin())
             {
                 if (data == null) return View("_NotFound");
                 if (data.PostStatus == (int)PostStatusEnum.Trash) return View("_Removed");
@@ -138,8 +121,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         //上一篇 && 下一篇
         public ActionResult PostNavi(Guid postId)
         {
-          ViewBag.PrePost = QueryFactory.Post.PrePost(postId);
-          ViewBag.NextPost = QueryFactory.Post.NextPost(postId);
+            ViewBag.PrePost = QueryFactory.Post.PrePost(postId);
+            ViewBag.NextPost = QueryFactory.Post.NextPost(postId);
             return View();
         }
 
