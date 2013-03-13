@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="CookieHelper.cs" />
     <Compile Include="EncryptFileHelper.cs" />
+    <Compile Include="EncryptionCookieHelper.cs" />
     <Compile Include="EncryptStringHelper.cs" />
     <Compile Include="ExpressionTree\ParameterReplacer.cs" />
     <Compile Include="ExpressionTree\SpecExprExtensions.cs" />

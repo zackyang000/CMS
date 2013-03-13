@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using AtomLab.Utility;
 
 namespace YangKai.BlogEngine.Common
 {
@@ -25,9 +23,9 @@ namespace YangKai.BlogEngine.Common
 
         private WebMasterCookie()
         {
-            string uid = Cookie.Load(WebMasterCookie.KId);
+            string uid = EncryptionCookieHelper.Load(KId);
             Id = string.IsNullOrEmpty(uid) ? Guid.Empty : new Guid(uid);
-            Name = Cookie.Load(WebMasterCookie.KName);
+            Name = EncryptionCookieHelper.Load(KName);
         }
 
         private WebMasterCookie(Guid id, string name, bool isRemember)
@@ -67,8 +65,8 @@ namespace YangKai.BlogEngine.Common
         /// </summary>
         public static void Remove()
         {
-            Cookie.Remove(WebMasterCookie.KId);
-            Cookie.Remove(WebMasterCookie.KName);
+            EncryptionCookieHelper.Remove(KId);
+            EncryptionCookieHelper.Remove(KName);
         }
 
         /// <summary>
@@ -78,8 +76,8 @@ namespace YangKai.BlogEngine.Common
         {
             Id = Guid.Empty;
             Name = string.Empty;
-            Cookie.Remove(WebMasterCookie.KId);
-            Cookie.Remove(WebMasterCookie.KName);
+            EncryptionCookieHelper.Remove(KId);
+            EncryptionCookieHelper.Remove(KName);
         }
 
         public static bool IsLogin
@@ -95,13 +93,13 @@ namespace YangKai.BlogEngine.Common
         {
             if (isRemember)
             {
-                Cookie.Add(WebMasterCookie.KId, Id.ToString(), 300);
-                Cookie.Add(WebMasterCookie.KName, Name, 300);
+                EncryptionCookieHelper.Add(KId, Id.ToString(), 300);
+                EncryptionCookieHelper.Add(KName, Name, 300);
             }
             else
             {
-                Cookie.Add(WebMasterCookie.KId, Id.ToString());
-                Cookie.Add(WebMasterCookie.KName, Name);
+                EncryptionCookieHelper.Add(KId, Id.ToString());
+                EncryptionCookieHelper.Add(KName, Name);
             }
         }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using System.Web;
 using AtomLab.Utility;
 
 namespace YangKai.BlogEngine.Common
@@ -12,7 +8,7 @@ namespace YangKai.BlogEngine.Common
         /// <summary>
         /// 是否添加水印
         /// </summary>
-        private static readonly bool IsAddWaterMark = false;
+        private const bool IsAddWaterMark = false;
 
         /// <summary>
         /// 水印图片相对路径
@@ -27,7 +23,7 @@ namespace YangKai.BlogEngine.Common
         /// <summary>
         /// 图片保存Web相对路径
         /// </summary>
-        private static readonly string PicSaveWebPath = "/upload/offsite/";
+        private const string PicSaveWebPath = "/upload/offsite/";
 
         public static string SaveContentPic(string content, string fileHeaderName)
         {
