@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Linq;
 using Webdiyer.WebControls.Mvc;
+using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Modules.CommonModule.Objects;
 using YangKai.BlogEngine.Modules.PostModule.Commands;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
@@ -28,7 +29,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
             ViewBag.MainClass = mainClass;
             ViewBag.Channel= channel;
-            ViewBag.Title = channel.Name + Common.Site.PAGE_TITLE;
+            ViewBag.Title =string.Format(Config.Format.PAGE_TITLE,channel.Name  );
+
             ViewBag.Keywords = string.Empty;
             ViewBag.Description = channel.Description;
             ViewBag.SubCaption = channel.Description;
@@ -80,7 +82,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             ViewBag.MainClass = mainClass;
             ViewBag.Channel = channel;
 
-            ViewBag.Title = data.Title + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
+            ViewBag.Title =string.Format(Config.Format.PAGE_TITLE,  data.Title );
+
             ViewBag.Keywords = data.Tags != null ? string.Join(",", data.Tags.Select(p => p.Name).ToList()) : string.Empty;
             ViewBag.Description = data.Title;
             ViewBag.SubCaption = data.Group.Channel.Description;

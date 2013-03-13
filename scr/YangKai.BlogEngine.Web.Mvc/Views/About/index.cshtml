@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "关于" + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
+﻿@using YangKai.BlogEngine.Common
+@{
+    ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, "关于");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

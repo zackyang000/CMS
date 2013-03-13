@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Removed" + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
+﻿@using YangKai.BlogEngine.Common
+@{
+    ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, "Remove");
     Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
 }
 

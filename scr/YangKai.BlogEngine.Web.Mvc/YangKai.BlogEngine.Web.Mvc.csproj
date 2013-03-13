@@ -148,7 +148,6 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
-    <Compile Include="Common\HttpContextLifetimeManager.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AnalyticsController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
@@ -159,6 +158,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Common\HttpContextLifetimeManager.cs" />
     <Compile Include="Models\BoardViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1309,13 +1309,9 @@
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\main.js" />
-    <Content Include="Content\scripts\cnzz.js" />
     <Content Include="Content\scripts\jquery-1.8.3.js" />
     <Content Include="Content\scripts\jquery-1.8.3.min.js" />
     <Content Include="Content\scripts\jquery.lazyload.js" />
-    <Content Include="Content\scripts\jquery.select.js" />
-    <Content Include="Content\scripts\swfobject.js" />
-    <Content Include="Content\scripts\vote.js" />
     <Content Include="Content\style.css" />
     <Content Include="Content\syntaxhighlighter_3.0.83\index.html" />
     <Content Include="Content\syntaxhighlighter_3.0.83\scripts\shAutoloader.js" />

@@ -64,14 +64,12 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
             var now = DateTime.Now;
             var channel = new RssChannel
                               {
-                                  Title = Config.Literal.BASE_TITLE,
+                                  Title = Config.Literal.SITE_NAME,
                                   Link = new Uri(Config.URL.BASE_URL),
-                                  Description = Site.DESCRIPTION,
+                                  Description = Config.Literal.DESCRIPTION,
                                   PubDate = now,
                                   LastBuildDate = now,
                                   Language = "zh-cn",
-                                  WebMaster = Site.WEB_MASTER_EMAIL,
-                                  ManagingEditor = Site.WEB_MASTER_EMAIL,
                                   Copyright = Config.Literal.COPYRIGHT
                               };
             return channel;
@@ -118,14 +116,12 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
             var now = DateTime.Now;
             var channel = new RssChannel
                               {
-                                  Title = string.Format("{0} - 评论", Config.Literal.BASE_TITLE),
+                                  Title = string.Format("{0} - 评论", Config.Literal.SITE_NAME),
                                   Link = new Uri(Config.URL.BASE_URL),
-                                  Description = string.Format("{0} - 评论", Site.DESCRIPTION),
+                                  Description = string.Format("{0} - 评论", Config.Literal.DESCRIPTION),
                                   PubDate = now,
                                   LastBuildDate = now,
                                   Language = "zh-cn",
-                                  WebMaster = Site.WEB_MASTER_EMAIL,
-                                  ManagingEditor = Site.WEB_MASTER_EMAIL,
                                   Copyright = Config.Literal.COPYRIGHT
                               };
             return channel;

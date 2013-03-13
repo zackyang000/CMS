@@ -1,6 +1,7 @@
-﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+﻿@using YangKai.BlogEngine.Common
+@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
 @{
-    ViewBag.Title = (Model == null ? "New" : "Edit " + Model.Title) + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
+    ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, (Model == null ? "New" : "Edit " + Model.Title));
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 @section scripts{

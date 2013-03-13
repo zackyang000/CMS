@@ -1,6 +1,7 @@
-﻿@model YangKai.BlogEngine.Web.Mvc.Models.BoardViewModel
+﻿@using YangKai.BlogEngine.Common
+@model YangKai.BlogEngine.Web.Mvc.Models.BoardViewModel
 @{
-    ViewBag.Title = "留言板" + YangKai.BlogEngine.Common.Site.PAGE_TITLE;
+    ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, "留言板");
     Layout = "~/Views/Shared/_layout.cshtml";
     var isNewGuest = string.IsNullOrWhiteSpace(Model.Author);
 }

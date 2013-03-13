@@ -28,7 +28,7 @@
         }
         <td class="div"></td>
         <td>&nbsp;</td>
-        @if (Model != null)
+        @if (Model != null && Model.Any())
         {
         <td class="div"></td>
         <td class="link">@Html.ActionLink("存档", "calendar", "Article", new { channelUrl = Model.First().Channel.Url }, null)</td>

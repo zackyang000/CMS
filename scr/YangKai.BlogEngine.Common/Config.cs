@@ -10,6 +10,11 @@ namespace YangKai.BlogEngine.Common
         public class Path
         {
             /// <summary>
+            /// 物理根路径
+            /// </summary>
+            public static readonly string PHYSICAL_ROOT_PATH = HttpContext.Current.Server.MapPath("~/");
+
+            /// <summary>
             /// 文章RSS文件路径
             /// </summary>
             public const string ARTICLES_RSS_PATH = "/feed_articles.xml";
@@ -38,12 +43,29 @@ namespace YangKai.BlogEngine.Common
             /// <summary>
             /// 网站标题
             /// </summary>
-            public const string BASE_TITLE = "iShare";
+            public const string SITE_NAME = "iShare";
+
+            /// <summary>
+            /// 网站描述
+            /// </summary>
+            public const string DESCRIPTION = "Share Link Fun";
 
             /// <summary>
             /// 版权信息
             /// </summary>
-            public const string COPYRIGHT = "&copy; Powered by 我是你的猪(YangKai QQ:83448327), 2008-2013, All Rights Reserved. 蜀ICP备09016538号.";
+            public const string COPYRIGHT = "&copy; Powered by 我是你的猪(YangKai Email:ZackYang@outlook.com), 2008-2013, All Rights Reserved. 蜀ICP备09016538号.";
         }
+
+        public class Format
+        {
+            /// <summary>
+            /// 页面标题格式
+            /// </summary>
+            public const string PAGE_TITLE = "{0} - iShare";
+        }
+
+
+
+
     }
 }
