@@ -12,7 +12,11 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
     public class Category : Entity<Guid>,
                             IEventHandler<EntityCreatingEvent<Category>>
     {
-        readonly CategoryRepository _categoryRepository = InstanceLocator.Current.GetInstance<CategoryRepository>();
+        //TODO:Domain中应当去掉_categoryRepository
+        private readonly CategoryRepository _categoryRepository = InstanceLocator.Current == null
+                                                                      ? null
+                                                                      : InstanceLocator.Current
+                                                                                       .GetInstance<CategoryRepository>();
 
         #region constructor
 

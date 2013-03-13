@@ -17,7 +17,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
       {
           Bootstrap.Bootstrapper.With.StartupTasks()
                      .UsingThisExecutionOrder(s => s
-                                                       .First<DataInitializeTask>()
+                                                       .First<DataInitializeConfig>()
                                                        .DelayStartBy(1).MilliSeconds
                                                        .Then<AreasConfig>()
                                                        .DelayStartBy(1).MilliSeconds

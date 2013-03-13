@@ -141,9 +141,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Task\0.DataInitialize\DataInitializeTask.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task\0.DataInitialize\DataInitializeConfig.cs" />
     <Compile Include="Task\1.Areas\AreasConfig.cs" />
     <Compile Include="Task\3.Domain\DomainConfig.cs" />
     <Compile Include="Task\2.Ioc\IocConfig.cs" />
@@ -197,11 +197,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Task\0.DataInitialize\data.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -22,19 +22,17 @@ namespace YangKai.BlogEngine.Web.Mvc
 
         protected void Session_Start()
         {
+            //TODO:如果使用异步保存,会造成DbContext并发问题,因为DbContext是基于一个HttpContext一个实例的.
             var context = HttpContext.Current;
-            Task.Factory.StartNew(() =>
-                {
-                    var visitLog = Log.CreateSiteVisitLog();
-                    visitLog.Ip = context.Request.UserHostAddress;
-                    visitLog.Browser = context.Request.Browser.Browser;
-                    visitLog.BrowserVersion = context.Request.Browser.Version;
-                    visitLog.Os = Function.GetOSName(context);
-                    if (!visitLog.IsRobot)
-                    {
-                        CommandFactory.Create(visitLog);
-                    }
-                });
+            var visitLog = Log.CreateSiteVisitLog();
+            visitLog.Ip = context.Request.UserHostAddress;
+            visitLog.Browser = context.Request.Browser.Browser;
+            visitLog.BrowserVersion = context.Request.Browser.Version;
+            visitLog.Os = Function.GetOSName(context);
+            if (!visitLog.IsRobot)
+            {
+                CommandFactory.Create(visitLog);
+            }
         }
 
         protected void Application_BeginRequest()
