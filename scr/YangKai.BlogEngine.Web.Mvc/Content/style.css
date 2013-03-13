@@ -96,7 +96,7 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 #header #banner img{border:1px solid #32363d;width:973px; height:160px;}
 #header #bannerbottom{background:url(/Content/Image/banner_bottom.png) repeat-x; line-height:10px; height:10px}
 /* menu */
-ul#menu{position: absolute;margin: 0px;padding: 0px;top: 0px;right: 10px;list-style: none;z-index:999999;width:412px;}
+ul#menu{position: absolute;margin: 0px;padding: 0px;top: 0px;right: 10px;list-style: none;z-index:999999;}
 ul#menu li {width: 103px;display:inline;float:left;}
 ul#menu li a {display: block;float:left;margin-top: -2px;width: 100px;height: 25px;background-color:#E7F2F9;background-repeat:no-repeat;background-position:50% 10px;border:1px solid #BDDCEF;border-radius:0px 0px 10px 10px;-moz-border-radius:0px 0px 10px 10px;text-decoration:none;text-align:center;opacity: 0.7;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);  }
 ul#menu li a:hover{background-color:#CAE3F2;}
