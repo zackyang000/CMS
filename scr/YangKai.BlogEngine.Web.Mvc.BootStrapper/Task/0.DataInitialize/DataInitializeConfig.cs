@@ -111,8 +111,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             return new Comment
                 {
-                    Content = "<p>这是评论的内容.</p>",
+                    Content = "这是评论的内容.",
                     Author="guest",
+                    Post = post,
                 };
         }
 
@@ -120,7 +121,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             return new Board
             {
-                Content = "<p>这是留言的内容.</p>",
+                Content = "这是留言的内容.",
                 Author = "guest",
             };
         }
