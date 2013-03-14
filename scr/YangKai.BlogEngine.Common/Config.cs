@@ -35,7 +35,7 @@ namespace YangKai.BlogEngine.Common
             /// <summary>
             /// 网站根域名
             /// </summary>
-            public const string BASE_URL = "http://www.woshinidezhu.com";
+            public const string Domain = "http://www.woshinidezhu.com";
         }
 
         public class Literal

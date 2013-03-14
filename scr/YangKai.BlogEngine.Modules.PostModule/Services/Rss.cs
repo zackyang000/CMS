@@ -65,7 +65,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
             var channel = new RssChannel
                               {
                                   Title = Config.Literal.SITE_NAME,
-                                  Link = new Uri(Config.URL.BASE_URL),
+                                  Link = new Uri(Config.URL.Domain),
                                   Description = Config.Literal.DESCRIPTION,
                                   PubDate = now,
                                   LastBuildDate = now,
@@ -77,7 +77,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
 
         private RssItem BuildPostRssItem(Post item)
         {
-            string link = string.Format("{0}/{1}/Detail/{2}", Config.URL.BASE_URL, item.Group.Url, item.Url);
+            string link = string.Format("{0}/{1}/Detail/{2}", Config.URL.Domain, item.Group.Url, item.Url);
 
             var rssItem = new RssItem
                               {
@@ -117,7 +117,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
             var channel = new RssChannel
                               {
                                   Title = string.Format("{0} - 评论", Config.Literal.SITE_NAME),
-                                  Link = new Uri(Config.URL.BASE_URL),
+                                  Link = new Uri(Config.URL.Domain),
                                   Description = string.Format("{0} - 评论", Config.Literal.DESCRIPTION),
                                   PubDate = now,
                                   LastBuildDate = now,
@@ -129,7 +129,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
 
         private RssItem BuildCommentRssItem(Comment item)
         {
-            var link = string.Format("{0}/{1}/Detail/{2}", Config.URL.BASE_URL, item.Post.Group.Url, item.Post.Url);
+            var link = string.Format("{0}/{1}/Detail/{2}", Config.URL.Domain, item.Post.Group.Url, item.Post.Url);
 
             var rssItem = new RssItem
                               {
