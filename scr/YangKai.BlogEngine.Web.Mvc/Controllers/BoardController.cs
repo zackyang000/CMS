@@ -12,7 +12,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         //
         // 留言页面
-        // GET: /board
         [ActionName("index")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
