@@ -3,26 +3,27 @@
 }
 <div id="comments">
     <div id="commentlist">
-        <ul id="thecomments" class="comments" data-bind="foreach: board">
-            <li>
-                <div class="author">
-                    <div class="pic"><img class="avatar" width="32" height="32" alt="avatar" src="/Content/Image/avatar.png" /></div>
-                    <div class="name" data-bind="text: $data.Author"></div>
-                </div>
-                <div class="info">
-                    <span class="date" data-bind="text: $data.CreateDate"></span> |
-                    #<span data-bind="text: $data.Index"></span>
-                    <div class="act">
-                        @if (isAdmin)
-                        {
-                            <a href="JavaScript:void(0)" data-bind="click: $root.delete">[删除]</a>
-                        }
-                    </div>
-                    <div class="clear"></div>
-                    <div class="content" data-bind="html: $data.Content"></div>
-                </div>
-                <div class="clear"></div>   
-            </li>
-        </ul>
+        <ul id="thecomments" class="comments" data-bind="template: { name: 'boardViewModelTemplate', foreach: board }"></ul>
     </div>
 </div>
+<script type="text/html" id="boardViewModelTemplate">
+    <li>
+        <div class="author">
+            <div class="pic"><img class="avatar" width="32" height="32" alt="avatar" src="/Content/Image/avatar.png" /></div>
+            <div class="name" data-bind="text: $data.Author"></div>
+        </div>
+        <div class="info">
+            <span class="date" data-bind="text: $data.CreateDate.Format()"></span> |
+            #<span data-bind="text: $data.Index"></span>
+            <div class="act">
+                @if (isAdmin)
+                {
+                    <a href="JavaScript:void(0)" data-bind="click: $root.delete">[删除]</a>
+                }
+            </div>
+            <div class="clear"></div>
+            <div class="content" data-bind="html: $data.Content"></div>
+        </div>
+        <div class="clear"></div>   
+    </li>
+</script>

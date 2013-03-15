@@ -245,19 +245,13 @@ function page_begin() {
     $("#posts-and-pager").html("<img src=\"/Content/Image/ajax-loader2.gif\" alt=\"\" />");
 }
 
-function page_complete() {
-   
-}
-
-function page_error() {
-   
-}
-
 //#region common
+
 //html转义
 function HtmlEncode(text) {
     return text.replace(/&/g, '&amp').replace(/\"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
+
 //转换日期格式yyyy.MM.dd HH:mm(兼容FF,chrome)
 function GetDateFormat(date) {
     var year = date.getFullYear();
@@ -279,6 +273,7 @@ function GetDateFormat(date) {
     }
     return year + "." + month + "." + day + " " + hour + ":" + min;
 }
+
 //得到radiobuttonlist的值
 function getRadioValue(name) {
     var radios = document.getElementsByName(name);
@@ -291,6 +286,7 @@ function getRadioValue(name) {
     }
     return selectInt;
 }
+
 //判断url合法性
 String.prototype.isUrl = function () {
     var argvalue = this;
@@ -323,4 +319,33 @@ String.prototype.isUrl = function () {
     }
     return true;
 };
+
+//格式化json日期
+String.prototype.Format = function () {
+    var fmt = "yyyy年MM月dd日";
+    var myDate = getjsondate(this);
+    var o = {
+        "M+": myDate.getMonth() + 1,
+        "d+": myDate.getDate(),
+        "h+": myDate.getHours(),
+        "m+": myDate.getMinutes(),
+        "s+": myDate.getSeconds(),
+        "q+": Math.floor((myDate.getMonth() + 3) / 3),
+        "S": myDate.getMilliseconds()
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (myDate.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+};
+function getjsondate(jsondate) {
+    jsondate = jsondate.replace("/Date(", "").replace(")/", "");
+    if (jsondate.indexOf("+") > 0) {
+        jsondate = jsondate.substring(0, jsondate.indexOf("+"));
+    } else if (jsondate.indexOf("-") > 0) {
+        jsondate = jsondate.substring(0, jsondate.indexOf("-"));
+    }
+    return new Date(parseInt(jsondate, 10));
+}
+
 //#endregion

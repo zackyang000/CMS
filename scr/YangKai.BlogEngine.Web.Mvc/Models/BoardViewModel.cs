@@ -13,7 +13,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
         public int? Index { get; set; }
         public string Author { get; set; }
         public string Content { get; set; }
-        public string CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 
     public static class BoardViewModelExtension
@@ -41,7 +41,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                 BoardId = entity.BoardId,
                 Author = entity.Author,
                 Content = entity.Content,
-                CreateDate = entity.CreateDate.ToString("yyyy年MM月dd日"),
+                CreateDate = entity.CreateDate,
             };
         }
 

@@ -884,6 +884,7 @@
     <Content Include="Content\Image\point_happy.png" />
     <Content Include="Content\Image\point_sad.png" />
     <Content Include="Content\Image\post_line.gif" />
+    <Content Include="Content\Image\qrcode.png" />
     <Content Include="Content\Image\refstat_pre.jpg" />
     <Content Include="Content\Image\search.png" />
     <Content Include="Content\Image\site_tip_content.png" />
@@ -1409,7 +1410,6 @@
     <Folder Include="Content\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Release\" />
     <Folder Include="Content\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Debug\" />
     <Folder Include="Content\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Release\" />
-    <Folder Include="Images\" />
     <Folder Include="Plugins\" />
     <Folder Include="UpLoad\files\" />
     <Folder Include="UpLoad\images\" />
@@ -1499,7 +1499,6 @@
     <Content Include="Views\Comment\list.cshtml" />
     <Content Include="Views\Comment\recentcomments.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Views\Labs\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header-caption.cshtml" />
     <Content Include="Views\Shared\layout-header-menu.cshtml" />
