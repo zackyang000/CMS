@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, "留言板");
     Layout = "~/Views/Shared/_layout.cshtml";
-    var isNewGuest = string.IsNullOrWhiteSpace(Model.Author);
+    var isAdmin = YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin();
 }
 @section style {
     <style>#middle .body { background: url(/Content/Image/body_bg_no_line.png); }</style>
@@ -13,9 +13,14 @@
     <script type="text/javascript">
         function BoardViewModel() {
             var self = this;
-            self.isNewGuest = ko.observable(@(isNewGuest.ToString().ToLower()));
-            self.isShowWelcome = ko.observable(@((!isNewGuest).ToString().ToLower()));
             self.board = ko.observableArray();
+            $.getJSON('/board/list', self.board);
+
+            self.username = "@Model.Author";
+            self.isNewGuest = ko.computed(function () {
+                return self.username === "";
+            }, self);
+            self.isShowWelcome = self.username !== "";
             
             self.delete = function (board) {
                 $.post("/board/delete", "id=" + board.BoardId, null, "json")
@@ -53,17 +58,63 @@
                 tip.html(tip.html() === "更改 »" ? "隐藏 »" : "更改 »");
                 $("#author_info").toggle();
             };
-
-            $.getJSON('/board/list', self.board);
         }
 
         $(document).ready(function() {
             ko.applyBindings(new BoardViewModel());
         });
-        
+    </script>
+
+    <script type="text/html" id="boardViewModelTemplate">
+        <li>
+            <div class="author">
+                <div class="pic"><img class="avatar" width="32" height="32" alt="avatar" src="/Content/Image/avatar.png" /></div>
+                <div class="name" data-bind="text: $data.Author"></div>
+            </div>
+            <div class="info">
+                <span class="date" data-bind="text: $data.CreateDate.Format()"></span> |
+                #<span data-bind="text: $data.Index"></span>
+                <div class="act">
+                    @if (isAdmin)
+                    {
+                        <a href="JavaScript:void(0)" data-bind="click: $root.delete">[删除]</a>
+                    }
+                </div>
+                <div class="clear"></div>
+                <div class="content" data-bind="html: $data.Content"></div>
+            </div>
+            <div class="clear"></div>   
+        </li>
     </script>
 }
 <div class="board">
-    @Html.Partial("index-add")
-    @Html.Partial("index-list")
+    <!-- respond START -->
+    <div id="respond">
+        <form data-bind="submit: add">
+            <p data-bind="visible: isShowWelcome">
+                欢迎回来, <strong data-bind="text: username"></strong>
+                <span id="control_author_info"><a href="javascript:void(0);" data-bind="click: change">更改 »</a></span>
+            </p>
+            <div id="author_info" data-bind="visible: isNewGuest">
+                <p>
+                    <input class="textfield" id="Author" name="Author" type="text" data-bind="value: username" />
+                    <label for="Author">昵称(必填)</label>                </p>
+            </div>
+            <p><textarea cols="20" id="Content" name="Content" rows="2"></textarea></p>
+            <div id="submitbox">
+                <div class="submitbutton"><input id="submit" type="submit" class="submit" value="提交" /></div>
+                <div id="info"></div>
+                <div class="clear"></div>
+            </div>
+        </form>
+    </div>
+    <!-- respond END -->
+    
+    <!-- list START -->
+    <div id="comments">
+        <div id="commentlist">
+            <ul id="thecomments" class="comments" data-bind="template: { name: 'boardViewModelTemplate', foreach: board }"></ul>
+        </div>
+    </div>
+    <!-- list END -->
 </div>

@@ -1492,7 +1492,6 @@
     <Content Include="Views\Article\postrelated.cshtml" />
     <Content Include="Views\Article\_notfound.cshtml" />
     <Content Include="Views\Article\_removed.cshtml" />
-    <Content Include="Views\Board\index-add.cshtml" />
     <Content Include="Views\Board\index.cshtml" />
     <Content Include="Views\Board\recentmessages.cshtml" />
     <Content Include="Views\Comment\add.cshtml" />
@@ -1517,7 +1516,6 @@
     <Content Include="Views\Web.config" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <Content Include="Views\Shared\layout-header-banner.cshtml" />
-    <Content Include="Views\Board\index-list.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">
