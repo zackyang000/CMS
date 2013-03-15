@@ -3,10 +3,10 @@
     <span class="categories">
         @(Html.Raw(string.Join(",", Model.Categorys.Select(item => Html.ActionLink(item.Name, "Index", Model.Group.Url, new { c = item.Url }, new { title = string.Format("查看 {0} 的全部文章", item.Name) })).ToList())))
     </span>
-    <span class="tags">
-        @if (Model.Tags != null)
-        {
-        @(Html.Raw(string.Join(",", Model.Tags.Select(item => Html.ActionLink(item.Name, "Index", item.Post.Group.Url, new { t = item.Name }, new { title = string.Format("查看 {0} 的全部文章", item.Name) })).ToList())))
-        }
-    </span>
+    @if (Model.Tags != null && Model.Tags.Count > 0)
+    {
+        <span class="tags">
+            @(Html.Raw(string.Join(",", Model.Tags.Select(item => Html.ActionLink(item.Name, "Index", item.Post.Group.Url, new {t = item.Name}, new {title = string.Format("查看 {0} 的全部文章", item.Name)})).ToList())))
+        </span>
+    }
 </div>

@@ -142,8 +142,7 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #posts .comments {background-position: 0px -96px;float: right;}
 #posts .categories {background-position: 0px -480px;}
 #posts .tags {background-position: 0px -400px;}
-.api_qq{background: url(/Content/Image/connect_logo_qq.png) no-repeat;height: 16px;line-height: 16px;padding-left: 20px;}
-
+#posts .qrcode {width: 200px;padding: 20px;border: 1px solid #d4d9dd;box-shadow: inset 0 0 2px #d4d9dd;margin-left: 180px;display: none;}
 /* 缩略图 */
 #posts .thumb {margin: 0px 15px 0px 10px;float: left;border-width: 1px;border-color: #929292;border-style: solid;width: 160px;height: 100px;}
 /* 新增文章 */
