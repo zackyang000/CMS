@@ -112,7 +112,7 @@
     <Compile Include="ExtensionMethods\StringExtension.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="ImageProcessing.cs" />
-    <Compile Include="IniHelperi.cs" />
+    <Compile Include="IniHelper.cs" />
     <Compile Include="IoC\UnityContainerHelper.cs" />
     <Compile Include="IpLocator.cs" />
     <Compile Include="JavaScriptHelper.cs" />
