@@ -828,6 +828,7 @@
     <Content Include="Content\ckfinder_aspnet_2.0.1\skins\v1\uipanel.css" />
     <Content Include="Content\Image\ajax-loader.gif" />
     <Content Include="Content\Image\ajax-loader2.gif" />
+    <Content Include="Content\Image\ajax-loader3.gif" />
     <Content Include="Content\Image\avatar.png" />
     <Content Include="Content\Image\banner.png" />
     <Content Include="Content\Image\banner\funs.png" />
