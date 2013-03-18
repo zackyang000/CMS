@@ -1,13 +1,15 @@
-﻿@using YangKai.BlogEngine.Common
-@model YangKai.BlogEngine.Web.Mvc.Models.BoardViewModel
+﻿@model YangKai.BlogEngine.Web.Mvc.Models.BoardViewModel
 @{
-    ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, "留言板");
+    ViewBag.Title = string.Format(YangKai.BlogEngine.Common.Config.Format.PAGE_TITLE, "留言板");
     Layout = "~/Views/Shared/_layout.cshtml";
     var isAdmin = YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin();
 }
-@section style {
+
+@section style 
+{
     <style>#middle .body { background: url(/Content/Image/body_bg_no_line.png); }</style>
 }
+
 @section scripts
 {
     <script type="text/javascript">
@@ -87,6 +89,7 @@
         </li>
     </script>
 }
+
 <div class="board">
     <!-- respond START -->
     <div id="respond">

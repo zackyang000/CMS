@@ -69,12 +69,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         //
         // 最新留言页面
-        [ActionName("recentmessages")]
+        [ActionName("recent")]
         [AcceptVerbs(HttpVerbs.Get)]
         [OutputCache(Duration = 300)]
-        public PartialViewResult RecentMessages()
+        public ActionResult RecentMessages()
         {
-            return PartialView(QueryFactory.Board.FindAll(10));
+            return Json(QueryFactory.Board.FindAll(10).ToBoardViewModels(), JsonRequestBehavior.AllowGet);
         }
     }
 }

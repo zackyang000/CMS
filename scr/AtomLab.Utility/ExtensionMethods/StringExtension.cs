@@ -15,7 +15,7 @@ using System.Text.RegularExpressions;
             //删除前后空格
             original = original.Trim();
             //替换空格&换行,避免如因HTML编码空格占6个字符造成的字符串截取不准确的问题
-            original = original.Replace("&nbsp;", " ").Replace("<br>", " ");
+            original = original.Replace("&nbsp;", " ").Replace("<br>", " ").Replace("<br />", " ");
             //得到字符串总长度
             int len = original.Length;
 
