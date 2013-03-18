@@ -60,8 +60,14 @@
                 tip.html(tip.html() === "更改 »" ? "隐藏 »" : "更改 »");
                 $("#author_info").toggle();
             };
+            
+            ko.bindingHandlers.fadeInVisible = {
+                init: function (element) {
+                    fadeInVisibleFunction(element, "div-board-list-loader");
+                }
+            };
         }
-
+        
         $(document).ready(function() {
             ko.applyBindings(new BoardViewModel());
         });
@@ -116,7 +122,10 @@
     <!-- list START -->
     <div id="comments">
         <div id="commentlist">
-            <ul id="thecomments" class="comments" data-bind="template: { name: 'boardViewModelTemplate', foreach: board }"></ul>
+            <div id="div-board-list-loader">
+                <img src="/Content/Image/ajax-loader2.gif" alt="" />loading...
+            </div>
+            <ul id="thecomments" style="display: none;" class="comments" data-bind="template: { name: 'boardViewModelTemplate', foreach: board }, fadeInVisible: board"></ul>
         </div>
     </div>
     <!-- list END -->
