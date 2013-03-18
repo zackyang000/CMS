@@ -104,9 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CookieHelper.cs" />
-    <Compile Include="EncryptFileHelper.cs" />
-    <Compile Include="EncryptionCookieHelper.cs" />
-    <Compile Include="EncryptStringHelper.cs" />
+    <Compile Include="Encrypt\EncryptFileHelper.cs" />
+    <Compile Include="Encrypt\EncryptionCookieHelper.cs" />
+    <Compile Include="Encrypt\EncryptStringHelper.cs" />
     <Compile Include="ExpressionTree\ParameterReplacer.cs" />
     <Compile Include="ExpressionTree\SpecExprExtensions.cs" />
     <Compile Include="ExtensionMethods\StringExtension.cs" />
@@ -119,12 +119,12 @@
     <Compile Include="LunarDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegularExpressions.cs" />
-    <Compile Include="RouteHelper\LowerCaseUrlRoute.cs" />
-    <Compile Include="RouteHelper\LowerCaseUrlRouteMapHelper.cs" />
-    <Compile Include="SaveRemoteFileHelper\ImageHelper.cs" />
-    <Compile Include="SaveRemoteFileHelper\RequestHelper.cs" />
-    <Compile Include="SaveRemoteFileHelper\SaveRemoteFileHelper.cs" />
-    <Compile Include="SaveRemoteFileHelper\StringHelper.cs" />
+    <Compile Include="Route\LowerCaseUrlRoute.cs" />
+    <Compile Include="Route\LowerCaseUrlRouteMapHelper.cs" />
+    <Compile Include="SaveRemoteFile\ImageHelper.cs" />
+    <Compile Include="SaveRemoteFile\RequestHelper.cs" />
+    <Compile Include="SaveRemoteFile\SaveRemoteFileHelper.cs" />
+    <Compile Include="SaveRemoteFile\StringHelper.cs" />
     <Compile Include="UrlHelper.cs" />
   </ItemGroup>
   <ItemGroup>

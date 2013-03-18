@@ -1,22 +1,21 @@
-﻿@model IList<YangKai.BlogEngine.Modules.BoardModule.Objects.Board>
-
-    <script type="text/javascript">
-        function RecentBoardViewModel() {
-            var self = this;
-            self.board = ko.observableArray();
-            $.getJSON('/board/recent', self.board);
-        }
+﻿<script type="text/javascript">
+    function RecentBoardViewModel() {
+        var self = this;
+        self.board = ko.observableArray();
+        $.getJSON('/board/recent', self.board);
+    }
         
-        $(document).ready(function () {
-            ko.applyBindings(new RecentBoardViewModel());
-        });
-    </script>
-    <script type="text/html" id="recentBoardViewModelTemplate">
+    $(document).ready(function () {
+        ko.applyBindings(new RecentBoardViewModel());
+    });
+</script>
+<script type="text/html" id="recentBoardViewModelTemplate">
     <li>
-    @Html.ActionLink(data.Author, "Index", "Board", null, new { title = data.Content })
-    :@Html.Raw(data.Content.SubstringChinese(100))
+        <a href="/board" data-bind="text: $data.Author, title:$data.Content"></a>
+        :
+        <span data-bind="text:$data.Content"></span>
     </li>
-    </script>
+</script>
 
 <ul data-bind="template: { name: 'recentBoardViewModelTemplate', foreach: board }"></ul>
 

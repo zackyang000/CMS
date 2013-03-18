@@ -1,12 +1,31 @@
 ﻿<div class="widget">
     <h3>最新留言</h3>
-    <div id="div-sidebar-recentmessages-detail"><img src="/Content/Image/ajax-loader2.gif" alt="" /></div>
+    <div id="div-sidebar-recentmessages-detail-loader"><img src="/Content/Image/ajax-loader2.gif" alt="" /></div>
+    <ul style="display: none;" data-bind="template: { name: 'recentBoardViewModelTemplate', foreach: board }, fadeInVisible: board ">
+    </ul>
 </div>
 <script type="text/javascript">
-    $(function() {
-        $("#div-sidebar-recentmessages-detail").load("/board/recentmessages", function() {
-            $("#div-sidebar-recentmessages-detail").hide();
-            $("#div-sidebar-recentmessages-detail").fadeIn(1000);
-        });
+    function RecentBoardViewModel() {
+        var self = this;
+
+        ko.bindingHandlers.fadeInVisible = {
+            init: function (element) {
+                fadeInVisibleFunction(element, "div-sidebar-recentmessages-detail-loader");
+            }
+        };
+
+        self.board = ko.observableArray();
+        $.getJSON('/board/recent', self.board);
+    }
+
+    $(document).ready(function () {
+        ko.applyBindings(new RecentBoardViewModel());
     });
+</script>
+<script type="text/html" id="recentBoardViewModelTemplate">
+    <li>
+        <a href="/board" data-bind="text: $data.Author, title: $data.Content"></a>
+        :
+        <span data-bind="text: $data.Content"></span>
+    </li>
 </script>
