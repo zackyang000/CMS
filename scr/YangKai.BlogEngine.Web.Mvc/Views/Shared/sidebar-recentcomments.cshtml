@@ -1,20 +1,46 @@
 ﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
 @{
+    var group = ViewBag.Group as Group;
     var channel = ViewBag.Channel as Channel;
-    var mainClass = ViewBag.MainClass as Group;
-    var mainClassUrl = (mainClass != null ? mainClass.Url : string.Empty);
-    var channelUrl = (channel != null ? channel.Url : string.Empty);
+    var groupUrl = group==null?string.Empty:group.Url;
+    var channelUrl = channel == null ? string.Empty : channel.Url;
 }
 
-<div class="widget">
+<div class="widget" id="recentcomments">
     <h3>最新评论</h3>
-    <div id="div-sidebar-recentcomments-detail"><img src="/Content/Image/ajax-loader2.gif" alt="" /></div>
+    <div class="templateloading" id="div-sidebar-recentcomments-detail-loader"></div>
+    <ul class="templatecontainer" data-bind="template: { name: 'recentCommentsViewModelTemplate', foreach: comments }, fadeInVisible: comments ">
+    </ul>
 </div>
+
+
 <script type="text/javascript">
-    $(function() {
-        $("#div-sidebar-recentcomments-detail").load("/comment/recentcomments?mainClassUrl=@mainClassUrl&channelUrl=@channelUrl", function () {
-            $("#div-sidebar-recentcomments-detail").hide();
-            $("#div-sidebar-recentcomments-detail").fadeIn(1000);
-        });
+    function RecentCommentsViewModel() {
+        var self = this;
+
+        ko.bindingHandlers.fadeInVisible = {
+            init: function (element) {
+                fadeInVisibleFunction(element, "div-sidebar-recentcomments-detail-loader");
+            }
+        };
+
+        self.comments = ko.observableArray();
+        $.getJSON('/comment/recent?channelurl=@channelUrl&groupurl=@groupUrl', self.comments);
+    }
+
+    $(document).ready(function () {
+        ko.applyBindings(new RecentCommentsViewModel(), document.getElementById("recentcomments"));
     });
+</script>
+<script type="text/html" id="recentCommentsViewModelTemplate">
+@*    <li>*@
+@*        <a href="/board" data-bind="text: $data.Author, attr: { title: $data.Content }"></a>*@
+@*        :*@
+@*        <span data-bind="text: $data.Content"></span>*@
+@*    </li>*@
+@*    <li>*@
+@*        Author Content GroupUrl PostUrl PostTitle*@
+@*    @Html.ActionLink(data.Author, "Detail", data.Post.Group.Url, string.Empty, string.Empty, "comment-" + data.CommentId, new { id = data.Post.Url }, new { title = string.Format("《{0}》", data.Post.Title) })*@
+@*    : @Html.Raw(data.Content.Replace("<br />", "&nbsp;&nbsp;").SubstringChinese(200))*@
+@*    </li>*@
 </script>

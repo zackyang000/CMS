@@ -6,6 +6,7 @@ using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Modules.PostModule.Commands;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
@@ -25,15 +26,14 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         //
         // 最新评论页面
-        // Get: /comment/recentcomments?channelurl={ChannelUrl}&mainclassurl={MainClassUrl}
-        [ActionName("recentcomments")]
+        [ActionName("recent")]
         [AcceptVerbs(HttpVerbs.Get)]
         [OutputCache(Duration = 300)]
-        public PartialViewResult RecentComments(string channelUrl, string mainClassUrl)
+        public ActionResult RecentComments(string channelurl, string groupurl)
         {
-            if (string.IsNullOrEmpty(channelUrl))
-                channelUrl = QueryFactory.Post.GetGroup(mainClassUrl).Channel.Url;
-            return PartialView(QueryFactory.Post.GetCommentsNewest(channelUrl));
+            if (string.IsNullOrEmpty(channelurl))
+                channelurl = QueryFactory.Post.GetGroup(groupurl).Channel.Url;
+            return Json(QueryFactory.Post.GetCommentsNewest(channelurl).ToCommentViewModels(), JsonRequestBehavior.AllowGet);
         }
 
         //

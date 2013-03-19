@@ -27,14 +27,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             {
                 channel = QueryFactory.Post.GetChannel(channelUrl);
             }
-            ViewBag.MainClass = mainClass;
+            ViewBag.Group = mainClass;
             ViewBag.Channel= channel;
             ViewBag.Title =string.Format(Config.Format.PAGE_TITLE,channel.Name  );
 
             ViewBag.Keywords = string.Empty;
             ViewBag.Description = channel.Description;
             ViewBag.SubCaption = channel.Description;
-
             return View();
         }
 
@@ -79,7 +78,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             var mainClass = QueryFactory.Post.GetGroup(mainClassUrl);
             var    channel = mainClass.Channel;
-            ViewBag.MainClass = mainClass;
+            ViewBag.Group = mainClass;
             ViewBag.Channel = channel;
 
             ViewBag.Title =string.Format(Config.Format.PAGE_TITLE,  data.Title );

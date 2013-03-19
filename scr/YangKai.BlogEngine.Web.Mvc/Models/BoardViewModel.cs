@@ -27,13 +27,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                 };
         }
 
-        public static IList<Board> ToBoardEntities(this IList<BoardViewModel> viewModels)
-        {
-            var list = new List<Board>();
-            viewModels.ToList().ForEach(p => list.Add(p.ToBoardEntity()));
-            return list;
-        }
-
         public static BoardViewModel ToBoardViewModel(this Board entity)
         {
            return new BoardViewModel()

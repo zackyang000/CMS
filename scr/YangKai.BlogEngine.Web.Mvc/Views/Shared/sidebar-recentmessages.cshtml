@@ -1,7 +1,7 @@
-﻿<div class="widget">
+﻿<div class="widget" id="recentmessages">
     <h3>最新留言</h3>
-    <div id="div-sidebar-recentmessages-detail-loader"><img src="/Content/Image/ajax-loader2.gif" alt="" /></div>
-    <ul style="display: none;" data-bind="template: { name: 'recentBoardViewModelTemplate', foreach: board }, fadeInVisible: board ">
+    <div class="templateloading" id="div-sidebar-recentmessages-detail-loader"></div>
+    <ul class="templatecontainer" data-bind="template: { name: 'recentBoardViewModelTemplate', foreach: board }, fadeInVisible: board ">
     </ul>
 </div>
 <script type="text/javascript">
@@ -19,12 +19,12 @@
     }
 
     $(document).ready(function () {
-        ko.applyBindings(new RecentBoardViewModel());
+        ko.applyBindings(new RecentBoardViewModel(), document.getElementById("recentmessages"));
     });
 </script>
 <script type="text/html" id="recentBoardViewModelTemplate">
     <li>
-        <a href="/board" data-bind="text: $data.Author, title: $data.Content"></a>
+        <a href="/board" data-bind="text: $data.Author, attr: { title: $data.Content }"></a>
         :
         <span data-bind="text: $data.Content"></span>
     </li>

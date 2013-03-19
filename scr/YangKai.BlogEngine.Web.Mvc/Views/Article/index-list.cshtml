@@ -4,7 +4,7 @@
            
 @{
     var channel = ViewBag.Channel as Channel;
-    var mainClass = ViewBag.MainClass as Group;
+    var mainClass = ViewBag.Group as Group;
     var mainClassUrl = (mainClass != null ? mainClass.Url : string.Empty);
     var channelUrl = (channel != null ? channel.Url : string.Empty);
 }
