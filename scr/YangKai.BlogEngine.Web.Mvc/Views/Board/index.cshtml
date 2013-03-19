@@ -24,11 +24,11 @@
             }, self);
             self.isShowWelcome = self.username !== "";
 
-            self.delete = function (board) {
-                $.post("/board/delete", "id=" + board.BoardId, null, "json")
+            self.delete = function (entity) {
+                $.post("/board/delete", "id=" + entity.BoardId, null, "json")
                     .done(function (o) {
                         if (o.result) {
-                            self.board.remove(board);
+                            self.board.remove(entity);
                         } else {
                             $("#info").css({ color: "red" });
                             $("#info").html(o.reason);
@@ -107,7 +107,8 @@
             <div id="author_info" data-bind="visible: isNewGuest">
                 <p>
                     <input class="textfield" id="Author" name="Author" type="text" data-bind="value: username" />
-                    <label for="Author">昵称(必填)</label>                </p>
+                    <label for="Author">昵称(必填)</label>
+                </p>
             </div>
             <p><textarea cols="20" id="Content" name="Content" rows="2"></textarea></p>
             <div id="submitbox">
