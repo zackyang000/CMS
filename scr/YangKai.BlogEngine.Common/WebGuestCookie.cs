@@ -33,6 +33,15 @@ namespace YangKai.BlogEngine.Common
             Pic = EncryptionCookieHelper.Load(KPic);
         }
 
+        private WebGuestCookie(string name)
+        {
+            Name = name;
+            Email = EncryptionCookieHelper.Load(KEmail);
+            Url = EncryptionCookieHelper.Load(KUrl);
+            Pic = EncryptionCookieHelper.Load(KPic);
+            Save(true);
+        }
+
         private WebGuestCookie(string name, string email, string url,string pic, bool isRemember)
         {
             Name = name;
@@ -45,6 +54,14 @@ namespace YangKai.BlogEngine.Common
         #endregion
 
         #region [Public Methods]
+
+        /// <summary>
+        /// 保存cookies初始化类
+        /// </summary>
+        public static WebGuestCookie Save(string name)
+        {
+            return new WebGuestCookie(name);
+        }
 
         /// <summary>
         /// 保存cookies初始化类

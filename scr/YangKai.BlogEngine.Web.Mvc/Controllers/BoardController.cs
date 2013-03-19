@@ -42,6 +42,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             try
             {
                 CommandFactory.CreateBoard(entity);
+                WebGuestCookie.Save(viewModel.Author);
                 return Json(new { result = true, model = entity.ToBoardViewModel() });
             }
             catch (Exception e)

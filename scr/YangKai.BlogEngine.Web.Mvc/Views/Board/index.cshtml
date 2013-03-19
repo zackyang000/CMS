@@ -18,11 +18,8 @@
             self.board = ko.observableArray();
             $.getJSON('/board/list', self.board);
 
-            self.username = "@Model.Author";
-            self.isNewGuest = ko.computed(function () {
-                return self.username === "";
-            }, self);
-            self.isShowWelcome = self.username !== "";
+            self.username = ko.observable('@Model.Author');
+            self.isNewGuest = self.username() === "";
 
             self.delete = function (entity) {
                 $.post("/board/delete", "id=" + entity.BoardId, null, "json")
@@ -46,6 +43,7 @@
                             $("#Content").val("");
                             $("#info").html("");
                             self.board.unshift(o.model);
+                            self.username(o.model.Author);
                         } else {
                             $("#info").css({ color: "red" });
                             $("#info").html(o.reason);
@@ -100,7 +98,7 @@
     <!-- respond START -->
     <div id="respond">
         <form data-bind="submit: add">
-            <p data-bind="visible: isShowWelcome">
+            <p data-bind="visible: !isNewGuest">
                 欢迎回来, <strong data-bind="text: username"></strong>
                 <span id="control_author_info"><a href="javascript:void(0);" data-bind="click: change">更改 »</a></span>
             </p>
