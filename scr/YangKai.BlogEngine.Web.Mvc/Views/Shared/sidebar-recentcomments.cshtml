@@ -1,9 +1,9 @@
 ﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
 @{
-    var group = ViewBag.Group as Group;
     var channel = ViewBag.Channel as Channel;
-    var groupUrl = group==null?string.Empty:group.Url;
+    var group = ViewBag.Group as Group;
     var channelUrl = channel == null ? string.Empty : channel.Url;
+    var groupUrl = group == null ? string.Empty : group.Url;
 }
 
 <div class="widget" id="recentcomments">
@@ -34,12 +34,8 @@
 </script>
 <script type="text/html" id="recentCommentsViewModelTemplate">
     <li>
-        <a href="#" data-bind="text: $data.Author, attr: { title: '《' + $data.PostTitle + '》' }"></a>
+        <a href="#" data-bind="text: $data.Author, attr: { title: '《' + $data.PostTitle + '》',href:$data.GroupUrl+'-'+$data.PostUrl}"></a>
         :
-        <span data-bind="text: $data.Content"></span>
+        <span data-bind="html: $data.Content"></span>
     </li>
-@*    <li>*@
-@*    @Html.ActionLink(data.Author, "Detail", data.Post.Group.Url, string.Empty, string.Empty, "comment-" + data.CommentId, new { id = data.Post.Url }, new { title = string.Format("《{0}》", data.Post.Title) })*@
-@*    : @Html.Raw(data.Content.Replace("<br />", "&nbsp;&nbsp;").SubstringChinese(200))*@
-@*    </li>*@
 </script>
