@@ -26,7 +26,7 @@
     }
 
     $(document).ready(function () {
-        ko.applyBindings(new RecentCommentsViewModel(), document.getElementById("recentcomments"));
+        ko.applyBindings(new RecentCommentsViewModel(), $("#recentcomments")[0]);
     });
 </script>
 <script type="text/html" id="recentCommentsViewModelTemplate">

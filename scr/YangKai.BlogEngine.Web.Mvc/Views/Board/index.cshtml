@@ -64,7 +64,7 @@
         }
         
         $(document).ready(function() {
-            ko.applyBindings(new BoardViewModel());
+            ko.applyBindings(new BoardViewModel(), $("#div-board")[0]);
         });
     </script>
 
@@ -91,7 +91,7 @@
     </script>
 }
 
-<div class="board">
+<div class="board" id="div-board">
     <!-- respond START -->
     <div id="respond">
         <form data-bind="submit: add">
