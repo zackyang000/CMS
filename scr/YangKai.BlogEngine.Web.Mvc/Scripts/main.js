@@ -352,9 +352,10 @@ function getjsondate(jsondate) {
 
 //#region ko common
 
-function fadeInVisibleFunction(element, loadingElementId) {
-    $("#" + loadingElementId).hide();
-    $(element).fadeIn(1000);
+function fadeOutAndFadeIn(hide, show) {
+    $("#" + hide).stop(true, true);
+    $("#" + show).stop(true, true);
+    $("#" + hide).fadeOut(300, function () { $("#" + show).fadeIn(1000); });
 }
 
 //#endregion

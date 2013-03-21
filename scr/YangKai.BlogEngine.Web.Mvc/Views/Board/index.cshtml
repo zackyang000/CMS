@@ -16,7 +16,10 @@
         function BoardViewModel() {
             var self = this;
             self.board = ko.observableArray();
-            $.getJSON('/board/list', self.board);
+            $.getJSON('/board/list', self.board)
+                .done(function () {
+                    fadeOutAndFadeIn("div-board-list-loader", "thecomments");
+                });
 
             self.username = ko.observable('@Model.Author');
             self.isNewGuest = self.username() === "";
@@ -57,12 +60,6 @@
                 var tip = $("#control_author_info a");
                 tip.html(tip.html() === "更改 »" ? "隐藏 »" : "更改 »");
                 $("#author_info").toggle();
-            };
-            
-            ko.bindingHandlers.fadeInVisible = {
-                init: function (element) {
-                    fadeInVisibleFunction(element, "div-board-list-loader");
-                }
             };
         }
         
@@ -121,10 +118,8 @@
     <!-- list START -->
     <div id="comments">
         <div id="commentlist">
-            <div id="div-board-list-loader" style="text-align: center;">
-                <img src="/Content/Image/ajax-loader3.gif" alt="" />
-            </div>
-            <ul id="thecomments" style="display: none;" class="comments" data-bind="template: { name: 'boardViewModelTemplate', foreach: board }, fadeInVisible: board"></ul>
+            <div id="div-board-list-loader" class="ko-grid-loader"></div>
+            <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'boardViewModelTemplate', foreach: board }"></ul>
         </div>
     </div>
     <!-- list END -->

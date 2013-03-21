@@ -1,21 +1,18 @@
 ﻿<div class="widget" id="recentmessages">
     <h3>最新留言</h3>
-    <div class="templateloading" id="div-sidebar-recentmessages-detail-loader"></div>
-    <ul class="templatecontainer" data-bind="template: { name: 'recentBoardViewModelTemplate', foreach: board }, fadeInVisible: board ">
+    <div class="ko-area-loader" id="div-sidebar-recentmessages-detail-loader"></div>
+    <ul class="ko-template-container" id="div-sidebar-recentmessages-detail" data-bind="template: { name: 'recentBoardViewModelTemplate', foreach: board }">
     </ul>
 </div>
 <script type="text/javascript">
     function RecentBoardViewModel() {
         var self = this;
 
-        ko.bindingHandlers.fadeInVisible = {
-            init: function (element) {
-                fadeInVisibleFunction(element, "div-sidebar-recentmessages-detail-loader");
-            }
-        };
-
         self.board = ko.observableArray();
-        $.getJSON('/board/recent', self.board);
+        $.getJSON('/board/recent', self.board)
+                .done(function () {
+                    fadeOutAndFadeIn("div-sidebar-recentmessages-detail-loader", "div-sidebar-recentmessages-detail");
+                });
     }
 
     $(document).ready(function () {

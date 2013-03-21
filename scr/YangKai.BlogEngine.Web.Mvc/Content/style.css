@@ -20,8 +20,10 @@ img{border:none;}
 .gray{color:Gray;}
 
 /* ko */
-.templatecontainer{ display: none;}
-.templateloading{background: url(/Content/Image/ajax-loader2.gif) no-repeat;height: 16px;line-height: 16px;padding-left: 20px;}
+.ko-area-loader{background: url(/Content/Image/ajax-loader2.gif) no-repeat;height: 16px;line-height: 16px;padding-left: 20px;}
+.ko-grid-loader{background: url(/Content/Image/ajax-loader3.gif) no-repeat center;height: 24px; text-align: center;}
+.ko-template-container {display: none;}
+
 /* btn */
 #submitbox .submitbutton {float:right;}
 #submitbox #info {float:right; padding:5px 5px 0px 20px; display:none; background:url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat;}
