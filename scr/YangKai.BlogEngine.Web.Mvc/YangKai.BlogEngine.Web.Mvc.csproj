@@ -1314,7 +1314,7 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Content\scripts\jquery-1.8.3.js" />
     <Content Include="Content\scripts\jquery-1.8.3.min.js" />
-    <Content Include="Content\scripts\jquery.lazyload.js" />
+    <Content Include="Scripts\jquery.lazyload.js" />
     <Content Include="Content\style.css" />
     <Content Include="Content\syntaxhighlighter_3.0.83\index.html" />
     <Content Include="Content\syntaxhighlighter_3.0.83\scripts\shAutoloader.js" />
