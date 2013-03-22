@@ -15,18 +15,14 @@
     <script type="text/javascript">
         function BoardViewModel() {
             var self = this;
-            self.board = ko.observableArray();
-            $.getJSON('/board/list', self.board)
-                .done(function () {
-                    fadeOutAndFadeIn("div-board-list-loader", "thecomments");
-                });
 
+            self.board = ko.observableArray();
             self.username = ko.observable('@Model.Author');
             self.isNewGuest = self.username() === "";
 
-            self.delete = function (entity) {
+            self.delete = function(entity) {
                 $.post("/board/delete", "id=" + entity.BoardId, null, "json")
-                    .done(function (o) {
+                    .done(function(o) {
                         if (o.result) {
                             self.board.remove(entity);
                         } else {
@@ -36,12 +32,12 @@
                     });
             };
 
-            self.add = function (formElement) {
+            self.add = function(formElement) {
                 $("#info").css({ color: "", display: "block", background: "url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat" });
                 $("#info").html("正在提交");
                 $("#submit").prop("disabled", true);
                 $.post("/board/add", $(formElement).serialize(), null, "json")
-                    .done(function (o) {
+                    .done(function(o) {
                         if (o.result) {
                             $("#Content").val("");
                             $("#info").html("");
@@ -56,13 +52,18 @@
                     });
             };
 
-            self.change = function () {
+            self.change = function() {
                 var tip = $("#control_author_info a");
                 tip.html(tip.html() === "更改 »" ? "隐藏 »" : "更改 »");
                 $("#author_info").toggle();
             };
+
+            $.getJSON('/board/list', self.board)
+                .done(function() {
+                    fadeOutAndFadeIn("div-board-list-loader", "thecomments");
+                });
         }
-        
+
         $(document).ready(function() {
             ko.applyBindings(new BoardViewModel(), $("#div-board")[0]);
         });

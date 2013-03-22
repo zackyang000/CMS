@@ -19,13 +19,14 @@
         var self = this;
 
         self.comments = ko.observableArray();
+
         $.getJSON('/comment/recent?channelurl=@channelUrl&groupurl=@groupUrl', self.comments)
             .done(function() {
                 fadeOutAndFadeIn("div-sidebar-recentcomments-detail-loader", "div-sidebar-recentcomments-detail");
             });
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ko.applyBindings(new RecentCommentsViewModel(), $("#recentcomments")[0]);
     });
 </script>
