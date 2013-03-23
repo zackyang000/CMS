@@ -70,9 +70,7 @@ table.fixed{table-layout: fixed;}
 .widefat th {padding: 7px 7px 8px;text-align: left;line-height: 1.3em;}
 .widefat td, .widefat th {border-color: #DFDFDF;overflow: hidden;border-bottom-width: 1px;border-bottom-style: solid;font-size: 11px;}
 .post-com-count-wrapper {min-width: 22px;font-family: Helvetica,Arial,sans-serif;}
-.post-com-count {height: 1.3em;line-height: 1.1em;display: block;text-decoration: none;padding: 0 0 6px;cursor: pointer;background-position: center -80px;background-repeat: no-repeat;}
-.post-com-count {height: 1.3em;line-height: 1.1em;display: block;text-decoration: none;padding: 0 0 6px;cursor: pointer;background-position: center -80px;background-repeat: no-repeat;}
-.post-com-count {background-image: url(/Content/admin-images/bubble_bg.gif);color: white;}
+.post-com-count {height: 1.3em;line-height: 1.1em;display: block;text-decoration: none;padding: 0 0 6px;cursor: pointer;background-position: center -80px;background-repeat: no-repeat;color: white;}
 .post-com-count span {background-color: #BBB;color: white;font-size: 9px;font-weight: bold;height: 1.7em;line-height: 1.70em;min-width: .7em;padding: 0 6px;display: inline-block;cursor: pointer;-moz-border-radius: 5px;-khtml-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;}
 .post-com-count:hover span {background-color: #D54E21;}
 .column-thumbnail{text-align:center; padding-top:6px;}
