@@ -129,23 +129,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\Bootstrapper.dll" />
-    <Content Include="Lib\Bootstrapper.pdb" />
     <Content Include="Lib\Bootstrapper.XML" />
     <Content Include="Lib\CKFinder.dll" />
-    <Content Include="Lib\CKFinder.pdb" />
     <Content Include="Lib\CKFinder.XML" />
     <Content Include="Lib\Gma.QrCodeNet.Encoding.dll" />
-    <Content Include="Lib\Gma.QrCodeNet.Encoding.pdb" />
     <Content Include="Lib\Gma.QrCodeNet.Encoding.XML" />
     <Content Include="Lib\Ionic.Zip.dll" />
     <Content Include="Lib\NPOI.dll" />
-    <Content Include="Lib\NPOI.pdb" />
     <Content Include="Lib\NPOI.XML" />
     <Content Include="Lib\RSS.NET.dll" />
-    <Content Include="Lib\RSS.NET.pdb" />
     <Content Include="Lib\RSS.NET.XML" />
     <Content Include="Lib\Webdiyer.WebControls.Mvc.dll" />
-    <Content Include="Lib\Webdiyer.WebControls.Mvc.pdb" />
     <Content Include="Lib\Webdiyer.WebControls.Mvc.XML" />
   </ItemGroup>
   <ItemGroup>
