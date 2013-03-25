@@ -13,12 +13,5 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return View();
         }
 
-        //
-        // ÃΩ’Î
-        // Get: /about/probe
-        public ActionResult Probe()
-        {
-            return View();
-        }
     }
 }

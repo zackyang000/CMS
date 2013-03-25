@@ -1312,8 +1312,6 @@
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\main.js" />
-    <Content Include="Content\scripts\jquery-1.8.3.js" />
-    <Content Include="Content\scripts\jquery-1.8.3.min.js" />
     <Content Include="Scripts\jquery.lazyload.js" />
     <Content Include="Content\style.css" />
     <Content Include="Content\syntaxhighlighter_3.0.83\index.html" />
@@ -1403,6 +1401,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Labs\analytics.cshtml" />
+    <Content Include="Views\Labs\probe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -1478,8 +1478,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\About\index.cshtml" />
-    <Content Include="Views\About\probe.cshtml" />
-    <Content Include="Views\Analytics\index.cshtml" />
     <Content Include="Views\Article\calendar.cshtml" />
     <Content Include="Views\Article\channel.cshtml" />
     <Content Include="Views\Article\detail.cshtml" />
@@ -1507,7 +1505,6 @@
     <Content Include="Views\Shared\sidebar-recentcomments.cshtml" />
     <Content Include="Views\Shared\sidebar-recentmessages.cshtml" />
     <Content Include="Views\Shared\sidebar-search.cshtml" />
-    <Content Include="Views\Shared\_error.cshtml" />
     <Content Include="Views\Shared\_jiathis.cshtml" />
     <Content Include="Views\Shared\_layout-whth-sidebar.cshtml" />
     <Content Include="Views\Shared\_layout.cshtml" />

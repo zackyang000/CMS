@@ -6,8 +6,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class AnalyticsController : Controller
     {
-        //
-        // GET: /analytics/
         [ActionName("index")]
         public ActionResult Index()
         {

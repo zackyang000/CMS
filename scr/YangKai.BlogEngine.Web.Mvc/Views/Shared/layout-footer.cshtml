@@ -2,9 +2,9 @@
     <div class="body">
         <div class="main">
             <div>
-                <a href="/admin">管理后台</a> |
-                @Html.ActionLink("访问统计", "index", "Analytics") |
-                @Html.ActionLink("Probe", "Probe", "About", null, new { target = "_blank" })
+                <a href="/admin">Admin</a> |
+                @Html.ActionLink("Analytics", "analytics", "Labs") |
+                @Html.ActionLink("Probe", "probe", "Labs",null,  new { target = "_blank" })
             </div>
             <div>@YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT</div>
         </div>

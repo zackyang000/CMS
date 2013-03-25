@@ -1,7 +1,6 @@
-﻿@using YangKai.BlogEngine.Common
-@model IDictionary<string,string>
+﻿@model IDictionary<string,string>
 @{
-    ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, "访问统计");
+    ViewBag.Title = string.Format(YangKai.BlogEngine.Common.Config.Format.PAGE_TITLE, "访问统计");
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 <style type="text/css">#middle .body{background:url(/Content/Image/body_bg_no_line.png)}</style>
