@@ -1412,7 +1412,6 @@
     <Folder Include="Content\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Release\" />
     <Folder Include="Content\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Debug\" />
     <Folder Include="Content\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Release\" />
-    <Folder Include="Plugins\" />
     <Folder Include="UpLoad\files\" />
     <Folder Include="UpLoad\images\" />
     <Folder Include="UpLoad\offsite\" />
