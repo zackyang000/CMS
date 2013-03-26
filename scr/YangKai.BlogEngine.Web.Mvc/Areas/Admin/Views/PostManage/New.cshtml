@@ -12,7 +12,7 @@
     <div id="side-info-column">
         @Html.Partial("new-submit", Model)
         @Html.Partial("new-thumbnail")
-        @Html.Action("new-channel-and-mainclass")
+        @Html.Action("new-channel-and-group")
         @Html.Partial("new-category-box")
         @Html.Partial("new-tag-box", Model)
         @Html.Partial("new-source", Model)
@@ -31,7 +31,7 @@
 @if (Model != null)
 {
 @Html.Hidden("edit-channel", Model.Group.Channel.Url)
-@Html.Hidden("edit-mainclass", Model.Group.Url)
+@Html.Hidden("edit-group", Model.Group.Url)
 @Html.Hidden("edit-category", string.Join(",", Model.Categorys.Select(item => item.CategoryId)))
 @Html.Hidden("edit-state",Model.PostStatus)
 }

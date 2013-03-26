@@ -21,10 +21,9 @@ namespace YangKai.BlogEngine.Infrastructure
         public DbSet<Log> Logs { get; set; }
 
         public DbSet<Channel> Channels { get; set; }
-        public DbSet<Group> MainClasses { get; set; }
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Group> Groups { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Board> Board { get; set; }

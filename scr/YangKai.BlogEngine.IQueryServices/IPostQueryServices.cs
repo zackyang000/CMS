@@ -10,8 +10,8 @@ namespace YangKai.BlogEngine.IQueryServices
     {
         Category GetCategory(Guid categoryId);
         Category GetCategory(string categoryUrl);
-        IList<PostStatInfo> StatGroupByCategory(string mainClassUrl);
-        IList<Category> GetCategories(string mainClassUrl);
+        IList<PostStatInfo> StatGroupByCategory(string groupUrl);
+        IList<Category> GetCategories(string groupUrl);
         IList<Channel> FindAllByNotDeletion();
         Channel GetChannel(string channelUrl);
         Comment GetComment(Guid commentId);
@@ -19,20 +19,20 @@ namespace YangKai.BlogEngine.IQueryServices
         IList<Comment> GetCommentsNewest(string channelUrl);
         Int32 GetCommentsCount(Guid postId);
         Group GetGroup(Guid key);
-        Group GetGroup(string mainClassUrl);
+        Group GetGroup(string groupUrl);
         IList<Group> GetGroupsByNotDeletion();
         IList<Group> GetGroupsByChannelUrl(string channelUrl);
-        IList<Group> GetGroupsByGroupUrl(string mainClassUrl);
-        TagsDictionary GetTagsList(string mainClassUrl);
+        IList<Group> GetGroupsByGroupUrl(string groupUrl);
+        TagsDictionary GetTagsList(string groupUrl);
         Post Find(Guid postId);
         Post Find(string titleUrl);
         CalendarDictionary GroupByCalendar(string channelUrl);
         IList<Post> FindAll(string channelUrl);
 
-        PageList<Post> FindAll(int pageIndex, int pageSize, string channelUrl, string mainClassUrl,
+        PageList<Post> FindAll(int pageIndex, int pageSize, string channelUrl, string groupUrl,
                                                string categoryUrl, string tagName, DateTime? calendar, string searchKey);
 
-        PageList<Post> FindAllByNormal(int pageIndex, int pageSize, string channelUrl, string mainClassUrl,
+        PageList<Post> FindAllByNormal(int pageIndex, int pageSize, string channelUrl, string groupUrl,
                                                        string categoryUrl, string tagName, DateTime? calendar, string searchKey);
 
         IList<Post> FindAllByNormal(int count);

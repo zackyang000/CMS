@@ -4,8 +4,8 @@
            
 @{
     var channel = ViewBag.Channel as Channel;
-    var mainClass = ViewBag.Group as Group;
-    var mainClassUrl = (mainClass != null ? mainClass.Url : string.Empty);
+    var group = ViewBag.Group as Group;
+    var GroupUrl = (group != null ? group.Url : string.Empty);
     var channelUrl = (channel != null ? channel.Url : string.Empty);
 }
 
@@ -54,7 +54,7 @@
  }
 </ul>
 
-@Html.AjaxPager(Model, null, new { mainClassUrl,  channelUrl },
+@Html.AjaxPager(Model, null, new { GroupUrl,  channelUrl },
 new PagerOptions
     {
         PageIndexParameterName = "id",

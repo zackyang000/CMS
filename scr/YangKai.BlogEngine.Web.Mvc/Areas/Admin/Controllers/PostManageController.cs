@@ -30,7 +30,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
             return View(pagedList);
         }
 
-        [ActionName("new-channel-and-mainclass")]
+        [ActionName("new-channel-and-group")]
         public PartialViewResult ChannelBox()
         {
             IList<Channel> entities = QueryFactory.Post.FindAllByNotDeletion();
@@ -85,7 +85,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public JsonResult GetMainClass(string channelUrl)
+        public JsonResult GetGroup(string channelUrl)
         {
             var entities = QueryFactory.Post.GetGroupsByChannelUrl(channelUrl)
                 .Select(p => new { Value = p.Url, Text = p.Name });
@@ -93,17 +93,17 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public JsonResult GetCategory(string mainClassUrl)
+        public JsonResult GetCategory(string groupUrl)
         {
-            var entities = QueryFactory.Post.GetCategories(mainClassUrl)
+            var entities = QueryFactory.Post.GetCategories(groupUrl)
                 .Select(p => new { Value = p.CategoryId, Text = p.Name });
             return Json(entities, JsonRequestBehavior.AllowGet);
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public JsonResult GetTag(string mainClassUrl)
+        public JsonResult GetTag(string groupUrl)
         {
-            var entities = QueryFactory.Post.GetTagsList(mainClassUrl).Data.Take(30)
+            var entities = QueryFactory.Post.GetTagsList(groupUrl).Data.Take(30)
                 .Select(p => new { Value = p.Key, Text = p.Value });
             return Json(entities, JsonRequestBehavior.AllowGet);
         }
@@ -124,11 +124,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult AddCategory(string name, string url, string mainclassUrl)
+        public JsonResult AddCategory(string name, string url, string groupUrl)
         {
             try
             {
-                var g = QueryFactory.Post.GetGroup(mainclassUrl);
+                var g = QueryFactory.Post.GetGroup(groupUrl);
                 var entity = new Category
                 {
                     Name = name,
@@ -180,7 +180,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         private ActionResult PostAction(FormCollection collection, Post data)
         {
             return Redirect(string.Format("/{0}-{1}",
-                                          QueryFactory.Post.GetGroup(collection["mainclassRadio"]).Url,
+                                          QueryFactory.Post.GetGroup(collection["groupRadio"]).Url,
                                           data.Url));
         }
 
@@ -188,7 +188,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         {
             var data = new Post
                 {
-                    GroupId = QueryFactory.Post.GetGroup(collection["mainclassRadio"]).GroupId,
+                    GroupId = QueryFactory.Post.GetGroup(collection["groupRadio"]).GroupId,
                     Url = collection["post_url"].ToLower(),
                     Title = collection["post_title"],
                     Description = collection["post_description"],

@@ -37,14 +37,14 @@ namespace YangKai.BlogEngine.QueryServices
             return _categoryRepository.Get(p => p.Url == categoryUrl);
         }
 
-        public IList<PostStatInfo> StatGroupByCategory(string mainClassUrl)
+        public IList<PostStatInfo> StatGroupByCategory(string groupUrl)
         {
             throw new Exception("未实现");//TODO
         }
 
-        public IList<Category> GetCategories(string mainClassUrl)
+        public IList<Category> GetCategories(string groupUrl)
         {
-            return _categoryRepository.GetAll(p => p.Group.Url == mainClassUrl).ToList();
+            return _categoryRepository.GetAll(p => p.Group.Url == groupUrl).ToList();
         }
 
         public IList<Channel> FindAllByNotDeletion()
@@ -136,17 +136,17 @@ namespace YangKai.BlogEngine.QueryServices
             return _postRepository.GetAll(p => p.Group.Channel.Url == channelUrl).ToList();
         }
 
-        public PageList<Post> FindAll(int pageIndex, int pageSize, string channelUrl, string mainClassUrl,
+        public PageList<Post> FindAll(int pageIndex, int pageSize, string channelUrl, string groupUrl,
                                       string categoryUrl, string tagName, DateTime? calendar, string searchKey)
         {
-            return _postRepository.FindAllByPaged(pageIndex, pageSize, channelUrl, mainClassUrl,
+            return _postRepository.FindAllByPaged(pageIndex, pageSize, channelUrl, groupUrl,
                                                   categoryUrl, tagName, calendar, searchKey, null);
         }
 
-        public PageList<Post> FindAllByNormal(int pageIndex, int pageSize, string channelUrl, string mainClassUrl,
+        public PageList<Post> FindAllByNormal(int pageIndex, int pageSize, string channelUrl, string groupUrl,
                                               string categoryUrl, string tagName, DateTime? calendar, string searchKey)
         {
-            return _postRepository.FindAllByPaged(pageIndex, pageSize, channelUrl, mainClassUrl,
+            return _postRepository.FindAllByPaged(pageIndex, pageSize, channelUrl, groupUrl,
                                                   categoryUrl, tagName, calendar, searchKey, PostStatusEnum.Publish);
         }
 

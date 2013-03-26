@@ -5,11 +5,11 @@
 @{
     Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
     var channel = ViewBag.Channel as Channel;
-    var mainClass = ViewBag.Group as Group;
+    var group = ViewBag.Group as Group;
 }
 
 <div id="postnav">
-    @if (mainClass==null)
+    @if (group==null)
     {
         @channel.Name
     }
@@ -18,7 +18,7 @@
         <text>
         @Html.ActionLink(channel.Name, "Index", channel.Url)
         &gt;
-        @mainClass.Name
+        @group.Name
         </text>
     }
 </div>

@@ -12,22 +12,22 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class ArticleController : Controller
     {
-        public ActionResult Index(int? id,string channelUrl,  string mainClassUrl, string c, string t, string d, string k)
+        public ActionResult Index(int? id,string channelUrl,  string groupUrl, string c, string t, string d, string k)
         {
             bool hasChannel=!string.IsNullOrEmpty(channelUrl);
-            bool hasMainClass=!string.IsNullOrEmpty(mainClassUrl);
+            bool hasGroup=!string.IsNullOrEmpty(groupUrl);
             Channel channel = null;
-            Group mainClass = null;
-            if(hasMainClass)
+            Group group = null;
+            if(hasGroup)
             {
-                mainClass=QueryFactory.Post.GetGroup(mainClassUrl);
-                channel=mainClass.Channel;
+                group=QueryFactory.Post.GetGroup(groupUrl);
+                channel=group.Channel;
             }
             else if (hasChannel)
             {
                 channel = QueryFactory.Post.GetChannel(channelUrl);
             }
-            ViewBag.Group = mainClass;
+            ViewBag.Group = group;
             ViewBag.Channel= channel;
             ViewBag.Title =string.Format(Config.Format.PAGE_TITLE,channel.Name  );
 
@@ -42,18 +42,18 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="channelUrl">Channel</param>
-        /// <param name="mainClassUrl">Group</param>
+        /// <param name="groupUrl">Group</param>
         /// <param name="c">Category</param>
         /// <param name="t">Tag</param>
         /// <param name="d">Date</param>
         /// <param name="k">Key</param>
         /// <returns></returns>
         [ActionName("index-list")]
-        public ActionResult List(int? id, string channelUrl, string mainClassUrl, string c, string t, string d, string k)
+        public ActionResult List(int? id, string channelUrl, string groupUrl, string c, string t, string d, string k)
         {
             var data = QueryFactory.User.IsLogin()
-                           ? QueryFactory.Post.FindAll(id ?? 1, 20, channelUrl, mainClassUrl, c, t, null, k)
-                           : QueryFactory.Post.FindAllByNormal(id ?? 1, 20, channelUrl, mainClassUrl, c, t, null, k);
+                           ? QueryFactory.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k)
+                           : QueryFactory.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k);
             //搜索记录
             if (!string.IsNullOrEmpty(k))
             {
@@ -65,7 +65,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return View(pagedList);
         }
 
-        public ActionResult Detail(string id, string mainClassUrl)
+        public ActionResult Detail(string id, string groupUrl)
         {
             Post data = QueryFactory.Post.Find(id);
 
@@ -76,9 +76,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
             CommandFactory.Run(new PostBrowseEvent() {PostId = data.PostId});
 
-            var mainClass = QueryFactory.Post.GetGroup(mainClassUrl);
-            var    channel = mainClass.Channel;
-            ViewBag.Group = mainClass;
+            var group = QueryFactory.Post.GetGroup(groupUrl);
+            var    channel = group.Channel;
+            ViewBag.Group = group;
             ViewBag.Channel = channel;
 
             ViewBag.Title =string.Format(Config.Format.PAGE_TITLE,  data.Title );
@@ -147,30 +147,30 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         [ChildActionOnly]
         [OutputCache(Duration = 120)]
-        public PartialViewResult GroupByCategory(string mainClassUrl)
+        public PartialViewResult GroupByCategory(string groupUrl)
         {
-            ViewBag.GroupUrl = mainClassUrl;
-            return PartialView(QueryFactory.Post.StatGroupByCategory(mainClassUrl));
+            ViewBag.groupUrl = groupUrl;
+            return PartialView(QueryFactory.Post.StatGroupByCategory(groupUrl));
         }
 
         ////最多浏览
         //[AcceptVerbs(HttpVerbs.Get)]
         //[ChildActionOnly]
         //[OutputCache(Duration = 120)]
-        //public PartialViewResult RankByViewCount(string mainClassUrl)
+        //public PartialViewResult RankByViewCount(string groupUrl)
         //{
-        //    ViewBag.GroupUrl = mainClassUrl;
-        //    return PartialView("RankList", _postServices.GetListByViewCount(mainClassUrl));
+        //    ViewBag.groupUrl = groupUrl;
+        //    return PartialView("RankList", _postServices.GetListByViewCount(groupUrl));
         //}
 
         ////最多回复
         //[AcceptVerbs(HttpVerbs.Get)]
         //[ChildActionOnly]
         //[OutputCache(Duration = 120)]
-        //public PartialViewResult RankByReplyCount(string mainClassUrl)
+        //public PartialViewResult RankByReplyCount(string groupUrl)
         //{
-        //    ViewBag.GroupUrl = mainClassUrl;
-        //    return PartialView("RankList", _postServices.GetListByReplyCount(mainClassUrl));
+        //    ViewBag.groupUrl = groupUrl;
+        //    return PartialView("RankList", _postServices.GetListByReplyCount(groupUrl));
         //}
 
         #endregion

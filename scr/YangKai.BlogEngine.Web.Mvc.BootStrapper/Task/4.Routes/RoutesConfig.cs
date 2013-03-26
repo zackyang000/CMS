@@ -38,7 +38,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             {
                 LowerCaseUrlRouteMapHelper.MapLowerCaseUrlRoute((RouteCollection) routes, item.Url + "1",
                     item.Url + "-{id}",
-                    new {controller = "Article", action = "Detail", id = UrlParameter.Optional, MainClassUrl = item.Url}
+                    new {controller = "Article", action = "Detail", id = UrlParameter.Optional, GroupUrl = item.Url}
                     );
             }
             routes.MapLowerCaseUrlRoute(
@@ -58,7 +58,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 routes.MapLowerCaseUrlRoute(
                     item.Url,
                     item.Url + "/{action}/{id}",
-                    new {controller = "Article", action = "Index", id = UrlParameter.Optional, MainClassUrl = item.Url},
+                    new { controller = "Article", action = "Index", id = UrlParameter.Optional, GroupUrl = item.Url },
                     new[] { "YangKai.BlogEngine.Web.Mvc.Controllers" }
                     );
             }

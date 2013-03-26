@@ -2,16 +2,42 @@
 <rss version="2.0">
   <channel>
     <title>iShare</title>
-    <description>iShare描述</description>
+    <description>Share Link Fun</description>
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
-    <copyright>&amp;copy; Powered by 我是你的猪(YangKai QQ:83448327), 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <managingEditor>zackyang@outlook.com</managingEditor>
-    <webMaster>zackyang@outlook.com</webMaster>
-    <pubDate>Mon, 11 Mar 2013 14:25:20 GMT</pubDate>
-    <lastBuildDate>Mon, 11 Mar 2013 14:25:20 GMT</lastBuildDate>
+    <copyright>&amp;copy; Powered by 我是你的猪(YangKai Email:ZackYang@outlook.com), 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
+    <pubDate>Tue, 26 Mar 2013 21:21:10 GMT</pubDate>
+    <lastBuildDate>Tue, 26 Mar 2013 21:21:10 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>777777777777777</title>
+      <description>&lt;p&gt;
+	77777777777777777777777777&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/videos/Detail/777777777777777</link>
+      <category>视频 - 默认</category>
+      <category>视频 - 早期数据</category>
+      <category>视频 - 欢乐</category>
+      <category>视频 - 卖萌</category>
+      <category>视频 - 默认</category>
+      <category>视频 - 蛋痛</category>
+      <category>视频 - 给力</category>
+      <category>视频 - 重口味</category>
+      <category>视频 - 养眼</category>
+      <guid>5cf874ca-6d10-48ba-9b8a-864d90260e8b</guid>
+      <pubDate>Tue, 26 Mar 2013 21:20:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>895646</title>
+      <description>&lt;p&gt;
+	46&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/videos/Detail/895646</link>
+      <category>视频 - 早期数据</category>
+      <guid>16dc08d4-9fc3-42ee-96e2-5ec8b297b81d</guid>
+      <pubDate>Mon, 11 Mar 2013 14:28:00 GMT</pubDate>
+    </item>
     <item>
       <title>6666666</title>
       <description>&lt;p&gt;
@@ -497,33 +523,6 @@
       <category>技术 - 杂类</category>
       <guid>de3bfb8a-dcc7-e111-a611-00155d5f0243</guid>
       <pubDate>Sat, 07 Jul 2012 10:35:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>发错药之后美国护士vs中国护士</title>
-      <description>
-&lt;div&gt;
-	米国：&lt;/div&gt;
-&lt;div&gt;
-	&amp;nbsp;&lt;/div&gt;
-&lt;div&gt;
-	这位护士叫玛丽，在纽约一家医院已经工作了三年。&lt;/div&gt;
-&lt;div&gt;
-	&amp;nbsp;&lt;/div&gt;
-&lt;div&gt;
-	这年纽约气候异常，住院病人激增，玛丽忙得脚不沾地。&lt;/div&gt;
-</description>
-      <link>http://www.woshinidezhu.com/topics/Detail/after-the-wrong-medicine-united-states-nurse-vs-china-nurse</link>
-      <category>文章 - 欢乐</category>
-      <guid>04ab3c2a-b38f-e111-b433-00155d5f0243</guid>
-      <pubDate>Thu, 26 Apr 2012 23:12:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>我以80后的名义发誓，这视频说到我心坎里了</title>
-      <description>现实的现实阿。。。悲催的 80后。</description>
-      <link>http://www.woshinidezhu.com/videos/Detail/i-swear-in-the-name-of-generation-y-the-video-when-it-comes-to-my-heart</link>
-      <category>视频 - 给力</category>
-      <guid>96afd301-b38f-e111-b433-00155d5f0243</guid>
-      <pubDate>Thu, 26 Apr 2012 23:12:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

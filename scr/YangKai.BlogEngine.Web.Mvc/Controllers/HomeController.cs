@@ -24,12 +24,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         [ActionName("layout-header-caption")]
         [ChildActionOnly]
-        public PartialViewResult Caption(string channelUrl, string mainClassUrl)
+        public PartialViewResult Caption(string channelUrl, string groupUrl)
         {
             Channel channel = null;
-            if (!string.IsNullOrEmpty(mainClassUrl))
+            if (!string.IsNullOrEmpty(groupUrl))
             {
-                channel = QueryFactory.Post.GetGroup(mainClassUrl).Channel;
+                channel = QueryFactory.Post.GetGroup(groupUrl).Channel;
             }
             if (!string.IsNullOrEmpty(channelUrl))
             {
@@ -39,12 +39,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         /// <summary>
-        /// channelUrl与mainClassUrl有且应仅有一种,则为Post
+        /// channelUrl与groupUrl有且应仅有一种,则为Post
         /// 列表或详细页面,才需要显示导航部分.否则返回空.
         /// </summary>
         [ActionName("layout-header-nav")]
         [ChildActionOnly]
-        public PartialViewResult Nav(string channelUrl, string mainClassUrl)
+        public PartialViewResult Nav(string channelUrl, string groupUrl)
         {
             IList<Group> entities = null;
 
@@ -53,10 +53,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 entities = QueryFactory.Post.GetGroupsByChannelUrl(channelUrl);
                 ViewBag.ChannelUrl = channelUrl;
             }
-            if (!string.IsNullOrEmpty(mainClassUrl))
+            if (!string.IsNullOrEmpty(groupUrl))
             {
-                entities = QueryFactory.Post.GetGroupsByGroupUrl(mainClassUrl);
-                ViewBag.ChannelUrl = QueryFactory.Post.GetGroup(mainClassUrl).Channel.Url;
+                entities = QueryFactory.Post.GetGroupsByGroupUrl(groupUrl);
+                ViewBag.ChannelUrl = QueryFactory.Post.GetGroup(groupUrl).Channel.Url;
             }
 
             if (Request.Url != null) ViewBag.Url = Request.Url.AbsolutePath.Substring(1);
@@ -69,7 +69,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         /// </summary>
         [ActionName("layout-header-banner")]
         [ChildActionOnly]
-        public PartialViewResult Banner(string channelUrl, string mainClassUrl)
+        public PartialViewResult Banner(string channelUrl, string groupUrl)
         {
             string bannerUrl = null;
 
@@ -78,9 +78,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 var channel = QueryFactory.Post.GetChannel(channelUrl);
                 bannerUrl = channel.BannerUrl;
             }
-            if (!string.IsNullOrEmpty(mainClassUrl))
+            if (!string.IsNullOrEmpty(groupUrl))
             {
-                var group = QueryFactory.Post.GetGroup(mainClassUrl);
+                var group = QueryFactory.Post.GetGroup(groupUrl);
                 bannerUrl = group.Channel.BannerUrl;
             }
 

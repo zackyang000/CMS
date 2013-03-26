@@ -30,7 +30,7 @@ function get_post_url() {
 
 function set_fixed_link() {
     if ($("#post_url").val().length > 0) {
-        $("#fixed-link").html("http://www.woshinidezhu.com/" + $("input[name='mainclassRadio']:checked").val() + "/" + $("#post_url").val());
+        $("#fixed-link").html("http://www.woshinidezhu.com/" + $("input[name='groupRadio']:checked").val() + "/" + $("#post_url").val());
         $("#fixed-link-div").removeClass("fixed-link-div");
     }
     else {
@@ -299,10 +299,10 @@ $(function () {
     //绑定channel选项卡点击事件并选中第一项
     $("#channel-tabs li a").bind("click", function () { channel_tab_click(this); });
     $("#channel-tabs li:first a").click();
-    //绑定mainClass单选按钮点击事件并选中第一项
-    $("#channelbox .mainclass-panel li").bind("change", function () { mainclass_radio_click(); });
-    $('input[name=mainclassRadio]').get(0).checked = true;
-    mainclass_radio_click();
+    //绑定group单选按钮点击事件并选中第一项
+    $("#channelbox .group-panel li").bind("change", function () { group_radio_click(); });
+    $('input[name=groupRadio]').get(0).checked = true;
+    group_radio_click();
 });
 
 //channel选项卡点击事件
@@ -310,13 +310,13 @@ function channel_tab_click(a) {
     $("#channel-tabs li").removeClass("tab");
     $(a).parent().addClass("tab");
     $("#channelbox .tabs-panel").hide();
-    $("#mainclass-" + $(a).parent().prop("id").substring(12)).show();
+    $("#group-" + $(a).parent().prop("id").substring(12)).show();
 }
 
-//mainClass单选按钮点击事件
-function mainclass_radio_click() {
-    bind_category($("input[name='mainclassRadio']:checked").val());
-    bind_tag($("input[name='mainclassRadio']:checked").val());
+//group单选按钮点击事件
+function group_radio_click() {
+    bind_category($("input[name='groupRadio']:checked").val());
+    bind_tag($("input[name='groupRadio']:checked").val());
     set_fixed_link();
 }
 
@@ -342,14 +342,14 @@ function select_category_tab(link) {
     }
 }
 
-function bind_category(mainClassUrl) {
+function bind_category(groupUrl) {
     $("#categorychecklist").html("");
     $.ajax({
         type: "GET",
         async: "false",
         url: "/admin/postmanage/GetCategory",
         dataType: "json",
-        data: "mainClassUrl=" + mainClassUrl,
+        data: "groupUrl=" + groupUrl,
         cache: false,
         success: function (result) {
             var categoryListHtml = "";
@@ -387,7 +387,7 @@ $(function () {
     $("#add-category-tip").hide();
 });
 function add_category() {
-    var mainclassUrl = $("input[name='mainclassRadio']:checked").val();
+    var groupUrl = $("input[name='groupRadio']:checked").val();
     var name = $("#add-category-name").val();
     var url = $("#add-category-url").val();
     if (name != "" && url != "") {
@@ -395,11 +395,11 @@ function add_category() {
             type: "POST",
             url: "/admin/postmanage/AddCategory",
             dataType: "json",
-            data: "name=" + name + "&url=" + url + "&mainclassUrl=" + mainclassUrl,
+            data: "name=" + name + "&url=" + url + "&groupUrl=" + groupUrl,
             cache: false,
             success: function (context) {
                 if (context.result) {
-                    bind_category($("input[name='mainclassRadio']:checked").val());
+                    bind_category($("input[name='groupRadio']:checked").val());
                     $("#add-category-name").val("");
                     $("#add-category-url").val("");
                     $("#add-category-tip").html("");
@@ -441,14 +441,14 @@ $(function () {
     $(".choose_before").bind("click", function () { toggle_before_tag(); });
 });
 
-function bind_tag(mainClassUrl) {
+function bind_tag(groupUrl) {
     $("#tag_list").html("");
     $.ajax({
         type: "GET",
         async: "false",
         url: "/admin/postmanage/GetTag",
         dataType: "json",
-        data: "mainClassUrl=" + mainClassUrl,
+        data: "groupUrl=" + groupUrl,
         cache: false,
         success: function (result) {
             var tagListHtml = "";
@@ -513,8 +513,8 @@ $(function () {
     if ($("#isnew").val() == "False") {
         post_timestamp_change();
         $("#channel-tab-" + $("#edit-channel").val() + " a").click();
-        $("input[name='mainclassRadio'][value='" + $("#edit-mainclass").val() + "']").prop("checked", true);
-        mainclass_radio_click();
+        $("input[name='groupRadio'][value='" + $("#edit-group").val() + "']").prop("checked", true);
+        group_radio_click();
 
         var state = $("#edit-state").val();
         switch (state) {

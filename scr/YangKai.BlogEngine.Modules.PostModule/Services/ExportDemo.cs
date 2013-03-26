@@ -165,14 +165,14 @@
 //                Row row = sheet.CreateRow(i);
 //                row.CreateCell(0).SetCellValue(i - 1);
 //                row.CreateCell(1).SetCellValue(item.Title);
-//                row.CreateCell(2).SetCellValue(item.MainClass.Name);
+//                row.CreateCell(2).SetCellValue(item.Group.Name);
 //                row.CreateCell(3).SetCellValue(string.Join(",", item.Categorys.Select(p => p.Name).ToList()));
 //                row.CreateCell(4).SetCellValue(string.Join(",", item.Tags.Select(p => p.Name).ToList()));
 //                row.CreateCell(5).SetCellValue(item.PubAdmin.Name);
 //                row.CreateCell(6).SetCellValue(item.PubDate.ToString("yyyy年MM月dd日"));
 //                row.CreateCell(7).SetCellValue(item.ViewCount);
 //                row.CreateCell(8).SetCellValue(item.ReplyCount);
-//                row.CreateCell(9).SetCellValue(string.Format("{0}/{1}-{2}", Site.ROOT_URI, item.MainClass.Url, item.Url));//TODO:url格式
+//                row.CreateCell(9).SetCellValue(string.Format("{0}/{1}-{2}", Site.ROOT_URI, item.Group.Url, item.Url));//TODO:url格式
 
 //                row.GetCell(0).CellStyle = GetRowTitle(hssfworkbook);
 //                if (i % 2 == 0)

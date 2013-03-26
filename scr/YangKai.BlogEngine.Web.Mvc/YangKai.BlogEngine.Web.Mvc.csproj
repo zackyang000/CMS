@@ -1430,7 +1430,7 @@
     <Content Include="Areas\Admin\Views\Account\login.cshtml" />
     <Content Include="Areas\Admin\Views\PostManage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PostManage\new-category-box.cshtml" />
-    <Content Include="Areas\Admin\Views\PostManage\new-channel-and-mainclass.cshtml" />
+    <Content Include="Areas\Admin\Views\PostManage\new-channel-and-group.cshtml" />
     <Content Include="Areas\Admin\Views\PostManage\new-main.cshtml" />
     <Content Include="Areas\Admin\Views\PostManage\new-source.cshtml" />
     <Content Include="Areas\Admin\Views\PostManage\new-submit.cshtml" />
