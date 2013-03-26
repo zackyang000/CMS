@@ -8,7 +8,7 @@
         $("#author_info").toggle();
     }
     $(function () {
-        $("input:submit").bind("click", function () { add_comment('@ViewData["ArticleId"]', '@Model.Pic'); });
+        $("input:submit").bind("click", function () { add_comment('@ViewBag.PostId', '@Model.Pic'); });
         $("#show_author_info").hide();
         if ($("#Author").val() != "") {
             $("#show_author_info a,#hide_author_info a").bind("click", function () { change_author_info_display(); });

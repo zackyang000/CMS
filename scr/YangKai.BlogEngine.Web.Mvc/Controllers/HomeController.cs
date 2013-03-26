@@ -51,15 +51,15 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             if (!string.IsNullOrEmpty(channelUrl))
             {
                 entities = QueryFactory.Post.GetGroupsByChannelUrl(channelUrl);
-                ViewData["channelUrl"] = channelUrl;
+                ViewBag.ChannelUrl = channelUrl;
             }
             if (!string.IsNullOrEmpty(mainClassUrl))
             {
                 entities = QueryFactory.Post.GetGroupsByGroupUrl(mainClassUrl);
-                ViewData["channelUrl"] = QueryFactory.Post.GetGroup(mainClassUrl).Channel.Url;
+                ViewBag.ChannelUrl = QueryFactory.Post.GetGroup(mainClassUrl).Channel.Url;
             }
 
-            if (Request.Url != null) ViewData["url"] = Request.Url.AbsolutePath.Substring(1);
+            if (Request.Url != null) ViewBag.Url = Request.Url.AbsolutePath.Substring(1);
 
             return entities == null ? PartialView() : PartialView(entities);
         }

@@ -6,7 +6,7 @@
         @if (Model != null)
         {
         <td class="div"></td>
-        <td class="link">@Html.ActionLink("全部", "Index", ViewData["channelUrl"] as string)</td>
+        <td class="link">@Html.ActionLink("全部", "Index", ViewBag.ChannelUrl as string)</td>
             foreach (var item in Model)
             {
         <td class="div"></td>
@@ -15,12 +15,12 @@
         }
         else
         {
-            if ((ViewData["url"] as string).ToLower() == "board")
+            if (((string)ViewBag.Url).ToLower() == "board")
             {
         <td class="div"></td>
         <td class="link">@Html.ActionLink("留言板", "Index", "Board")</td>
             }
-            if ((ViewData["url"] as string).ToLower() == "about")
+            if (((string)ViewBag.Url).ToLower() == "about")
             {
         <td class="div"></td>
         <td class="link">@Html.ActionLink("关于", "Index", "About")</td>

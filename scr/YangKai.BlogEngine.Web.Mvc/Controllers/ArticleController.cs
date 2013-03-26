@@ -149,7 +149,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [OutputCache(Duration = 120)]
         public PartialViewResult GroupByCategory(string mainClassUrl)
         {
-            ViewData["mainClassUrl"] = mainClassUrl;
+            ViewBag.GroupUrl = mainClassUrl;
             return PartialView(QueryFactory.Post.StatGroupByCategory(mainClassUrl));
         }
 
@@ -159,7 +159,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         //[OutputCache(Duration = 120)]
         //public PartialViewResult RankByViewCount(string mainClassUrl)
         //{
-        //    ViewData["MainClassUrl"] = mainClassUrl;
+        //    ViewBag.GroupUrl = mainClassUrl;
         //    return PartialView("RankList", _postServices.GetListByViewCount(mainClassUrl));
         //}
 
@@ -169,7 +169,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         //[OutputCache(Duration = 120)]
         //public PartialViewResult RankByReplyCount(string mainClassUrl)
         //{
-        //    ViewData["MainClassUrl"] = mainClassUrl;
+        //    ViewBag.GroupUrl = mainClassUrl;
         //    return PartialView("RankList", _postServices.GetListByReplyCount(mainClassUrl));
         //}
 

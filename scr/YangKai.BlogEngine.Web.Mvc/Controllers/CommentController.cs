@@ -43,7 +43,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public PartialViewResult Add(string id)
         {
-            ViewData["ArticleId"] = QueryFactory.Post.Find(id).PostId; //添加评论时使用
+            ViewBag.PostId = QueryFactory.Post.Find(id).PostId; //添加评论时使用
 
             WebGuestCookie cookie = WebGuestCookie.Load();
             var entity = new Comment

@@ -8,7 +8,7 @@
     function SearchkeyDown(txt) {
         if (window.event.keyCode == 13) {
             event.returnValue = false;
-            location.href = '/@(ViewData["MainClassUrl"]??ViewData["channelUrl"])?k=' + txt;
+            location.href = '/@(ViewBag.GroupUrl??ViewBag.ChannelUrl)?k=' + txt;
         }
     }
 </script>
