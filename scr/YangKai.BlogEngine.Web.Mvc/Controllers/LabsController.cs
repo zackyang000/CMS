@@ -12,16 +12,16 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         public FilePathResult Export()
         {
             var filepath =
-                Server.MapPath(string.Format("~/excel/{0}.xls", DateTime.Now.ToString("导出数据 yyyy-MM-dd HHmmss")));
-            //_labsServices.ExportDemo(filepath);
+                Server.MapPath(string.Format("/UpLoad/export/{0}.xls", DateTime.Now.ToString("导出数据 yyyy-MM-dd HHmmss")));
+            QueryFactory.Lab.ExportPosts(filepath);
             return new FilePathResult(filepath, "application/vnd.ms-excel");
         }
 
         [ActionName("analytics")]
         public ActionResult Analytics()
         {
-            QueryFactory.Stat.UpdateRefStatPicture();
-            return View(QueryFactory.Stat.GetRefstatInfo());
+            QueryFactory.Lab.UpdateRefStatPicture();
+            return View(QueryFactory.Lab.GetRefstatInfo());
         }
 
         [ActionName("probe")]

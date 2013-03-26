@@ -115,7 +115,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CallHandlers\CommentRssCallHandler.cs" />
     <Compile Include="Services\CallHandlers\PostRssCallHandler.cs" />
-    <Compile Include="Services\ExportDemo.cs" />
     <Compile Include="Services\PostService.cs" />
     <Compile Include="Services\Rss.cs" />
   </ItemGroup>

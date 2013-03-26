@@ -108,3 +108,10 @@ Backup*/
 UpgradeLog*.XML
 scr/YangKai.BlogEngine.Web.Mvc/error/
 scr/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/
+scr/YangKai.BlogEngine.Web.Mvc/UpLoad/export/
+scr/YangKai.BlogEngine.Web.Mvc/UpLoad/files/
+scr/YangKai.BlogEngine.Web.Mvc/UpLoad/images/
+scr/YangKai.BlogEngine.Web.Mvc/UpLoad/offsite/
+scr/YangKai.BlogEngine.Web.Mvc/UpLoad/thumbnail/
+scr/YangKai.BlogEngine.Web.Mvc/feed_articles.xml
+scr/YangKai.BlogEngine.Web.Mvc/feed_comments.xml

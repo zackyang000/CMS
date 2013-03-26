@@ -82,7 +82,7 @@
   <ItemGroup>
     <Compile Include="IBoardQueryServices.cs" />
     <Compile Include="IPostQueryServices.cs" />
-    <Compile Include="IStatQueryServices.cs" />
+    <Compile Include="ILabQueryServices.cs" />
     <Compile Include="IUserQueryServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

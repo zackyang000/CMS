@@ -71,6 +71,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NPOI">
+      <HintPath>..\AtomLab.Utility\Lib\NPOI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -85,7 +88,7 @@
     <Compile Include="BoardQueryServices.cs" />
     <Compile Include="PostQueryServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatQueryServices.cs" />
+    <Compile Include="LabQueryServices.cs" />
     <Compile Include="UserQueryServices.cs" />
   </ItemGroup>
   <ItemGroup>

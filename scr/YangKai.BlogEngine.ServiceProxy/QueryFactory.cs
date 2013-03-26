@@ -33,11 +33,11 @@ namespace YangKai.BlogEngine.ServiceProxy
             }
         }
 
-        public static IStatQueryServices Stat
+        public static ILabQueryServices Lab
         {
             get
             {
-                return InstanceLocator.Current.GetInstance<IStatQueryServices>();
+                return InstanceLocator.Current.GetInstance<ILabQueryServices>();
             }
         }
     }

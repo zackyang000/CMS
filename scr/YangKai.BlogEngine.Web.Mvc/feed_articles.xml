@@ -6,10 +6,20 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by 我是你的猪(YangKai Email:ZackYang@outlook.com), 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Tue, 26 Mar 2013 21:21:10 GMT</pubDate>
-    <lastBuildDate>Tue, 26 Mar 2013 21:21:10 GMT</lastBuildDate>
+    <pubDate>Tue, 26 Mar 2013 22:10:57 GMT</pubDate>
+    <lastBuildDate>Tue, 26 Mar 2013 22:10:57 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>1212122112</title>
+      <description>&lt;p&gt;
+	211212213&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/videos/Detail/1212122112</link>
+      <category>视频 - 默认</category>
+      <guid>d1e68275-e475-4fbf-a7ea-5c2b9166d24a</guid>
+      <pubDate>Tue, 26 Mar 2013 22:09:00 GMT</pubDate>
+    </item>
     <item>
       <title>777777777777777</title>
       <description>&lt;p&gt;
@@ -513,16 +523,6 @@
       <category>视频 - 给力</category>
       <guid>02d048e9-dcc7-e111-a611-00155d5f0243</guid>
       <pubDate>Sat, 07 Jul 2012 10:38:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>21世纪的代码审查</title>
-      <description>&lt;p&gt;
-	在软件工程领域里代码审查可以结束程序员之间无谓的争执。开发者常常会因为一些愚蠢的小事斗嘴，冒犯对方，甚至是在Q&amp;amp;A问答之前抓住Bug而喋喋不休，争执总是围绕在你左右。OK，千万不要误会我的意思，因为我们有理由相信代码审查绝对是个不错的好方法。&lt;/p&gt;
-</description>
-      <link>http://www.woshinidezhu.com/codes/Detail/code-review-of-the-21st-century</link>
-      <category>技术 - 杂类</category>
-      <guid>de3bfb8a-dcc7-e111-a611-00155d5f0243</guid>
-      <pubDate>Sat, 07 Jul 2012 10:35:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
