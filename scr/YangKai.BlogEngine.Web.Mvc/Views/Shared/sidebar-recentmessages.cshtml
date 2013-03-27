@@ -9,7 +9,7 @@
         var self = this;
 
         self.board = ko.observableArray();
-        
+
         $.getJSON('/board/recent', self.board)
             .done(function() {
                 fadeOutAndFadeIn("div-sidebar-recentmessages-detail-loader", "div-sidebar-recentmessages-detail");

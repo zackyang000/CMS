@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Configuration;
+using System.Linq;
 using System.Web.Routing;
 using AtomLab.Utility.RouteHelper;
 using Bootstrap.Extensions.StartupTasks;
@@ -24,42 +25,93 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            ConstRoute(routes);
-            var mainClasses =QueryFactory.Post.GetGroupsByNotDeletion();
-            /********************************************************
-             * 以下每2段为1组,目的是为了控制访问&生成所需要的URL.   *
-             * 第1段foreach是为了保证让访问如videos-demo时,无论第   *
-             * 一个"-"之前为什么内容,都能跳转到Article的Controller  *
-             * 第2段是为了使用ActionLink时能生成为如videos-demo一   *
-             * 样的url.总之:第1段是为了访问,第2段是为了生成并且两   *
-             * 句之间顺序不能变更(原因不明)                         *
-             ********************************************************/
-            foreach (var item in mainClasses)
+            RegisterChannelRoute(routes);
+            RegisterArticleRoute(routes);
+        }
+
+        private static void RegisterChannelRoute(RouteCollection routes)
+        {
+            var channels = QueryFactory.Post.FindAllByNotDeletion();
+
+            foreach (var entity in channels)
             {
-                LowerCaseUrlRouteMapHelper.MapLowerCaseUrlRoute((RouteCollection) routes, item.Url + "1",
-                    item.Url + "-{id}",
-                    new {controller = "Article", action = "Detail", id = UrlParameter.Optional, GroupUrl = item.Url}
+                routes.MapLowerCaseUrlRoute(
+                    entity.Url,
+                    entity.Url + "/{id}",
+                    new
+                        {
+                            controller = "Article",
+                            action = "Index",
+                            channelUrl = entity.Url,
+                            id = UrlParameter.Optional
+                        },
+                    new[] {"YangKai.BlogEngine.Web.Mvc.Controllers"});
+
+                routes.MapLowerCaseUrlRoute(
+                    entity.Url + "-calendar",
+                    entity.Url + "-calendar",
+                    new
+                        {
+                            controller = "Article",
+                            action = "calendar",
+                            channelUrl = entity.Url
+                        }
+                    , new[] {"YangKai.BlogEngine.Web.Mvc.Controllers"}
                     );
+            }
+
+            var defaultChannel = channels.FirstOrDefault(p => p.IsDefault);
+            if (defaultChannel == null) throw new ConfigurationErrorsException("Channels must have a 'DefaultChannel'");
+            routes.MapLowerCaseUrlRoute(
+                "index",
+                string.Empty,
+                new {controller = "Article", action = "Index", channelUrl = defaultChannel.Url}
+                , new[] {"YangKai.BlogEngine.Web.Mvc.Controllers"}
+                );
+        }
+
+        private static void RegisterArticleRoute(RouteCollection routes)
+        {
+            var groups = QueryFactory.Post.GetGroupsByNotDeletion();
+            /********************************************************
+             * 以下每2段为1组,目的是为了控制访问&生成所需要的URL.
+             * 第1段foreach是为了保证让访问如videos-demo时,无论第一
+             * 个"-"之前为什么内容,都能跳转到Article的Controller第
+             * 2段是为了使用ActionLink时能生成为如videos-demo一样的
+             * url.总之:第1段是为了访问,第2段是为了生成.并且两句之间顺
+             * 序不能变更.
+             ********************************************************/
+            foreach (var item in groups)
+            {
+                routes.MapLowerCaseUrlRoute(item.Url + "1", item.Url + "-{id}",
+                                            new
+                                                {
+                                                    controller = "Article",
+                                                    action = "Detail",
+                                                    id = UrlParameter.Optional,
+                                                    groupUrl = item.Url,
+                                                    channelUrl = item.Channel.Url
+                                                });
             }
             routes.MapLowerCaseUrlRoute(
                 "Article-Detail",
                 "{controller}-{id}",
                 new {controller = "Article", action = "Detail", id = UrlParameter.Optional},
-                new[] { "YangKai.BlogEngine.Web.Mvc.Controllers" }
+                new[] {"YangKai.BlogEngine.Web.Mvc.Controllers"}
                 );
 
             /*******************************************
-             * foreach中,MapLowerCaseUrlRoute的name即item.Url是给  *
-             * MvcPager提供生成分页Link使用,若修改需   *
-             * 与Html.Pager中的routeName一同修改       *
+             * foreach中,MapLowerCaseUrlRoute的name即item.Url是给
+             * MvcPager提供生成分页Link使用,若修改需与Html.Pager中的
+             * routeName一同修改
              *******************************************/
-            foreach (var item in mainClasses)
+            foreach (var item in groups)
             {
                 routes.MapLowerCaseUrlRoute(
                     item.Url,
                     item.Url + "/{action}/{id}",
-                    new { controller = "Article", action = "Index", id = UrlParameter.Optional, GroupUrl = item.Url },
-                    new[] { "YangKai.BlogEngine.Web.Mvc.Controllers" }
+                    new {controller = "Article", action = "Index", id = UrlParameter.Optional, GroupUrl = item.Url},
+                    new[] {"YangKai.BlogEngine.Web.Mvc.Controllers"}
                     );
             }
             //由于使用Default URL所以不需要本行
@@ -73,52 +125,8 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "Default",
                 "{controller}/{action}/{id}",
                 new {controller = "Article", action = "Index", id = UrlParameter.Optional},
-                new[] { "YangKai.BlogEngine.Web.Mvc.Controllers" }
+                new[] {"YangKai.BlogEngine.Web.Mvc.Controllers"}
                 );
-        }
-
-        private static void ConstRoute(RouteCollection routes)
-        {
-            var channels = QueryFactory.Post.FindAllByNotDeletion();
-            foreach (var entity in channels)
-            {
-                routes.MapLowerCaseUrlRoute(
-                    entity.Url,
-                    entity.Url + "/{id}",
-                    new
-                        {
-                            controller = "Article",
-                            action = "Index",
-                            channelUrl = entity.Url,
-                            id = UrlParameter.Optional
-                        }
-                        , new[] { "YangKai.BlogEngine.Web.Mvc.Controllers" }
-                    );
-            }
-            foreach (var entity in channels)
-            {
-                routes.MapLowerCaseUrlRoute(
-                    entity.Url + "-calendar",
-                    entity.Url + "-calendar",
-                    new
-                        {
-                            controller = "Article",
-                            action = "calendar",
-                            channelUrl = entity.Url
-                        }
-                        , new[] { "YangKai.BlogEngine.Web.Mvc.Controllers" }
-                    );
-            }
-            var defaultChannel = channels.Where(p => p.IsDefault).FirstOrDefault();
-            if (defaultChannel != null)
-            {
-                routes.MapLowerCaseUrlRoute(
-                    "index",
-                    "",
-                    new {controller = "Article", action = "Index", channelUrl = defaultChannel.Url}
-                    , new[] { "YangKai.BlogEngine.Web.Mvc.Controllers" }
-                    );
-            }
         }
     }
 }
