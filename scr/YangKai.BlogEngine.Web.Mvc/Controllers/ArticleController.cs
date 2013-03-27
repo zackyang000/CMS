@@ -12,28 +12,34 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class ArticleController : Controller
     {
-        public ActionResult Index(int? id,string channelUrl,  string groupUrl, string c, string t, string d, string k)
+        public ActionResult Index(int? id, string channelUrl, string groupUrl, string c, string t, string d, string k)
         {
-            bool hasChannel=!string.IsNullOrEmpty(channelUrl);
-            bool hasGroup=!string.IsNullOrEmpty(groupUrl);
+            bool hasChannel = !string.IsNullOrEmpty(channelUrl);
+            bool hasGroup = !string.IsNullOrEmpty(groupUrl);
             Channel channel = null;
             Group group = null;
-            if(hasGroup)
-            {
-                group=QueryFactory.Post.GetGroup(groupUrl);
-                channel=group.Channel;
-            }
-            else if (hasChannel)
+
+            if (hasChannel)
             {
                 channel = QueryFactory.Post.GetChannel(channelUrl);
             }
-            ViewBag.Group = group;
-            ViewBag.Channel= channel;
-            ViewBag.Title =string.Format(Config.Format.PAGE_TITLE,channel.Name  );
+            else if (hasGroup)
+            {
+                group = QueryFactory.Post.GetGroup(groupUrl);
+                channel = group.Channel;
+            }
+            else
+            {
+                throw new ArgumentException("Must have a channelUrl or groupUrl!");
+            }
 
+            ViewBag.Group = group;
+            ViewBag.Channel = channel;
+            ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, channel.Name);
+            ViewBag.SubCaption = channel.Description;
             ViewBag.Keywords = string.Empty;
             ViewBag.Description = channel.Description;
-            ViewBag.SubCaption = channel.Description;
+
             return View();
         }
 
@@ -54,14 +60,15 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             var data = QueryFactory.User.IsLogin()
                            ? QueryFactory.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k)
                            : QueryFactory.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k);
-            //搜索记录
+            var pagedList = new PagedList<Post>(data.DataList, id ?? 1, 20, data.TotalCount);
+           
+            //保存搜索记录
             if (!string.IsNullOrEmpty(k))
             {
                 var log = Log.CreateSearchLog(k);
                 CommandFactory.Create(log);
             }
 
-            var pagedList = new PagedList<Post>(data.DataList, id ?? 1, 20, data.TotalCount);
             return View(pagedList);
         }
 
@@ -74,18 +81,16 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 if (data == null) return View("_NotFound");
                 if (data.PostStatus == (int)PostStatusEnum.Trash) return View("_Removed");
             }
-            CommandFactory.Run(new PostBrowseEvent() {PostId = data.PostId});
 
-            var group = QueryFactory.Post.GetGroup(groupUrl);
-            var    channel = group.Channel;
-            ViewBag.Group = group;
-            ViewBag.Channel = channel;
+            CommandFactory.Run(new PostBrowseEvent {PostId = data.PostId});
 
+
+            ViewBag.Group = data.Group;
+            ViewBag.Channel = data.Group.Channel;
             ViewBag.Title =string.Format(Config.Format.PAGE_TITLE,  data.Title );
-
-            ViewBag.Keywords = data.Tags != null ? string.Join(",", data.Tags.Select(p => p.Name).ToList()) : string.Empty;
-            ViewBag.Description = data.Title;
             ViewBag.SubCaption = data.Group.Channel.Description;
+            ViewBag.Keywords = data.Tags != null ? string.Join(",", data.Tags.Select(p => p.Name).ToList()) : data.Title;
+            ViewBag.Description = data.Title;
 
             return View(data);
         }
