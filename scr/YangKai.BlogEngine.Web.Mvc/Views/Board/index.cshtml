@@ -42,7 +42,6 @@
                     .done(function(o) {
                         if (o.result) {
                             noty({ text: '操作成功,已删除#' + entity.Index + "." });
-                            noty({ text: '操作失败,错误:' + o.reason, type: 'error' });
                             self.board.remove(entity);
                         } else {
                             noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
