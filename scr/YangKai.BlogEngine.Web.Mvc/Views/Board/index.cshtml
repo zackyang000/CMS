@@ -18,44 +18,41 @@
 
             self.board = ko.observableArray();
             self.username = ko.observable('@Model.Author');
-            self.isNewGuest = self.username() === "";
+            self.loading = ko.observable("");
+            self.error = ko.observable("");
+            self.controldisplayauthoreditor = ko.observable(false);
+            
+            self.add = function (formElement) {
+                self.error("");
+                self.loading("正在提交");
+                $.post("/board/add", $(formElement).serialize(), null, "json")
+                    .done(function (o) {
+                        self.loading("");
+                        if (o.result) {
+                            $("#Content").val("");
+                            self.board.unshift(o.model);
+                        } else {
+                            self.error(o.reason);
+                        }
+                    });
+            };
 
             self.delete = function(entity) {
                 $.post("/board/delete", "id=" + entity.BoardId, null, "json")
                     .done(function(o) {
                         if (o.result) {
+                            noty({ text: '操作成功,已删除#' + entity.Index + "." });
+                            noty({ text: '操作失败,错误:' + o.reason, type: 'error' });
                             self.board.remove(entity);
                         } else {
-                            $("#info").css({ color: "red" });
-                            $("#info").html(o.reason);
+                            noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
+                            self.error(o.reason);
                         }
-                    });
-            };
-
-            self.add = function(formElement) {
-                $("#info").css({ color: "", display: "block", background: "url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat" });
-                $("#info").html("正在提交");
-                $("#submit").prop("disabled", true);
-                $.post("/board/add", $(formElement).serialize(), null, "json")
-                    .done(function(o) {
-                        if (o.result) {
-                            $("#Content").val("");
-                            $("#info").html("");
-                            self.board.unshift(o.model);
-                            self.username(o.model.Author);
-                        } else {
-                            $("#info").css({ color: "red" });
-                            $("#info").html(o.reason);
-                        }
-                        $("#info").css({ background: "none" });
-                        $("#submit").prop("disabled", false);
                     });
             };
 
             self.change = function() {
-                var tip = $("#control_author_info a");
-                tip.html(tip.html() === "更改 »" ? "隐藏 »" : "更改 »");
-                $("#author_info").toggle();
+                self.controldisplayauthoreditor(!self.controldisplayauthoreditor());
             };
 
             $.getJSON('/board/list', self.board)
@@ -94,22 +91,25 @@
 
 <div class="board" id="div-board">
     <!-- respond START -->
-    <div id="respond">
+    <div class="respond">
         <form data-bind="submit: add">
-            <p data-bind="visible: !isNewGuest">
+            <p data-bind="visible: username().length > 0">
                 欢迎回来, <strong data-bind="text: username"></strong>
-                <span id="control_author_info"><a href="javascript:void(0);" data-bind="click: change">更改 »</a></span>
+                <span>
+                    <a href="javascript:void(0);" data-bind="text: controldisplayauthoreditor() ? '隐藏 »' : '更改 »', click: change"></a>
+                </span>
             </p>
-            <div id="author_info" data-bind="visible: isNewGuest">
+            <div data-bind="visible: username().length == 0 || controldisplayauthoreditor">
                 <p>
                     <input class="textfield" id="Author" name="Author" type="text" data-bind="value: username" />
                     <label for="Author">昵称(必填)</label>
                 </p>
             </div>
             <p><textarea cols="20" id="Content" name="Content" rows="2"></textarea></p>
-            <div id="submitbox">
-                <div class="submitbutton"><input id="submit" type="submit" class="submit" value="提交" /></div>
-                <div id="info"></div>
+            <div class="submitbox">
+                <div class="submitbutton"><input type="submit" value="提交" data-bind="text: loading, disable: loading().length > 0"/></div>
+                <div class="loading" data-bind="text: loading, visible: loading().length > 0" style="display: none;"></div>
+                <div class="error" data-bind=" text: error, visible: error().length > 0" style="display: none;"></div>
                 <div class="clear"></div>
             </div>
         </form>
@@ -117,11 +117,9 @@
     <!-- respond END -->
     
     <!-- list START -->
-    <div id="comments">
         <div id="commentlist">
             <div id="div-board-list-loader" class="ko-grid-loader"></div>
             <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'boardViewModelTemplate', foreach: board }"></ul>
         </div>
-    </div>
     <!-- list END -->
 </div>

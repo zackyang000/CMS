@@ -19,7 +19,7 @@
         }
     });
 </script>
-<div id="respond">
+<div class="respond">
     <p id="author_welcome">
         @if (WebMasterCookie.IsLogin)
         {
@@ -47,10 +47,10 @@
 		</p>
 	</div>
     <p>@Html.TextAreaFor(model=>model.Content, new { Rows = "5" })</p>
-    <div id="submitbox">
-        <div class="submitbutton"><input id="submit" type="submit" class="submit" value="提交" /></div>
-        <div id="info"></div>
-        <div class="clear"></div>
-    </div>
+            <div class="submitbox">
+                <div class="submitbutton"><input id="submit" type="submit" value="提交" /></div>
+                <div id="info"></div>
+                <div class="clear"></div>
+            </div>
 </div>
 <!-- respond END -->

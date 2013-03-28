@@ -2,7 +2,7 @@
 <!-- comments START -->
 <div id="comments">
 <div id="cmthead">
-    <span class="curtab">评论 (@Model.Where(p => !p.IsDeleted).Count())</span>
+    <span class="curtab">评论 (@Model.Count(p => !p.IsDeleted))</span>
     <span class="addcomment"><a href="#respond">发表评论</a></span>
     <div class="clear"></div>
 </div>
