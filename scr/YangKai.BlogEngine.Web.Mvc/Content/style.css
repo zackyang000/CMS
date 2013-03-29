@@ -58,7 +58,7 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 ._author {background-position: 0px 0px;}
 ._categories {background-position: 0px -480px;}
 ._tags {background-position: 0px -400px;}
-._dot {background-position: 0px -560px;}
+._dot {background-position: 0px -558px;}
 ._add {background-position: 0px -208px;}
 .icon-openlink{background-position: 0px -336px;}
 
@@ -165,7 +165,7 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 /* sidebar */
 #sidebar .widget{background: url(/Content/Image/widget_div.png) no-repeat 50% 100%;padding: 10px 15px 16px;}
 #sidebar .widget h3 {font-size: 120%; cursor:pointer; margin-bottom:5px;}
-#sidebar .widget li {background: url(/Content/Image/icons.gif) no-repeat 0px -560px;margin-top: 5px;padding-left: 22px;}
+#sidebar .widget li {background: url(/Content/Image/icons.gif) no-repeat 0px -558px;margin-top: 5px;padding-left: 22px;}
 #sidebar .widget p{line-height:21px;}
 .feedrss{background: url(/Content/Image/feeds.gif) 5px 5px no-repeat;height: 25px;line-height: 25px;display: block;padding: 5px 5px 5px 36px;margin-left: 10px;text-decoration: none;font-size: 11px;}
 

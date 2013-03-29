@@ -37,7 +37,7 @@
                     });
             };
 
-            self.delete = function(entity) {
+            self.del = function(entity) {
                 $.post("/board/delete", "id=" + entity.BoardId, null, "json")
                     .done(function(o) {
                         if (o.result) {
@@ -77,7 +77,7 @@
                 <div class="act">
                     @if (isAdmin)
                     {
-                        <a href="JavaScript:void(0)" data-bind="click: $root.delete">[删除]</a>
+                        <a href="JavaScript:void(0)" data-bind="click: $root.del">[删除]</a>
                     }
                 </div>
                 <div class="clear"></div>
@@ -106,7 +106,7 @@
             </div>
             <p><textarea cols="20" id="Content" name="Content" rows="2"></textarea></p>
             <div class="submitbox">
-                <div class="submitbutton"><input type="submit" value="提交" data-bind="text: loading, disable: loading().length > 0"/></div>
+                <div class="submitbutton"><input type="submit" value="提交" data-bind="disable: loading().length > 0" /></div>
                 <div class="loading" data-bind="text: loading, visible: loading().length > 0" style="display: none;"></div>
                 <div class="error" data-bind=" text: error, visible: error().length > 0" style="display: none;"></div>
                 <div class="clear"></div>
