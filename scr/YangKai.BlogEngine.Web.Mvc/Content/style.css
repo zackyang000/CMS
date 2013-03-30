@@ -1,6 +1,7 @@
 ﻿@charset "utf-8"; 
 
 body {margin:0px; padding:0px;color: #484f5a; font: normal normal normal 76%/1.6em Georgia, '宋体', Times, serif;line-height: 1.8em;}
+
 /* all style */
 a {color: #2970A6;text-decoration: none;}
 a:hover{color:#2970A6;text-decoration: underline;}
@@ -43,6 +44,7 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 .boxcaption {background: #E3E4E6;border-bottom: 1px solid #CCC;padding: 3px 12px;border-top-left-radius: 5px 5px;border-top-right-radius: 5px 5px;}
 .boxcaption h3 {font-family: Verdana, 'BitStream vera Sans', Tahoma, Helvetica, sans-serif;font-size: 12px;letter-spacing: 0em;}
 .box {background: #F4F5F7;margin-bottom: 10px;padding: 6px 12px;border-bottom-left-radius: 5px 5px;border-bottom-right-radius: 5px 5px;}
+
 /* 警告框 */
 .messagebox{background: #fff;font-size: 11px; font-weight:normal;height: 27px;line-height: 27px;padding: 0px 12px;border-radius: 5px 5px; -moz-border-radius: 5px 5px;}
 .warningbox{background: #d30000; color:#fff; font-size: 11px; font-weight:normal;padding: 0px 12px;border-radius: 5px 5px; -moz-border-radius: 5px 5px;}
@@ -52,6 +54,7 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 .draft{background: #ffa631}
 .audit{background: #cca4e3}
 .delay{background: #ffb3a7}
+
 /* 图标 */
 ._date, ._author, ._categories, ._tags,._dot,._add,.icon-openlink{background: url(/Content/Image/icons.gif) no-repeat;font-size: 11px;height: 16px;line-height: 16px;padding-left: 20px;}
 ._date {background-position: 0px -48px;}
@@ -64,7 +67,6 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 
 /* 分页控件样式 */
 .pages {font-weight:bold; font-size:11px;line-height: 30px;}
-.pages .item a{}
 .pages .cpb {color:red;padding: 1px 6px;}
 .pages a {padding: 5px 10px;margin: 0 2px; text-decoration:none; border: 1px solid #ddd;color:#000;font-weight:normal;}
 .pages a:hover { background-color: #E61636; color:#fff;border:1px solid #E61636; text-decoration:none;font-weight:normal;}
@@ -103,12 +105,14 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 #header #banner{text-align:center; background:#32363d;}
 #header #banner img{border:1px solid #32363d;width:973px; height:160px;}
 #header #bannerbottom{background:url(/Content/Image/banner_bottom.png) repeat-x; line-height:10px; height:10px}
+
 /* menu */
 ul#menu{position: absolute;margin: 0px;padding: 0px;top: 0px;right: 10px;list-style: none;z-index:999999;}
 ul#menu li {width: 103px;display:inline;float:left;}
 ul#menu li a {display: block;float:left;margin-top: -2px;width: 100px;height: 25px;background-color:#E7F2F9;background-repeat:no-repeat;background-position:50% 10px;border:1px solid #BDDCEF;border-radius:0px 0px 10px 10px;-moz-border-radius:0px 0px 10px 10px;text-decoration:none;text-align:center;opacity: 0.7;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);  }
 ul#menu li a:hover{background-color:#CAE3F2;}
 ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9ad8;text-shadow: 0 -1px 1px #fff;}
+
 /* content */
 #middle{background:#595e67;}
 #middle .body{background:url(/Content/Image/body_bg.png) repeat-y; width:1002px; margin:auto;}
@@ -138,6 +142,7 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #posts .postBody li{padding: 0;margin: 0 0 0 40px; list-style: disc;}
 #posts .postFooter {font-size: 11px;height: 31px;line-height: 31px;margin-bottom: 10px; }
 #posts .postFooter img{vertical-align: middle;margin-top:8px; vertical-align:-3px;}
+
 /* 小图标 */
 #posts .date, #posts .author, #posts .editpost,#posts .deletepost,#posts .reviews,#posts .comments{background: url(/Content/Image/icons.gif) no-repeat;font-size: 11px;height: 16px;line-height: 16px;padding-left: 22px;}
 #posts .date,#posts .author, #posts .editpost{margin-right: 15px;}
@@ -157,7 +162,8 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #addpost{float: right; font-weight:bold; margin:0 10px 0 0;}
 /* 相关文章 */
 #related_posts ul li {list-style: none;padding: 3px 5px;border-bottom: 1px solid #E3E4E6;line-height: 18px;}
-/* 上一篇/下一篇 */
+
+/* 上一篇&下一篇 */
 #postnavi {border-top:1px solid #CCC;margin:10px -15px 0;padding:10px 15px 0;}
 #postnavi a.prev{background:url(/Content/Image/icons.gif) 0 -224px no-repeat;padding-left:22px;float:left;height:16px;line-height:16px;}
 #postnavi a.next{background:url(/Content/Image/icons.gif) 100% -240px no-repeat;padding-right:22px;float:right;height:16px;line-height:16px;}
@@ -189,9 +195,16 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #thecomments li .act {float:right;}
 #thecomments li .content {margin:0 -15px;padding:0 15px 10px;line-height:145%;}
 #thecomments li .content p {margin-top:10px;}
+
 /* respond */
 .respond {padding:10px 0 0;}
 .respond p {margin-bottom:5px;}
+
+
+
+
+
+
 /* about */
 #siteintro{float: left;overflow: hidden;width: 550px;padding:60px 0 0 40px;background:url(/Content/Image/home_title.png) no-repeat 0 0;}
 #siteintro p img{padding-left:30px; margin-top:10px;}
@@ -201,6 +214,7 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #sitetip .footer{background:url(/Content/Image/site_tip_footer.png) no-repeat;height:37px; line-height:37px; font-weight:bold; text-align:center;}
 #sitetip ul li{background:url(/Content/Image/site_tip_li.png) repeat-x;height:31px; line-height:31px;}
 #sitetip ul li span{background:url(/Content/Image/site_tip_li_check.png) no-repeat;height:31px; line-height:31px; display:block; margin-left:40px; padding-left:25px; padding-top:3px;}
+
 /* calendar */
 #calendar{margin-left:50px;}
 #calendar h2{font-weight:bold; cursor:pointer; background: url(/Content/Image/icons.gif) no-repeat 0px -48px;font-size: 11px;height: 16px;line-height: 16px;padding-left: 22px; margin-top:5px;}
@@ -208,11 +222,13 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #calendar h2 a span {background-position: 0px -288px;}
 #calendar h2 a{ display:none;}
 #calendar ul{display:none;margin-left:20px;}
+
 /* board */
 .board{width:700px; margin:0px auto 0px auto;}
 .board .respond{width:605px;}
 .board .add{width:500px;text-align:left; font-size:12px;}
 .board .add p{margin-bottom:5px;}
+
 /* refstat */
 .refstat{font-size: 12px;width: 900px;padding-top: 20px;margin-right: auto;margin-left: auto;overflow: auto;}
 .refstat .info{float: left;width: 240px;padding-left:20px;}
