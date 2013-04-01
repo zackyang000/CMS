@@ -358,4 +358,7 @@ function fadeOutAndFadeIn(hide, show) {
     $("#" + hide).fadeOut(300, function () { $("#" + show).fadeIn(1000); });
 }
 
+function elementFadeIn(elem) { if (elem.nodeType === 1) $(elem).hide().fadeIn(1000); }
+
+
 //#endregion

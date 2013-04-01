@@ -8,22 +8,15 @@
 
 <div class="widget" id="recentcomments">
     <h3>最新评论</h3>
-    <div class="ko-area-loader" id="div-sidebar-recentcomments-detail-loader"></div>
-    <ul class="ko-template-container" id="div-sidebar-recentcomments-detail" data-bind="template: { name: 'recentCommentsViewModelTemplate', foreach: comments }">
+    <div class="ko-area-loader" data-bind="visible: comments().length == 0"></div>
+    <ul data-bind="template: { name: 'recentCommentsViewModelTemplate', foreach: comments, afterAdd: elementFadeIn }">
     </ul>
 </div>
-
-
 <script type="text/javascript">
     function RecentCommentsViewModel() {
         var self = this;
-
         self.comments = ko.observableArray();
-
-        $.getJSON('/comment/recent?channelurl=@channelUrl&groupurl=@groupUrl', self.comments)
-            .done(function() {
-                fadeOutAndFadeIn("div-sidebar-recentcomments-detail-loader", "div-sidebar-recentcomments-detail");
-            });
+        $.getJSON('/comment/recent?channelurl=@channelUrl&groupurl=@groupUrl', self.comments);
     }
 
     $(document).ready(function() {

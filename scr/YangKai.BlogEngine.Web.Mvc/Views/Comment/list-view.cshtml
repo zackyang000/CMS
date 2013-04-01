@@ -29,8 +29,6 @@
                     });
             };
 
-            self.fadein = function (elem) { if (elem.nodeType === 1) $(elem).hide().slideDown(); };
-            
             self.del = function(entity) {
                 $.post("/comment/delete", "id=" + entity.CommentId, null, "json")
                     .done(function(o) {
@@ -67,10 +65,7 @@
                 self.controldisplayauthoreditor(!self.controldisplayauthoreditor());
             };
 
-            $.getJSON('/comment/list/@ViewBag.PostId', self.list)
-                .done(function() {
-                    fadeOutAndFadeIn("div-comment-list-loader", "thecomments");
-                });
+            $.getJSON('/comment/list/@ViewBag.PostId', self.list);
         }
 
         $(document).ready(function() {
@@ -102,8 +97,9 @@
 <div id="div-comment">
     <!-- list START -->
     <div id="commentlist">
-        <div id="div-comment-list-loader" class="ko-grid-loader"></div>
-        <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'commentViewModelTemplate', foreach: list, afterAdd: fadein }"></ul>
+        <div class="ko-grid-loader" data-bind="visible: list() === null"></div>
+        <p class="messagebox" data-bind="visible: list().length == 0">本文目前尚无任何评论.</p>
+        <ul id="thecomments" data-bind="template: { name: 'commentViewModelTemplate', foreach: list, afterAdd: elementFadeIn }, visible: list().length > 0"></ul>
     </div>
     <!-- list END -->
     <!-- respond START -->
@@ -120,6 +116,14 @@
                     <input class="textfield" id="Author" name="Author" type="text" data-bind="value: username" />
                     <label for="Author">昵称(必填)</label>
                 </p>
+                <p>
+                    <input class="textfield" id="Email" name="Email" type="text" data-bind="value: email" />
+                    <label for="Author">电子邮箱 (我们会为您保密)</label>
+                </p>
+                <p>                
+                    <input class="textfield" id="Url" name="Url" type="text" data-bind="value: url" />
+                    <label for="Author">网址</label>
+                </p>       
             </div>
             <p>
                 <textarea cols="20" id="Content" name="Content" rows="2"></textarea>

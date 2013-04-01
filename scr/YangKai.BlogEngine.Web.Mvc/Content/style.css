@@ -23,7 +23,6 @@ img{border:none;}
 /* ko */
 .ko-area-loader{background: url(/Content/Image/ajax-loader2.gif) no-repeat;height: 16px;line-height: 16px;padding-left: 20px;}
 .ko-grid-loader{background: url(/Content/Image/ajax-loader3.gif) no-repeat center;height: 24px; text-align: center;padding: 20px;}
-.ko-template-container {display: none;}
 
 /* btn */
 .submitbox .loading {float:right; padding:5px 5px 0px 20px; background:url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat;}
@@ -180,6 +179,7 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #cmthead .curtab {padding:5px 10px;margin-bottom:-1px;display:block;float:right;color:#555;border:1px solid #CCC;border-bottom-color:#eaeef7;}
 #cmthead .addcomment{padding-left:22px;height:16px;line-height:16px;display:block;float:left;margin-top:8px;background:url(/Content/Image/icons.gif) 0 -112px no-repeat;}
 #commentlist {border-top:1px solid #CCC;border-bottom:1px solid #CCC;margin:0 -15px;padding:0 15px;}
+#commentlist p{ margin: 20px;padding: 5px;}
 #thecomments{padding-bottom:15px;}
 #thecomments li{margin-top:15px;}
 #thecomments li .author {float:left;width:81px;text-align:center;}
