@@ -29,6 +29,8 @@
                     });
             };
 
+            self.fadein = function (elem) { if (elem.nodeType === 1) $(elem).hide().slideDown(); };
+            
             self.del = function(entity) {
                 $.post("/comment/delete", "id=" + entity.CommentId, null, "json")
                     .done(function(o) {
@@ -101,7 +103,7 @@
     <!-- list START -->
     <div id="commentlist">
         <div id="div-comment-list-loader" class="ko-grid-loader"></div>
-        <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'commentViewModelTemplate', foreach: list }"></ul>
+        <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'commentViewModelTemplate', foreach: list, afterAdd: fadein }"></ul>
     </div>
     <!-- list END -->
     <!-- respond START -->
@@ -133,31 +135,3 @@
     </div>
     <!-- respond END -->
 </div>
-
-
-
-@*
-
-  <li id="@("comment-" + entity.CommentId)" @if(entity.IsAdmin){<text>class="admincomment"</text>}>
-                
-                                        @if (entity.IsDeleted)
-                        {
-                            <span id="@("warningbox-" + entity.CommentId)" class="warningbox">该回复已删除,仅管理员可见.</span>
-                        }
-                    </span>
-                    <div class="act" id="@("function-" + commentIndex)">
-                        @if (isAdmin)
-                        {
-                            <a href="JavaScript:void(0)" onclick="show_reply_box(@entity.CommentId)">[回复]</a><text> | </text>
-                            if (entity.IsDeleted)
-                            {
-                                <a href="JavaScript:void(0)" onclick="renew_comment(@(commentIndex),'@(entity.CommentId)')">[恢复]</a>
-                            }
-                            else
-                            {
-                                <a href="JavaScript:void(0)" onclick="delete_comment(@(commentIndex),'@(entity.CommentId)')">[删除]</a>
-                            }
-                        }
-                    </div>
-
-*@

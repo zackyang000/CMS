@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = string.Format(YangKai.BlogEngine.Common.Config.Format.PAGE_TITLE, "留言板");
     Layout = "~/Views/Shared/_layout.cshtml";
-    var isAdmin = YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin();
 }
 
 @section style 
@@ -37,6 +36,8 @@
                     });
             };
 
+            self.fadein = function (elem) { if (elem.nodeType === 1) $(elem).hide().slideDown(); };
+            
             self.del = function(entity) {
                 $.post("/board/delete", "id=" + entity.BoardId, null, "json")
                     .done(function(o) {
@@ -136,7 +137,7 @@
     <!-- list START -->
         <div id="commentlist">
             <div id="div-board-list-loader" class="ko-grid-loader"></div>
-            <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'boardViewModelTemplate', foreach: list }"></ul>
+            <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'boardViewModelTemplate', foreach: list, afterAdd: fadein }"></ul>
         </div>
     <!-- list END -->
 </div>
