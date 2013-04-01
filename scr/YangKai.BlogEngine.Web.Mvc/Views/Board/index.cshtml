@@ -16,7 +16,7 @@
         function BoardViewModel() {
             var self = this;
 
-            self.board = ko.observableArray();
+            self.list = ko.observableArray();
             self.username = ko.observable('@Model.Author');
             self.loading = ko.observable("");
             self.error = ko.observable("");
@@ -30,7 +30,7 @@
                         self.loading("");
                         if (o.result) {
                             $("#Content").val("");
-                            self.board.unshift(o.model);
+                            self.list.unshift(o.model);
                         } else {
                             self.error(o.reason);
                         }
@@ -42,7 +42,7 @@
                     .done(function(o) {
                         if (o.result) {
                             noty({ text: '操作成功,已删除#' + entity.Index + "." });
-                            self.board.remove(entity);
+                            self.list.remove(entity);
                         } else {
                             noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
                             self.error(o.reason);
@@ -54,7 +54,7 @@
                 self.controldisplayauthoreditor(!self.controldisplayauthoreditor());
             };
 
-            $.getJSON('/board/list', self.board)
+            $.getJSON('/board/list', self.list)
                 .done(function() {
                     fadeOutAndFadeIn("div-board-list-loader", "thecomments");
                 });
@@ -118,7 +118,7 @@
     <!-- list START -->
         <div id="commentlist">
             <div id="div-board-list-loader" class="ko-grid-loader"></div>
-            <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'boardViewModelTemplate', foreach: board }"></ul>
+            <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'boardViewModelTemplate', foreach: list }"></ul>
         </div>
     <!-- list END -->
 </div>

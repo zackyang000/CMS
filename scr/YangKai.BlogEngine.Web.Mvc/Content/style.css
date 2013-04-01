@@ -22,7 +22,7 @@ img{border:none;}
 
 /* ko */
 .ko-area-loader{background: url(/Content/Image/ajax-loader2.gif) no-repeat;height: 16px;line-height: 16px;padding-left: 20px;}
-.ko-grid-loader{background: url(/Content/Image/ajax-loader3.gif) no-repeat center;height: 24px; text-align: center;}
+.ko-grid-loader{background: url(/Content/Image/ajax-loader3.gif) no-repeat center;height: 24px; text-align: center;padding: 20px;}
 .ko-template-container {display: none;}
 
 /* btn */

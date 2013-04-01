@@ -10,7 +10,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class BoardController : Controller
     {
-        //
         // 留言页面
         [ActionName("index")]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -21,6 +20,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return View(viewModel);
         }
 
+        //留言列表
         [ActionName("list")]
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult List()

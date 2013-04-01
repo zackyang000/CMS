@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
@@ -13,78 +14,61 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     public class CommentController : Controller
     {
         //
-        // 评论列表页面
-        // Get: /comment/list/{PostId}
-        [ActionName("list")]
+        // 评论页面
+        [ActionName("list-view")]
         [AcceptVerbs(HttpVerbs.Get)]
-        public PartialViewResult List(string id)
-        {
-            Post post = QueryFactory.Post.Find(id);
-            IList<Comment> comments = QueryFactory.Post.GetComments(post.PostId);
-            return PartialView(comments);
-        }
-
-        //
-        // 最新评论页面
-        [ActionName("recent")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        [OutputCache(Duration = 300)]
-        public ActionResult RecentComments(string channelurl, string groupurl)
-        {
-            if (string.IsNullOrEmpty(channelurl))
-                channelurl = QueryFactory.Post.GetGroup(groupurl).Channel.Url;
-            return Json(QueryFactory.Post.GetCommentsNewest(channelurl).ToCommentViewModels(), JsonRequestBehavior.AllowGet);
-        }
-
-        //
-        // 添加评论页面
-        // Get: /comment/add/{PostId}
-        [ActionName("add")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public PartialViewResult Add(string id)
+        public ActionResult ListView(string id)
         {
             ViewBag.PostId = QueryFactory.Post.Find(id).PostId; //添加评论时使用
 
             WebGuestCookie cookie = WebGuestCookie.Load();
-            var entity = new Comment
-                             {
-                                     Author = cookie.Name,
-                                     Email = cookie.Email,
-                                     Url = cookie.Url,
-                                     Pic = cookie.Pic
-                             };
+            var entity = new CommentViewModel
+            {
+                Author = cookie.Name,
+                Email = cookie.Email,
+                Url = cookie.Url
+            };
+
             return PartialView(entity);
+        }
+
+        [ActionName("list")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult List(Guid id)
+        {
+            IList<Comment> comments = QueryFactory.Post.GetComments(id);
+            if (!WebMasterCookie.IsLogin)
+            {
+                comments = comments.Where(p => !p.IsDeleted).ToList();
+            }
+            return Json(comments.ToViewModels(),JsonRequestBehavior.AllowGet);
         }
 
         //
         // 添加评论
-        // Post: /comment/add
         [ActionName("add")]
         [AcceptVerbs(HttpVerbs.Post)]
-        //[BuildCommentRssAttribute]
-        public JsonResult Add(Comment data)
+        public JsonResult Add(CommentViewModel viewModel)
         {
-            data.Pic = WebGuestCookie.Load().Pic ?? string.Empty;
-            data.Ip = Request.UserHostAddress;
-            data.Address = IpLocator.GetIpLocation(data.Ip);
-
-          
+            var entity = viewModel.ToEntity();
+            entity.Pic = WebGuestCookie.Load().Pic ?? string.Empty;
+            entity.Ip = Request.UserHostAddress;
+            entity.Address = IpLocator.GetIpLocation(entity.Ip);
 
             try
             {
                 if (WebMasterCookie.IsLogin)
                 {
                     var admin = WebMasterCookie.Load();
-                    data.Author = admin.Name;
-                    data.IsAdmin = true;
+                    entity.Author = admin.Name;
+                    entity.IsAdmin = true;
                 }
                 else
                 {
-                    WebGuestCookie.Save(data.Author, data.Email, data.Url, true);
+                    WebGuestCookie.Save(entity.Author, entity.Email, entity.Url, true);
                 }
-                CommandFactory.CreateComment(data);
-                int index = QueryFactory.Post.GetCommentsCount(data.PostId);
-                return Json(new {result = true, index});
+                CommandFactory.CreateComment(entity);
+                return Json(new { result = true, model = entity.ToViewModel() });
             }
             catch (Exception e)
             {
@@ -94,11 +78,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         //
         // 删除评论
-        // Post: /comment/delete
         [ActionName("delete")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Delete(Guid id)
         {
+            if (!WebMasterCookie.IsLogin) return Json(new { result = false, reason = "Please Lgoin in." });
+
             try
             {
                 CommandFactory.Run(new CommentDeleteEvent(){CommentId = id});
@@ -112,11 +97,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         //
         // 恢复评论
-        // Post: /comment/renew
         [ActionName("renew")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Renew(Guid id)
         {
+            if (!WebMasterCookie.IsLogin) return Json(new { result = false, reason = "Please Lgoin in." });
+
             try
             {
                 CommandFactory.Run(new CommentRenewEvent() { CommentId = id }); 
@@ -129,14 +115,15 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         //
-        // 注销
-        // Post: /comment/login-off
-        [ActionName("login-off")]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult LoginOff()
+        // 最新评论页面
+        [ActionName("recent")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        [OutputCache(Duration = 300)]
+        public ActionResult RecentComments(string channelurl, string groupurl)
         {
-            WebGuestCookie.Remove();
-            return Json(new {result = true});
+            if (string.IsNullOrEmpty(channelurl))
+                channelurl = QueryFactory.Post.GetGroup(groupurl).Channel.Url;
+            return Json(QueryFactory.Post.GetCommentsNewest(channelurl).ToViewModels(), JsonRequestBehavior.AllowGet);
         }
     }
 }

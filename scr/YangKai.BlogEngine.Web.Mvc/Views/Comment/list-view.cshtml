@@ -1,0 +1,163 @@
+﻿@model YangKai.BlogEngine.Web.Mvc.Models.CommentViewModel
+@{
+    var isAdmin = YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin();
+}
+    <script type="text/javascript">
+        function CommentViewModel() {
+            var self = this;
+
+            self.list = ko.observableArray();
+            self.username = ko.observable('@Model.Author');
+            self.email = ko.observable('@Model.Email');
+            self.url = ko.observable('@Model.Url');
+            self.loading = ko.observable("");
+            self.error = ko.observable("");
+            self.controldisplayauthoreditor = ko.observable(false);
+            
+            self.add = function (formElement) {
+                self.error("");
+                self.loading("正在提交");
+                $.post("/comment/add", $(formElement).serialize(), null, "json")
+                    .done(function (o) {
+                        self.loading("");
+                        if (o.result) {
+                            $("#Content").val("");
+                            self.list.push(o.model);
+                        } else {
+                            self.error(o.reason);
+                        }
+                    });
+            };
+
+            self.del = function(entity) {
+                $.post("/comment/delete", "id=" + entity.CommentId, null, "json")
+                    .done(function(o) {
+                        if (o.result) {
+                            noty({ text: '操作成功,已删除#' + entity.Index + "." });
+                            var i = self.list().indexOf(entity);
+                            self.list.remove(entity);
+                            entity.IsDeleted = true;
+                            self.list.splice(i, 0,entity);
+                        } else {
+                            noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
+                            self.error(o.reason);
+                        }
+                    });
+            };
+
+            self.renew = function (entity) {
+                $.post("/comment/renew", "id=" + entity.CommentId, null, "json")
+                    .done(function (o) {
+                        if (o.result) {
+                            noty({ text: '操作成功,已恢复#' + entity.Index + "." });
+                            var i = self.list().indexOf(entity);
+                            self.list.remove(entity);
+                            entity.IsDeleted = false;
+                            self.list.splice(i, 0, entity);
+                        } else {
+                            noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
+                            self.error(o.reason);
+                        }
+                    });
+            };
+            
+            self.change = function() {
+                self.controldisplayauthoreditor(!self.controldisplayauthoreditor());
+            };
+
+            $.getJSON('/comment/list/@ViewBag.PostId', self.list)
+                .done(function() {
+                    fadeOutAndFadeIn("div-comment-list-loader", "thecomments");
+                });
+        }
+
+        $(document).ready(function() {
+            ko.applyBindings(new CommentViewModel(), $("#div-comment")[0]);
+        });
+    </script>
+
+<script type="text/html" id="commentViewModelTemplate">
+    <li data-bind="css: { admincomment: $data.IsAdmin }">
+            <div class="author">
+                <div class="pic"><img class="avatar" width="32" height="32" alt="avatar" src="/Content/Image/avatar.png" /></div>
+                <div class="name" data-bind="text: $data.Author"></div>
+            </div>
+            <div class="info">
+                <span class="date" data-bind="text: $data.CreateDate.Format()"></span> |
+                #<span data-bind="text: $data.Index"></span>
+                <span class="warningbox" data-bind="visible: $data.IsDeleted">该回复已删除,仅管理员可见.</span>
+                <div class="act">
+                        <a href="JavaScript:void(0)" data-bind="click: $root.del, visible: $data.IsDeleted==false">[删除]</a>
+                        <a href="JavaScript:void(0)" data-bind="click: $root.renew, visible: $data.IsDeleted">[恢复]</a>
+                </div>
+                <div class="clear"></div>
+                <div class="content" data-bind="html: $data.Content"></div>
+            </div>
+            <div class="clear"></div>   
+        </li>
+    </script>
+
+<div id="div-comment">
+    <!-- list START -->
+    <div id="commentlist">
+        <div id="div-comment-list-loader" class="ko-grid-loader"></div>
+        <ul id="thecomments" class="ko-template-container" data-bind="template: { name: 'commentViewModelTemplate', foreach: list }"></ul>
+    </div>
+    <!-- list END -->
+    <!-- respond START -->
+    <div class="respond">
+        <form data-bind="submit: add">
+            <p data-bind="visible: username().length > 0">
+                欢迎回来, <strong data-bind="text: username"></strong>
+                <span>
+                    <a href="javascript:void(0);" data-bind="text: controldisplayauthoreditor() ? '隐藏 »' : '更改 »', click: change"></a>
+                </span>
+            </p>
+            <div data-bind="visible: username().length == 0 || controldisplayauthoreditor">
+                <p>
+                    <input class="textfield" id="Author" name="Author" type="text" data-bind="value: username" />
+                    <label for="Author">昵称(必填)</label>
+                </p>
+            </div>
+            <p>
+                <textarea cols="20" id="Content" name="Content" rows="2"></textarea>
+                <input type="hidden" id="PostId" name="PostId" value="@ViewBag.PostId"/>
+            </p>
+            <div class="submitbox">
+                <div class="submitbutton"><input type="submit" value="提交" data-bind="disable: loading().length > 0" /></div>
+                <div class="loading" data-bind="text: loading, visible: loading().length > 0" style="display: none;"></div>
+                <div class="error" data-bind=" text: error, visible: error().length > 0" style="display: none;"></div>
+                <div class="clear"></div>
+            </div>
+        </form>
+    </div>
+    <!-- respond END -->
+</div>
+
+
+
+@*
+
+  <li id="@("comment-" + entity.CommentId)" @if(entity.IsAdmin){<text>class="admincomment"</text>}>
+                
+                                        @if (entity.IsDeleted)
+                        {
+                            <span id="@("warningbox-" + entity.CommentId)" class="warningbox">该回复已删除,仅管理员可见.</span>
+                        }
+                    </span>
+                    <div class="act" id="@("function-" + commentIndex)">
+                        @if (isAdmin)
+                        {
+                            <a href="JavaScript:void(0)" onclick="show_reply_box(@entity.CommentId)">[回复]</a><text> | </text>
+                            if (entity.IsDeleted)
+                            {
+                                <a href="JavaScript:void(0)" onclick="renew_comment(@(commentIndex),'@(entity.CommentId)')">[恢复]</a>
+                            }
+                            else
+                            {
+                                <a href="JavaScript:void(0)" onclick="delete_comment(@(commentIndex),'@(entity.CommentId)')">[删除]</a>
+                            }
+                        }
+                    </div>
+
+*@

@@ -66,7 +66,7 @@ namespace YangKai.BlogEngine.QueryServices
 
         public IList<Comment> GetComments(Guid postId)
         {
-            return _commentRepository.GetAll(p => p.PostId == postId && !p.IsDeleted, new OrderByExpression<Comment, DateTime>(p => p.CreateDate)).ToList();
+            return _commentRepository.GetAll(p => p.PostId == postId, new OrderByExpression<Comment, DateTime>(p => p.CreateDate)).ToList();
         }
 
         public IList<Comment> GetCommentsNewest(string channelUrl)

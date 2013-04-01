@@ -1377,29 +1377,6 @@
     <Content Include="Content\syntaxhighlighter_3.0.83\styles\shThemeMDUltra.css" />
     <Content Include="Content\syntaxhighlighter_3.0.83\styles\shThemeMidnight.css" />
     <Content Include="Content\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\brushes\sass.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\brushes_tests.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\001_basic.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\002_brushes.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\003_script_tag.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\004_url_parsing.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\005_no_gutter.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\006_pad_line_numbers.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\007_collapse.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\007_collapse_interaction.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\008_first_line.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\009_class_name.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\010_highlight.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\011_smart_tabs.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\012_server_side.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\013_html_script.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\cases\014_legacy.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\commonjs_tests.js" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\js\jquery-1.4.2.js" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\js\qunit.css" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\js\qunit.js" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\syntaxhighlighter_tests.html" />
-    <Content Include="Content\syntaxhighlighter_3.0.83\tests\theme_tests.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />
@@ -1486,9 +1463,6 @@
     <None Include="Content\syntaxhighlighter_3.0.83\compass\_theme_template.scss" />
     <None Include="Content\syntaxhighlighter_3.0.83\LGPL-LICENSE" />
     <None Include="Content\syntaxhighlighter_3.0.83\MIT-LICENSE" />
-    <None Include="Content\syntaxhighlighter_3.0.83\tests\.rvmrc" />
-    <None Include="Content\syntaxhighlighter_3.0.83\tests\webrick.rb" />
-    <None Include="Content\syntaxhighlighter_3.0.83\tests\webrick.sh" />
     <Content Include="unity.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1508,7 +1482,7 @@
     <Content Include="Views\Article\_removed.cshtml" />
     <Content Include="Views\Board\index.cshtml" />
     <Content Include="Views\Comment\add.cshtml" />
-    <Content Include="Views\Comment\list.cshtml" />
+    <Content Include="Views\Comment\list-view.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header-caption.cshtml" />
