@@ -62,7 +62,7 @@ namespace YangKai.BlogEngine.Modules.BoardModule.Objects
         /// <summary>
         /// 是否被删除.
         /// </summary>
-        public bool IsDeleted { get; private set; }
+        public bool IsDeleted { get; set; }
 
         #endregion
 

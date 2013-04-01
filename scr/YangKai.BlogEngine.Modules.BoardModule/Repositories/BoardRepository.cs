@@ -17,9 +17,8 @@ namespace YangKai.BlogEngine.Modules.BoardModule.Repositories
 
         public new List<Board> GetAll(int count)
         {
-            Expression<Func<Board, bool>> specExpr = p => !p.IsDeleted;
             var orderBy = new OrderByExpression<Board, DateTime>(p => p.CreateDate, OrderMode.DESC);
-            return GetAll(count, specExpr, orderBy).ToList();
+            return GetAll(count, orderBy).ToList();
         }
 
         public new int Count()

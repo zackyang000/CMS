@@ -13,6 +13,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
         public int? Index { get; set; }
         public string Author { get; set; }
         public string Content { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime CreateDate { get; set; }
     }
 
@@ -24,6 +25,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                 {
                     Author = viewModel.Author,
                     Content = viewModel.Content,
+                    IsDeleted = viewModel.IsDeleted,
                 };
         }
 
@@ -34,6 +36,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                 BoardId = entity.BoardId,
                 Author = entity.Author,
                 Content = entity.Content,
+                IsDeleted = entity.IsDeleted,
                 CreateDate = entity.CreateDate,
             };
         }

@@ -49,7 +49,7 @@
                 $.post("/comment/renew", "id=" + entity.CommentId, null, "json")
                     .done(function (o) {
                         if (o.result) {
-                            noty({ text: '操作成功,已恢复#' + entity.Index + "." });
+                            noty({ text: '操作成功,已恢复#' + entity.Index + ".", type: 'warning' });
                             var i = self.list().indexOf(entity);
                             self.list.remove(entity);
                             entity.IsDeleted = false;

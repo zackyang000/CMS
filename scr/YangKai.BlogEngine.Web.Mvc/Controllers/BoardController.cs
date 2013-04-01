@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
@@ -26,6 +27,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         public JsonResult List()
         {
             var data = QueryFactory.Board.FindAll(Int32.MaxValue);
+            if (!WebMasterCookie.IsLogin)
+            {
+                data = data.Where(p => !p.IsDeleted).ToList();
+            }
             return Json(data.ToBoardViewModels(), JsonRequestBehavior.AllowGet);
         }
 
@@ -57,6 +62,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Delete(Guid id)
         {
+            if (!WebMasterCookie.IsLogin) return Json(new { result = false, reason = "Please Lgoin in." });
+
             try
             {
                 CommandFactory.Run(new BoardDeleteEvent() { BoardId = id });
@@ -65,6 +72,25 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             catch (Exception e)
             {
                 return Json(new {result = false, reason = e.Message});
+            }
+        }
+
+        //
+        // 恢复留言
+        [ActionName("renew")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult Renew(Guid id)
+        {
+            if (!WebMasterCookie.IsLogin) return Json(new { result = false, reason = "Please Lgoin in." });
+
+            try
+            {
+                CommandFactory.Run(new BoardRenewEvent() { BoardId = id });
+                return Json(new { result = true });
+            }
+            catch (Exception e)
+            {
+                return Json(new { result = false, reason = e.Message });
             }
         }
 
