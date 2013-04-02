@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.Practices.Unity.InterceptionExtension;
 using YangKai.BlogEngine.Modules.PostModule.Services;
 
@@ -18,12 +19,12 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             if (input.MethodBase.Name == "CreatePost")
             {
-                Rss.BuildPostRss();
+                Task.Factory.StartNew(Rss.BuildPostRss);
             }
 
             if (input.MethodBase.Name == "CreateComment")
             {
-                Rss.BuildCommentRss();
+                Task.Factory.StartNew(Rss.BuildCommentRss);
             }
 
             return msg;

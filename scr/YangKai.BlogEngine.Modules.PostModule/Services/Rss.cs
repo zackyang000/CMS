@@ -30,15 +30,13 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
 
         public static void BuildPostRss()
         {
-            var container = AtomLab.Utility.IoC.UnityContainerHelper.Create("unity.config");
-            var rss = (Rss) container.Resolve(typeof (Rss));
+            var rss = InstanceLocator.Current.GetInstance<Rss>();
             rss.BuildPost();
         }
 
         public static void BuildCommentRss()
         {
-            var container = AtomLab.Utility.IoC.UnityContainerHelper.Create("unity.config");
-            var rss = (Rss) container.Resolve(typeof (Rss));
+            var rss = InstanceLocator.Current.GetInstance<Rss>();
             rss.BuildComment();
         }
 
@@ -56,7 +54,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
                 channel.Items.Add(BuildPostRssItem(item));
             }
             feed.Channels.Add(channel);
-            feed.Write(HttpContext.Current.Server.MapPath(Config.Path.ARTICLES_RSS_PATH));
+            feed.Write(AppDomain.CurrentDomain.BaseDirectory + Config.Path.ARTICLES_RSS_PATH);
         }
 
         private RssChannel BuildPostRssChannel()
@@ -108,7 +106,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
                 channel.Items.Add(BuildCommentRssItem(item));
             }
             feed.Channels.Add(channel);
-            feed.Write(HttpContext.Current.Server.MapPath(Config.Path.COMMENTS_RSS_PATH));
+            feed.Write(AppDomain.CurrentDomain.BaseDirectory+Config.Path.COMMENTS_RSS_PATH);
         }
 
         private RssChannel BuildCommentRssChannel()
