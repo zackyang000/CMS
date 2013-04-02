@@ -33,12 +33,12 @@ namespace YangKai.BlogEngine.CommandServices
             _context.Commit();
         }
 
-        public void CreatePost(Post post)
+        public  void CreatePost(Post post)
         {
             CreateEntity(post);
         }
 
-        public void CreateComment(Comment comment)
+        public  void CreateComment(Comment comment)
         {
             CreateEntity(comment);
         }
