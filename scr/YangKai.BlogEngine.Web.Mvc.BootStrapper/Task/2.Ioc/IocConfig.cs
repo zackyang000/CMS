@@ -14,7 +14,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         public void Run()
         {
             IUnityContainer container = AtomLab.Utility.IoC.UnityContainerHelper.Create("unity.config");
-            ControllerBuilder.Current.SetControllerFactory(new UnityControllerFactory(container));
             InstanceLocator.SetLocator(new MyInstanceLocator(container));
         }
 

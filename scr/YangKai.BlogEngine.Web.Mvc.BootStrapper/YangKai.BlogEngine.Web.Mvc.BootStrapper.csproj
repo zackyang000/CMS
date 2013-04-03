@@ -149,7 +149,6 @@
     <Compile Include="Task\3.Domain\DomainConfig.cs" />
     <Compile Include="Task\2.Ioc\IocConfig.cs" />
     <Compile Include="Task\2.Ioc\MyInstanceLocator.cs" />
-    <Compile Include="Task\2.Ioc\UnityControllerFactory.cs" />
     <Compile Include="Task\4.Routes\RoutesConfig.cs" />
     <Compile Include="Task\5.Filters\FiltersConfig.cs" />
   </ItemGroup>
