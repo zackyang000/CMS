@@ -8,5 +8,6 @@ namespace YangKai.BlogEngine.IQueryServices
     {
         IList<Board> FindAll(int count);
         int Count();
+        IList<Board> GetRecent(int count);
     }
 }

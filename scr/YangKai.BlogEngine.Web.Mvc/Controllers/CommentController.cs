@@ -7,6 +7,7 @@ using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Modules.PostModule.Commands;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Web.Mvc.Filters;
 using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
@@ -78,12 +79,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         //
         // É¾³ýÆÀÂÛ
+        [UserAuthorize]
         [ActionName("delete")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Delete(Guid id)
         {
-            if (!WebMasterCookie.IsLogin) return Json(new { result = false, reason = "Please Lgoin in." });
-
             try
             {
                 CommandFactory.Run(new CommentDeleteEvent(){CommentId = id});
@@ -97,12 +97,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         //
         // »Ö¸´ÆÀÂÛ
+        [UserAuthorize]
         [ActionName("renew")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Renew(Guid id)
         {
-            if (!WebMasterCookie.IsLogin) return Json(new { result = false, reason = "Please Lgoin in." });
-
             try
             {
                 CommandFactory.Run(new CommentRenewEvent() { CommentId = id }); 

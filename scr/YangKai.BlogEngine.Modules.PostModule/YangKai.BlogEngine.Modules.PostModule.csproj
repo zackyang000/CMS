@@ -113,8 +113,6 @@
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CallHandlers\CommentRssCallHandler.cs" />
-    <Compile Include="Services\CallHandlers\PostRssCallHandler.cs" />
     <Compile Include="Services\PostService.cs" />
     <Compile Include="Services\Rss.cs" />
   </ItemGroup>

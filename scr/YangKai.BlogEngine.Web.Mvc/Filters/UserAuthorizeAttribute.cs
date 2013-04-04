@@ -8,19 +8,33 @@ using YangKai.BlogEngine.Common;
 
 namespace YangKai.BlogEngine.Web.Mvc.Filters
 {
-    public class UserAuthorizeAttribute : AuthorizeAttribute
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
+    public class UserAuthorizeAttribute : FilterAttribute, IAuthorizationFilter
     {
-        public override void OnAuthorization(AuthorizationContext filterContext)
+        public  void OnAuthorization(AuthorizationContext filterContext)
         {
             if (!WebMasterCookie.IsLogin)
             {
-                //TODO:根据不同的请求应返回不同的代码  json/action  result
-//                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary
-//                    {
-//                        {"controller", "Admin"},
-//                        {"action", "login"}
-//                    });
-//                return;
+                var returnType = ((ReflectedActionDescriptor) filterContext.ActionDescriptor).MethodInfo.ReturnType;
+              
+                if (returnType == typeof(JsonResult))
+                {
+                    filterContext.Result = new JsonResult()
+                    {
+                        Data = new { result = false, reason = "Please Lgoin in." },
+                        JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                    };
+                }
+                else
+                {
+                    filterContext.Result = new RedirectToRouteResult(
+                        new RouteValueDictionary
+                        {
+                            {"Area", "Admin"},
+                            {"Controller", "Account"},
+                            {"Action", "Login"}
+                        });
+                }
             }
         }
     }

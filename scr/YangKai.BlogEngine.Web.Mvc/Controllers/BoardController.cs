@@ -5,6 +5,7 @@ using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Modules.BoardModule.Events;
 using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Web.Mvc.Filters;
 using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
@@ -58,12 +59,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         //
         // 删除留言
+        [UserAuthorize]
         [ActionName("delete")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Delete(Guid id)
         {
-            if (!WebMasterCookie.IsLogin) return Json(new { result = false, reason = "Please Lgoin in." });
-
             try
             {
                 CommandFactory.Run(new BoardDeleteEvent() { BoardId = id });
@@ -77,12 +77,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         //
         // 恢复留言
+        [UserAuthorize]
         [ActionName("renew")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Renew(Guid id)
         {
-            if (!WebMasterCookie.IsLogin) return Json(new { result = false, reason = "Please Lgoin in." });
-
             try
             {
                 CommandFactory.Run(new BoardRenewEvent() { BoardId = id });
@@ -101,7 +100,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [OutputCache(Duration = 300)]
         public ActionResult RecentMessages()
         {
-            return Json(QueryFactory.Board.FindAll(10).ToBoardViewModels(), JsonRequestBehavior.AllowGet);
+            return Json(QueryFactory.Board.GetRecent(10).ToBoardViewModels(), JsonRequestBehavior.AllowGet);
         }
     }
 }

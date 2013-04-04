@@ -21,6 +21,12 @@ namespace YangKai.BlogEngine.Modules.BoardModule.Repositories
             return GetAll(count, orderBy).ToList();
         }
 
+        public new List<Board> GetRecent(int count)
+        {
+            var orderBy = new OrderByExpression<Board, DateTime>(p => p.CreateDate, OrderMode.DESC);
+            return GetAll(p => !p.IsDeleted, count, orderBy).ToList();
+        }
+
         public new int Count()
         {
             return Count(p => !p.IsDeleted);

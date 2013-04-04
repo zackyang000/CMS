@@ -16,6 +16,7 @@ using YangKai.BlogEngine.Model;
 using YangKai.BlogEngine.Modules.PostModule.Commands;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Web.Mvc.Filters;
 
 
 namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
