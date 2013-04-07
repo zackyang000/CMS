@@ -71,7 +71,7 @@ namespace YangKai.BlogEngine.QueryServices
 
         public IList<Comment> GetCommentsRecent(string channelUrl)
         {
-            return _commentRepository.GetRecent(10);
+            return _commentRepository.GetRecent(10, channelUrl);
         }
 
         public Int32 GetCommentsCount(Guid postId)

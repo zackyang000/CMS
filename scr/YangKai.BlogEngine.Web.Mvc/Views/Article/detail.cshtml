@@ -9,7 +9,7 @@
     &gt;
     @Html.ActionLink(Model.Group.Name, "Index", Model.Group.Url, null, new { title = string.Format("查看 {0} 的全部文章", Model.Group.Name) })
     &gt;
-    @Html.Raw(string.Join(",", Model.Categorys.Select(p => Html.ActionLink(p.Name, "Index", p.Group.Url, new { c = p.Url }, new { title = string.Format("查看 {0} 的全部文章", p.Name) })).ToList()))
+    @Html.Raw(string.Join(",", Model.Categorys.Select(p => Html.ActionLink(p.Name, "Index", Model.Group.Url, new { c = p.Url }, new { title = string.Format("查看 {0} 的全部文章", p.Name) })).ToList()))
     &gt;
     @Model.Title
 </div>

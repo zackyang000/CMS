@@ -82,7 +82,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Repositories
                              string categoryUrl, string tagName, DateTime? calendar, string searchKey, PostStatusEnum? postStatu)
                 {
                     //TODO 此处应该为空
-                    Expression<Func<BlogEngine.Modules.PostModule.Objects.Post, bool>> specExpr = p => p.PostStatus == (int)PostStatusEnum.Publish;
+                    Expression<Func<Post, bool>> specExpr = p => p.PostStatus == (int)PostStatusEnum.Publish;
 
                     if (postStatu == null)
                     {

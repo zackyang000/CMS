@@ -13,7 +13,8 @@
             self.loading = ko.observable("");
             self.error = ko.observable("");
             self.controldisplayauthoreditor = ko.observable(false);
-            
+            self.isAdmin = ko.observable(@isAdmin.ToString().ToLower());
+                
             self.add = function (formElement) {
                 self.error("");
                 self.loading("正在提交");
@@ -83,7 +84,7 @@
                 <span class="date" data-bind="text: $data.CreateDate.Format()"></span> |
                 #<span data-bind="text: $data.Index"></span>
                 <span class="warningbox" data-bind="visible: $data.IsDeleted">该回复已删除,仅管理员可见.</span>
-                <div class="act">
+                <div class="act" data-bind="visible:$root.isAdmin">
                         <a href="JavaScript:void(0)" data-bind="click: $root.del, visible: $data.IsDeleted==false">[删除]</a>
                         <a href="JavaScript:void(0)" data-bind="click: $root.renew, visible: $data.IsDeleted">[恢复]</a>
                 </div>
