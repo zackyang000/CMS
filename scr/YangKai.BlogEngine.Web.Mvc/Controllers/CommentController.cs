@@ -122,7 +122,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             if (string.IsNullOrEmpty(channelurl))
                 channelurl = QueryFactory.Post.GetGroup(groupurl).Channel.Url;
-            return Json(QueryFactory.Post.GetCommentsNewest(channelurl).ToViewModels(), JsonRequestBehavior.AllowGet);
+            return Json(QueryFactory.Post.GetCommentsRecent(channelurl).ToViewModels(), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -15,13 +15,13 @@ namespace YangKai.BlogEngine.Modules.BoardModule.Repositories
         {
         }
 
-        public new List<Board> GetAll(int count)
+        public new IList<Board> GetAll(int count)
         {
             var orderBy = new OrderByExpression<Board, DateTime>(p => p.CreateDate, OrderMode.DESC);
             return GetAll(count, orderBy).ToList();
         }
 
-        public List<Board> GetRecent(int count)
+        public IList<Board> GetRecent(int count)
         {
             var orderBy = new OrderByExpression<Board, DateTime>(p => p.CreateDate, OrderMode.DESC);
             return GetAll(count, p => !p.IsDeleted, orderBy).ToList();

@@ -16,7 +16,7 @@ namespace YangKai.BlogEngine.IQueryServices
         Channel GetChannel(string channelUrl);
         Comment GetComment(Guid commentId);
         IList<Comment> GetComments(Guid postId);
-        IList<Comment> GetCommentsNewest(string channelUrl);
+        IList<Comment> GetCommentsRecent(string channelUrl);
         Int32 GetCommentsCount(Guid postId);
         Group GetGroup(Guid key);
         Group GetGroup(string groupUrl);

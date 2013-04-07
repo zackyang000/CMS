@@ -66,15 +66,12 @@ namespace YangKai.BlogEngine.QueryServices
 
         public IList<Comment> GetComments(Guid postId)
         {
-            return _commentRepository.GetAll(p => p.PostId == postId, new OrderByExpression<Comment, DateTime>(p => p.CreateDate)).ToList();
+            return _commentRepository.GetAll(postId);
         }
 
-        public IList<Comment> GetCommentsNewest(string channelUrl)
+        public IList<Comment> GetCommentsRecent(string channelUrl)
         {
-            return
-                _commentRepository.GetAll(10, p => p.Post.Group.Channel.Url == channelUrl && !p.IsDeleted,
-                                          new OrderByExpression<Comment, DateTime>(p => p.CreateDate, OrderMode.DESC))
-                                  .ToList();
+            return _commentRepository.GetRecent(10);
         }
 
         public Int32 GetCommentsCount(Guid postId)
