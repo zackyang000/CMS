@@ -65,108 +65,6 @@ function hide_detail(id) {
     }, 300);
 }
 
-//添加评论
-function add_comment(postId, pic) {
-    $("#info").css({ color: "", display: "block", background: "url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat" });
-    $("#info").html("正在提交");
-    $("#submit").prop("disabled", true);
-    var name = $("#Author").val();
-    var email = $("#Email").val();
-    var url = $("#Url").val();
-    var content = $("#Content").val();
-    var picurl = pic == "" ? "/Content/Image/avatar.png" : pic;
-
-    name = $.trim(name);
-    email = $.trim(email);
-    url = $.trim(url);
-    if (!url.isUrl()) { url = ""; }
-    $.ajax({
-        type: "POST",
-        url: "/Comment/Add",
-        dataType: "json",
-        data: "Content=" + content + "&Author=" + name + "&Email=" + email + "&Url=" + url + "&PostId=" + postId,
-        cache: false,
-        success: function (result) {
-            if (result.result) {
-                content = HtmlEncode(content);
-                content = content.replace(/(\n)/g, "<br />");
-                var date = GetDateFormat(new Date());
-                var li = "<li id=\"list" + result.index + "\" style=\"display:none;\"><div class=\"author\"><div class=\"pic\"><img class=\"avatar\" width=\"32\" height=\"32\" alt=\"avatar\" src=\"" + picurl + "\" complete=\"complete\" /></div><div class=\"name\">" + name + "</div></div><div class=\"info\"><span class=\"date\">" + date + " | #" + result.index + "</span><div class=\"act\"></div><div class=\"clear\"></div><div class=\"content\">" + content + "</div></div><div class=\"clear\"></div></li>";
-                if (result.index > 1) {
-                    $("#thecomments").append(li);
-                    $("#list" + result.index).animate({
-                        opacity: 'toggle'
-                    }, 1000);
-                }
-                else {
-                    $("#thecomments").animate({
-                        opacity: 'toggle'
-                    }, 1000);
-                    setTimeout(function () {
-                        $("#thecomments").html(li);
-                        $("#list" + result.index).show();
-                        $("#thecomments").animate({
-                            opacity: 'toggle'
-                        }, 1000);
-                    }, 1000);
-                }
-                $("#Content").val("");
-                $("#info").html("");
-                $("#hide_author_info").hide();
-                $("#show_author_info").show();
-                $("#author_info").hide();
-            }
-            else {
-                $("#info").css({ color: "red" });
-                $("#info").html(result.reason);
-            }
-        },
-        complete: function () {
-            $("#info").css({ background: "none" });
-            $("#submit").prop("disabled",false);
-        }
-    });
-}
-
-//删除评论
-function delete_comment(index, id) {
-    $.ajax({
-            url: "/comment/delete",
-            type: "POST",
-            dataType: "json",
-            data: "id=" + id,
-            success: function(result) {
-                if (result.result) {
-                    $("#date" + index).append("<span id=\"warningbox-" + index + "\" class=\"warningbox\" style=\"display:none;\">该评论已删除,仅管理员可见.</span>");
-                    $("#function-" + index).fadeOut(1000);
-                    $("#warningbox-" + index).fadeIn(1000);
-                }
-                else { alert(result.reason); }
-            }
-        });
-}
-
-//恢复评论
-function renew_comment(index, id) {
-    $.ajax({
-        url: "/comment/renew",
-        type: "POST",
-        dataType: "json",
-        data: "id=" + id,
-        success: function (result) {
-            if (result.result) {
-                $("#function-" + index).fadeOut(1000);
-                $("#warningbox-" + id).fadeOut(1000, function () {
-                    $("#date" + index).append("<span id=\"successbox-" + index
-                        + "\" class=\"successbox\" style=\"display:none;\">该评论已恢复.</span>");
-                    $("#successbox-" + index).fadeIn(1000);
-                });
-            }
-            else { alert(result.reason); }
-        }
-    });
-}
-
 //删除文章
 function post_delete(id) {
     $.ajax({
@@ -352,13 +250,6 @@ function getjsondate(jsondate) {
 
 //#region ko common
 
-function fadeOutAndFadeIn(hide, show) {
-    $("#" + hide).stop(true, true);
-    $("#" + show).stop(true, true);
-    $("#" + hide).fadeOut(300, function () { $("#" + show).fadeIn(1000); });
-}
-
 function elementFadeIn(elem) { if (elem.nodeType === 1) $(elem).hide().fadeIn(1000); }
-
 
 //#endregion
