@@ -149,13 +149,20 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         #region 侧栏
 
         //标签分组
+        [ActionName("categorygroup")]
         [AcceptVerbs(HttpVerbs.Get)]
-        [ChildActionOnly]
-        [OutputCache(Duration = 120)]
-        public PartialViewResult GroupByCategory(string groupUrl)
+        //[OutputCache(Duration = 3600)]
+        public JsonResult CategoryGroup(string groupUrl)
         {
+            if (groupUrl == string.Empty) return Json(string.Empty, JsonRequestBehavior.AllowGet);
+
             ViewBag.groupUrl = groupUrl;
-            return PartialView(QueryFactory.Post.StatGroupByCategory(groupUrl));
+            return Json(QueryFactory.Post.StatGroupByCategory(groupUrl).Select(p => new
+                {
+                    Name = p.Key.Name,
+                    Url = p.Key.Url,
+                    Count = p.Value
+                }), JsonRequestBehavior.AllowGet);
         }
 
         ////最多浏览

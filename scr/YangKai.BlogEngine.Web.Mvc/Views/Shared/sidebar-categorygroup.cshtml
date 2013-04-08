@@ -1,0 +1,33 @@
+﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
+@using YangKai.BlogEngine.Web.Mvc.Common
+@{
+    var channel = ViewBag.Channel as Channel;
+    var group = ViewBag.Group as Group;
+    var channelUrl = channel == null ? string.Empty : channel.Url;
+    var groupUrl = group == null ? string.Empty : group.Url;
+    var indexUrl = RouteHelper.Current.Index(groupUrl, channelUrl);
+}
+<div class="widget" id="sidebar-category">
+    <h3>文章分类</h3>
+    <div class="ko-area-loader" data-bind="visible: list().length == 0"></div>
+    <ul data-bind="template: { name: 'categoryGroupViewModelTemplate', foreach: list, afterAdd: elementFadeIn }">
+    </ul>
+</div>
+<script type="text/javascript">
+    function CategoryGroupViewModel() {
+        var self = this;
+        self.list = ko.observableArray();
+        self.indexurl = '@indexUrl';
+        $.getJSON('/article/categorygroup?groupUrl=@groupUrl', self.list);
+    }
+
+    $(document).ready(function() {
+        ko.applyBindings(new CategoryGroupViewModel(), $("#sidebar-category")[0]);
+    });
+</script>
+<script type="text/html" id="categoryGroupViewModelTemplate">
+    <li>
+        <a data-bind="attr: { 'href': $root.indexurl + '?c='+$data.Url }, text: $data.Name"></a>
+        (<span data-bind="text:$data.Count"></span>)
+    </li>
+</script>

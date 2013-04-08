@@ -25,8 +25,29 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            RegisterGroupRoute(routes);
             RegisterChannelRoute(routes);
             RegisterArticleRoute(routes);
+        }
+
+        private static void RegisterGroupRoute(RouteCollection routes)
+        {
+            var groups = QueryFactory.Post.GetGroupsByNotDeletion();
+            foreach (var item in groups)
+            {
+                routes.MapLowerCaseUrlRoute(
+                    item.Url,
+                    item.Url + "/{action}/{id}",
+                    new
+                        {
+                            Controller = "Article",
+                            Action = "Index",
+                            GroupUrl = item.Url,
+                            id = UrlParameter.Optional,
+                        },
+                    new[] {"YangKai.BlogEngine.Web.Mvc.Controllers"}
+                    );
+            }
         }
 
         private static void RegisterChannelRoute(RouteCollection routes)
@@ -100,20 +121,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 new[] {"YangKai.BlogEngine.Web.Mvc.Controllers"}
                 );
 
-            /*******************************************
-             * foreach中,MapLowerCaseUrlRoute的name即item.Url是给
-             * MvcPager提供生成分页Link使用,若修改需与Html.Pager中的
-             * routeName一同修改
-             *******************************************/
-            foreach (var item in groups)
-            {
-                routes.MapLowerCaseUrlRoute(
-                    item.Url,
-                    item.Url + "/{action}/{id}",
-                    new {controller = "Article", action = "Index", id = UrlParameter.Optional, GroupUrl = item.Url},
-                    new[] {"YangKai.BlogEngine.Web.Mvc.Controllers"}
-                    );
-            }
+
             //由于使用Default URL所以不需要本行
             //routes.MapLowerCaseUrlRoute(
             //        "2",

@@ -1,5 +1,12 @@
 ﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
-
+@using YangKai.BlogEngine.Modules.PostModule.Objects
+@using YangKai.BlogEngine.Web.Mvc.Common
+@{
+    var channel = ViewBag.Channel as Channel;
+    var group = ViewBag.Group as Group;
+    var channelUrl = channel == null ? string.Empty : channel.Url;
+    var groupUrl = group == null ? string.Empty : group.Url;
+}
 <div id="content">
     @RenderBody()
 </div>
@@ -8,6 +15,9 @@
     @Html.Partial("sidebar-search")
     @Html.Partial("sidebar-recentcomments")
     @Html.Partial("sidebar-recentmessages")
-    @Html.Partial("sidebar-recentmessages")
+    @if (groupUrl != string.Empty)
+    {
+        @Html.Partial("sidebar-categorygroup")
+    }
 </div>
 <div class="clear"></div>

@@ -151,6 +151,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
+    <Compile Include="Common\RouteHelper.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
@@ -1480,8 +1481,8 @@
     <Content Include="Views\Article\calendar.cshtml" />
     <Content Include="Views\Article\channel.cshtml" />
     <Content Include="Views\Article\detail.cshtml" />
-    <Content Include="Views\Article\detailpost.cshtml" />
-    <Content Include="Views\Article\groupbycategory.cshtml" />
+    <Content Include="Views\Article\detail-content.cshtml" />
+    <Content Include="Views\Shared\sidebar-categorygroup.cshtml" />
     <Content Include="Views\Article\index-list.cshtml" />
     <Content Include="Views\Article\index.cshtml" />
     <Content Include="Views\Article\postfooter.cshtml" />

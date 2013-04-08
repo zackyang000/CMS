@@ -21,12 +21,6 @@ namespace YangKai.BlogEngine.QueryServices
         private readonly PostRepository _postRepository = InstanceLocator.Current.GetInstance<PostRepository>();
         private readonly TagRepository _tagRepository = InstanceLocator.Current.GetInstance<TagRepository>();
 
-        private const string PowerLess = "您没有相关权限.";
-
-        public PostQueryServices(IUnitOfWork context)
-        {
-        }
-
         public Category GetCategory(Guid categoryId)
         {
             return _categoryRepository.Get(categoryId);
@@ -37,9 +31,9 @@ namespace YangKai.BlogEngine.QueryServices
             return _categoryRepository.Get(p => p.Url == categoryUrl);
         }
 
-        public IList<PostStatInfo> StatGroupByCategory(string groupUrl)
+        public IDictionary<Category, int> StatGroupByCategory(string groupUrl)
         {
-            throw new Exception("未实现");//TODO
+            return _categoryRepository.StatGroupByCategory(groupUrl);
         }
 
         public IList<Category> GetCategories(string groupUrl)

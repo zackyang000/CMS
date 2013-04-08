@@ -82,7 +82,7 @@
   <ItemGroup>
     <Compile Include="TagsDictionary.cs" />
     <Compile Include="CalendarDictionary.cs" />
-    <Compile Include="PostStatInfo.cs" />
+    <Compile Include="PostGroupByCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

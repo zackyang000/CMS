@@ -10,7 +10,7 @@ namespace YangKai.BlogEngine.IQueryServices
     {
         Category GetCategory(Guid categoryId);
         Category GetCategory(string categoryUrl);
-        IList<PostStatInfo> StatGroupByCategory(string groupUrl);
+        IDictionary<Category, int> StatGroupByCategory(string groupUrl);
         IList<Category> GetCategories(string groupUrl);
         IList<Channel> FindAllByNotDeletion();
         Channel GetChannel(string channelUrl);
