@@ -7,6 +7,18 @@ using System.Web.Routing;
 
 namespace YangKai.BlogEngine.Web.Mvc.Common
 {
+    /// <summary>
+    /// 生成ArticleController中Index和Detail的超链接.
+    /// 因为这2个Action的路由中,传值必须要使用groupUrl和channelUrl其中之一.为了便于使用,编写该Helper.
+    /// 用于代替Url.Action(actionName, routeValues)
+    /// 其效果同于:
+    ///     Url.Action("Index", new RouteValueDictionary
+    ///         {
+    ///             {"Controller", "Article"},
+    ///             {"Action", "Index"},
+    ///             {"groupUrl", groupUrl},
+    ///         });
+    /// </summary>
     public class RouteHelper
     {
         private UrlHelper Url;
