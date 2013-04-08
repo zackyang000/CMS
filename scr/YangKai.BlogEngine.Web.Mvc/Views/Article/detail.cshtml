@@ -14,7 +14,7 @@
     @Model.Title
 </div>
 
-@Html.Partial("DetailPost", Model)
+@Html.Partial("detail-content", Model)
 @Html.Action("PostRelated", new { postId = Model.PostId })
 @Html.Action("index", "Comment")
 @Html.Action("PostNavi", new { postId = Model.PostId })

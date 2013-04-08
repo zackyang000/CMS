@@ -177,6 +177,7 @@
     <Content Include="Content\admin\images\menu2.png" />
     <Content Include="Content\admin\images\top.png" />
     <Content Include="Content\admin\images\wpspin_light.gif" />
+    <Content Include="Content\admin\jquery-ui-1.8.8.custom\jquery-ui.min.js" />
     <Content Include="Content\admin\js\common.js" />
     <Content Include="Content\admin\js\post-manage.js" />
     <Content Include="Content\admin\js\post-new.js" />

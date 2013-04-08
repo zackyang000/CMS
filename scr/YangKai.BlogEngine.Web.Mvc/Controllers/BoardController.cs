@@ -98,7 +98,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [OutputCache(Duration = 3600)]
         public JsonResult RecentMessages()
         {
-            return Json(QueryFactory.Board.GetRecent(10).ToBoardViewModels(), JsonRequestBehavior.AllowGet);
+            return Json(QueryFactory.Board.GetRecent().ToBoardViewModels(), JsonRequestBehavior.AllowGet);
         }
     }
 }

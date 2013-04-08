@@ -85,7 +85,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             CommandFactory.Run(new PostBrowseEvent {PostId = data.PostId});
 
-
             ViewBag.Group = data.Group;
             ViewBag.Channel = data.Group.Channel;
             ViewBag.Title =string.Format(Config.Format.PAGE_TITLE,  data.Title );
@@ -126,14 +125,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return View(data);
         }
 
-        //上一篇 && 下一篇
-        public ActionResult PostNavi(Guid postId)
-        {
-            ViewBag.PrePost = QueryFactory.Post.PrePost(postId);
-            ViewBag.NextPost = QueryFactory.Post.NextPost(postId);
-            return View();
-        }
-
         //相关文章 || 随便看看  
         public ActionResult PostRelated(Guid postId)
         {
@@ -145,6 +136,14 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 ViewBag.IsExistRelatedPosts = false;
             }
             return View(data);
+        }
+
+        //上一篇 && 下一篇
+        public ActionResult PostNavi(Guid postId)
+        {
+            ViewBag.PrePost = QueryFactory.Post.PrePost(postId);
+            ViewBag.NextPost = QueryFactory.Post.NextPost(postId);
+            return View();
         }
 
         #region 侧栏
