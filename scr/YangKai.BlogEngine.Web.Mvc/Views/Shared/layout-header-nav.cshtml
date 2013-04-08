@@ -31,7 +31,7 @@
         @if (Model != null && Model.Any())
         {
         <td class="div"></td>
-        <td class="link">@Html.ActionLink("存档", "calendar", "Article", new { channelUrl = Model.First().Channel.Url }, null)</td>
+        <td class="link">@Html.ActionLink("存档", "calendar",new RouteValueDictionary {{"Controller", "Article"},{"channelUrl" , Model.First().Channel.Url},{"groupUrl",string.Empty}})</td>
         }
         <td class="div"></td>
         <td class="right"></td>

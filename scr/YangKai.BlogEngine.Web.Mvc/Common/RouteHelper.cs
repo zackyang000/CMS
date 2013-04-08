@@ -37,11 +37,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Common
 
             if (groupUrl != "")
             {
-                route.Add("GroupUrl", groupUrl);
+                route.Add("groupUrl", groupUrl);
             }
             else if (channelUrl != "")
             {
-                route.Add("ChannelUrl", channelUrl);
+                route.Add("channelUrl", channelUrl);
             }
             else
             {
