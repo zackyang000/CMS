@@ -16,5 +16,5 @@
 
 @Html.Partial("DetailPost", Model)
 @Html.Action("PostRelated", new { postId = Model.PostId })
-@Html.Action("list-view", "Comment")
+@Html.Action("index", "Comment")
 @Html.Action("PostNavi", new { postId = Model.PostId })

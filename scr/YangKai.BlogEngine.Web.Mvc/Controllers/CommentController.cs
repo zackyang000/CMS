@@ -16,9 +16,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         //
         // 评论页面
-        [ActionName("list-view")]
+        [ActionName("index")]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ListView(string id)
+        public PartialViewResult Index(string id)
         {
             ViewBag.PostId = QueryFactory.Post.Find(id).PostId; //添加评论时使用
 
@@ -35,7 +35,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         [ActionName("list")]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult List(Guid id)
+        public JsonResult List(Guid id)
         {
             IList<Comment> comments = QueryFactory.Post.GetComments(id);
             if (!WebMasterCookie.IsLogin)
@@ -45,7 +45,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return Json(comments.ToViewModels(),JsonRequestBehavior.AllowGet);
         }
 
-        //
         // 添加评论
         [ActionName("add")]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -77,7 +76,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
         }
 
-        //
         // 删除评论
         [UserAuthorize]
         [ActionName("delete")]
@@ -95,7 +93,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
         }
 
-        //
         // 恢复评论
         [UserAuthorize]
         [ActionName("renew")]
@@ -113,12 +110,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
         }
 
-        //
-        // 最新评论页面
+        // 最新评论
         [ActionName("recent")]
         [AcceptVerbs(HttpVerbs.Get)]
-        [OutputCache(Duration = 300)]
-        public ActionResult RecentComments(string channelurl, string groupurl)
+        [OutputCache(Duration = 3600)]
+        public JsonResult RecentComments(string channelurl, string groupurl)
         {
             if (string.IsNullOrEmpty(channelurl))
                 channelurl = QueryFactory.Post.GetGroup(groupurl).Channel.Url;

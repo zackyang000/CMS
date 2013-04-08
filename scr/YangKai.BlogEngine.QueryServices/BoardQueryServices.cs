@@ -15,9 +15,9 @@ namespace YangKai.BlogEngine.QueryServices
            return _boardRepository.GetAll(count);
        }
 
-          public IList<Board> GetRecent(int count)
+          public IList<Board> GetRecent()
        {
-           return _boardRepository.GetRecent(count);
+           return _boardRepository.GetRecent(10);
        }
 
        public int Count()

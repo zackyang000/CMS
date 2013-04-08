@@ -1490,7 +1490,7 @@
     <Content Include="Views\Article\_notfound.cshtml" />
     <Content Include="Views\Article\_removed.cshtml" />
     <Content Include="Views\Board\index.cshtml" />
-    <Content Include="Views\Comment\list-view.cshtml" />
+    <Content Include="Views\Comment\index.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header-caption.cshtml" />

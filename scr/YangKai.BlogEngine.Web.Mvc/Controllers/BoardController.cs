@@ -15,14 +15,14 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         // 留言页面
         [ActionName("index")]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index()
+        public ViewResult Index()
         {
             var cookie = WebGuestCookie.Load();
             var viewModel = new BoardViewModel { Author = cookie.Name };
             return View(viewModel);
         }
 
-        //留言列表
+        // 留言列表
         [ActionName("list")]
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult List()
@@ -35,7 +35,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return Json(data.ToBoardViewModels(), JsonRequestBehavior.AllowGet);
         }
 
-        //
         // 新增留言
         [ActionName("add")]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -57,7 +56,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
         }
 
-        //
         // 删除留言
         [UserAuthorize]
         [ActionName("delete")]
@@ -94,11 +92,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         //
-        // 最新留言页面
+        // 最新留言
         [ActionName("recent")]
         [AcceptVerbs(HttpVerbs.Get)]
-        [OutputCache(Duration = 300)]
-        public ActionResult RecentMessages()
+        [OutputCache(Duration = 3600)]
+        public JsonResult RecentMessages()
         {
             return Json(QueryFactory.Board.GetRecent(10).ToBoardViewModels(), JsonRequestBehavior.AllowGet);
         }
