@@ -4,6 +4,8 @@
     var group = ViewBag.Group as Group;
     var channelUrl = channel == null ? string.Empty : channel.Url;
     var groupUrl = group == null ? string.Empty : group.Url;
+    var indexUrl = RouteHelper.Current.Index(groupUrl, channelUrl);
+    var detailUrl = RouteHelper.Current.Detail(groupUrl);
 }
 
 <div class="widget" id="recentcomments">
@@ -16,6 +18,7 @@
     function RecentCommentsViewModel() {
         var self = this;
         self.comments = ko.observableArray();
+        self.detailBaseUrl = '@detailUrl';
         $.getJSON('/comment/recent?channelurl=@channelUrl&groupurl=@groupUrl', self.comments);
     }
 
@@ -25,7 +28,7 @@
 </script>
 <script type="text/html" id="recentCommentsViewModelTemplate">
     <li>
-        <a href="#" data-bind="text: $data.Author, attr: { title: '《' + $data.PostTitle + '》',href:$data.GroupUrl+'-'+$data.PostUrl}"></a>
+        <a data-bind="text: $data.Author, attr: { title: '《' + $data.PostTitle + '》', href: $root.detailBaseUrl + $data.PostUrl }"></a>
         :
         <span data-bind="html: $data.Content"></span>
     </li>
