@@ -99,6 +99,9 @@ function post_deleted_revoke(id) {
         dataType: "json",
         data: "id=" + id,
         success: function (context) {
+            $("#list" + id).animate({
+                backgroundColor: 'transparent'
+            }, 1);
             if (context.result) {
                 $("#post-deleted-" + id).animate({
                     opacity: 'toggle',
@@ -148,41 +151,6 @@ function page_begin() {
 //html转义
 function HtmlEncode(text) {
     return text.replace(/&/g, '&amp').replace(/\"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
-//转换日期格式yyyy.MM.dd HH:mm(兼容FF,chrome)
-function GetDateFormat(date) {
-    var year = date.getFullYear();
-    var month = (date.getMonth() + 1);
-    if (month < 10) {
-        month = "0" + month;
-    }
-    var day = date.getDate();
-    if (day < 10) {
-        day = "0" + day;
-    }
-    var hour = date.getHours();
-    if (hour < 10) {
-        hour = "0" + hour;
-    }
-    var min = date.getMinutes();
-    if (min < 10) {
-        min = "0" + min;
-    }
-    return year + "." + month + "." + day + " " + hour + ":" + min;
-}
-
-//得到radiobuttonlist的值
-function getRadioValue(name) {
-    var radios = document.getElementsByName(name);
-    var len = radios.length;
-    var selectInt = 0;
-    for (var i = 0; i < len; i++) {
-        if (radios[i].checked == true) {
-            selectInt = radios[i].value;
-        }
-    }
-    return selectInt;
 }
 
 //判断url合法性
@@ -246,15 +214,6 @@ function getjsondate(jsondate) {
     return new Date(parseInt(jsondate, 10));
 }
 
-//#endregion
-
-//#region ko common
-
-function elementFadeIn(elem) { if (elem.nodeType === 1) $(elem).hide().fadeIn(1000); }
-
-//#endregion
-
-
 //fix Array indexOf() in JavaScript for IE browsers
 if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function (elt /*, from*/) {
@@ -268,4 +227,14 @@ if (!Array.prototype.indexOf) {
         }
         return -1;
     };
-} 
+}
+
+//#endregion
+
+//#region ko common
+
+function elementFadeIn(elem) { if (elem.nodeType === 1) $(elem).hide().fadeIn(1000); }
+
+//#endregion
+
+
