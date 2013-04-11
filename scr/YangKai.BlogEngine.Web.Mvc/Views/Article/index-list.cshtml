@@ -15,7 +15,9 @@
  {
     <li id="@("list" + data.PostId)">
         <h2>
-        <strong>@Html.ActionLink(data.Title, "Detail", data.Group.Url, new { id = data.Url }, new { title = data.Title })</strong>
+            <strong>
+                <a href="@RouteHelper.Current.Detail(data.Group.Url)@data.Url" title ="@data.Title">@data.Title</a>
+            </strong>
         @if (data.PostStatus==(int)PostStatusEnum.Trash)
         {
         <span class="del">已删除</span>
@@ -41,7 +43,7 @@
             <div id="post-body-desc-@data.PostId">
                 @if (data.Thumbnail != null)
                 {
-                    <div class="thumb"><a href="@Url.Action("Detail", data.Group.Url, new { id = data.Url })"><img src="/upload/thumbnail/@data.Thumbnail.Url" alt="@data.Thumbnail.Title" title="@data.Thumbnail.Title" style="width:160px; height:100px;" /></a></div>
+                    <div class="thumb"><a href="@RouteHelper.Current.Detail(data.Group.Url)@data.Url" title ="@data.Title"><img src="/upload/thumbnail/@data.Thumbnail.Url" alt="@data.Thumbnail.Title" title="@data.Thumbnail.Title" style="width:160px; height:100px;" /></a></div>
                 }
                 @Html.Raw(data.Description)
             </div>

@@ -33,7 +33,8 @@
         <ul>
         @foreach (var item in Model.Where(p => p.PubDate.Year == calendar.Key.Year && p.PubDate.Month == calendar.Key.Month))
         {
-            <li class="_dot">[@item.Group.Name]@item.PubDate.ToString("dd")日:@Html.ActionLink(item.Title, "Detail", item.Group.Url, new { id = item.Url },null)</li>
+            <li class="_dot">[@item.Group.Name]@item.PubDate.ToString("dd")日:
+                <a href="@RouteHelper.Current.Detail(item.Group.Url)@item.Url" title ="@item.Title">@item.Title</a></li>
         }
         </ul>
     </li>
