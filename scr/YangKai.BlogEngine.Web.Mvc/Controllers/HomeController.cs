@@ -18,7 +18,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [ChildActionOnly]
         public PartialViewResult Menu()
         {
-            IList<Channel> entities = QueryFactory.Post.FindAllByNotDeletion();
+            IList<Channel> entities = QueryFactory.Instance.Post.FindAllByNotDeletion();
             return PartialView(entities);
         }
 
@@ -29,11 +29,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             Channel channel = null;
             if (!string.IsNullOrEmpty(groupUrl))
             {
-                channel = QueryFactory.Post.GetGroup(groupUrl).Channel;
+                channel = QueryFactory.Instance.Post.GetGroup(groupUrl).Channel;
             }
             if (!string.IsNullOrEmpty(channelUrl))
             {
-                channel = QueryFactory.Post.GetChannel(channelUrl);
+                channel = QueryFactory.Instance.Post.GetChannel(channelUrl);
             }
             return channel == null ? PartialView() : PartialView((object)channel.Description);
         }
@@ -50,13 +50,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             if (!string.IsNullOrEmpty(channelUrl))
             {
-                entities = QueryFactory.Post.GetGroupsByChannelUrl(channelUrl);
+                entities = QueryFactory.Instance.Post.GetGroupsByChannelUrl(channelUrl);
                 ViewBag.ChannelUrl = channelUrl;
             }
             if (!string.IsNullOrEmpty(groupUrl))
             {
-                entities = QueryFactory.Post.GetGroupsByGroupUrl(groupUrl);
-                ViewBag.ChannelUrl = QueryFactory.Post.GetGroup(groupUrl).Channel.Url;
+                entities = QueryFactory.Instance.Post.GetGroupsByGroupUrl(groupUrl);
+                ViewBag.ChannelUrl = QueryFactory.Instance.Post.GetGroup(groupUrl).Channel.Url;
             }
 
             if (Request.Url != null) ViewBag.Url = Request.Url.AbsolutePath.Substring(1);
@@ -75,12 +75,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             if (!string.IsNullOrEmpty(channelUrl))
             {
-                var channel = QueryFactory.Post.GetChannel(channelUrl);
+                var channel = QueryFactory.Instance.Post.GetChannel(channelUrl);
                 bannerUrl = channel.BannerUrl;
             }
             if (!string.IsNullOrEmpty(groupUrl))
             {
-                var group = QueryFactory.Post.GetGroup(groupUrl);
+                var group = QueryFactory.Instance.Post.GetGroup(groupUrl);
                 bannerUrl = group.Channel.BannerUrl;
             }
 

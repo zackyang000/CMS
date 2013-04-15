@@ -27,7 +27,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
                 var username = collection["user"];
                 var password = collection["pwd"];
                 var isRemember = Convert.ToBoolean(collection["remember"]);
-                bool login = QueryFactory.User.AccountLoginValidate(username, password, isRemember, 60);
+                bool login = QueryFactory.Instance.User.AccountLoginValidate(username, password, isRemember, 60);
                 return Json(new { result = login });
             }
             catch (Exception e)
@@ -43,7 +43,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         {
             try
             {
-                QueryFactory.User.LoginOff();
+                QueryFactory.Instance.User.LoginOff();
                 return Json(new { result = true });
             }
             catch (Exception e)

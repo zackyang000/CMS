@@ -32,7 +32,7 @@ namespace YangKai.BlogEngine.Web.Mvc
                     visitLog.Os = Function.GetOSName(context);
                     if (!visitLog.IsRobot)
                     {
-                        CommandFactory.Create(visitLog);
+                        CommandFactory.Instance.Create(visitLog);
                     }
                 });
         }

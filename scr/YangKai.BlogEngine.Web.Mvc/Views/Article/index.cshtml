@@ -23,7 +23,7 @@
     }
 </div>
 
-@if (YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin())
+@if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
 {
 <div id="addpost" class="_add"><a href="/admin/postmanage/new">添加新文章</a></div>
 <div class="clear"></div>
@@ -31,7 +31,7 @@
 @if (!string.IsNullOrEmpty(Request.QueryString["c"]))
 {
     <div class="boxcaption"><h3>存档</h3></div>
-    <div class="box">‘@(QueryFactory.Post.GetCategory(Request.QueryString["c"]).Name)’ 分类的存档</div>
+    <div class="box">‘@(QueryFactory.Instance.Post.GetCategory(Request.QueryString["c"]).Name)’ 分类的存档</div>
 }
 @if (!string.IsNullOrEmpty(Request.QueryString["t"]))
 {

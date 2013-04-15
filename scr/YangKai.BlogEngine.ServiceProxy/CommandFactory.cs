@@ -5,46 +5,39 @@ using System.Text;
 using AtomLab.Domain;
 using YangKai.BlogEngine.ICommandServices;
 using YangKai.BlogEngine.Modules.BoardModule.Objects;
+using YangKai.BlogEngine.Modules.CommonModule.Objects;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 
 namespace YangKai.BlogEngine.ServiceProxy
 {
-    public static class CommandFactory
+    public class CommandFactory
     {
-       public static void Run(IEvent e)
-       {
-           var commandService = InstanceLocator.Current.GetInstance<ICommandService>();
-           commandService.RunCommand(e);
-       }
-
-       public static void Create<TEntity>(TEntity entity) where TEntity :class
-       {
-           var commandService = InstanceLocator.Current.GetInstance<ICommandService>();
-           commandService.CreateEntity(entity);
-       }
-
-        public static void CreatePost(Post post)
+        public static CommandFactory Instance
         {
-            var commandService = InstanceLocator.Current.GetInstance<ICommandService>();
-            commandService.CreatePost(post);
+            get { return new CommandFactory(); }
         }
 
-        public static void CreateComment(Comment comment)
+        private CommandFactory()
         {
-            var commandService = InstanceLocator.Current.GetInstance<ICommandService>();
-            commandService.CreateComment(comment);
+
         }
 
-        public static void CreateBoard(Board board)
+        public void Run(IEvent e)
         {
             var commandService = InstanceLocator.Current.GetInstance<ICommandService>();
-            commandService.CreateBoard(board);
+            commandService.RunCommand(e);
         }
 
-        public static void UpdatePost(string postUrl,Post data,bool existThumbnail)
+        public void Create<TEntity>(TEntity entity) where TEntity : class
         {
-           var commandService = InstanceLocator.Current.GetInstance<ICommandService>();
-            commandService.UpdatePost( postUrl, data, existThumbnail);
+            var commandService = InstanceLocator.Current.GetInstance<ICommandService>();
+            commandService.Create(entity);
+        }
+
+        public void UpdatePost(string postUrl, Post data, bool existThumbnail)
+        {
+            var commandService = InstanceLocator.Current.GetInstance<ICommandService>();
+            commandService.UpdatePost(postUrl, data, existThumbnail);
         }
     }
 }

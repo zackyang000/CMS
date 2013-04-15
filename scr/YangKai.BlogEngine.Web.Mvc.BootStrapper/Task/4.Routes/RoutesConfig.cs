@@ -37,7 +37,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         //{group.Url}/{id}
         private static void RegisterGroupIndexViewRoute(RouteCollection routes)
         {
-            var groups = QueryFactory.Post.GetGroupsByNotDeletion();
+            var groups = QueryFactory.Instance.Post.GetGroupsByNotDeletion();
             foreach (var item in groups)
             {
                 routes.MapLowerCaseUrlRoute(
@@ -57,7 +57,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         //{group.Url}-{id}
         private static void RegisterGroupDetailViewRoute(RouteCollection routes)
         {
-            var groups = QueryFactory.Post.GetGroupsByNotDeletion();
+            var groups = QueryFactory.Instance.Post.GetGroupsByNotDeletion();
 
             foreach (var item in groups)
             {
@@ -76,7 +76,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         //{channel.Url}/{id}
         private static void RegisterChannelIndexViewRoute(RouteCollection routes)
         {
-            var channels = QueryFactory.Post.FindAllByNotDeletion();
+            var channels = QueryFactory.Instance.Post.FindAllByNotDeletion();
 
             foreach (var entity in channels)
             {
@@ -110,7 +110,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         //{channel.Url}-calendar
         private static void RegisterChannelCalendarViewRoute(RouteCollection routes)
         {
-            var channels = QueryFactory.Post.FindAllByNotDeletion();
+            var channels = QueryFactory.Instance.Post.FindAllByNotDeletion();
 
             foreach (var entity in channels)
             {

@@ -21,11 +21,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             if (hasChannel)
             {
-                channel = QueryFactory.Post.GetChannel(channelUrl);
+                channel = QueryFactory.Instance.Post.GetChannel(channelUrl);
             }
             else if (hasGroup)
             {
-                group = QueryFactory.Post.GetGroup(groupUrl);
+                group = QueryFactory.Instance.Post.GetGroup(groupUrl);
                 channel = group.Channel;
             }
             else
@@ -57,16 +57,16 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [ActionName("index-list")]
         public ActionResult List(int? id, string channelUrl, string groupUrl, string c, string t, string d, string k)
         {
-            var data = QueryFactory.User.IsLogin()
-                           ? QueryFactory.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k)
-                           : QueryFactory.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k);
+            var data = QueryFactory.Instance.User.IsLogin()
+                           ? QueryFactory.Instance.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k)
+                           : QueryFactory.Instance.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k);
             var pagedList = new PagedList<Post>(data.DataList, id ?? 1, 20, data.TotalCount);
            
             //保存搜索记录
             if (!string.IsNullOrEmpty(k))
             {
                 var log = Log.CreateSearchLog(k);
-                CommandFactory.Create(log);
+                CommandFactory.Instance.Create(log);
             }
 
             return View(pagedList);
@@ -74,15 +74,15 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         public ActionResult Detail(string id, string groupUrl)
         {
-            Post data = QueryFactory.Post.Find(id);
+            Post data = QueryFactory.Instance.Post.Find(id);
 
-            if (!QueryFactory.User.IsLogin())
+            if (!QueryFactory.Instance.User.IsLogin())
             {
                 if (data == null) return View("_NotFound");
                 if (data.PostStatus == (int)PostStatusEnum.Trash) return View("_Removed");
             }
 
-            CommandFactory.Run(new PostBrowseEvent {PostId = data.PostId});
+            CommandFactory.Instance.Run(new PostBrowseEvent { PostId = data.PostId });
 
             ViewBag.Group = data.Group;
             ViewBag.Channel = data.Group.Channel;
@@ -99,7 +99,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             try
             {
-                var data = QueryFactory.Post.Find(postId);
+                var data = QueryFactory.Instance.Post.Find(postId);
                 if (data.PostStatus == (int)PostStatusEnum.Trash)
                 {
                     return Json(new { success = false, reason = "文章已被删除." });
@@ -117,21 +117,21 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             if (!string.IsNullOrEmpty(channelUrl))
             {
-                ViewBag.Channel = QueryFactory.Post.GetChannel(channelUrl);
+                ViewBag.Channel = QueryFactory.Instance.Post.GetChannel(channelUrl);
             }
-            ViewBag.CalendarList = QueryFactory.Post.GroupByCalendar(channelUrl);
-            var data = QueryFactory.Post.FindAll(channelUrl);
+            ViewBag.CalendarList = QueryFactory.Instance.Post.GroupByCalendar(channelUrl);
+            var data = QueryFactory.Instance.Post.FindAll(channelUrl);
             return View(data);
         }
 
         //相关文章 || 随便看看  
         public ActionResult PostRelated(Guid postId)
         {
-            var data = QueryFactory.Post.FindAllByTag(postId, 7);
+            var data = QueryFactory.Instance.Post.FindAllByTag(postId, 7);
             ViewBag.IsExistPostRelated = true;
             if (data.Count == 0)
             {
-                data = QueryFactory.Post.FindAllByRandom(postId, 7);
+                data = QueryFactory.Instance.Post.FindAllByRandom(postId, 7);
                 ViewBag.IsExistRelatedPosts = false;
             }
             return View(data);
@@ -140,8 +140,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         //上一篇 && 下一篇
         public ActionResult PostNavi(Guid postId)
         {
-            ViewBag.PrePost = QueryFactory.Post.PrePost(postId);
-            ViewBag.NextPost = QueryFactory.Post.NextPost(postId);
+            ViewBag.PrePost = QueryFactory.Instance.Post.PrePost(postId);
+            ViewBag.NextPost = QueryFactory.Instance.Post.NextPost(postId);
             return View();
         }
 
@@ -156,7 +156,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             if (groupUrl == string.Empty) return Json(string.Empty, JsonRequestBehavior.AllowGet);
 
             ViewBag.groupUrl = groupUrl;
-            return Json(QueryFactory.Post.StatGroupByCategory(groupUrl).Select(p => new
+            return Json(QueryFactory.Instance.Post.StatGroupByCategory(groupUrl).Select(p => new
                 {
                     Name = p.Key.Name,
                     Url = p.Key.Url,

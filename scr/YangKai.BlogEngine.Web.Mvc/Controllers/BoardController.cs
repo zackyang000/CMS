@@ -27,7 +27,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult List()
         {
-            var data = QueryFactory.Board.FindAll(Int32.MaxValue);
+            var data = QueryFactory.Instance.Board.FindAll(Int32.MaxValue);
             if (!WebMasterCookie.IsLogin)
             {
                 data = data.Where(p => !p.IsDeleted).ToList();
@@ -46,7 +46,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             try
             {
-                CommandFactory.CreateBoard(entity);
+                CommandFactory.Instance.Create(entity);
                 WebGuestCookie.Save(viewModel.Author);
                 return Json(new { result = true, model = entity.ToBoardViewModel() });
             }
@@ -64,7 +64,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             try
             {
-                CommandFactory.Run(new BoardDeleteEvent() { BoardId = id });
+                CommandFactory.Instance.Run(new BoardDeleteEvent() { BoardId = id });
                 return Json(new {result = true});
             }
             catch (Exception e)
@@ -82,7 +82,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             try
             {
-                CommandFactory.Run(new BoardRenewEvent() { BoardId = id });
+                CommandFactory.Instance.Run(new BoardRenewEvent() { BoardId = id });
                 return Json(new { result = true });
             }
             catch (Exception e)
@@ -98,7 +98,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [OutputCache(Duration = 3600)]
         public JsonResult RecentMessages()
         {
-            return Json(QueryFactory.Board.GetRecent().ToBoardViewModels(), JsonRequestBehavior.AllowGet);
+            return Json(QueryFactory.Instance.Board.GetRecent().ToBoardViewModels(), JsonRequestBehavior.AllowGet);
         }
     }
 }

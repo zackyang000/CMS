@@ -16,7 +16,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Repositories
 
         public new IList<Comment> GetAll(Guid postId)
         {
-            var orderBy = new OrderByExpression<Comment, DateTime>(p => p.CreateDate, OrderMode.DESC);
+            var orderBy = new OrderByExpression<Comment, DateTime>(p => p.CreateDate);
             return GetAll(p => p.PostId == postId, orderBy).ToList();
         }
 

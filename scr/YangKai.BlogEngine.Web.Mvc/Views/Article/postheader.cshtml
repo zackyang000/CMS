@@ -2,7 +2,7 @@
 <div class="postHeader">
 	<span class="date">@Model.PubDate.ToString("yyyy年MM月dd日")</span>
 	<span class="author">我是你的猪@*@Model.PubAdmin.UserName*@</span>
-    @if (YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin())
+    @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
     {
     <span class="editpost"><a href="/admin/postmanage/edit/@Model.Url">编辑</a></span>
     <span class="deletepost"><a href="JavaScript:post_delete('@Model.PostId');">删除</a></span>

@@ -1,6 +1,6 @@
 ﻿@model YangKai.BlogEngine.Web.Mvc.Models.CommentViewModel
 @{
-    var isAdmin = YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin();
+    var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin;
 }
     <script type="text/javascript">
         function CommentViewModel() {

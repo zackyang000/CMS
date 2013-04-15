@@ -28,36 +28,15 @@ namespace YangKai.BlogEngine.CommandServices
             _context.Commit();
         }
 
-        public void CreateEntity<TEntity>(TEntity entity) where TEntity : class
+        public void Create<TEntity>(TEntity entity) where TEntity : class
         {
             EventProcessor.CreateEntity(entity);
             _context.Commit();
         }
 
-        public  void CreatePost(Post post)
-        {
-            CreateEntity(post);
-        }
-
-        public  void CreateComment(Comment comment)
-        {
-            CreateEntity(comment);
-        }
-
-        public void CreateBoard(Board board)
-           {
-            CreateEntity(board);
-        }
-
-        public void UpdatePost(string postUrl,Post data,bool existThumbnail)
+        public void UpdatePost(string postUrl, Post data, bool existThumbnail)
         {
             new PostService().Update(postUrl, data, existThumbnail);
-            _context.Commit();
-        }
-
-        public void AddLog(Log log)
-        {
-            EventProcessor.CreateEntity(log);
             _context.Commit();
         }
     }

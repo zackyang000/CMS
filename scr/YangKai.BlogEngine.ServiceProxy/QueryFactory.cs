@@ -7,38 +7,36 @@ using YangKai.BlogEngine.IQueryServices;
 
 namespace YangKai.BlogEngine.ServiceProxy
 {
-    public static class QueryFactory
+    public class QueryFactory
     {
-        public static IUserQueryServices User
+        public static QueryFactory Instance
         {
-            get
-            {
-                  return InstanceLocator.Current.GetInstance<IUserQueryServices>();
-            }
+            get { return new QueryFactory(); }
         }
 
-        public static IPostQueryServices Post
+        private QueryFactory()
         {
-            get
-            {
-                return InstanceLocator.Current.GetInstance<IPostQueryServices>();
-            }
+
         }
 
-        public static IBoardQueryServices Board
+        public IUserQueryServices User
         {
-            get
-            {
-                return InstanceLocator.Current.GetInstance<IBoardQueryServices>();
-            }
+            get { return InstanceLocator.Current.GetInstance<IUserQueryServices>(); }
         }
 
-        public static ILabQueryServices Lab
+        public IPostQueryServices Post
         {
-            get
-            {
-                return InstanceLocator.Current.GetInstance<ILabQueryServices>();
-            }
+            get { return InstanceLocator.Current.GetInstance<IPostQueryServices>(); }
+        }
+
+        public IBoardQueryServices Board
+        {
+            get { return InstanceLocator.Current.GetInstance<IBoardQueryServices>(); }
+        }
+
+        public ILabQueryServices Lab
+        {
+            get { return InstanceLocator.Current.GetInstance<ILabQueryServices>(); }
         }
     }
 }

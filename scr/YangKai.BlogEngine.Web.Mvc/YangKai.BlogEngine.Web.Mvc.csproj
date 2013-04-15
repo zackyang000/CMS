@@ -151,6 +151,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
+    <Compile Include="Common\CallContextLifeTimeManager.cs" />
     <Compile Include="Common\RouteHelper.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />

@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = string.Format(YangKai.BlogEngine.Common.Config.Format.PAGE_TITLE, "留言板");
     Layout = "~/Views/Shared/_layout.cshtml";
-    var isAdmin = YangKai.BlogEngine.ServiceProxy.QueryFactory.User.IsLogin();
+    var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin;
 }
 
 @section style 

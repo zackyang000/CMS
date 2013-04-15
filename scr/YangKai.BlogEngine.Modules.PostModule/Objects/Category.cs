@@ -12,12 +12,6 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
     public class Category : Entity<Guid>,
                             IEventHandler<EntityCreatingEvent<Category>>
     {
-        //TODO:Domain中应当去掉_categoryRepository
-        private readonly CategoryRepository _categoryRepository = InstanceLocator.Current == null
-                                                                      ? null
-                                                                      : InstanceLocator.Current
-                                                                                       .GetInstance<CategoryRepository>();
-
         #region constructor
 
         public Category()
@@ -92,7 +86,8 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
 
         public void Handle(EntityCreatingEvent<Category> e)
         {
-            var isExist = _categoryRepository.Exist(p => p.Url == e.EntityCreating.Url);
+            //TODO:Domain中应当去掉Repository
+            var isExist = InstanceLocator.Current.GetInstance<CategoryRepository>().Exist(p => p.Url == e.EntityCreating.Url);
 
             if (isExist)
             {

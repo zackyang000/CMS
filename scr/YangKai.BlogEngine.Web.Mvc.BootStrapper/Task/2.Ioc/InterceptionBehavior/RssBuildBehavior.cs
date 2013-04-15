@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity.InterceptionExtension;
+using YangKai.BlogEngine.Modules.PostModule.Objects;
 using YangKai.BlogEngine.Modules.PostModule.Services;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
@@ -17,14 +18,20 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             IMethodReturn msg = getNext()(input, getNext);
 
-            if (input.MethodBase.Name == "CreatePost")
+            if (input.MethodBase.Name == "Create")
             {
-                Task.Factory.StartNew(Rss.BuildPostRss);
-            }
-
-            if (input.MethodBase.Name == "CreateComment")
-            {
-                Task.Factory.StartNew(Rss.BuildCommentRss);
+                var parameters = input.MethodBase.GetParameters();
+                if (parameters.Length == 1)
+                {
+                    if (parameters[0].GetType() == typeof (Post))
+                    {
+                        Task.Factory.StartNew(Rss.BuildPostRss);
+                    }
+                    if (parameters[0].GetType() == typeof (Comment))
+                    {
+                        Task.Factory.StartNew(Rss.BuildCommentRss);
+                    }
+                }
             }
 
             return msg;

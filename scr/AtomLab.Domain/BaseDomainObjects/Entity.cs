@@ -43,7 +43,7 @@ namespace AtomLab.Domain
 
         protected bool DeleteEntity<TEntity>(TEntity entity) where TEntity : class
         {
-            return EventProcessor.DeleteEntity<TEntity>(entity);
+            return EventProcessor.DeleteEntity(entity);
         }
 
         protected bool DeleteEntity<TEntity, TEntityIdType>(TEntityIdType id)

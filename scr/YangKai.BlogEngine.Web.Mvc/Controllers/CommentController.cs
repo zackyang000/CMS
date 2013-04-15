@@ -20,7 +20,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public PartialViewResult Index(string id)
         {
-            ViewBag.PostId = QueryFactory.Post.Find(id).PostId; //添加评论时使用
+            ViewBag.PostId = QueryFactory.Instance.Post.Find(id).PostId; //添加评论时使用
 
             WebGuestCookie cookie = WebGuestCookie.Load();
             var entity = new CommentViewModel
@@ -37,7 +37,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult List(Guid id)
         {
-            IList<Comment> comments = QueryFactory.Post.GetComments(id);
+            IList<Comment> comments = QueryFactory.Instance.Post.GetComments(id);
             if (!WebMasterCookie.IsLogin)
             {
                 comments = comments.Where(p => !p.IsDeleted).ToList();
@@ -67,7 +67,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 {
                     WebGuestCookie.Save(entity.Author, entity.Email, entity.Url, true);
                 }
-                CommandFactory.CreateComment(entity);
+                CommandFactory.Instance.Create(entity);
                 return Json(new { result = true, model = entity.ToViewModel() });
             }
             catch (Exception e)
@@ -84,7 +84,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             try
             {
-                CommandFactory.Run(new CommentDeleteEvent(){CommentId = id});
+                CommandFactory.Instance.Run(new CommentDeleteEvent() { CommentId = id });
                 return Json(new {result = true});
             }
             catch (Exception e)
@@ -101,7 +101,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             try
             {
-                CommandFactory.Run(new CommentRenewEvent() { CommentId = id }); 
+                CommandFactory.Instance.Run(new CommentRenewEvent() { CommentId = id }); 
                 return Json(new {result = true});
             }
             catch (Exception e)
@@ -117,8 +117,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         public JsonResult RecentComments(string channelurl, string groupurl)
         {
             if (string.IsNullOrEmpty(channelurl))
-                channelurl = QueryFactory.Post.GetGroup(groupurl).Channel.Url;
-            return Json(QueryFactory.Post.GetCommentsRecent(channelurl).ToViewModels(), JsonRequestBehavior.AllowGet);
+                channelurl = QueryFactory.Instance.Post.GetGroup(groupurl).Channel.Url;
+            return Json(QueryFactory.Instance.Post.GetCommentsRecent(channelurl).ToViewModels(), JsonRequestBehavior.AllowGet);
         }
     }
 }
