@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using Microsoft.Practices.Unity;
 
@@ -6,18 +8,13 @@ namespace YangKai.BlogEngine.Web.Mvc
 {
     public class HttpContextLifetimeManager : LifetimeManager, IDisposable
     {
+        private string _key = string.Format(CultureInfo.InvariantCulture, "HttpContextLifetimeManager_{0}", Guid.NewGuid());
+
         private readonly HttpContextBase _context;
 
         public HttpContextLifetimeManager()
         {
             _context = new HttpContextWrapper(HttpContext.Current);
-        }
-
-        public HttpContextLifetimeManager(HttpContextBase context)
-        {
-            if (context == null)
-                throw new ArgumentNullException("context");
-            _context = context;
         }
 
         public void Dispose()
@@ -27,54 +24,37 @@ namespace YangKai.BlogEngine.Web.Mvc
 
         public override object GetValue()
         {
-            return _context.Items["__entityframework_context__"];
+            return _context.Items[_key];
         }
 
         public override void RemoveValue()
         {
-            _context.Items.Remove("__entityframework_context__");
+            _context.Items.Remove(_key);
         }
 
         public override void SetValue(object newValue)
         {
-            _context.Items["__entityframework_context__"] = newValue;
+            _context.Items[_key] = newValue;
         }
     }
 
-    public class HttpContextLifetimeManager<T> : LifetimeManager, IDisposable
+    public class CallContextLifeTimeManager : LifetimeManager
     {
-        private readonly HttpContextBase _context;
-
-        public HttpContextLifetimeManager()
-        {
-            _context = new HttpContextWrapper(HttpContext.Current);
-        }
-
-        public HttpContextLifetimeManager(HttpContextBase context)
-        {
-            if (context == null)
-                throw new ArgumentNullException("context");
-            _context = context;
-        }
-
-        public void Dispose()
-        {
-            RemoveValue();
-        }
+        private string _key = string.Format(CultureInfo.InvariantCulture, "CallContextLifeTimeManager_{0}", Guid.NewGuid());
 
         public override object GetValue()
         {
-            return _context.Items[typeof (T)];
-        }
-
-        public override void RemoveValue()
-        {
-            _context.Items.Remove(typeof (T));
+            return CallContext.GetData(_key);
         }
 
         public override void SetValue(object newValue)
         {
-            _context.Items[typeof (T)] = newValue;
+            CallContext.SetData(_key, newValue);
+        }
+
+        public override void RemoveValue()
+        {
+            CallContext.FreeNamedDataSlot(_key);
         }
     }
 }
