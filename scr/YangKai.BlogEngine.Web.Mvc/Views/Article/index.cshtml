@@ -1,5 +1,4 @@
-﻿@using Webdiyer.WebControls.Mvc
-@using YangKai.BlogEngine.Modules.PostModule.Objects
+﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
 @using YangKai.BlogEngine.ServiceProxy
 
 @{
@@ -16,8 +15,8 @@
     else
     {
         <text>
-        @Html.ActionLink(channel.Name, "Index", channel.Url)
-        &gt;
+        <a href="/@channel.Url">@channel.Name</a>
+            &gt;
         @group.Name
         </text>
     }

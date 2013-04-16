@@ -43,20 +43,12 @@ public class RouteHelper
 
     private string ArticleUrl(string actionName, string groupUrl, string channelUrl)
     {
-        var route = new RouteValueDictionary {{"Controller", "Article"}};
-
-        if (groupUrl != "")
-        {
-            route.Add("groupUrl", groupUrl);
-        }
-        else if (channelUrl != "")
-        {
-            route.Add("channelUrl", channelUrl);
-        }
-        else
-        {
-            throw new ArgumentException("GroupUrl and ChannelUrl must be have one.");
-        }
+        var route = new RouteValueDictionary
+            {
+                {"Controller", "Article"},
+                {"groupUrl", groupUrl},
+                {"channelUrl", channelUrl}
+            };
 
         return Url.Action(actionName, route);
     }
