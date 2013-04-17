@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.IO;
+using System.Web;
 using AtomLab.Utility;
 
 namespace YangKai.BlogEngine.Common
@@ -6,29 +8,17 @@ namespace YangKai.BlogEngine.Common
     public class SaveRemoteFile
     {
         /// <summary>
-        /// 是否添加水印
+        /// 水印图片路径
         /// </summary>
-        private const bool IsAddWaterMark = false;
+        private static readonly string PicWaterMarkFile = HttpContext.Current.Server.MapPath("/water.png");
 
-        /// <summary>
-        /// 水印图片相对路径
-        /// </summary>
-        private static readonly string PicWaterMarkFile = string.Empty;
-
-        /// <summary>
-        /// 图片保存物理根路径
-        /// </summary>
-        private static readonly string FileSavePath = HttpContext.Current.Server.MapPath("/");
-
-        /// <summary>
-        /// 图片保存Web相对路径
-        /// </summary>
-        private const string PicSaveWebPath = "/upload/offsite/";
-
-        public static string SaveContentPic(string content, string fileHeaderName)
+        public static string SaveContentPic(string content, string title)
         {
-            ContentData cdata = SaveRemoteFileHelper.SavePic(content, IsAddWaterMark, PicWaterMarkFile, FileSavePath,
-                                                             PicSaveWebPath, fileHeaderName);
+            var folder = string.Format("{0}.{1}", DateTime.Now.ToString("yyyy.MM.dd"), title);
+            var root = Config.Path.REMOTE_PICTURE_FOLDER;
+            if (root.Substring(0, 1) == "/") root = root.Substring(1);
+            folder = Path.Combine(root, folder);
+            var cdata = SaveRemoteFileHelper.SavePic(content, Config.Path.PHYSICAL_ROOT_PATH, folder);
             return cdata.Content;
         }
     }

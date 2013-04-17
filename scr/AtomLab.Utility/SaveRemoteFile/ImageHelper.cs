@@ -1,13 +1,4 @@
-﻿//===========================================================
-// Copyright @ 2010 YangKai. All Rights Reserved.
-// Framework: 4.0
-// Author: 杨凯
-// Email: yangkai-13896222@sohu.com
-// QQ: 83448327
-// CreateTime: 2/1/2011 10:27:19 PM
-//===========================================================
-
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;

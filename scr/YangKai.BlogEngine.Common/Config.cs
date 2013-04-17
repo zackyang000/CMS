@@ -28,6 +28,11 @@ namespace YangKai.BlogEngine.Common
             /// logo图片路径
             /// </summary>
             public const string LOGO_PIC_PATH = "/Content/Image/logo.gif";
+
+            /// <summary>
+            /// 自动下载图片文件夹
+            /// </summary>
+            public const string REMOTE_PICTURE_FOLDER = "/upload/offsite/";
         }
 
         public class URL
