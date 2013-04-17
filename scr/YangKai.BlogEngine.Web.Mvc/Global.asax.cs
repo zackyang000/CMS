@@ -36,7 +36,7 @@ namespace YangKai.BlogEngine.Web.Mvc
                         {
                             CommandFactory.Instance.Create(visitLog);
                         }
-                        catch
+                        catch (Exception)
                         {
                         }
                     }
