@@ -7,6 +7,7 @@ using YangKai.BlogEngine.Modules.CommonModule.Objects;
 using YangKai.BlogEngine.Modules.PostModule.Commands;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
@@ -71,6 +72,25 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             return View(pagedList);
         }
+
+        [ActionName("list")]
+        public ActionResult List1(int? id, string channelUrl, string groupUrl, string c, string t, string d, string k)
+        {
+            var data = QueryFactory.Instance.User.IsLogin()
+                           ? QueryFactory.Instance.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k)
+                           : QueryFactory.Instance.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k);
+
+            //保存搜索记录
+            if (!string.IsNullOrEmpty(k))
+            {
+                var log = Log.CreateSearchLog(k);
+                CommandFactory.Instance.Create(log);
+            }
+
+            //TODO:PagedJson
+            return Json(data.DataList.ToViewModels(), JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult Detail(string id, string groupUrl)
         {

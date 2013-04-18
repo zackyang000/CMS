@@ -37,27 +37,29 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
     {
         public static PostViewModel ToViewModel(this Post entity)
         {
-            var viewModel= new PostViewModel()
-            {
-                PostId = entity.PostId,
-                Url = entity.Url,
-                Title = entity.Title,
-                Content = entity.Pages[0].Content,
-                Description = entity.Description,
-                Author = entity.PubAdmin.UserName,
-                ViewCount = entity.ViewCount,
-                ReplyCount = entity.ReplyCount,
-                PubDate = entity.PubDate,
-                PostStatus = (PostStatusEnum)entity.CommentStatus,
-                CommentStatus = (CommentStatusEnum)entity.CommentStatus,
-                ChannelName = entity.Group.Channel.Name,
-                ChannelUrl = entity.Group.Channel.Url,
-                GroupName = entity.Group.Name,
-                GroupUrl = entity.Group.Url,
-                ThumbnailUrl=entity.Thumbnail.Url,
-                QrCodeUrl=entity.QrCode.Url
-            };
+            var viewModel = new PostViewModel()
+                {
+                    PostId = entity.PostId,
+                    Url = entity.Url,
+                    Title = entity.Title,
+                    Content = entity.Pages.Count>0?entity.Pages[0].Content:"文章丢失.",
+                    Description = entity.Description,
+                    Author = entity.PubAdmin.UserName,
+                    ViewCount = entity.ViewCount,
+                    ReplyCount = entity.ReplyCount,
+                    PubDate = entity.PubDate,
+                    PostStatus = (PostStatusEnum) entity.CommentStatus,
+                    CommentStatus = (CommentStatusEnum) entity.CommentStatus,
+                    ChannelName = entity.Group.Channel.Name,
+                    ChannelUrl = entity.Group.Channel.Url,
+                    GroupName = entity.Group.Name,
+                    GroupUrl = entity.Group.Url,
+                    ThumbnailUrl = entity.Thumbnail!=null?entity.Thumbnail.Url:null,
+                    QrCodeUrl = entity.QrCode != null ? entity.QrCode.Url : null,
+                };
+            viewModel.Category=new Dictionary<string, string>();
             entity.Categorys.ForEach(p => viewModel.Category.Add(p.Url,p.Name));
+            viewModel.Tags=new List<string>();
             entity.Tags.ForEach(p => viewModel.Tags.Add(p.Name));
 
             return viewModel;
