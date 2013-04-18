@@ -48,7 +48,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         /// <summary>
         /// 供Ajax分页使用
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="channelUrl">Channel</param>
         /// <param name="groupUrl">Group</param>
         /// <param name="c">Category</param>
