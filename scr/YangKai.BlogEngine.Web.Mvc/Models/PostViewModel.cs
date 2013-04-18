@@ -19,8 +19,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
         public int ReplyCount { get; set; }
         public DateTime PubDate { get; set; }
 
-        public PostStatusEnum PostStatus { get; set; }
-        public CommentStatusEnum CommentStatus { get; set; }
+        public string PostStatus { get; set; }
+        public string CommentStatus { get; set; }
 
         public string ChannelName { get; set; }
         public string ChannelUrl { get; set; }
@@ -48,8 +48,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                     ViewCount = entity.ViewCount,
                     ReplyCount = entity.ReplyCount,
                     PubDate = entity.PubDate,
-                    PostStatus = (PostStatusEnum) entity.CommentStatus,
-                    CommentStatus = (CommentStatusEnum) entity.CommentStatus,
+                    PostStatus = ((PostStatusEnum)entity.CommentStatus).ToString(),
+                    CommentStatus = ((PostStatusEnum)entity.CommentStatus).ToString(),
                     ChannelName = entity.Group.Channel.Name,
                     ChannelUrl = entity.Group.Channel.Url,
                     GroupName = entity.Group.Name,

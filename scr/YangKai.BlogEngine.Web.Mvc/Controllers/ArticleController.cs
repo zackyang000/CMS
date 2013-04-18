@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Linq;
+using AtomLab.Domain.Infrastructure;
 using Webdiyer.WebControls.Mvc;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Modules.CommonModule.Objects;
@@ -11,7 +12,7 @@ using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class ArticleController : Controller
+    public class ArticleController : BaseController
     {
         public ActionResult Index(int? id, string channelUrl, string groupUrl, string c, string t, string d, string k)
         {
@@ -87,8 +88,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 CommandFactory.Instance.Create(log);
             }
 
-            //TODO:PagedJson
-            return Json(data.DataList.ToViewModels(), JsonRequestBehavior.AllowGet);
+            var pagelist = new PageList<PostViewModel>()
+                {
+                    DataList = data.DataList.ToViewModels(),
+                    TotalCount = data.TotalCount
+                };
+
+            return PagedJson(pagelist);
         }
 
 

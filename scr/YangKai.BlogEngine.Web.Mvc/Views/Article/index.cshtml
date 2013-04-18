@@ -48,5 +48,68 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
     <div class="box">关键字:‘@Request.QueryString["k"]’</div>
 }
 
-@Html.Action("index-list")
+@*@Html.Action("index-list")*@
+    <script type="text/javascript">
+        function PostListViewModel() {
+            var self = this;
+            
+            self.list = ko.observableArray();
+            
+            self.loading = ko.observable("");
+            
+            self.count = ko.observable();
+            self.Pager = ko.pager(self.count);
+            self.Pager().CurrentPage.subscribe(function () {
+                self.turnpages(function () {
+                    //fadeOutAndFadeIn("div-list-loader", "div-list-templatecontainer");
+                });
+            });
+            
+            self.turnpages = function (callback) {
+                //fadeOutAndFadeIn("div-list-templatecontainer", "div-list-loader");
+                $.getJSON('/article/list?id=' + self.Pager().CurrentPage(), function (result) {
+                    self.list(result.data);
+                    self.count(result.count);
+                    //NoDataCheck(list(), "div-list-templatecontainer");
+                    if (callback != null) callback();
+                });
+            };
+            
+            self.turnpages(function () {
+                //fadeOutAndFadeIn("div-list-loader", "div-list-templatecontainer");
+            });
+        }
 
+        $(document).ready(function () {
+            ko.applyBindings(new PostListViewModel(),$("#posts")[0]);
+        });
+    </script>
+    
+<script type="text/html" id="post-template">
+    <li>
+        <h2>
+            <strong><a data-bind="html: $data.Title, attr: {href:'/'+$data.GroupUrl+'-'+$data.Url}"></a></strong>
+            <span class="warningbox" data-bind="text: $data.PostStatus, visible: $data.PostStatus != 'Publish'"></span>
+            <span class="warningbox" data-bind="text: '延迟发布'+$data.PubDate.Format(), visible: ConvertJsonDate($data.PubDate) > new Date()"></span>
+            <span class="showdetail fr"><a href="JavaScript:void(0)">展开 >></a></span>
+            <span class="hidedetail fr"><a href="JavaScript:void(0)">收起 >></a></span>
+        </h2>
+        <div class="clear"></div>
+        @Html.Partial("post-header")
+        <div class="postBody">
+            <div>
+                <div class="thumb" data-bind="visible: ThumbnailUrl">
+                    <a data-bind="attr: { href: '/' + $data.GroupUrl + '-' + $data.Url,title:$data.Title }">
+                        <img style="width:160px; height:100px;" data-bind="attr:{src:'/upload/thumbnail/'+$data.ThumbnailUrl,alt:$data.Title,title:$data.Title}" />
+                    </a>
+                  </div>
+                <div data-bind="html:$data.Description"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        @Html.Partial("post-footer")
+    </li>
+</script>
+
+<ul id="posts" data-bind="template: { name: 'post-template', foreach: list }"></ul>
+@Html.Partial("_pager")

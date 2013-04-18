@@ -7,6 +7,14 @@ namespace YangKai.BlogEngine.Common
 {
     public class Config
     {
+        public class Setting
+        {
+            /// <summary>
+            /// 每页文章条数
+            /// </summary>
+            public const int PAGE_SIZE = 20;
+        }
+
         public class Path
         {
             /// <summary>
@@ -68,9 +76,5 @@ namespace YangKai.BlogEngine.Common
             /// </summary>
             public const string PAGE_TITLE = "{0} - iShare";
         }
-
-
-
-
     }
 }

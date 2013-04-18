@@ -18,6 +18,6 @@ namespace AtomLab.Domain.Infrastructure
         /// <summary>
         /// 当前页数据集
         /// </summary>
-        public List<T> DataList { get; set; }
+        public IList<T> DataList { get; set; }
     }
 }

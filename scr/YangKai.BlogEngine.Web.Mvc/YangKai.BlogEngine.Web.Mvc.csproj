@@ -148,8 +148,10 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
-    <Compile Include="Common\CallContextLifeTimeManager.cs" />
-    <Compile Include="Common\RouteHelper.cs" />
+    <Compile Include="Extension\BaseController.cs" />
+    <Compile Include="Extension\CallContextLifeTimeManager.cs" />
+    <Compile Include="Extension\PagedJsonResult.cs" />
+    <Compile Include="Extension\RouteHelper.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
@@ -160,7 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Common\HttpContextLifetimeManager.cs" />
+    <Compile Include="Extension\HttpContextLifetimeManager.cs" />
     <Compile Include="Models\BoardViewModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
@@ -1334,6 +1336,7 @@
     <Content Include="Scripts\jquery.color.svg-names-2.1.2.min.js" />
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
+    <Content Include="Scripts\ko.pager.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\jquery.lazyload.js" />
     <Content Include="Content\style.css" />
@@ -1403,6 +1406,9 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Labs\analytics.cshtml" />
     <Content Include="Views\Labs\probe.cshtml" />
+    <Content Include="Views\Shared\_pager.cshtml" />
+    <Content Include="Views\Article\post-header.cshtml" />
+    <Content Include="Views\Article\post-footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
