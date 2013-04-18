@@ -29,7 +29,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
         public string ThumbnailUrl { get; set; }
         public string QrCodeUrl { get; set; }
 
-        public Dictionary<string, string> Category { get; set; }
+        public Dictionary<string, string> Categories { get; set; }
         public IList<string> Tags { get; set; }
     }
 
@@ -57,8 +57,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                     ThumbnailUrl = entity.Thumbnail!=null?entity.Thumbnail.Url:null,
                     QrCodeUrl = entity.QrCode != null ? entity.QrCode.Url : null,
                 };
-            viewModel.Category=new Dictionary<string, string>();
-            entity.Categorys.ForEach(p => viewModel.Category.Add(p.Url,p.Name));
+            viewModel.Categories = new Dictionary<string, string>();
+            entity.Categorys.ForEach(p => viewModel.Categories.Add(p.Url, p.Name));
             viewModel.Tags=new List<string>();
             entity.Tags.ForEach(p => viewModel.Tags.Add(p.Name));
 

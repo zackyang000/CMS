@@ -1328,6 +1328,8 @@
     <Content Include="Content\noty\layouts\topRight.js" />
     <Content Include="Content\noty\promise.js" />
     <Content Include="Content\noty\themes\default.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery.color-2.1.2.js" />
@@ -1409,6 +1411,8 @@
     <Content Include="Views\Shared\_pager.cshtml" />
     <Content Include="Views\Article\post-header.cshtml" />
     <Content Include="Views\Article\post-footer.cshtml" />
+    <Content Include="Views\Article\post-body.cshtml" />
+    <Content Include="Views\Article\post-title.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

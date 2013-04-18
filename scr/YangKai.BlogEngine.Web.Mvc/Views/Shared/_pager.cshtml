@@ -1,17 +1,18 @@
-﻿<!-- ko if:Pager().count() > 0 -->
+﻿<p data-bind="visible: Pager().TotalItemCount() === 0" style="display: none;">
+    No results found
+</p>
 <div class="pagination" data-bind="template: { name: 'tpl-pager', data: Pager }"></div>
-<!-- /ko -->
 
 <script type="text/html" id="tpl-pager">
     <div class="pagexofx">
-    <span data-bind="text: FirstItemIndex"></span>
+        <span data-bind="text: FirstItemIndex"></span>
         -
-    <span data-bind="text: LastItemIndex"></span>
-        of 
-    <strong>
-        <span data-bind="text: count"></span>
-    </strong>
-        results
+        <span data-bind="text: LastItemIndex"></span>
+        of
+        <strong>
+            <span data-bind="text: TotalItemCount"></span>
+        </strong>
+        total results.
     </div>
     <ul>
         <!-- ko if:CurrentPage() === 1 -->

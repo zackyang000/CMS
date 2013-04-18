@@ -284,21 +284,15 @@ function getjsondate(jsondate) {
     return new Date(parseInt(jsondate, 10));
 }
 
-//fix Array indexOf() in JavaScript for IE browsers
-if (!Array.prototype.indexOf) {
-    Array.prototype.indexOf = function (elt /*, from*/) {
-        var len = this.length >>> 0;
-        var from = Number(arguments[1]) || 0;
-        from = (from < 0) ? Math.ceil(from) : Math.floor(from);
-        if (from < 0) from += len;
-
-        for (; from < len; from++) {
-            if (from in this && this[from] === elt) return from;
+function mapDictionaryToArray(dictionary) {
+    var result = [];
+    for (var key in dictionary) {
+        if (dictionary.hasOwnProperty(key)) {
+            result.push({ key: key, value: dictionary[key] });
         }
-        return -1;
-    };
+    }
+    return result;
 }
-
 //#endregion
 
 //#region ko common

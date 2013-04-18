@@ -1,0 +1,8 @@
+﻿<h2>
+    <strong><a data-bind="html: $data.Title, attr: {href:'/'+$data.GroupUrl+'-'+$data.Url}"></a></strong>
+    <span class="warningbox" data-bind="text: $data.PostStatus, visible: $data.PostStatus != 'Publish'"></span>
+    <span class="warningbox" data-bind="text: '延迟发布'+$data.PubDate.Format(), visible: ConvertJsonDate($data.PubDate) > new Date()"></span>
+    <span class="showdetail fr"><a href="JavaScript:void(0)">展开 >></a></span>
+    <span class="hidedetail fr"><a href="JavaScript:void(0)">收起 >></a></span>
+</h2>
+<div class="clear"></div>
