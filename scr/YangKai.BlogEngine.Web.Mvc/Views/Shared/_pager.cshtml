@@ -1,7 +1,7 @@
 ﻿<p data-bind="visible: Pager().TotalItemCount() === 0" style="display: none;">
-    No results found
+    没有数据.
 </p>
-<div class="pagination" data-bind="template: { name: 'tpl-pager', data: Pager }"></div>
+<div class="pagination" data-bind="template: { name: 'tpl-pager', data: Pager }, visible: Pager().TotalItemCount() > 0"></div>
 
 <script type="text/html" id="tpl-pager">
     <div class="pagexofx">

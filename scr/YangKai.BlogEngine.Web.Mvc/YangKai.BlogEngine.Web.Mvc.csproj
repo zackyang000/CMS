@@ -836,6 +836,8 @@
     <Content Include="Content\Image\ajax-loader.gif" />
     <Content Include="Content\Image\ajax-loader2.gif" />
     <Content Include="Content\Image\ajax-loader3.gif" />
+    <Content Include="Content\Image\ajax-loader4.gif" />
+    <Content Include="Content\Image\ajax-loader5.gif" />
     <Content Include="Content\Image\avatar.png" />
     <Content Include="Content\Image\banner.png" />
     <Content Include="Content\Image\banner\funs.png" />

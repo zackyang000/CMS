@@ -43,6 +43,7 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 .boxcaption {background: #E3E4E6;border-bottom: 1px solid #CCC;padding: 3px 12px;border-top-left-radius: 5px 5px;border-top-right-radius: 5px 5px;}
 .boxcaption h3 {font-family: Verdana, 'BitStream vera Sans', Tahoma, Helvetica, sans-serif;font-size: 12px;letter-spacing: 0em;}
 .box {background: #F4F5F7;margin-bottom: 10px;padding: 6px 12px;border-bottom-left-radius: 5px 5px;border-bottom-right-radius: 5px 5px;}
+.loadingbox {height: 16px;line-height: 16px;position: absolute;left: 50%;top: 0;margin-left: -65px;width: 95px;padding: 10px 10px 10px 35px;font-weight: bold;font-size: 12px;color: #666;background: url("/Content/Image/ajax-loader5.gif") 10px 50% no-repeat #EEE;border: 1px solid #CCC;border-top: 1px solid #FFF;border-radius: 5px;border-top-left-radius: 0;border-top-right-radius: 0;z-index: 20;}
 
 /* 警告框 */
 .messagebox{background: #EDEFF0;font-size: 11px; font-weight:normal;height: 27px;line-height: 27px;padding: 0px 12px;border-radius: 5px 5px; -moz-border-radius: 5px 5px;}
@@ -99,7 +100,6 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 .pagination-mini ul > li > a,
 .pagination-mini ul > li > span {padding: 1px 6px;font-size: 10.5px;}
 
-
 /* header */
 #header{margin:auto;}
 #header .top{background:url(/Content/Image/head_bg.png) repeat-x; height:168px;}
@@ -155,8 +155,10 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #footer .body .main{padding: 80px 65px 15px 65px;}
 
 /* post */
-#postnav {background: url(/Content/Image/icons.gif) no-repeat 0px -320px;line-height: 16px;margin: 5px 0px;padding-left: 22px;}
-#posts li{margin: 0px 0px 25px;}
+#postnav {background: url(/Content/Image/icons.gif) no-repeat 0 -320px;line-height: 16px;margin: 5px 0;padding-left: 22px;}
+#posts {position: relative; min-height: 200px;}
+#posts ul{min-height: 1px;}
+#posts li{margin: 0 0 25px;}
 #posts h2 {border-bottom: 1px solid #CCC;display: block;font-family: Verdana, 'BitStream vera Sans';font-size: 16px;margin-top: 10px;padding:0px 5px 0px 5px;}
 #posts h2 a {color: #4C4C4C;text-decoration: none;}
 #posts h2 a:hover{color:#2970A6;text-decoration:none; }
@@ -166,7 +168,7 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #posts h2 .hidedetail a{color: #2970A6;font-size: 12px;font-weight: normal;}
 #posts h2 .hidedetail a:hover{color:#2970A6;text-decoration:underline; }
 #posts .postHeader{margin: 2px 5px 5px 5px;}
-#posts .postBody {/*background: url(/Content/Image/post_line.gif);line-height: 20px;*/margin: 10px 5px;}
+#posts .postBody {margin: 10px 5px;}
 #posts .postBody p {margin: 0 0 5px 0;}
 #posts .postBody li{padding: 0;margin: 0 0 0 40px; list-style: disc;}
 #posts .postFooter {font-size: 11px;height: 31px;line-height: 31px;margin-bottom: 10px; }
@@ -180,7 +182,7 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #posts .author {background-position: 0px 0px;float:left;}
 #posts .editpost{background-position: 0px -32px;float:left;}
 #posts .deletepost{background-position: 0px -16px;float:left;}
-#posts .reviews {background-position: 0px -80px;float: right;}
+#posts .reviews {background-position: 0px -80px;float: right;margin-right: 20px;}
 #posts .comments {background-position: 0px -96px;float: right;}
 #posts .categories {background-position: 0px -480px;}
 #posts .tags {background-position: 0px -400px;}
