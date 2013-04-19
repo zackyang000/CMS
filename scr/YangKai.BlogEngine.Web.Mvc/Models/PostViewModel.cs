@@ -48,7 +48,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                     ViewCount = entity.ViewCount,
                     ReplyCount = entity.ReplyCount,
                     PubDate = entity.PubDate,
-                    PostStatus = ((PostStatusEnum)entity.CommentStatus).ToString(),
+                    PostStatus = ((PostStatusEnum)entity.PostStatus).ToString(),
                     CommentStatus = ((PostStatusEnum)entity.CommentStatus).ToString(),
                     ChannelName = entity.Group.Channel.Name,
                     ChannelUrl = entity.Group.Channel.Url,

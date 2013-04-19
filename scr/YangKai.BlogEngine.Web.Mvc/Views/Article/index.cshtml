@@ -69,7 +69,7 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
         self.authorized = isadmin;
         self.list = ko.observableArray();
         self.loading = ko.observable(false);
-
+        
         self.TotalResults = ko.observable();
         self.Pager = ko.pager(self.TotalResults);
         self.Pager().CurrentPage.subscribe(function () {
@@ -78,24 +78,25 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
         });
 
         self.del = function (data) {
-            /*
             $.post("/admin/postmanage/delete", "id=" + data.PostId, null, "json")
                 .done(function (context) {
                     if (context.result) {
-                        $("#list" + id).animate({
-                            opacity: 'toggle',
-                            backgroundColor: '#ff8888'
-                        }, 500);
-                        setTimeout(function () {
-                            var title = $("#list" + id + " h2 strong").html();
-                            $("#list" + id).after("<li id=\"post-deleted-" + id + "\" style=\"display: none;\"><td style=\"padding-left:50px; padding-bottom:5px;\">《<strong>" + title + "</strong>》已移至回收站。 <a href=\"JavaScript:void(0)\" onclick=\"post_deleted_revoke('" + id + "')\">撤销</a></td></tr>");
-                            $("#post-deleted-" + id).animate({
-                                opacity: 'toggle'
-                            }, 500);
-                        }, 500);
+                        data.PostStatus = 'Be moved to trash.';
+                        var i = self.list().indexOf(data);
+                        self.list.remove(data);
+                        self.list.splice(i, 0, data);
                     }
                     else { alert(context.reason); }
-                });*/
+                });
+        };
+
+        self.expand = function(data) {
+            data.IsShowDetail = !data.IsShowDetail;
+            
+            //TODO:将该方法提取为公共ko方法.  itemRefresh
+            var i = self.list().indexOf(data);
+            self.list.remove(data);
+            self.list.splice(i, 0, data);
         };
 
         self.turnpages = function () {
@@ -104,6 +105,7 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
                 self.loading(!self.loading());
                 self.list(result.data);
                 self.TotalResults(result.count);
+                ko.utils.arrayForEach(self.list(), function (data) { data.IsShowDetail = false; });
             });
         };
 
