@@ -154,8 +154,12 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #footer .body{background:url(/Content/Image/footer_bg.png); width:1002px; margin:auto; height:179px; line-height:21px;}
 #footer .body .main{padding: 80px 65px 15px 65px;}
 
+/* breadcrumbs */
+.breadcrumbs {line-height: 16px;margin: 10px 0 15px 0;padding-left: 22px;font-family: Dosis;background: url(/Content/Image/icons.gif) no-repeat 0px -321px;}
+.breadcrumbs a, .breadcrumbs strong {font-weight: 600;text-decoration: none;}
+.breadcrumbs a, .breadcrumbs>span {padding-right: 15px;background-position: right 1px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAJCAYAAAD6reaeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwMS8yMS8xMRTK2QYAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAAANUlEQVQImXWOUQoAIAxC7f4nmJd9fRVWazAYPKeqqgCUK0A32EeC422BASjHNq3y7/mkdz0n2jF7vESzwcIAAAAASUVORK5CYII=) 100% 50% no-repeat;margin-right: 0px;}
+
 /* post */
-#postnav {background: url(/Content/Image/icons.gif) no-repeat 0 -320px;line-height: 16px;margin: 5px 0;padding-left: 22px;}
 #posts {position: relative; min-height: 200px;}
 #posts ul{min-height: 1px;}
 #posts li{margin: 0 0 25px;}
