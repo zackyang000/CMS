@@ -1,7 +1,7 @@
 ﻿<div class="postBody">
     <div>
         <div class="thumb" data-bind="visible: $data.ThumbnailUrl && !$data.IsShowDetail">
-            <a data-bind="attr: { href: '/' + $data.GroupUrl + '-' + $data.Url,title:$data.Title }">
+            <a href="JavaScript:void(0);" data-bind="click: $root.expand">
                 <img style="width:160px; height:100px;" data-bind="attr:{src:'/upload/thumbnail/'+$data.ThumbnailUrl,alt:$data.Title,title:$data.Title}" />
             </a>
         </div>
