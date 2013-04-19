@@ -77,7 +77,25 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
             self.turnpages();
         });
 
-        self.del = function () {
+        self.del = function (data) {
+            /*
+            $.post("/admin/postmanage/delete", "id=" + data.PostId, null, "json")
+                .done(function (context) {
+                    if (context.result) {
+                        $("#list" + id).animate({
+                            opacity: 'toggle',
+                            backgroundColor: '#ff8888'
+                        }, 500);
+                        setTimeout(function () {
+                            var title = $("#list" + id + " h2 strong").html();
+                            $("#list" + id).after("<li id=\"post-deleted-" + id + "\" style=\"display: none;\"><td style=\"padding-left:50px; padding-bottom:5px;\">《<strong>" + title + "</strong>》已移至回收站。 <a href=\"JavaScript:void(0)\" onclick=\"post_deleted_revoke('" + id + "')\">撤销</a></td></tr>");
+                            $("#post-deleted-" + id).animate({
+                                opacity: 'toggle'
+                            }, 500);
+                        }, 500);
+                    }
+                    else { alert(context.reason); }
+                });*/
         };
 
         self.turnpages = function () {

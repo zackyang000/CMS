@@ -1330,14 +1330,8 @@
     <Content Include="Content\noty\layouts\topRight.js" />
     <Content Include="Content\noty\promise.js" />
     <Content Include="Content\noty\themes\default.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\jquery.color-2.1.2.js" />
-    <Content Include="Scripts\jquery.color-2.1.2.min.js" />
-    <Content Include="Scripts\jquery.color.svg-names-2.1.2.js" />
-    <Content Include="Scripts\jquery.color.svg-names-2.1.2.min.js" />
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\ko.pager.js" />
