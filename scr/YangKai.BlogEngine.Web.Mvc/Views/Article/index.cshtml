@@ -101,6 +101,7 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
 
         self.turnpages = function () {
             self.loading(!self.loading());
+            alert(location.href.toString().replace(/#/g, ""));
             $.getJSON('/article/list?id=' + self.Pager().CurrentPage(), function (result) {
                 self.loading(!self.loading());
                 self.list(result.data);
