@@ -2,6 +2,6 @@
     <strong><a href="JavaScript:void(0);" data-bind="html: $data.Title, click: $root.expand"></a></strong>
     <span class="warningbox" data-bind="text: $data.PostStatus, visible: $data.PostStatus != 'Publish'"></span>
     <span class="warningbox" data-bind="text: '延迟发布'+$data.PubDate.Format(), visible: ConvertJsonDate($data.PubDate) > new Date()"></span>
-    <span class="showdetail fr"><a target="_blank" data-bind="attr: { href: '/' + $data.GroupUrl + '-' + $data.Url }">弹出>></a></span>
+    <span class="showdetail fr"><a target="_blank" data-bind="attr: { href: '/' + $data.GroupUrl + '-' + $data.Url }"></a></span>
 </h2>
 <div class="clear"></div>

@@ -891,6 +891,7 @@
     <Content Include="Content\Image\nav_lock.png" />
     <Content Include="Content\Image\nav_right.png" />
     <Content Include="Content\Image\nav_top.png" />
+    <Content Include="Content\Image\new-window-icon.gif" />
     <Content Include="Content\Image\point_happy.png" />
     <Content Include="Content\Image\point_sad.png" />
     <Content Include="Content\Image\post_line.gif" />

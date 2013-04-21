@@ -166,8 +166,8 @@ ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9a
 #posts h2 {border-bottom: 1px solid #CCC;display: block;font-family: Verdana, 'BitStream vera Sans';font-size: 16px;margin-top: 10px;padding:0px 5px 0px 5px;}
 #posts h2 a {color: #4C4C4C;text-decoration: none;}
 #posts h2 a:hover{color:#2970A6;text-decoration:none; }
-#posts h2 .showdetail a{color: #2970A6;font-size: 12px;font-weight: normal;}
-#posts h2 .showdetail a:hover{color:#2970A6;text-decoration:underline; }
+#posts h2 .showdetail a{padding: 0 8px 0 10px;background: url(/Content/Image/new-window-icon.gif) no-repeat 0 50%;text-decoration: none;}
+#posts h2 .showdetail a:hover{text-decoration:underline; }
 #posts .postHeader{margin: 2px 5px 5px 5px;}
 #posts .postBody {margin: 10px 5px;}
 #posts .postBody p {margin: 0 0 5px 0;}
