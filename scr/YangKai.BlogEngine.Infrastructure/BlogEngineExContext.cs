@@ -37,7 +37,6 @@ namespace YangKai.BlogEngine.Infrastructure
             modelBuilder.Configurations.Add(new ChannelConfiguration());
             modelBuilder.Configurations.Add(new CommentConfiguration());
             modelBuilder.Configurations.Add(new GroupConfiguration());
-            modelBuilder.Configurations.Add(new PageConfiguration());
             modelBuilder.Configurations.Add(new PostConfiguration());
             modelBuilder.Configurations.Add(new SourceConfiguration());
             modelBuilder.Configurations.Add(new TagConfiguration());

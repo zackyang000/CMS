@@ -81,7 +81,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
                               {
                                   Title = item.Title,
                                   Link = new Uri(link),
-                                  Description = item.Description,//TODO:原为item.Page[0].Content 报错 延迟查询失效?
+                                  Description = item.Content,
                                   PubDate = item.PubDate,
                                   //Author = item.PubAdmin.Name, //TODO:ef出错
                                   Guid = new RssGuid {Name = item.PostId.ToString()}

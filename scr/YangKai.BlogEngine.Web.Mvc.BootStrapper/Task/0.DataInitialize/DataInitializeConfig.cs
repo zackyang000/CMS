@@ -80,6 +80,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 {
                     Url = "test",
                     Title = "测试文章",
+                    Content = "<p>这是文章的正文内容.</p>",
                     Description = "<p>这是文章的描述内容.</p>",
                     PubAdmin = user,
                     Group = group,
@@ -93,15 +94,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                                     Description = "这是一个默认分类.",
                                     OrderId = 1,
                                     Group = group,
-                                }
-                        },
-                    Pages = new List<Page>
-                        {
-                            new Page
-                                {
-                                    Title = string.Empty,
-                                    Content = "<p>这是文章的正文内容.</p>",
-                                    OrderId = 1,
                                 }
                         },
                 };

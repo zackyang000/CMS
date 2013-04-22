@@ -18,7 +18,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
 
           originalData.Url = newData.Url;
           originalData.Title = newData.Title;
-          originalData.Pages[0].Content = newData.Pages[0].Content;
+          originalData.Content = newData.Content;
           originalData.Description = newData.Description;
           originalData.PostStatus = newData.PostStatus;
 

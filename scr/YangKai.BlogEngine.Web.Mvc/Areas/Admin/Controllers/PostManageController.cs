@@ -192,6 +192,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
                     GroupId = QueryFactory.Instance.Post.GetGroup(collection["groupRadio"]).GroupId,
                     Url = collection["post_url"].ToLower(),
                     Title = collection["post_title"],
+                    Content = collection["post_content"],
                     Description = collection["post_description"],
                     PubAdminId = QueryFactory.Instance.User.UserId(),
                     PubIp = Request.UserHostAddress,
@@ -205,10 +206,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
                                                                collection["mm"])),
                     PostStatus = (int) PostStatusEnum.Publish
                 };
-
-            //添加Post.Pages
-            var page = new Page {Content = collection["post_content"]};
-            data.Pages.Add(page);
 
             //添加Post.Categorys
             if (!string.IsNullOrEmpty(collection["category"]))
@@ -274,7 +271,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
 
           
 
-            data.Pages[0].Content = SaveRemoteFile.SaveContentPic(data.Pages[0].Content, data.Url.Trim().ToLower().Replace(" ", "-"));
+            data.Content = SaveRemoteFile.SaveContentPic(data.Content, data.Url.Trim().ToLower().Replace(" ", "-"));
 
             return data;
         }

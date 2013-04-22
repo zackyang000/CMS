@@ -1488,7 +1488,6 @@
     <Content Include="Views\Article\detail.cshtml" />
     <Content Include="Views\Article\detail-content.cshtml" />
     <Content Include="Views\Shared\sidebar-categorygroup.cshtml" />
-    <Content Include="Views\Article\index-list.cshtml" />
     <Content Include="Views\Article\index.cshtml" />
     <Content Include="Views\Article\postfooter.cshtml" />
     <Content Include="Views\Article\postheader.cshtml" />

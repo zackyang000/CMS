@@ -101,7 +101,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 {
                     return Json(new { success = false, reason = "文章已被删除." });
                 }
-                return Json(new {success=true, content = data.Pages.FirstOrDefault().Content });
+                return Json(new {success=true, content = data.Content });
             }
             catch (Exception e)
             {

@@ -30,7 +30,7 @@
         </h2>
         @Html.Partial("PostHeader", Model)
         <div class="postBody">
-            @(new HtmlString(Model.Pages.First().Content))
+            @(new HtmlString(Model.Content))
             <div class="clear"></div>
             @if (Model.QrCode != null)
             {

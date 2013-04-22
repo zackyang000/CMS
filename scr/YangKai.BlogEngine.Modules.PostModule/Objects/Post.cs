@@ -41,7 +41,6 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
             PageCount = 1;
             ViewCount = 0;
             ReplyCount = 0;
-            Pages = new List<Page>();
             Categorys = new List<Category>();
             Tags = new List<Tag>();
         }
@@ -64,6 +63,11 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
         /// 文章标题.
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// 文章正文.
+        /// </summary>
+        public string Content { get; set; }
 
         /// <summary>
         /// 文章摘要.
@@ -161,11 +165,6 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
         /// 文章所有评论.
         /// </summary>
         public virtual List<Comment> Comments { get; set; }
-
-        /// <summary>
-        /// 文章各个分页,至少包含1页内容.
-        /// </summary>
-        public virtual List<Page> Pages { get; set; }
 
         /// <summary>
         /// 文章的二维码信息,可能不存在.

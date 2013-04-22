@@ -120,6 +120,10 @@
     <Compile Include="Migrations\201303061439196_UsedEnglishTableNameRestPart2.Designer.cs">
       <DependentUpon>201303061439196_UsedEnglishTableNameRestPart2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201304220413485_RemovePageModel.cs" />
+    <Compile Include="Migrations\201304220413485_RemovePageModel.Designer.cs">
+      <DependentUpon>201304220413485_RemovePageModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Mapping\Board\BoardConfiguration.cs" />
     <Compile Include="Mapping\Common\LogConfiguration.cs" />
@@ -129,7 +133,6 @@
     <Compile Include="Mapping\Post\CommentConfiguration.cs" />
     <Compile Include="Mapping\Post\QrCodeConfiguration.cs" />
     <Compile Include="Mapping\Post\GroupConfiguration.cs" />
-    <Compile Include="Mapping\Post\PageConfiguration.cs" />
     <Compile Include="Mapping\Post\PostConfiguration.cs" />
     <Compile Include="Mapping\Post\SourceConfiguration.cs" />
     <Compile Include="Mapping\Post\TagConfiguration.cs" />
@@ -181,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201303061439196_UsedEnglishTableNameRestPart2.resx">
       <DependentUpon>201303061439196_UsedEnglishTableNameRestPart2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304220413485_RemovePageModel.resx">
+      <DependentUpon>201304220413485_RemovePageModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

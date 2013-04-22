@@ -100,7 +100,6 @@
     <Compile Include="Objects\Channel.cs" />
     <Compile Include="Objects\Comment.cs" />
     <Compile Include="Objects\Group.cs" />
-    <Compile Include="Objects\Page.cs" />
     <Compile Include="Objects\Post.cs" />
     <Compile Include="Objects\QrCode.cs" />
     <Compile Include="Objects\Source.cs" />

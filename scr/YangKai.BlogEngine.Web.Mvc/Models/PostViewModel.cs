@@ -42,7 +42,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                     PostId = entity.PostId,
                     Url = entity.Url,
                     Title = entity.Title,
-                    Content = entity.Pages.Count>0?entity.Pages[0].Content:"文章丢失.",
+                    Content = entity.Content,
                     Description = entity.Description,
                     Author = entity.PubAdmin.UserName,
                     ViewCount = entity.ViewCount,
@@ -57,6 +57,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                     ThumbnailUrl = entity.Thumbnail!=null?entity.Thumbnail.Url:null,
                     QrCodeUrl = entity.QrCode != null ? entity.QrCode.Url : null,
                 };
+
             viewModel.Categories = new Dictionary<string, string>();
             entity.Categorys.ForEach(p => viewModel.Categories.Add(p.Url, p.Name));
             viewModel.Tags=new List<string>();
