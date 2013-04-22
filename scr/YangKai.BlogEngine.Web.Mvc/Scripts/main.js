@@ -180,7 +180,13 @@ function getQuery(name) {
 
 //#region ko common
 
-function elementFadeIn(elem) { if (elem.nodeType === 1) $(elem).hide().fadeIn(1000); }
+function elementFadeIn(elem) { if (elem.nodeType === 1) $(elem).hide().fadeIn(500); }
+
+function itemRefresh(list, entity) {
+    var i = list().indexOf(entity);
+    list.remove(entity);
+    list.splice(i, 0, entity);
+}
 
 //#endregion
 

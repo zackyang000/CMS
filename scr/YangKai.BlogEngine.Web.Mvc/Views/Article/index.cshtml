@@ -90,13 +90,9 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
                 });
         };
 
-        self.expand = function(data) {
-            data.IsShowDetail = !data.IsShowDetail;
-            
-            //TODO:将该方法提取为公共ko方法.  itemRefresh
-            var i = self.list().indexOf(data);
-            self.list.remove(data);
-            self.list.splice(i, 0, data);
+        self.expand = function (entity) {
+            entity.IsShowDetail = !entity.IsShowDetail;
+            itemRefresh(self.list, entity);
         };
 
         self.turnpages = function () {

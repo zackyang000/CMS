@@ -35,10 +35,8 @@
                     .done(function(o) {
                         if (o.result) {
                             noty({ text: '操作成功,已删除#' + entity.Index + "." });
-                            var i = self.list().indexOf(entity);
-                            self.list.remove(entity);
                             entity.IsDeleted = true;
-                            self.list.splice(i, 0,entity);
+                            itemRefresh(self.list, entity);
                         } else {
                             noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
                             self.error(o.reason);
@@ -51,10 +49,8 @@
                     .done(function (o) {
                         if (o.result) {
                             noty({ text: '操作成功,已恢复#' + entity.Index + ".", type: 'warning' });
-                            var i = self.list().indexOf(entity);
-                            self.list.remove(entity);
                             entity.IsDeleted = false;
-                            self.list.splice(i, 0, entity);
+                            itemRefresh(self.list, entity);
                         } else {
                             noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
                             self.error(o.reason);
