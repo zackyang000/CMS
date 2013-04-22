@@ -67,128 +67,6 @@ function ConvertJsonDate(jsondate) {
 
 //#endregion
 
-
-//展开文章
-function show_detail(id) {
-    $("#showdetail" + id).animate({
-        opacity: 'toggle'
-    }, 300);
-    setTimeout(function () {
-        $("#hidedetail" + id).animate({
-            opacity: 'toggle'
-        }, 300);
-    }, 2000);
-    
-    $("#post-body-detail-" + id).html("<img src='/Content/Image/ajax-loader2.gif'' alt='' />加载中...");
-    $("#post-body-desc-" + id).animate({
-            opacity: 'toggle'
-        }, 300);
-        setTimeout(function () {
-            $("#post-body-detail-" + id).animate({
-                opacity: 'toggle'
-            }, 300);
-        }, 300);
-    
-    setTimeout(function() {
-        $.ajax({
-                type: "POST",
-                url: "/Article/FastDetail",
-                dataType: "json",
-                data: "postId=" + id,
-                success: function(context) {
-                    $("#post-body-detail-" + id).hide();
-                    if (context.success) {
-                        $("#post-body-detail-" + id).html(context.content);
-                    }
-                    else {
-                        $("#post-body-detail-" + id).html("<div style='color:red'>" + context.reason + "</div>");
-                    }
-                    $("#post-body-detail-" + id).animate({
-                            opacity: 'toggle'
-                        }, 300);
-                },
-                complete: function() {
-
-                }
-            });
-        }, 600);
-}
-
-//收缩文章
-function hide_detail(id) {
-    $("#hidedetail" + id).animate({
-        opacity: 'toggle'
-    }, 300);
-    setTimeout(function() {
-        $("#showdetail" + id).animate({
-            opacity: 'toggle'
-        }, 300);
-    }, 2000);
-
-    $("#post-body-detail-" + id).animate({
-        opacity: 'toggle'
-    }, 300);
-    setTimeout(function () {
-        $("#post-body-desc-" + id).animate({
-            opacity: 'toggle'
-        }, 300);
-    }, 300);
-}
-
-//删除文章
-function post_delete(id) {
-    $.ajax({
-        url: "/admin/postmanage/delete",
-        type: "POST",
-        dataType: "json",
-        data: "id=" + id,
-        success: function (context) {
-            if (context.result) {
-                $("#list" + id).animate({
-                    opacity: 'toggle',
-                    backgroundColor: '#ff8888'
-                }, 500);
-                setTimeout(function () {
-                    var title = $("#list" + id + " h2 strong").html();
-                    $("#list" + id).after("<li id=\"post-deleted-" + id + "\" style=\"display: none;\"><td style=\"padding-left:50px; padding-bottom:5px;\">《<strong>" + title + "</strong>》已移至回收站。 <a href=\"JavaScript:void(0)\" onclick=\"post_deleted_revoke('" + id + "')\">撤销</a></td></tr>");
-                    $("#post-deleted-" + id).animate({
-                        opacity: 'toggle'
-                    }, 500);
-                }, 500);
-            }
-            else { alert(context.reason); }
-        }
-    });
-}
-
-//撤销删除文章
-function post_deleted_revoke(id) {
-    $.ajax({
-        url: "/admin/postmanage/renew",
-        type: "POST",
-        dataType: "json",
-        data: "id=" + id,
-        success: function (context) {
-            $("#list" + id).animate({
-                backgroundColor: 'transparent'
-            }, 1);
-            if (context.result) {
-                $("#post-deleted-" + id).animate({
-                    opacity: 'toggle',
-                    backgroundColor: '#88ff88'
-                }, 500);
-                setTimeout(function () {
-                    $("#list" + id).animate({
-                        opacity: 'toggle'
-                    }, 500);
-                    $("#post-deleted-" + id).remove();
-                }, 500);
-            }
-            else { alert(context.reason); }
-        }
-    });
-}
-
 //导航lock状态
 function navlock() {
     //判断全部lock
@@ -209,11 +87,6 @@ function navlock() {
             $("#navigation td a").eq(i).parent().addClass("lock");
         }
     });
-}
-
-function page_begin() {
-    window.location.href = "#content";
-    $("#posts-and-pager").html("<img src=\"/Content/Image/ajax-loader2.gif\" alt=\"\" />");
 }
 
 //#region common
@@ -284,6 +157,7 @@ function getjsondate(jsondate) {
     return new Date(parseInt(jsondate, 10));
 }
 
+//C# Dictionary类型转换为javascript Dictionary
 function mapDictionaryToArray(dictionary) {
     var result = [];
     for (var key in dictionary) {
@@ -292,6 +166,15 @@ function mapDictionaryToArray(dictionary) {
         }
     }
     return result;
+}
+
+//获取QueryString
+function getQuery(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null)
+        return unescape(r[2]);
+    return "";
 }
 //#endregion
 

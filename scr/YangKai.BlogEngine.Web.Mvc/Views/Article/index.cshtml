@@ -51,7 +51,7 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
 
 <div id="posts">
     <ul data-bind="template: { name: 'post-template', foreach: list }"></ul>
-    <div class="loadingbox" data-bind="visible: loading">正在请求数据…</div>
+    <div class="loadingbox" data-bind="visible: loading">加载中...</div>
     @Html.Partial("_pager")
 </div>
 <script type="text/html" id="post-template">
@@ -101,8 +101,14 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
 
         self.turnpages = function () {
             self.loading(!self.loading());
-            alert(location.href.toString().replace(/#/g, ""));
-            $.getJSON('/article/list?id=' + self.Pager().CurrentPage(), function (result) {
+            var link = location.href.toString().replace(/#/g, "");
+            link = link.indexOf("?") > 0 ? link + "&" : link + "?";
+            link += 'type=list&id=' + self.Pager().CurrentPage();
+            link += "&c=" + getQuery('c');
+            link += "&t=" + getQuery('t');
+            link += "&d=" + getQuery('d');
+            link += "&k=" + getQuery('k');
+            $.getJSON(link, function (result) {
                 self.loading(!self.loading());
                 self.list(result.data);
                 self.TotalResults(result.count);
