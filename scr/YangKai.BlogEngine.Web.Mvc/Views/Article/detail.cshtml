@@ -1,12 +1,12 @@
-﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
 
 @{
     Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
 }
 
 <div class="breadcrumbs">
-	@Html.ActionLink(Model.Group.Channel.Name, "Index", Model.Group.Channel.Url)
-    @Html.ActionLink(Model.Group.Name, "Index", Model.Group.Url, null, new { title = string.Format("查看 {0} 的全部文章", Model.Group.Name) })
+    <a href="/@Model.ChannelUrl">@Model.ChannelName</a>
+    <a href="/@Model.GroupUrl">@Model.GroupName</a>
     <strong>@Model.Title</strong>
 </div>
 

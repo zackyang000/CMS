@@ -1,12 +1,17 @@
-﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
 <div class="postFooter">
-    <span class="categories">
-        @(Html.Raw(string.Join(",", Model.Categorys.Select(item => Html.ActionLink(item.Name, "Index", Model.Group.Url, new { c = item.Url }, new { title = string.Format("查看 {0} 的全部文章", item.Name) })).ToList())))
-    </span>
-    @if (Model.Tags != null && Model.Tags.Count > 0)
+    @foreach (var item in Model.Categories)
+    {
+        <span class="categories">
+            @if(Model.Categories.First().Key!=item.Key){<text>,</text>}
+            <a href="/@Model.GroupUrl?c=@item.Key">@item.Value</a>
+        </span>
+    }
+    @foreach (var item in Model.Tags)
     {
         <span class="tags">
-            @(Html.Raw(string.Join(",", Model.Tags.Where(p=>!string.IsNullOrWhiteSpace(p.Name)).Select(item => Html.ActionLink(item.Name, "Index", item.Post.Group.Url, new {t = item.Name}, new {title = string.Format("查看 {0} 的全部文章", item.Name)})).ToList())))
+            @if(Model.Tags.First()!=item){<text>,</text>}
+            <a href="/@Model.GroupUrl?t=@item">@item</a>
         </span>
     }
 </div>

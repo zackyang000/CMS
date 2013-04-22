@@ -7,7 +7,7 @@
     <ul class="box">
         @foreach (var item in Model)
         {
-        <li>@item.PubDate.ToString("yyyy年MM月dd日") -- @Html.ActionLink(item.Title, "Detail", item.Group.Url, new { id = item.Url }, new { title = item.Title })</li>
+        <li>@item.PubDate.ToString("yyyy年MM月dd日") -- <a href="/@item.Group.Url-@item.Url">@item.Title</a></li>
         }
     </ul>
 </div>

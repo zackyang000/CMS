@@ -28,6 +28,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
         public string GroupUrl { get; set; }
         public string ThumbnailUrl { get; set; }
         public string QrCodeUrl { get; set; }
+        public string SourceUrl { get; set; }
+        public string SourceTitle { get; set; }
 
         public Dictionary<string, string> Categories { get; set; }
         public IList<string> Tags { get; set; }
@@ -56,6 +58,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                     GroupUrl = entity.Group.Url,
                     ThumbnailUrl = entity.Thumbnail!=null?entity.Thumbnail.Url:null,
                     QrCodeUrl = entity.QrCode != null ? entity.QrCode.Url : null,
+                    SourceUrl = entity.Source != null ? entity.Source.Url : null,
+                    SourceTitle = entity.Source != null ? entity.Source.Title : null,
                 };
 
             viewModel.Categories = new Dictionary<string, string>();

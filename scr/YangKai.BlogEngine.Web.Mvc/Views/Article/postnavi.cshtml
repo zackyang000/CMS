@@ -6,11 +6,11 @@
 <div id="postnavi">
     @if (prePost != null)
     {
-        <div>@Html.ActionLink(prePost.Title, "Detail", prePost.Group.Url, new { id = prePost.Url }, new { title = prePost.Title, @class = "prev", rel = "prev" })</div>
+        <div><a href="/@prePost.Group.Url-@prePost.Url" class = "prev" rel="prev">@prePost.Title</a></div>
     }
     @if (nextPost != null)
     {
-        <div>@Html.ActionLink(nextPost.Title, "Detail", nextPost.Group.Url, new { id = nextPost.Url }, new { title = nextPost.Title, @class = "next", rel = "next" })</div>
+        <div><a href="/@nextPost.Group.Url-@nextPost.Url" class = "next" rel="next">@nextPost.Title</a></div>
     }
     <div class="clear"></div>
 </div>

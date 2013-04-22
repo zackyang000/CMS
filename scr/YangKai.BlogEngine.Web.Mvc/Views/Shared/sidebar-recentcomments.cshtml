@@ -18,7 +18,7 @@
     function RecentCommentsViewModel() {
         var self = this;
         self.comments = ko.observableArray();
-        self.detailBaseUrl = '@detailUrl';
+        self.groupUrl = '@groupUrl';
         $.getJSON('/comment/recent?channelurl=@channelUrl&groupurl=@groupUrl', self.comments);
     }
 
@@ -28,7 +28,7 @@
 </script>
 <script type="text/html" id="recentCommentsViewModelTemplate">
     <li>
-        <a data-bind="text: $data.Author, attr: { title: '《' + $data.PostTitle + '》', href: $root.detailBaseUrl + $data.PostUrl }"></a>
+        <a data-bind="text: $data.Author, attr: { title: '《' + $data.PostTitle + '》', href: $data.GroupUrl + '/' + $data.PostUrl }"></a>
         :
         <span data-bind="html: $data.Content"></span>
     </li>

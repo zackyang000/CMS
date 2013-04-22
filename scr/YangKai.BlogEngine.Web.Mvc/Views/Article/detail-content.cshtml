@@ -1,5 +1,4 @@
-﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
-@model Post
+﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
            
 @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
 {
@@ -11,41 +10,33 @@
     <li id="@("list" + Model.PostId)">
         <h2>
             <strong>@Model.Title</strong>
-            @if (Model.PostStatus==(int)PostStatusEnum.Trash)
+            @if (Model.PostStatus != "Publish")
             {
-                <span class="del">已删除</span>
-            }
-            @if (Model.PostStatus == (int)PostStatusEnum.Draft)
-            {
-                <span class="draft">草稿</span>
-            }
-            @if (Model.PostStatus == (int)PostStatusEnum.Pending)
-            {
-                <span class="audit">未审核</span>
+                <span class="warningbox">@Model.PostStatus</span>
             }
             @if (Model.PubDate > DateTime.Now)
             {
-                <span class="delay">延迟发布: @((Model.PubDate - DateTime.Now).TotalHours.ToString("#0.00"))小时后</span>
+                <span class="warningbox">延迟发布: @((Model.PubDate - DateTime.Now).TotalHours.ToString("#0.00"))小时后</span>
             }
         </h2>
         @Html.Partial("PostHeader", Model)
         <div class="postBody">
             @(new HtmlString(Model.Content))
             <div class="clear"></div>
-            @if (Model.QrCode != null)
+            @if (Model.QrCodeUrl != null)
             {
                 <a href="javascrpit:void(0);" onclick=" $('#qrcode').toggle(); " ><img src="/Content/Image/qrcode.png"/></a>
                 <div id="qrcode" class="qrcode">
-                    <img src="/upload/qrcode/@Model.QrCode.Url" width="200" height="200" />
+                    <img src="/upload/qrcode/@Model.QrCodeUrl" width="200" height="200" />
                 </div>
             }
-            @if (Model.Source != null)
+            @if (Model.SourceUrl != null)
             {
-                <div style="color:#aaa">本文转载于：<a href="@Model.Source.Url" style="color:#aaa">@Model.Source.Title</a></div>
+                <div style="color:#aaa">本文转载于：<a href="@Model.SourceUrl" style="color:#aaa">@Model.SourceTitle</a></div>
             }
+        </div> 
             @Html.Partial("PostFooter", Model)
             @Html.Partial("_jiathis")
-        </div> 
     </li>
 </ul>
 

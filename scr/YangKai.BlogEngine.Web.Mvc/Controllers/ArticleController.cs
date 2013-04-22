@@ -88,25 +88,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             ViewBag.Keywords = data.Tags != null ? string.Join(",", data.Tags.Select(p => p.Name).ToList()) : data.Title;
             ViewBag.Description = data.Title;
 
-            return View(data);
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult FastDetail(Guid postId)
-        {
-            try
-            {
-                var data = QueryFactory.Instance.Post.Find(postId);
-                if (data.PostStatus == (int)PostStatusEnum.Trash)
-                {
-                    return Json(new { success = false, reason = "文章已被删除." });
-                }
-                return Json(new {success=true, content = data.Content });
-            }
-            catch (Exception e)
-            {
-                return Json(new { success = false, reason = e.Message });
-            }
+            return View(data.ToViewModel());
         }
 
         [ActionName("calendar")]
@@ -147,7 +129,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         //标签分组
         [ActionName("categorygroup")]
         [AcceptVerbs(HttpVerbs.Get)]
-        //[OutputCache(Duration = 3600)]
+        [OutputCache(Duration = 3600)]
         public JsonResult CategoryGroup(string groupUrl)
         {
             if (groupUrl == string.Empty) return Json(string.Empty, JsonRequestBehavior.AllowGet);
