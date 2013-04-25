@@ -6,10 +6,19 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by 我是你的猪(YangKai Email:ZackYang@outlook.com), 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Thu, 25 Apr 2013 11:03:05 GMT</pubDate>
-    <lastBuildDate>Thu, 25 Apr 2013 11:03:05 GMT</lastBuildDate>
+    <pubDate>Thu, 25 Apr 2013 11:07:10 GMT</pubDate>
+    <lastBuildDate>Thu, 25 Apr 2013 11:07:10 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>777</title>
+      <description>777&lt;br /&gt;发表于:3333333333</description>
+      <link>http://www.woshinidezhu.com/videos/Detail/3333333333</link>
+      <category>视频 - 默认</category>
+      <author>我是你的猪</author>
+      <guid>0a72495b-af4c-4443-8e99-bb0d855f4408</guid>
+      <pubDate>Thu, 25 Apr 2013 11:07:10 GMT</pubDate>
+    </item>
     <item>
       <title>666666</title>
       <description>666666&lt;br /&gt;发表于:大学寝室90后男屌丝洗衣服洗出节奏来！</description>
@@ -459,17 +468,6 @@
       <author>匿名</author>
       <guid>23a3dabf-0db2-df11-99ad-000c29f1398f</guid>
       <pubDate>Thu, 24 Dec 2009 22:13:15 GMT</pubDate>
-    </item>
-    <item>
-      <title>很好很和谐...
-</title>
-      <description>很好很和谐...
-&lt;br /&gt;发表于:星际和ML的共同之处</description>
-      <link>http://www.woshinidezhu.com/topics/Detail/sc-ml</link>
-      <category>文章 - 欢乐</category>
-      <author>匿名</author>
-      <guid>22a3dabf-0db2-df11-99ad-000c29f1398f</guid>
-      <pubDate>Thu, 24 Dec 2009 21:56:08 GMT</pubDate>
     </item>
   </channel>
 </rss>
