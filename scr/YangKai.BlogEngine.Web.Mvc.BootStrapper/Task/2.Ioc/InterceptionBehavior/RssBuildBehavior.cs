@@ -23,11 +23,11 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 var parameters = input.MethodBase.GetParameters();
                 if (parameters.Length == 1)
                 {
-                    if (parameters[0].GetType() == typeof (Post))
+                    if (parameters[0].ParameterType == typeof(Post))
                     {
                         Task.Factory.StartNew(Rss.BuildPostRss);
                     }
-                    if (parameters[0].GetType() == typeof (Comment))
+                    if (parameters[0].ParameterType == typeof(Comment))
                     {
                         Task.Factory.StartNew(Rss.BuildCommentRss);
                     }

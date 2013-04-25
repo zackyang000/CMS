@@ -5,15 +5,17 @@ using Microsoft.Practices.Unity;
 
 namespace YangKai.BlogEngine.Web.Mvc
 {
+    /// <summary>
+    /// 若使用多线程将造成HttpContext.Current为null,此时会直接创建新的value.
+    /// 并且当该线程再次访问该Lifecycle时将再次重新创建.
+    /// </summary>
     public class HttpContextLifetimeManager : LifetimeManager, IDisposable
     {
-        private string _key = string.Format(CultureInfo.InvariantCulture, "HttpContextLifetimeManager_{0}", Guid.NewGuid());
-
-        private readonly HttpContextBase _context;
+        private readonly string _key;
 
         public HttpContextLifetimeManager()
         {
-            _context = new HttpContextWrapper(HttpContext.Current);
+            _key = string.Format(CultureInfo.InvariantCulture, "HttpContextLifetimeManager_{0}", Guid.NewGuid());
         }
 
         public void Dispose()
@@ -23,17 +25,21 @@ namespace YangKai.BlogEngine.Web.Mvc
 
         public override object GetValue()
         {
-            return _context.Items[_key];
+            if (HttpContext.Current == null) return null;
+            var context = new HttpContextWrapper(HttpContext.Current);
+            return context.Items[_key];
         }
 
         public override void RemoveValue()
         {
-            _context.Items.Remove(_key);
+            if (HttpContext.Current == null) return;
+            new HttpContextWrapper(HttpContext.Current).Items.Remove(_key);
         }
 
         public override void SetValue(object newValue)
         {
-            _context.Items[_key] = newValue;
+            if (HttpContext.Current == null) return;
+            new HttpContextWrapper(HttpContext.Current).Items[_key] = newValue;
         }
     }
 }
