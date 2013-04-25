@@ -4,8 +4,6 @@
     var group = ViewBag.Group as Group;
     var channelUrl = channel == null ? string.Empty : channel.Url;
     var groupUrl = group == null ? string.Empty : group.Url;
-    var indexUrl = RouteHelper.Current.Index(groupUrl, channelUrl);
-    var detailUrl = RouteHelper.Current.Detail(groupUrl);
 }
 
 <div class="widget" id="recentcomments">

@@ -151,7 +151,6 @@
     <Compile Include="Extension\BaseController.cs" />
     <Compile Include="Extension\CallContextLifeTimeManager.cs" />
     <Compile Include="Extension\PagedJsonResult.cs" />
-    <Compile Include="Extension\RouteHelper.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BoardController.cs" />

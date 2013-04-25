@@ -4,7 +4,6 @@
     var group = ViewBag.Group as Group;
     var channelUrl = channel == null ? string.Empty : channel.Url;
     var groupUrl = group == null ? string.Empty : group.Url;
-    var indexUrl = RouteHelper.Current.Index(groupUrl, channelUrl);
 }
 <div class="widget" id="sidebar-category">
     <h3>文章分类</h3>
@@ -16,7 +15,7 @@
     function CategoryGroupViewModel() {
         var self = this;
         self.list = ko.observableArray();
-        self.indexurl = '@indexUrl';
+        self.groupUrl = '@groupUrl';
         $.getJSON('/article/categorygroup?groupUrl=@groupUrl', self.list);
     }
 
@@ -26,7 +25,7 @@
 </script>
 <script type="text/html" id="categoryGroupViewModelTemplate">
     <li>
-        <a data-bind="attr: { 'href': $root.indexurl + '?c='+$data.Url }, text: $data.Name"></a>
+        <a data-bind="attr: { 'href': '/' + $root.groupUrl + '?c=' + $data.Url }, text: $data.Name"></a>
         (<span data-bind="text:$data.Count"></span>)
     </li>
 </script>
