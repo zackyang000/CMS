@@ -34,12 +34,11 @@
                 $.post("/comment/delete", "id=" + entity.CommentId, null, "json")
                     .done(function(o) {
                         if (o.result) {
-                            noty({ text: '操作成功,已删除#' + entity.Index + "." });
+                            message.success('“#' + entity.Index + '”  be moved to trash.');
                             entity.IsDeleted = true;
                             itemRefresh(self.list, entity);
                         } else {
-                            noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
-                            self.error(o.reason);
+                            message.error(o.reason);
                         }
                     });
             };
@@ -48,12 +47,11 @@
                 $.post("/comment/renew", "id=" + entity.CommentId, null, "json")
                     .done(function (o) {
                         if (o.result) {
-                            noty({ text: '操作成功,已恢复#' + entity.Index + ".", type: 'warning' });
+                            message.success('“#' + entity.Index + '”  be renew.');
                             entity.IsDeleted = false;
                             itemRefresh(self.list, entity);
                         } else {
-                            noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
-                            self.error(o.reason);
+                            message.error(o.reason);
                         }
                     });
             };

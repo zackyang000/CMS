@@ -13,6 +13,11 @@
 @section scripts
 { 
     <script type="text/javascript">
+
+
+
+
+
         function BoardViewModel() {
             var self = this;
 
@@ -44,11 +49,11 @@
                 $.post("/board/delete", "id=" + entity.BoardId, null, "json")
                     .done(function(o) {
                         if (o.result) {
-                            noty({ text: '操作成功,已删除#' + entity.Index + "." });
+                            message.success('“#' + entity.Index + '”  be moved to trash.');
                             entity.IsDeleted = true;
                             itemRefresh(self.list, entity);
                         } else {
-                            noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
+                            message.error(o.reason);
                         }
                     });
             };
@@ -57,11 +62,11 @@
                 $.post("/board/renew", "id=" + entity.BoardId, null, "json")
                     .done(function (o) {
                         if (o.result) {
-                            noty({ text: '操作成功,已恢复#' + entity.Index + ".", type: 'warning' });
+                            message.success('“#' + entity.Index + '”  be renew.');
                             entity.IsDeleted = false;
                             itemRefresh(self.list, entity);
                         } else {
-                            noty({ text: '操作失败,错误:' + o.reason, type: 'error', timeout: false });
+                            message.error(o.reason);
                         }
                     });
             };

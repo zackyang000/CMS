@@ -88,17 +88,11 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
                     complete: function(context) {
                         var o = JSON.parse(context.responseText);
                         if (o.result) {
-                            Messenger().post({
-                                message: '“' + data.Title + '”  be moved to trash.',
-                                type: 'success'
-                            });
+                            message.success('“#' + data.Title + '”  be moved to trash.');
                             data.PostStatus = 'Trash';
                             itemRefresh(self.list, data);
                         } else {
-                            Messenger().post({
-                                message: 'Error,reason:' + o.reason,
-                                type: 'error'
-                            });
+                            message.error(o.reason);
                         }
                     }
                 }

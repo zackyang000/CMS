@@ -176,6 +176,16 @@ function getQuery(name) {
         return unescape(r[2]);
     return "";
 }
+
+message = {
+    success: function (msg) {
+        Messenger().post({ message: msg, type: 'success' });
+    },
+    error: function (msg) {
+        Messenger().post({ message: 'Error,reason:' + msg, type: 'error' });
+    }
+};
+
 //#endregion
 
 //#region ko common
