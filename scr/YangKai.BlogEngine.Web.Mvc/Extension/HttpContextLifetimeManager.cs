@@ -6,12 +6,13 @@ using Microsoft.Practices.Unity;
 namespace YangKai.BlogEngine.Web.Mvc
 {
     /// <summary>
-    /// 若使用多线程将造成HttpContext.Current为null,此时会直接创建新的value.
-    /// 并且当该线程再次访问该Lifecycle时将再次重新创建.
+    /// 当使用多线程时,因为HttpContext.Current为null.
+    /// 会直接使用singleton进行Life Cycle Manager.
     /// </summary>
     public class HttpContextLifetimeManager : LifetimeManager, IDisposable
     {
         private readonly string _key;
+        private object _singletonContext;
 
         public HttpContextLifetimeManager()
         {
@@ -25,20 +26,28 @@ namespace YangKai.BlogEngine.Web.Mvc
 
         public override object GetValue()
         {
-            if (HttpContext.Current == null) return null;
+            if (HttpContext.Current == null) return _singletonContext;
             var context = new HttpContextWrapper(HttpContext.Current);
             return context.Items[_key];
         }
 
         public override void RemoveValue()
         {
-            if (HttpContext.Current == null) return;
+            if (HttpContext.Current == null)
+            {
+                _singletonContext = null;
+                return;
+            }
             new HttpContextWrapper(HttpContext.Current).Items.Remove(_key);
         }
 
         public override void SetValue(object newValue)
         {
-            if (HttpContext.Current == null) return;
+            if (HttpContext.Current == null)
+            {
+                _singletonContext = newValue;
+                return;
+            }
             new HttpContextWrapper(HttpContext.Current).Items[_key] = newValue;
         }
     }
