@@ -1315,6 +1315,8 @@
     <Content Include="Content\admin\jquery-ui-1.8.8.custom\js\jquery-1.4.4.min.js" />
     <Content Include="Content\admin\jquery-ui-1.8.8.custom\js\jquery-ui-1.8.8.custom.min.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Content\messenger-theme-future.css" />
+    <Content Include="Content\messenger.css" />
     <Content Include="Content\noty\jquery.noty.js" />
     <Content Include="Content\noty\layouts\bottom.js" />
     <Content Include="Content\noty\layouts\bottomCenter.js" />
@@ -1390,6 +1392,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />
+    <Content Include="Scripts\messenger-theme-future.js" />
+    <Content Include="Scripts\messenger.js" />
+    <Content Include="Scripts\messenger.min.js" />
     <Content Include="sitemap.xml" />
     <Content Include="sitemap.xsl" />
     <Content Include="Web.config">
@@ -1409,6 +1414,9 @@
     <Content Include="Views\Article\post-footer.cshtml" />
     <Content Include="Views\Article\post-body.cshtml" />
     <Content Include="Views\Article\post-title.cshtml" />
+    <Content Include="Scripts\messenger.min.js.map">
+      <DependentUpon>messenger.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

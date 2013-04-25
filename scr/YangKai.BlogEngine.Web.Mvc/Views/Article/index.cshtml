@@ -78,6 +78,19 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
         });
 
         self.del = function (data) {
+            //TODO
+            Messenger().run({
+                errorMessage: 'Error destroying alien planet',
+                successMessage: 'Alien planet destroyed!',
+                action: function(opts) {
+                    return opts.error({
+                        status: 500,
+                        readyState: 0,
+                        responseText: 0
+                    });
+                }
+            });
+            
             $.post("/admin/postmanage/delete", "id=" + data.PostId, null, "json")
                 .done(function (context) {
                     if (context.result) {
