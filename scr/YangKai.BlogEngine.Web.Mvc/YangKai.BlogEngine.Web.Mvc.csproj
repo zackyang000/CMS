@@ -1394,7 +1394,6 @@
     <Content Include="robots.txt" />
     <Content Include="Scripts\messenger-theme-future.js" />
     <Content Include="Scripts\messenger.js" />
-    <Content Include="Scripts\messenger.min.js" />
     <Content Include="sitemap.xml" />
     <Content Include="sitemap.xsl" />
     <Content Include="Web.config">
@@ -1414,9 +1413,6 @@
     <Content Include="Views\Article\post-footer.cshtml" />
     <Content Include="Views\Article\post-body.cshtml" />
     <Content Include="Views\Article\post-title.cshtml" />
-    <Content Include="Scripts\messenger.min.js.map">
-      <DependentUpon>messenger.js</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
