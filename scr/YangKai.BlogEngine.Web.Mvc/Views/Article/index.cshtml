@@ -77,30 +77,32 @@ else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
             self.turnpages();
         });
 
-        self.del = function (data) {
-            //TODO
-            Messenger().run({
-                errorMessage: 'Error destroying alien planet',
-                successMessage: 'Alien planet destroyed!',
-                action: function(opts) {
-                    return opts.error({
-                        status: 500,
-                        readyState: 0,
-                        responseText: 0
-                    });
-                }
-            });
-            
-            $.post("/admin/postmanage/delete", "id=" + data.PostId, null, "json")
-                .done(function (context) {
-                    if (context.result) {
-                        data.PostStatus = 'Be moved to trash.';
-                        var i = self.list().indexOf(data);
-                        self.list.remove(data);
-                        self.list.splice(i, 0, data);
+        self.del = function(data) {
+            Messenger().run(
+                { progressMessage: 'Deleting data...' },
+                {
+                    url: "/admin/postmanage/delete/",
+                    data: "id=" + data.PostId,
+                    method: "post",
+                    dataType: "json",
+                    complete: function(context) {
+                        var o = JSON.parse(context.responseText);
+                        if (o.result) {
+                            Messenger().post({
+                                message: '“' + data.Title + '”  be moved to trash.',
+                                type: 'success'
+                            });
+                            data.PostStatus = 'Trash';
+                            itemRefresh(self.list, data);
+                        } else {
+                            Messenger().post({
+                                message: 'Error,reason:' + o.reason,
+                                type: 'error'
+                            });
+                        }
                     }
-                    else { alert(context.reason); }
-                });
+                }
+            );
         };
 
         self.expand = function (entity) {

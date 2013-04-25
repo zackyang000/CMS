@@ -21,6 +21,7 @@ using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
 {
+    [UserAuthorize]
     public class PostManageController : Controller
     {
         [ActionName("index")]
@@ -149,7 +150,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Delete(Guid id)
+        public JsonResult Delete(Guid id)
         {
             try
             {
@@ -163,7 +164,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Renew(Guid id)
+        public JsonResult Renew(Guid id)
         {
             try
             {
