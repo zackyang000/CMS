@@ -1,17 +1,17 @@
 ﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
 <div class="postFooter">
-    @foreach (var item in Model.Categories)
-    {
-        <span class="categories">
-            @if(Model.Categories.First().Key!=item.Key){<text>,</text>}
+    <span class="categories">
+        @foreach (var item in Model.Categories)
+        {
+            if (Model.Categories.First().Key != item.Key){<text>,</text>}
             <a href="/@Model.GroupUrl?c=@item.Key">@item.Value</a>
-        </span>
-    }
-    @foreach (var item in Model.Tags)
-    {
-        <span class="tags">
-            @if(Model.Tags.First()!=item){<text>,</text>}
+        }
+    </span>
+    <span class="tags">
+        @foreach (var item in Model.Tags)
+        {
+            if (Model.Tags.First() != item){<text>,</text>}
             <a href="/@Model.GroupUrl?t=@item">@item</a>
-        </span>
-    }
+        }
+    </span>
 </div>
