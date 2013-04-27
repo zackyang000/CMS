@@ -3,22 +3,15 @@ BlogEngine Alpha
 
 在线演示地址: <a href="http://www.woshinidezhu.com">iShare</a>
 
-基于领域驱动设计(Based Domain-Driven Design)的类博客系统，将逐步改进为CMS。
-
 ## 简介
-使用演示以下.NET技术：
 
-ASP.NET MVC 4
+基于领域驱动设计(Based Domain-Driven Design)类博客系统。
 
-Microsoft Entity Framework 5.0 Code First
-
-Microsoft Patterns & Practices Unity Application Block
-
-Microsoft Patterns & Practices Policy Injection Application Block
+使用 Knockout.js + ASP.NET MVC4 + EF5.0 开发.
 
 ## 开发环境
 
-Visual Studio 2010 Professional/Ultimate with SP1
+Visual Studio 2010 with SP1
 
 ASP.NET MVC4 (下载地址:http://www.microsoft.com/zh-cn/download/details.aspx?id=30683)
 
@@ -26,7 +19,7 @@ IIS Express 7.5 (下载地址:http://www.microsoft.com/zh-cn/download/details.as
 
 或
 
-Visual Studio 2012 Ultimate
+Visual Studio 2012
 
 ## 开始
 
@@ -39,5 +32,5 @@ Visual Studio 2012 Ultimate
 
 ## License
 
-&copy; Powered by ZackYang   Contact me:ZackYang@outlook.com
+Copyright (c) 2013 Zack Yang Licensed under the MIT license.
 
