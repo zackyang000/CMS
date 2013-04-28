@@ -73,6 +73,7 @@
                 self.list(result.data);
                 self.TotalResults(result.count);
                 ko.utils.arrayForEach(self.list(), function (data) { data.IsShowDetail = false; });
+                imglazyload("#posts img");
             });
         };
 

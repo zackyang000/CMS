@@ -69,6 +69,13 @@ function ConvertJsonDate(jsondate) {
     return new Date(parseInt(jsondate, 10));
 }
 
+function imglazyload(dom) {
+    $(dom).lazyload({
+        placeholder: "/Content/Image/grey.gif",
+        effect: "fadeIn"
+    });
+}
+
 //#endregion
 
 //导航lock状态
