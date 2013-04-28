@@ -169,7 +169,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Content\admin\images\bubble_bg.gif" />
     <Content Include="Content\admin\images\button-grad.png" />
     <Content Include="Content\admin\images\date-button.gif" />
