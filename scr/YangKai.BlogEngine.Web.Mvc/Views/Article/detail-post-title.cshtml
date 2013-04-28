@@ -1,0 +1,13 @@
+﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
+
+<h2>
+    <strong>@Model.Title</strong>
+    @if (Model.PostStatus != "Publish")
+    {
+        <span class="warningbox">@Model.PostStatus</span>
+    }
+    @if (Model.PubDate > DateTime.Now)
+    {
+        <span class="warningbox">延迟发布: @((Model.PubDate - DateTime.Now).TotalHours.ToString("#0.00"))小时后</span>
+    }
+</h2>

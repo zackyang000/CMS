@@ -1,0 +1,85 @@
+﻿@{
+    var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin.ToString().ToLower();
+}
+
+<div id="posts">
+    <ul data-bind="template: { name: 'post-template', foreach: list }"></ul>
+    <div class="loadingbox" data-bind="visible: loading">加载中...</div>
+    @Html.Partial("_pager")
+</div>
+
+<script type="text/html" id="post-template">
+    <li>
+        @Html.Partial("index-post-title")
+        @Html.Partial("index-post-header")
+        @Html.Partial("index-post-body")
+        @Html.Partial("index-post-footer")
+    </li>
+</script>
+
+<script type="text/javascript">
+    function PostListViewModel(isadmin) {
+        var self = this;
+
+        self.authorized = isadmin;
+        self.list = ko.observableArray();
+        self.loading = ko.observable(false);
+        
+        self.TotalResults = ko.observable();
+        self.Pager = ko.pager(self.TotalResults);
+        self.Pager().CurrentPage.subscribe(function () {
+            window.location = "#";
+            self.turnpages();
+        });
+
+        self.del = function(data) {
+            Messenger().run(
+                { progressMessage: 'Deleting data...' },
+                {
+                    url: "/admin/postmanage/delete/",
+                    data: "id=" + data.PostId,
+                    method: "post",
+                    dataType: "json",
+                    complete: function(context) {
+                        var o = JSON.parse(context.responseText);
+                        if (o.result) {
+                            message.success('“#' + data.Title + '”  be moved to trash.');
+                            data.PostStatus = 'Trash';
+                            itemRefresh(self.list, data);
+                        } else {
+                            message.error(o.reason);
+                        }
+                    }
+                }
+            );
+        };
+
+        self.expand = function (entity) {
+            entity.IsShowDetail = !entity.IsShowDetail;
+            itemRefresh(self.list, entity);
+        };
+
+        self.turnpages = function () {
+            self.loading(!self.loading());
+            var link = location.href.toString().replace(/#/g, "");
+            link = link.indexOf("?") > 0 ? link + "&" : link + "?";
+            link += 'type=list&id=' + self.Pager().CurrentPage();
+            link += "&c=" + getQuery('c');
+            link += "&t=" + getQuery('t');
+            link += "&d=" + getQuery('d');
+            link += "&k=" + getQuery('k');
+            $.getJSON(link, function (result) {
+                self.loading(!self.loading());
+                self.list(result.data);
+                self.TotalResults(result.count);
+                ko.utils.arrayForEach(self.list(), function (data) { data.IsShowDetail = false; });
+            });
+        };
+
+        self.turnpages();
+    }
+
+    $(document).ready(function () {
+        ko.applyBindings(new PostListViewModel(@isAdmin), $("#posts")[0]);
+    });
+</script>

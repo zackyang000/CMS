@@ -4,8 +4,9 @@
             <div>
                 <a href="/admin">Admin</a> |
                 @Html.ActionLink("Analytics", "analytics", "Labs") |
-                @Html.ActionLink("ExportData", "export", "Labs") |
-                @Html.ActionLink("Probe", "probe", "Labs",null,  new { target = "_blank" })
+                @Html.ActionLink("Export Data", "export", "Labs") |
+                @Html.ActionLink("Probe", "probe", "Labs", null, new { target = "_blank" }) |
+                <a href="/elmah.axd" target = "_blank">Error Log</a>
             </div>
             <div>@YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT</div>
         </div>

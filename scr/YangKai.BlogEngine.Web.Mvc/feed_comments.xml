@@ -6,10 +6,19 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by 我是你的猪(YangKai Email:ZackYang@outlook.com), 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Thu, 25 Apr 2013 17:05:44 GMT</pubDate>
-    <lastBuildDate>Thu, 25 Apr 2013 17:05:44 GMT</lastBuildDate>
+    <pubDate>Sun, 28 Apr 2013 09:57:17 GMT</pubDate>
+    <lastBuildDate>Sun, 28 Apr 2013 09:57:17 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>8888888</title>
+      <description>8888888&lt;br /&gt;发表于:如何用5分钟时间做一张看上去很厉害的海报？</description>
+      <link>http://www.woshinidezhu.com/topics/Detail/how-to-make-a-look-in-5-minutes-were-some-posters</link>
+      <category>文章 - 实用技巧</category>
+      <author>我是你的猪</author>
+      <guid>e41693d3-e957-46d1-9cc6-ff532d48d97e</guid>
+      <pubDate>Sun, 28 Apr 2013 09:57:17 GMT</pubDate>
+    </item>
     <item>
       <title>777777777777</title>
       <description>777777777777&lt;br /&gt;发表于:3333333333</description>
@@ -455,15 +464,6 @@
       <author>匿名</author>
       <guid>36a3dabf-0db2-df11-99ad-000c29f1398f</guid>
       <pubDate>Thu, 07 Jan 2010 14:51:45 GMT</pubDate>
-    </item>
-    <item>
-      <title>不错</title>
-      <description>不错&lt;br /&gt;发表于:同志们纷纷表示这是中国最好的科幻片</description>
-      <link>http://www.woshinidezhu.com/videos/Detail/zhongguo-kehuanpian</link>
-      <category>视频 - 早期数据</category>
-      <author>匿名</author>
-      <guid>35a3dabf-0db2-df11-99ad-000c29f1398f</guid>
-      <pubDate>Thu, 07 Jan 2010 14:51:38 GMT</pubDate>
     </item>
   </channel>
 </rss>

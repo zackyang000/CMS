@@ -1,52 +1,10 @@
-﻿@*菜单效果*@
-<script type="text/javascript">
-    $(function() { menu(); });
-
-    function menu() {
-        var d = 300;
-        $('#menu a').each(function() {
-            $(this).stop().animate({
-                'marginTop': '-80px'
-            }, d += 150);
-        });
-        $('#menu > li').hover(
-            function() {
-                $('a', $(this)).stop().animate({
-                    'marginTop': '-2px'
-                }, 200);
-            },
-            function() {
-                $('a', $(this)).stop().animate({
-                    'marginTop': '-80px'
-                }, 200);
-            });
-    }
-</script>
-<style>
-    ul#menu li a {padding-top:80px; margin-top:-80px }
-    ul#menu .home a{background-image: url(/Content/Image/menu/home.png);}
-    ul#menu .funs a{background-image: url(/Content/Image/menu/television.png);}
-    ul#menu .about a{background-image: url(/Content/Image/menu/info.png);}
-    ul#menu .board a{background-image: url(/Content/Image/menu/board.png);}
-    ul#menu .rssfeed a{background-image: url(/Content/Image/menu/rss.png);}
-    ul#menu .contact a{background-image: url(/Content/Image/menu/mail.png);}
-    ul#menu .technologies a{background-image: url(/Content/Image/menu/wired.png);}
-    ul#menu .search a{background-image: url(/Content/Image/menu/search.png);}
-</style>
-
-@* 导航 *@
-<script type="text/javascript">
-    $(function () { navlock(); });
-</script>
-
-@* 代码高亮插件 *@
-<link href="/Content/syntaxhighlighter_3.0.83/styles/shCoreDefault.css" rel="stylesheet" type="text/css" />
-<script src="/Content/syntaxhighlighter_3.0.83/scripts/shCore.js" type="text/javascript"></script>
-<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js" type="text/javascript"></script>
-<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushCss.js" type="text/javascript"></script>
-<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js" type="text/javascript"></script>
-<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushSql.js" type="text/javascript"></script>
-<script src="/Content/syntaxhighlighter_3.0.83/scripts/shBrushXml.js" type="text/javascript"></script>
+﻿@* 代码高亮插件 *@
+<link href="/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css" rel="stylesheet" type="text/css" />
+<script src="/Content/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js" type="text/javascript"></script>
+<script src="/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js" type="text/javascript"></script>
+<script src="/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js" type="text/javascript"></script>
+<script src="/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js" type="text/javascript"></script>
+<script src="/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js" type="text/javascript"></script>
 <script type="text/javascript">
     jQuery(function () {
         SyntaxHighlighter.defaults['gutter'] = true;
@@ -56,24 +14,15 @@
 </script>
 
 @* 图片延迟加载插件 *@
-<script src="/Scripts/jquery.lazyload.js" type="text/javascript"></script>
+<script src="/Content/js/jquery.lazyload.js" type="text/javascript"></script>
 <script type="text/javascript">
-    jQuery(function ($) {
+    jQuery(function($) {
         $("#posts img").lazyload({
-                placeholder: "/Content/Image/grey.gif",
-                effect: "fadeIn"
-            });
+            placeholder: "/Content/Image/grey.gif",
+            effect: "fadeIn"
+        });
     });
 </script>
 
-@* 分享插件 *@
-<script type="text/javascript" >
-    var jiathis_config = {
-        data_track_clickback: true,
-        siteNum: 15,
-        summary: "",
-        hideMore: true
-    }
-</script>
-<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=902651" charset="utf-8"></script>
+
 

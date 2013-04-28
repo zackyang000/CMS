@@ -1,0 +1,17 @@
+﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
+
+<div class="postBody">
+    @(new HtmlString(Model.Content))
+    <div class="clear"></div>
+    @if (Model.QrCodeUrl != null)
+    {
+        <a href="javascrpit:void(0);" onclick=" $('#qrcode').toggle(); " ><img src="/Content/Image/qrcode.png"/></a>
+        <div id="qrcode" class="qrcode">
+            <img src="/upload/qrcode/@Model.QrCodeUrl" width="200" height="200" alt="二维码" />
+        </div>
+    }
+    @if (Model.SourceUrl != null)
+    {
+        <div style="color:#aaa">本文转载于：<a href="@Model.SourceUrl" style="color:#aaa">@Model.SourceTitle</a></div>
+    }
+</div>

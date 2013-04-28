@@ -7,16 +7,16 @@
     <meta name="description" content="@ViewBag.Description" />
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
-    <link href="/Content/style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/knockout-2.2.1.js"></script>  
-    <script type="text/javascript" src="~/Scripts/ko.pager.js"></script>
-    <script type="text/javascript" src="~/Scripts/main.js"></script>
-    <script src="~/Scripts/messenger.js"></script>
-    <script src="~/Scripts/messenger-theme-future.js"></script>
-    <link href="~/Content/messenger.css" rel="stylesheet" />
-    <link href="~/Content/messenger-theme-future.css" rel="stylesheet" />
+    <link href="/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/messenger.css" rel="stylesheet" />
+    <link href="~/Content/css/messenger-theme-future.css" rel="stylesheet" />
     @RenderSection("style", required: false)
+    <script type="text/javascript" src="~/Content/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/knockout-2.2.1.js"></script>  
+    <script type="text/javascript" src="~/Content/js/ko.pager.js"></script>
+    <script type="text/javascript" src="~/Content/js/messenger.js"></script>
+    <script type="text/javascript" src="~/Content/js/messenger-theme-future.js"></script>
+    <script type="text/javascript" src="~/Content/js/main.js"></script>
     @RenderSection("scripts", required: false)
     <!--google analysis START-->
     <script type="text/javascript">

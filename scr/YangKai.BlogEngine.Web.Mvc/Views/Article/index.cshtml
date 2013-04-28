@@ -1,14 +1,10 @@
 ﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
-@using YangKai.BlogEngine.ServiceProxy
 
 @{
     Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
     var channel = ViewBag.Channel as Channel;
     var group = ViewBag.Group as Group;
-    var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin.ToString().ToLower();
 }
-
-
 
 <div class="breadcrumbs">
     @if (group==null)
@@ -24,107 +20,9 @@
 
 @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
 {
-<div id="addpost" class="_add"><a href="/admin/postmanage/new">添加新文章</a></div>
-<div class="clear"></div>
+    <div id="addpost" class="_add"><a href="/admin/postmanage/new">添加新文章</a></div>
+    <div class="clear"></div>
 }
 
-@if (!string.IsNullOrEmpty(Request.QueryString["c"]))
-{
-    <div class="boxcaption"><h3>存档</h3></div>
-    <div class="box">‘@(QueryFactory.Instance.Post.GetCategory(Request.QueryString["c"]).Name)’ 分类的存档</div>
-}
-@if (!string.IsNullOrEmpty(Request.QueryString["t"]))
-{
-    <div class="boxcaption"><h3>存档</h3></div>
-    <div class="box">文章标签 ‘@Request.QueryString["t"]’</div>
-}
-else if (!string.IsNullOrEmpty(Request.QueryString["d"]))
-{
-    <div class="boxcaption"><h3>存档</h3></div>
-    <div class="box">‘@Request.QueryString["d"]’ 分类的存档</div>
-}
-else if (!string.IsNullOrEmpty(Request.QueryString["k"]))
-{
-    <div class="boxcaption"><h3>搜索结果</h3></div>
-    <div class="box">关键字:‘@Request.QueryString["k"]’</div>
-}
-
-<div id="posts">
-    <ul data-bind="template: { name: 'post-template', foreach: list }"></ul>
-    <div class="loadingbox" data-bind="visible: loading">加载中...</div>
-    @Html.Partial("_pager")
-</div>
-<script type="text/html" id="post-template">
-    <li>
-        @Html.Partial("post-title")
-        @Html.Partial("post-header")
-        @Html.Partial("post-body")
-        @Html.Partial("post-footer")
-    </li>
-</script>
-<script type="text/javascript">
-    function PostListViewModel(isadmin) {
-        var self = this;
-
-        self.authorized = isadmin;
-        self.list = ko.observableArray();
-        self.loading = ko.observable(false);
-        
-        self.TotalResults = ko.observable();
-        self.Pager = ko.pager(self.TotalResults);
-        self.Pager().CurrentPage.subscribe(function () {
-            window.location = "#";
-            self.turnpages();
-        });
-
-        self.del = function(data) {
-            Messenger().run(
-                { progressMessage: 'Deleting data...' },
-                {
-                    url: "/admin/postmanage/delete/",
-                    data: "id=" + data.PostId,
-                    method: "post",
-                    dataType: "json",
-                    complete: function(context) {
-                        var o = JSON.parse(context.responseText);
-                        if (o.result) {
-                            message.success('“#' + data.Title + '”  be moved to trash.');
-                            data.PostStatus = 'Trash';
-                            itemRefresh(self.list, data);
-                        } else {
-                            message.error(o.reason);
-                        }
-                    }
-                }
-            );
-        };
-
-        self.expand = function (entity) {
-            entity.IsShowDetail = !entity.IsShowDetail;
-            itemRefresh(self.list, entity);
-        };
-
-        self.turnpages = function () {
-            self.loading(!self.loading());
-            var link = location.href.toString().replace(/#/g, "");
-            link = link.indexOf("?") > 0 ? link + "&" : link + "?";
-            link += 'type=list&id=' + self.Pager().CurrentPage();
-            link += "&c=" + getQuery('c');
-            link += "&t=" + getQuery('t');
-            link += "&d=" + getQuery('d');
-            link += "&k=" + getQuery('k');
-            $.getJSON(link, function (result) {
-                self.loading(!self.loading());
-                self.list(result.data);
-                self.TotalResults(result.count);
-                ko.utils.arrayForEach(self.list(), function (data) { data.IsShowDetail = false; });
-            });
-        };
-
-        self.turnpages();
-    }
-
-    $(document).ready(function () {
-        ko.applyBindings(new PostListViewModel(@isAdmin), $("#posts")[0]);
-    });
-</script>
+@Html.Partial("index-box")
+@Html.Partial("index-post")
