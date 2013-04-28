@@ -1,10 +1,12 @@
 ﻿@using YangKai.BlogEngine.Common
 @using YangKai.BlogEngine.Model
-@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Post>
+@using YangKai.BlogEngine.Modules.PostModule.Objects
+@model IList<Post>
 
 @{
     Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
     ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, "存档");
+    var channel = ViewBag.Channel as Channel;
     var calendarlist = (ViewBag.CalendarList as CalendarDictionary).Data.OrderByDescending(p => p.Key).ToDictionary(k => k.Key, v => v.Value);
 }
 
@@ -29,7 +31,7 @@
     string calendarEnFormat = calendar.Key.ToString("yyyy-MM");
     string calendarCnFormat = calendar.Key.ToString("yyyy年MM月");
     <li id="calendar-@calendarEnFormat">
-        <h2>@calendarEnFormat (@calendar.Value)<a href="@Url.Action("Index", "Article", new { channelUrl = Model.FirstOrDefault().Categorys.FirstOrDefault().Group.Channel.Url, d = calendarEnFormat })" title="@string.Format("转到 {0} 的文章列表", calendarCnFormat)"><span></span></a></h2>
+        <h2>@calendarEnFormat (@calendar.Value)<a href="/@channel.Url?d=@calendarEnFormat" title="@string.Format("转到 {0} 的文章列表", calendarCnFormat)"><span></span></a></h2>
         <ul>
         @foreach (var item in Model.Where(p => p.PubDate.Year == calendar.Key.Year && p.PubDate.Month == calendar.Key.Month))
         {

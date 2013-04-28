@@ -81,21 +81,21 @@ function imglazyload(dom) {
 //导航lock状态
 function navlock() {
     //判断全部lock
-    if (document.URL.split('/')[3] == "" || $("#navigation td a").length == 1) {
-        $("#navigation td a").eq(0).parent().removeClass("link");
-        $("#navigation td a").eq(0).parent().addClass("lock");
+    if (document.URL.split('/')[3] == "" || $("nav li a").length == 1) {
+        $("nav li a").eq(0).parent().removeClass("link");
+        $("nav li a").eq(0).parent().addClass("lock");
     }
     //判断各版块lock
-    $("#navigation td a").each(function (i) {
+    $("nav li a").each(function (i) {
         if (this.href.split('/')[3] == document.URL.split('/')[3].split('?')[0]) {
-            $("#navigation td a").eq(i).parent().removeClass("link");
-            $("#navigation td a").eq(i).parent().addClass("lock");
+            $("nav li a").eq(i).parent().removeClass("link");
+            $("nav li a").eq(i).parent().addClass("lock");
         }
     });
-    $("#navigation td a").each(function (i) {
+    $("nav li a").each(function (i) {
         if (this.href.split('/')[3] == document.URL.split('/')[3].split('-')[0] && i > 0) {
-            $("#navigation td a").eq(i).parent().removeClass("link");
-            $("#navigation td a").eq(i).parent().addClass("lock");
+            $("nav li a").eq(i).parent().removeClass("link");
+            $("nav li a").eq(i).parent().addClass("lock");
         }
     });
 }

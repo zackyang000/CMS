@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta name="keywords" content="@ViewBag.Keywords" /> 
+    <meta name="description" content="@ViewBag.Description" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
+    <link href="/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/messenger.css" rel="stylesheet" />
+    <link href="~/Content/css/messenger-theme-future.css" rel="stylesheet" />
+    @RenderSection("style", required: false)
+    <script type="text/javascript" src="~/Content/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/knockout-2.2.1.js"></script>  
+    <script type="text/javascript" src="/Content/js/jquery.lazyload.js"></script>
+    <script type="text/javascript" src="~/Content/js/ko.pager.js"></script>
+    <script type="text/javascript" src="~/Content/js/messenger.js"></script>
+    <script type="text/javascript" src="~/Content/js/messenger-theme-future.js"></script>
+    <script type="text/javascript" src="~/Content/js/main.js"></script>
+    @RenderSection("scripts", required: false)
+    <!--google analysis START-->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21831838-1']);
+        _gaq.push(['_setDomainName', 'woshinidezhu.com']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!--google analysis END-->
+</head>
+<body>
+@Html.Partial("layout-header")
+<div id="middle">
+    <div class="body">
+        <div class="main">
+        @RenderBody()
+        </div>
+    </div>
+</div>
+@Html.Partial("layout-footer")
+@Html.Partial("_plugins")
+</body>
+</html>

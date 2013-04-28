@@ -1,39 +1,38 @@
 ﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Group>
-<div class="nav_top"></div>
-<table id="navigation" cellpadding="0" cellspacing="0">
-    <tr>
-        <td class="left"></td>
+<nav>
+    <p></p>
+    <ul>
+        <li class="left">&nbsp;</li>
         @if (Model != null)
         {
-        <td class="div"></td>
-        <td class="link">@Html.ActionLink("全部", "Index", ViewBag.ChannelUrl as string)</td>
+            <li class="div">&nbsp;</li>
+            <li class="link home">@Html.ActionLink("全部", "Index", ViewBag.ChannelUrl as string)</li>
             foreach (var item in Model)
             {
-        <td class="div"></td>
-        <td class="link">@Html.ActionLink(item.Name, "Index", item.Url)</td>
+                <li class="div">&nbsp;</li>
+                <li class="link">@Html.ActionLink(item.Name, "Index", item.Url)</li>
             }
         }
         else
         {
             if (((string)ViewBag.Url).ToLower() == "board")
             {
-        <td class="div"></td>
-        <td class="link">@Html.ActionLink("留言板", "Index", "Board")</td>
+                <li class="div">&nbsp;</li>
+                <li class="link">@Html.ActionLink("留言板", "Index", "Board")</li>
             }
             if (((string)ViewBag.Url).ToLower() == "about")
             {
-        <td class="div"></td>
-        <td class="link">@Html.ActionLink("关于", "Index", "About")</td>
+                <li class="div">&nbsp;</li>
+                <li class="link">@Html.ActionLink("关于", "Index", "About")</li>
             }
         }
-        <td class="div"></td>
-        <td>&nbsp;</td>
+        <li class="div">&nbsp;</li>
+        <li class="right">&nbsp;</li>
         @if (Model != null && Model.Any())
         {
-        <td class="div"></td>
-        <td class="link">@Html.ActionLink("存档", "calendar",new RouteValueDictionary {{"Controller", "Article"},{"channelUrl" , Model.First().Channel.Url},{"groupUrl",string.Empty}})</td>
+            <li class="div fr">&nbsp;</li>
+            <li class="link fr"><a href="/@Model.First().Channel.Url-calendar">存档</a></li>
         }
-        <td class="div"></td>
-        <td class="right"></td>
-    </tr>
-</table>
+        <li class="div fr">&nbsp;</li>
+    </ul>
+</nav>

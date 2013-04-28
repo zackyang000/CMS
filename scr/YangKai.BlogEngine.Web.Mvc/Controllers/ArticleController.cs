@@ -48,9 +48,19 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
             else
             {
+                DateTime? calendar = null;
+                if (!string.IsNullOrEmpty(d))
+                {
+                    DateTime date;
+                    if (DateTime.TryParse(d + "-01", out date))
+                    {
+                        calendar = date;
+                    }
+                }
+
                 var data = QueryFactory.Instance.User.IsLogin()
-               ? QueryFactory.Instance.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k)
-               : QueryFactory.Instance.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, c, t, null, k);
+               ? QueryFactory.Instance.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, c, t, calendar, k)
+               : QueryFactory.Instance.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, c, t, calendar, k);
 
                 //保存搜索记录
                 if (!string.IsNullOrEmpty(k))

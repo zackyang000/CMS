@@ -192,6 +192,10 @@
     <Content Include="Content\admin\images\img1.png" />
     <Content Include="Content\admin\images\sprite.png" />
     <Content Include="Content\admin\js\jquery.main.js" />
+    <Content Include="Content\css\html5reset.css" />
+    <Content Include="Content\css\normalize.css" />
+    <Content Include="Content\img\warning.png" />
+    <Content Include="Content\js\modernizr-2.6.2.min.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\adapters\jquery.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\CHANGES.html" />
     <Content Include="Content\plugin\ckeditor_3.6.1\ckeditor.asp" />
@@ -1401,7 +1405,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Content\img\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\bin\Debug\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\bin\Release\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Debug\" />
@@ -1507,6 +1510,7 @@
     <Content Include="Views\Article\index-post.cshtml" />
     <Content Include="Views\Article\detail-post-body.cshtml" />
     <Content Include="Views\Article\detail-post-title.cshtml" />
+    <Content Include="Views\Shared\_layout_XHTML.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">
