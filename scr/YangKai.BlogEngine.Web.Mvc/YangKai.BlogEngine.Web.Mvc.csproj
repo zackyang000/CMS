@@ -1379,6 +1379,7 @@
     <Content Include="robots.txt" />
     <Content Include="Scripts\messenger-theme-future.js" />
     <Content Include="Scripts\messenger.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="sitemap.xml" />
     <Content Include="sitemap.xsl" />
     <Content Include="Web.config">

@@ -49,7 +49,9 @@ form,fieldset{
 }
 .links {float:left;}
 .links ul {
-	list-style:none;	margin:0;	padding:0;
+	list-style:none;
+	margin:0;
+	padding:0;
 	float:left;
 }
 .links li {
@@ -162,7 +164,9 @@ form,fieldset{
 }
 .tabs p {margin:0 0 10px;}
 .states {
-	list-style:none;	margin:0;	padding:0;
+	list-style:none;
+	margin:0;
+	padding:0;
 }
 .states li {
 	vertical-align:top;
@@ -213,7 +217,9 @@ form,fieldset{
 	height:100%;
 }
 .buttons {
-	list-style:none;	margin:0;	padding:0;
+	list-style:none;
+	margin:0;
+	padding:0;
 	position:relative;
 	z-index:2;
 	font:bold 11px/13px Arial, Helvetica, sans-serif;
