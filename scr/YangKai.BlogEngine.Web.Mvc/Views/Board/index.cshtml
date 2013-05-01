@@ -13,11 +13,6 @@
 @section scripts
 { 
     <script type="text/javascript">
-
-
-
-
-
         function BoardViewModel() {
             var self = this;
 
@@ -43,8 +38,6 @@
                     });
             };
 
-            self.fadein = function (elem) { if (elem.nodeType === 1) $(elem).hide().slideDown(); };
-            
             self.del = function(entity) {
                 $.post("/board/delete", "id=" + entity.BoardId, null, "json")
                     .done(function(o) {
