@@ -1,12 +1,12 @@
 ﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Group>
 <nav>
-    <p></p>
+    <div></div>
     <ul>
         <li class="left">&nbsp;</li>
         @if (Model != null)
         {
             <li class="div">&nbsp;</li>
-            <li class="link home">@Html.ActionLink("全部", "Index", ViewBag.ChannelUrl as string)</li>
+            <li class="link">@Html.ActionLink("全部", "Index", ViewBag.ChannelUrl as string)</li>
             foreach (var item in Model)
             {
                 <li class="div">&nbsp;</li>

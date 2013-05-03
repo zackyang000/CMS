@@ -892,7 +892,6 @@
     <Content Include="Content\Image\nav_home_lock.png" />
     <Content Include="Content\Image\nav_hover.png" />
     <Content Include="Content\Image\nav_left.png" />
-    <Content Include="Content\Image\nav_lock.png" />
     <Content Include="Content\Image\nav_right.png" />
     <Content Include="Content\Image\nav_top.png" />
     <Content Include="Content\Image\new-window-icon.gif" />

@@ -5,19 +5,16 @@ body {margin:0px; padding:0px;color: #484f5a; font: normal normal normal 76%/1.6
 /* all style */
 a {color: #2970A6;text-decoration: none;}
 a:hover{color:#2970A6;text-decoration: underline;}
-ul,li,h1,h2,h3,h4,h5,h6,form,hr,p{padding:0; margin:0;}
+ul,li,h1,h2,h3,h4,h5,h6{padding:0; margin:0;}
 ul{list-style:none;}
 img{border:none;}
-.fb{font-weight:bold;}
 .fl{float:left;}
 .fr{float:right;}
-.tl{text-align:left;}
-.tr{text-align:right;}
 .clear{clear:both;}
 
 /* ko */
-.ko-area-loader{background: url(/Content/Image/ajax-loader2.gif) no-repeat;height: 16px;line-height: 16px;padding-left: 20px;}
-.ko-grid-loader{background: url(/Content/Image/ajax-loader3.gif) no-repeat center;height: 24px; text-align: center;padding: 20px;}
+.ko-area-loader{background: url(/Content/Image/ajax-loader5.gif) no-repeat;height: 16px;line-height: 16px;padding-left: 20px;}
+.ko-grid-loader{background: url(/Content/Image/ajax-loader4.gif) no-repeat center;height: 24px; text-align: center;padding: 20px;}
 
 /* btn */
 .submitbox .loading {float:right; padding:5px 5px 0px 20px; background:url(/Content/Image/ajax-loader.gif) 0px 3px no-repeat;}
@@ -105,7 +102,7 @@ header #caption{float:left;padding:60px 0 0 0px;}
 header #caption h1{font-size: 200%;color: white;height: 30px;text-decoration: none;}
 header #caption a{color: white;height: 30px;text-decoration: none;}
 header #tagline {border-top: 1px solid white;color: white;float: left;padding: 3px;}
-nav p{background:url(/Content/Image/nav_top.png) repeat-x; line-height:5px; height:5px;}
+nav div{background:url(/Content/Image/nav_top.png) repeat-x; line-height:5px; height:5px;}
 nav ul{line-height:31px; height:31px;width:1002px; background:url(/Content/Image/nav_bg.png) repeat-x;}
 nav li{float: left; text-align:center; font-size:12px; font-weight:bold;}
 nav li a,header nav li a:hover{text-decoration:none; display:block;color:#f2f2f2;}
@@ -114,13 +111,7 @@ nav li.right{background:url(/Content/Image/nav_right.png) no-repeat; width:45px;
 nav li.link{width:78px;}
 nav li.link.fr{float: right}
 nav li.link a:hover{background:url(/Content/Image/nav_hover.png) repeat-x;}
-nav li.lock{width:78px;background:url(/Content/Image/nav_lock.png) repeat-x;}
-nav li.home{width:78px;background:url(/Content/Image/nav_home.png) no-repeat; }
-nav li.home a{padding-left:15px;}
-nav li.home a:hover{background:url(/Content/Image/nav_home_hover.png) repeat-x;}
-nav li.home.lock{width:78px;background:url(/Content/Image/nav_home_lock.png) no-repeat;}
-nav li.home.lock a{padding-left:15px;}
-nav li.home.lock a:hover{background:url(/Content/Image/nav_home_lock.png) repeat-x;}
+nav li.lock{width:78px;background: #0a0b0d;}
 nav li.div{background:url(/Content/Image/nav_div.png) no-repeat; width:2px;}
 nav li.div.fr{float: right}
 header #bannertop{background:url(/Content/Image/banner_top.png) repeat-x; line-height:11px; height:11px}
@@ -130,7 +121,7 @@ header #bannerbottom{background:url(/Content/Image/banner_bottom.png) repeat-x; 
 
 /* menu */
 ul#menu{position: absolute;margin: 0px;padding: 0px;top: 0px;right: 10px;list-style: none;z-index:999999;}
-ul#menu li {width: 103px;display:inline;float:left;}
+ul#menu li {width: 103px;float:left;}
 ul#menu li a {display: block;float:left;margin-top: -2px;width: 100px;height: 25px;background-color:#E7F2F9;background-repeat:no-repeat;background-position:50% 10px;border:1px solid #BDDCEF;border-radius:0px 0px 10px 10px;-moz-border-radius:0px 0px 10px 10px;text-decoration:none;text-align:center;opacity: 0.7;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);  }
 ul#menu li a:hover{background-color:#CAE3F2;}
 ul#menu li a span{letter-spacing:2px;font-size:11px;font-weight:bold;color:#2e9ad8;text-shadow: 0 -1px 1px #fff;}
