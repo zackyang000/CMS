@@ -41,6 +41,7 @@ if (!Array.prototype.indexOf) {
     };
 }
 
+//格式化json日期
 String.prototype.Format = function () {
     var fmt = "yyyy年MM月dd日 hh:mm";
     var myDate = ConvertJsonDate(this);
@@ -58,16 +59,6 @@ String.prototype.Format = function () {
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 };
-
-function ConvertJsonDate(jsondate) {
-    jsondate = jsondate.replace("/Date(", "").replace(")/", "");
-    if (jsondate.indexOf("+") > 0) {
-        jsondate = jsondate.substring(0, jsondate.indexOf("+"));
-    } else if (jsondate.indexOf("-") > 0) {
-        jsondate = jsondate.substring(0, jsondate.indexOf("-"));
-    }
-    return new Date(parseInt(jsondate, 10));
-}
 
 function imglazyload(dom) {
     $(dom).lazyload({
@@ -123,63 +114,8 @@ function menu() {
 
 //#region common
 
-//html转义
-function HtmlEncode(text) {
-    return text.replace(/&/g, '&amp').replace(/\"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
-//判断url合法性
-String.prototype.isUrl = function () {
-    var argvalue = this;
-    if (argvalue.indexOf(" ") != -1)
-        return false;
-    else if (argvalue == "http://")
-        return false;
-    else if (argvalue.indexOf("http://") > 0)
-        return false;
-    argvalue = argvalue.substring(7, argvalue.length);
-    if (argvalue.indexOf(".") == -1)
-        return false;
-    else if (argvalue.indexOf(".") == 0)
-        return false;
-    else if (argvalue.charAt(argvalue.length - 1) == ".")
-        return false;
-    if (argvalue.indexOf("/") != -1) {
-        argvalue = argvalue.substring(0, argvalue.indexOf("/"));
-        if (argvalue.charAt(argvalue.length - 1) == ".")
-            return false;
-    }
-    if (argvalue.indexOf(":") != -1) {
-        if (argvalue.indexOf(":") == (argvalue.length - 1))
-            return false;
-        else if (argvalue.charAt(argvalue.indexOf(":") + 1) == ".")
-            return false;
-        argvalue = argvalue.substring(0, argvalue.indexOf(":"));
-        if (argvalue.charAt(argvalue.length - 1) == ".")
-            return false;
-    }
-    return true;
-};
-
-//格式化json日期
-String.prototype.Format = function () {
-    var fmt = "yyyy年MM月dd日";
-    var myDate = getjsondate(this);
-    var o = {
-        "M+": myDate.getMonth() + 1,
-        "d+": myDate.getDate(),
-        "h+": myDate.getHours(),
-        "m+": myDate.getMinutes(),
-        "s+": myDate.getSeconds(),
-        "q+": Math.floor((myDate.getMonth() + 3) / 3),
-        "S": myDate.getMilliseconds()
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (myDate.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
-};
-function getjsondate(jsondate) {
+//json日期转换为Date对象
+function ConvertJsonDate(jsondate) {
     jsondate = jsondate.replace("/Date(", "").replace(")/", "");
     if (jsondate.indexOf("+") > 0) {
         jsondate = jsondate.substring(0, jsondate.indexOf("+"));
@@ -209,6 +145,7 @@ function getQuery(name) {
     return "";
 }
 
+//alert方法
 message = {
     success: function (msg) {
         Messenger().post({ message: msg, type: 'success' });
@@ -222,8 +159,10 @@ message = {
 
 //#region ko common
 
+//淡入
 function elementFadeIn(elem) { if (elem.nodeType === 1) $(elem).hide().fadeIn(500); }
 
+//刷新list中的item
 function itemRefresh(list, entity) {
     var i = list().indexOf(entity);
     list.remove(entity);
