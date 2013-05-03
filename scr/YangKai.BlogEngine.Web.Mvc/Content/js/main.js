@@ -2,7 +2,6 @@
 
 $(document).ready(function () {
     
-    navlock();
     menu();
     
     //ajax禁用IE缓存

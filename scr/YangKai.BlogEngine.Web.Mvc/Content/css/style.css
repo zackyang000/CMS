@@ -94,30 +94,32 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 
 /* header */
 header {margin:auto;}
-header .top{background:url(/Content/Image/head_bg.png) repeat-x; height:168px;}
+header .top{min-width:1002px; margin:auto;background:url(/Content/Image/head_bg.png) repeat-x; height:168px;}
 header .top .main{width:1002px; margin:auto;}
-header #title{ height:132px;}
+header #title{height:132px;}
 header #logo{float:left;padding:30px 0 0 20px;}
 header #caption{float:left;padding:60px 0 0 0px;}
 header #caption h1{font-size: 200%;color: white;height: 30px;text-decoration: none;}
 header #caption a{color: white;height: 30px;text-decoration: none;}
 header #tagline {border-top: 1px solid white;color: white;float: left;padding: 3px;}
 nav div{background:url(/Content/Image/nav_top.png) repeat-x; line-height:5px; height:5px;}
-nav ul{line-height:31px; height:31px;width:1002px; background:url(/Content/Image/nav_bg.png) repeat-x;}
-nav li{float: left; text-align:center; font-size:12px; font-weight:bold;}
-nav li a,header nav li a:hover{text-decoration:none; display:block;color:#f2f2f2;}
+nav ul{line-height:31px; height:31px;width:1002px; background:url(/Content/Image/nav_bg.png) repeat-x;position: relative;}
+nav li{float: left; text-align:center; font-size:12px; font-weight:bold;z-index: 200;position: relative;}
+nav li a,nav li a:hover{text-decoration:none; display:block;color:#f2f2f2;}
+nav li.link a:hover{background:url(/Content/Image/nav_hover.png) repeat-x;}
+nav li.link.nohover a:hover{background:none;}
+nav li.lock{width:78px;background:url(/Content/Image/nav_lock.png) repeat-x;}
+nav li.moving_bg{background:url(/Content/Image/nav_lock.png) repeat-x;width: 78px;position: absolute;z-index: 190;left: 0px;}
 nav li.left{background:url(/Content/Image/nav_left.png) no-repeat; width:45px;}
 nav li.right{background:url(/Content/Image/nav_right.png) no-repeat; width:45px;float: right;}
 nav li.link{width:78px;}
 nav li.link.fr{float: right}
-nav li.link a:hover{background:url(/Content/Image/nav_hover.png) repeat-x;}
-nav li.lock{width:78px;background: #0a0b0d;}
 nav li.div{background:url(/Content/Image/nav_div.png) no-repeat; width:2px;}
 nav li.div.fr{float: right}
-header #bannertop{background:url(/Content/Image/banner_top.png) repeat-x; line-height:11px; height:11px}
-header #banner{text-align:center; background:#32363d;}
+header #bannertop{min-width:1002px; margin:auto;background:url(/Content/Image/banner_top.png) repeat-x; line-height:11px; height:11px}
+header #banner{min-width:1002px; margin:auto;text-align:center; background:#32363d;}
 header #banner img{border:1px solid #32363d;width:973px; height:160px;}
-header #bannerbottom{background:url(/Content/Image/banner_bottom.png) repeat-x; line-height:10px; height:10px}
+header #bannerbottom{min-width:1002px; margin:auto;background:url(/Content/Image/banner_bottom.png) repeat-x; line-height:10px; height:10px}
 
 /* menu */
 ul#menu{position: absolute;margin: 0px;padding: 0px;top: 0px;right: 10px;list-style: none;z-index:999999;}
