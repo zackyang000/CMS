@@ -163,30 +163,59 @@ var tabbedContent = {
 
 var urlHelper = {
     //获取QueryString
-    getQuery: function(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null)
-            return unescape(r[2]);
-        return "";
-    },
+    //    getQuery: function(name) {
+    //        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    //        var r = window.location.search.substr(1).match(reg);
+    //        if (r != null)
+    //            return unescape(r[2]);
+    //        return "";
+    //    },
 
-    //sample: [*{groupUrl}/{page}],[*{groupUrl}]
+    //format: 
+    //*{groupUrl}
+    //*{groupUrl}/{page}
+    //*{groupUrl}?{query}
+    //*{groupUrl}/{page}?{query}
+    //http://www.woshinidezhu.com/{ChannelUrl}#xxx
+    //default value:
+    //groupUrl:由route定义
+    //page:1
+    //query:""
+    getChannelUrl: function(url) {
+        if (url == undefined) {
+            url = window.location.toString();
+        }
+        //匹配 [以(http)://开头],[经过一个"/"],[以"#"或"/"结尾,若没有,则取后面所有] 的字符串.
+        var r = new RegExp("://(.*?)/(.*?)(?:#.*)?(?:/.*)?$");
+        var m = url.match(r);
+        return m ? m[2] : "";
+    },
     getGroupUrl: function(url) {
         if (url == undefined) {
             url = window.location.toString();
         }
-        var r = new RegExp("#!/(.*?)(?:/.*)?$");
+        //匹配 [以#!/开头],[以"/"或"?"结尾,若没有,则取后面所有] 的字符串.
+        var r = new RegExp("#!/(.*?)(?:(/|[\?]).*)?$");
         var m = url.match(r);
         return m ? m[1] : "";
     },
-    getPage: function (url) {
+    getPage: function(url) {
         if (url == undefined) {
             url = window.location.toString();
         }
-        var r = new RegExp("#!/(.*?)/(.*?)$");
+        //匹配 [以#!/开头],[经过一个"/"],[以"?"结尾,若没有,则取后面所有] 的数字.
+        var r = new RegExp("#!/(.*?)/(.*?)(?:[\?].*)?$");
         var m = url.match(r);
         return m ? (IsNum(m[2]) ? m[2] : 1) : 1;
+    },
+    getQuery: function(url) {
+        if (url == undefined) {
+            url = window.location.toString();
+        }
+        //匹配 [以?开头] 的字符串.
+        var r = new RegExp("[\?](.*?)$");
+        var m = url.match(r);
+        return m ? m[0] : "";
     }
 };
 

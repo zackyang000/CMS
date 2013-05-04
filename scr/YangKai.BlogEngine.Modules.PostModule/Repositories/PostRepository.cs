@@ -175,11 +175,12 @@ namespace YangKai.BlogEngine.Modules.PostModule.Repositories
                 var data = from a in GetAll()
                            where a.Categorys.Any(p => p.Url == categoryUrl)
                            where a.Group.Url == groupUrl
-                           where a.PostStatus == (int) PostStatusEnum.Publish
+                           where postStatu == null || a.PostStatus == (int)postStatu.Value
                            where a.PubDate <= DateTime.Now
                            orderby a.PubDate descending
                            select a;
-                var result = new PageList<BlogEngine.Modules.PostModule.Objects.Post>()
+
+                var result = new PageList<Post>()
                     {
                         DataList = data.Skip((pageIndex - 1)*pageSize).Take(pageSize).ToList(),
                         TotalCount = data.Count()
@@ -193,7 +194,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Repositories
                 var data = from a in GetAll()
                            where a.Tags.Any(p => p.Name == tagName)
                            where a.Group.Url == groupUrl
-                           where a.PostStatus == (int) PostStatusEnum.Publish
+                           where postStatu == null || a.PostStatus == (int)postStatu.Value
                            where a.PubDate <= DateTime.Now
                            orderby a.PubDate descending
                            select a;

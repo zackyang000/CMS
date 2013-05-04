@@ -32,7 +32,7 @@
         @if (Model != null && Model.Any())
         {
             <li class="div fr">&nbsp;</li>
-            <li class="link fr"><a href="#!/@Model.First().Channel.Url-calendar">存档</a></li>
+            <li class="link fr"><a href="@Model.First().Channel.Url-calendar">存档</a></li>
         }
         <li class="div fr">&nbsp;</li>
     </ul>

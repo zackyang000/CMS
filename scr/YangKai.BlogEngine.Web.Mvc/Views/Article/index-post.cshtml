@@ -20,7 +20,6 @@
 <script type="text/javascript">
     function PostListViewModel(isadmin) {
         var self = this;
-
         self.authorized = isadmin;
         self.list = ko.observableArray();
         self.loading = ko.observable(false);
@@ -28,11 +27,11 @@
         self.TotalResults = ko.observable();
         self.Pager = ko.pager(self.TotalResults);
         self.Pager().CurrentPage.subscribe(function () {
-//            var query = "c=" + urlHelper.getQuery('c');
-//            query += "&t=" + urlHelper.getQuery('t');
-//            query += "&d=" + urlHelper.getQuery('d');
-            //            query += "&k=" + urlHelper.getQuery('k');
-            location.href = "#!/" + urlHelper.getGroupUrl() + "/" + self.Pager().CurrentPage();
+            var group = urlHelper.getGroupUrl();
+            group = group == '' ? '' : ("/" + group);
+            var page = self.Pager().CurrentPage();
+            page = page == 1 ? '' : ("/" + page);
+            location.href = "#!" + group + page + urlHelper.getQuery();
         });
 
         self.del = function(data) {
@@ -63,34 +62,47 @@
         };
 
         self.turnpages = function () {
+            self.loading(!self.loading());
+            
+            //设置当前page为url中page.
+            self.Pager().CurrentPage(urlHelper.getPage());
+            
             //定位到顶部
             scroll(0, 0);
             
-            self.loading(!self.loading());
-            
             //组合请求所需url.
-            var link = '/'+urlHelper.getGroupUrl();
-            link += '?type=list&id=' + urlHelper.getPage();
-            link += "&c=" + urlHelper.getQuery('c');
-            link += "&t=" + urlHelper.getQuery('t');
-            link += "&d=" + urlHelper.getQuery('d');
-            link += "&k=" + urlHelper.getQuery('k');
+            var channel = urlHelper.getChannelUrl();
+            var group = urlHelper.getGroupUrl();
+            var query = urlHelper.getQuery();
+            var link = '/' + (group ? group : channel) + query;
+            if (query == '') {
+                link += '?';
+            } else {
+                link += '&';
+            }
+            link += 'type=list&id=' + urlHelper.getPage();
+            
+            if ($("nav ul li.moving_bg").is(":animated")) { //判断元素是否处于动画状态
+            }
             
             //请求数据
             $.getJSON(link, function (result) {
-                self.loading(!self.loading());
-                self.list(result.data);
-                self.TotalResults(result.count);
-                ko.utils.arrayForEach(self.list(), function (data) { data.IsShowDetail = false; });
-                imglazyload("#posts img");
+                //若滑动效果未结束,则延迟绑定.
+                if ($("nav ul li.moving_bg").is(":animated")) {
+                    setTimeout(function() { self.refreshlist(result); }, 300);
+                } else {
+                    self.refreshlist(result);
+                }
             });
         };
 
-        //设置当前page为url中page,页面初始化时使用.
-        var currentPage = urlHelper.getPage();
-        if (currentPage != 1) {
-            self.Pager().CurrentPage(urlHelper.getPage());
-        }
+        self.refreshlist = function(result) {
+            self.loading(!self.loading());
+            self.list(result.data);
+            self.TotalResults(result.count);
+            ko.utils.arrayForEach(self.list(), function(data) { data.IsShowDetail = false; });
+            imglazyload("#posts img");
+        };
 
         self.turnpages();
     }

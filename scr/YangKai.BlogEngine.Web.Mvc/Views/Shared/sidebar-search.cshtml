@@ -8,7 +8,9 @@
     function SearchkeyDown(txt) {
         if (window.event.keyCode == 13) {
             event.returnValue = false;
-            location.href = '/@(ViewBag.GroupUrl??ViewBag.ChannelUrl)?k=' + txt;
+            var channel = urlHelper.getChannelUrl();
+            var group = urlHelper.getGroupUrl();
+            location.href = '/' + channel + '#!/' + group + '?k=' + txt;
         }
     }
 </script>
