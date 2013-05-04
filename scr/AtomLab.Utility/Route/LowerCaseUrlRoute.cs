@@ -48,12 +48,11 @@ namespace AtomLab.Utility.RouteHelper
                 if (value == null) continue;
 
                 var valueString = Convert.ToString(value, CultureInfo.InvariantCulture);
-                if (valueString == null) continue;
 
                 values[key] = valueString.ToLower();
             }
 
-            var otherKyes = values.Keys
+            var otherKyes = values.Keys.ToArray()
                 .Except(requiredKeys, StringComparer.InvariantCultureIgnoreCase)
                 .ToArray();
 
