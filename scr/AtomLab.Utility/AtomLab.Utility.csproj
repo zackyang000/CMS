@@ -121,8 +121,6 @@
     <Compile Include="LunarDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegularExpressions.cs" />
-    <Compile Include="Route\LowerCaseUrlRoute.cs" />
-    <Compile Include="Route\LowerCaseUrlRouteMapHelper.cs" />
     <Compile Include="SaveRemoteFile\ImageHelper.cs" />
     <Compile Include="SaveRemoteFile\RequestHelper.cs" />
     <Compile Include="SaveRemoteFile\SaveRemoteFileHelper.cs" />

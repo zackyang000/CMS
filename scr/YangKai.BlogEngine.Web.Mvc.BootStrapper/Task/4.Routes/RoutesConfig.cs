@@ -1,7 +1,6 @@
 ﻿using System.Configuration;
 using System.Linq;
 using System.Web.Routing;
-using AtomLab.Utility.RouteHelper;
 using Bootstrap.Extensions.StartupTasks;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
@@ -40,7 +39,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             var groups = QueryFactory.Instance.Post.GetGroupsByNotDeletion();
             foreach (var item in groups)
             {
-                routes.MapLowerCaseUrlRoute(
+                routes.MapRoute(
                     item.Url,
                     item.Url + "/{id}",
                     new
@@ -61,7 +60,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             foreach (var item in groups)
             {
-                routes.MapLowerCaseUrlRoute(item.Url + "1", item.Url + "-{id}",
+                routes.MapRoute(item.Url + "1", item.Url + "-{id}",
                                             new
                                                 {
                                                     controller = "Article",
@@ -80,7 +79,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             foreach (var entity in channels)
             {
-                routes.MapLowerCaseUrlRoute(
+                routes.MapRoute(
                     entity.Url,
                     entity.Url + "/{id}",
                     new
@@ -95,7 +94,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             var defaultChannel = channels.FirstOrDefault(p => p.IsDefault);
             if (defaultChannel == null) throw new ConfigurationErrorsException("Channels must have a 'DefaultChannel'");
-            routes.MapLowerCaseUrlRoute(
+            routes.MapRoute(
                 "HomePage",
                 string.Empty,
                 new
@@ -114,7 +113,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             foreach (var entity in channels)
             {
-                routes.MapLowerCaseUrlRoute(
+                routes.MapRoute(
                     entity.Url + "-calendar",
                     entity.Url + "-calendar",
                     new
@@ -131,7 +130,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         //{controller}/{action}/{id}
         private static void RegisterDefaultRoute(RouteCollection routes)
         {
-            routes.MapLowerCaseUrlRoute(
+            routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
                 new {controller = "Home", action = "Index", id = UrlParameter.Optional},
