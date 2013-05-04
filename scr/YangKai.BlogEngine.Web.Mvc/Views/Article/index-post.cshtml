@@ -28,8 +28,11 @@
         self.TotalResults = ko.observable();
         self.Pager = ko.pager(self.TotalResults);
         self.Pager().CurrentPage.subscribe(function () {
-            window.location = "#";
-            self.turnpages();
+//            var query = "c=" + urlHelper.getQuery('c');
+//            query += "&t=" + urlHelper.getQuery('t');
+//            query += "&d=" + urlHelper.getQuery('d');
+            //            query += "&k=" + urlHelper.getQuery('k');
+            location.href = "#!/" + urlHelper.getGroupUrl() + "/" + self.Pager().CurrentPage();
         });
 
         self.del = function(data) {
@@ -50,7 +53,7 @@
                             message.error(o.reason);
                         }
                     }
-                }
+                }   
             );
         };
 
@@ -60,14 +63,20 @@
         };
 
         self.turnpages = function () {
+            //定位到顶部
+            scroll(0, 0);
+            
             self.loading(!self.loading());
-            var link = location.href.toString().replace(/#/g, "");
-            link = link.indexOf("?") > 0 ? link + "&" : link + "?";
-            link += 'type=list&id=' + self.Pager().CurrentPage();
-            link += "&c=" + getQuery('c');
-            link += "&t=" + getQuery('t');
-            link += "&d=" + getQuery('d');
-            link += "&k=" + getQuery('k');
+            
+            //组合请求所需url.
+            var link = '/'+urlHelper.getGroupUrl();
+            link += '?type=list&id=' + urlHelper.getPage();
+            link += "&c=" + urlHelper.getQuery('c');
+            link += "&t=" + urlHelper.getQuery('t');
+            link += "&d=" + urlHelper.getQuery('d');
+            link += "&k=" + urlHelper.getQuery('k');
+            
+            //请求数据
             $.getJSON(link, function (result) {
                 self.loading(!self.loading());
                 self.list(result.data);
@@ -77,10 +86,29 @@
             });
         };
 
+        //设置当前page为url中page,页面初始化时使用.
+        var currentPage = urlHelper.getPage();
+        if (currentPage != 1) {
+            self.Pager().CurrentPage(urlHelper.getPage());
+        }
+
         self.turnpages();
     }
 
+    var postViewModel = new PostListViewModel(@isAdmin);
+
     $(document).ready(function () {
-        ko.applyBindings(new PostListViewModel(@isAdmin), $("#posts")[0]);
+        ko.applyBindings(postViewModel, $("#posts")[0]);
+        
+        var docmode = document.documentMode;
+        if ('onhashchange' in window && (docmode === undefined || docmode > 7)) {
+            window.onhashchange = postViewModel.turnpages;
+        }
+        else {
+            var poll = window.setInterval(turnpages, 500);
+            window.onunload = function () {
+                window.clearInterval(poll);
+            };
+        }
     });
 </script>

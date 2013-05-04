@@ -1,8 +1,11 @@
 ﻿//#region  setup
 
 $(document).ready(function () {
-    
+
     menu();
+    
+    //菜单lock及滑动效果
+    tabbedContent.init();
     
     //ajax禁用IE缓存
     $.ajaxSetup({ cache: false });
@@ -68,27 +71,6 @@ function imglazyload(dom) {
 
 //#endregion
 
-//导航lock状态
-function navlock() {
-    //判断全部lock
-    if (document.URL.split('/')[3] == "" || $("nav li a").length == 1) {
-        $("nav li a").eq(0).parent().removeClass("link");
-        $("nav li a").eq(0).parent().addClass("lock");
-    }
-    //判断各版块lock
-    $("nav li a").each(function (i) {
-        if (this.href.split('/')[3] == document.URL.split('/')[3].split('?')[0]) {
-            $("nav li a").eq(i).parent().removeClass("link");
-            $("nav li a").eq(i).parent().addClass("lock");
-        }
-    });
-    $("nav li a").each(function (i) {
-        if (this.href.split('/')[3] == document.URL.split('/')[3].split('-')[0] && i > 0) {
-            $("nav li a").eq(i).parent().removeClass("link");
-            $("nav li a").eq(i).parent().addClass("lock");
-        }
-    });
-}
 
 //菜单滑动效果
 function menu() {
@@ -113,6 +95,13 @@ function menu() {
 
 //#region common
 
+//判断是否为数字
+function IsNum(s) {
+    if (s != null && s != "") {
+        return !isNaN(s);
+    }
+    return false;
+}
 //json日期转换为Date对象
 function ConvertJsonDate(jsondate) {
     jsondate = jsondate.replace("/Date(", "").replace(")/", "");
@@ -135,22 +124,69 @@ function mapDictionaryToArray(dictionary) {
     return result;
 }
 
-//获取QueryString
-function getQuery(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null)
-        return unescape(r[2]);
-    return "";
-}
-
 //alert方法
-message = {
+var message = {
     success: function (msg) {
         Messenger().post({ message: msg, type: 'success' });
     },
     error: function (msg) {
         Messenger().post({ message: 'Error,reason:' + msg, type: 'error' });
+    }
+};
+
+//菜单lock及滑动效果
+var tabbedContent = {
+    init: function () {
+        var currentParam = urlHelper.getGroupUrl();
+        $("nav ul li.link").each(function (i) {
+            var url = $("nav ul li.link").eq(i).find('a').prop('href');
+            var linkParam = urlHelper.getGroupUrl(url);
+            if (currentParam == linkParam) {
+                $("nav ul li.moving_bg").css("left", $("nav ul li.link").eq(i).position()['left']);
+                $("nav ul li.link").eq(i).addClass('nohover');
+            }
+        });
+
+        $("nav ul li.link").click(function () {
+            var o = $(this);
+
+            //先将所有item设置为nohover,否则hover将遮挡move效果.
+            o.parent().find('.link').addClass('nohover');
+
+            var background = o.parent().find(".moving_bg");
+            $(background).stop().animate({ left: o.position()['left'] }, 300, function () {
+                o.siblings().removeClass("nohover");
+            });
+        });
+    }
+};
+
+var urlHelper = {
+    //获取QueryString
+    getQuery: function(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return "";
+    },
+
+    //sample: [*{groupUrl}/{page}],[*{groupUrl}]
+    getGroupUrl: function(url) {
+        if (url == undefined) {
+            url = window.location.toString();
+        }
+        var r = new RegExp("#!/(.*?)(?:/.*)?$");
+        var m = url.match(r);
+        return m ? m[1] : "";
+    },
+    getPage: function (url) {
+        if (url == undefined) {
+            url = window.location.toString();
+        }
+        var r = new RegExp("#!/(.*?)/(.*?)$");
+        var m = url.match(r);
+        return m ? (IsNum(m[2]) ? m[2] : 1) : 1;
     }
 };
 

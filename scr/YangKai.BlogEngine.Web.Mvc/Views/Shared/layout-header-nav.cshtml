@@ -7,11 +7,11 @@
         @if (Model != null)
         {
             <li class="div">&nbsp;</li>
-            <li class="link"><a href="/#!/">全部</a></li>
+            <li class="link"><a href="#!/">全部</a></li>
             foreach (var item in Model)
             {
                 <li class="div">&nbsp;</li>
-                <li class="link"><a href="/#!/@item.Url">@item.Name</a></li>
+                <li class="link"><a href="#!/@item.Url">@item.Name</a></li>
             }
         }
         else
@@ -32,67 +32,8 @@
         @if (Model != null && Model.Any())
         {
             <li class="div fr">&nbsp;</li>
-            <li class="link fr"><a href="/#!/@Model.First().Channel.Url-calendar">存档</a></li>
+            <li class="link fr"><a href="#!/@Model.First().Channel.Url-calendar">存档</a></li>
         }
         <li class="div fr">&nbsp;</li>
     </ul>
 </nav>
-
-<script>
-    function checkHash() {
-        var hash;
-        hash = (!window.location.hash) ? "#nothing" : window.location.hash;
-        
-        alert(hash);
-
-        switch (hash) {
-            case "#search":
-                break;
-            case "#advsearch":
-
-            case "#admin":
-
-        }
-    }
-
-    var TabbedContent = {
-        init: function () {
-            $("nav ul li.moving_bg").css("left", $("nav ul li.link").first().position()['left']);
-            $("nav ul li.link").first().addClass('nohover');
-            
-            $("nav ul li.link").click(function () {
-                var o = $(this);
-                
-                //先将所有item设置为nohover,否则hover将遮挡move效果.
-                o.parent().find('.link').addClass('nohover');
-                
-                var background = o.parent().find(".moving_bg");
-                $(background).stop().animate({ left: o.position()['left'] }, 300, function () {
-                    o.siblings().removeClass("nohover");
-                });
-            });
-        },
-    };
-
-    $(document).ready(function () {
-        TabbedContent.init();
-    });
-    
-    var docmode = document.documentMode;
-
-    // Does the browser support window.onhashchange?
-    // Note that IE8 running in IE7 compatibility mode reports true for 'onhashchange' in window, 
-    // even though the event isn't supported, so also test document.documentMode.
-    if ('onhashchange' in window && (docmode === undefined || docmode > 7)) {
-        window.onhashchange = checkHash;
-    }
-        // IE7 doesn't support the hashchange event so we fall back to standard polling technique
-    else {
-        poll = window.setInterval(checkHash, 500);
-
-        // Clean-up objects as IE7 has hideous performance
-        window.onunload = function () {
-            window.clearInterval(poll);
-        }
-    }
-</script>
