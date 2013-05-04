@@ -137,10 +137,10 @@ var message = {
 //菜单lock及滑动效果
 var tabbedContent = {
     init: function () {
-        var currentParam = urlHelper.getGroupUrl();
+        var currentParam = urlHelper.getGroupUrlOrChannelUrl();
         $("nav ul li.link").each(function (i) {
             var url = $("nav ul li.link").eq(i).find('a').prop('href');
-            var linkParam = urlHelper.getGroupUrl(url);
+            var linkParam = urlHelper.getGroupUrlOrChannelUrl(url);
             if (currentParam == linkParam) {
                 $("nav ul li.moving_bg").css("left", $("nav ul li.link").eq(i).position()['left']);
                 $("nav ul li.link").eq(i).addClass('nohover');
@@ -198,6 +198,13 @@ var urlHelper = {
         var r = new RegExp("#!/(.*?)(?:(/|[\?]).*)?$");
         var m = url.match(r);
         return m ? m[1] : "";
+    },
+    getGroupUrlOrChannelUrl:function(url) {
+        var group = urlHelper.getGroupUrl(url);
+        if (group != "") {
+            return group;
+        }
+        return urlHelper.getChannelUrl(url);
     },
     getPage: function(url) {
         if (url == undefined) {
