@@ -63,7 +63,6 @@
 
         self.turnpages = function () {
             self.loading(!self.loading());
-            
             //设置当前page为url中page.
             self.Pager().CurrentPage(urlHelper.getPage());
             
@@ -75,6 +74,7 @@
             var group = urlHelper.getGroupUrl();
             var query = urlHelper.getQuery();
             var link = '/' + (group ? group : channel) + query;
+
             if (query == '') {
                 link += '?';
             } else {

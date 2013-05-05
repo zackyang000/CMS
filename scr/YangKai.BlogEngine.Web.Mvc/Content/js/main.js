@@ -197,7 +197,7 @@ var urlHelper = {
         //匹配 [以#!/开头],[以"/"或"?"结尾,若没有,则取后面所有] 的字符串.
         var r = new RegExp("#!/(.*?)(?:(/|[\?]).*)?$");
         var m = url.match(r);
-        return m ? m[1] : "";
+        return m ? (IsNum(m[1]) ? "" : m[1])  : "";
     },
     getGroupUrlOrChannelUrl:function(url) {
         var group = urlHelper.getGroupUrl(url);
@@ -213,7 +213,11 @@ var urlHelper = {
         //匹配 [以#!/开头],[经过一个"/"],[以"?"结尾,若没有,则取后面所有] 的数字.
         var r = new RegExp("#!/(.*?)/(.*?)(?:[\?].*)?$");
         var m = url.match(r);
-        return m ? (IsNum(m[2]) ? m[2] : 1) : 1;
+        if (m && (IsNum(m[2]))) return m[2];
+        //没有group的情况
+        r = new RegExp("#!/(.*?)(?:[\?].*)?$");
+        m = url.match(r);
+        return m ? (IsNum(m[1]) ? m[1] : 1) : 1;
     },
     getQuery: function(url) {
         if (url == undefined) {
