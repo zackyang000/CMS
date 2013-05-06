@@ -169,6 +169,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\Article\list.htm" />
     <Content Include="Content\admin\images\bubble_bg.gif" />
     <Content Include="Content\admin\images\button-grad.png" />
     <Content Include="Content\admin\images\date-button.gif" />
@@ -197,6 +198,7 @@
     <Content Include="Content\Image\nav_lock.png" />
     <Content Include="Content\img\warning.png" />
     <Content Include="Content\js\modernizr-2.6.2.min.js" />
+    <Content Include="Content\js\sammy.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\adapters\jquery.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\CHANGES.html" />
     <Content Include="Content\plugin\ckeditor_3.6.1\ckeditor.asp" />
@@ -1510,6 +1512,12 @@
     <Content Include="Views\Article\index-post.cshtml" />
     <Content Include="Views\Article\detail-post-body.cshtml" />
     <Content Include="Views\Article\detail-post-title.cshtml" />
+    <Content Include="Views\Home\index-post.cshtml" />
+    <Content Include="Views\Home\index-post-body.cshtml" />
+    <Content Include="Views\Home\index-post-footer.cshtml" />
+    <Content Include="Views\Home\index-post-header.cshtml" />
+    <Content Include="Views\Home\index-post-title.cshtml" />
+    <Content Include="Views\Home\index-box.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">

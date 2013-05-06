@@ -22,13 +22,14 @@
 
     <script src="/Content/js/modernizr-2.6.2.min.js"></script>
     
-    <script type="text/javascript" src="~/Content/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="~/Content/js/knockout-2.2.1.js"></script>  
-    <script type="text/javascript" src="/Content/js/jquery.lazyload.js"></script>
-    <script type="text/javascript" src="~/Content/js/ko.pager.js"></script>
-    <script type="text/javascript" src="~/Content/js/messenger.js"></script>
-    <script type="text/javascript" src="~/Content/js/messenger-theme-future.js"></script>
-    <script type="text/javascript" src="~/Content/js/main.js"></script>
+    <script src="~/Content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/js/sammy.js"></script>
+    <script src="~/Content/js/knockout-2.2.1.js"></script>  
+    <script src="/Content/js/jquery.lazyload.js"></script>
+    <script src="~/Content/js/ko.pager.js"></script>
+    <script src="~/Content/js/messenger.js"></script>
+    <script src="~/Content/js/messenger-theme-future.js"></script>
+    <script src="~/Content/js/main.js"></script>
     @RenderSection("scripts", required: false)
 </head>
 <body>
@@ -50,8 +51,7 @@
     </div>
     @Html.Partial("layout-footer")
     @Html.Partial("_plugins")
-    
-    <script type="text/javascript">
+    <script>
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-21831838-1']);
         _gaq.push(['_setDomainName', 'woshinidezhu.com']);

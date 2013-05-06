@@ -2,7 +2,7 @@
     var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin.ToString().ToLower();
 }
 
-<div id="posts">
+<div>
     <ul data-bind="template: { name: 'post-template', foreach: list }"></ul>
     <div class="loadingbox" data-bind="visible: loading">加载中...</div>
     @Html.Partial("_pager")
@@ -15,109 +15,4 @@
         @Html.Partial("index-post-body")
         @Html.Partial("index-post-footer")
     </li>
-</script>
-
-<script type="text/javascript">
-    function PostListViewModel(isadmin) {
-        var self = this;
-        self.authorized = isadmin;
-        self.list = ko.observableArray();
-        self.loading = ko.observable(false);
-        
-        self.TotalResults = ko.observable();
-        self.Pager = ko.pager(self.TotalResults);
-        self.Pager().CurrentPage.subscribe(function () {
-            var group = urlHelper.getGroupUrl();
-            group = group == '' ? '' : ("/" + group);
-            var page = self.Pager().CurrentPage();
-            page = page == 1 ? '' : ("/" + page);
-            location.href = "#!" + group + page + urlHelper.getQuery();
-        });
-
-        self.del = function(data) {
-            Messenger().run(
-                { progressMessage: 'Deleting data...' },
-                {
-                    url: "/admin/postmanage/delete/",
-                    data: "id=" + data.PostId,
-                    method: "post",
-                    dataType: "json",
-                    complete: function(context) {
-                        var o = JSON.parse(context.responseText);
-                        if (o.result) {
-                            message.success('“#' + data.Title + '”  be moved to trash.');
-                            data.PostStatus = 'Trash';
-                            itemRefresh(self.list, data);
-                        } else {
-                            message.error(o.reason);
-                        }
-                    }
-                }   
-            );
-        };
-
-        self.expand = function (entity) {
-            entity.IsShowDetail = !entity.IsShowDetail;
-            itemRefresh(self.list, entity);
-        };
-
-        self.turnpages = function () {
-            self.loading(!self.loading());
-            //设置当前page为url中page.
-            self.Pager().CurrentPage(urlHelper.getPage());
-            
-            //定位到顶部
-            scroll(0, 0);
-            
-            //组合请求所需url.
-            var channel = urlHelper.getChannelUrl();
-            var group = urlHelper.getGroupUrl();
-            var query = urlHelper.getQuery();
-            var link = '/' + (group ? group : channel) + query;
-
-            if (query == '') {
-                link += '?';
-            } else {
-                link += '&';
-            }
-            link += 'type=list&id=' + urlHelper.getPage();
-            
-            //请求数据
-            $.getJSON(link, function (result) {
-                //若滑动效果未结束,则延迟绑定.
-                if ($("nav ul li.moving_bg").is(":animated")) {
-                    setTimeout(function() { self.refreshlist(result); }, 300);
-                } else {
-                    self.refreshlist(result);
-                }
-            });
-        };
-
-        self.refreshlist = function(result) {
-            self.loading(!self.loading());
-            self.list(result.data);
-            self.TotalResults(result.count);
-            ko.utils.arrayForEach(self.list(), function(data) { data.IsShowDetail = false; });
-            imglazyload("#posts img");
-        };
-
-        self.turnpages();
-    }
-
-    var postViewModel = new PostListViewModel(@isAdmin);
-
-    $(document).ready(function () {
-        ko.applyBindings(postViewModel, $("#posts")[0]);
-        
-        var docmode = document.documentMode;
-        if ('onhashchange' in window && (docmode === undefined || docmode > 7)) {
-            window.onhashchange = postViewModel.turnpages;
-        }
-        else {
-            var poll = window.setInterval(turnpages, 500);
-            window.onunload = function () {
-                window.clearInterval(poll);
-            };
-        }
-    });
 </script>

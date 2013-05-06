@@ -185,8 +185,8 @@ var urlHelper = {
         if (url == undefined) {
             url = window.location.toString();
         }
-        //匹配 [以(http)://开头],[经过一个"/"],[以"#"或"/"结尾,若没有,则取后面所有] 的字符串.
-        var r = new RegExp("://(.*?)/(.*?)(?:/|#|-.*)?$");
+        //匹配 [以(http)://开头],[经过一个"/"],[以"#"或"/"或"-"结尾,若没有,则取后面所有] 的字符串.
+        var r = new RegExp("://(.*?)/(.*?)(?:#.*)?(?:/.*)?(?:-.*)?$");
         var m = url.match(r);
         return m ? m[2] : "";
     },
