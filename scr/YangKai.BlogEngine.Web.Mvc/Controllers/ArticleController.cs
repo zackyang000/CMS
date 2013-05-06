@@ -101,8 +101,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return View(data.ToViewModel());
         }
 
-        [ActionName("calendar")]
-        public ActionResult GetCalendar(string channelUrl)
+        public ActionResult Calendar(string channelUrl)
         {
             if (!string.IsNullOrEmpty(channelUrl))
             {

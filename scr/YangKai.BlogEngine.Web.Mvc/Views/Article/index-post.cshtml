@@ -82,9 +82,6 @@
             }
             link += 'type=list&id=' + urlHelper.getPage();
             
-            if ($("nav ul li.moving_bg").is(":animated")) { //判断元素是否处于动画状态
-            }
-            
             //请求数据
             $.getJSON(link, function (result) {
                 //若滑动效果未结束,则延迟绑定.

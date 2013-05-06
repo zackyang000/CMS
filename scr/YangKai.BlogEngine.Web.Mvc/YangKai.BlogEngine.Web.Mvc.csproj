@@ -1510,7 +1510,6 @@
     <Content Include="Views\Article\index-post.cshtml" />
     <Content Include="Views\Article\detail-post-body.cshtml" />
     <Content Include="Views\Article\detail-post-title.cshtml" />
-    <Content Include="Views\Shared\_layout_XHTML.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">
