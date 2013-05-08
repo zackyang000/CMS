@@ -139,15 +139,23 @@ var message = {
 var tabbedContent = {
     init: function () {
         var currentParam = urlHelper.getGroupUrlOrChannelUrl();
+   
         $("nav ul li.link").each(function (i) {
             var url = $("nav ul li.link").eq(i).find('a').prop('href');
             var linkParam = urlHelper.getGroupUrlOrChannelUrl(url);
             if (currentParam == linkParam) {
                 $("nav ul li.moving_bg").css("left", $("nav ul li.link").eq(i).position()['left']);
                 $("nav ul li.link").eq(i).addClass('nohover');
+                return false;
             }
         });
-
+        
+        //calendar页面特殊处理
+        if (window.location.toString().indexOf('-calendar') > -1) {
+            $("nav ul li.moving_bg").css("left", $("nav ul li.link").last().position()['left']);
+            $("nav ul li.link").last().addClass('nohover');
+        }
+        
         $("nav ul li.link").click(function () {
             var o = $(this);
 

@@ -25,7 +25,7 @@
 </script>
 <script type="text/html" id="categoryGroupViewModelTemplate">
     <li>
-        <a data-bind="attr: { 'href': '/' + $root.groupUrl + '?c=' + $data.Url }, text: $data.Name"></a>
+        <a data-bind="attr: { 'href': '/#!/' + $root.groupUrl + '/category/' + $data.Url }, text: $data.Name"></a>
         (<span data-bind="text:$data.Count"></span>)
     </li>
 </script>

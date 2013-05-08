@@ -41,67 +41,75 @@
         self.State = ko.observable('list');
         self.listViewModel = ko.observable(new listViewModel());
         self.detailViewModel = ko.observable(new detailViewModel());
+        self.authorized = isadmin;
 
         $.sammy(function () {
-
-            //TODO: 无法请求到该路由 /technologies#!/codes/1?t=阅读
-            this.get("#!/:group/:page[\?]:query$", function () {
-                var group = this.params['group'];
-                var page = this.params['page'];
+            
+            this.get("#!//search/:query$", function () {
                 var query = this.params['query'];
-                alert(query);
-                self.listViewModel().turnpages('', group,page,query);
-            });
-
-            this.get("#!/:group[\?]:query$", function () {
-                var group = this.params['group'];
-                var query = this.params['query'];
-                self.listViewModel().turnpages('', group, 1, query);
+                self.listViewModel().turnpages('', '', 1, 'search', query);
             });
             
-            this.get("#!/:group/:page[/]?$", function () {
+            this.get("#!/:group/:page/:type/:query/?$", function () {
                 var group = this.params['group'];
                 var page = this.params['page'];
-                self.listViewModel().turnpages('', group, page, '');
+                var type = this.params['type'];
+                var query = this.params['query'];
+                self.listViewModel().turnpages('', group, page, type, query);
             });
 
-           
-            this.get("#!/:group[/]?$", function () {
+            this.get("#!/:group/:type/:query/?$", function () {
                 var group = this.params['group'];
-                var page = 1;
-                if (IsNum(group)) {
-                    page = group;
-                    group = '';
-                }
-                self.listViewModel().turnpages('', group, page, '');
+                var type = this.params['type'];
+                var query = this.params['query'];
+                self.listViewModel().turnpages('', group, 1, type , query);
             });
             
-            this.get("#![/]?$", function () {
+            this.get("#!/:group/:page/?$", function () {
+                var group = this.params['group'];
+                var page = this.params['page'];
+                self.listViewModel().turnpages('', group, page, '', '');
+            });
+            
+            this.get("#!/:page/?$", function () {
+                var page = this.params['page'];
                 var channel = urlHelper.getChannelUrl();
-                self.listViewModel().turnpages(channel, '', 1, '');
+                if (IsNum(page)) {
+                    self.listViewModel().turnpages(channel, '', page, '', '');
+                } else {
+                    self.listViewModel().turnpages(channel, page, 1, '', '');
+                }
+            });
+            
+            this.get("#!/?$", function () {
+                var channel = urlHelper.getChannelUrl();
+                self.listViewModel().turnpages(channel, '', 1, '', '');
             });
             
         }).run();
     };
 
-    var listViewModel = function (isadmin) {
+    var listViewModel = function () {
         var self = this;
 
-        self.authorized = isadmin;
         self.list = ko.observableArray();
         self.loading = ko.observable(false);
 
         self.TotalResults = ko.observable();
         self.Pager = ko.pager(self.TotalResults);
+        self.channel = ko.observable('');
+        self.group = ko.observable('');
+        self.type = ko.observable('');
+        self.query = ko.observable('');
+        self.link = ko.computed(function () {
+            var channel = self.channel();
+            var group = self.group() ? '/' + self.group() : '';
+            var page = self.Pager().CurrentPage()!=1 ? '/' + self.Pager().CurrentPage() : '';
+            var type = self.type() ? self.type() + '/' : '';
+            var query = self.query();
+            return "/" + channel + "#!" + group + page + "/" + type + query;
+        }, self);
         
-        self.Pager().CurrentPage.subscribe(function () {
-            var group = urlHelper.getGroupUrl();
-            group = group == '' ? '' : ("/" + group);
-            var page = self.Pager().CurrentPage();
-            page = page == 1 ? '' : ("/" + page);
-            location.href = "#!" + group + page + urlHelper.getQuery();
-        });
-
         self.del = function (data) {
             Messenger().run(
                 { progressMessage: 'Deleting data...' },
@@ -129,10 +137,18 @@
             itemRefresh(self.list, entity);
         };
 
-        self.turnpages = function (channel, group, page, query) {
+        self.Pager().CurrentPage.subscribe(function () {
+            location.href = self.link();
+        });
+        
+        self.turnpages = function (channel, group, page, type, query) {
+            self.channel(channel);
+            self.group(group);
+            self.type(type);
+            self.query(query);
+            self.Pager().CurrentPage(page);
+            
             self.loading(!self.loading());
-            //设置当前page为url中page.
-            self.Pager().CurrentPage(urlHelper.getPage());
 
             //定位到顶部
             scroll(0, 0);
@@ -142,7 +158,7 @@
             link += '&channelurl=' + channel;
             link += '&groupurl=' + group;
             link += '&id=' + page;
-            link += '&'+query;
+            link += '&' + type+'='+query;
             
             $.getJSON(link, function (result) {
                 //若滑动效果未结束,则延迟绑定.
@@ -169,6 +185,14 @@
 
 <script>
     $(function () {
+        var url = window.location.href;
+        //TODO:印无首页page,暂时将首页跳转到/funs#!
+        if ((url + "#!").indexOf('/#!') > -1) {
+            window.location.href = "/funs#!";
+        }
+        else if (url.indexOf('#!') == -1) {
+            window.location.href = window.location.href + "#!";
+        }
         ko.applyBindings(new viewModel(), $("#posts")[0]);
     });
 </script>

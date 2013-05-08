@@ -5,7 +5,7 @@
         @foreach (var item in Model.Categories)
         {
             if (Model.Categories.First().Key != item.Key){<text>,</text>}
-            <a href="/@Model.ChannelUrl#!/@Model.GroupUrl?c=@item.Key">@item.Value</a>
+            <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/category/@item.Key">@item.Value</a>
         }
     </span>
     @if (Model.Tags.Any())
@@ -14,7 +14,7 @@
             @foreach (var item in Model.Tags)
             {
                 if (Model.Tags.First() != item){<text>,</text>}
-                <a href="/@Model.ChannelUrl#!/@Model.GroupUrl?t=@item">@item</a>
+                <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/tag/>@item">@item</a>
             }
         </span>
     }

@@ -6,9 +6,10 @@
                 @Html.ActionLink("Analytics", "analytics", "Labs") |
                 @Html.ActionLink("Export Data", "export", "Labs") |
                 @Html.ActionLink("Probe", "probe", "Labs", null, new { target = "_blank" }) |
-                <a href="/elmah.axd" target = "_blank">Error Log</a>
+                <a href="/elmah.axd" target = "_blank">Error Log</a> |
+                <a href='MailTo:zackyang@outlook.com'>Contact me</a>
             </div>
-            <div>@YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT</div>
+            <div>@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT)</div>
         </div>
     </div>
 </footer>

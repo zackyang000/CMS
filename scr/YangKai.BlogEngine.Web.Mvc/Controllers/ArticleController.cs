@@ -14,7 +14,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class ArticleController : BaseController
     {
-        public ActionResult Index(string type,int? id, string channelUrl, string groupUrl, string c, string t, string d, string k)
+        public ActionResult Index(string type,int? id, string channelUrl, string groupUrl, string category, string tag, string d, string search)
         {
             if (string.IsNullOrEmpty(type))
             {
@@ -59,13 +59,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 }
 
                 var data = QueryFactory.Instance.User.IsLogin()
-               ? QueryFactory.Instance.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, c, t, calendar, k)
-               : QueryFactory.Instance.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, c, t, calendar, k);
+               ? QueryFactory.Instance.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, category, tag, calendar, search)
+               : QueryFactory.Instance.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, category, tag, calendar, search);
 
                 //保存搜索记录
-                if (!string.IsNullOrEmpty(k))
+                if (!string.IsNullOrEmpty(search))
                 {
-                    var log = Log.CreateSearchLog(k);
+                    var log = Log.CreateSearchLog(search);
                     CommandFactory.Instance.Create(log);
                 }
 

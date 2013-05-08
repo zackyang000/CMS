@@ -66,7 +66,7 @@ namespace YangKai.BlogEngine.Common
             /// <summary>
             /// 版权信息
             /// </summary>
-            public const string COPYRIGHT = "&copy; Powered by 我是你的猪(YangKai Email:ZackYang@outlook.com), 2008-2013, All Rights Reserved. 蜀ICP备09016538号.";
+            public const string COPYRIGHT = "&copy; Powered by YangKai , 2008-2013, All Rights Reserved. 蜀ICP备09016538号.";
         }
 
         public class Format
