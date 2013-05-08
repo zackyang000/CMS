@@ -101,7 +101,8 @@ function IsNum(s) {
         return !isNaN(s);
     }
     return false;
-}
+}
+
 //json日期转换为Date对象
 function ConvertJsonDate(jsondate) {
     jsondate = jsondate.replace("/Date(", "").replace(")/", "");

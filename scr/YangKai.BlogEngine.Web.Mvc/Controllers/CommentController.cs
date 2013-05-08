@@ -113,7 +113,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         // ×îÐÂÆÀÂÛ
         [ActionName("recent")]
         [AcceptVerbs(HttpVerbs.Get)]
-        [OutputCache(Duration = 3600)]
+        [OutputCache(CacheProfile = "side")]
         public JsonResult RecentComments(string channelurl, string groupurl)
         {
             if (string.IsNullOrEmpty(channelurl))

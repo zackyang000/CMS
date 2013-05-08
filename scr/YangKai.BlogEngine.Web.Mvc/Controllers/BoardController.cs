@@ -95,7 +95,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         // 最新留言
         [ActionName("recent")]
         [AcceptVerbs(HttpVerbs.Get)]
-        [OutputCache(Duration = 3600)]
+        [OutputCache(CacheProfile = "side")]
         public JsonResult RecentMessages()
         {
             return Json(QueryFactory.Instance.Board.GetRecent().ToBoardViewModels(), JsonRequestBehavior.AllowGet);

@@ -138,7 +138,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         //标签分组
         [ActionName("categorygroup")]
         [AcceptVerbs(HttpVerbs.Get)]
-        [OutputCache(Duration = 3600)]
+        [OutputCache(CacheProfile = "side")]
         public JsonResult CategoryGroup(string groupUrl)
         {
             if (groupUrl == string.Empty) return Json(string.Empty, JsonRequestBehavior.AllowGet);
