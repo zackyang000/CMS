@@ -36,7 +36,7 @@
 
 <script>
 
-    var viewModel = function (isadmin) {
+    var ViewModel = function (isadmin) {
         var self = this;
         self.State = ko.observable('list');
         self.listViewModel = ko.observable(new listViewModel());
@@ -87,6 +87,7 @@
             });
             
         }).run();
+        
     };
 
     var listViewModel = function () {
@@ -153,14 +154,7 @@
             //定位到顶部
             scroll(0, 0);
 
-            var link = '/article?';
-            link += 'type=list&id=' + page;
-            link += '&channelurl=' + channel;
-            link += '&groupurl=' + group;
-            link += '&id=' + page;
-            link += '&' + type+'='+query;
-            
-            $.getJSON(link, function (result) {
+            $.getJSON(self.requesturl(), function (result) {
                 //若滑动效果未结束,则延迟绑定.
                 if ($("nav ul li.moving_bg").is(":animated")) {
                     setTimeout(function () { self.refreshlist(result); }, 300);
@@ -170,6 +164,16 @@
             });
         };
 
+        self.requesturl = function() {
+            var link = '/article?';
+            link += 'type=list&id=' + page;
+            link += '&channelurl=' + channel;
+            link += '&groupurl=' + group;
+            link += '&id=' + page;
+            link += '&' + type + '=' + query;
+            return link;
+        };
+
         self.refreshlist = function (result) {
             self.loading(!self.loading());
             self.list(result.data);
@@ -177,6 +181,7 @@
             ko.utils.arrayForEach(self.list(), function (data) { data.IsShowDetail = false; });
             imglazyload("#posts img");
         };
+        
     };
 
     var detailViewModel = function () {
@@ -185,14 +190,9 @@
 
 <script>
     $(function () {
-        var url = window.location.href;
-        //TODO:印无首页page,暂时将首页跳转到/funs#!
-        if ((url + "#!").indexOf('/#!') > -1) {
-            window.location.href = "/funs#!";
-        }
-        else if (url.indexOf('#!') == -1) {
+        if (window.location.href.indexOf('#!') == -1) {
             window.location.href = window.location.href + "#!";
         }
-        ko.applyBindings(new viewModel(), $("#posts")[0]);
+        ko.applyBindings(new ViewModel(), $("#posts")[0]);
     });
 </script>

@@ -169,7 +169,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Templates\Article\list.htm" />
     <Content Include="Content\admin\images\bubble_bg.gif" />
     <Content Include="Content\admin\images\button-grad.png" />
     <Content Include="Content\admin\images\date-button.gif" />
@@ -1324,8 +1323,6 @@
     <Content Include="Content\css\messenger-theme-future.css" />
     <Content Include="Content\css\messenger.css" />
     <Content Include="Content\js\jquery-1.9.1.js" />
-    <Content Include="Content\js\jquery-1.9.1.min.js" />
-    <Content Include="Content\js\knockout-2.2.1.debug.js" />
     <Content Include="Content\js\knockout-2.2.1.js" />
     <Content Include="Content\js\ko.pager.js" />
     <Content Include="Content\js\main.js" />
@@ -1512,12 +1509,6 @@
     <Content Include="Views\Article\index-post.cshtml" />
     <Content Include="Views\Article\detail-post-body.cshtml" />
     <Content Include="Views\Article\detail-post-title.cshtml" />
-    <Content Include="Views\Home\index-post.cshtml" />
-    <Content Include="Views\Home\index-post-body.cshtml" />
-    <Content Include="Views\Home\index-post-footer.cshtml" />
-    <Content Include="Views\Home\index-post-header.cshtml" />
-    <Content Include="Views\Home\index-post-title.cshtml" />
-    <Content Include="Views\Home\index-box.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">
