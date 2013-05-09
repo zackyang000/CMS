@@ -138,7 +138,7 @@ var message = {
 //菜单lock及滑动效果
 var tabbedContent = {
     init: function () {
-        var currentParam = urlHelper.getGroup();
+        var currentParam = urlHelper.getGroupUrl();
 
         var movingEl = $("nav ul li.moving_bg");
         var linkListEls = $("nav ul li.link");
@@ -181,15 +181,6 @@ var tabbedContent = {
 };
 
 var urlHelper = {
-    //获取QueryString
-    //    getQuery: function(name) {
-    //        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    //        var r = window.location.search.substr(1).match(reg);
-    //        if (r != null)
-    //            return unescape(r[2]);
-    //        return "";
-    //    },
-
     //format: 
     //*{groupUrl}
     //*{groupUrl}/{page}

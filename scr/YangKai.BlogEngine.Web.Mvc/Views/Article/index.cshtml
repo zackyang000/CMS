@@ -87,7 +87,6 @@
             });
             
         }).run();
-        
     };
 
     var listViewModel = function () {
@@ -102,6 +101,7 @@
         self.group = ko.observable('');
         self.type = ko.observable('');
         self.query = ko.observable('');
+        
         self.link = ko.computed(function () {
             var channel = self.channel();
             var group = self.group() ? '/' + self.group() : '';
@@ -109,6 +109,17 @@
             var type = self.type() ? self.type() + '/' : '';
             var query = self.query();
             return "/" + channel + "#!" + group + page + "/" + type + query;
+        }, self);
+        self.request = ko.computed(function () {
+            var link = '/article?';
+            link += 'type=list';
+            link += '&channelurl=' + self.channel();
+            link += '&groupurl=' + self.group();
+            link += '&id=' + self.Pager().CurrentPage();
+            if (self.type() != '') {
+                link += '&' + self.type() + '=' + self.query();
+            }
+            return link;
         }, self);
         
         self.del = function (data) {
@@ -154,7 +165,9 @@
             //定位到顶部
             scroll(0, 0);
 
-            $.getJSON(self.requesturl(), function (result) {
+
+            
+            $.getJSON(self.request(), function (result) {
                 //若滑动效果未结束,则延迟绑定.
                 if ($("nav ul li.moving_bg").is(":animated")) {
                     setTimeout(function () { self.refreshlist(result); }, 300);
@@ -164,16 +177,6 @@
             });
         };
 
-        self.requesturl = function() {
-            var link = '/article?';
-            link += 'type=list&id=' + page;
-            link += '&channelurl=' + channel;
-            link += '&groupurl=' + group;
-            link += '&id=' + page;
-            link += '&' + type + '=' + query;
-            return link;
-        };
-
         self.refreshlist = function (result) {
             self.loading(!self.loading());
             self.list(result.data);
@@ -181,7 +184,6 @@
             ko.utils.arrayForEach(self.list(), function (data) { data.IsShowDetail = false; });
             imglazyload("#posts img");
         };
-        
     };
 
     var detailViewModel = function () {
