@@ -10,6 +10,8 @@ $(document).ready(function () {
     //ajax禁用IE缓存
     $.ajaxSetup({ cache: false });
 
+    infuser.defaults.templateUrl = "/Content/knockout/template";
+
     //table hover高亮
     ko.bindingHandlers.hoverToggle = {
         update: function (element, valueAccessor) {

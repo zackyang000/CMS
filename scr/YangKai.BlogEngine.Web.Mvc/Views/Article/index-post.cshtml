@@ -3,16 +3,7 @@
 }
 
 <div>
-    <ul data-bind="template: { name: 'post-template', foreach: list }"></ul>
+    <ul data-bind="template: { name: 'postlist', foreach: list }"></ul>
     <div class="loadingbox" data-bind="visible: loading">加载中...</div>
     @Html.Partial("_pager")
 </div>
-
-<script type="text/html" id="post-template">
-    <li>
-        @Html.Partial("index-post-title")
-        @Html.Partial("index-post-header")
-        @Html.Partial("index-post-body")
-        @Html.Partial("index-post-footer")
-    </li>
-</script>
