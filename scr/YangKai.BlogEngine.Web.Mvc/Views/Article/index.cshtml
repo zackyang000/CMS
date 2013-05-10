@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
     var channel = ViewBag.Channel as Channel;
     var group = ViewBag.Group as Group;
+    var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin.ToString().ToLower();
 }
 
 <div id="posts">
@@ -38,6 +39,6 @@
         if (window.location.href.indexOf('#!') == -1) {
             window.location.href = window.location.href + "#!";
         }
-        ko.applyBindings(new ViewModel(), $("#posts")[0]);
+        ko.applyBindings(new ViewModel(@isAdmin), $("#posts")[0]);
     });
 </script>

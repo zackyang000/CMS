@@ -1,8 +1,4 @@
-﻿@{
-    var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin.ToString().ToLower();
-}
-
-<div>
+﻿<div>
     <ul data-bind="template: { name: 'postlist', foreach: list }"></ul>
     <div class="loadingbox" data-bind="visible: loading">加载中...</div>
     @Html.Partial("_pager")
