@@ -72,6 +72,7 @@ var listViewModel = function () {
         var query = self.query();
         return "/" + channel + "#!" + group + page + "/" + type + query;
     }, self);
+    
     self.request = ko.computed(function () {
         var link = '/article?';
         link += 'type=list';
@@ -127,8 +128,6 @@ var listViewModel = function () {
 
         //定位到顶部
         scroll(0, 0);
-
-
 
         $.getJSON(self.request(), function (result) {
             //若滑动效果未结束,则延迟绑定.

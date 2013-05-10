@@ -6,6 +6,8 @@
     var channelUrl = channel == null ? string.Empty : channel.Url;
     var groupUrl = group == null ? string.Empty : group.Url;
 }
+@section scripts{@RenderSection("scripts", required: false)}
+
 <section>
     @RenderBody()
 </section>

@@ -199,7 +199,9 @@
     <Content Include="Content\js\koExternalTemplateEngine_all.js" />
     <Content Include="Content\js\modernizr-2.6.2.min.js" />
     <Content Include="Content\js\sammy.js" />
-    <Content Include="Content\ko\template\postlist.html" />
+    <Content Include="Content\ko\template\_pager.html" />
+    <Content Include="Content\ko\template\post.html" />
+    <Content Include="Content\ko\template\post-item.html" />
     <Content Include="Content\ko\viewmodel\post.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\adapters\jquery.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\CHANGES.html" />
