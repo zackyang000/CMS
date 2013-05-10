@@ -10,7 +10,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
     public class BoardViewModel
     {
         public Guid BoardId { get; set; }
-        public int? Index { get; set; }
         public string Author { get; set; }
         public string Content { get; set; }
         public bool IsDeleted { get; set; }
@@ -44,11 +43,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
         public static IList<BoardViewModel> ToBoardViewModels(this IList<Board> entities)
         {
             var list = new List<BoardViewModel>();
-            var index = entities.Count;
             entities.ToList().ForEach(p =>
                 {
                     var viewModel = p.ToBoardViewModel();
-                    viewModel.Index = index--;
                     list.Add(viewModel);
                 });
             return list;

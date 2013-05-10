@@ -42,7 +42,7 @@
                 $.post("/board/delete", "id=" + entity.BoardId, null, "json")
                     .done(function(o) {
                         if (o.result) {
-                            message.success('“#' + entity.Index + '”  be moved to trash.');
+                            message.success('“#' + entity.Content + '”  be moved to trash.');
                             entity.IsDeleted = true;
                             itemRefresh(self.list, entity);
                         } else {
@@ -55,7 +55,7 @@
                 $.post("/board/renew", "id=" + entity.BoardId, null, "json")
                     .done(function (o) {
                         if (o.result) {
-                            message.success('“#' + entity.Index + '”  be renew.');
+                            message.success('“#' + entity.Content + '”  be renew.');
                             entity.IsDeleted = false;
                             itemRefresh(self.list, entity);
                         } else {
@@ -84,7 +84,7 @@
             </div>
             <div class="info">
                 <span class="date" data-bind="text: $data.CreateDate.Format()"></span> |
-                #<span data-bind="text: $data.Index"></span>
+                #<span data-bind="text: $parent.list().length - $index()"></span>
                 <span class="warningbox" data-bind="visible: $data.IsDeleted">该回复已删除,仅管理员可见.</span>
                 <div class="act" data-bind="visible: $root.isAdmin">
                         <a href="JavaScript:void(0)" data-bind="click: $root.del, visible: $data.IsDeleted == false">[删除]</a>

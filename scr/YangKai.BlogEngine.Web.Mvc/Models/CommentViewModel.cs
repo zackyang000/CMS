@@ -10,7 +10,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
     {
         public Guid CommentId { get; set; }
         public Guid PostId { get; set; }
-        public int? Index { get; set; }
         public string Author { get; set; }
         public string Email { get; set; }
         public string Url { get; set; }
@@ -61,11 +60,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
         public static IList<CommentViewModel> ToViewModels(this IList<Comment> entities)
         {
             var list = new List<CommentViewModel>();
-            var index = 1;
             entities.ToList().ForEach(p =>
                 {
                     var viewModel = p.ToViewModel();
-                    viewModel.Index = index++;
                     list.Add(viewModel);
                 });
             return list;
