@@ -10,7 +10,7 @@ $(document).ready(function () {
     //ajax禁用IE缓存
     $.ajaxSetup({ cache: false });
 
-    infuser.defaults.templateUrl = "/Content/knockout/template";
+    infuser.defaults.templateUrl = "/content/ko/template";
 
     //table hover高亮
     ko.bindingHandlers.hoverToggle = {
@@ -65,9 +65,17 @@ String.prototype.Format = function () {
 };
 
 function imglazyload(dom) {
-    $(dom).lazyload({
+    $(dom+" img").lazyload({
         placeholder: "/Content/Image/grey.gif",
         effect: "fadeIn"
+    });
+}
+
+function codeformat() {
+    jQuery(function () {
+        SyntaxHighlighter.defaults['gutter'] = true;
+        SyntaxHighlighter.defaults['collapse'] = false;
+        SyntaxHighlighter.highlight();
     });
 }
 

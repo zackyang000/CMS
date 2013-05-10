@@ -4,43 +4,24 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="keywords" content="@ViewBag.Keywords" /> 
-    <meta name="description" content="@ViewBag.Description" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>@ViewBag.Title</title>
-    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - ËùÓÐÎÄÕÂ" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
-    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - ËùÓÐÆÀÂÛ" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
-    <link rel="stylesheet" href="~/Content/css/normalize.css">
-    <link rel="stylesheet" href="~/Content/css/html5reset.css">
-    <link rel="stylesheet" href="~/Content/css/style.css"/>
-    <link rel="stylesheet" href="~/Content/css/messenger.css" />
-    <link rel="stylesheet" href="~/Content/css/messenger-theme-future.css"  />
-    @RenderSection("style", required: false)
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="keywords" content="@ViewBag.Keywords" /> 
+    <meta name="viewport" content="width=device-width" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - æ‰€æœ‰æ–‡ç« " href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - æ‰€æœ‰è¯„è®º" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
 
+    @Styles.Render("~/css")
+    @RenderSection("style", required: false)
     <script src="/Content/js/modernizr-2.6.2.min.js"></script>
-    
-    <script src="~/Content/js/jquery-1.9.1.js"></script>
-    <script src="~/Content/js/knockout-2.2.1.js"></script>  
-    <script src="~/Content/js/sammy.js"></script>
-    <script src="/Content/js/jquery.lazyload.js"></script>
-    <script src="~/Content/js/ko.pager.js"></script>
-    <script src="~/Content/js/messenger.js"></script>
-    <script src="~/Content/js/messenger-theme-future.js"></script>
-    <script src="~/Content/js/main.js"></script>
-    <script src="~/Content/js/koExternalTemplateEngine_all.js"></script>
-    <script src="~/Content/knockout/viewmodel/post.js"></script>
+    @Scripts.Render("~/js")
     @RenderSection("scripts", required: false)
 </head>
 <body>
     <!--[if lt IE 7]>
-    <div class="chromeframe">
-        <div>
-            <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        </div>
-    </div>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
     @Html.Partial("layout-header")
@@ -52,7 +33,6 @@
         </div>
     </div>
     @Html.Partial("layout-footer")
-    @Html.Partial("_plugins")
     <script>
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-21831838-1']);

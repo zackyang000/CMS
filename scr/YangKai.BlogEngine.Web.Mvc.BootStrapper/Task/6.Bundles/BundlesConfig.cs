@@ -8,36 +8,34 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
     {
         public void Run()
         {
-//            var bundles = BundleTable.Bundles;
-//
-//            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-//                    "~/Scripts/jquery-{version}.js"));
-//
-//            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-//                        "~/Scripts/jquery-ui-{version}.js"));
-//
-//            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-//                        "~/Scripts/jquery.unobtrusive*",
-//                        "~/Scripts/jquery.validate*"));
-//
-//            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-//                        "~/Scripts/modernizr-*"));
-//
-//            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
-//
-//            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-//                        "~/Content/themes/base/jquery.ui.core.css",
-//                        "~/Content/themes/base/jquery.ui.resizable.css",
-//                        "~/Content/themes/base/jquery.ui.selectable.css",
-//                        "~/Content/themes/base/jquery.ui.accordion.css",
-//                        "~/Content/themes/base/jquery.ui.autocomplete.css",
-//                        "~/Content/themes/base/jquery.ui.button.css",
-//                        "~/Content/themes/base/jquery.ui.dialog.css",
-//                        "~/Content/themes/base/jquery.ui.slider.css",
-//                        "~/Content/themes/base/jquery.ui.tabs.css",
-//                        "~/Content/themes/base/jquery.ui.datepicker.css",
-//                        "~/Content/themes/base/jquery.ui.progressbar.css",
-//                        "~/Content/themes/base/jquery.ui.theme.css"));
+            BundleTable.Bundles.Add(new ScriptBundle("~/js").Include(
+                "~/Content/js/jquery-{version}.js",
+                "~/Content/js/jquery.lazyload.js",
+                "~/Content/js/knockout-{version}.js",
+                "~/Content/js/koExternalTemplateEngine_all.js",
+                "~/Content/js/ko.pager.js",
+                "~/Content/js/sammy.js",
+                "~/Content/js/messenger.js",
+                "~/Content/js/messenger-theme-future.js",
+                "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
+                "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js",
+                "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js",
+                "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js",
+                "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js",
+                "~/Content/js/main.js",
+                "~/Content/ko/viewmodel/*.js"
+                                        ));
+
+            BundleTable.Bundles.Add(new StyleBundle("~/css").Include(
+                "~/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",
+                "~/Content/css/normalize.css",
+                "~/Content/css/html5reset.css",
+                "~/Content/css/messenger.css",
+                "~/Content/css/messenger-theme-future.css",
+                "~/Content/css/style.css"
+                                        ));
+
+            BundleTable.EnableOptimizations = true;
         }
 
         public void Reset()

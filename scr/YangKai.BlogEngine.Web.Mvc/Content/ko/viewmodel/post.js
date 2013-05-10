@@ -109,8 +109,9 @@ var listViewModel = function () {
     self.expand = function (entity) {
         entity.IsShowDetail = !entity.IsShowDetail;
         itemRefresh(self.list, entity);
+        codeformat();
     };
-
+    
     self.Pager().CurrentPage.subscribe(function () {
         location.href = self.link();
     });
@@ -144,7 +145,7 @@ var listViewModel = function () {
         self.list(result.data);
         self.TotalResults(result.count);
         ko.utils.arrayForEach(self.list(), function (data) { data.IsShowDetail = false; });
-        imglazyload("#posts img");
+        imglazyload("#posts");
     };
 };
 
