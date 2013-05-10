@@ -35,7 +35,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/css/style.css"
                                         ));
 
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
         }
 
         public void Reset()
