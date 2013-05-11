@@ -12,6 +12,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/js/jquery-{version}.js",
                 "~/Content/js/jquery.lazyload.js",
                 "~/Content/js/knockout-{version}.js",
+                "~/Content/js/bootstrap.js",
                 "~/Content/js/koExternalTemplateEngine_all.js",
                 "~/Content/js/ko.pager.js",
                 "~/Content/js/sammy.js",
@@ -30,6 +31,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",
                 "~/Content/css/normalize.css",
                 "~/Content/css/html5reset.css",
+                "~/Content/css/bootstrap.css",
                 "~/Content/css/messenger.css",
                 "~/Content/css/messenger-theme-future.css",
                 "~/Content/css/style.css"

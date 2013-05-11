@@ -192,10 +192,14 @@
     <Content Include="Content\admin\images\img1.png" />
     <Content Include="Content\admin\images\sprite.png" />
     <Content Include="Content\admin\js\jquery.main.js" />
+    <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\html5reset.css" />
     <Content Include="Content\css\normalize.css" />
     <Content Include="Content\Image\nav_lock.png" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="Content\img\warning.png" />
+    <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\koExternalTemplateEngine_all.js" />
     <Content Include="Content\js\modernizr-2.6.2.min.js" />
     <Content Include="Content\js\sammy.js" />
@@ -1405,7 +1409,6 @@
     </Content>
     <Content Include="Views\Labs\analytics.cshtml" />
     <Content Include="Views\Labs\probe.cshtml" />
-    <Content Include="Views\Shared\_pager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

@@ -104,7 +104,7 @@ header #caption a{color: white;height: 30px;text-decoration: none;}
 header #tagline {border-top: 1px solid white;color: white;float: left;padding: 3px;}
 nav div{background:url(/Content/Image/nav_top.png) repeat-x; line-height:5px; height:5px;}
 nav ul{line-height:31px; height:31px;width:1002px; background:url(/Content/Image/nav_bg.png) repeat-x;position: relative;}
-nav li{float: left; text-align:center; font-size:12px; font-weight:bold;z-index: 200;position: relative;}
+nav li{float: left; text-align:center; font-size:12px; font-weight:bold;z-index: 200;position: relative;line-height: inherit;}
 nav li a,nav li a:hover{text-decoration:none; display:block;color:#f2f2f2;}
 nav li.link a:hover{background:url(/Content/Image/nav_hover.png) repeat-x;}
 nav li.link.nohover a:hover{background:none;}
