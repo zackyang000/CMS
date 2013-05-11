@@ -199,10 +199,14 @@
     <Content Include="Content\js\koExternalTemplateEngine_all.js" />
     <Content Include="Content\js\modernizr-2.6.2.min.js" />
     <Content Include="Content\js\sammy.js" />
+    <Content Include="Content\ko\template\recent-board-item.html" />
+    <Content Include="Content\ko\template\recent-comments-item.html" />
     <Content Include="Content\ko\template\_pager.html" />
     <Content Include="Content\ko\template\post.html" />
     <Content Include="Content\ko\template\post-item.html" />
-    <Content Include="Content\ko\viewmodel\post.js" />
+    <Content Include="Content\ko\viewmodel\RecentBoardViewModel.js" />
+    <Content Include="Content\ko\viewmodel\RecentCommentsViewModel.js" />
+    <Content Include="Content\ko\viewmodel\PostViewModel.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\adapters\jquery.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\CHANGES.html" />
     <Content Include="Content\plugin\ckeditor_3.6.1\ckeditor.asp" />
@@ -1402,10 +1406,6 @@
     <Content Include="Views\Labs\analytics.cshtml" />
     <Content Include="Views\Labs\probe.cshtml" />
     <Content Include="Views\Shared\_pager.cshtml" />
-    <Content Include="Views\Article\index-post-header.cshtml" />
-    <Content Include="Views\Article\index-post-footer.cshtml" />
-    <Content Include="Views\Article\index-post-body.cshtml" />
-    <Content Include="Views\Article\index-post-title.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -1509,8 +1509,6 @@
     <Content Include="Views\Web.config" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <Content Include="Views\Shared\layout-header-banner.cshtml" />
-    <Content Include="Views\Article\index-box.cshtml" />
-    <Content Include="Views\Article\index-post.cshtml" />
     <Content Include="Views\Article\detail-post-body.cshtml" />
     <Content Include="Views\Article\detail-post-title.cshtml" />
   </ItemGroup>

@@ -91,19 +91,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                         },
                     CONTROLLERS_NAMESPACE);
             }
-
-            var defaultChannel = channels.FirstOrDefault(p => p.IsDefault);
-            if (defaultChannel == null) throw new ConfigurationErrorsException("Channels must have a 'DefaultChannel'");
-            routes.MapRoute(
-                "HomePage",
-                string.Empty,
-                new
-                    {
-                        Controller = "Article",
-                        Action = "Index",
-                        channelUrl = defaultChannel.Url,
-                    },
-                CONTROLLERS_NAMESPACE);
         }
 
         //{channel.Url}-calendar

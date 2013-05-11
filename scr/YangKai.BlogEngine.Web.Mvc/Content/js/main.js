@@ -103,6 +103,16 @@ function menu() {
         });
 }
 
+//sider搜索
+function SearchkeyDown(txt) {
+    if (window.event.keyCode == 13) {
+        event.returnValue = false;
+        var channel = urlHelper.getChannelUrl();
+        var group = urlHelper.getGroupUrl();
+        location.href = '/' + channel + '#!/' + group + '/search/' + txt;
+    }
+}
+
 //#region common
 
 //判断是否为数字
@@ -149,12 +159,14 @@ var message = {
 var tabbedContent = {
     init: function () {
         var currentParam = urlHelper.getGroupUrl();
-
+        
         var movingEl = $("nav ul li.moving_bg");
         var linkListEls = $("nav ul li.link");
 
         //默认匹配第一个
         movingEl.css("left", linkListEls.first().position()['left']);
+        movingEl.css("width", "78px");
+        
         linkListEls.first().addClass('nohover');
         linkListEls.first().siblings().removeClass("nohover");
 
@@ -217,7 +229,11 @@ var urlHelper = {
         //匹配 [以#!/开头],[以"/"或"?"结尾,若没有,则取后面所有] 的字符串.
         var r = new RegExp("#!/(.*?)(?:(/|[\?]).*)?$");
         var m = url.match(r);
-        return m ? (IsNum(m[1]) ? "" : m[1])  : "";
+        if (m) return (IsNum(m[1]) ? "" : m[1]);
+        
+        r = new RegExp("//(.*)/(.*)-(.*?)?$");
+         m = url.match(r);
+         return m ? m[2] : "";
     },
     getGroupUrlOrChannelUrl:function(url) {
         var group = urlHelper.getGroupUrl(url);

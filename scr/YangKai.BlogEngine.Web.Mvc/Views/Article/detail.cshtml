@@ -4,6 +4,13 @@
     Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
 }
 
+@section style
+{
+    <style>
+        #middle .body { background: url(/Content/Image/body_bg.png) }
+    </style>
+}
+
 <div class="breadcrumbs">
     <a href="/@Model.ChannelUrl">@Model.ChannelName</a>
     <a href="/@Model.GroupUrl">@Model.GroupName</a>

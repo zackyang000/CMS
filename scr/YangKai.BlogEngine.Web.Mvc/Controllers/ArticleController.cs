@@ -81,12 +81,15 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         public ActionResult Detail(string id, string groupUrl)
         {
-            Post data = QueryFactory.Instance.Post.Find(id);
+            var data = QueryFactory.Instance.Post.Find(id);
 
-            if (!QueryFactory.Instance.User.IsLogin())
+            if (data == null)
             {
-                if (data == null) return View("_NotFound");
-                if (data.PostStatus == (int) PostStatusEnum.Trash) return View("_Removed");
+                return View("_NotFound");
+            }
+            if (!QueryFactory.Instance.User.IsLogin()&&(data.PostStatus == (int) PostStatusEnum.Trash))
+            {
+                return View("_Removed");
             }
 
             CommandFactory.Instance.Run(new PostBrowseEvent {PostId = data.PostId});

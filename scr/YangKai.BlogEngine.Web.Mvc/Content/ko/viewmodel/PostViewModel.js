@@ -1,4 +1,4 @@
-﻿var ViewModel = function (isadmin) {
+﻿var PostViewModel = function (isadmin) {
     var self = this;
     self.State = ko.observable('list');
     self.listViewModel = ko.observable(new listViewModel());

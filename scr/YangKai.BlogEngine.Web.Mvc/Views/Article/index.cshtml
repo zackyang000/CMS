@@ -13,9 +13,16 @@
             if (window.location.href.indexOf('#!') == -1) {
                 window.location.href = window.location.href + "#!";
             }
-            ko.applyBindings(new ViewModel(@isAdmin), $("#posts")[0]);
+            ko.applyBindings(new PostViewModel(@isAdmin), $("#posts")[0]);
         });
     </script>
+}
+
+@section style
+{
+    <style>
+        #middle .body { background: url(/Content/Image/body_bg.png) }
+    </style>
 }
 
 <div id="posts">

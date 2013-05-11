@@ -4,13 +4,3 @@
         <input type="text" maxlength="20" class="search" placeholder="Press enter to search." onkeydown="SearchkeyDown(value);" />
     </div>
 </div>
-<script type="text/javascript">
-    function SearchkeyDown(txt) {
-        if (window.event.keyCode == 13) {
-            event.returnValue = false;
-            var channel = urlHelper.getChannelUrl();
-            var group = urlHelper.getGroupUrl();
-            location.href = '/' + channel + '#!/' + group + '/search/' + txt;
-        }
-    }
-</script>
