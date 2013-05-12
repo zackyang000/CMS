@@ -11,7 +11,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [ActionName("index")]
         public ActionResult Index()
         {
-            return View();
+            IList<Channel> entities = QueryFactory.Instance.Post.FindAllByNotDeletion();
+            return View(entities);
         }
 
         [ActionName("layout-header-menu")]

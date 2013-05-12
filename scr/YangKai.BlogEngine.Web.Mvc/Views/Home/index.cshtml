@@ -1,6 +1,129 @@
-﻿
+﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Channel>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="keywords" content="@ViewBag.Keywords" /> 
+    <meta name="viewport" content="width=device-width" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <style>
+        .navbar .brand {padding: 5px 20px 5px;}
+        .navbar .brand img{ width: 45px;height: 45px;margin-right: 10px;}
+        .navbar .nav > li > a {padding: 18px 15px 18px;}
+        #cta-content {height: 500px;width: 100%;background: url('/Content/img/main_bg_tile.jpg') repeat-x transparent 50% 50%;text-align: center;color: #fff;}
+        #cta-content .lights {width: 100%;height: 100%;background: url('/Content/img/main_bg_image.jpg') repeat-x transparent 50% 50%;}
+        .grid-image {width: 100%;height: 100%;background: url('/Content/img/main_bg_grid_tile.png') repeat transparent;}
+        #cta-content .wrapped-content {padding: 150px 0px 20px 0px;}
+        .wrapped-content {width: 960px;margin: auto;}
+        #cta-content h1 {letter-spacing: 12px;color: white;font-size: 3.2em;margin: 3px 0px;}
+        #cta-content h2 {font-weight: normal;letter-spacing: 1px;margin-top: 20px;font-size: 22px;}
+        #cta-content h2 span{font-weight: normal;letter-spacing: 1px;font-size: 12px;}
+        #cta-content h1, #cta-content h2 {text-shadow: 0 0 10px rgba(0,0,0,.5);}
+        #cta-content .bottom {width: 700px;margin: auto;margin-top: 30px;}
+        #cta-content h2 a {color: #fff;text-decoration: none;}
+        .orange-gradient {color: #ffffff;background-image: linear-gradient(90deg, #dc534b 0%, #d96f5f 100%);background-image: -moz-linear-gradient(90deg, #dc534b 0%, #d96f5f 100%);background-image: -webkit-linear-gradient(90deg, #dc534b 0%, #d96f5f 100%);box-shadow: 0 1px 3px rgba(0, 0, 0, .2);}
+        .orange-gradient:hover {color: #ffffff;background-image: linear-gradient(90deg, #e45950 0%, #e77665 100%);background-image: -moz-linear-gradient(90deg, #e45950 0%, #e77665 100%);background-image: -webkit-linear-gradient(90deg, #e45950 0%, #e77665 100%);}
+        .get-started {text-decoration: none !important;display: inline-block;font-size: 18px;letter-spacing: 3px;padding: 10px 22px;text-shadow: none !important;border-radius: 80px;}
+        footer{ text-align: center;}
+    </style>
+    <script src="/Content/js/modernizr-2.6.2.min.js"></script>
+    <script src="~/Content/js/jquery-1.9.1.js"></script>
+    <script src="~/Content/js/bootstrap.js"></script>
+</head>
+<body>
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
 
-@{
-    Layout = "~/Views/Shared/_layout.cshtml";
-}
-<h2>这里是主页。。。</h2>
+    <header class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/"><img src="/Content/Image/logo.gif" />iShare</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        @foreach (var channel in Model)
+                        {
+                            <li class="dropdown openable">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@channel.Name <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a id="/@channel.Url#!">浏览全部</a></li>
+                                    <li class="divider"></li>
+                                    <li class="nav-header">以分组浏览</li>
+                                    @foreach (var group in channel.Groups.Where(p=>!p.IsDeleted))
+                                    {
+                                        <li><a id="/@channel.Url#!/@group.Url">@group.Name</a></li>
+                                    }
+                                    <li class="divider"></li>
+                                    <li><a id="/@channel.Url-calendar">存档</a></li>
+                                </ul>
+                            </li>
+                        }
+                        <li><a href="/board">留言板</a></li>
+                        <li><a href="/about">关于</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="cta-content">
+        <div class="lights">
+            <div class="grid-image">
+                <div class="wrapped-content">
+                    <h1>Share Link Fun</h1>
+                    <h2>
+                        这是一个纯手工自制的个人站点，展示着不断更新的私家收藏。<br/>
+                        希望它能够带给大家欢乐与思考，也能够方便我们及时沟通。<br/>
+                        评论，留言，分享，一应俱全，随时恭候各种指教，任何互动，无任欢迎。
+                        <div class="bottom clearfix">
+                            <a href="/about" role="button" data-toggle="modal" class="get-started orange-gradient">了解更多 &raquo;</a>
+                        </div>
+                        <span>BECAUSE I CAN</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="text-align: center;margin-top: 30px;">
+            <div class="span4">
+                <p><a href="/funs#!"><img class="img-polaroid" src="/Content/img/home-bg1.png"/></a></p>
+                <h2>娱乐频道</h2>
+                <p>无限放送各种有趣的文章/图片/视频，博君一笑。</p>
+                <p><a class="btn" href="/funs#!">浏览更多 &raquo;</a></p>
+            </div>
+            <div class="span4">
+                <p><a href="/funs#!"><img class="img-polaroid" src="/Content/img/home-bg2.png"/></a></p>
+                <h2>技术学堂</h2>
+                <p>分享一些我在学习/工作中，收集到有帮助的文章，与君共勉。</p>
+                <p><a class="btn" href="/technologies#!">浏览更多 &raquo;</a></p>
+            </div>
+            <div class="span4">
+                <p><a href="/board"><img class="img-polaroid" src="/Content/img/home-bg3.png"/></a></p>
+                <h2>留言板</h2>
+                <p>你懂的。。。<br/><br/></p>
+                <p><a class="btn" href="/board">浏览更多 &raquo;</a></p>
+            </div>
+        </div>
+        <hr>
+        <footer>
+            <div>
+                @Html.ActionLink("Simple Analytics", "analytics", "Labs") |
+                @Html.ActionLink("Export Data", "export", "Labs") |
+                @Html.ActionLink("Probe", "probe", "Labs", null, new { target = "_blank" }) |
+                <a href="/elmah.axd" target = "_blank">Error Log</a> |
+                <a href='MailTo:zackyang@outlook.com'>Contact me</a>
+            </div>
+            <div>@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT)</div>
+        </footer>
+    </div>
+</body>
+</html>
