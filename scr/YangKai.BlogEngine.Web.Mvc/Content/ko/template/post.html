@@ -1,25 +1,20 @@
 ﻿<div data-bind="with: listViewModel, visible: State() === 'list'">
-<!--    TODO 使用ko动态生成-->
-    <!--        @if (!string.IsNullOrEmpty(Request.QueryString["c"]))-->
-    <!--        {-->
-    <!--            <div class="boxcaption"><h3>存档</h3></div>-->
-    <!--            <div class="box">‘@(QueryFactory.Instance.Post.GetCategory(Request.QueryString["c"]).Name)’ 分类的存档</div>-->
-    <!--        }-->
-    <!--        @if (!string.IsNullOrEmpty(Request.QueryString["t"]))-->
-    <!--        {-->
-    <!--            <div class="boxcaption"><h3>存档</h3></div>-->
-    <!--            <div class="box">文章标签 ‘@Request.QueryString["t"]’</div>-->
-    <!--        }-->
-    <!--        else if (!string.IsNullOrEmpty(Request.QueryString["d"]))-->
-    <!--        {-->
-    <!--            <div class="boxcaption"><h3>存档</h3></div>-->
-    <!--            <div class="box">‘@Request.QueryString["d"]’ 分类的存档</div>-->
-    <!--        }-->
-    <!--        else if (!string.IsNullOrEmpty(Request.QueryString["k"]))-->
-    <!--        {-->
-    <!--            <div class="boxcaption"><h3>搜索结果</h3></div>-->
-    <!--            <div class="box">关键字:‘@Request.QueryString["k"]’</div>-->
-    <!--        }-->
+    <div data-bind="visible:type()=='category'">
+        <div class="boxcaption">存档</div>
+        <div class="box">‘<span data-bind="text:query()"></span>’ 分类的存档</div>
+    </div>
+    <div data-bind="visible: type() == 'tag'">
+        <div class="boxcaption">存档</div>
+        <div class="box">文章标签 ‘<span data-bind="text: query()"></span>’</div>
+    </div>
+    <div data-bind="visible: type() == 'date'">
+        <div class="boxcaption">存档</div>
+        <div class="box">发布日期 ‘<span data-bind="text: query()"></span>’</div>
+    </div>
+    <div data-bind="visible: type() == 'search'">
+        <div class="boxcaption">搜索结果</div>
+        <div class="box">关键字: ‘<span data-bind="text: query()"></span>’</div>
+    </div>
     <div>
         <ul data-bind="template: { name: 'post-item', foreach: list }"></ul>
         <div class="loadingbox" data-bind="visible: loading">加载中...</div>

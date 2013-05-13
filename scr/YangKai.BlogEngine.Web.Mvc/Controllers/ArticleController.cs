@@ -14,7 +14,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class ArticleController : BaseController
     {
-        public ActionResult Index(string type,int? id, string channelUrl, string groupUrl, string category, string tag, string d, string search)
+        public ActionResult Index(string type,int? id, string channelUrl, string groupUrl, string category, string tag, string date, string search)
         {
             if (string.IsNullOrEmpty(type))
             {
@@ -49,12 +49,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             else
             {
                 DateTime? calendar = null;
-                if (!string.IsNullOrEmpty(d))
+                if (!string.IsNullOrEmpty(date))
                 {
-                    DateTime date;
-                    if (DateTime.TryParse(d + "-01", out date))
+                    DateTime myDate;
+                    if (DateTime.TryParse(date + "-01", out myDate))
                     {
-                        calendar = date;
+                        calendar = myDate;
                     }
                 }
 

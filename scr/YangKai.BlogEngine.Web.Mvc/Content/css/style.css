@@ -32,8 +32,8 @@ textarea{height:130px;width:600px;}
 input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3px 2px; border: 1px solid #A6A6A6;font-family: Verdana, 'BitStream vera Sans', Tahoma, Helvetica, sans-serif;font-size: 12px;padding: 2px 0 2px 20px;}
 
 /* 提示框 */
-.boxcaption {background: #E3E4E6;border-bottom: 1px solid #CCC;padding: 3px 12px;border-top-left-radius: 5px 5px;border-top-right-radius: 5px 5px;}
-.boxcaption h3 {font-family: Verdana, 'BitStream vera Sans', Tahoma, Helvetica, sans-serif;font-size: 12px;letter-spacing: 0em;}
+.boxcaption {background: #E3E4E6;border-bottom: 1px solid #CCC;padding: 3px 12px;border-top-left-radius: 5px 5px;border-top-right-radius: 5px 5px;line-height: 24px;}
+.boxcaption h3 {font-size: 12px;letter-spacing: 0em;}
 .box {background: #F4F5F7;margin-bottom: 10px;padding: 6px 12px;border-bottom-left-radius: 5px 5px;border-bottom-right-radius: 5px 5px;}
 .loadingbox {height: 16px;line-height: 16px;position: absolute;left: 50%;top: 0;margin-left: -65px;width: 95px;padding: 10px 10px 10px 35px;font-weight: bold;font-size: 12px;color: #666;background: url("/Content/Image/ajax-loader5.gif") 10px 50% no-repeat #EEE;border: 1px solid #CCC;border-top: 1px solid #FFF;border-radius: 5px;border-top-left-radius: 0;border-top-right-radius: 0;z-index: 20;}
 
@@ -230,11 +230,10 @@ aside .feedrss{background: url(/Content/Image/feeds.gif) 5px 5px no-repeat;heigh
 #sitetip ul li span{background:url(/Content/Image/site_tip_li_check.png) no-repeat;height:31px; line-height:31px; display:block; margin-left:40px; padding-left:25px; padding-top:3px;}
 
 /* calendar */
-#calendar{margin-left:50px;}
-#calendar h2{font-weight:bold; cursor:pointer; background: url(/Content/Image/icons.gif) no-repeat 0px -48px;font-size: 11px;height: 16px;line-height: 16px;padding-left: 22px; margin-top:5px;}
-#calendar h2 a span {background: url(/Content/Image/icons.gif) no-repeat 0px -288px;font-size: 11px;margin-right:10px;padding-left: 16px;}
-#calendar h2 a{ display:none;}
-#calendar ul{display:none;margin-left:20px;}
+#calendar{margin-left:50px;padding-top: 20px;}
+#calendar h2{font-weight:bold; cursor:pointer; background: url(/Content/Image/icons.gif) no-repeat 0px -48px;font-size: 11px;height: 16px;line-height: 16px;padding-left: 22px;margin-top: 10px;margin-bottom: 5px;}
+#calendar ul{margin-left:20px;}
+#calendar ul li{font-size: 14px;}
 
 /* board */
 .board{width:700px; margin:0px auto 0px auto;}
