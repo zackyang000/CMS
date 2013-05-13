@@ -149,7 +149,7 @@ footer .body .main{padding: 80px 65px 15px 65px;}
 #posts {position: relative; min-height: 200px;}
 #posts ul{min-height: 1px;}
 #posts li{margin: 0 0 25px;}
-#posts h2 {border-bottom: 1px solid #CCC;display: block;font-family:'Microsoft YaHei', Verdana, 'BitStream vera Sans';font-size: 20px;margin-top: 10px;padding:8px;}
+#posts h2 {border-bottom: 1px solid #CCC;display: block;font-family:'Microsoft YaHei', Verdana, 'BitStream vera Sans';font-size: 20px;margin-top: 10px;padding:0 8px;line-height: 30px;}
 #posts h2 a {color: #4C4C4C;text-decoration: none;}
 #posts h2 a:hover{color:#2970A6;text-decoration:none; }
 #posts h2 .showdetail a{padding: 0 8px 0 10px;background: url(/Content/Image/new-window-icon.gif) no-repeat 0 50%;text-decoration: none;}

@@ -83,7 +83,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Repositories
                                   string categoryUrl, string tagName, DateTime? calendar, string searchKey,
                                   PostStatusEnum? postStatu)
         {
-            Expression<Func<Post, bool>> specExpr = p => postStatu == null || p.PostStatus == (int)postStatu;
+            Expression<Func<Post, bool>> specExpr = p => postStatu == null || p.PostStatus == (int)postStatu.Value;
 
             if (channelUrl.HasValue())
             {
