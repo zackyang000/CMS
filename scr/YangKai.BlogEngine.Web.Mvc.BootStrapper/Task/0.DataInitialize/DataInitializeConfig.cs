@@ -7,6 +7,7 @@ using YangKai.BlogEngine.Infrastructure;
 using YangKai.BlogEngine.Modules.BoardModule.Objects;
 using YangKai.BlogEngine.Modules.CommonModule.Objects;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
+using YangKai.BlogEngine.Infrastructure.Migrations;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
@@ -14,6 +15,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
     {
         public void Run()
         {
+            //若Model发生改变,则自动更新数据库.
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogEngineContext, Configuration>());
+
             using (var context = new BlogEngineContext())
             {
                 if (!context.Database.Exists())
