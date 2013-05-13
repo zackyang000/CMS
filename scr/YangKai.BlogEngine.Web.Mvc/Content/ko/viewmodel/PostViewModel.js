@@ -13,29 +13,32 @@
         });
 
         this.get("#!/:group/:page/:type/:query/?$", function () {
+            var channel = urlHelper.getChannelUrl();
             var group = this.params['group'];
             var page = this.params['page'];
             var type = this.params['type'];
             var query = this.params['query'];
-            self.listViewModel().turnpages('', group, page, type, query);
+            self.listViewModel().turnpages(channel, group, page, type, query);
         });
 
         this.get("#!/:group/:type/:query/?$", function () {
+            var channel = urlHelper.getChannelUrl();
             var group = this.params['group'];
             var type = this.params['type'];
             var query = this.params['query'];
-            self.listViewModel().turnpages('', group, 1, type, query);
+            self.listViewModel().turnpages(channel, group, 1, type, query);
         });
 
         this.get("#!/:group/:page/?$", function () {
+            var channel = urlHelper.getChannelUrl();
             var group = this.params['group'];
             var page = this.params['page'];
-            self.listViewModel().turnpages('', group, page, '', '');
+            self.listViewModel().turnpages(channel, group, page, '', '');
         });
 
         this.get("#!/:page/?$", function () {
-            var page = this.params['page'];
             var channel = urlHelper.getChannelUrl();
+            var page = this.params['page'];
             if (IsNum(page)) {
                 self.listViewModel().turnpages(channel, '', page, '', '');
             } else {

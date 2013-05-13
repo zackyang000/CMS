@@ -18,7 +18,7 @@
     <div>
         <ul data-bind="template: { name: 'post-item', foreach: list }"></ul>
         <div class="loadingbox" data-bind="visible: loading">加载中...</div>
-        <div class="pagination" data-bind="template: { name: '_pager', foreach: Pager }"></div>
+        <div class="pagination" data-bind="template: { name: '_pager-no-list', foreach: Pager }"></div>
     </div>
 </div>
 <div data-bind="with: detailViewModel, visible: State() === 'detail'"></div>

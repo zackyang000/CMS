@@ -203,9 +203,10 @@
     <Content Include="Content\js\koExternalTemplateEngine_all.js" />
     <Content Include="Content\js\modernizr-2.6.2.min.js" />
     <Content Include="Content\js\sammy.js" />
+    <Content Include="Content\ko\template\_pager-no-list.html" />
     <Content Include="Content\ko\template\recent-board-item.html" />
     <Content Include="Content\ko\template\recent-comments-item.html" />
-    <Content Include="Content\ko\template\_pager.html" />
+    <Content Include="Content\ko\template\_pager-with-list.html" />
     <Content Include="Content\ko\template\post.html" />
     <Content Include="Content\ko\template\post-item.html" />
     <Content Include="Content\ko\viewmodel\RecentBoardViewModel.js" />
