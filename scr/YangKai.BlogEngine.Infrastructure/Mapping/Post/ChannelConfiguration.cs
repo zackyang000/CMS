@@ -14,7 +14,6 @@ namespace YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post
             Property(p => p.Url).IsRequired().HasMaxLength(100);
             Property(p => p.Description).IsRequired().HasMaxLength(1000);
             Property(p => p.StyleConfigurePath).IsRequired().HasMaxLength(100);
-            Property(p => p.IsDefault).IsRequired();
             Property(p => p.OrderId).IsRequired();
             Property(p => p.CreateDate).IsRequired();
             Property(p => p.IsDeleted).IsRequired();

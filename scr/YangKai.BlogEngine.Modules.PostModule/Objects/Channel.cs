@@ -18,7 +18,6 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
             Description = string.Empty;
             Url = string.Empty;
             StyleConfigurePath = string.Empty;
-            IsDefault = false;
             OrderId = 255;
             CreateDate = DateTime.Now;
             IsDeleted = false;
@@ -57,12 +56,6 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
         /// Banner图片地址.
         /// </summary>
         public string BannerUrl { get; set; }
-
-        /// <summary>
-        /// 是否是默认频道.
-        /// 所有频道有且仅有一个能为默认频道.默认频道将显示在未传频道信息的页面,如首页.
-        /// </summary>
-        public bool IsDefault { get; set; }
 
         /// <summary>
         /// 频道排列顺序,默认为255.
