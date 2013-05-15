@@ -5,6 +5,7 @@
     self.listViewModel = ko.observable(new listViewModel())
     self.detailViewModel = ko.observable(new detailViewModel())
     self.authorized = isadmin
+
     $.sammy(->
       @get "#!//search/:query$", ->
         query = @params["query"]
@@ -57,19 +58,19 @@ class listViewModel
       self.query = ko.observable("")
       self.link = ko.computed(->
         channel = self.channel()
-        group = (if self.group() then "/" + self.group() else "")
-        page = (if self.Pager().CurrentPage() isnt 1 then "/" + self.Pager().CurrentPage() else "")
-        type = (if self.type() then self.type() + "/" else "")
+        group = if self.group() then "/#{self.group()}" else ""
+        page = if self.Pager().CurrentPage() isnt 1 then "/#{self.Pager().CurrentPage()}"  else ""
+        type = if self.type() then  + "self.type()/" else ""
         query = self.query()
-        "/" + channel + "#!" + group + page + "/" + type + query
+        "/#{channel}#!#{group}#{page}/#{type}#{query}"
       , self)
       self.request = ko.computed(->
         link = "/article?"
         link += "type=list"
-        link += "&channelurl=" + self.channel()
-        link += "&groupurl=" + self.group()
-        link += "&id=" + self.Pager().CurrentPage()
-        link += "&" + self.type() + "=" + self.query()  unless self.type() is ""
+        link += "&channelurl=#{self.channel()}"
+        link += "&groupurl=#{self.group()}"
+        link += "&id=#{self.Pager().CurrentPage()}"
+        link += "&#{self.type()}=#{self.query()}" unless self.type() is ""
         link
       , self)
       self.del = (data) ->
@@ -77,13 +78,13 @@ class listViewModel
           progressMessage: "Deleting data..."
         ,
           url: "/admin/postmanage/delete/"
-          data: "id=" + data.PostId
+          data: "id=#{data.PostId}"
           method: "post"
           dataType: "json"
           complete: (context) ->
             o = JSON.parse(context.responseText)
             if o.result
-              message.success "“#" + data.Title + "”  be moved to trash."
+              "#{message.success}“##{data.Title}”  be moved to trash."
               data.PostStatus = "Trash"
               itemRefresh self.list, data
             else
@@ -105,18 +106,14 @@ class listViewModel
         self.Pager().CurrentPage page
         self.loading not self.loading()
     
-        #定位到顶部
         scroll 0, 0
+
         $.getJSON self.request(), (result) ->
-     
           #若滑动效果未结束,则延迟绑定.
           if $("nav ul li.moving_bg").is(":animated")
-            setTimeout (->
-              self.refreshlist result
-            ), 300
+            setTimeout (->self.refreshlist result), 300
           else
             self.refreshlist result
-
 
       self.refreshlist = (result) ->
         self.loading not self.loading()

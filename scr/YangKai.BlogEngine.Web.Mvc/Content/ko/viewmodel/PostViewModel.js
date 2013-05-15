@@ -78,9 +78,9 @@ listViewModel = (function() {
     self.link = ko.computed(function() {
       var channel, group, page, query, type;
       channel = self.channel();
-      group = (self.group() ? "/" + self.group() : "");
-      page = (self.Pager().CurrentPage() !== 1 ? "/" + self.Pager().CurrentPage() : "");
-      type = (self.type() ? self.type() + "/" : "");
+      group = self.group() ? "/" + (self.group()) : "";
+      page = self.Pager().CurrentPage() !== 1 ? "/" + (self.Pager().CurrentPage()) : "";
+      type = self.type() ? +"self.type()/" : "";
       query = self.query();
       return "/" + channel + "#!" + group + page + "/" + type + query;
     }, self);
@@ -88,10 +88,10 @@ listViewModel = (function() {
       var link;
       link = "/article?";
       link += "type=list";
-      link += "&channelurl=" + self.channel();
-      link += "&groupurl=" + self.group();
-      link += "&id=" + self.Pager().CurrentPage();
-      if (self.type() !== "") link += "&" + self.type() + "=" + self.query();
+      link += "&channelurl=" + (self.channel());
+      link += "&groupurl=" + (self.group());
+      link += "&id=" + (self.Pager().CurrentPage());
+      if (self.type() !== "") link += "&" + (self.type()) + "=" + (self.query());
       return link;
     }, self);
     self.del = function(data) {
@@ -106,7 +106,7 @@ listViewModel = (function() {
           var o;
           o = JSON.parse(context.responseText);
           if (o.result) {
-            message.success("“#" + data.Title + "”  be moved to trash.");
+            "" + message.success + "“#" + data.Title + "”  be moved to trash.";
             data.PostStatus = "Trash";
             return itemRefresh(self.list, data);
           } else {
