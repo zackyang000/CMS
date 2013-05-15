@@ -215,9 +215,24 @@
     <Content Include="Content\ko\template\_pager-with-list.html" />
     <Content Include="Content\ko\template\post.html" />
     <Content Include="Content\ko\template\post-item.html" />
-    <Content Include="Content\ko\viewmodel\RecentBoardViewModel.js" />
-    <Content Include="Content\ko\viewmodel\RecentCommentsViewModel.js" />
-    <Content Include="Content\ko\viewmodel\PostViewModel.js" />
+    <Content Include="Content\ko\viewmodel\PostViewModel.js">
+      <DependentUpon>PostViewModel.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\ko\viewmodel\PostViewModel.min.js">
+      <DependentUpon>PostViewModel.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\ko\viewmodel\RecentCommentsViewModel.js">
+      <DependentUpon>RecentCommentsViewModel.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\ko\viewmodel\RecentCommentsViewModel.min.js">
+      <DependentUpon>RecentCommentsViewModel.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\ko\viewmodel\RecentMessagesViewModel.js">
+      <DependentUpon>RecentMessagesViewModel.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\ko\viewmodel\RecentMessagesViewModel.min.js">
+      <DependentUpon>RecentMessagesViewModel.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\plugin\ckeditor_3.6.1\adapters\jquery.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\CHANGES.html" />
     <Content Include="Content\plugin\ckeditor_3.6.1\ckeditor.asp" />
@@ -1454,6 +1469,9 @@
     <Content Include="Areas\Admin\Views\Shared\_layout.cshtml" />
     <Content Include="Areas\Admin\Views\Summary\index.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Content\ko\viewmodel\RecentMessagesViewModel.coffee" />
+    <Content Include="Content\ko\viewmodel\RecentCommentsViewModel.coffee" />
+    <Content Include="Content\ko\viewmodel\PostViewModel.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />

@@ -1,11 +1,11 @@
 ﻿<div class="widget" id="recentmessages">
     <h3>最新留言</h3>
-    <div class="ko-area-loader" data-bind="visible: board().length == 0"></div>
-    <ul data-bind="template: { name: 'recent-board-item', foreach: board, afterAdd: elementFadeIn }">
+    <div class="ko-area-loader" data-bind="visible: list().length == 0"></div>
+    <ul data-bind="template: { name: 'recent-board-item', foreach: list, afterAdd: elementFadeIn }">
     </ul>
 </div>
 <script type="text/javascript">
     $(function () {
-        ko.applyBindings(new RecentBoardViewModel(), $("#recentmessages")[0]);
+        ko.applyBindings(new RecentMessagesViewModel(), $("#recentmessages")[0]);
     });
 </script>

@@ -1,6 +1,14 @@
-﻿function RecentCommentsViewModel(channelUrl, groupUrl) {
-    var self = this;
-    self.comments = ko.observableArray();
-    self.groupUrl = groupUrl;
-    $.getJSON('/comment/recent?channelurl=' + channelUrl + '&groupurl=' + groupUrl, self.comments);
-}
+﻿var RecentCommentsViewModel;
+
+RecentCommentsViewModel = (function() {
+
+  function RecentCommentsViewModel(channelUrl, groupUrl) {
+    this.channelUrl = channelUrl;
+    this.groupUrl = groupUrl;
+    this.list = ko.observableArray();
+    $.getJSON("/comment/recent?channelurl=" + this.channelUrl + "&groupurl=" + this.groupUrl, this.list);
+  }
+
+  return RecentCommentsViewModel;
+
+})();
