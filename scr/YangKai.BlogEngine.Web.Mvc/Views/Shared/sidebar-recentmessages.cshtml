@@ -4,8 +4,3 @@
     <ul data-bind="template: { name: 'recent-board-item', foreach: list, afterAdd: elementFadeIn }">
     </ul>
 </div>
-<script type="text/javascript">
-    $(function () {
-        ko.applyBindings(new RecentMessagesViewModel(), $("#recentmessages")[0]);
-    });
-</script>

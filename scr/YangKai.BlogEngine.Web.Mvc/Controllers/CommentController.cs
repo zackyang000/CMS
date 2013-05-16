@@ -114,11 +114,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [ActionName("recent")]
         [AcceptVerbs(HttpVerbs.Get)]
         [OutputCache(CacheProfile = "side")]
-        public JsonResult RecentComments(string channelurl, string groupurl)
+        public JsonResult RecentComments(string channelurl)
         {
-            if (string.IsNullOrEmpty(channelurl))
-                channelurl = QueryFactory.Instance.Post.GetGroup(groupurl).Channel.Url;
-            return Json(QueryFactory.Instance.Post.GetCommentsRecent(channelurl).ToViewModels(), JsonRequestBehavior.AllowGet);
+            var comments = QueryFactory.Instance.Post.GetCommentsRecent(channelurl);
+            return Json(comments.ToViewModels(), JsonRequestBehavior.AllowGet);
         }
     }
 }

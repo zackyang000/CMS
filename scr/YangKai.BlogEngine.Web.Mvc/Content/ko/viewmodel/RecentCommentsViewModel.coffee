@@ -1,4 +1,4 @@
 ﻿class RecentCommentsViewModel
-  constructor: (@channelUrl;@groupUrl) ->
+  constructor: (@channelUrl) ->
     @list = ko.observableArray()
-    $.getJSON "/comment/recent?channelurl=#{@channelUrl}&groupurl=#{@groupUrl}", @list
+    $.getJSON "/comment/recent?channelurl=#{@channelUrl}", @list

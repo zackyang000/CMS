@@ -1,18 +1,6 @@
-﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
-@{
-    var channel = ViewBag.Channel as Channel;
-    var group = ViewBag.Group as Group;
-    var channelUrl = channel == null ? string.Empty : channel.Url;
-    var groupUrl = group == null ? string.Empty : group.Url;
-}
-<div class="widget" id="recentcomments">
+﻿<div class="widget" id="recentcomments">
     <h3>最新评论</h3>
     <div class="ko-area-loader" data-bind="visible: list().length == 0"></div>
     <ul data-bind="template: { name: 'recent-comments-item', foreach: list, afterAdd: elementFadeIn }">
     </ul>
 </div>
-<script type="text/javascript">
-    $(function () {
-        ko.applyBindings(new RecentCommentsViewModel('@channelUrl', '@groupUrl'), $("#recentcomments")[0]);
-    });
-</script>
