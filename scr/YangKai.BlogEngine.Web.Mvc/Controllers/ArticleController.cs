@@ -135,46 +135,5 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             ViewBag.NextPost = QueryFactory.Instance.Post.NextPost(postId);
             return View();
         }
-
-        #region 侧栏
-
-        //标签分组
-        [ActionName("categorygroup")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        [OutputCache(CacheProfile = "side")]
-        public JsonResult CategoryGroup(string groupUrl)
-        {
-            if (groupUrl == string.Empty) return Json(string.Empty, JsonRequestBehavior.AllowGet);
-
-            ViewBag.groupUrl = groupUrl;
-            return Json(QueryFactory.Instance.Post.StatGroupByCategory(groupUrl).Select(p => new
-                {
-                    Name = p.Key.Name,
-                    Url = p.Key.Url,
-                    Count = p.Value
-                }), JsonRequestBehavior.AllowGet);
-        }
-
-        ////最多浏览
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //[ChildActionOnly]
-        //[OutputCache(Duration = 120)]
-        //public PartialViewResult RankByViewCount(string groupUrl)
-        //{
-        //    ViewBag.groupUrl = groupUrl;
-        //    return PartialView("RankList", _postServices.GetListByViewCount(groupUrl));
-        //}
-
-        ////最多回复
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //[ChildActionOnly]
-        //[OutputCache(Duration = 120)]
-        //public PartialViewResult RankByReplyCount(string groupUrl)
-        //{
-        //    ViewBag.groupUrl = groupUrl;
-        //    return PartialView("RankList", _postServices.GetListByReplyCount(groupUrl));
-        //}
-
-        #endregion
     }
 }

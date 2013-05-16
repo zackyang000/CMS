@@ -39,10 +39,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return channel == null ? PartialView() : PartialView((object)channel.Description);
         }
 
-        /// <summary>
-        /// channelUrl与groupUrl有且应仅有一种,则为Post
-        /// 列表或详细页面,才需要显示导航部分.否则返回空.
-        /// </summary>
         [ActionName("layout-header-nav")]
         [ChildActionOnly]
         public PartialViewResult Nav(string channelUrl, string groupUrl)
@@ -65,9 +61,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return entities == null ? PartialView() : PartialView(entities);
         }
 
-        /// <summary>
-        /// banner显示
-        /// </summary>
         [ActionName("layout-header-banner")]
         [ChildActionOnly]
         public PartialViewResult Banner(string channelUrl, string groupUrl)

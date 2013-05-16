@@ -14,9 +14,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class CommentController : Controller
     {
-        //
         // 评论页面
-        [ActionName("index")]
         [AcceptVerbs(HttpVerbs.Get)]
         public PartialViewResult Index(string id)
         {
@@ -33,7 +31,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return PartialView(entity);
         }
 
-        [ActionName("list")]
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult List(Guid id)
         {
@@ -46,7 +43,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         // 添加评论
-        [ActionName("add")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Add(CommentViewModel viewModel)
         {
@@ -78,7 +74,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         // 删除评论
         [UserAuthorize]
-        [ActionName("delete")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Delete(Guid id)
         {
@@ -95,7 +90,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         // 恢复评论
         [UserAuthorize]
-        [ActionName("renew")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Renew(Guid id)
         {
@@ -111,10 +105,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         // 最新评论
-        [ActionName("recent")]
         [AcceptVerbs(HttpVerbs.Get)]
         [OutputCache(CacheProfile = "side")]
-        public JsonResult RecentComments(string channelurl)
+        public JsonResult Recent(string channelurl)
         {
             var comments = QueryFactory.Instance.Post.GetCommentsRecent(channelurl);
             return Json(comments.ToViewModels(), JsonRequestBehavior.AllowGet);

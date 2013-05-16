@@ -13,7 +13,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     public class BoardController : Controller
     {
         // 留言页面
-        [ActionName("index")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ViewResult Index()
         {
@@ -23,7 +22,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         // 留言列表
-        [ActionName("list")]
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult List()
         {
@@ -36,7 +34,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         // 新增留言
-        [ActionName("add")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Add(BoardViewModel viewModel)
         {
@@ -58,7 +55,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         // 删除留言
         [UserAuthorize]
-        [ActionName("delete")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Delete(Guid id)
         {
@@ -73,10 +69,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
         }
 
-        //
         // 恢复留言
         [UserAuthorize]
-        [ActionName("renew")]
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Renew(Guid id)
         {
@@ -91,12 +85,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
         }
 
-        //
         // 最新留言
-        [ActionName("recent")]
         [AcceptVerbs(HttpVerbs.Get)]
         [OutputCache(CacheProfile = "side")]
-        public JsonResult RecentMessages()
+        public JsonResult Recent()
         {
             return Json(QueryFactory.Instance.Board.GetRecent().ToBoardViewModels(), JsonRequestBehavior.AllowGet);
         }

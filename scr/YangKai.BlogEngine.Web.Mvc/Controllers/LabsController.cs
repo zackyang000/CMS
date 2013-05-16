@@ -17,14 +17,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return new FilePathResult(filepath, "application/vnd.ms-excel");
         }
 
-        [ActionName("analytics")]
         public ActionResult Analytics()
         {
             QueryFactory.Instance.Lab.UpdateRefStatPicture();
             return View(QueryFactory.Instance.Lab.GetRefstatInfo());
         }
 
-        [ActionName("probe")]
         public ActionResult Probe()
         {
             return View();
