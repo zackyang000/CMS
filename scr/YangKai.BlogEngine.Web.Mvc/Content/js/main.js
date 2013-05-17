@@ -2,32 +2,10 @@
 
 $(document).ready(function () {
 
-    menu();
-    
-    //菜单lock及滑动效果
-    tabbedContent.init();
-    
     //ajax禁用IE缓存
     $.ajaxSetup({ cache: false });
 
     infuser.defaults.templateUrl = "/content/ko/template";
-
-    //table hover高亮
-    ko.bindingHandlers.hoverToggle = {
-        update: function (element, valueAccessor) {
-            var css = valueAccessor();
-
-            ko.utils.registerEventHandler(element, "mouseover", function () {
-                var value = ko.utils.unwrapObservable(css);
-                $(element).addClass(value);
-            });
-
-            ko.utils.registerEventHandler(element, "mouseout", function () {
-                var value = ko.utils.unwrapObservable(css);
-                $(element).removeClass(value);
-            });
-        }
-    };
 });
 
 //fix Array indexOf() in JavaScript for IE browsers
@@ -81,28 +59,6 @@ function codeformat() {
 
 //#endregion
 
-
-//菜单滑动效果
-function menu() {
-    var d = 300;
-    $('#menu a').each(function () {
-        $(this).stop().animate({
-            'marginTop': '-80px'
-        }, d += 150);
-    });
-    $('#menu > li').hover(
-        function () {
-            $('a', $(this)).stop().animate({
-                'marginTop': '-2px'
-            }, 200);
-        },
-        function () {
-            $('a', $(this)).stop().animate({
-                'marginTop': '-80px'
-            }, 200);
-        });
-}
-
 //sider搜索
 function SearchkeyDown(txt) {
     if (window.event.keyCode == 13) {
@@ -152,117 +108,6 @@ var message = {
     },
     error: function (msg) {
         Messenger().post({ message: 'Error,reason:' + msg, type: 'error' });
-    }
-};
-
-//菜单lock及滑动效果
-var tabbedContent = {
-    init: function () {
-        var currentParam = urlHelper.getGroupUrl();
-        
-        var movingEl = $("nav ul li.moving_bg");
-        var linkListEls = $("nav ul li.link");
-
-        //默认匹配第一个
-        movingEl.css("left", linkListEls.first().position()['left']);
-        movingEl.css("width", "78px");
-        
-        linkListEls.first().addClass('nohover');
-        linkListEls.first().siblings().removeClass("nohover");
-
-        linkListEls.each(function (i) {
-            var url = linkListEls.eq(i).find('a').prop('href');
-            var linkParam = urlHelper.getGroupUrl(url);
-            if (currentParam == linkParam) {
-                movingEl.css("left", linkListEls.eq(i).position()['left']);
-                linkListEls.eq(i).addClass('nohover');
-                linkListEls.eq(i).siblings().removeClass("nohover");
-                return false;
-            }
-        });
-        
-        //calendar页面特殊处理
-        if (window.location.toString().indexOf('-calendar') > -1) {
-            movingEl.css("left", linkListEls.last().position()['left']);
-            linkListEls.last().addClass('nohover');
-            linkListEls.last().siblings().removeClass("nohover");
-        }
-        
-        $("nav ul li.link").click(function () {
-            var o = $(this);
-
-            //先将所有item设置为nohover,否则hover将遮挡move效果.
-            o.parent().find('.link').addClass('nohover');
-
-            var background = o.parent().find(".moving_bg");
-            $(background).stop().animate({ left: o.position()['left'] }, 300, function () {
-                o.siblings().removeClass("nohover");
-            });
-        });
-    }
-};
-
-var urlHelper = {
-    //format: 
-    //*{groupUrl}
-    //*{groupUrl}/{page}
-    //*{groupUrl}?{query}
-    //*{groupUrl}/{page}?{query}
-    //http://www.woshinidezhu.com/{ChannelUrl}#xxx
-    //default value:
-    //groupUrl:由route定义
-    //page:1
-    //query:""
-    getChannelUrl: function(url) {
-        if (url == undefined) {
-            url = window.location.toString();
-        }
-        //匹配 [以(http)://开头],[经过一个"/"],[以"#"或"/"或"-"结尾,若没有,则取后面所有] 的字符串.
-        var r = new RegExp("://(.*?)/(.*?)(?:#.*)?(?:/.*)?(?:-.*)?$");
-        var m = url.match(r);
-        return m ? m[2] : "";
-    },
-    getGroupUrl: function(url) {
-        if (url == undefined) {
-            url = window.location.toString();
-        }
-        //匹配 [以#!/开头],[以"/"或"?"结尾,若没有,则取后面所有] 的字符串.
-        var r = new RegExp("#!/(.*?)(?:(/|[\?]).*)?$");
-        var m = url.match(r);
-        if (m) return (IsNum(m[1]) ? "" : m[1]);
-        
-        r = new RegExp("//(.*)/(.*)-(.*?)?$");
-         m = url.match(r);
-         return m ? m[2] : "";
-    },
-    getGroupUrlOrChannelUrl:function(url) {
-        var group = urlHelper.getGroupUrl(url);
-        if (group != "") {
-            return group;
-        }
-        return urlHelper.getChannelUrl(url);
-    },
-    getPage: function(url) {
-        if (url == undefined) {
-            url = window.location.toString();
-        }
-        //匹配 [以#!/开头],[经过一个"/"],[以"?"结尾,若没有,则取后面所有] 的数字.
-        var r = new RegExp("#!/(.*?)/(.*?)(?:[\?].*)?$");
-        var m = url.match(r);
-        if (m && (IsNum(m[2]))) return m[2];
-        //没有group的情况
-        r = new RegExp("#!/(.*?)(?:[\?].*)?$");
-        m = url.match(r);
-        return m ? (IsNum(m[1]) ? m[1] : 1) : 1;
-    },
-    getQuery: function(url) {
-        if (url == undefined) {
-            url = window.location.toString();
-        }
-        //匹配 [以?开头] 的字符串.
-        var r = new RegExp("[\?](.*?)$");
-        var m = url.match(r);
-        return m ? m[0] : "";
     }
 };
 

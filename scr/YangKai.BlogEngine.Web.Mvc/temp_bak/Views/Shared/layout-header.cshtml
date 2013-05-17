@@ -1,0 +1,10 @@
+﻿<header>
+    <div class="top">
+        <div class="main">
+            @Html.Action("layout-header-menu", "Home")
+            @Html.Partial("layout-header-caption")
+            @Html.Action("layout-header-nav", "Home")
+        </div>
+    </div>
+    @Html.Action("layout-header-banner", "Home")
+</header>

@@ -1,0 +1,16 @@
+﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
+@{
+    var prePost = ViewBag.PrePost as Post;
+    var nextPost = ViewBag.NextPost as Post;
+}
+<div id="postnavi">
+    @if (prePost != null)
+    {
+        <div><a href="/@prePost.Group.Url-@prePost.Url" class = "prev" rel="prev">@prePost.Title</a></div>
+    }
+    @if (nextPost != null)
+    {
+        <div><a href="/@nextPost.Group.Url-@nextPost.Url" class = "next" rel="next">@nextPost.Title</a></div>
+    }
+    <div class="clear"></div>
+</div>

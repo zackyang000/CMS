@@ -1,0 +1,22 @@
+﻿@model IDictionary<string,string>
+@{
+    ViewBag.Title = string.Format(YangKai.BlogEngine.Common.Config.Format.PAGE_TITLE, "访问统计");
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<div class="refstat">
+    <div class="info">
+    <ul>
+    @foreach (KeyValuePair<string, string> item in Model)
+    {
+        <li>@item.Key : @item.Value</li>
+    }
+    </ul>
+    <ul style="margin-top:15px;">
+        <li>IP:<b>@HttpContext.Current.Request.UserHostAddress</b></li>
+        <li>OS:<b>@AtomLab.Utility.Function.GetOSName(HttpContext.Current)</b></li>
+        <li>Browser:<b>@HttpContext.Current.Request.Browser.Browser @HttpContext.Current.Request.Browser.Version</b></li>
+    </ul>
+    </div>
+    <div class="img"><img src="/Content/Image/refstat.jpg" alt="访问统计" /></div>
+    <div class="clear"></div>
+</div>

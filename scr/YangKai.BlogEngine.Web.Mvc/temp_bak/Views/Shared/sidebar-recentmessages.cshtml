@@ -1,0 +1,6 @@
+﻿<div class="widget" id="recentmessages">
+    <h3>最新留言</h3>
+    <div class="ko-area-loader" data-bind="visible: list().length == 0"></div>
+    <ul data-bind="template: { name: 'recent-board-item', foreach: list, afterAdd: elementFadeIn }">
+    </ul>
+</div>

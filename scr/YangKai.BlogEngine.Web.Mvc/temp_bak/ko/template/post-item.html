@@ -1,0 +1,42 @@
+﻿<li>
+    <h2>
+        <strong><a href="JavaScript:void(0);" data-bind="html: $data.Title, click: $parent.expand"></a></strong>
+        <span class="warningbox" data-bind="text: $data.PostStatus, visible: $data.PostStatus != 'Publish'"></span>
+        <span class="warningbox" data-bind="text: '延迟发布' + $data.PubDate.Format(), visible: ConvertJsonDate($data.PubDate) > new Date()"></span>
+        <span class="showdetail fr"><a target="_blank" data-bind="attr: { href: '/' + $data.GroupUrl + '-' + $data.Url }">&nbsp;</a></span>
+    </h2>
+    <div class="clear"></div>
+    
+    <div class="postHeader">
+        <span class="date" data-bind="text: $data.PubDate.Format()"></span>
+        <span class="author" data-bind="text: $data.Author"></span>
+        <span class="editpost" data-bind="visible: $root.authorized"><a data-bind="    attr: { href: '/admin/postmanage/edit/' + $data.Url }">编辑</a></span>
+        <span class="deletepost" data-bind="visible: $root.authorized && $data.PostStatus == 'Publish'"><a href="JavsScript:void(0);" data-bind="    click: $parent.del">删除</a></span>
+        <span class="comments" data-bind="text: $data.ReplyCount > 0 ? $data.ReplyCount + ' 条评论' : '没有评论'"></span>
+        <span class="reviews" data-bind="text: $data.ViewCount + ' 次点击'"></span>
+        <div class="clear"></div>
+    </div>
+    
+    <div class="postBody">
+        <div>
+            <div class="thumb" data-bind="visible: $data.ThumbnailUrl && !$data.IsShowDetail">
+                <a href="JavaScript:void(0);" data-bind="click: $root.expand">
+                    <img style="width:160px; height:100px;" data-bind="attr: { src: '/upload/thumbnail/' + $data.ThumbnailUrl, alt: $data.Title, title: $data.Title }" />
+                </a>
+            </div>
+            <div data-bind="html: $data.IsShowDetail ? $data.Content : $data.Description"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    <div class="postFooter">
+        <span class="categories" data-bind="foreach: { data: mapDictionaryToArray($data.Categories), as: '$category' }">
+            <!-- ko ifnot: ($index() === 0) -->,<!-- /ko -->
+            <a data-bind="text: $category.value, attr: { href: '#!/' + $parent.GroupUrl + '/category/' + $category.key, title: '查看 ' + $category.value + ' 的全部文章' }"></a>
+        </span>
+        <span class="tags" data-bind="foreach: { data: $data.Tags, as: '$tag' }, visible: $data.Tags.length">
+            <!-- ko ifnot: ($index() === 0) -->,<!-- /ko -->
+            <a data-bind="text: $tag, attr: { href: '#!/' + $parent.GroupUrl + '/tag/' + $tag, title: '查看 ' + $tag + ' 的全部文章' }"></a>
+        </span>
+    </div>
+</li>

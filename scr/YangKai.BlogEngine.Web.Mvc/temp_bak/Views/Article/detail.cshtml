@@ -1,0 +1,23 @@
+﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
+
+@{
+    Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
+}
+
+@section style
+{
+    <style>
+        #middle .body { background: url(/Content/Image/body_bg.png) }
+    </style>
+}
+
+<div class="breadcrumbs">
+    <a href="/@Model.ChannelUrl">@Model.ChannelName</a>
+    <a href="/@Model.GroupUrl">@Model.GroupName</a>
+    <strong>@Model.Title</strong>
+</div>
+
+@Html.Partial("detail-post", Model)
+@Html.Action("PostRelated", new { postId = Model.PostId })
+@Html.Action("index", "Comment")
+@Html.Action("PostNavi", new { postId = Model.PostId })
