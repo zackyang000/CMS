@@ -192,8 +192,12 @@
     <Content Include="Content\admin\images\img1.png" />
     <Content Include="Content\admin\images\sprite.png" />
     <Content Include="Content\admin\js\jquery.main.js" />
+    <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\html5reset.css" />
     <Content Include="Content\css\normalize.css" />
+    <Content Include="Content\fonts\glyphiconshalflings-regular.svg" />
+    <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\js\bootstrap.js" />
     <Content Include="temp_bak\css\bootstrap.css" />
     <Content Include="temp_bak\css\html5reset.css" />
     <Content Include="temp_bak\css\messenger-theme-future.css" />
@@ -1517,6 +1521,10 @@
     <Content Include="Content\ko\viewmodel\RecentMessagesViewModel.coffee" />
     <Content Include="Content\ko\viewmodel\RecentCommentsViewModel.coffee" />
     <Content Include="Content\ko\viewmodel\PostViewModel.coffee" />
+    <Content Include="Content\fonts\glyphiconshalflings-regular.eot" />
+    <Content Include="Content\fonts\glyphiconshalflings-regular.otf" />
+    <Content Include="Content\fonts\glyphiconshalflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphiconshalflings-regular.woff" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
@@ -1567,9 +1575,6 @@
     <Content Include="Views\Comment\index.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
-    <Content Include="Views\Shared\layout-header-caption.cshtml" />
-    <Content Include="Views\Shared\layout-header-menu.cshtml" />
-    <Content Include="Views\Shared\layout-header-nav.cshtml" />
     <Content Include="Views\Shared\layout-header.cshtml" />
     <Content Include="Views\Shared\sidebar-feed.cshtml" />
     <Content Include="Views\Shared\sidebar-friendslink.cshtml" />
@@ -1581,7 +1586,6 @@
     <Content Include="Views\Shared\_layout.cshtml" />
     <Content Include="Views\Web.config" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
-    <Content Include="Views\Shared\layout-header-banner.cshtml" />
     <Content Include="Views\Article\detail-post-body.cshtml" />
     <Content Include="Views\Article\detail-post-title.cshtml" />
     <Content Include="temp_bak\Views\About\index.cshtml" />
