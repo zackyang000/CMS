@@ -195,6 +195,7 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\html5reset.css" />
     <Content Include="Content\fonts\glyphiconshalflings-regular.svg" />
+    <Content Include="Content\img\lab\refstat_pre.jpg" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="temp_bak\css\bootstrap.css" />
@@ -1562,7 +1563,6 @@
     <Content Include="Views\Article\calendar.cshtml" />
     <Content Include="Views\Article\detail.cshtml" />
     <Content Include="Views\Article\detail-post.cshtml" />
-    <Content Include="Views\Shared\sidebar-categorygroup.cshtml" />
     <Content Include="Views\Article\index.cshtml" />
     <Content Include="Views\Article\detail-post-footer.cshtml" />
     <Content Include="Views\Article\detail-post-header.cshtml" />
@@ -1575,13 +1575,7 @@
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header.cshtml" />
-    <Content Include="Views\Shared\sidebar-feed.cshtml" />
-    <Content Include="Views\Shared\sidebar-friendslink.cshtml" />
-    <Content Include="Views\Shared\sidebar-recentcomments.cshtml" />
-    <Content Include="Views\Shared\sidebar-recentmessages.cshtml" />
-    <Content Include="Views\Shared\sidebar-search.cshtml" />
     <Content Include="Views\Shared\_jiathis.cshtml" />
-    <Content Include="Views\Shared\_layout-whth-sidebar.cshtml" />
     <Content Include="Views\Shared\_layout.cshtml" />
     <Content Include="Views\Web.config" />
     <None Include="Properties\PublishProfiles\file.pubxml" />

@@ -50,9 +50,9 @@ namespace YangKai.BlogEngine.QueryServices
         //动态图片日期格式
         private const string RefstatPictureDateFormatMd = "M.d";
         //动态图片准备图片保存路径
-        private const string RefstatPicturePrePath = "\\Content\\Image\\refstat_pre.jpg";
+        private const string RefstatPicturePrePath = "\\Content\\img\\lab\\refstat_pre.jpg";
         //动态图片完成图片保存路径
-        private const string RefstatPicturePath = "\\Content\\Image\\refstat.jpg";
+        private const string RefstatPicturePath = "\\Content\\img\\lab\\refstat.jpg";
         //统计信息格式
         private const string RefstatInfoFormat = "{0}：{1}<br>";
         //IP数据库路径
