@@ -194,7 +194,6 @@
     <Content Include="Content\admin\js\jquery.main.js" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\html5reset.css" />
-    <Content Include="Content\css\normalize.css" />
     <Content Include="Content\fonts\glyphiconshalflings-regular.svg" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\js\bootstrap.js" />
