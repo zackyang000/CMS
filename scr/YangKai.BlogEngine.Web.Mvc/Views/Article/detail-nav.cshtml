@@ -1,0 +1,21 @@
+﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
+@{
+    Layout = null;
+    var prePost = ViewBag.PrePost as Post;
+    var nextPost = ViewBag.NextPost as Post;
+}
+
+<ul class="pager">
+    @if (prePost != null)
+    {
+        <li class="previous">
+            <a href="/@prePost.Group.Url-@prePost.Url" rel="prev">&larr; @prePost.Title</a>
+        </li>
+    }
+    @if (nextPost != null)
+    {
+        <li class="next">
+            <a href="/@nextPost.Group.Url-@nextPost.Url" rel="next">@nextPost.Title &rarr;</a>
+        </li>
+    }
+</ul>

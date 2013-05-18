@@ -1,23 +1,26 @@
 ﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
-
-@{
-    Layout = "~/Views/Shared/_layout-whth-sidebar.cshtml";
+    
+@section scripts{
+    <script type="text/javascript" >
+        var jiathis_config = {
+            data_track_clickback: true,
+            siteNum: 15,
+            summary: "",
+            hideMore: true
+        }
+    </script>
+    <script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=902651" charset="utf-8"></script>
 }
 
-@section style
-{
-    <style>
-        #middle .body { background: url(/Content/Image/body_bg.png) }
-    </style>
-}
-
-<div class="breadcrumbs">
-    <a href="/@Model.ChannelUrl">@Model.ChannelName</a>
-    <a href="/@Model.GroupUrl">@Model.GroupName</a>
-    <strong>@Model.Title</strong>
-</div>
+<ul class="breadcrumb">
+    <li><a href="/@Model.ChannelUrl">@Model.ChannelName</a></li>
+    <li><a href="/@Model.GroupUrl">@Model.GroupName</a></li>
+    <li class="active">@Model.Title</li>
+</ul>
 
 @Html.Partial("detail-post", Model)
-@Html.Action("PostRelated", new { postId = Model.PostId })
-@Html.Action("index", "Comment")
-@Html.Action("PostNavi", new { postId = Model.PostId })
+@Html.Action("detail-related", new { postId = Model.PostId })
+@Html.Action("index", "Comment", new { postId = Model.PostId })
+@Html.Action("detail-nav", new { postId = Model.PostId })
+
+

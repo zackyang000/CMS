@@ -1,7 +1,7 @@
 ﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
 
-<div class="postFooter">
-    <span class="categories">
+<footer>
+    <span class="glyphicon-folder-open">
         @foreach (var item in Model.Categories)
         {
             if (Model.Categories.First().Key != item.Key){<text>,</text>}
@@ -10,12 +10,12 @@
     </span>
     @if (Model.Tags.Any())
     {
-        <span class="tags">
+        <span class="glyphicon-tags">
             @foreach (var item in Model.Tags)
             {
                 if (Model.Tags.First() != item){<text>,</text>}
-                <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/tag/>@item">@item</a>
+                <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/tag/@item">@item</a>
             }
         </span>
     }
-</div>
+</footer>

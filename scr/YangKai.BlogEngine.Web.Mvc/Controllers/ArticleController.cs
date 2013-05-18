@@ -116,6 +116,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         //相关文章 || 随便看看  
+        [ActionName("detail-related")]
         public ActionResult PostRelated(Guid postId)
         {
             var data = QueryFactory.Instance.Post.FindAllByTag(postId, 7);
@@ -129,6 +130,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         //上一篇 && 下一篇
+        [ActionName("detail-nav")]
         public ActionResult PostNavi(Guid postId)
         {
             ViewBag.PrePost = QueryFactory.Instance.Post.PrePost(postId);

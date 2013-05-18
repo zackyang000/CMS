@@ -16,9 +16,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         // 评论页面
         [AcceptVerbs(HttpVerbs.Get)]
-        public PartialViewResult Index(string id)
+        public PartialViewResult Index(Guid postId)
         {
-            ViewBag.PostId = QueryFactory.Instance.Post.Find(id).PostId; //添加评论时使用
+            ViewBag.PostId = postId; //添加评论时使用
 
             WebGuestCookie cookie = WebGuestCookie.Load();
             var entity = new CommentViewModel

@@ -9,7 +9,7 @@
             </h2>
             <div>
                 <span class="glyphicon-calendar"></span>
-                <span><abbr title="2013-01-25" data-bind="text: $data.PubDate.Format('yyyy年MM月dd日'), attr: { title: $data.PubDate.Format() }"></abbr></span>
+                <span><abbr data-bind="text: $data.PubDate.Format('yyyy年MM月dd日'), attr: { title: $data.PubDate.Format() }"></abbr></span>
                 <span class="glyphicon-user"></span>
                 <span data-bind="text: $data.Author"></span>
                 <span class="glyphicon-pencil" data-bind="visible: $root.authorized"></span>
@@ -22,7 +22,7 @@
                     <span class="glyphicon-comment"></span>
                     <span data-bind="text: $data.ReplyCount > 0 ? $data.ReplyCount + ' 条评论' : '没有评论'"></span>
                 </span>
-                <div class="clear"></div>
+                <div class="clearfix"></div>
             </div>
         </header>
         <section>
@@ -34,7 +34,7 @@
                 </div>
                 <div data-bind="html: $data.IsShowDetail ? $data.Content : $data.Description"></div>
             </div>
-            <div class="clear"></div>
+            <div class="clearfix"></div>
         </section>
         <footer>
             <span class="glyphicon-folder-open" data-bind="foreach: { data: mapDictionaryToArray($data.Categories), as: '$category' }">

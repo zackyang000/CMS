@@ -9,7 +9,7 @@
     var groupUrl = group == null ? string.Empty : group.Url;
 }
 
-@section scripts{
+@section readyscripts{
     if (window.location.href.indexOf('#!') == -1) {
     window.location.href = window.location.href + "#!";
     }
@@ -23,7 +23,7 @@
     @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
     {
         <div id="addpost" class="_add"><a href="/admin/postmanage/new">添加新文章</a></div>
-        <div class="clear"></div>
+        <div class="clearfix"></div>
     }
     <div data-bind="template: { name: 'post', data: $root }"></div>
     </div>

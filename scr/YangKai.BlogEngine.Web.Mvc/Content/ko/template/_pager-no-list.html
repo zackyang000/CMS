@@ -4,7 +4,7 @@
 <ul data-bind="visible: $data.TotalItemCount() !== 0" class="pager">
     <!-- ko if:HasPrevPage -->
     <li class="previous">
-        <a href="#" data-bind="click: function () { CurrentPage(CurrentPage() - 1); }">&larr; 上一页</a></li>
+        <a href="#" data-bind="click: function () { CurrentPage(CurrentPage() - 1); }" rel="prev">&larr; 上一页</a></li>
     <!-- /ko -->
     <!-- ko ifnot:HasPrevPage -->
     <li class="previous disabled">
@@ -12,7 +12,7 @@
     <!-- /ko -->
     <!-- ko if:HasNextPage -->
     <li class="next">
-        <a href="#" data-bind="click: function () { CurrentPage(CurrentPage() + 1); }">下一页 &rarr;</a></li>
+        <a href="#" data-bind="click: function () { CurrentPage(CurrentPage() + 1); }" rel="next">下一页 &rarr;</a></li>
     <!-- /ko -->
     <!-- ko ifnot:HasNextPage -->
     <li class="next disabled">

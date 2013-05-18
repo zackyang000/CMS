@@ -6,16 +6,9 @@
     <div class="clear"></div>
 }
 
-<ul id="posts">
-    <li id="@("list" + Model.PostId)">
-
-        @Html.Partial("detail-post-title", Model)
-        @Html.Partial("detail-post-header", Model)
-        @Html.Partial("detail-post-body", Model)
-        @Html.Partial("detail-post-footer", Model)
-        @Html.Partial("_jiathis")
-    </li>
-</ul>
-
-
-
+<article class="detail">
+    @Html.Partial("detail-post-header", Model)
+    @Html.Partial("detail-post-body", Model)
+    @Html.Partial("detail-post-footer", Model)
+    @Html.Partial("_jiathis")
+</article>

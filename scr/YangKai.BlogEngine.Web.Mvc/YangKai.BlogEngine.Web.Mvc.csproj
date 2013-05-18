@@ -195,6 +195,11 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\html5reset.css" />
     <Content Include="Content\fonts\glyphiconshalflings-regular.svg" />
+    <Content Include="Content\img\ajax-loader.gif" />
+    <Content Include="Content\img\ajax-loader2.gif" />
+    <Content Include="Content\img\ajax-loader3.gif" />
+    <Content Include="Content\img\ajax-loader4.gif" />
+    <Content Include="Content\img\ajax-loader5.gif" />
     <Content Include="Content\img\lab\refstat_pre.jpg" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\js\bootstrap.js" />
@@ -1525,6 +1530,9 @@
     <Content Include="Content\fonts\glyphiconshalflings-regular.otf" />
     <Content Include="Content\fonts\glyphiconshalflings-regular.ttf" />
     <Content Include="Content\fonts\glyphiconshalflings-regular.woff" />
+    <Content Include="Content\ko\viewmodel\PostViewModel.min.js.map">
+      <DependentUpon>PostViewModel.js</DependentUpon>
+    </Content>
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
@@ -1566,8 +1574,8 @@
     <Content Include="Views\Article\index.cshtml" />
     <Content Include="Views\Article\detail-post-footer.cshtml" />
     <Content Include="Views\Article\detail-post-header.cshtml" />
-    <Content Include="Views\Article\postnavi.cshtml" />
-    <Content Include="Views\Article\postrelated.cshtml" />
+    <Content Include="Views\Article\detail-nav.cshtml" />
+    <Content Include="Views\Article\detail-related.cshtml" />
     <Content Include="Views\Article\_notfound.cshtml" />
     <Content Include="Views\Article\_removed.cshtml" />
     <Content Include="Views\Board\index.cshtml" />
@@ -1578,9 +1586,13 @@
     <Content Include="Views\Shared\_jiathis.cshtml" />
     <Content Include="Views\Shared\_layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="fonts\glyphiconshalflings-regular.eot" />
+    <Content Include="fonts\glyphiconshalflings-regular.otf" />
+    <Content Include="fonts\glyphiconshalflings-regular.svg" />
+    <Content Include="fonts\glyphiconshalflings-regular.ttf" />
+    <Content Include="fonts\glyphiconshalflings-regular.woff" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <Content Include="Views\Article\detail-post-body.cshtml" />
-    <Content Include="Views\Article\detail-post-title.cshtml" />
     <Content Include="temp_bak\Views\About\index.cshtml" />
     <Content Include="temp_bak\Views\Article\_notfound.cshtml" />
     <Content Include="temp_bak\Views\Article\_removed.cshtml" />
@@ -1619,6 +1631,12 @@
     <Content Include="temp_bak\ko\viewmodel\RecentCommentsViewModel.coffee" />
     <Content Include="temp_bak\ko\viewmodel\RecentMessagesViewModel.coffee" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\sidebar-search.cshtml" />
+    <Content Include="Views\Shared\sidebar-categorygroup.cshtml" />
+    <Content Include="Views\Shared\sidebar-feed.cshtml" />
+    <Content Include="Views\Shared\sidebar-friendslink.cshtml" />
+    <Content Include="Views\Shared\sidebar-recentcomments.cshtml" />
+    <Content Include="Views\Shared\sidebar-recentmessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">
