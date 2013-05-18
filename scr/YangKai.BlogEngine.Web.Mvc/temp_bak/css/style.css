@@ -35,7 +35,7 @@ input.search{width:200px; background: url(/Content/Image/search.png) no-repeat 3
 .boxcaption {background: #E3E4E6;border-bottom: 1px solid #CCC;padding: 3px 12px;border-top-left-radius: 5px 5px;border-top-right-radius: 5px 5px;line-height: 24px;}
 .boxcaption h3 {font-size: 12px;letter-spacing: 0em;}
 .box {background: #F4F5F7;margin-bottom: 10px;padding: 6px 12px;border-bottom-left-radius: 5px 5px;border-bottom-right-radius: 5px 5px;}
-.loadingbox {height: 16px;line-height: 16px;position: absolute;left: 50%;top: 0;margin-left: -65px;width: 95px;padding: 10px 10px 10px 35px;font-weight: bold;font-size: 12px;color: #666;background: url("/Content/Image/ajax-loader5.gif") 10px 50% no-repeat #EEE;border: 1px solid #CCC;border-top: 1px solid #FFF;border-radius: 5px;border-top-left-radius: 0;border-top-right-radius: 0;z-index: 20;}
+.loadingbox {height: 16px;line-height: 16px;position: absolute;left: 50%;top: 0;margin-left: -65px;width: 95px;padding: 10px 10px 10px 35px;font-weight: bold;font-size: 12px;color: #666;background: url("/Content/img/ajax-loader5.gif") 10px 50% no-repeat #EEE;border: 1px solid #CCC;border-top: 1px solid #FFF;border-radius: 5px;border-top-left-radius: 0;border-top-right-radius: 0;z-index: 20;}
 
 /* 警告框 */
 .messagebox{background: #EDEFF0;font-size: 11px; font-weight:normal;height: 27px;line-height: 27px;padding: 0px 12px;border-radius: 5px 5px; -moz-border-radius: 5px 5px;}

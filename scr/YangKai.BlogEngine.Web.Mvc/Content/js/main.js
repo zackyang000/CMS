@@ -24,8 +24,8 @@ if (!Array.prototype.indexOf) {
 }
 
 //格式化json日期
-String.prototype.Format = function () {
-    var fmt = "yyyy年MM月dd日 hh:mm";
+String.prototype.Format = function (fmt) {
+    if (fmt==null) fmt = "yyyy-MM-dd";
     var myDate = ConvertJsonDate(this);
     var o = {
         "M+": myDate.getMonth() + 1,
@@ -126,5 +126,71 @@ function itemRefresh(list, entity) {
 }
 
 //#endregion
+
+
+
+var urlHelper = {
+    //format: 
+    //*{groupUrl}
+    //*{groupUrl}/{page}
+    //*{groupUrl}?{query}
+    //*{groupUrl}/{page}?{query}
+    //http://www.woshinidezhu.com/{ChannelUrl}#xxx
+    //default value:
+    //groupUrl:由route定义
+    //page:1
+    //query:""
+    getChannelUrl: function (url) {
+        if (url == undefined) {
+            url = window.location.toString();
+        }
+        //匹配 [以(http)://开头],[经过一个"/"],[以"#"或"/"或"-"结尾,若没有,则取后面所有] 的字符串.
+        var r = new RegExp("://(.*?)/(.*?)(?:#.*)?(?:/.*)?(?:-.*)?$");
+        var m = url.match(r);
+        return m ? m[2] : "";
+    },
+    getGroupUrl: function (url) {
+        if (url == undefined) {
+            url = window.location.toString();
+        }
+        //匹配 [以#!/开头],[以"/"或"?"结尾,若没有,则取后面所有] 的字符串.
+        var r = new RegExp("#!/(.*?)(?:(/|[\?]).*)?$");
+        var m = url.match(r);
+        if (m) return (IsNum(m[1]) ? "" : m[1]);
+
+        r = new RegExp("//(.*)/(.*)-(.*?)?$");
+        m = url.match(r);
+        return m ? m[2] : "";
+    },
+    getGroupUrlOrChannelUrl: function (url) {
+        var group = urlHelper.getGroupUrl(url);
+        if (group != "") {
+            return group;
+        }
+        return urlHelper.getChannelUrl(url);
+    },
+    getPage: function (url) {
+        if (url == undefined) {
+            url = window.location.toString();
+        }
+        //匹配 [以#!/开头],[经过一个"/"],[以"?"结尾,若没有,则取后面所有] 的数字.
+        var r = new RegExp("#!/(.*?)/(.*?)(?:[\?].*)?$");
+        var m = url.match(r);
+        if (m && (IsNum(m[2]))) return m[2];
+        //没有group的情况
+        r = new RegExp("#!/(.*?)(?:[\?].*)?$");
+        m = url.match(r);
+        return m ? (IsNum(m[1]) ? m[1] : 1) : 1;
+    },
+    getQuery: function (url) {
+        if (url == undefined) {
+            url = window.location.toString();
+        }
+        //匹配 [以?开头] 的字符串.
+        var r = new RegExp("[\?](.*?)$");
+        var m = url.match(r);
+        return m ? m[0] : "";
+    }
+};
 
 

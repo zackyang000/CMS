@@ -1,10 +1,17 @@
 ﻿<footer>
-    <div>
-        @Html.ActionLink("Simple Analytics", "analytics", "Labs") |
-        @Html.ActionLink("Export Data", "export", "Labs") |
-        @Html.ActionLink("Probe", "probe", "Labs", null, new { target = "_blank" }) |
-        <a href="/elmah.axd" target = "_blank">Error Log</a> |
-        <a href='MailTo:zackyang@outlook.com'>Contact me</a>
-    </div>
-    <div>@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT)</div>
+
+    <p>@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT)</p>
+    <ul class="footer-links">
+        <li><a href="/admin">Admin</a></li>
+        <li class="muted">·</li>
+        <li>@Html.ActionLink("Analytics", "analytics", "Labs")</li>
+        <li class="muted">·</li>
+        <li>@Html.ActionLink("Export Data", "export", "Labs")</li>
+        <li class="muted">·</li>
+        <li>@Html.ActionLink("Probe", "probe", "Labs", null, new { target = "_blank" })</li>
+        <li class="muted">·</li>
+        <li><a href="/elmah.axd" target = "_blank">Error Log</a></li>
+        <li class="muted">·</li>
+        <li><a href='MailTo:zackyang@outlook.com'>Contact me</a></li>
+    </ul>
 </footer>

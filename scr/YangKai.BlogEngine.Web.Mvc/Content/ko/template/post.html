@@ -16,9 +16,9 @@
         <div class="box">关键字: ‘<span data-bind="text: query()"></span>’</div>
     </div>
     <div>
-        <ul data-bind="template: { name: 'post-item', foreach: list }"></ul>
+        <ul data-bind="template: { name: 'post-item', foreach: list }" class="list-unstyled"></ul>
         <div class="loadingbox" data-bind="visible: loading">加载中...</div>
-        <div class="pagination" data-bind="template: { name: '_pager-no-list', foreach: Pager }"></div>
+        <div data-bind="template: { name: '_pager-no-list', foreach: Pager }"></div>
     </div>
 </div>
 <div data-bind="with: detailViewModel, visible: State() === 'detail'"></div>

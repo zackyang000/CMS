@@ -1,21 +1,21 @@
 ﻿<p data-bind="visible: $data.TotalItemCount() === 0">
     没有数据.
 </p>
-<ul data-bind="visible: $data.TotalItemCount() !== 0">
+<ul data-bind="visible: $data.TotalItemCount() !== 0" class="pager">
     <!-- ko if:HasPrevPage -->
-    <li>
-        <a href="#" data-bind="click: function () { CurrentPage(CurrentPage() - 1); }">上一页</a></li>
+    <li class="previous">
+        <a href="#" data-bind="click: function () { CurrentPage(CurrentPage() - 1); }">&larr; 上一页</a></li>
     <!-- /ko -->
     <!-- ko ifnot:HasPrevPage -->
-    <li class="disabled">
-        <a href="#" class="disabledPage">上一页</a></li>
+    <li class="previous disabled">
+        <a href="#" class="disabledPage">&larr; 上一页</a></li>
     <!-- /ko -->
     <!-- ko if:HasNextPage -->
-    <li>
-        <a href="#" data-bind="click: function () { CurrentPage(CurrentPage() + 1); }">下一页</a></li>
+    <li class="next">
+        <a href="#" data-bind="click: function () { CurrentPage(CurrentPage() + 1); }">下一页 &rarr;</a></li>
     <!-- /ko -->
     <!-- ko ifnot:HasNextPage -->
-    <li class="disabled">
-        <a href="#" class="disabledPage">下一页</a></li>
+    <li class="next disabled">
+        <a href="#" class="disabledPage">下一页 &rarr;</a></li>
     <!-- /ko -->
 </ul>
