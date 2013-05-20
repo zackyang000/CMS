@@ -1,5 +1,5 @@
 ﻿body {padding-top: 56px;padding-bottom: 20px;font: 14px "Microsoft YaHei",微软雅黑,PMingLiU,Verdana,Arial,Helvetica,sans-serif;
-      background: url(http://bcs.duapp.com/wysafetuchuang/0ajZWR9KIA.png);
+      background: url(http://www.foolpier.com/wp-content/themes/weisaysimple/images/bg.png);
 }
 a:hover,a:focus{text-decoration: none;}
 .fl{ float: left;}
@@ -19,12 +19,10 @@ text-decoration: none;
 .navbar .btn-navbar {margin-top: 10px;}
 
 
-.container .content{ margin-top: 30px;box-shadow: 0 0 10px #CCC;
+.container .content{ margin-top: 30px;
 margin: 0px auto;
-background: white;
 color: #666;
-box-shadow: 0 0 10px #CCC;
-    padding: 20px;
+padding: 20px;
 }
 .container > footer {text-align: center}
 .container > footer p {margin-bottom: 0;color: #777;}
@@ -124,31 +122,25 @@ aside ul li{ margin-bottom: 5px;}
 #posts {min-height: 200px;}
 #posts li{ margin-bottom: 25px;}
 #posts h2{ margin-top: 0;}
-#posts h2 strong a,#posts h2 strong a:hover{color: #27AAE2;margin-left: 10px;padding-left: 5px; border-left: 5px solid #27AAE2;font-size: 24px;}
+#posts h2 strong a,#posts h2 strong a:hover{color: #777;margin-left: 10px;padding-left: 5px;font-size: 24px;}
 
 #posts h2 > span{ font-size: 16px;}
 #posts h2 > a{ font-size: 40px;margin-top: -5px; -webkit-transform: rotate(-90deg); 
 -moz-transform: rotate(-90deg); transform: rotate(-90deg); }
 #posts h2 > a{display: none;}
 #posts article:hover h2 > a{color: #27AAE2;display: block;}
-#posts article{margin-bottom: 20px;border-bottom: 1px solid #CCC;border-radius: 0;padding: 0px 20px 20px 20px;
-border: 1px solid #E2E2E2;
-background: -webkit-linear-gradient(#ffffff, #fafafa);
-background: -moz-linear-gradient(#ffffff, #fafafa);
-border-radius: 5px 5px 5px 5px;
--webkit-box-shadow: -3px 1px 13px #ddd;
--moz-box-shadow: -3px 1px 13px #ddd;
-box-shadow: -3px 1px 13px #ddd;
+#posts article{margin-bottom: 20px;border-radius: 0;padding: 0px 20px 20px 20px;
 margin: 10px 0;
 min-height: 200px;
 }
 article header ,article header a,article header a:hover{color: #C2C2C2;}
-article header div{margin: -10px 5px 20px 80px;padding-top: 3px; border-top: 1px solid #DDDDDD;}
+article header div{margin: -10px 5px 20px 80px;padding-top: 3px; border-top: 1px solid #27AAE2;}
 article header span{margin-right: 2px;}
 article header span:nth-child(even),article footer span {margin-right: 20px;}
 article header span:last-child {margin-right: 0;}
 article .categories a:first-child,article .tags a:first-child{ padding-left: 2px}
 article .categories{ margin-right: 10px;}
+article section{ margin-left: 85px;}
 
 article .date {
 width: 70px;
