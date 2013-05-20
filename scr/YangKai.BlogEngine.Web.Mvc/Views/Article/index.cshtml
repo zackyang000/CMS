@@ -14,12 +14,11 @@
     window.location.href = window.location.href + "#!";
     }
     ko.applyBindings(new PostViewModel(@isAdmin), $("#posts")[0]);
-    ko.applyBindings(new RecentMessagesViewModel(), $("#recentmessages")[0]);
-    ko.applyBindings(new RecentCommentsViewModel('@channelUrl'), $("#recentcomments")[0]);
+    //ko.applyBindings(new RecentMessagesViewModel(), $("#recentmessages")[0]);
+    //ko.applyBindings(new RecentCommentsViewModel('@channelUrl'), $("#recentcomments")[0]);
 }
 
-<div class="row">
-    <div class="span8" id="posts">
+    <div id="posts">
     @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
     {
         <div id="addpost" class="_add"><a href="/admin/postmanage/new">添加新文章</a></div>
@@ -27,12 +26,3 @@
     }
     <div data-bind="template: { name: 'post', data: $root }"></div>
     </div>
-    <div class="span4">
-        <aside>
-            @Html.Partial("sidebar-feed")
-            @Html.Partial("sidebar-search")
-            @Html.Partial("sidebar-recentcomments")
-            @Html.Partial("sidebar-recentmessages")
-        </aside>
-    </div>
-</div>
