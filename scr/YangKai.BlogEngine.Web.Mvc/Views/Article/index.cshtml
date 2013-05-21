@@ -18,11 +18,6 @@
     //ko.applyBindings(new RecentCommentsViewModel('@channelUrl'), $("#recentcomments")[0]);
 }
 
-    <div id="posts">
-    @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
-    {
-        <div id="addpost" class="_add"><a href="/admin/postmanage/new">添加新文章</a></div>
-        <div class="clearfix"></div>
-    }
+<div id="posts">
     <div data-bind="template: { name: 'post', data: $root }"></div>
-    </div>
+</div>

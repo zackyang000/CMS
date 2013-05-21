@@ -64,8 +64,7 @@ function SearchkeyDown(txt) {
     if (window.event.keyCode == 13) {
         event.returnValue = false;
         var channel = urlHelper.getChannelUrl();
-        var group = urlHelper.getGroupUrl();
-        location.href = '/' + channel + '#!/' + group + '/search/' + txt;
+        location.href = '/' + channel + '#!//search/' + txt;
     }
 }
 
@@ -130,16 +129,6 @@ function itemRefresh(list, entity) {
 
 
 var urlHelper = {
-    //format: 
-    //*{groupUrl}
-    //*{groupUrl}/{page}
-    //*{groupUrl}?{query}
-    //*{groupUrl}/{page}?{query}
-    //http://www.woshinidezhu.com/{ChannelUrl}#xxx
-    //default value:
-    //groupUrl:由route定义
-    //page:1
-    //query:""
     getChannelUrl: function (url) {
         if (url == undefined) {
             url = window.location.toString();
@@ -148,48 +137,6 @@ var urlHelper = {
         var r = new RegExp("://(.*?)/(.*?)(?:#.*)?(?:/.*)?(?:-.*)?$");
         var m = url.match(r);
         return m ? m[2] : "";
-    },
-    getGroupUrl: function (url) {
-        if (url == undefined) {
-            url = window.location.toString();
-        }
-        //匹配 [以#!/开头],[以"/"或"?"结尾,若没有,则取后面所有] 的字符串.
-        var r = new RegExp("#!/(.*?)(?:(/|[\?]).*)?$");
-        var m = url.match(r);
-        if (m) return (IsNum(m[1]) ? "" : m[1]);
-
-        r = new RegExp("//(.*)/(.*)-(.*?)?$");
-        m = url.match(r);
-        return m ? m[2] : "";
-    },
-    getGroupUrlOrChannelUrl: function (url) {
-        var group = urlHelper.getGroupUrl(url);
-        if (group != "") {
-            return group;
-        }
-        return urlHelper.getChannelUrl(url);
-    },
-    getPage: function (url) {
-        if (url == undefined) {
-            url = window.location.toString();
-        }
-        //匹配 [以#!/开头],[经过一个"/"],[以"?"结尾,若没有,则取后面所有] 的数字.
-        var r = new RegExp("#!/(.*?)/(.*?)(?:[\?].*)?$");
-        var m = url.match(r);
-        if (m && (IsNum(m[2]))) return m[2];
-        //没有group的情况
-        r = new RegExp("#!/(.*?)(?:[\?].*)?$");
-        m = url.match(r);
-        return m ? (IsNum(m[1]) ? m[1] : 1) : 1;
-    },
-    getQuery: function (url) {
-        if (url == undefined) {
-            url = window.location.toString();
-        }
-        //匹配 [以?开头] 的字符串.
-        var r = new RegExp("[\?](.*?)$");
-        var m = url.match(r);
-        return m ? m[0] : "";
     }
 };
 

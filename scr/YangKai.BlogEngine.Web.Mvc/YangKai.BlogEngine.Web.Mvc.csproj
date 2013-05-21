@@ -200,9 +200,14 @@
     <Content Include="Content\img\ajax-loader3.gif" />
     <Content Include="Content\img\ajax-loader4.gif" />
     <Content Include="Content\img\ajax-loader5.gif" />
+    <Content Include="Content\img\avatar.png" />
+    <Content Include="Content\img\bg.png" />
     <Content Include="Content\img\lab\refstat_pre.jpg" />
     <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\postline.png" />
     <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\ko\template\comment-item.html" />
+    <Content Include="Content\ko\viewmodel\CommentViewModel.js" />
     <Content Include="temp_bak\css\bootstrap.css" />
     <Content Include="temp_bak\css\html5reset.css" />
     <Content Include="temp_bak\css\messenger-theme-future.css" />

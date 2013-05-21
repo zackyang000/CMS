@@ -16,19 +16,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         // 评论页面
         [AcceptVerbs(HttpVerbs.Get)]
-        public PartialViewResult Index(Guid postId)
+        public PartialViewResult Index()
         {
-            ViewBag.PostId = postId; //添加评论时使用
-
-            WebGuestCookie cookie = WebGuestCookie.Load();
-            var entity = new CommentViewModel
-            {
-                Author = cookie.Name,
-                Email = cookie.Email,
-                Url = cookie.Url
-            };
-
-            return PartialView(entity);
+            return PartialView();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -111,6 +101,17 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             var comments = QueryFactory.Instance.Post.GetCommentsRecent(channelurl);
             return Json(comments.ToViewModels(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult UserInfo()
+        {
+            WebGuestCookie cookie = WebGuestCookie.Load();
+            return Json(new
+                {
+                    Author = cookie.Name,
+                    Email = cookie.Email,
+                    Url = cookie.Url
+                }, JsonRequestBehavior.AllowGet);
         }
     }
 }

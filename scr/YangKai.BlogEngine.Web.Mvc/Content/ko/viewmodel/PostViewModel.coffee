@@ -99,6 +99,7 @@ class listViewModel
         location.href = self.link()
 
       self.turnpages = (channel, group, page, type, query) ->
+        $('.dropdown.open .dropdown-toggle').dropdown('toggle')
         self.channel channel
         self.group group
         self.type type

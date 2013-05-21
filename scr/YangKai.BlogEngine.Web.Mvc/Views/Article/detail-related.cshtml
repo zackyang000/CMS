@@ -3,12 +3,12 @@
     Layout = null;
     var title = Convert.ToBoolean(ViewBag.IsExistRelatedPosts) ? "相关文章" : "随便看看";
 }
-<div id="related_posts">
-    <div class="boxcaption">@title</div>
-    <ul class="box">
+<div id="related">
+        <div>@title</div>
+    <ul>
         @foreach (var item in Model)
         {
-        <li>@item.PubDate.ToString("yyyy年MM月dd日") -- <a href="/@item.Group.Url-@item.Url">@item.Title</a></li>
+            <li>@item.PubDate.ToString("yyyy年MM月dd日") -- <a href="/@item.Group.Url-@item.Url">@item.Title</a></li>
         }
     </ul>
 </div>

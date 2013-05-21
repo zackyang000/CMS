@@ -124,6 +124,7 @@ listViewModel = (function() {
       return location.href = self.link();
     });
     self.turnpages = function(channel, group, page, type, query) {
+      $('.dropdown.open .dropdown-toggle').dropdown('toggle');
       self.channel(channel);
       self.group(group);
       self.type(type);

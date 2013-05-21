@@ -5,17 +5,17 @@
     var nextPost = ViewBag.NextPost as Post;
 }
 
-<ul class="pager">
+<ul class="post-nav">
     @if (prePost != null)
     {
-        <li class="previous">
-            <a href="/@prePost.Group.Url-@prePost.Url" rel="prev">&larr; @prePost.Title</a>
+        <li>
+            <a href="/@prePost.Group.Url-@prePost.Url" rel="prev">&larr; ·上一篇：@prePost.Title</a>
         </li>
     }
     @if (nextPost != null)
     {
-        <li class="next">
-            <a href="/@nextPost.Group.Url-@nextPost.Url" rel="next">@nextPost.Title &rarr;</a>
+        <li>
+            <a href="/@nextPost.Group.Url-@nextPost.Url" rel="next">下一篇：@nextPost.Title· &rarr;</a>
         </li>
     }
 </ul>

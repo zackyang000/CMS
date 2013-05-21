@@ -1,8 +1,5 @@
-﻿          <!--      <a class="glyphicon-share-alt" target="_blank" data-bind="attr: { href: '/' + $data.GroupUrl + '-' + $data.Url }">&nbsp;</a>-->
-
-
-<li>
-    <article class="row">
+﻿<li>
+    <article>
         <div class="date">
             <div data-bind="text: $data.PubDate.Format('dd')"></div>
             <div data-bind="text: $data.PubDate.Format('yyyy.MM')"></div>
@@ -39,15 +36,13 @@
             <div>
                 <div class="thumb" data-bind="visible: $data.ThumbnailUrl && !$data.IsShowDetail">
                     <a href="JavaScript:void(0);" data-bind="click: $root.expand">
-                        <img style="width:160px; height:100px;" data-bind="attr: { src: '/upload/thumbnail/' + $data.ThumbnailUrl, alt: $data.Title, title: $data.Title }" />
+                        <img class="img-thumbnail" data-bind="attr: { src: '/upload/thumbnail/' + $data.ThumbnailUrl, alt: $data.Title, title: $data.Title }" />
                     </a>
                 </div>
                 <div data-bind="html: $data.IsShowDetail ? $data.Content : $data.Description"></div>
             </div>
             <div class="clearfix"></div>
         </section>
-        <footer>
-
-        </footer>
+        <footer></footer>
     </article>
 </li>

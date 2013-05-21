@@ -39,7 +39,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
                 ViewBag.Group = group;
                 ViewBag.Channel = channel;
-                ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, channel.Name);
+                ViewBag.Title = string.Format(Config.Format.PAGE_TITLE,channel.Name);
                 ViewBag.SubCaption = channel.Description;
                 ViewBag.Keywords = string.Empty;
                 ViewBag.Description = channel.Description;

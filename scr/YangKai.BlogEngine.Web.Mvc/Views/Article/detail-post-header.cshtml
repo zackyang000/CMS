@@ -1,5 +1,12 @@
 ﻿@model YangKai.BlogEngine.Web.Mvc.Models.PostViewModel
+@{
+    var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin;
+}
 
+<div class="date">
+    <div>@Model.PubDate.ToString("dd")</div>
+    <div>@Model.PubDate.ToString("yyyy.MM")</div>
+</div>
 <header>
     <h2>
         <strong>@Model.Title</strong>
@@ -13,12 +20,54 @@
         }
     </h2>
     <div>
-        <span class="glyphicon-calendar"></span>
-        <span><abbr title="@Model.PubDate.ToString("yyyy-MM-dd")">@Model.PubDate.ToString("yyyy年MM月dd日")</abbr></span>
+        <span class="glyphicon-folder-open categories">
+            @foreach (var item in Model.Categories)
+            {
+                if (Model.Categories.First().Key != item.Key){<text>,</text>}
+                <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/category/@item.Key">@item.Value</a>
+            }
+        </span>
+        @if (Model.Tags.Any())
+        {
+            <span class="glyphicon-tags tags" style="display: none;">
+                @foreach (var item in Model.Tags)
+                {
+                    if (Model.Tags.First() != item)
+                    {
+                        <text>,</text>
+                    }
+                    <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/tag/@item">@item</a>
+                }
+            </span>
+        }
+        else
+        {
+            <span style="display: none;"></span>
+        }
         <span class="glyphicon-user"></span>
         <span>@Model.Author</span>
-
-        @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
+        <span class="glyphicon-hand-right"></span>
+        <span>@Model.ViewCount 次点击</span>
+        <span class="glyphicon-comment"></span>
+        <span>@(Model.ReplyCount > 0 ? Model.ReplyCount + " 条评论" : "没有评论")</span>
+        <span class="glyphicon-folder-open">
+            @foreach (var item in Model.Categories)
+            {
+                if (Model.Categories.First().Key != item.Key){<text>,</text>}
+                <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/category/@item.Key">@item.Value</a>
+            }
+        </span>
+        @if (Model.Tags.Any())
+        {
+            <span class="glyphicon-tags">
+                @foreach (var item in Model.Tags)
+                {
+                    if (Model.Tags.First() != item){<text>,</text>}
+                    <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/tag/@item">@item</a>
+                }
+            </span>
+        }
+        @if (isAdmin)
         {
             <span class="glyphicon-pencil"></span>
             <span><a href="/admin/postmanage/edit/@Model.Url">编辑</a></span>

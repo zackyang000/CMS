@@ -30,6 +30,13 @@
                     <li><a href="/board">留言板</a></li>
                     <li><a href="/about">关于</a></li>
                 </ul>
+                @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
+                {
+                    <ul class="nav pull-right">
+                        <li><a href="/admin/postmanage/new">添加文章</a></li>
+                        <li><a href="/admin">管理</a></li>
+                    </ul>
+                }
             </div>
         </div>
     </nav>
