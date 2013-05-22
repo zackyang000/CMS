@@ -1,9 +1,0 @@
-﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Channel>
-<ul id="menu"> 
-    @foreach (var entity in Model)
-    {
-        <li class="@entity.Url"><a href="@Url.Action("Index", entity.Url)"><span>@entity.Name</span></a></li>
-    }
-    <li class="board"><a href="@Url.Action("Index", "Board")"><span>留言板</span></a></li> 
-    <li class="about"><a href="@Url.Action("Index", "About")"><span>关于</span></a></li> 
-</ul> 

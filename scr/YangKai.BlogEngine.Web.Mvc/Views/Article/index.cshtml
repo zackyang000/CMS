@@ -1,12 +1,5 @@
-﻿@using YangKai.BlogEngine.Modules.PostModule.Objects
-@{
+﻿@{
     var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin.ToString().ToLower();
-}
-@{
-    var channel = ViewBag.Channel as Channel;
-    var group = ViewBag.Group as Group;
-    var channelUrl = channel == null ? string.Empty : channel.Url;
-    var groupUrl = group == null ? string.Empty : group.Url;
 }
 
 @section readyscripts{
@@ -14,10 +7,9 @@
     window.location.href = window.location.href + "#!";
     }
     ko.applyBindings(new PostViewModel(@isAdmin), $("#posts")[0]);
-    //ko.applyBindings(new RecentMessagesViewModel(), $("#recentmessages")[0]);
-    //ko.applyBindings(new RecentCommentsViewModel('@channelUrl'), $("#recentcomments")[0]);
 }
 
 <div id="posts">
+    <div class="loadingbox" data-bind="visible:listViewModel().loading">加载中...</div>
     <div data-bind="template: { name: 'post', data: $root }"></div>
 </div>

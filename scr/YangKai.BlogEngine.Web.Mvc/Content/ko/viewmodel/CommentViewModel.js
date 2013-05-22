@@ -12,7 +12,7 @@
 
     self.add = function (formElement) {
         self.error("");
-        self.loading("正在提交");
+        self.loading("正在提交...");
         $.post("/comment/add", $(formElement).serialize() + "&PostId=" + postId, null, "json")
             .done(function (o) {
                 self.loading("");

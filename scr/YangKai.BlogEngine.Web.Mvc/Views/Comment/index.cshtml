@@ -1,12 +1,5 @@
-﻿@model YangKai.BlogEngine.Web.Mvc.Models.CommentViewModel
-@{
-    Layout = null;
-}
-
-<div id="comment">
-    <div class="title">
-        <span>文章评论</span>
-    </div>
+﻿<div id="comment">
+    <div class="title"><span>文章评论</span></div>
     <!-- list START -->
     <div id="commentlist">
         <div class="ko-grid-loader" data-bind="visible: list() === null"></div>
@@ -25,26 +18,23 @@
             </p>
             <div data-bind="visible: username().length == 0 || controldisplayauthoreditor">
                 <p>
-                    <input class="textfield" id="Author" name="Author" type="text" data-bind="value: username" />
-                    <label for="Author">昵称(必填)</label>
+                    <input class="span3" placeholder="昵称(必填)" id="Author" name="Author" type="text" data-bind="value: username" />
+                    <label>昵称*</label>
                 </p>
                 <p>
-                    <input class="textfield" id="Email" name="Email" type="text" data-bind="value: email" />
-                    <label for="Author">电子邮箱 (我们会为您保密)</label>
+                    <input class="span3" id="Email" name="Email" type="text" data-bind="value: email" />
+                    <label>邮箱</label>
                 </p>
-                <p>                
-                    <input class="textfield" id="Url" name="Url" type="text" data-bind="value: url" />
-                    <label for="Author">网址</label>
+                <p>
+                    <input class="span3" id="Url" name="Url" type="text" data-bind="value: url" />
+                    <label>网址</label>               
                 </p>       
             </div>
-            <p>
-                <textarea cols="20" id="Content" name="Content" rows="2"></textarea>
-            </p>
-            <div class="submitbox">
-                <div class="submitbutton"><input type="submit" value="提交" data-bind="disable: loading().length > 0" /></div>
-                <div class="loading" data-bind="text: loading, visible: loading().length > 0" style="display: none;"></div>
-                <div class="error" data-bind=" text: error, visible: error().length > 0" style="display: none;"></div>
-                <div class="clear"></div>
+            <p><textarea id="Content" name="Content" rows="4"></textarea></p>
+            <div>
+                <button class="btn btn-primary btn-large" data-bind="disable: loading().length > 0">提交</button>
+                <span class="loading" data-bind="text: loading, visible: loading().length > 0" style="display: none;"></span>
+                <span class="text-error" data-bind=" text: error, visible: error().length > 0" style="display: none;"></span>
             </div>
         </form>
     </div>
