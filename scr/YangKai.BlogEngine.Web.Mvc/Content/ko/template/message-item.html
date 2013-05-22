@@ -1,0 +1,18 @@
+﻿<li>
+    <div class="author">
+        <div class="pic"><img class="avatar" width="32" height="32" alt="avatar" src="/Content/Image/avatar.png" /></div>
+        <div class="name" data-bind="text: $data.Author"></div>
+    </div>
+    <div class="info">
+        <span class="date" data-bind="text: $data.CreateDate.Format()"></span> |
+        #<span data-bind="text: $parent.list().length - $index()"></span>
+        <span class="warningbox" data-bind="visible: $data.IsDeleted">该回复已删除,仅管理员可见.</span>
+        <div class="act" data-bind="visible: $root.isAdmin">
+            <a href="JavaScript:void(0)" data-bind="click: $root.del, visible: $data.IsDeleted == false">[删除]</a>
+            <a href="JavaScript:void(0)" data-bind="click: $root.renew, visible: $data.IsDeleted">[恢复]</a>
+        </div>
+        <div class="clear"></div>
+        <div class="content" data-bind="html: $data.Content"></div>
+    </div>
+    <div class="clear"></div>   
+</li>

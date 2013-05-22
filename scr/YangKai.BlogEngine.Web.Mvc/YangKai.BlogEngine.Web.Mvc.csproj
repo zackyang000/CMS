@@ -207,6 +207,7 @@
     <Content Include="Content\img\postline.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\ko\template\comment-item.html" />
+    <Content Include="Content\ko\template\message-item.html" />
     <Content Include="Content\ko\viewmodel\CommentViewModel.js" />
     <Content Include="Content\img\main_bg_grid_tile.png" />
     <Content Include="Content\img\main_bg_image.jpg" />
@@ -221,6 +222,7 @@
     <Content Include="Content\ko\template\_pager-with-list.html" />
     <Content Include="Content\ko\template\post.html" />
     <Content Include="Content\ko\template\post-item.html" />
+    <Content Include="Content\ko\viewmodel\BoardViewModel.js" />
     <Content Include="Content\ko\viewmodel\PostViewModel.js">
       <DependentUpon>PostViewModel.coffee</DependentUpon>
     </Content>
