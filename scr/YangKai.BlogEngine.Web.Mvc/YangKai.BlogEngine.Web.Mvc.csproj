@@ -1356,8 +1356,6 @@
     <Content Include="Content\js\modernizr-2.6.2.js" />
     <Content Include="sitemap.xml" />
     <Content Include="sitemap.xsl" />
-    <Content Include="_bak\main.js" />
-    <Content Include="_bak\style.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1378,7 +1376,6 @@
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Release\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Debug\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Release\" />
-    <Folder Include="error\" />
     <Folder Include="UpLoad\export\" />
     <Folder Include="UpLoad\files\" />
     <Folder Include="UpLoad\images\" />
