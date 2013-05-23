@@ -1468,7 +1468,6 @@
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header.cshtml" />
-    <Content Include="Views\Shared\_jiathis.cshtml" />
     <Content Include="Views\Shared\_layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="fonts\glyphiconshalflings-regular.eot" />

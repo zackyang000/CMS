@@ -50,23 +50,6 @@
         <span>@Model.ViewCount 次点击</span>
         <span class="glyphicon-comment"></span>
         <span>@(Model.ReplyCount > 0 ? Model.ReplyCount + " 条评论" : "没有评论")</span>
-        <span class="glyphicon-folder-open">
-            @foreach (var item in Model.Categories)
-            {
-                if (Model.Categories.First().Key != item.Key){<text>,</text>}
-                <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/category/@item.Key">@item.Value</a>
-            }
-        </span>
-        @if (Model.Tags.Any())
-        {
-            <span class="glyphicon-tags">
-                @foreach (var item in Model.Tags)
-                {
-                    if (Model.Tags.First() != item){<text>,</text>}
-                    <a href="/@Model.ChannelUrl#!/@Model.GroupUrl/tag/@item">@item</a>
-                }
-            </span>
-        }
         @if (isAdmin)
         {
             <span class="glyphicon-pencil"></span>

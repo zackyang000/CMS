@@ -6,10 +6,19 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by YangKai , 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Wed, 22 May 2013 15:20:57 GMT</pubDate>
-    <lastBuildDate>Wed, 22 May 2013 15:20:57 GMT</lastBuildDate>
+    <pubDate>Thu, 23 May 2013 09:46:54 GMT</pubDate>
+    <lastBuildDate>Thu, 23 May 2013 09:46:54 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>2323</title>
+      <description>2323&lt;br /&gt;发表于:算术入门</description>
+      <link>http://www.woshinidezhu.com/codes/Detail/introduction-to-arithmetic</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>e75dc991-f1e4-4b75-9a5c-81aeed168ad3</guid>
+      <pubDate>Thu, 23 May 2013 09:46:53 GMT</pubDate>
+    </item>
     <item>
       <title>233223</title>
       <description>233223&lt;br /&gt;发表于:哈哈看到最后一句笑了</description>
@@ -453,15 +462,6 @@
       <author>匿名</author>
       <guid>29a3dabf-0db2-df11-99ad-000c29f1398f</guid>
       <pubDate>Thu, 22 Apr 2010 13:41:25 GMT</pubDate>
-    </item>
-    <item>
-      <title>太强了</title>
-      <description>太强了&lt;br /&gt;发表于:YD的印度歌曲</description>
-      <link>http://www.woshinidezhu.com/videos/Detail/YD-yindu-gequ</link>
-      <category>视频 - 早期数据</category>
-      <author>匿名</author>
-      <guid>31a3dabf-0db2-df11-99ad-000c29f1398f</guid>
-      <pubDate>Thu, 22 Apr 2010 13:19:21 GMT</pubDate>
     </item>
   </channel>
 </rss>

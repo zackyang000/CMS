@@ -1,7 +1,7 @@
-﻿<div id="comment">
+﻿<div id="comment" class="comment">
     <div class="title"><span>文章评论</span></div>
     <!-- list START -->
-    <div id="commentlist">
+    <div>
         <div class="ko-grid-loader" data-bind="visible: list() === null"></div>
         <p data-bind="visible: list().length == 0" style="display: none;">本文目前尚无任何评论.</p>
         <ul id="thecomments" data-bind="template: { name: 'comment-item', foreach: list, afterAdd: elementFadeIn }, visible: list().length > 0"></ul>

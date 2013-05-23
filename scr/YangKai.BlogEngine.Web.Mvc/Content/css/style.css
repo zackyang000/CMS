@@ -58,23 +58,24 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
 .post-nav a:hover{background:#27AAE2;text-decoration:none}
 
 /* 相关文章 */
-#related{background: #E3E4E6;margin: 0 20px 0 20px;}
-#related div{border-bottom: 5px solid #72B332;color: #72B332;font-size: 22px;font-family: Arial,Helvetica,sans-serif;width: 95%;margin: 0 auto;height: 40px;line-height: 40px;padding: 0px;}
+#related  {line-height: 20px;font-size: 13px;margin-top: 40px;}
+#related .title {border-top: 6px solid #72B332;height: 1px;margin: 20px 0 30px 0;position: relative;}
+#related .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #72B332;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
 #related ul{ list-style: none;}
 #related ul li{ line-height: 26px;}
 #related ul li a:hover{color: #72B332;}
 
 /* 评论 */
-#comment {line-height: 20px;font-size: 13px;margin-top: 40px;}
-#comment .title {border-top: 6px solid #27AAE2;height: 1px;margin: 20px 0 40px 0;position: relative;}
-#comment .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #27AAE2;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
-#comment ul{ list-style: none;}
-#comment li{margin-bottom: 15px;padding-bottom: 21px;background: url(/Content/img/postline.png) bottom repeat-x;zoom: 1;}
-#comment .gravatar {float: left;padding-right: 20px;border-right: 1px solid #D1D9DB;margin: 0 20px 0 0;border-right-color: #D1D9DB;}
-#comment li:hover .gravatar{border-right-color: #E38383;}.gravatar img{ width: 40px;height: 40px;}.text {overflow: hidden;}
-#comment .text >span {float: right;padding-right: 5px;font-size: 13px;color: #CCC;}
-#comment .commentid {font-weight: bold;color:#E38383;}
-#comment .comment-meta {margin-top: 5px;color: #CCC;}
+.comment {line-height: 20px;font-size: 13px;margin-top: 40px;}
+.comment .title {border-top: 6px solid #27AAE2;height: 1px;margin: 20px 0 40px 0;position: relative;}
+.comment .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #27AAE2;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
+.comment ul{ list-style: none;}
+.comment li{margin-bottom: 15px;padding-bottom: 21px;background: url(/Content/img/postline.png) bottom repeat-x;zoom: 1;}
+.comment .gravatar {float: left;padding-right: 20px;border-right: 1px solid #D1D9DB;margin: 0 20px 0 0;border-right-color: #D1D9DB;}
+.comment li:hover .gravatar{border-right-color: #E38383;}.gravatar img{ width: 40px;height: 40px;}.text {overflow: hidden;}
+.comment .text >span {float: right;padding-right: 5px;font-size: 13px;color: #CCC;}
+.comment .commentid {font-weight: bold;color:#E38383;}
+.comment .comment-meta {margin-top: 5px;color: #CCC;}
 
 /* ko loading */
 .ko-area-loader{background: url(/Content/img/ajax-loader5.gif) no-repeat;height: 16px;line-height: 16px;padding-left: 20px;}
@@ -95,7 +96,7 @@ article h2 strong{margin-left: 10px;padding-left: 5px;font-size: 24px;}
 article h2 strong,article h2 strong a,article h2 strong a:hover{color: #777;}
 article h2 > span{ font-size: 16px;}
 article h2 > a{ font-size: 40px;margin-top: -5px; -webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); transform: rotate(-90deg);display: none; }
-article:hover h2 > a{color: #27AAE2;display: block;}
+article:hover h2 > a,article:hover h2 > a:hover{color: #27AAE2;display: block;}
 article header ,article header a,article header a:hover{color: #C2C2C2;}
 article header div{margin: -10px 5px 20px 80px;padding-top: 3px; border-top: 1px solid #27AAE2;}
 article header span{margin-right: 2px;}

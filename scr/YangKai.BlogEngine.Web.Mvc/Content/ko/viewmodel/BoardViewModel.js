@@ -2,7 +2,9 @@
     var self = this;
 
     self.list = ko.observableArray();
-    self.username = ko.observable('@Model.Author');
+    self.username = ko.observable('');
+    self.email = ko.observable('');
+    self.url = ko.observable('');
     self.loading = ko.observable("");
     self.error = ko.observable("");
     self.controldisplayauthoreditor = ko.observable(false);
@@ -54,4 +56,9 @@
     };
 
     $.getJSON('/board/list', self.list);
+    $.getJSON('/comment/UserInfo', function (data) {
+        self.username(data.Author);
+        self.email(data.Email);
+        self.url(data.Url);
+    });
 }

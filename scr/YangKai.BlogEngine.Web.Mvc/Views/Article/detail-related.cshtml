@@ -4,7 +4,7 @@
     var title = Convert.ToBoolean(ViewBag.IsExistRelatedPosts) ? "相关文章" : "随便看看";
 }
 <div id="related">
-        <div>@title</div>
+    <div class="title"><span>@title</span></div>
     <ul>
         @foreach (var item in Model)
         {
