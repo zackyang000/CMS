@@ -4,16 +4,24 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class LabsController : Controller
     {
-        public FilePathResult Export()
+        public ActionResult Export()
+        {
+            var data = QueryFactory.Instance.Post.FindAllByNormal(1, 50, null, null, null, null, null, null);
+            return View(data.DataList.ToViewModels());
+        }
+
+        public FilePathResult ExportExcel()
         {
             var filepath =
                 Server.MapPath(string.Format("/UpLoad/export/{0}.xls", DateTime.Now.ToString("导出数据 yyyy-MM-dd HHmmss")));
-            QueryFactory.Instance.Lab.ExportPosts(filepath);
+            var data = QueryFactory.Instance.Post.FindAllByNormal(1, 50, null, null, null, null, null, null);
+            QueryFactory.Instance.Lab.ExportPosts(filepath,data.DataList);
             return new FilePathResult(filepath, "application/vnd.ms-excel");
         }
 

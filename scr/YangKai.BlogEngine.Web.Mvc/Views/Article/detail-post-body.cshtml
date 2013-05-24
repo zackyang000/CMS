@@ -6,9 +6,9 @@
         <div class="clear"></div>
         @if (Model.QrCodeUrl != null)
         {
-            <a href="javascrpit:void(0);" onclick=" $('#qrcode').toggle(); " class="glyphicon-qrcode"></a>
-            <div id="qrcode" class="qrcode">
-                <img src="/upload/qrcode/@Model.QrCodeUrl" width="200" height="200" alt="二维码" />
+            <a href="javascrpit:void(0);" onclick=" $(this).next().toggle();" class="glyphicon-qrcode"></a>
+            <div class="qrcode">
+                <img src="/upload/qrcode/@Model.QrCodeUrl" width="200" height="200" alt="二维码" class="img-thumbnail" />
             </div>
         }
         @if (Model.SourceUrl != null)

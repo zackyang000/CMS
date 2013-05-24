@@ -177,6 +177,24 @@
     <Content Include="Content\admin\images\left.png" />
     <Content Include="Content\admin\images\menu1.png" />
     <Content Include="Content\admin\images\menu2.png" />
+    <Content Include="Content\img\technologies\Bootstrap.png" />
+    <Content Include="Content\img\technologies\bootstrapper.png" />
+    <Content Include="Content\img\technologies\CKEditor.png" />
+    <Content Include="Content\img\technologies\CKFinder.png" />
+    <Content Include="Content\img\technologies\coffeescript.jpg" />
+    <Content Include="Content\img\technologies\css3.png" />
+    <Content Include="Content\img\technologies\ddd.png" />
+    <Content Include="Content\img\technologies\entityframework.png" />
+    <Content Include="Content\img\technologies\html5.png" />
+    <Content Include="Content\img\technologies\jquery.jpg" />
+    <Content Include="Content\img\technologies\konckout.png" />
+    <Content Include="Content\img\technologies\metro.jpg" />
+    <Content Include="Content\img\technologies\modernizr.png" />
+    <Content Include="Content\img\technologies\mvc.png" />
+    <Content Include="Content\img\technologies\net.jpg" />
+    <Content Include="Content\img\technologies\none.png" />
+    <Content Include="Content\img\technologies\NPOI.jpg" />
+    <Content Include="Content\img\technologies\RSS.png" />
     <Content Include="Content\admin\images\top.png" />
     <Content Include="Content\admin\images\wpspin_light.gif" />
     <Content Include="Content\admin\jquery-ui-1.8.8.custom\jquery-ui.min.js" />
@@ -205,6 +223,8 @@
     <Content Include="Content\img\lab\refstat_pre.jpg" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\postline.png" />
+    <Content Include="Content\img\technologies\sammy.png" />
+    <Content Include="Content\img\technologies\sql.jpg" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\ko\template\comment-item.html" />
     <Content Include="Content\ko\template\message-item.html" />
@@ -1481,6 +1501,7 @@
     <Content Include="Views\Shared\sidebar-friendslink.cshtml" />
     <Content Include="Views\Shared\sidebar-recentcomments.cshtml" />
     <Content Include="Views\Shared\sidebar-recentmessages.cshtml" />
+    <Content Include="Views\Labs\export.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">

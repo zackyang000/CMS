@@ -2,22 +2,27 @@
       background: url(/Content/img/bg.png);
 }
 
+.bg-color-blue {background-color: #0072BC !important;}
+.bg-color-blueDark {background-color: #662D91 !important;}
+.bg-color-green {background-color: #01a31c !important;}
+.bg-color-greenDark {background-color: #008641 !important;}
+.bg-color-red {background-color: #bc1c48 !important;}
+.bg-color-yellow {background-color: #ffc40d !important;}
+.bg-color-orange {background-color: #CD4900 !important;}
+.bg-color-pink {background-color: #c3325f !important;}
+.bg-color-purple {background-color: #603cba !important;}
+.bg-color-darken {background-color: #1c1c1c !important;}
+
 /* all style */
 .fl{ float: left;}
 .fr{ float: right;}
-a {color: #08D;}
-a:hover {color: #08D;text-decoration: none;}
+a:hover {color: #24A0DA;text-decoration: none;}
 ::selection {background: #ffb7b7;}
 ::-webkit-selection {background: #ffb7b7;}
 ::-moz-selection {background: #ffb7b7;}
 .container .content{ margin-top: 30px;margin: 0px auto;color: #666;padding: 20px;}
-textarea, input[type="text"], input[type="password"] {
-    border: 2px solid #DDD;
-    border-radius: 0;
-}
-textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
-    border: 2px solid #2BA2DB;
-}
+textarea, input[type="text"], input[type="password"] {border: 2px solid #DDD;border-radius: 0;}
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus {border: 2px solid #24A0DA;}
 
 .container > footer {text-align: center}
 .container > footer p {margin-bottom: 0;color: #777;}
@@ -41,8 +46,8 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
 #cta-content h1, #cta-content h2 {text-shadow: 0 0 10px rgba(0,0,0,.5);}
 #cta-content .bottom {width: 700px;margin: auto;}
 .home{text-align: center;margin-top: 60px;}
-.home a{text-decoration: none;font-size: 50px;background: #33A5C8; color:#fff ;}
-.home span{background: #33A5C8; color:#fff ;padding: 70px 32px 30px 32px;  -webkit-border-radius: 500px;-moz-border-radius: 500px;border-radius: 500px;}
+.home a{text-decoration: none;font-size: 50px;background: #0072BC; color:#fff ;}
+.home span{background: #0072BC; color:#fff ;padding: 70px 32px 30px 32px;  -webkit-border-radius: 500px;-moz-border-radius: 500px;border-radius: 500px;}
 .home h2{ padding-top: 20px;}
 
 /* 提示框 */
@@ -55,20 +60,20 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
 .post-nav {margin-bottom: 15px;letter-spacing: 4px;overflow: hidden;display: block;text-align: center;margin-left: 16px;position: relative;}
 .post-nav li {line-height: 35px;height: 35px;display: block;margin-right: 20px;background: #CCC;color: #FFF;float: left;}
 .post-nav a {height: 35px;display: block;color: #FFF;padding: 0 20px 0 20px;}
-.post-nav a:hover{background:#27AAE2;text-decoration:none}
+.post-nav a:hover{background:#0072BC;text-decoration:none}
 
 /* 相关文章 */
 #related  {line-height: 20px;font-size: 13px;margin-top: 40px;}
-#related .title {border-top: 6px solid #72B332;height: 1px;margin: 20px 0 30px 0;position: relative;}
-#related .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #72B332;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
+#related .title {border-top: 6px solid #01a31c;height: 1px;margin: 20px 0 30px 0;position: relative;}
+#related .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #01a31c;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
 #related ul{ list-style: none;}
 #related ul li{ line-height: 26px;}
-#related ul li a:hover{color: #72B332;}
+#related ul li a:hover{color: #01a31c;}
 
 /* 评论 */
 .comment {line-height: 20px;font-size: 13px;margin-top: 40px;}
-.comment .title {border-top: 6px solid #27AAE2;height: 1px;margin: 20px 0 40px 0;position: relative;}
-.comment .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #27AAE2;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
+.comment .title {border-top: 6px solid #0072BC;height: 1px;margin: 20px 0 40px 0;position: relative;}
+.comment .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #0072BC;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
 .comment ul{ list-style: none;}
 .comment li{margin-bottom: 15px;padding-bottom: 21px;background: url(/Content/img/postline.png) bottom repeat-x;zoom: 1;}
 .comment .gravatar {float: left;padding-right: 20px;border-right: 1px solid #D1D9DB;margin: 0 20px 0 0;border-right-color: #D1D9DB;}
@@ -85,19 +90,17 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
 #posts article .thumb {margin: 0px 15px 0px 10px;float: left;}
 #posts article .thumb img {width: 160px;height: 100px;}
 /* detail */
-.qrcode {width: 200px;padding: 20px;border: 1px solid #d4d9dd;box-shadow: inset 0 0 2px #d4d9dd;margin-left: 180px;display: none;}
-.breadcrumb{padding-left: 10px;margin-left: 20px;border-left: #F88FB7 20px solid;color: #888;border-radius: 0;}
+.qrcode {display: none;}
+.breadcrumb{padding-left: 10px;margin-left: 20px;border-left: #F88FB7 20px solid;border-radius: 0;}
 /* list */
 #posts { position: relative;}
 article {margin-bottom: 20px;border-radius: 0;padding: 0px 20px 20px 20px;margin: 10px 0;min-height: 200px;}
 article li{ margin-bottom: 25px;}
 article h2{ margin-top: 0;}
 article h2 strong{margin-left: 10px;padding-left: 5px;font-size: 24px;}
-article h2 strong,article h2 strong a,article h2 strong a:hover{color: #777;}
 article h2 > span{ font-size: 16px;}
 article h2 > a{ font-size: 40px;margin-top: -5px; -webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); transform: rotate(-90deg);display: none; }
-article:hover h2 > a,article:hover h2 > a:hover{color: #27AAE2;display: block;}
-article header ,article header a,article header a:hover{color: #C2C2C2;}
+article:hover h2 > a,article:hover h2 > a:hover{display: block;}
 article header div{margin: -10px 5px 20px 80px;padding-top: 3px; border-top: 1px solid #27AAE2;}
 article header span{margin-right: 2px;}
 article header span:nth-child(even),article footer span {margin-right: 20px;}
@@ -105,6 +108,6 @@ article header span:last-child {margin-right: 0;}
 article .categories a:first-child,article .tags a:first-child{ padding-left: 2px}
 article .categories{ margin-right: 10px;}
 article section{ margin-left: 85px;}
-article .date {width: 70px;height: 70px;background-color: #27AAE2;color: #FFFFFF;float: left;text-align: center;font-weight: bold;font-family: Georgia, Arial, Tahoma, Geneva;}
+article .date {width: 70px;height: 70px;background-color: #0072BC;color: #FFFFFF;float: left;text-align: center;font-weight: bold;font-family: Georgia, Arial, Tahoma, Geneva;}
 article .date div:first-child {font-size: 38px;margin-top: 2px;height: 46px;line-height: 46px;}
 article .date div:last-child {margin-top: -3px;font-size: 15px;height: 18px;line-height: 18px;}

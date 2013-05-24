@@ -1,0 +1,42 @@
+﻿@using YangKai.BlogEngine.Common
+@model IList<YangKai.BlogEngine.Web.Mvc.Models.PostViewModel>
+
+@{
+    ViewBag.Title = "title";
+}
+<div><a href="/labs/exportexcel" class="btn btn-primary">导出为Excel</a></div>
+<table class="table table-hover table-striped" style="font-size: 12px;">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th style="width: 100px;">标题</th>
+            <th>主题</th>
+            <th>分类</th>
+            <th>标签</th>
+            <th>作者</th>
+            <th>发布时间</th>
+            <th>点击数</th>
+            <th>回复数</th>
+            <th style="width: 100px;">地址</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var i = 1; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(i++)</td>
+                <td>@item.Title</td>
+                <td>@item.ChannelName</td>
+                <td>@(string.Join(",", item.Categories.Select(p => p.Value).ToList()))</td>
+                <td>@(string.Join(",", item.Tags))</td>
+                <td>@item.Author</td>
+                <td>@item.PubDate.ToString("yyyy年MM月dd日")</td>
+                <td>@item.ViewCount</td>
+                <td>@item.ReplyCount</td>
+                <td>@string.Format("{0}/{1}-{2}", Config.URL.Domain, item.GroupUrl, item.Url)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using YangKai.BlogEngine.Modules.PostModule.Objects;
 
 namespace YangKai.BlogEngine.IQueryServices
 {
@@ -41,6 +42,6 @@ namespace YangKai.BlogEngine.IQueryServices
         /// 导出文章为excel
         /// </summary>
         /// <param name="filePath"></param>
-        void ExportPosts(string filePath);
+        void ExportPosts(string filePath,IList<Post> data);
     }
 }

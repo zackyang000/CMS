@@ -192,10 +192,8 @@ namespace YangKai.BlogEngine.QueryServices
 
         #region 导出
 
-        public void ExportPosts( string filepath)
+        public void ExportPosts( string filepath,IList<Post> data)
         {
-            var data = _postRepository.FindAll(1, 50, null, null, null, null, null, null, null);
-
             HSSFWorkbook hssfworkbook = new HSSFWorkbook();
             hssfworkbook.DocumentSummaryInformation = GetDocumentSummaryInformation();
             hssfworkbook.SummaryInformation = GetSummaryInformation();
@@ -282,9 +280,6 @@ namespace YangKai.BlogEngine.QueryServices
             cols.Add("序号", 5);
             cols.Add("标题", 40);
             cols.Add("主题", 5);
-            cols.Add("分类", 15);
-            cols.Add("标签", 15);
-            cols.Add("作者", 10);
             cols.Add("发布时间", 15);
             cols.Add("点击数", 10);
             cols.Add("回复数", 10);
