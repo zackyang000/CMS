@@ -1,11 +1,8 @@
 ﻿//#region  setup
 
 $(document).ready(function () {
-
     //ajax禁用IE缓存
     $.ajaxSetup({ cache: false });
-
-    infuser.defaults.templateUrl = "/content/ko/template";
 });
 
 //fix Array indexOf() in JavaScript for IE browsers

@@ -1,0 +1,62 @@
+﻿<div id="board" ng-controller="BoardController">
+    <!-- respond START -->
+    <div class="respond">
+        <form data-bind="submit: add">
+            <p data-bind="visible: username().length > 0">
+                欢迎回来, <strong data-bind="text: username"></strong>
+                <span>
+                    <a href="javascript:void(0);" data-bind="text: controldisplayauthoreditor() ? '隐藏 »' : '更改 »', click: change"></a>
+                </span>
+            </p>
+            <div data-bind="visible: username().length == 0 || controldisplayauthoreditor">
+                <p>
+                    <input class="span3" placeholder="昵称(必填)" id="Author" name="Author" type="text" data-bind="value: username" />
+                    <label>昵称*</label>
+                </p>
+                <p>
+                    <input class="span3" id="Email" name="Email" type="text" data-bind="value: email" />
+                    <label>邮箱</label>
+                </p>
+                <p>
+                    <input class="span3" id="Url" name="Url" type="text" data-bind="value: url" />
+                    <label>网址</label>               
+                </p>       
+            </div>
+            <p><textarea id="Content" name="Content" rows="4"></textarea></p>
+            <div>
+                <button class="btn btn-primary btn-large" data-bind="disable: loading().length > 0">提交</button>
+                <span class="text-error" data-bind=" text: error, visible: error().length > 0" style="display: none;"></span>
+            </div>
+        </form>
+    </div>
+    <!-- respond END -->
+    <!-- list START -->
+    <div class="loadingbox" ng-show="loading">正在加载...</div>
+    <div class="comment">
+        <ul>
+            <li ng-repeat="item in list">
+                <div class="gravatar">
+                    <img src="/Content/img/avatar.png" />
+                </div>
+                <div class="text">
+                    <span>
+                        <span class="text-error" ng-show="item.IsDeleted">该回复已删除,仅管理员可见.</span>
+                        <span>#{{list.length-$index}}</span>
+                    </span>
+                    <div>	
+                        <span class="commentid">{{item.Author}}</span> : 
+                        <p>{{item.Content}}</p>
+                    </div>
+                    <div class="comment-meta">
+                        <span>{{item.CreateDate.Format('yyyy.MM.dd hh:mm')}}</span> 
+                        <span data-bind="visible: $root.isAdmin">
+                            <a href="JavaScript:void(0)" class="text-error" ng-click="del(item)" ng-hide="item.IsDeleted">[删除]</a>
+                            <a href="JavaScript:void(0)" class="text-error" ng-click="renew(item)" ng-show="item.IsDeleted">[恢复]</a>
+                        </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- list END -->
+</div>

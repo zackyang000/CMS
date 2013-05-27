@@ -53,7 +53,23 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {border: 
 /* 提示框 */
 .boxcaption {background: #E3E4E6;border: 1px solid #CCC;border-bottom: 1px solid #e2e2e2;padding: 3px 12px;border-top-left-radius: 5px 5px;border-top-right-radius: 5px 5px;line-height: 24px;}
 .box {background: #F4F5F7;margin-bottom: 10px;padding: 6px 12px;border-bottom-left-radius: 5px 5px;border-bottom-right-radius: 5px 5px;border: 1px solid #CCC;border-top: none;}
-.loadingbox {height: 16px;line-height: 16px;position: absolute;left: 50%;top: 0;margin-left: -65px;width: 95px;padding: 10px 10px 10px 35px;font-weight: bold;font-size: 12px;color: #666;background: url("/Content/img/ajax-loader5.gif") 10px 50% no-repeat #EEE;border: 1px solid #CCC;border-top: 1px solid #FFF;border-radius: 5px;border-top-left-radius: 0;border-top-right-radius: 0;z-index: 20;}
+.loadingbox {
+    text-align: center;
+    height: 14px;
+    line-height: 14px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -45px;
+    padding: 6px 16px 6px 16px;
+    font-weight: bold;
+    font-size: 12px;
+    color: #333;
+    background: #f9edbe;
+    border: 1px solid #f0c36d;
+    border-radius: 5px;
+    z-index: 10000;
+}
 .loading {padding:5px 5px 0px 20px; background:url(/Content/img/ajax-loader.gif) 0px 3px no-repeat;}
 
 /* 上一篇 && 下一篇 */
@@ -71,7 +87,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {border: 
 #related ul li a:hover{color: #01a31c;}
 
 /* 评论 */
-.comment {line-height: 20px;font-size: 13px;margin-top: 40px;}
+.comment {line-height: 20px;font-size: 13px;margin-top: 40px;position: relative;}
 .comment .title {border-top: 6px solid #0072BC;height: 1px;margin: 20px 0 40px 0;position: relative;}
 .comment .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #0072BC;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
 .comment ul{ list-style: none;}
@@ -81,10 +97,6 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {border: 
 .comment .text >span {float: right;padding-right: 5px;font-size: 13px;color: #CCC;}
 .comment .commentid {font-weight: bold;color:#E38383;}
 .comment .comment-meta {margin-top: 5px;color: #CCC;}
-
-/* ko loading */
-.ko-area-loader{background: url(/Content/img/ajax-loader5.gif) no-repeat;height: 16px;line-height: 16px;padding-left: 20px;}
-.ko-grid-loader{background: url(/Content/img/ajax-loader4.gif) no-repeat center;height: 24px; text-align: center;padding: 20px;}
 
 /* 缩略图 */
 #posts article .thumb {margin: 0px 15px 0px 10px;float: left;}

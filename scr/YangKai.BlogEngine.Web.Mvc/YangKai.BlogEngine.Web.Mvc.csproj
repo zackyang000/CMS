@@ -225,7 +225,16 @@
     <Content Include="Content\img\postline.png" />
     <Content Include="Content\img\technologies\sammy.png" />
     <Content Include="Content\img\technologies\sql.jpg" />
+    <Content Include="Content\js\angular-resource.js" />
+    <Content Include="Content\js\angular.js" />
     <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\controllers\BoardController.js">
+      <DependentUpon>BoardController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\BoardController.min.js">
+      <DependentUpon>BoardController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\app.js" />
     <Content Include="Content\ko\template\comment-item.html" />
     <Content Include="Content\ko\template\message-item.html" />
     <Content Include="Content\ko\viewmodel\CommentViewModel.js" />
@@ -1370,6 +1379,7 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="partials\Board\message-list.html" />
     <Content Include="robots.txt" />
     <Content Include="Content\js\messenger-theme-future.js" />
     <Content Include="Content\js\messenger.js" />
@@ -1435,6 +1445,7 @@
     <Content Include="Content\ko\viewmodel\PostViewModel.min.js.map">
       <DependentUpon>PostViewModel.js</DependentUpon>
     </Content>
+    <Content Include="Content\js\controllers\BoardController.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
@@ -1502,6 +1513,7 @@
     <Content Include="Views\Shared\sidebar-recentcomments.cshtml" />
     <Content Include="Views\Shared\sidebar-recentmessages.cshtml" />
     <Content Include="Views\Labs\export.cshtml" />
+    <Content Include="Views\Board\message-list.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">
