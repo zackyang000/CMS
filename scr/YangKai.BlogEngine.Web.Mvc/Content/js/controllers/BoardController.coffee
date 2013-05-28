@@ -1,26 +1,49 @@
 ﻿
-BoardController=["$scope", "$http", ($scope, $http) ->
-      $scope.loading = true
-      #$scope.list = Message.query() 无效??? 
-      $http.get("/board/list").success (data) ->
-        $scope.list = data
-        $scope.loading = false
+BoardController=["$scope", "$http","Message", ($scope, $http,Message) ->
+      $scope.entity= {};
+      $scope.isAdmin=false
+      $scope.loading=true
+
+      $http.get("/comment/UserInfo").success (data) ->
+        $scope.entity.Author = data.Author
+        $scope.entity.Email = data.Email
+        $scope.entity.Url = data.Url
+        $scope.AuthorForDisplay=data.Author
+        $scope.editmode=data.Author==''
+
+      $scope.list = Message.query ->
+        $scope.loading = false 
       
-      $scope.del = (entity) ->
-        $http.post("/board/delete", "{id:'#{entity.BoardId}'}")
+      $scope.del = (item) ->
+        $http.post("/board/delete", "{id:'#{item.BoardId}'}")
           .success (data) ->
             if data.result
-              message.success "“##{entity.Content}”  be moved to trash."
-              entity.IsDeleted = true
+              message.success "“##{item.Content}”  be moved to trash."
+              item.IsDeleted = true
             else
               message.error data.reason
 
-      $scope.renew = (entity) ->
-        $http.post("/board/renew", "{id:'#{entity.BoardId}'}")
+      $scope.renew = (item) ->
+        $http.post("/board/renew", "{id:'#{item.BoardId}'}")
           .success (data) ->
             if data.result
-              message.success "“##{entity.Content}”  be moved to trash."
-              entity.IsDeleted = false
+              message.success "“##{item.Content}”  be moved to trash."
+              item.IsDeleted = false
             else
               message.error data.reason
+
+      $scope.save = () ->
+        $scope.submitting=true
+        $http.post("/board/add", $scope.entity)
+          .success (data) ->
+            if data.result
+              message.success "Message has been submitted."
+              $scope.list.unshift(data.model)
+              $scope.entity.Content=""
+              $scope.AuthorForDisplay=data.model.Author
+              $scope.editmode=false
+              angular.resetForm($scope, 'form')
+            else
+              message.error data.reason
+            $scope.submitting=false
     ]

@@ -1,31 +1,38 @@
 ﻿<div id="board" ng-controller="BoardController">
     <!-- respond START -->
-    <div class="respond">
-        <form data-bind="submit: add">
-            <p data-bind="visible: username().length > 0">
-                欢迎回来, <strong data-bind="text: username"></strong>
+    <div>
+        <form name="form" novalidate ng-submit="save()">
+            <p ng-show="AuthorForDisplay.length > 0">
+                欢迎回来, <strong>{{AuthorForDisplay}}</strong>
                 <span>
-                    <a href="javascript:void(0);" data-bind="text: controldisplayauthoreditor() ? '隐藏 »' : '更改 »', click: change"></a>
+                    <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">隐藏 »</a>
+                    <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">更改 »</a>
                 </span>
             </p>
-            <div data-bind="visible: username().length == 0 || controldisplayauthoreditor">
+            <div ng-show="editmode">
                 <p>
-                    <input class="span3" placeholder="昵称(必填)" id="Author" name="Author" type="text" data-bind="value: username" />
+                    <input class="span3" name="Author" type="text" ng-model="entity.Author" required/>
                     <label>昵称*</label>
+                    <span class="text-error" ng-show="form.Author.$dirty && form.Author.$invalid">Invalid:
+                        <span ng-show="form.Author.$error.required">Username is required.</span>
+                    </span>
                 </p>
                 <p>
-                    <input class="span3" id="Email" name="Email" type="text" data-bind="value: email" />
+                    <input class="span3" name="Email" type="text" ng-model="entity.Email" />
                     <label>邮箱</label>
                 </p>
                 <p>
-                    <input class="span3" id="Url" name="Url" type="text" data-bind="value: url" />
+                    <input class="span3" name="Url" type="text" ng-model="entity.Url" />
                     <label>网址</label>               
                 </p>       
             </div>
-            <p><textarea id="Content" name="Content" rows="4"></textarea></p>
+            <p><textarea name="Content" rows="4"  ng-model="entity.Content" required></textarea></p>
+            <div class="text-error" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
+                <span ng-show="form.Content.$error.required">Content is required.</span>
+            </div>
             <div>
-                <button class="btn btn-primary btn-large" data-bind="disable: loading().length > 0">提交</button>
-                <span class="text-error" data-bind=" text: error, visible: error().length > 0" style="display: none;"></span>
+                <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">提交</button>
+                <span class="loading"ng-show="submitting">正在提交...</span>
             </div>
         </form>
     </div>
@@ -48,7 +55,7 @@
                         <p>{{item.Content}}</p>
                     </div>
                     <div class="comment-meta">
-                        <span>{{item.CreateDate.Format('yyyy.MM.dd hh:mm')}}</span> 
+                        <span>{{item.CreateDate | datetime:'yyyy.MM.dd hh:mm' }}</span> 
                         <span data-bind="visible: $root.isAdmin">
                             <a href="JavaScript:void(0)" class="text-error" ng-click="del(item)" ng-hide="item.IsDeleted">[删除]</a>
                             <a href="JavaScript:void(0)" class="text-error" ng-click="renew(item)" ng-show="item.IsDeleted">[恢复]</a>

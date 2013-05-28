@@ -84,10 +84,22 @@
     <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -98,6 +110,12 @@
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -149,6 +167,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Extension\BaseController.cs" />
     <Compile Include="Extension\CallContextLifeTimeManager.cs" />
     <Compile Include="Extension\PagedJsonResult.cs" />
@@ -227,6 +246,12 @@
     <Content Include="Content\img\technologies\sql.jpg" />
     <Content Include="Content\js\angular-resource.js" />
     <Content Include="Content\js\angular.js" />
+    <Content Include="Content\js\app.js">
+      <DependentUpon>app.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\app.min.js">
+      <DependentUpon>app.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\controllers\BoardController.js">
       <DependentUpon>BoardController.coffee</DependentUpon>
@@ -234,7 +259,12 @@
     <Content Include="Content\js\controllers\BoardController.min.js">
       <DependentUpon>BoardController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\app.js" />
+    <Content Include="Content\js\filters.js">
+      <DependentUpon>filters.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\filters.min.js">
+      <DependentUpon>filters.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\ko\template\comment-item.html" />
     <Content Include="Content\ko\template\message-item.html" />
     <Content Include="Content\ko\viewmodel\CommentViewModel.js" />
@@ -1446,6 +1476,8 @@
       <DependentUpon>PostViewModel.js</DependentUpon>
     </Content>
     <Content Include="Content\js\controllers\BoardController.coffee" />
+    <Content Include="Content\js\app.coffee" />
+    <Content Include="Content\js\filters.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />

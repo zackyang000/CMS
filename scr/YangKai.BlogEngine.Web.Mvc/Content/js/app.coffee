@@ -1,4 +1,5 @@
-﻿angular.module("app", ['boardServices']).config ["$routeProvider", ($routeProvider) ->
+﻿angular.module("app", ['formatFilters','boardServices'])
+.config ["$routeProvider", ($routeProvider) ->
   $routeProvider
   .when("/board",
     templateUrl: "/partials/Board/message-list.html"
@@ -9,8 +10,10 @@
   .otherwise redirectTo: "/"
 ]
 
-angular.module("boardServices", ["ngResource"]).factory "Message", ($resource) ->
-  $resource "/board", {},
+angular.module("boardServices", ["ngResource"])
+.factory "Message", ['$resource',($resource) ->
+  $resource "/board/list", {},
     query:
       method: "GET"
       isArray: true
+    ]

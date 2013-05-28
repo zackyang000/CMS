@@ -1,7 +1,7 @@
 ﻿
-angular.module("app", ['boardServices']).config([
+angular.module("app", ['formatFilters', 'boardServices']).config([
   "$routeProvider", function($routeProvider) {
-    $routeProvider.when("/board", {
+    return $routeProvider.when("/board", {
       templateUrl: "/partials/Board/message-list.html",
       controller: BoardController
     }).when("/", {
@@ -13,11 +13,13 @@ angular.module("app", ['boardServices']).config([
   }
 ]);
 
-angular.module("boardServices", ["ngResource"]).factory("Message", function($resource) {
-  $resource("/board", {}, {
-    query: {
-      method: "GET",
-      isArray: true
-    }
-  });
-});
+angular.module("boardServices", ["ngResource"]).factory("Message", [
+  '$resource', function($resource) {
+    return $resource("/board/list", {}, {
+      query: {
+        method: "GET",
+        isArray: true
+      }
+    });
+  }
+]);

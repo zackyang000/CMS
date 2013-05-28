@@ -22,6 +22,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js",
                 "~/Content/js/main.js",
+                "~/Content/js/filters.js",
                 "~/Content/js/app.js",
                 "~/Content/js/controllers/*.js"
                                         ));
