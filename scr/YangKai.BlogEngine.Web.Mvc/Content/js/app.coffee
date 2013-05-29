@@ -1,4 +1,4 @@
-﻿angular.module("app", ['formatFilters','boardServices'])
+﻿angular.module("app", ['formatFilters','MessageServices'])
 .config ["$routeProvider", ($routeProvider) ->
   $routeProvider
   .when("/board",
@@ -9,11 +9,3 @@
     controller: BoardController)
   .otherwise redirectTo: "/"
 ]
-
-angular.module("boardServices", ["ngResource"])
-.factory "Message", ['$resource',($resource) ->
-  $resource "/board/list", {},
-    query:
-      method: "GET"
-      isArray: true
-    ]

@@ -118,7 +118,10 @@ var message = {
         Messenger().post({ message: msg, type: 'success' });
     },
     error: function (msg) {
-        Messenger().post({ message: 'Error,reason:' + msg, type: 'error' });
+        if (msg == '401') {
+            msg = 'Unauthorized.';
+        }
+        Messenger().post({ message: 'Error, reason: ' + msg, type: 'error' });
     }
 };
 

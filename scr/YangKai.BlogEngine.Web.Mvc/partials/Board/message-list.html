@@ -38,7 +38,6 @@
     </div>
     <!-- respond END -->
     <!-- list START -->
-    <div class="loadingbox" ng-show="loading">正在加载...</div>
     <div class="comment">
         <ul>
             <li ng-repeat="item in list">
@@ -55,8 +54,8 @@
                         <p>{{item.Content}}</p>
                     </div>
                     <div class="comment-meta">
-                        <span>{{item.CreateDate | datetime:'yyyy.MM.dd hh:mm' }}</span> 
-                        <span data-bind="visible: $root.isAdmin">
+                        <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 
+                        <span ng-show="isAdmin">
                             <a href="JavaScript:void(0)" class="text-error" ng-click="del(item)" ng-hide="item.IsDeleted">[删除]</a>
                             <a href="JavaScript:void(0)" class="text-error" ng-click="renew(item)" ng-show="item.IsDeleted">[恢复]</a>
                         </span>

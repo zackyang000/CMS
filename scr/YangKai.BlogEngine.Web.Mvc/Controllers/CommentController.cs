@@ -29,7 +29,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             {
                 comments = comments.Where(p => !p.IsDeleted).ToList();
             }
-            return Json(comments.ToViewModels(),JsonRequestBehavior.AllowGet);
+            return Json(comments.ToViewModels(), JsonRequestBehavior.AllowGet);
         }
 
         // Ìí¼ÓÆÀÂÛ
@@ -54,7 +54,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                     WebGuestCookie.Save(entity.Author, entity.Email, entity.Url, true);
                 }
                 CommandFactory.Instance.Create(entity);
-                return Json(new { result = true, model = entity.ToViewModel() });
+                return Json(new {result = true, model = entity.ToViewModel()});
             }
             catch (Exception e)
             {
@@ -69,7 +69,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             try
             {
-                CommandFactory.Instance.Run(new CommentDeleteEvent() { CommentId = id });
+                CommandFactory.Instance.Run(new CommentDeleteEvent() {CommentId = id});
                 return Json(new {result = true});
             }
             catch (Exception e)
@@ -85,7 +85,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             try
             {
-                CommandFactory.Instance.Run(new CommentRenewEvent() { CommentId = id }); 
+                CommandFactory.Instance.Run(new CommentRenewEvent() {CommentId = id});
                 return Json(new {result = true});
             }
             catch (Exception e)
@@ -105,12 +105,23 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         public JsonResult UserInfo()
         {
+            if (WebMasterCookie.IsLogin)
+            {
+                var user = WebMasterCookie.Load();
+                return Json(new
+                    {
+                        isAdmin = true,
+                        Name = user.Name,
+                    }, JsonRequestBehavior.AllowGet);
+            }
+
             WebGuestCookie cookie = WebGuestCookie.Load();
             return Json(new
                 {
-                    Author = cookie.Name,
+                    isAdmin = false,
+                    Name = cookie.Name,
                     Email = cookie.Email,
-                    Url = cookie.Url
+                    Url = cookie.Url,
                 }, JsonRequestBehavior.AllowGet);
         }
     }

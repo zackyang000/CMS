@@ -259,11 +259,23 @@
     <Content Include="Content\js\controllers\BoardController.min.js">
       <DependentUpon>BoardController.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\controllers\GlobalController.js">
+      <DependentUpon>GlobalController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\GlobalController.min.js">
+      <DependentUpon>GlobalController.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\filters.js">
       <DependentUpon>filters.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\filters.min.js">
       <DependentUpon>filters.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\MessageServices.js">
+      <DependentUpon>MessageServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\MessageServices.min.js">
+      <DependentUpon>MessageServices.coffee</DependentUpon>
     </Content>
     <Content Include="Content\ko\template\comment-item.html" />
     <Content Include="Content\ko\template\message-item.html" />
@@ -1478,6 +1490,8 @@
     <Content Include="Content\js\controllers\BoardController.coffee" />
     <Content Include="Content\js\app.coffee" />
     <Content Include="Content\js\filters.coffee" />
+    <Content Include="Content\js\controllers\GlobalController.coffee" />
+    <Content Include="Content\js\services\MessageServices.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />

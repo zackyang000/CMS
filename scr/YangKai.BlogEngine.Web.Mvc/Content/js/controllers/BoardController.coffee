@@ -1,49 +1,42 @@
-﻿
-BoardController=["$scope", "$http","Message", ($scope, $http,Message) ->
-      $scope.entity= {};
-      $scope.isAdmin=false
-      $scope.loading=true
+﻿BoardController=["$scope","Message","$http", ($scope,Message,$http) ->
+      $scope.entity= {}
+      $scope.$parent.loading=true
 
-      $http.get("/comment/UserInfo").success (data) ->
-        $scope.entity.Author = data.Author
-        $scope.entity.Email = data.Email
-        $scope.entity.Url = data.Url
-        $scope.AuthorForDisplay=data.Author
-        $scope.editmode=data.Author==''
-
+      $scope.entity.Author = $scope.Name
+      $scope.entity.Email = $scope.Email
+      $scope.entity.Url = $scope.Url
+      $scope.AuthorForDisplay=$scope.Name
+      $scope.editmode=$scope.Name=='' or not $scope.Name?
       $scope.list = Message.query ->
-        $scope.loading = false 
+        $scope.$parent.loading = false 
       
       $scope.del = (item) ->
-        $http.post("/board/delete", "{id:'#{item.BoardId}'}")
-          .success (data) ->
-            if data.result
-              message.success "“##{item.Content}”  be moved to trash."
-              item.IsDeleted = true
-            else
-              message.error data.reason
+        Message.del {id:item.BoardId}
+        ,(data)->
+          message.success "“##{item.Content}”  be moved to trash."
+          item.IsDeleted = true
+        ,(error)->
+          message.error error.data.ExceptionMessage ? error.status
 
       $scope.renew = (item) ->
-        $http.post("/board/renew", "{id:'#{item.BoardId}'}")
-          .success (data) ->
-            if data.result
-              message.success "“##{item.Content}”  be moved to trash."
-              item.IsDeleted = false
-            else
-              message.error data.reason
+        Message.renew {id:item.BoardId}
+        ,(data)->
+          message.success "“##{item.Content}”  be renew."
+          item.IsDeleted = false
+        ,(error)->
+          message.error error.data.ExceptionMessage ? error.status
 
       $scope.save = () ->
         $scope.submitting=true
-        $http.post("/board/add", $scope.entity)
-          .success (data) ->
-            if data.result
-              message.success "Message has been submitted."
-              $scope.list.unshift(data.model)
-              $scope.entity.Content=""
-              $scope.AuthorForDisplay=data.model.Author
-              $scope.editmode=false
-              angular.resetForm($scope, 'form')
-            else
-              message.error data.reason
-            $scope.submitting=false
+        Message.add $scope.entity
+        ,(data)->
+          message.success "Message has been submitted."
+          $scope.list.unshift(data)
+          $scope.entity.Content=""
+          $scope.AuthorForDisplay=data.Author
+          $scope.editmode=false
+          angular.resetForm($scope, 'form')
+          $scope.submitting=false
+        ,(error)->
+          message.error error.data.ExceptionMessage ? error.status
     ]

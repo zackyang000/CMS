@@ -1,54 +1,52 @@
 ﻿var BoardController;
 
 BoardController = [
-  "$scope", "$http", "Message", function($scope, $http, Message) {
+  "$scope", "Message", "$http", function($scope, Message, $http) {
     $scope.entity = {};
-    $scope.isAdmin = false;
-    $scope.loading = true;
-    $http.get("/comment/UserInfo").success(function(data) {
-      $scope.entity.Author = data.Author;
-      $scope.entity.Email = data.Email;
-      $scope.entity.Url = data.Url;
-      $scope.AuthorForDisplay = data.Author;
-      return $scope.editmode = data.Author === '';
-    });
+    $scope.$parent.loading = true;
+    $scope.entity.Author = $scope.Name;
+    $scope.entity.Email = $scope.Email;
+    $scope.entity.Url = $scope.Url;
+    $scope.AuthorForDisplay = $scope.Name;
+    $scope.editmode = $scope.Name === '' || !($scope.Name != null);
     $scope.list = Message.query(function() {
-      return $scope.loading = false;
+      return $scope.$parent.loading = false;
     });
     $scope.del = function(item) {
-      return $http.post("/board/delete", "{id:'" + item.BoardId + "'}").success(function(data) {
-        if (data.result) {
-          message.success("“#" + item.Content + "”  be moved to trash.");
-          return item.IsDeleted = true;
-        } else {
-          return message.error(data.reason);
-        }
+      return Message.del({
+        id: item.BoardId
+      }, function(data) {
+        message.success("“#" + item.Content + "”  be moved to trash.");
+        return item.IsDeleted = true;
+      }, function(error) {
+        var _ref;
+        return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
       });
     };
     $scope.renew = function(item) {
-      return $http.post("/board/renew", "{id:'" + item.BoardId + "'}").success(function(data) {
-        if (data.result) {
-          message.success("“#" + item.Content + "”  be moved to trash.");
-          return item.IsDeleted = false;
-        } else {
-          return message.error(data.reason);
-        }
+      return Message.renew({
+        id: item.BoardId
+      }, function(data) {
+        message.success("“#" + item.Content + "”  be renew.");
+        return item.IsDeleted = false;
+      }, function(error) {
+        var _ref;
+        return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
       });
     };
     return $scope.save = function() {
       $scope.submitting = true;
-      return $http.post("/board/add", $scope.entity).success(function(data) {
-        if (data.result) {
-          message.success("Message has been submitted.");
-          $scope.list.unshift(data.model);
-          $scope.entity.Content = "";
-          $scope.AuthorForDisplay = data.model.Author;
-          $scope.editmode = false;
-          angular.resetForm($scope, 'form');
-        } else {
-          message.error(data.reason);
-        }
+      return Message.add($scope.entity, function(data) {
+        message.success("Message has been submitted.");
+        $scope.list.unshift(data);
+        $scope.entity.Content = "";
+        $scope.AuthorForDisplay = data.Author;
+        $scope.editmode = false;
+        angular.resetForm($scope, 'form');
         return $scope.submitting = false;
+      }, function(error) {
+        var _ref;
+        return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
       });
     };
   }
