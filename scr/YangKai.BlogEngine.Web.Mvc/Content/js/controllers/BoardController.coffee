@@ -1,6 +1,7 @@
 ﻿BoardController=["$scope","Message","$http", ($scope,Message,$http) ->
-      $scope.entity= {}
+      $scope.$parent.showBanner=false
       $scope.$parent.loading=true
+      $scope.entity= {}
 
       $scope.entity.Author = $scope.Name
       $scope.entity.Email = $scope.Email

@@ -1,8 +1,0 @@
-﻿@model YangKai.BlogEngine.Web.Mvc.Models.BoardViewModel
-@{
-    ViewBag.Title = string.Format(YangKai.BlogEngine.Common.Config.Format.PAGE_TITLE, "留言板");
-    var isAdmin = YangKai.BlogEngine.Common.WebMasterCookie.IsLogin.ToString().ToLower();
-}
-
-<div ng-view></div>
-

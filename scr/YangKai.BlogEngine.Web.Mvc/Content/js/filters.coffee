@@ -1,4 +1,4 @@
 ﻿angular.module("formatFilters", [])
-.filter "datetime", ->
+.filter "jsondate", ->
   (input,fmt) ->
     input.Format(fmt)

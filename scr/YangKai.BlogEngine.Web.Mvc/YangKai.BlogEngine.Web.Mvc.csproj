@@ -173,7 +173,6 @@
     <Compile Include="Extension\PagedJsonResult.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
-    <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LabsController.cs" />
@@ -265,6 +264,12 @@
     <Content Include="Content\js\controllers\GlobalController.min.js">
       <DependentUpon>GlobalController.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\controllers\HomeController.js">
+      <DependentUpon>HomeController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\HomeController.min.js">
+      <DependentUpon>HomeController.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\filters.js">
       <DependentUpon>filters.coffee</DependentUpon>
     </Content>
@@ -284,9 +289,7 @@
     <Content Include="Content\img\main_bg_image.jpg" />
     <Content Include="Content\img\main_bg_tile.jpg" />
     <Content Include="Content\img\warning.png" />
-    <Content Include="Content\js\koExternalTemplateEngine_all.js" />
     <Content Include="Content\js\modernizr-2.6.2.min.js" />
-    <Content Include="Content\js\sammy.js" />
     <Content Include="Content\ko\template\_pager-no-list.html" />
     <Content Include="Content\ko\template\recent-board-item.html" />
     <Content Include="Content\ko\template\recent-comments-item.html" />
@@ -1365,8 +1368,6 @@
     <Content Include="Content\css\messenger-theme-future.css" />
     <Content Include="Content\css\messenger.css" />
     <Content Include="Content\js\jquery-1.9.1.js" />
-    <Content Include="Content\js\knockout-2.2.1.js" />
-    <Content Include="Content\js\ko.pager.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\jquery.lazyload.js" />
     <Content Include="Content\css\style.css" />
@@ -1422,6 +1423,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="partials\Board\message-list.html" />
+    <Content Include="partials\Home\index.html" />
     <Content Include="robots.txt" />
     <Content Include="Content\js\messenger-theme-future.js" />
     <Content Include="Content\js\messenger.js" />
@@ -1492,6 +1494,7 @@
     <Content Include="Content\js\filters.coffee" />
     <Content Include="Content\js\controllers\GlobalController.coffee" />
     <Content Include="Content\js\services\MessageServices.coffee" />
+    <Content Include="Content\js\controllers\HomeController.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
@@ -1537,7 +1540,6 @@
     <Content Include="Views\Article\detail-related.cshtml" />
     <Content Include="Views\Article\_notfound.cshtml" />
     <Content Include="Views\Article\_removed.cshtml" />
-    <Content Include="Views\Board\index.cshtml" />
     <Content Include="Views\Comment\index.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
@@ -1559,7 +1561,6 @@
     <Content Include="Views\Shared\sidebar-recentcomments.cshtml" />
     <Content Include="Views\Shared\sidebar-recentmessages.cshtml" />
     <Content Include="Views\Labs\export.cshtml" />
-    <Content Include="Views\Board\message-list.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">
