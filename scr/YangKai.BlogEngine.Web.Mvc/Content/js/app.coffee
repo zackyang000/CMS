@@ -1,7 +1,7 @@
 ﻿angular.module("app", ['formatFilters','MessageServices'])
 
 .config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
-  $locationProvider.html5Mode(true)
+  $locationProvider.html5Mode(true).hashPrefix('!')
   $routeProvider
   .when("/board",
     templateUrl: "/partials/Board/message-list.html"
