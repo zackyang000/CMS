@@ -186,9 +186,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\technology.json">
+    <Content Include="data\technology.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Content\admin\images\bubble_bg.gif" />
     <Content Include="Content\admin\images\button-grad.png" />
     <Content Include="Content\admin\images\date-button.gif" />
@@ -1430,6 +1430,7 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="partials\About\index.html" />
     <Content Include="partials\Board\message-list.html" />
     <Content Include="partials\Home\index.html" />
     <Content Include="robots.txt" />
@@ -1540,7 +1541,6 @@
     <Content Include="unity.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\About\index.cshtml" />
     <Content Include="Views\Article\calendar.cshtml" />
     <Content Include="Views\Article\detail.cshtml" />
     <Content Include="Views\Article\detail-post.cshtml" />

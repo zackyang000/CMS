@@ -7,8 +7,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>iShare</title>
-    <meta name="description" content="@ViewBag.Description" />
-    <meta name="keywords" content="@ViewBag.Keywords" /> 
     <meta name="viewport" content="width=device-width" />
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
@@ -21,7 +19,7 @@
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
     @Html.Action("layout-header", "Home")
-    <div id="cta-content" ng-show="showBanner">
+    <div id="cta-content" ng-show="showBanner" style="display: none;">
         <div class="lights">
             <div class="grid-image">
                 <div class="wrapped-content">

@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="row technologies">
-        <a ng-repeat="item in list" class="span1" ng-href="{{item.Link}}">
+        <a ng-repeat="item in list" class="span1 {{item.css}}" ng-href="{{item.Link}}">
             <div><img ng-src="/Content/img/technologies/{{item.Image}}" /></div>
             <p>{{item.Name}}</p>
         </a>
