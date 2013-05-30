@@ -186,6 +186,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\js\controllers\ArticleController.js">
+      <DependentUpon>ArticleController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\ArticleController.min.js">
+      <DependentUpon>ArticleController.coffee</DependentUpon>
+    </Content>
     <Content Include="data\technology.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -292,7 +298,6 @@
     </Content>
     <Content Include="Content\ko\template\comment-item.html" />
     <Content Include="Content\ko\template\message-item.html" />
-    <Content Include="Content\ko\viewmodel\CommentViewModel.js" />
     <Content Include="Content\img\main_bg_grid_tile.png" />
     <Content Include="Content\img\main_bg_image.jpg" />
     <Content Include="Content\img\main_bg_tile.jpg" />
@@ -304,7 +309,6 @@
     <Content Include="Content\ko\template\_pager-with-list.html" />
     <Content Include="Content\ko\template\post.html" />
     <Content Include="Content\ko\template\post-item.html" />
-    <Content Include="Content\ko\viewmodel\BoardViewModel.js" />
     <Content Include="Content\ko\viewmodel\PostViewModel.js">
       <DependentUpon>PostViewModel.coffee</DependentUpon>
     </Content>
@@ -1431,6 +1435,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="partials\About\index.html" />
+    <Content Include="partials\Article\list.html" />
     <Content Include="partials\Board\message-list.html" />
     <Content Include="partials\Home\index.html" />
     <Content Include="robots.txt" />
