@@ -1,4 +1,4 @@
-﻿BoardController=["$scope","Message","$http", ($scope,Message,$http) ->
+﻿BoardController=["$scope","Message", ($scope,Message) ->
       $scope.$parent.showBanner=false
       $scope.$parent.loading=true
       $scope.entity= {}

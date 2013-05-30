@@ -123,3 +123,16 @@ article section{ margin-left: 85px;}
 article .date {width: 70px;height: 70px;background-color: #0072BC;color: #FFFFFF;float: left;text-align: center;font-weight: bold;font-family: Georgia, Arial, Tahoma, Geneva;}
 article .date div:first-child {font-size: 38px;margin-top: 2px;height: 46px;line-height: 46px;}
 article .date div:last-child {margin-top: -3px;font-size: 15px;height: 18px;line-height: 18px;}
+
+/* about */
+.intro h5{margin: 10px 0 10px 0;padding-bottom: 10px; border-bottom: 5px solid;}
+.intro h5.red{border-color: #bc1c48;color: #bc1c48;}
+.intro h5.yellow{border-color: #ffc40d;color: #ffc40d;}
+.intro h5.green{border-color: #008641;color: #008641;}
+.technologies {color: white;margin: 20px auto;}
+.technologies a{height: 130px;width: 130px;margin: 5px; padding: 15px;color: #000;display: block;cursor: pointer;overflow: hidden;text-decoration: none;border: 1px solid #ccc;}
+.technologies a:hover {outline: 3px #225A68 solid;}
+.technologies a.wide{ width: 270px;}
+.technologies a div {text-align: center;display: block;}
+.technologies a div img {width: 80px;height: 80px;}
+.technologies a p{ padding-top: 15px;font-size: 12px;}

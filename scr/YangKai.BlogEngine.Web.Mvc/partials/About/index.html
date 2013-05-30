@@ -1,0 +1,38 @@
+﻿<div ng-controller="AboutController">
+    <div class="row intro">
+        <div class="span4">
+            <h5 class="red">(・´ｪ`・)……关于本站</h5>
+            <p>
+                这是一个纯手工自制的个人站点，展示着不断更新的私家收藏。
+                站长希望它能够带给大家欢乐与思考，也能够方便我们及时沟通。
+                评论，留言，打分，分享，一应俱全，随时恭候各种指教，任何互动，无任欢迎。
+            </p> 
+        </div>
+        <div class="span4">
+            <h5 class="yellow">(・´ｪ`・)……建站原因</h5>
+            <p>
+                当站长我不能控制的收藏着一切欢乐与技术的时候。
+                当这些不能控制的好料，在收藏夹中越来越多、难以整理的时候。
+                当一次次发现我的私家珍藏，因为种种原因被删除，而怒发冲冠屏幕前的时候。
+                当第三方博客越来越缺乏大爱精神，越来越多相关人士关怀照顾，不便使用的时候。
+                爱收藏爱分享的人，既然谁都伤不起，就让我在做爱做的事情之余，发挥点专业余热。
+                就像SHELDON所说，Because I can…于是就有了这个网站…
+            </p> 
+        </div>
+        <div class="span4">
+            <h5 class="green">(・´ｪ`・)……关于频道</h5>
+            <p>
+                娱乐频道，无限放送各种有趣的文章/图片/视频，博君一笑。
+                技术学堂，分享一些我在学习/工作中，收集到有帮助的文章，与君共勉。
+            </p> 
+        </div>
+    </div>
+    <div class="row technologies">
+        <a ng-repeat="item in list" class="span1" ng-href="{{item.Link}}">
+            <div><img ng-src="/Content/img/technologies/{{item.Image}}" /></div>
+            <p>{{item.Name}}</p>
+        </a>
+    </div>
+    <h4><strong>本站源代码托管于</strong><a href="https://github.com/TossShinHwa/CMS">https://github.com/TossShinHwa/CMS</a></h4>
+    <p>2008.12.06 建站</p>
+</div>

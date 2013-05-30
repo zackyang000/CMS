@@ -171,7 +171,6 @@
     <Compile Include="Extension\BaseController.cs" />
     <Compile Include="Extension\CallContextLifeTimeManager.cs" />
     <Compile Include="Extension\PagedJsonResult.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -187,6 +186,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data\technology.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Content\admin\images\bubble_bg.gif" />
     <Content Include="Content\admin\images\button-grad.png" />
     <Content Include="Content\admin\images\date-button.gif" />
@@ -252,6 +254,12 @@
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\controllers\AboutController.js">
+      <DependentUpon>AboutController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\AboutController.min.js">
+      <DependentUpon>AboutController.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\controllers\BoardController.js">
       <DependentUpon>BoardController.coffee</DependentUpon>
     </Content>
@@ -1495,6 +1503,9 @@
     <Content Include="Content\js\controllers\GlobalController.coffee" />
     <Content Include="Content\js\services\MessageServices.coffee" />
     <Content Include="Content\js\controllers\HomeController.coffee" />
+    <Content Include="Content\js\controllers\AboutController.coffee" />
+    <Content Include="Content\js\controllers\CommentController.coffee" />
+    <Content Include="Content\js\controllers\ArticleController.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
