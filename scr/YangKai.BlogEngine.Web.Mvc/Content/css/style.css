@@ -99,8 +99,8 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {border: 
 .comment .comment-meta {margin-top: 5px;color: #CCC;}
 
 /* 缩略图 */
-#posts article .thumb {margin: 0px 15px 0px 10px;float: left;}
-#posts article .thumb img {width: 160px;height: 100px;}
+article .thumb {margin: 0px 15px 0px 10px;float: left;}
+article .thumb img {width: 160px;height: 100px;}
 /* detail */
 .qrcode {display: none;}
 .breadcrumb{padding-left: 10px;margin-left: 20px;border-left: #F88FB7 20px solid;border-radius: 0;}
@@ -109,7 +109,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {border: 
 article {margin-bottom: 20px;border-radius: 0;padding: 0px 20px 20px 20px;margin: 10px 0;min-height: 200px;}
 article li{ margin-bottom: 25px;}
 article h2{ margin-top: 0;}
-article h2 strong{margin-left: 10px;padding-left: 5px;font-size: 24px;}
+article h2 strong{margin-left: 10px;padding-left: 5px;font-size: 24px; cursor: pointer}
 article h2 > span{ font-size: 16px;}
 article h2 > a{ font-size: 40px;margin-top: -5px; -webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); transform: rotate(-90deg);display: none; }
 article:hover h2 > a,article:hover h2 > a:hover{display: block;}

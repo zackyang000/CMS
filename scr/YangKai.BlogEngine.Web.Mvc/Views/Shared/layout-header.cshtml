@@ -15,15 +15,15 @@
                         <li class="dropdown openable">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">@channel.Name <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/@channel.Url#!">浏览全部</a></li>
+                                <li><a href="/list/@channel.Url">浏览全部</a></li>
                                 <li class="divider"></li>
                                 <li class="nav-header">以分组浏览</li>
                                 @foreach (var group in channel.Groups.Where(p=>!p.IsDeleted))
                                 {
-                                    <li><a href="/@channel.Url#!/@group.Url">@group.Name</a></li>
+                                    <li><a href="/list/@channel.Url/@group.Url">@group.Name</a></li>
                                 }
                                 <li class="divider"></li>
-                                <li><a href="/@channel.Url-calendar">存档</a></li>
+                                <li><a href="/calendar/@channel.Url">存档</a></li>
                             </ul>
                         </li>
                     }

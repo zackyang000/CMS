@@ -1,3 +1,80 @@
-﻿<div ng-controller="ArticleController">
-111
+﻿<div ng-controller="ArticleListController">
+    <div ng-show="category">
+        <div class="boxcaption">存档</div>
+        <div class="box">‘{{category}}’ 分类的存档</div>
+    </div>
+    <div ng-show="tag">
+        <div class="boxcaption">存档</div>
+        <div class="box">文章标签 ‘{{tag}}’</div>
+    </div>
+    <div ng-show="date">
+        <div class="boxcaption">存档</div>
+        <div class="box">发布日期 ‘{{date}}’</div>
+    </div>
+    <div ng-show="search">
+        <div class="boxcaption">搜索结果</div>
+        <div class="box">关键字: ‘{{search}}’</div>
+    </div>
+    <div>
+        <ul class="list-unstyled">
+            <li ng-repeat="item in list.DataList">
+                <article>
+                    <div class="date">
+                        <div>{{item.PubDate | date:"dd"}}</div>
+                        <div>{{item.PubDate | date:"yyyy.MM"}}</div>
+                    </div>
+                    <header>
+                        <h2>
+                            <strong><a ng-click="expand(item)">{{item.Title}}</a></strong>
+                            <span class="glyphicon-warning-sign text-error" ng-hide="item.PostStatus == 'Publish'">{{item.PostStatus}}</span>
+                            <span class="glyphicon-warning-sign text-warning" ng-show="item.PubDate | isFuture">{{item.PubDate | date:"yyyy-MM-dd HH:mm"}}</span>
+                            <a class="glyphicon-download fr" ng-href="/post/{{item.Url}}">&nbsp;</a>
+                        </h2>
+                        <div>
+                            <span class="glyphicon-folder-open categories">
+                                <span ng-repeat="category in item.Categories">
+                                    <span ng-hide="$first">,</span>
+                                    <a ng-href="/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
+                                </span>
+                            </span>
+                            <span class="glyphicon-tags tags" ng-show="item.Tags.length>0">
+                                <span ng-repeat="tag in item.Tags">
+                                    <span ng-hide="$first">,</span>
+                                    <a ng-href="/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/tag/{{tag}}" title="查看 {{tag}} 的全部文章">{{tag}}</a>
+                                </span>
+                            </span>
+                            <span class="glyphicon-user"></span>
+                            <span>{{item.Author}}</span>
+                            <span class="glyphicon-hand-right"></span>
+                            <span>{{item.ViewCount}} 次点击</span>
+                            <span class="glyphicon-comment"></span>
+                            <span>{{item.ReplyCount}} 条评论</span>
+                            <span ng-show="isAdmin" class="glyphicon-pencil"></span>
+                            <span ng-show="isAdmin"><a target="_blank" ng-href="/admin/postmanage/edit/{{item.Url}}">编辑</a></span>
+                        </div>
+                    </header>
+                    <section>
+                        <div ng-hide="item.isShowDetail">
+                            <div class="thumb" ng-show="item.ThumbnailUrl">
+                                <a href="JavaScript:void(0);" ng-click="expand(item)">
+                                    <img class="img-thumbnail" ng-src="/upload/thumbnail/{{item.ThumbnailUrl}}" alt="{{item.Title}}" title="{{item.Title}}" />
+                                </a>
+                            </div>
+                            <div ng-bind-html-unsafe="item.Description"></div>
+                        </div>
+                        <div ng-show="item.isShowDetail" ng-bind-html-unsafe="item.Content"></div>
+                        <div class="clearfix"></div>
+                    </section>
+                    <footer></footer>
+                </article>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <ul class="pagination" ng-show="list.PageCount>page">
+            <li>
+                <a href="#" ng-click="turnpages(page+1)" rel="next">下一页 &rarr;</a>
+            </li>
+        </ul>
+    </div>
 </div>

@@ -161,7 +161,7 @@ namespace AtomLab.Domain.Infrastructure
         {
             var query = FindAll(specExpr, orderByExpression);
 
-            return new PageList<TEntity>
+            return new PageList<TEntity>(pageSize)
                        {
                            TotalCount = query.Count(),
                            DataList = query.Skip((pageIndex - 1)*pageSize).Take(pageSize).ToList()

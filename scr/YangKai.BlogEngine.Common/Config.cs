@@ -12,7 +12,7 @@ namespace YangKai.BlogEngine.Common
             /// <summary>
             /// 每页文章条数
             /// </summary>
-            public const int PAGE_SIZE = 20;
+            public const int PAGE_SIZE = 10;
         }
 
         public class Path

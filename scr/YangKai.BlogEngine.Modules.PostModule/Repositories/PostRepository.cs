@@ -180,7 +180,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Repositories
                            orderby a.PubDate descending
                            select a;
 
-                var result = new PageList<Post>()
+                var result = new PageList<Post>(pageSize)
                     {
                         DataList = data.Skip((pageIndex - 1)*pageSize).Take(pageSize).ToList(),
                         TotalCount = data.Count()
@@ -198,7 +198,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Repositories
                            where a.PubDate <= DateTime.Now
                            orderby a.PubDate descending
                            select a;
-                var result = new PageList<Post>()
+                var result = new PageList<Post>(pageSize)
                     {
                         DataList = data.Skip((pageIndex - 1)*pageSize).Take(pageSize).ToList(),
                         TotalCount = data.Count()

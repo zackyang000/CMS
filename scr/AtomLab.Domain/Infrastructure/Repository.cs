@@ -176,7 +176,7 @@ namespace AtomLab.Domain.Infrastructure
         {
             var query = GetAll(specExpr);
 
-            return new PageList<TEntity>
+            return new PageList<TEntity>(pageSize)
                 {
                     TotalCount = query.Count(),
                     DataList = query.Skip((pageIndex - 1)*pageSize).Take(pageSize).ToList()
@@ -194,7 +194,7 @@ namespace AtomLab.Domain.Infrastructure
         {
             var query = GetAll(orderByExpression);
 
-            return new PageList<TEntity>
+            return new PageList<TEntity>(pageSize)
                 {
                     TotalCount = query.Count(),
                     DataList = query.Skip((pageIndex - 1)*pageSize).Take(pageSize).ToList()
@@ -214,7 +214,7 @@ namespace AtomLab.Domain.Infrastructure
         {
             var query = GetAll(specExpr, orderByExpression);
 
-            return new PageList<TEntity>
+            return new PageList<TEntity>(pageSize)
                 {
                     TotalCount = query.Count(),
                     DataList = query.Skip((pageIndex - 1)*pageSize).Take(pageSize).ToList()

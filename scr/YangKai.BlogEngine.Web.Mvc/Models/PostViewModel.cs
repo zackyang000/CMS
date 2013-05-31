@@ -31,7 +31,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
         public string SourceUrl { get; set; }
         public string SourceTitle { get; set; }
 
-        public Dictionary<string, string> Categories { get; set; }
+        public object Categories { get; set; }
         public IList<string> Tags { get; set; }
     }
 
@@ -39,7 +39,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
     {
         public static PostViewModel ToViewModel(this Post entity)
         {
-            var viewModel = new PostViewModel()
+            return new PostViewModel()
                 {
                     PostId = entity.PostId,
                     Url = entity.Url,
@@ -50,24 +50,19 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                     ViewCount = entity.ViewCount,
                     ReplyCount = entity.ReplyCount,
                     PubDate = entity.PubDate,
-                    PostStatus = ((PostStatusEnum)entity.PostStatus).ToString(),
-                    CommentStatus = ((PostStatusEnum)entity.CommentStatus).ToString(),
+                    PostStatus = ((PostStatusEnum) entity.PostStatus).ToString(),
+                    CommentStatus = ((PostStatusEnum) entity.CommentStatus).ToString(),
                     ChannelName = entity.Group.Channel.Name,
                     ChannelUrl = entity.Group.Channel.Url,
                     GroupName = entity.Group.Name,
                     GroupUrl = entity.Group.Url,
-                    ThumbnailUrl = entity.Thumbnail!=null?entity.Thumbnail.Url:null,
+                    ThumbnailUrl = entity.Thumbnail != null ? entity.Thumbnail.Url : null,
                     QrCodeUrl = entity.QrCode != null ? entity.QrCode.Url : null,
                     SourceUrl = entity.Source != null ? entity.Source.Url : null,
                     SourceTitle = entity.Source != null ? entity.Source.Title : null,
+                    Categories = entity.Categorys.Select(p => new {p.Name, p.Url}).ToList(),
+                    Tags = entity.Tags.Select(p => p.Name).ToList(),
                 };
-
-            viewModel.Categories = new Dictionary<string, string>();
-            entity.Categorys.ForEach(p => viewModel.Categories.Add(p.Url, p.Name));
-            viewModel.Tags=new List<string>();
-            entity.Tags.ForEach(p => viewModel.Tags.Add(p.Name));
-
-            return viewModel;
         }
 
         public static IList<PostViewModel> ToViewModels(this IList<Post> entities)
@@ -80,5 +75,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
             });
             return list;
         }
+
     }
 }

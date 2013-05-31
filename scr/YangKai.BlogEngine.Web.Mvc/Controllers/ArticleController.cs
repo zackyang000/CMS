@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Linq;
 using AtomLab.Domain.Infrastructure;
@@ -12,130 +14,85 @@ using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class ArticleController : BaseController
+    public class ArticleController : ApiController
     {
-        public ActionResult Index(string type,int? id, string channelUrl, string groupUrl, string category, string tag, string date, string search)
+        public object Get(int? page = 1, string channel = null, string group = null,
+                          string category = null, string tag = null,
+                          string date = null, string search = null)
         {
-            if (string.IsNullOrEmpty(type))
+            DateTime? calendar = null;
+            if (!string.IsNullOrEmpty(date))
             {
-                bool hasChannel = !string.IsNullOrEmpty(channelUrl);
-                bool hasGroup = !string.IsNullOrEmpty(groupUrl);
-                Channel channel = null;
-                Group group = null;
-
-                if (hasChannel)
+                DateTime myDate;
+                if (DateTime.TryParse(date + "-01", out myDate))
                 {
-                    channel = QueryFactory.Instance.Post.GetChannel(channelUrl);
+                    calendar = myDate;
                 }
-                else if (hasGroup)
-                {
-                    group = QueryFactory.Instance.Post.GetGroup(groupUrl);
-                    channel = group.Channel;
-                }
-                else
-                {
-                    throw new ArgumentException("Must have a channelUrl or groupUrl!");
-                }
-
-                ViewBag.Group = group;
-                ViewBag.Channel = channel;
-                ViewBag.Title = string.Format(Config.Format.PAGE_TITLE,channel.Name);
-                ViewBag.SubCaption = channel.Description;
-                ViewBag.Keywords = string.Empty;
-                ViewBag.Description = channel.Description;
-
-                return View();
             }
-            else
+
+            var data = QueryFactory.Instance.Post.FindAllByNormal(page ?? 1, Config.Setting.PAGE_SIZE, channel, group,
+                                                                  category, tag, calendar, search);
+
+            //保存搜索记录
+            if (!string.IsNullOrEmpty(search))
             {
-                DateTime? calendar = null;
-                if (!string.IsNullOrEmpty(date))
-                {
-                    DateTime myDate;
-                    if (DateTime.TryParse(date + "-01", out myDate))
-                    {
-                        calendar = myDate;
-                    }
-                }
+                var log = Log.CreateSearchLog(search);
+                CommandFactory.Instance.Create(log);
+            }
 
-                var data = QueryFactory.Instance.User.IsLogin()
-               ? QueryFactory.Instance.Post.FindAll(id ?? 1, 20, channelUrl, groupUrl, category, tag, calendar, search)
-               : QueryFactory.Instance.Post.FindAllByNormal(id ?? 1, 20, channelUrl, groupUrl, category, tag, calendar, search);
-
-                //保存搜索记录
-                if (!string.IsNullOrEmpty(search))
-                {
-                    var log = Log.CreateSearchLog(search);
-                    CommandFactory.Instance.Create(log);
-                }
-
-                var pagelist = new PageList<PostViewModel>()
+            return new PageList<PostViewModel>(Config.Setting.PAGE_SIZE)
                 {
                     DataList = data.DataList.ToViewModels(),
                     TotalCount = data.TotalCount
                 };
-
-                return PagedJson(pagelist);
-            }
         }
 
-        public ActionResult Detail(string id, string groupUrl)
+        public PostViewModel Get(string id)
         {
             var data = QueryFactory.Instance.Post.Find(id);
 
-            if (data == null)
+            if (data == null || data.PostStatus == (int) PostStatusEnum.Trash)
             {
-                return View("_NotFound");
-            }
-            if (!QueryFactory.Instance.User.IsLogin()&&(data.PostStatus == (int) PostStatusEnum.Trash))
-            {
-                return View("_Removed");
+                return null;
             }
 
             CommandFactory.Instance.Run(new PostBrowseEvent {PostId = data.PostId});
 
-            ViewBag.Group = data.Group;
-            ViewBag.Channel = data.Group.Channel;
-            ViewBag.Title = string.Format(Config.Format.PAGE_TITLE, data.Title);
-            ViewBag.SubCaption = data.Group.Channel.Description;
-            ViewBag.Keywords = data.Tags != null ? string.Join(",", data.Tags.Select(p => p.Name).ToList()) : data.Title;
-            ViewBag.Description = data.Title;
-
-            return View(data.ToViewModel());
+            return data.ToViewModel();
         }
 
-        public ActionResult Calendar(string channelUrl)
-        {
-            if (!string.IsNullOrEmpty(channelUrl))
-            {
-                ViewBag.Channel = QueryFactory.Instance.Post.GetChannel(channelUrl);
-            }
-            ViewBag.CalendarList = QueryFactory.Instance.Post.GroupByCalendar(channelUrl);
-            var data = QueryFactory.Instance.Post.FindAll(channelUrl);
-            return View(data);
-        }
+        //public ActionResult Calendar(string channelUrl)
+        //{
+        //    if (!string.IsNullOrEmpty(channelUrl))
+        //    {
+        //        ViewBag.Channel = QueryFactory.Instance.Post.GetChannel(channelUrl);
+        //    }
+        //    ViewBag.CalendarList = QueryFactory.Instance.Post.GroupByCalendar(channelUrl);
+        //    var data = QueryFactory.Instance.Post.FindAll(channelUrl);
+        //    return View(data);
+        //}
 
-        //相关文章 || 随便看看  
-        [ActionName("detail-related")]
-        public ActionResult PostRelated(Guid postId)
-        {
-            var data = QueryFactory.Instance.Post.FindAllByTag(postId, 7);
-            ViewBag.IsExistPostRelated = true;
-            if (data.Count == 0)
-            {
-                data = QueryFactory.Instance.Post.FindAllByRandom(postId, 7);
-                ViewBag.IsExistRelatedPosts = false;
-            }
-            return View(data);
-        }
+        ////相关文章 || 随便看看  
+        //[ActionName("detail-related")]
+        //public ActionResult PostRelated(Guid postId)
+        //{
+        //    var data = QueryFactory.Instance.Post.FindAllByTag(postId, 7);
+        //    ViewBag.IsExistPostRelated = true;
+        //    if (data.Count == 0)
+        //    {
+        //        data = QueryFactory.Instance.Post.FindAllByRandom(postId, 7);
+        //        ViewBag.IsExistRelatedPosts = false;
+        //    }
+        //    return View(data);
+        //}
 
-        //上一篇 && 下一篇
-        [ActionName("detail-nav")]
-        public ActionResult PostNavi(Guid postId)
-        {
-            ViewBag.PrePost = QueryFactory.Instance.Post.PrePost(postId);
-            ViewBag.NextPost = QueryFactory.Instance.Post.NextPost(postId);
-            return View();
-        }
+        ////上一篇 && 下一篇
+        //[ActionName("detail-nav")]
+        //public ActionResult PostNavi(Guid postId)
+        //{
+        //    ViewBag.PrePost = QueryFactory.Instance.Post.PrePost(postId);
+        //    ViewBag.NextPost = QueryFactory.Instance.Post.NextPost(postId);
+        //    return View();
+        //}
     }
 }

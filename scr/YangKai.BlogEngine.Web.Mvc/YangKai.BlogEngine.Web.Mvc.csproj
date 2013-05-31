@@ -186,11 +186,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\js\controllers\ArticleController.js">
-      <DependentUpon>ArticleController.coffee</DependentUpon>
+    <Content Include="Content\js\controllers\ArticleDetailController.js">
+      <DependentUpon>ArticleDetailController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\controllers\ArticleController.min.js">
-      <DependentUpon>ArticleController.coffee</DependentUpon>
+    <Content Include="Content\js\controllers\ArticleDetailController.min.js">
+      <DependentUpon>ArticleDetailController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\ArticleListController.js">
+      <DependentUpon>ArticleListController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\ArticleListController.min.js">
+      <DependentUpon>ArticleListController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\ArticleServices.js">
+      <DependentUpon>ArticleServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\ArticleServices.min.js">
+      <DependentUpon>ArticleServices.coffee</DependentUpon>
     </Content>
     <Content Include="data\technology.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1434,10 +1446,11 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="partials\About\index.html" />
+    <Content Include="partials\about.html" />
+    <Content Include="partials\Article\detail.html" />
     <Content Include="partials\Article\list.html" />
-    <Content Include="partials\Board\message-list.html" />
-    <Content Include="partials\Home\index.html" />
+    <Content Include="partials\message.html" />
+    <Content Include="partials\index.html" />
     <Content Include="robots.txt" />
     <Content Include="Content\js\messenger-theme-future.js" />
     <Content Include="Content\js\messenger.js" />
@@ -1511,7 +1524,9 @@
     <Content Include="Content\js\controllers\HomeController.coffee" />
     <Content Include="Content\js\controllers\AboutController.coffee" />
     <Content Include="Content\js\controllers\CommentController.coffee" />
-    <Content Include="Content\js\controllers\ArticleController.coffee" />
+    <Content Include="Content\js\controllers\ArticleListController.coffee" />
+    <Content Include="Content\js\services\ArticleServices.coffee" />
+    <Content Include="Content\js\controllers\ArticleDetailController.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
