@@ -6,10 +6,19 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by YangKai , 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Sat, 01 Jun 2013 14:12:31 GMT</pubDate>
-    <lastBuildDate>Sat, 01 Jun 2013 14:12:31 GMT</lastBuildDate>
+    <pubDate>Sat, 01 Jun 2013 16:50:40 GMT</pubDate>
+    <lastBuildDate>Sat, 01 Jun 2013 16:50:40 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>11111111</title>
+      <description>11111111&lt;br /&gt;发表于:撒旦撒</description>
+      <link>http://www.woshinidezhu.com/videos/Detail/satan-sub</link>
+      <category>视频 - 早期数据</category>
+      <author>1111111</author>
+      <guid>259bbc3d-a340-4416-8db2-3ac9451fb3d6</guid>
+      <pubDate>Sat, 01 Jun 2013 16:50:40 GMT</pubDate>
+    </item>
     <item>
       <title>232323</title>
       <description>232323&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
@@ -451,15 +460,6 @@
       <author>D</author>
       <guid>53b781ed-0068-4898-a2ad-227f547d41aa</guid>
       <pubDate>Sat, 12 Feb 2011 16:59:19 GMT</pubDate>
-    </item>
-    <item>
-      <title>NB</title>
-      <description>NB&lt;br /&gt;发表于:Why would you do that</description>
-      <link>http://www.woshinidezhu.com/videos/Detail/Why-would-you-do-that</link>
-      <category>视频 - 欢乐</category>
-      <author>Niu</author>
-      <guid>c2794728-9c58-4bf6-a0df-f5dafff41c09</guid>
-      <pubDate>Thu, 20 Jan 2011 15:04:59 GMT</pubDate>
     </item>
   </channel>
 </rss>

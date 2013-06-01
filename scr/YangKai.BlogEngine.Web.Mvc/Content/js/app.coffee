@@ -1,5 +1,5 @@
 ﻿angular.module("app",
-['formatFilters','MessageServices','ArticleServices','CommentServices'])
+['formatFilters','MessageServices','ArticleServices','CommentServices','ui'])
 
 .config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
   $locationProvider.html5Mode(true).hashPrefix('!')
@@ -17,6 +17,9 @@
     templateUrl: "/partials/Article/list.html"
     controller: ArticleListController)
   .when("/list/:channel",
+    templateUrl: "/partials/Article/list.html"
+    controller: ArticleListController)
+  .when("/search/:key",
     templateUrl: "/partials/Article/list.html"
     controller: ArticleListController)
   .when("/post/:url",

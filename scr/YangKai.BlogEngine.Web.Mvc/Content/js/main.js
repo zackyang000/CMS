@@ -67,9 +67,7 @@ function codeformat() {
 //sider搜索
 function SearchkeyDown(txt) {
     if (window.event.keyCode == 13) {
-        event.returnValue = false;
-        var channel = urlHelper.getChannelUrl();
-        location.href = '/' + channel + '#!//search/' + txt;
+        location.href = '/search/' + txt;
     }
 }
 

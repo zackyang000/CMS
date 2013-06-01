@@ -30,7 +30,7 @@ function get_post_url() {
 
 function set_fixed_link() {
     if ($("#post_url").val().length > 0) {
-        $("#fixed-link").html("http://www.woshinidezhu.com/" + $("input[name='groupRadio']:checked").val() + "/" + $("#post_url").val());
+        $("#fixed-link").html("http://www.woshinidezhu.com/post/" + $("#post_url").val());
         $("#fixed-link-div").removeClass("fixed-link-div");
     }
     else {

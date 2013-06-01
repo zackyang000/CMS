@@ -23,9 +23,10 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js",
                 "~/Content/js/main.js",
                 "~/Content/js/filters.js",
-                "~/Content/js/app.js",
+                "~/Content/js/directives/*.js",
                 "~/Content/js/services/*.js",
-                "~/Content/js/controllers/*.js"
+                "~/Content/js/controllers/*.js",
+                "~/Content/js/app.js"
                                         ));
 
             BundleTable.Bundles.Add(new StyleBundle("~/css").Include(

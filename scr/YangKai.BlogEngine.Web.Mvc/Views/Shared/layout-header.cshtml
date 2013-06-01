@@ -23,20 +23,23 @@
                                     <li><a href="/list/@channel.Url/@group.Url">@group.Name</a></li>
                                 }
                                 <li class="divider"></li>
-@*                                <li><a href="/calendar/@channel.Url">存档</a></li>*@
+                                @*                                <li><a href="/calendar/@channel.Url">存档</a></li>*@
                             </ul>
                         </li>
                     }
                     <li><a href="/board">留言板</a></li>
                     <li><a href="/about">关于</a></li>
                 </ul>
-                @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
-                {
-                    <ul class="nav pull-right">
+                <ul class="nav pull-right">
+                    @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
+                    {
                         <li><a target="_blank" href="/admin/postmanage/new">添加文章</a></li>
                         <li><a target="_blank" href="/admin/postmanage">管理</a></li>
-                    </ul>
-                }
+                    }
+                    <li>
+                        <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="search" placeholder="Search" />
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

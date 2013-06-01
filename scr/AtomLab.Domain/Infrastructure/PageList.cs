@@ -30,7 +30,7 @@ namespace AtomLab.Domain.Infrastructure
         /// </summary>
         public int PageCount
         {
-            get { return TotalCount/PageSize + 1; }
+            get { return TotalCount / PageSize + (TotalCount % PageSize == 0 ? 0 : 1); }
         }
 
         /// <summary>

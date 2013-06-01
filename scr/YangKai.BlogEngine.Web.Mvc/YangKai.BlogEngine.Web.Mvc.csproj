@@ -187,6 +187,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\technologies\angularJS.png" />
     <Content Include="Content\js\controllers\ArticleDetailController.js">
       <DependentUpon>ArticleDetailController.coffee</DependentUpon>
     </Content>
@@ -205,6 +206,7 @@
     <Content Include="Content\js\controllers\MessageController.min.js">
       <DependentUpon>MessageController.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\directives\angular-ui.js" />
     <Content Include="Content\js\services\ArticleServices.js">
       <DependentUpon>ArticleServices.coffee</DependentUpon>
     </Content>
@@ -1447,8 +1449,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Labs\analytics.cshtml" />
-    <Content Include="Views\Labs\probe.cshtml" />
+    <Content Include="_todo\Labs\analytics.cshtml" />
+    <Content Include="_todo\Labs\probe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -1536,8 +1538,8 @@
     <Content Include="unity.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Article\calendar.cshtml" />
-    <Content Include="Views\Article\detail-related.cshtml" />
+    <Content Include="_todo\Article\calendar.cshtml" />
+    <Content Include="_todo\Article\detail-related.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header.cshtml" />
@@ -1549,7 +1551,7 @@
     <Content Include="fonts\glyphiconshalflings-regular.woff" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Labs\export.cshtml" />
+    <Content Include="_todo\Labs\export.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">

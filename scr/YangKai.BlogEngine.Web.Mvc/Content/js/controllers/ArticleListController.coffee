@@ -7,7 +7,7 @@
   $scope.category = if $routeParams.type=='category' then $routeParams.query else ''
   $scope.tag = if $routeParams.type=='tag' then $routeParams.query else ''
   $scope.date = if $routeParams.type=='date' then $routeParams.query else ''
-  $scope.search = if $routeParams.type=='search' then $routeParams.query else ''
+  $scope.key = $routeParams.key ? ''
 
   $scope.expand=(item)->
     item.isShowDetail = not item.isShowDetail
@@ -23,7 +23,7 @@
       category:$scope.category
       tag:$scope.tag
       date:$scope.date
-      search:$scope.search
+      search:$scope.key
     , ->
       if page==1
         $scope.list = result

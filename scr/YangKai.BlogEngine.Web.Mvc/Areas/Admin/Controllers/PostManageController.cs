@@ -181,9 +181,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
 
         private ActionResult PostAction(FormCollection collection, Post data)
         {
-            return Redirect(string.Format("/{0}-{1}",
-                                          QueryFactory.Instance.Post.GetGroup(collection["groupRadio"]).Url,
-                                          data.Url));
+            return Redirect(string.Format("/post/{0}", data.Url));
         }
 
         private Post GetPost(FormCollection collection, HttpPostedFileBase uploadpic)

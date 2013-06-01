@@ -18,10 +18,10 @@
             <li class="active">发布日期 ‘{{date}}’</li>
         </ul>
     </div>
-    <div ng-show="search">
+    <div ng-show="key">
         <ul class="breadcrumb">
             <li class="active">搜索结果</li>
-            <li class="active">关键字: ‘{{search}}’</li>
+            <li class="active">关键字: ‘{{key}}’</li>
         </ul>
     </div>
     <div>
@@ -76,6 +76,9 @@
                     </section>
                     <footer></footer>
                 </article>
+            </li>
+            <li ng-show="list.DataList.length==0">
+                没有找到文章.
             </li>
         </ul>
     </div>

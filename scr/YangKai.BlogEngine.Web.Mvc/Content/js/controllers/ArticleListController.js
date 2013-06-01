@@ -2,7 +2,7 @@
 
 ArticleListController = [
   "$scope", "$routeParams", "$location", "Article", function($scope, $routeParams, $location, Article) {
-    var _ref, _ref1, _ref2;
+    var _ref, _ref1, _ref2, _ref3;
     $scope.$parent.showBanner = false;
     $scope.page = (_ref = $routeParams.page) != null ? _ref : 1;
     $scope.channel = (_ref1 = $routeParams.channel) != null ? _ref1 : '';
@@ -10,7 +10,7 @@ ArticleListController = [
     $scope.category = $routeParams.type === 'category' ? $routeParams.query : '';
     $scope.tag = $routeParams.type === 'tag' ? $routeParams.query : '';
     $scope.date = $routeParams.type === 'date' ? $routeParams.query : '';
-    $scope.search = $routeParams.type === 'search' ? $routeParams.query : '';
+    $scope.key = (_ref3 = $routeParams.key) != null ? _ref3 : '';
     $scope.expand = function(item) {
       item.isShowDetail = !item.isShowDetail;
       return codeformat();
@@ -26,7 +26,7 @@ ArticleListController = [
         category: $scope.category,
         tag: $scope.tag,
         date: $scope.date,
-        search: $scope.search
+        search: $scope.key
       }, function() {
         if (page === 1) {
           $scope.list = result;

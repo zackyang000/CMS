@@ -32,6 +32,17 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {border: 
 .navbar .brand img{ width: 45px;height: 45px;margin-right: 10px;}
 .navbar .nav > li > a {padding: 18px 15px 18px;}
 .navbar .btn-navbar {margin-top: 10px;}
+.navbar .search {
+    margin: 12px 15px 0 15px;
+    height: 28px;
+margin-bottom: 0;
+padding: 4px 20px 4px 8px;
+font-size: 12px;
+font-weight: normal;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+}
 
  /* homepage */
 #cta-content { height: 500px;width: 100%;background: url('/Content/img/main_bg_tile.jpg') repeat-x transparent 50% 50%;text-align: center;color: #fff;}
