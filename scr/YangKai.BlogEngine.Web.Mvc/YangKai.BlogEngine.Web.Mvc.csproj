@@ -167,6 +167,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Extension\BaseController.cs" />
     <Compile Include="Extension\CallContextLifeTimeManager.cs" />
@@ -198,11 +199,23 @@
     <Content Include="Content\js\controllers\ArticleListController.min.js">
       <DependentUpon>ArticleListController.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\controllers\MessageController.js">
+      <DependentUpon>MessageController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\MessageController.min.js">
+      <DependentUpon>MessageController.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\services\ArticleServices.js">
       <DependentUpon>ArticleServices.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\services\ArticleServices.min.js">
       <DependentUpon>ArticleServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\CommentServices.js">
+      <DependentUpon>CommentServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\CommentServices.min.js">
+      <DependentUpon>CommentServices.coffee</DependentUpon>
     </Content>
     <Content Include="data\technology.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -278,12 +291,6 @@
     <Content Include="Content\js\controllers\AboutController.min.js">
       <DependentUpon>AboutController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\controllers\BoardController.js">
-      <DependentUpon>BoardController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\BoardController.min.js">
-      <DependentUpon>BoardController.coffee</DependentUpon>
-    </Content>
     <Content Include="Content\js\controllers\GlobalController.js">
       <DependentUpon>GlobalController.coffee</DependentUpon>
     </Content>
@@ -308,37 +315,11 @@
     <Content Include="Content\js\services\MessageServices.min.js">
       <DependentUpon>MessageServices.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\ko\template\comment-item.html" />
-    <Content Include="Content\ko\template\message-item.html" />
     <Content Include="Content\img\main_bg_grid_tile.png" />
     <Content Include="Content\img\main_bg_image.jpg" />
     <Content Include="Content\img\main_bg_tile.jpg" />
     <Content Include="Content\img\warning.png" />
     <Content Include="Content\js\modernizr-2.6.2.min.js" />
-    <Content Include="Content\ko\template\_pager-no-list.html" />
-    <Content Include="Content\ko\template\recent-board-item.html" />
-    <Content Include="Content\ko\template\recent-comments-item.html" />
-    <Content Include="Content\ko\template\_pager-with-list.html" />
-    <Content Include="Content\ko\template\post.html" />
-    <Content Include="Content\ko\template\post-item.html" />
-    <Content Include="Content\ko\viewmodel\PostViewModel.js">
-      <DependentUpon>PostViewModel.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\ko\viewmodel\PostViewModel.min.js">
-      <DependentUpon>PostViewModel.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\ko\viewmodel\RecentCommentsViewModel.js">
-      <DependentUpon>RecentCommentsViewModel.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\ko\viewmodel\RecentCommentsViewModel.min.js">
-      <DependentUpon>RecentCommentsViewModel.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\ko\viewmodel\RecentMessagesViewModel.js">
-      <DependentUpon>RecentMessagesViewModel.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\ko\viewmodel\RecentMessagesViewModel.min.js">
-      <DependentUpon>RecentMessagesViewModel.coffee</DependentUpon>
-    </Content>
     <Content Include="Content\plugin\ckeditor_3.6.1\adapters\jquery.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\CHANGES.html" />
     <Content Include="Content\plugin\ckeditor_3.6.1\ckeditor.asp" />
@@ -1506,27 +1487,21 @@
     <Content Include="Areas\Admin\Views\Shared\_layout.cshtml" />
     <Content Include="Areas\Admin\Views\Summary\index.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="Content\ko\viewmodel\RecentMessagesViewModel.coffee" />
-    <Content Include="Content\ko\viewmodel\RecentCommentsViewModel.coffee" />
-    <Content Include="Content\ko\viewmodel\PostViewModel.coffee" />
     <Content Include="Content\fonts\glyphiconshalflings-regular.eot" />
     <Content Include="Content\fonts\glyphiconshalflings-regular.otf" />
     <Content Include="Content\fonts\glyphiconshalflings-regular.ttf" />
     <Content Include="Content\fonts\glyphiconshalflings-regular.woff" />
-    <Content Include="Content\ko\viewmodel\PostViewModel.min.js.map">
-      <DependentUpon>PostViewModel.js</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\BoardController.coffee" />
+    <Content Include="Content\js\controllers\MessageController.coffee" />
     <Content Include="Content\js\app.coffee" />
     <Content Include="Content\js\filters.coffee" />
     <Content Include="Content\js\controllers\GlobalController.coffee" />
     <Content Include="Content\js\services\MessageServices.coffee" />
     <Content Include="Content\js\controllers\HomeController.coffee" />
     <Content Include="Content\js\controllers\AboutController.coffee" />
-    <Content Include="Content\js\controllers\CommentController.coffee" />
     <Content Include="Content\js\controllers\ArticleListController.coffee" />
     <Content Include="Content\js\services\ArticleServices.coffee" />
     <Content Include="Content\js\controllers\ArticleDetailController.coffee" />
+    <Content Include="Content\js\services\CommentServices.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
@@ -1562,16 +1537,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Article\calendar.cshtml" />
-    <Content Include="Views\Article\detail.cshtml" />
-    <Content Include="Views\Article\detail-post.cshtml" />
-    <Content Include="Views\Article\index.cshtml" />
-    <Content Include="Views\Article\detail-post-footer.cshtml" />
-    <Content Include="Views\Article\detail-post-header.cshtml" />
-    <Content Include="Views\Article\detail-nav.cshtml" />
     <Content Include="Views\Article\detail-related.cshtml" />
-    <Content Include="Views\Article\_notfound.cshtml" />
-    <Content Include="Views\Article\_removed.cshtml" />
-    <Content Include="Views\Comment\index.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header.cshtml" />
@@ -1582,14 +1548,7 @@
     <Content Include="fonts\glyphiconshalflings-regular.ttf" />
     <Content Include="fonts\glyphiconshalflings-regular.woff" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
-    <Content Include="Views\Article\detail-post-body.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\sidebar-search.cshtml" />
-    <Content Include="Views\Shared\sidebar-categorygroup.cshtml" />
-    <Content Include="Views\Shared\sidebar-feed.cshtml" />
-    <Content Include="Views\Shared\sidebar-friendslink.cshtml" />
-    <Content Include="Views\Shared\sidebar-recentcomments.cshtml" />
-    <Content Include="Views\Shared\sidebar-recentmessages.cshtml" />
     <Content Include="Views\Labs\export.cshtml" />
   </ItemGroup>
   <ItemGroup>

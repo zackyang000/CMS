@@ -12,12 +12,14 @@ ArticleListController = [
     $scope.date = $routeParams.type === 'date' ? $routeParams.query : '';
     $scope.search = $routeParams.type === 'search' ? $routeParams.query : '';
     $scope.expand = function(item) {
-      return item.isShowDetail = !item.isShowDetail;
+      item.isShowDetail = !item.isShowDetail;
+      return codeformat();
     };
     $scope.turnpages = function(page) {
+      var result;
       $scope.$parent.loading = true;
       $scope.page = page;
-      return $scope.list = Article.querybypaged({
+      return result = Article.querybypaged({
         page: $scope.page,
         channel: $scope.channel,
         group: $scope.group,
@@ -26,6 +28,11 @@ ArticleListController = [
         date: $scope.date,
         search: $scope.search
       }, function() {
+        if (page === 1) {
+          $scope.list = result;
+        } else {
+          $scope.list.DataList = $scope.list.DataList.concat(result.DataList).slice(-500);
+        }
         return $scope.$parent.loading = false;
       });
     };

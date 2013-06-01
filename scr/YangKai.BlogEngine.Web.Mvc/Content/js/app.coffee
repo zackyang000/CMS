@@ -1,5 +1,5 @@
 ﻿angular.module("app",
-['formatFilters','MessageServices','ArticleServices'])
+['formatFilters','MessageServices','ArticleServices','CommentServices'])
 
 .config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
   $locationProvider.html5Mode(true).hashPrefix('!')
@@ -24,7 +24,7 @@
     controller: ArticleDetailController)
   .when("/board",
     templateUrl: "/partials/message.html"
-    controller: BoardController)
+    controller: MessageController)
   .when("/about",
     templateUrl: "/partials/about.html"
     controller: AboutController)

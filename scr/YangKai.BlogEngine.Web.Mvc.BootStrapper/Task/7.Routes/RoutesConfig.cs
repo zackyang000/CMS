@@ -1,10 +1,6 @@
-﻿using System.Configuration;
-using System.Linq;
-using System.Web.Routing;
+﻿using System.Web.Routing;
 using Bootstrap.Extensions.StartupTasks;
 using System.Web.Mvc;
-using Microsoft.Practices.Unity;
-using YangKai.BlogEngine.ServiceProxy;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
@@ -25,102 +21,45 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
-            RegisterGroupIndexViewRoute(routes);
-            RegisterGroupDetailViewRoute(routes);
-            RegisterChannelIndexViewRoute(routes);
-            RegisterChannelCalendarViewRoute(routes);
             RegisterDefaultRoute(routes);
         }
 
-        //{group.Url}/{id}
-        private static void RegisterGroupIndexViewRoute(RouteCollection routes)
-        {
-            var groups = QueryFactory.Instance.Post.GetGroupsByNotDeletion();
-            foreach (var item in groups)
-            {
-                routes.MapRoute(
-                    item.Url,
-                    item.Url + "/{id}",
-                    new
-                        {
-                            Controller = "Article",
-                            Action = "Index",
-                            groupUrl = item.Url,
-                            id = UrlParameter.Optional,
-                        },
-                    CONTROLLERS_NAMESPACE);
-            }
-        }
-
-        //{group.Url}-{id}
-        private static void RegisterGroupDetailViewRoute(RouteCollection routes)
-        {
-            var groups = QueryFactory.Instance.Post.GetGroupsByNotDeletion();
-
-            foreach (var item in groups)
-            {
-                routes.MapRoute(item.Url + "1", item.Url + "-{id}",
-                                            new
-                                                {
-                                                    controller = "Article",
-                                                    action = "Detail",
-                                                    id = UrlParameter.Optional,
-                                                    groupUrl = item.Url,
-                                                    channelUrl = item.Channel.Url
-                                                });
-            }
-        }
-
-        //{channel.Url}/{id}
-        private static void RegisterChannelIndexViewRoute(RouteCollection routes)
-        {
-            var channels = QueryFactory.Instance.Post.FindAllByNotDeletion();
-
-            foreach (var entity in channels)
-            {
-                routes.MapRoute(
-                    entity.Url,
-                    entity.Url + "/{id}",
-                    new
-                        {
-                            Controller = "Article",
-                            Action = "Index",
-                            channelUrl = entity.Url,
-                            id = UrlParameter.Optional
-                        },
-                    CONTROLLERS_NAMESPACE);
-            }
-        }
-
-        //{channel.Url}-calendar
-        private static void RegisterChannelCalendarViewRoute(RouteCollection routes)
-        {
-            var channels = QueryFactory.Instance.Post.FindAllByNotDeletion();
-
-            foreach (var entity in channels)
-            {
-                routes.MapRoute(
-                    entity.Url + "-calendar",
-                    entity.Url + "-calendar",
-                    new
-                        {
-                            Controller = "Article",
-                            Action = "Calendar",
-                            channelUrl = entity.Url,
-                            groupUrl = string.Empty,
-                        },
-                    CONTROLLERS_NAMESPACE);
-            }
-        }
-
-        //{controller}/{action}/{id}
         private static void RegisterDefaultRoute(RouteCollection routes)
         {
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new {controller = "Home", action = "Index", id = UrlParameter.Optional},
+                CONTROLLERS_NAMESPACE);
+            routes.MapRoute(
+                "Default1",
+                "{a}",
+                new {controller = "Home", action = "Index"},
+                CONTROLLERS_NAMESPACE);
+            routes.MapRoute(
+                "Default2",
+                "{a}/{b}",
+                new {controller = "Home", action = "Index"},
+                CONTROLLERS_NAMESPACE);
+            routes.MapRoute(
+                "Default3",
+                "{a}/{b}/{c}",
+                new {controller = "Home", action = "Index"},
+                CONTROLLERS_NAMESPACE);
+            routes.MapRoute(
+                "Default4",
+                "{a}/{b}/{c}/{d}",
+                new {controller = "Home", action = "Index"},
+                CONTROLLERS_NAMESPACE);
+            routes.MapRoute(
+                "Default5",
+                "{a}/{b}/{c}/{d}/{e}",
+                new {controller = "Home", action = "Index"},
+                CONTROLLERS_NAMESPACE);
+            routes.MapRoute(
+                "Default6",
+                "{a}/{b}/{c}/{d}/{e}/{f}",
+                new {controller = "Home", action = "Index"},
                 CONTROLLERS_NAMESPACE);
         }
     }

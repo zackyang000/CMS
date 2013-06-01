@@ -50,7 +50,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             entity.Address = IpLocator.GetIpLocation(entity.Ip);
             
             CommandFactory.Instance.Create(entity);
-            WebGuestCookie.Save(viewModel.Author);
 
             return entity.ToBoardViewModel();
         }

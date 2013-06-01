@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
@@ -12,117 +15,56 @@ using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class CommentController : Controller
+    public class CommentController : ApiController
     {
-        // 评论页面
-        [AcceptVerbs(HttpVerbs.Get)]
-        public PartialViewResult Index()
+        public IList<CommentViewModel> Get(Guid PostId)
         {
-            return PartialView();
-        }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public JsonResult List(Guid id)
-        {
-            IList<Comment> comments = QueryFactory.Instance.Post.GetComments(id);
+            var comments = QueryFactory.Instance.Post.GetComments(PostId);
             if (!WebMasterCookie.IsLogin)
             {
                 comments = comments.Where(p => !p.IsDeleted).ToList();
             }
-            return Json(comments.ToViewModels(), JsonRequestBehavior.AllowGet);
+            return comments.ToViewModels();
         }
 
-        // 添加评论
-        [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult Add(CommentViewModel viewModel)
+        [UserAuthorize]
+        public object Post(Guid id,CommentViewModel entity, string action)
+        {
+            switch (action)
+            {
+                case "delete":
+                    return Delete(id);
+                case "renew":
+                    return Renew(id);
+            }
+            throw new HttpResponseException(HttpStatusCode.NotFound);
+        }
+
+        public CommentViewModel Put(CommentViewModel viewModel)
         {
             var entity = viewModel.ToEntity();
-            entity.Pic = WebGuestCookie.Load().Pic ?? string.Empty;
-            entity.Ip = Request.UserHostAddress;
+            entity.Ip = HttpContext.Current.Request.UserHostAddress;
             entity.Address = IpLocator.GetIpLocation(entity.Ip);
+            entity.IsAdmin = true;
 
-            try
-            {
-                if (WebMasterCookie.IsLogin)
-                {
-                    var admin = WebMasterCookie.Load();
-                    entity.Author = admin.Name;
-                    entity.IsAdmin = true;
-                }
-                else
-                {
-                    WebGuestCookie.Save(entity.Author, entity.Email, entity.Url, true);
-                }
-                CommandFactory.Instance.Create(entity);
-                return Json(new {result = true, model = entity.ToViewModel()});
-            }
-            catch (Exception e)
-            {
-                return Json(new {result = false, reason = e.Message});
-            }
+            CommandFactory.Instance.Create(entity);
+            WebGuestCookie.Save(entity.Author, entity.Email, entity.Url, true);
+
+            return entity.ToViewModel();
         }
 
         // 删除评论
-        [UserAuthorize]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult Delete(Guid id)
+        public object Delete(Guid id)
         {
-            try
-            {
-                CommandFactory.Instance.Run(new CommentDeleteEvent() {CommentId = id});
-                return Json(new {result = true});
-            }
-            catch (Exception e)
-            {
-                return Json(new {result = false, reason = e.Message});
-            }
+            CommandFactory.Instance.Run(new CommentDeleteEvent() { CommentId = id });
+            return true;
         }
 
         // 恢复评论
-        [UserAuthorize]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult Renew(Guid id)
+        public object Renew(Guid id)
         {
-            try
-            {
-                CommandFactory.Instance.Run(new CommentRenewEvent() {CommentId = id});
-                return Json(new {result = true});
-            }
-            catch (Exception e)
-            {
-                return Json(new {result = false, reason = e.Message});
-            }
-        }
-
-        // 最新评论
-        [AcceptVerbs(HttpVerbs.Get)]
-        [OutputCache(CacheProfile = "side")]
-        public JsonResult Recent(string channelurl)
-        {
-            var comments = QueryFactory.Instance.Post.GetCommentsRecent(channelurl);
-            return Json(comments.ToViewModels(), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult UserInfo()
-        {
-            if (WebMasterCookie.IsLogin)
-            {
-                var user = WebMasterCookie.Load();
-                return Json(new
-                    {
-                        isAdmin = true,
-                        Name = user.Name,
-                    }, JsonRequestBehavior.AllowGet);
-            }
-
-            WebGuestCookie cookie = WebGuestCookie.Load();
-            return Json(new
-                {
-                    isAdmin = false,
-                    Name = cookie.Name,
-                    Email = cookie.Email,
-                    Url = cookie.Url,
-                }, JsonRequestBehavior.AllowGet);
+            CommandFactory.Instance.Run(new CommentRenewEvent() { CommentId = id });
+            return true;
         }
     }
 }

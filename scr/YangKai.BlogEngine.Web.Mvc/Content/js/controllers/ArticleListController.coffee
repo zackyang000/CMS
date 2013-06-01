@@ -11,11 +11,12 @@
 
   $scope.expand=(item)->
     item.isShowDetail = not item.isShowDetail
+    codeformat()
 
   $scope.turnpages=(page)->
     $scope.$parent.loading=true
     $scope.page=page
-    $scope.list = Article.querybypaged
+    result = Article.querybypaged
       page:$scope.page
       channel:$scope.channel
       group:$scope.group
@@ -24,9 +25,11 @@
       date:$scope.date
       search:$scope.search
     , ->
+      if page==1
+        $scope.list = result
+      else
+        $scope.list.DataList = $scope.list.DataList.concat(result.DataList).slice(-500)
       $scope.$parent.loading=false
-    #TODO:此处需要改变URL但不触发$locationProvider事件.
-    #$location.path('/list/technologies/codes/2')
-    #$location.replace()
+
   $scope.turnpages $scope.page 
 ]

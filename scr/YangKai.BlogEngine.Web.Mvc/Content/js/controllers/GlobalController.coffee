@@ -1,8 +1,7 @@
 ﻿GlobalController=["$scope","$http", ($scope,$http) ->
-  $scope.loading=false
   $scope.isAdmin=false
 
-  $http.get("/comment/UserInfo").success (data) ->
+  $http.get("/api/user").success (data) ->
     $scope.isAdmin = data.isAdmin
     $scope.Name = data.Name
     $scope.Email = data.Email

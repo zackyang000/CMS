@@ -6,6 +6,13 @@ angular.module("ArticleServices", ["ngResource"]).factory("Article", [
     }, {
       querybypaged: {
         method: "GET"
+      },
+      nav: {
+        method: "GET",
+        params: {
+          action: "nav"
+        },
+        isArray: true
       }
     });
   }

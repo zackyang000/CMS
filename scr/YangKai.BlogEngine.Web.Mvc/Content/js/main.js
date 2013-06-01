@@ -54,13 +54,6 @@ String.prototype.Format = function (fmt) {
     return fmt;
 };
 
-function imglazyload(dom) {
-    $(dom+" img").lazyload({
-        placeholder: "/Content/Image/grey.gif",
-        effect: "fadeIn"
-    });
-}
-
 function codeformat() {
     jQuery(function () {
         SyntaxHighlighter.defaults['gutter'] = true;
@@ -126,33 +119,4 @@ var message = {
 };
 
 //#endregion
-
-//#region ko common
-
-//淡入
-function elementFadeIn(elem) { if (elem.nodeType === 1) $(elem).hide().fadeIn(500); }
-
-//刷新list中的item
-function itemRefresh(list, entity) {
-    var i = list().indexOf(entity);
-    list.remove(entity);
-    list.splice(i, 0, entity);
-}
-
-//#endregion
-
-
-
-var urlHelper = {
-    getChannelUrl: function (url) {
-        if (url == undefined) {
-            url = window.location.toString();
-        }
-        //匹配 [以(http)://开头],[经过一个"/"],[以"#"或"/"或"-"结尾,若没有,则取后面所有] 的字符串.
-        var r = new RegExp("://(.*?)/(.*?)(?:#.*)?(?:/.*)?(?:-.*)?$");
-        var m = url.match(r);
-        return m ? m[2] : "";
-    }
-};
-
 

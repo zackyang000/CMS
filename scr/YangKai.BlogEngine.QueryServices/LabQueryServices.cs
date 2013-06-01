@@ -86,8 +86,8 @@ namespace YangKai.BlogEngine.QueryServices
         {
             double totalDayCount = (DateTime.Now - Convert.ToDateTime("2009-01-01")).Days;
 
-            int todayVisitorCount = _logRepository.SiteVisitCount();
-            int totalVisitorCount = _logRepository.SiteVisitCountOnToday();
+            int todayVisitorCount = _logRepository.SiteVisitCountOnToday();
+            int totalVisitorCount = _logRepository.SiteVisitCount();
 
             int PostCount = _postRepository.Count();
             int commentCount =_commentRepository.Count();

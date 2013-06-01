@@ -16,7 +16,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class ArticleController : ApiController
     {
-        public object Get(int? page = 1, string channel = null, string group = null,
+        public PageList<PostViewModel> Get(int? page = 1, string channel = null, string group = null,
                           string category = null, string tag = null,
                           string date = null, string search = null)
         {
@@ -61,6 +61,20 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return data.ToViewModel();
         }
 
+        public object Get(Guid id,string action)
+        {
+            if (action == "nav")
+            {
+                var prePost = QueryFactory.Instance.Post.PrePost(id) ?? new Post();
+                var nextPost = QueryFactory.Instance.Post.NextPost(id) ?? new Post();
+
+                var list = new List<Post>();
+                list.AddRange(new List<Post> { prePost , nextPost});
+                return list.Select(p => new { p.Title, p.Url });
+            }
+            return null;
+        }
+
         //public ActionResult Calendar(string channelUrl)
         //{
         //    if (!string.IsNullOrEmpty(channelUrl))
@@ -84,15 +98,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         //        ViewBag.IsExistRelatedPosts = false;
         //    }
         //    return View(data);
-        //}
-
-        ////上一篇 && 下一篇
-        //[ActionName("detail-nav")]
-        //public ActionResult PostNavi(Guid postId)
-        //{
-        //    ViewBag.PrePost = QueryFactory.Instance.Post.PrePost(postId);
-        //    ViewBag.NextPost = QueryFactory.Instance.Post.NextPost(postId);
-        //    return View();
         //}
     }
 }

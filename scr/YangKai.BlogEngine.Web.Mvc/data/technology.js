@@ -73,9 +73,9 @@
   	"Name": "Metro UI"
   },
   {
-  	"Image": "konckout.png",
-  	"Link": "http://knockoutjs.com/",
-  	"Name": "Knockout.js",
+      "Image": "angularJS.png",
+      "Link": "http://angularjs.org/",
+  	"Name": "angularJS",
 	"css": "wide"
   },
   {
@@ -98,22 +98,6 @@
   	"Image": "none.png",
   	"Link": "http://github.hubspot.com/messenger/",
   	"Name": "messenger"
-  },
-  {
-  	"Image": "none.png",
-  	"Link": "https://github.com/ifandelse/Knockout.js-External-Template-Engine",
-  	"Name": "Knockout.js External Template Engine",
-	"css": "wide"
-  },
-  {
-  	"Image": "none.png",
-  	"Link": "https://github.com/remcoros/ko.pager",
-  	"Name": "ko.pager"
-  },
-  {
-  	"Image": "sammy.png",
-  	"Link": "https://github.com/quirkey/sammy",
-  	"Name": "sammy"
   },
   {
   	"Image": "coffeescript.jpg",

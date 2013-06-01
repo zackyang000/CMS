@@ -1,19 +1,28 @@
-﻿<div ng-controller="ArticleListController">
+﻿<div id="posts" ng-controller="ArticleListController">
     <div ng-show="category">
-        <div class="boxcaption">存档</div>
-        <div class="box">‘{{category}}’ 分类的存档</div>
+        <ul class="breadcrumb">
+            <li class="active">存档</li>
+            <li class="active">‘{{category}}’ 分类的存档</li>
+        </ul>
     </div>
+
     <div ng-show="tag">
-        <div class="boxcaption">存档</div>
-        <div class="box">文章标签 ‘{{tag}}’</div>
+        <ul class="breadcrumb">
+            <li class="active">存档</li>
+            <li class="active">文章标签 ‘{{tag}}’</li>
+        </ul>
     </div>
     <div ng-show="date">
-        <div class="boxcaption">存档</div>
-        <div class="box">发布日期 ‘{{date}}’</div>
+        <ul class="breadcrumb">
+            <li class="active">存档</li>
+            <li class="active">发布日期 ‘{{date}}’</li>
+        </ul>
     </div>
     <div ng-show="search">
-        <div class="boxcaption">搜索结果</div>
-        <div class="box">关键字: ‘{{search}}’</div>
+        <ul class="breadcrumb">
+            <li class="active">搜索结果</li>
+            <li class="active">关键字: ‘{{search}}’</li>
+        </ul>
     </div>
     <div>
         <ul class="list-unstyled">
@@ -71,9 +80,9 @@
         </ul>
     </div>
     <div>
-        <ul class="pagination" ng-show="list.PageCount>page">
+        <ul class="pager" ng-show="list.PageCount>page">
             <li>
-                <a href="#" ng-click="turnpages(page+1)" rel="next">下一页 &rarr;</a>
+                <a href="#" ng-click="turnpages(page+1)" rel="next">猛击此处，查看更多 &rarr;</a>
             </li>
         </ul>
     </div>

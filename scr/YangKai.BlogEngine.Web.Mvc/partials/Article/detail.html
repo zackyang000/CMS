@@ -1,3 +1,157 @@
 ﻿<div ng-controller="ArticleDetailController">
-    <div>{{item.Title}}</div>
+    <ul class="breadcrumb">
+        <li><a href="/list/{{item.ChannelUrl}}">{{item.ChannelName}}</a></li>
+        <li><a href="/list/{{item.ChannelUrl}}/{{item.GroupUrl}}">{{item.GroupName}}</a></li>
+        <li class="active">{{item.Title}}</li>
+    </ul>
+    <article>
+        <div class="date">
+            <div>{{item.PubDate | date:"dd"}}</div>
+            <div>{{item.PubDate | date:"yyyy.MM"}}</div>
+        </div>
+        <header>
+            <h2>
+                <strong>{{item.Title}}</strong>
+                <span class="glyphicon-warning-sign text-error" ng-hide="item.PostStatus == 'Publish'">{{item.PostStatus}}</span>
+                <span class="glyphicon-warning-sign text-warning" ng-show="item.PubDate | isFuture">{{item.PubDate | date:"yyyy-MM-dd HH:mm"}}</span>
+            </h2>
+            <div>
+                <span class="glyphicon-folder-open categories">
+                    <span ng-repeat="category in item.Categories">
+                        <span ng-hide="$first">,</span>
+                        <a ng-href="/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
+                    </span>
+                </span>
+                <span class="glyphicon-tags tags" ng-show="item.Tags.length>0">
+                    <span ng-repeat="tag in item.Tags">
+                        <span ng-hide="$first">,</span>
+                        <a ng-href="/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/tag/{{tag}}" title="查看 {{tag}} 的全部文章">{{tag}}</a>
+                    </span>
+                </span>
+                <span class="glyphicon-user"></span>
+                <span>{{item.Author}}</span>
+                <span class="glyphicon-hand-right"></span>
+                <span>{{item.ViewCount}} 次点击</span>
+                <span class="glyphicon-comment"></span>
+                <span>{{item.ReplyCount}} 条评论</span>
+                <span ng-show="isAdmin" class="glyphicon-pencil"></span>
+                <span ng-show="isAdmin"><a target="_blank" ng-href="/admin/postmanage/edit/{{item.Url}}">编辑</a></span>
+            </div>
+        </header>
+        <section>
+            <div ng-bind-html-unsafe="item.Content"></div>
+            <div class="clearfix"></div>
+            <div ng-show="item.QrCodeUrl">
+                <a href="javascrpit:void(0);" ng-click="qrcode=!qrcode" class="glyphicon-qrcode"></a>
+                <div class="qrcode" ng-show="qrcode">
+                    <img ng-src="/upload/qrcode/{{item.QrCodeUrl}}" width="200" height="200" alt="二维码" class="img-thumbnail" />
+                </div> 
+            </div>
+            <div ng-show="item.SourceUrl" class="text-success">
+                本文转载于：<a ng-href="{{item.SourceUrl}}">{{item.SourceTitle}}</a>
+            </div>
+        </section>
+        <footer>
+            <div id="jiathis_style_32x32" style="margin-top: 30px;" class="clearfix">
+                <a class="jiathis_button_qzone"></a>
+                <a class="jiathis_button_tsina"></a>
+                <a class="jiathis_button_tqq"></a>
+                <a class="jiathis_button_t163"></a>
+                <a class="jiathis_button_tsohu"></a>
+                <a class="jiathis_button_renren"></a>
+                <a class="jiathis_button_douban"></a>
+                <a class="jiathis_button_kaixin001"></a>
+                <a class="jiathis_button_fb"></a>
+                <a class="jiathis_button_twitter"></a>
+                <a class="jiathis_counter_style"></a>
+            </div>
+            <script type="text/javascript" >
+                var jiathis_config = {
+                    data_track_clickback: true,
+                    siteNum: 15,
+                    summary: "",
+                    hideMore: true
+                }
+            </script>
+            <script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=902651" charset="utf-8"></script>
+        </footer>
+    </article>
+    <div>
+        <ul class="post-nav">
+            <li>
+                <a ng-show="nav[0].Url" ng-href="/post/{{nav[0].Url}}" rel="prev">&larr; · 上一篇</a>
+            </li>
+            <li>
+                <a ng-show="nav[1].Url" ng-href="/post/{{nav[1].Url}}" rel="next">下一篇 · &rarr;</a>
+            </li>
+        </ul>
+    </div>
+    <!-- list START -->
+    <div class="comment">
+        <div class="title"><span>文章评论</span></div>
+        <ul>
+            <li ng-repeat="item in list">
+                <div class="gravatar">
+                    <img src="/Content/img/avatar.png" />
+                </div>
+                <div class="text">
+                    <span>
+                        <span class="text-error" ng-show="item.IsDeleted">该回复已删除,仅管理员可见.</span>
+                        <span>#{{$index+1}}</span>
+                    </span>
+                    <div>	
+                        <span class="commentid">{{item.Author}}</span> : 
+                        <p>{{item.Content}}</p>
+                    </div>
+                    <div class="comment-meta">
+                        <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 
+                        <span ng-show="isAdmin">
+                            <a href="JavaScript:void(0)" class="text-error" ng-click="del(item)" ng-hide="item.IsDeleted">[删除]</a>
+                            <a href="JavaScript:void(0)" class="text-error" ng-click="renew(item)" ng-show="item.IsDeleted">[恢复]</a>
+                        </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div ng-show="list.length==0" class="nocomment">还没有评论.</div>
+    </div>
+    <!-- list END -->
+    <!-- respond START -->
+    <div>
+        <form name="form" novalidate ng-submit="save()">
+            <p ng-show="AuthorForDisplay.length > 0">
+                欢迎回来, <strong>{{AuthorForDisplay}}</strong>
+                <span>
+                    <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">隐藏 »</a>
+                    <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">更改 »</a>
+                </span>
+            </p>
+            <div ng-show="editmode">
+                <p>
+                    <input class="span3" name="Author" type="text" ng-model="entity.Author" required/>
+                    <label>昵称*</label>
+                    <span class="text-error" ng-show="form.Author.$dirty && form.Author.$invalid">Invalid:
+                        <span ng-show="form.Author.$error.required">Username is required.</span>
+                    </span>
+                </p>
+                <p>
+                    <input class="span3" name="Email" type="text" ng-model="entity.Email" />
+                    <label>邮箱</label>
+                </p>
+                <p>
+                    <input class="span3" name="Url" type="text" ng-model="entity.Url" />
+                    <label>网址</label>               
+                </p>       
+            </div>
+            <p><textarea name="Content" rows="4"  ng-model="entity.Content" required></textarea></p>
+            <div class="text-error" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
+                <span ng-show="form.Content.$error.required">Content is required.</span>
+            </div>
+            <div>
+                <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">提交</button>
+                <span class="loading"ng-show="submitting">正在提交...</span>
+            </div>
+        </form>
+    </div>
+    <!-- respond END -->
 </div>
