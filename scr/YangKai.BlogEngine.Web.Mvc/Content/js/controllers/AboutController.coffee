@@ -1,4 +1,5 @@
 ﻿AboutController=["$scope","$http", ($scope,$http) ->
+  $scope.$parent.title='关于'
   $scope.$parent.showBanner=false
   $scope.$parent.loading=true
 

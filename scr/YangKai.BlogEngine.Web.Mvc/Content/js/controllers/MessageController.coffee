@@ -1,4 +1,5 @@
 ﻿MessageController=["$scope","Message", ($scope,Message) ->
+      $scope.$parent.title='留言板'
       $scope.$parent.showBanner=false
       $scope.$parent.loading=true
       $scope.entity= {}
