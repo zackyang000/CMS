@@ -32,17 +32,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {border: 
 .navbar .brand img{ width: 45px;height: 45px;margin-right: 10px;}
 .navbar .nav > li > a {padding: 18px 15px 18px;}
 .navbar .btn-navbar {margin-top: 10px;}
-.navbar .search {
-    margin: 12px 15px 0 15px;
-    height: 28px;
-margin-bottom: 0;
-padding: 4px 20px 4px 8px;
-font-size: 12px;
-font-weight: normal;
--webkit-border-radius: 15px;
--moz-border-radius: 15px;
-border-radius: 15px;
-}
+.navbar .search {margin: 12px 15px 0 15px;height: 28px;margin-bottom: 0;padding: 4px 20px 4px 8px;font-size: 12px;font-weight: normal;-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;}
 
  /* homepage */
 #cta-content { height: 500px;width: 100%;background: url('/Content/img/main_bg_tile.jpg') repeat-x transparent 50% 50%;text-align: center;color: #fff;}
@@ -51,7 +41,7 @@ border-radius: 15px;
 #cta-content .wrapped-content {padding: 150px 0px 20px 0px;width: 960px;margin: auto;}
 #cta-content h1 {letter-spacing: 12px;color: white;font-size: 3.2em;margin: 3px 0px;}
 #cta-content h2 {font-weight: normal;letter-spacing: 1px;margin-top: 20px;margin-bottom: 40px; font-size: 22px;}
-#cta-content h2 span{font-weight: normal;letter-spacing: 1px;font-size: 12px;}
+#cta-content h2 p{font-weight: normal;letter-spacing: 1px;font-size: 12px;}
 #cta-content h1, #cta-content h2 {text-shadow: 0 0 10px rgba(0,0,0,.5);}
 #cta-content .bottom {width: 700px;margin: auto;}
 .home{text-align: center;margin-top: 60px;}

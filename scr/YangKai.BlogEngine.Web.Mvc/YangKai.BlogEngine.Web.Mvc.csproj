@@ -187,6 +187,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\no-ie.jpg" />
     <Content Include="Content\img\technologies\angularJS.png" />
     <Content Include="Content\js\controllers\ArticleDetailController.js">
       <DependentUpon>ArticleDetailController.coffee</DependentUpon>
