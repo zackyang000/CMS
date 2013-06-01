@@ -30,7 +30,7 @@
       if page==1
         $scope.list = result
       else
-        $scope.list.DataList = $scope.list.DataList.concat(result.DataList).slice(-500)
+        $scope.list.DataList = $scope.list.DataList.concat(result.DataList)
       $scope.$parent.loading=false
 
   $scope.turnpages $scope.page 

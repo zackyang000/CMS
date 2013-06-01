@@ -120,3 +120,6 @@ article .date div:last-child {margin-top: -3px;font-size: 15px;height: 18px;line
 .technologies a div {text-align: center;display: block;}
 .technologies a div img {width: 80px;height: 80px;}
 .technologies a p{ padding-top: 15px;font-size: 12px;}
+
+/* pager */
+.pager a{cursor: pointer}

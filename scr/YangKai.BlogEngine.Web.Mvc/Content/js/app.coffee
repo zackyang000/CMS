@@ -2,7 +2,7 @@
 ['formatFilters','MessageServices','ArticleServices','CommentServices','ui'])
 
 .config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
-  $locationProvider.html5Mode(true).hashPrefix('!')
+  $locationProvider.html5Mode(false).hashPrefix('!')
   $routeProvider
   .when("/list/:channel/:group/:page/:type/:query",
     templateUrl: "/partials/Article/list.html"

@@ -37,19 +37,19 @@
                             <strong><a ng-click="expand(item)">{{item.Title}}</a></strong>
                             <span class="glyphicon-warning-sign text-error" ng-hide="item.PostStatus == 'Publish'">{{item.PostStatus}}</span>
                             <span class="glyphicon-warning-sign text-warning" ng-show="item.PubDate | isFuture">{{item.PubDate | date:"yyyy-MM-dd HH:mm"}}</span>
-                            <a class="glyphicon-download fr" ng-href="/post/{{item.Url}}">&nbsp;</a>
+                            <a class="glyphicon-download fr" ng-href="/#!/post/{{item.Url}}">&nbsp;</a>
                         </h2>
                         <div>
                             <span class="glyphicon-folder-open categories">
                                 <span ng-repeat="category in item.Categories">
                                     <span ng-hide="$first">,</span>
-                                    <a ng-href="/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
+                                    <a ng-href="/#!/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
                                 </span>
                             </span>
                             <span class="glyphicon-tags tags" ng-show="item.Tags.length>0">
                                 <span ng-repeat="tag in item.Tags">
                                     <span ng-hide="$first">,</span>
-                                    <a ng-href="/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/tag/{{tag}}" title="查看 {{tag}} 的全部文章">{{tag}}</a>
+                                    <a ng-href="/#!/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/tag/{{tag}}" title="查看 {{tag}} 的全部文章">{{tag}}</a>
                                 </span>
                             </span>
                             <span class="glyphicon-user"></span>
@@ -85,7 +85,7 @@
     <div>
         <ul class="pager" ng-show="list.PageCount>page">
             <li>
-                <a href="#" ng-click="turnpages(page+1)" rel="next">猛击此处，查看更多 &rarr;</a>
+                <a ng-click="turnpages(page+1)" rel="next">猛击此处，查看更多 &rarr;</a>
             </li>
         </ul>
     </div>
