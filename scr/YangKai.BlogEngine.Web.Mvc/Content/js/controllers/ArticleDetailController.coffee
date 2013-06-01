@@ -7,6 +7,7 @@
   $scope.item = Article.get
     id:$scope.url
   , ->
+    $scope.$parent.title=$scope.item.Title
     $scope.$parent.loading=false
     codeformat()#格式化代码
     $scope.entity.PostId = $scope.item.PostId

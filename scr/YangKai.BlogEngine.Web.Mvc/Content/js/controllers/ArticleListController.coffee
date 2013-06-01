@@ -9,6 +9,8 @@
   $scope.date = if $routeParams.type=='date' then $routeParams.query else ''
   $scope.key = $routeParams.key ? ''
 
+  $scope.$parent.title=$routeParams.group ? $routeParams.channel
+
   $scope.expand=(item)->
     item.isShowDetail = not item.isShowDetail
     codeformat()

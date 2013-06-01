@@ -8,6 +8,7 @@ ArticleDetailController = [
     $scope.item = Article.get({
       id: $scope.url
     }, function() {
+      $scope.$parent.title = $scope.item.Title;
       $scope.$parent.loading = false;
       codeformat();
       $scope.entity.PostId = $scope.item.PostId;

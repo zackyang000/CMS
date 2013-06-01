@@ -6,10 +6,19 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by YangKai , 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Sat, 01 Jun 2013 16:50:40 GMT</pubDate>
-    <lastBuildDate>Sat, 01 Jun 2013 16:50:40 GMT</lastBuildDate>
+    <pubDate>Sat, 01 Jun 2013 17:10:09 GMT</pubDate>
+    <lastBuildDate>Sat, 01 Jun 2013 17:10:09 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>567</title>
+      <description>567&lt;br /&gt;发表于:22222222222222</description>
+      <link>http://www.woshinidezhu.com/videos/Detail/22222222222222</link>
+      <category>视频 - 默认</category>
+      <author>我是你的猪</author>
+      <guid>d2a32a93-e5e7-40b9-ba0e-724e056edd31</guid>
+      <pubDate>Sat, 01 Jun 2013 17:10:09 GMT</pubDate>
+    </item>
     <item>
       <title>11111111</title>
       <description>11111111&lt;br /&gt;发表于:撒旦撒</description>
@@ -451,15 +460,6 @@
       <author>h41234</author>
       <guid>66243d96-d553-e011-8a7d-0025900b8575</guid>
       <pubDate>Tue, 22 Mar 2011 00:10:51 GMT</pubDate>
-    </item>
-    <item>
-      <title>支持一下.</title>
-      <description>支持一下.&lt;br /&gt;发表于:看来以后玩游戏还是不要坐一起.</description>
-      <link>http://www.woshinidezhu.com/videos/Detail/do-not-sit-together-to-play-games</link>
-      <category>视频 - 给力</category>
-      <author>D</author>
-      <guid>53b781ed-0068-4898-a2ad-227f547d41aa</guid>
-      <pubDate>Sat, 12 Feb 2011 16:59:19 GMT</pubDate>
     </item>
   </channel>
 </rss>
