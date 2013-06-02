@@ -62,12 +62,12 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {border: 
 .post-nav a:hover{background:#0072BC;text-decoration:none}
 
 /* 相关文章 */
-#related  {line-height: 20px;font-size: 13px;margin-top: 40px;}
-#related .title {border-top: 6px solid #01a31c;height: 1px;margin: 20px 0 30px 0;position: relative;}
-#related .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #01a31c;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
-#related ul{ list-style: none;}
-#related ul li{ line-height: 26px;}
-#related ul li a:hover{color: #01a31c;}
+.post-related  {line-height: 20px;font-size: 13px;margin-top: 40px;}
+.post-related .title {border-top: 6px solid #01a31c;height: 1px;margin: 20px 0 30px 0;position: relative;}
+.post-related .title span{display: block;height: 40px;padding: 0 18px;line-height: 40px;background: #01a31c;color: #FFF;position: absolute;top: -25px;overflow: hidden;}
+.post-related ul{ list-style: none;}
+.post-related ul li{ line-height: 26px;}
+.post-related ul li a:hover{color: #01a31c;}
 
 /* 评论 */
 .comment {line-height: 20px;font-size: 13px;margin-top: 40px;position: relative;}

@@ -11,8 +11,13 @@
     $scope.$parent.loading=false
     codeformat()#格式化代码
     $scope.entity.PostId = $scope.item.PostId
+    #上一篇 & 下一篇
     $scope.nav = Article.nav
       id:$scope.item.PostId
+    #相关文章
+    $scope.related = Article.related
+      id:$scope.item.PostId
+    #评论
     $scope.list = Comment.query
       PostId:$scope.item.PostId
 
@@ -25,7 +30,6 @@
   $scope.editmode=$scope.Name=='' or not $scope.Name?
       
   $scope.del = (item) ->
-    debugger
     Comment.del {id:item.CommentId}
     ,(data)->
       message.success "“##{item.Content}”  be moved to trash."

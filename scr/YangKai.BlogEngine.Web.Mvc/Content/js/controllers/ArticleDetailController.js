@@ -15,6 +15,9 @@ ArticleDetailController = [
       $scope.nav = Article.nav({
         id: $scope.item.PostId
       });
+      $scope.related = Article.related({
+        id: $scope.item.PostId
+      });
       return $scope.list = Comment.query({
         PostId: $scope.item.PostId
       });
@@ -26,7 +29,7 @@ ArticleDetailController = [
     $scope.AuthorForDisplay = $scope.Name;
     $scope.editmode = $scope.Name === '' || !($scope.Name != null);
     $scope.del = function(item) {
-      debugger;      return Comment.del({
+      return Comment.del({
         id: item.CommentId
       }, function(data) {
         message.success("“#" + item.Content + "”  be moved to trash.");

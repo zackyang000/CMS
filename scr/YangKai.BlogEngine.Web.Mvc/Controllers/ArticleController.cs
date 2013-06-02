@@ -63,7 +63,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
         public object Get(Guid id,string action)
         {
-            if (action == "nav")
+            if (action == "nav")//上一篇 & 下一篇
             {
                 var prePost = QueryFactory.Instance.Post.PrePost(id) ?? new Post();
                 var nextPost = QueryFactory.Instance.Post.NextPost(id) ?? new Post();
@@ -71,6 +71,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 var list = new List<Post>();
                 list.AddRange(new List<Post> { prePost , nextPost});
                 return list.Select(p => new { p.Title, p.Url });
+            }
+            if (action == "related")//相关文章
+            {
+                return QueryFactory.Instance.Post.FindAllByTag(id, 7).ToViewModels();
             }
             return null;
         }

@@ -45,11 +45,11 @@ namespace YangKai.BlogEngine.Modules.PostModule.Repositories
             {
                 foreach (Tag tag in post.Tags)
                 {
-                    _tagRepository.GetAll(p => p.Name == tag.Name && p.Post.Group.Url == tag.Post.Group.Url)
+                    _tagRepository.GetAll(p => p.Name == tag.Name)
                                   .Select(p => p.Post).ToList().ForEach(result.Add);
                 }
             }
-            return result.Distinct().Where(p => p.PostId != postId).Take(count).ToList();
+            return result.Distinct().Where(p => p.PostId != postId&&p.Group==post.Group).Take(count).ToList();
         }
 
         public Post GetPrePost(Guid postId)

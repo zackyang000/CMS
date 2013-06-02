@@ -1,8 +1,8 @@
 ﻿<div ng-controller="ArticleDetailController">
     <ul class="breadcrumb">
-        <li><a href="/">首页</a></li>
-        <li><a href="/list/{{item.ChannelUrl}}">{{item.ChannelName}}</a></li>
-        <li><a href="/list/{{item.ChannelUrl}}/{{item.GroupUrl}}">{{item.GroupName}}</a></li>
+        <li><a href="/#!/">首页</a></li>
+        <li><a href="/#!/list/{{item.ChannelUrl}}">{{item.ChannelName}}</a></li>
+        <li><a href="/#!/list/{{item.ChannelUrl}}/{{item.GroupUrl}}">{{item.GroupName}}</a></li>
         <li class="active">{{item.Title}}</li>
     </ul>
     <article>
@@ -77,13 +77,21 @@
             <script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=902651" charset="utf-8"></script>
         </footer>
     </article>
-    <div>
-        <ul class="post-nav">
+    <div class="post-nav">
+        <ul>
             <li>
-                <a ng-show="nav[0].Url" ng-href="/post/{{nav[0].Url}}" rel="prev">&larr; · 上一篇</a>
+                <a ng-show="nav[0].Url" ng-href="/#!/post/{{nav[0].Url}}" rel="prev">&larr; · 上一篇</a>
             </li>
             <li>
-                <a ng-show="nav[1].Url" ng-href="/post/{{nav[1].Url}}" rel="next">下一篇 · &rarr;</a>
+                <a ng-show="nav[1].Url" ng-href="/#!/post/{{nav[1].Url}}" rel="next">下一篇 · &rarr;</a>
+            </li>
+        </ul>
+    </div>
+    <div class="post-related" ng-show="related.length>0">
+        <div class="title"><span>相关文章</span></div>
+        <ul>
+            <li ng-repeat="item in related">
+                {{item.PubDate | date:"yyyy年MM月dd日"}} -- <a ng-href="/post/{{item.Url}}">{{item.Title}}</a>
             </li>
         </ul>
     </div>

@@ -13,6 +13,13 @@ angular.module("ArticleServices", ["ngResource"]).factory("Article", [
           action: "nav"
         },
         isArray: true
+      },
+      related: {
+        method: "GET",
+        params: {
+          action: "related"
+        },
+        isArray: true
       }
     });
   }

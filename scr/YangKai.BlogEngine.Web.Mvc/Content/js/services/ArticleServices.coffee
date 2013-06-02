@@ -8,4 +8,9 @@
       params:
         action:"nav"
       isArray:true
+    related:
+      method: "GET"
+      params:
+        action:"related"
+      isArray:true
 ]
