@@ -189,6 +189,7 @@
   <ItemGroup>
     <Content Include="Content\img\no-ie.jpg" />
     <Content Include="Content\img\technologies\angularJS.png" />
+    <Content Include="Content\js\angular-scenario.js" />
     <Content Include="Content\js\controllers\ArticleDetailController.js">
       <DependentUpon>ArticleDetailController.coffee</DependentUpon>
     </Content>
@@ -1441,6 +1442,11 @@
     <Content Include="Content\js\modernizr-2.6.2.js" />
     <Content Include="sitemap.xml" />
     <Content Include="sitemap.xsl" />
+    <Content Include="test\e2e\runner.html" />
+    <Content Include="test\e2e\scenarios.js" />
+    <Content Include="test\lib\angular\angular-mocks.js" />
+    <Content Include="test\lib\angular\angular-scenario.js" />
+    <Content Include="test\lib\angular\version.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
