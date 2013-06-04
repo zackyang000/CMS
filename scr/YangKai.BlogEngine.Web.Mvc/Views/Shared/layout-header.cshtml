@@ -20,15 +20,15 @@
                                 <li class="nav-header">以分组浏览</li>
                                 @foreach (var group in channel.Groups.Where(p=>!p.IsDeleted))
                                 {
-                                    <li><a href="/#!/list/@channel.Url/@group.Url">@group.Name</a></li>
+                                    <li><a ng-href="/#!/list/@channel.Url/@group.Url">@group.Name</a></li>
                                 }
                                 <li class="divider"></li>
-                                @*                                <li><a href="/calendar/@channel.Url">存档</a></li>*@
+                                @*<li><a href="/calendar/@channel.Url">存档</a></li>*@
                             </ul>
                         </li>
                     }
-                    <li><a href="#!/board">留言板</a></li>
-                    <li><a href="#!/about">关于</a></li>
+                    <li><a ng-href="#!/board">留言板</a></li>
+                    <li><a ng-href="#!/about">关于</a></li>
                 </ul>
                 <ul class="nav pull-right">
                     @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)

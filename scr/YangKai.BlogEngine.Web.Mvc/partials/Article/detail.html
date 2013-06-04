@@ -1,4 +1,5 @@
 ﻿<div ng-controller="ArticleDetailController">
+    <div ng-hide="item.Title==null">
     <ul class="breadcrumb">
         <li><a href="/#!/">首页</a></li>
         <li><a href="/#!/list/{{item.ChannelUrl}}">{{item.ChannelName}}</a></li>
@@ -163,4 +164,6 @@
         </form>
     </div>
     <!-- respond END -->
+    </div>
+    <div ng-show="item.Title==null">木有这篇文章.</div>
 </div>

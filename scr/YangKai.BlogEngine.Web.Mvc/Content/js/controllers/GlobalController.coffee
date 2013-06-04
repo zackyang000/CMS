@@ -9,4 +9,8 @@
 
   $scope.search=->
     $location.path("/search/#{$scope.key}")
+  
+  $scope.breadcrumbchange=(data)->
+    $scope.breadcrumb=data
+    debugger
 ]

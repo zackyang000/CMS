@@ -9,8 +9,12 @@ GlobalController = [
       $scope.Email = data.Email;
       return $scope.Url = data.Url;
     });
-    return $scope.search = function() {
+    $scope.search = function() {
       return $location.path("/search/" + $scope.key);
+    };
+    return $scope.breadcrumbchange = function(data) {
+      $scope.breadcrumb = data;
+      debugger;
     };
   }
 ];
