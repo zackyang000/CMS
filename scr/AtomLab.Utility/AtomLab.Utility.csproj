@@ -113,6 +113,7 @@
     <Compile Include="ExpressionTree\SpecExprExtensions.cs" />
     <Compile Include="ExtensionMethods\StringExtension.cs" />
     <Compile Include="Function.cs" />
+    <Compile Include="GravatarHelper.cs" />
     <Compile Include="ImageProcessing.cs" />
     <Compile Include="IniHelper.cs" />
     <Compile Include="IoC\UnityContainerHelper.cs" />

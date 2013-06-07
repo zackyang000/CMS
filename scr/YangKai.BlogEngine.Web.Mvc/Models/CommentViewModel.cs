@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AtomLab.Utility;
+using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 
 namespace YangKai.BlogEngine.Web.Mvc.Models
@@ -13,6 +15,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
         public string Author { get; set; }
         public string Email { get; set; }
         public string Url { get; set; }
+        public string Gravatar { get; set; }
         public string Content { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsDeleted { get; set; }
@@ -45,7 +48,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                 CommentId = entity.CommentId,
                 PostId = entity.PostId,
                 Author = entity.Author,
-                Email = entity.Email,
+                //Email = entity.Email,
                 Url = entity.Url,
                 Content = entity.Content,
                 IsAdmin = entity.IsAdmin,
@@ -54,6 +57,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                 PostUrl = entity.Post.Url,
                 PostTitle = entity.Post.Title,
                 CreateDate = entity.CreateDate,
+                Gravatar = GravatarHelper.GetImageSource(entity.Email, Config.Path.AUTHOR_DEFAULT_AVATAR_PATH)
             };
         }
 
