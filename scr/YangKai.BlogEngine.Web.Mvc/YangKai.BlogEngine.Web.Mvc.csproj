@@ -1551,11 +1551,6 @@
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="fonts\glyphiconshalflings-regular.eot" />
-    <Content Include="fonts\glyphiconshalflings-regular.otf" />
-    <Content Include="fonts\glyphiconshalflings-regular.svg" />
-    <Content Include="fonts\glyphiconshalflings-regular.ttf" />
-    <Content Include="fonts\glyphiconshalflings-regular.woff" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="_todo\Labs\export.cshtml" />

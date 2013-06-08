@@ -29,7 +29,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/js/app.js"
                                         ));
 
-            BundleTable.Bundles.Add(new StyleBundle("~/css").Include(
+            BundleTable.Bundles.Add(new StyleBundle("~/Content/style/css").Include(
                 "~/Content/css/html5reset.css",
                 "~/Content/css/bootstrap.css",
                 "~/Content/css/messenger.css",
