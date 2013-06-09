@@ -252,7 +252,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
             }
 
             //添加Post.Qrcode
-
             var g = QueryFactory.Instance.Post.GetGroup(data.GroupId);
               data.QrCode = new Modules.PostModule.Objects.QrCode
             {
@@ -261,7 +260,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
             };
 
             var gRender = new GraphicsRenderer(new FixedModuleSize(30, QuietZoneModules.Four));
-            var fullUrl = Config.URL.Domain + "/" + g.Url + "/" + data.Url.Replace(" ", "-") + ".png";
+            var fullUrl = Config.URL.Domain + "/#!/post/" + data.Url.Replace(" ", "-");
             BitMatrix matrix = new QrEncoder().Encode(data.QrCode.Content + " | " + fullUrl).Matrix;
             using (var stream = new FileStream(Server.MapPath("/upload/qrcode/" + data.QrCode.Url.Replace(" ", "-")), FileMode.Create))
             {
