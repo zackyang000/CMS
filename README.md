@@ -4,7 +4,7 @@ CMS
 在线演示地址: <a href="http://www.woshinidezhu.com">iShare</a>
 
 ## 简介
-基于领域驱动设计(Based Domain-Driven Design)的博客系统。
+基于领域驱动设计的博客系统。
 
 前端 AngularJS + Bootstrap
 
@@ -12,7 +12,7 @@ CMS
 
 ## 开发环境
 
-Visual Studio 2012
+Visual Studio 2012.2
 
 ## 开始
 
