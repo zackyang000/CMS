@@ -1,9 +1,4 @@
-下列2处调用了服务端方法:
-Article index.cshtml
-Analytics index.cshtml
-
 ***
-RSSResult:ActionResult
 RSS定制
 membership
 viewmodel
