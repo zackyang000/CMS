@@ -8,31 +8,46 @@ namespace YangKai.BlogEngine.Web.Mvc.Extension
     {
         private const string LINK_HEADER_TEMPLATE = "<{0}>; rel=\"{1}\"";
 
-        public static void  SetLinkHeader<T>(PageList<T> pageData, string baseUrl, int page)
+        public static void SetLinkHeader<T>(PageList<T> pageData, string baseUrl, int page, Dictionary<string, object> param=null)
         {
             var linkHeader = new List<string>();
             if (page != 1)
             {
-                var first = GetPagedUrl(baseUrl, 1);
-                linkHeader.Add(string.Format(LINK_HEADER_TEMPLATE, first, "first"));
+                var link = GetParamsUrl(baseUrl, param);
+                link = GetPagedUrl(link, 1);
+                linkHeader.Add(string.Format(LINK_HEADER_TEMPLATE, link, "first"));
             }
             if (page > 1)
             {
-                var prev = GetPagedUrl(baseUrl, page - 1);
-                linkHeader.Add(string.Format(LINK_HEADER_TEMPLATE, prev, "prev"));
+                var link = GetParamsUrl(baseUrl, param);
+                link = GetPagedUrl(link, page - 1);
+                linkHeader.Add(string.Format(LINK_HEADER_TEMPLATE, link, "prev"));
             }
             if (page < pageData.PageCount)
             {
-                var next = GetPagedUrl(baseUrl, page + 1);
-                linkHeader.Add(string.Format(LINK_HEADER_TEMPLATE, next, "next"));
+                var link = GetParamsUrl(baseUrl, param);
+                link = GetPagedUrl(link, page + 1);
+                linkHeader.Add(string.Format(LINK_HEADER_TEMPLATE, link, "next"));
             }
             if (page != pageData.PageCount)
             {
-                var last = GetPagedUrl(baseUrl, pageData.PageCount);
-                linkHeader.Add(string.Format(LINK_HEADER_TEMPLATE, last, "last"));
+                var link = GetParamsUrl(baseUrl, param);
+                link = GetPagedUrl(link, pageData.PageCount);
+                linkHeader.Add(string.Format(LINK_HEADER_TEMPLATE, link, "last"));
             }
 
             HttpContext.Current.Response.AppendHeader("Link", string.Join(",", linkHeader));
+        }
+
+        private static string GetParamsUrl(string baseUrl, Dictionary<string, object> param)
+        {
+            foreach (var item in param)
+            {
+                if (item.Value!=null &&string.IsNullOrWhiteSpace(item.Value.ToString())) continue;
+                var connector = baseUrl.Contains("?") ? "&" : "?";
+                baseUrl = baseUrl + connector + item.Key + "=" + item.Value;
+            }
+            return baseUrl;
         }
 
         private static string GetPagedUrl(string baseUrl, int page)

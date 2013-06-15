@@ -10,15 +10,16 @@ using YangKai.BlogEngine.Modules.CommonModule.Objects;
 using YangKai.BlogEngine.Modules.PostModule.Commands;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Web.Mvc.Extension;
 using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class ArticleController : ApiController
     {
-        public PageList<PostViewModel> Get(int? page = 1, string channel = null, string group = null,
-                          string category = null, string tag = null,
-                          string date = null, string search = null)
+        public PageList<PostViewModel> Get(int page = 1, string channel = null, string group = null,
+                                           string category = null, string tag = null,
+                                           string date = null, string search = null)
         {
             DateTime? calendar = null;
             if (!string.IsNullOrEmpty(date))
@@ -30,7 +31,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 }
             }
 
-            var data = QueryFactory.Instance.Post.FindAllByNormal(page ?? 1, Config.Setting.PAGE_SIZE, channel, group,
+            var data = QueryFactory.Instance.Post.FindAllByNormal(page, Config.Setting.PAGE_SIZE, channel, group,
                                                                   category, tag, calendar, search);
 
             //保存搜索记录
@@ -39,6 +40,17 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 var log = Log.CreateSearchLog(search);
                 CommandFactory.Instance.Create(log);
             }
+
+            //生成Http-head link
+            PageHelper.SetLinkHeader(data, "/api/article", page, new Dictionary<string, object>
+                {
+                    {"channel", channel},
+                    {"group", group},
+                    {"category", category},
+                    {"tag", tag},
+                    {"date", date},
+                    {"search", search},
+                });
 
             return new PageList<PostViewModel>(Config.Setting.PAGE_SIZE)
                 {
