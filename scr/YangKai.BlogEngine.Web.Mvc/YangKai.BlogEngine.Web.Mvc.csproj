@@ -176,6 +176,7 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LabsController.cs" />
+    <Compile Include="Extension\PageHelper.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -222,6 +223,7 @@
     <Content Include="Content\js\services\CommentServices.min.js">
       <DependentUpon>CommentServices.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\http-link.js" />
     <Content Include="data\technology.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
