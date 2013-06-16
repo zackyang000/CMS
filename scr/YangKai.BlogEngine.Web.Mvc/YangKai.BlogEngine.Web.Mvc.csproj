@@ -167,11 +167,9 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
+    <Compile Include="Areas\Admin\Common\SaveRemoteFile.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
-    <Compile Include="Extension\BaseController.cs" />
-    <Compile Include="Extension\CallContextLifeTimeManager.cs" />
-    <Compile Include="Extension\PagedJsonResult.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
