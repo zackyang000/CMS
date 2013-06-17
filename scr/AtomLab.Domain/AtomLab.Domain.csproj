@@ -102,7 +102,6 @@
     <Compile Include="BaseDomainObjects\Entity.cs" />
     <Compile Include="BaseDomainObjects\IEntity.cs" />
     <Compile Include="IInstanceLocator.cs" />
-    <Compile Include="Infrastructure\GuidRepository.cs" />
     <Compile Include="Infrastructure\EntityCollectionEx.cs" />
     <Compile Include="InstanceLocator.cs" />
     <Compile Include="Infrastructure\EntityCollection.cs" />

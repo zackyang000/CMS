@@ -441,27 +441,6 @@ $(function () {
     $(".choose_before").bind("click", function () { toggle_before_tag(); });
 });
 
-function bind_tag(groupUrl) {
-    $("#tag_list").html("");
-    $.ajax({
-        type: "GET",
-        async: "false",
-        url: "/admin/postmanage/GetTag",
-        dataType: "json",
-        data: "groupUrl=" + groupUrl,
-        cache: false,
-        success: function (result) {
-            var tagListHtml = "";
-            $.each(result, function (i) {
-                var tagLink = ",<a href=\"JavaScript:void(0);\" title=\"" + result[i].Text + " 个话题\">" + result[i].Value + "</a>";
-                tagListHtml += tagLink;
-            });
-            $("#tag_list").html(tagListHtml.substring(1));
-            $("#tag_list a").bind("click", function () { add_tag(this); });
-        }
-    });
-}
-
 function toggle_before_tag() {
     $("#tag_list").toggle();
 }

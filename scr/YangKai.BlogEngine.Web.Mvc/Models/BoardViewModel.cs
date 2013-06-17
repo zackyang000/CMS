@@ -18,7 +18,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
 
     public static class BoardViewModelExtension
     {
-        public static Board ToBoardEntity(this BoardViewModel viewModel)
+        public static Board ToEntity(this BoardViewModel viewModel)
         {
             return new Board()
                 {
@@ -28,7 +28,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
                 };
         }
 
-        public static BoardViewModel ToBoardViewModel(this Board entity)
+        public static BoardViewModel ToViewModel(this Board entity)
         {
            return new BoardViewModel()
             {
@@ -40,12 +40,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Models
             };
         }
 
-        public static IList<BoardViewModel> ToBoardViewModels(this IList<Board> entities)
+        public static IList<BoardViewModel> ToViewModels(this IList<Board> entities)
         {
             var list = new List<BoardViewModel>();
             entities.ToList().ForEach(p =>
                 {
-                    var viewModel = p.ToBoardViewModel();
+                    var viewModel = p.ToViewModel();
                     list.Add(viewModel);
                 });
             return list;

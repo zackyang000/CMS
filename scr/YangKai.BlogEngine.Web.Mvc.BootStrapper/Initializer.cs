@@ -21,7 +21,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                                                        .DelayStartBy(1).MilliSeconds
                                                        .Then<AreasConfig>()
                                                        .DelayStartBy(1).MilliSeconds
-                                                       .Then<IocConfig>()
+                                                       .Then<IoCConfig>()
                                                        .DelayStartBy(1).MilliSeconds
                                                        .Then<DomainConfig>()
                                                        .DelayStartBy(1).MilliSeconds

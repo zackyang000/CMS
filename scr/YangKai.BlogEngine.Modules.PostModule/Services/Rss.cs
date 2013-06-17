@@ -17,14 +17,13 @@ using Microsoft.Practices.Unity;
 using Rss;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
-using YangKai.BlogEngine.Modules.PostModule.Repositories;
 
 namespace YangKai.BlogEngine.Modules.PostModule.Services
 {
     public class Rss
     {
-        private readonly PostRepository _postRepository = InstanceLocator.Current.GetInstance<PostRepository>();
-        private readonly CommentRepository _commentRepository = InstanceLocator.Current.GetInstance<CommentRepository>();
+        private readonly Repository<Post, Guid> _postRepository = InstanceLocator.Current.GetInstance<Repository<Post, Guid>>();
+        private readonly Repository<Comment, Guid> _commentRepository = InstanceLocator.Current.GetInstance<Repository<Comment, Guid>>();
 
         #region  Public Static Methods
 

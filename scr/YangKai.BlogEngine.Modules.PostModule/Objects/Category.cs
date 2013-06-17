@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AtomLab.Domain;
-using YangKai.BlogEngine.Modules.PostModule.Repositories;
+using AtomLab.Domain.Infrastructure;
 
 namespace YangKai.BlogEngine.Modules.PostModule.Objects
 {
@@ -87,7 +87,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Objects
         public void Handle(EntityCreatingEvent<Category> e)
         {
             //TODO:Domain中应当去掉Repository
-            var isExist = InstanceLocator.Current.GetInstance<CategoryRepository>().Exist(p => p.Url == e.EntityCreating.Url);
+            var isExist = InstanceLocator.Current.GetInstance<Repository<Category,Guid>>().Exist(p => p.Url == e.EntityCreating.Url);
 
             if (isExist)
             {

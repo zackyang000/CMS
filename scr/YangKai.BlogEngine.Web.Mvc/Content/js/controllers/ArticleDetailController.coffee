@@ -23,6 +23,7 @@
 
   $scope.entity= {}
 
+  #TODO 如果Global中用户信息读取比此处慢,将无法绑定用户信息到界面.
   $scope.entity.Author = $scope.Name
   $scope.entity.Email = $scope.Email
   $scope.entity.Url = $scope.Url

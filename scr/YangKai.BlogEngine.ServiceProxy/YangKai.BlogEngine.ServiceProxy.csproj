@@ -81,9 +81,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandFactory.cs" />
+    <Compile Include="Command.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryFactory.cs" />
+    <Compile Include="Query.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Domain\AtomLab.Domain.csproj">
@@ -93,10 +93,6 @@
     <ProjectReference Include="..\YangKai.BlogEngine.ICommandServices\YangKai.BlogEngine.ICommandServices.csproj">
       <Project>{35C36FE3-504D-4316-85D1-66129442EBE7}</Project>
       <Name>YangKai.BlogEngine.ICommandServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.IQueryServices\YangKai.BlogEngine.IQueryServices.csproj">
-      <Project>{78F96B9D-7ACF-4F28-8C85-E0F5E0CFE325}</Project>
-      <Name>YangKai.BlogEngine.IQueryServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.Modules.BoardModule\YangKai.BlogEngine.Modules.BoardModule.csproj">
       <Project>{BC7F98A2-887B-4D77-A6F3-614A68BC2ACD}</Project>
@@ -109,10 +105,6 @@
     <ProjectReference Include="..\YangKai.BlogEngine.Modules.PostModule\YangKai.BlogEngine.Modules.PostModule.csproj">
       <Project>{829DF227-A993-44A7-B6B2-8255C4836D11}</Project>
       <Name>YangKai.BlogEngine.Modules.PostModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.QueryServices\YangKai.BlogEngine.QueryServices.csproj">
-      <Project>{DB209F46-32EF-418B-8F30-70CADEBB6347}</Project>
-      <Name>YangKai.BlogEngine.QueryServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

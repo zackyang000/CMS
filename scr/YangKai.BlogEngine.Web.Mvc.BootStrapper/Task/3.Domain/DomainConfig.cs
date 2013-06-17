@@ -19,6 +19,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             var assemblys = new List<Assembly>
                 {
+                    typeof (BlogEngineContext).Assembly,//Repositories
                     typeof (Board).Assembly,
                     typeof (Post).Assembly,
                     typeof (User).Assembly,

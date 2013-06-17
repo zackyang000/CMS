@@ -111,6 +111,7 @@
     <Compile Include="Encrypt\EncryptStringHelper.cs" />
     <Compile Include="ExpressionTree\ParameterReplacer.cs" />
     <Compile Include="ExpressionTree\SpecExprExtensions.cs" />
+    <Compile Include="ExtensionMethods\ObjectExtension.cs" />
     <Compile Include="ExtensionMethods\StringExtension.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="GravatarHelper.cs" />

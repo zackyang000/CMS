@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace AtomLab.Domain.Infrastructure
 {
-    public abstract class Repository<TEntity, TEntityId> :
+    public class Repository<TEntity, TEntityId> :
         IEventHandler<EntityQueryEvent<TEntity, TEntityId>>,
         IEventHandler<EntityCreatedEvent<TEntity>>,
         IEventHandler<EntityDeleteEvent<TEntity>>
@@ -13,7 +13,7 @@ namespace AtomLab.Domain.Infrastructure
     {
         private readonly DbContext _context;
 
-        protected Repository(IUnitOfWork unitOfWork)
+        public Repository(IUnitOfWork unitOfWork)
         {
             _context = unitOfWork as DbContext;
         }
@@ -164,24 +164,6 @@ namespace AtomLab.Domain.Infrastructure
         #endregion
 
         #region GetPage PageList method
-
-        /// <summary>
-        /// 查询实体列表
-        /// </summary>
-        /// <param name="pageIndex">当前页码</param>
-        /// <param name="pageSize">每页数量</param>
-        /// <param name="specExpr">查询条件</param>
-        public virtual PageList<TEntity> GetPage<TResult>(int pageIndex, int pageSize,
-                                                             Expression<Func<TEntity, bool>> specExpr)
-        {
-            var query = GetAll(specExpr);
-
-            return new PageList<TEntity>(pageSize)
-                {
-                    TotalCount = query.Count(),
-                    DataList = query.Skip((pageIndex - 1)*pageSize).Take(pageSize).ToList()
-                };
-        }
 
         /// <summary>
         /// 查询实体列表

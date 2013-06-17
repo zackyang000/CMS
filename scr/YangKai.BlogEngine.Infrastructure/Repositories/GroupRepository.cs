@@ -1,11 +1,12 @@
-﻿using AtomLab.Domain.Infrastructure;
+﻿using System;
+using AtomLab.Domain.Infrastructure;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 
 namespace YangKai.BlogEngine.Modules.PostModule.Repositories
 {
-    public class ChannelRepository : GuidRepository<Channel>
+    public class GroupRepository : Repository<Group, Guid>
     {
-        public ChannelRepository(IUnitOfWork context)
+        public GroupRepository(IUnitOfWork context)
             : base(context)
         {
         }

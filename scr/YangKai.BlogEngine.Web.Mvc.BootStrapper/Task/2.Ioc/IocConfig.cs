@@ -7,11 +7,10 @@ using Bootstrap.Extensions.StartupTasks;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.InterceptionExtension;
-using YangKai.BlogEngine.ICommandServices;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
-    public class IocConfig : IStartupTask
+    public class IoCConfig : IStartupTask
     {
         public void Run()
         {

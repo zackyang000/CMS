@@ -24,9 +24,9 @@ using NPOI.HSSF.Util;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using YangKai.BlogEngine.Common;
+using YangKai.BlogEngine.Modules.BoardModule.Objects;
 using Comment = NPOI.SS.UserModel.Comment;
 using YangKai.BlogEngine.IQueryServices;
-using YangKai.BlogEngine.Modules.BoardModule.Repositories;
 using YangKai.BlogEngine.Modules.CommonModule.Repositories;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 using YangKai.BlogEngine.Modules.PostModule.Repositories;
@@ -39,7 +39,7 @@ namespace YangKai.BlogEngine.QueryServices
         readonly LogRepository _logRepository = InstanceLocator.Current.GetInstance<LogRepository>();
         readonly PostRepository _postRepository = InstanceLocator.Current.GetInstance<PostRepository>();
         readonly CommentRepository _commentRepository = InstanceLocator.Current.GetInstance<CommentRepository>();
-        readonly BoardRepository _boardRepository = InstanceLocator.Current.GetInstance<BoardRepository>();
+        readonly GuidRepository<Board> _boardRepository = InstanceLocator.Current.GetInstance<GuidRepository<Board>>();
 
         #region 统计
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.ServiceProxy;
 
 namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
@@ -27,7 +28,18 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
                 var username = collection["user"];
                 var password = collection["pwd"];
                 var isRemember = Convert.ToBoolean(collection["remember"]);
-                bool login = QueryFactory.Instance.User.AccountLoginValidate(username, password, isRemember, 60);
+                bool login=false;
+
+                var isExist = Query.User.Exist(p => p.LoginName == username && p.Password == password);
+
+                if (isExist)
+                {
+                    //登录成功
+                    var data = Query.User.Get(p => p.LoginName == username);
+                    WebMasterCookie.Save(data.UserId, data.LoginName, isRemember);
+                    login= true;
+                }
+
                 return Json(new { result = login });
             }
             catch (Exception e)
@@ -43,7 +55,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         {
             try
             {
-                QueryFactory.Instance.User.LoginOff();
+                WebMasterCookie.Remove();
                 return Json(new { result = true });
             }
             catch (Exception e)

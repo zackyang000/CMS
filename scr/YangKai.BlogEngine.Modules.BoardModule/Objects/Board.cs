@@ -7,7 +7,7 @@ namespace YangKai.BlogEngine.Modules.BoardModule.Objects
     /// <summary>
     /// 留言信息.
     /// </summary>
-    public sealed class Board : Entity<Guid>,
+    public class Board : Entity<Guid>,
                                 IEventHandler<EntityCreatingEvent<Board>>,
                                 IEntityEventHandler<BoardDeleteEvent>,
                                 IEntityEventHandler<BoardRenewEvent>

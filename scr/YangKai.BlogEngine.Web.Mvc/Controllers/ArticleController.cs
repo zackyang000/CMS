@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Linq;
@@ -21,28 +22,33 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                                            string category = null, string tag = null,
                                            string date = null, string search = null)
         {
-            DateTime? calendar = null;
-            if (!string.IsNullOrEmpty(date))
-            {
-                DateTime myDate;
-                if (DateTime.TryParse(date + "-01", out myDate))
-                {
-                    calendar = myDate;
-                }
-            }
+            var data = Query.Post.GetAll(
+                p => p.PostStatus == (int) PostStatusEnum.Publish,
+                new OrderByExpression<Post, DateTime>(p => p.CreateDate, OrderMode.DESC));
 
-            var data = QueryFactory.Instance.Post.FindAllByNormal(page, Config.Setting.PAGE_SIZE, channel, group,
-                                                                  category, tag, calendar, search);
+            data = data.Where(p => p.Group.Channel.Url == channel || string.IsNullOrEmpty(channel))
+                       .Where(p => p.Group.Url == group || string.IsNullOrEmpty(group))
+                       .Where(p => p.Categorys.Any(c => c.Url == category) || string.IsNullOrEmpty(category))
+                       .Where(p => p.Tags.Any(t => t.Name == tag) || string.IsNullOrEmpty(tag))
+                       .Where(p => p.Title.Contains(search) || string.IsNullOrEmpty(search));
+            var count = data.Count();
+            var list = data.Skip((page - 1)*Config.Setting.PAGE_SIZE).Take(Config.Setting.PAGE_SIZE).ToList();
 
             //保存搜索记录
             if (!string.IsNullOrEmpty(search))
             {
                 var log = Log.CreateSearchLog(search);
-                CommandFactory.Instance.Create(log);
+                Command.Instance.Create(log);
             }
 
+            var result = new PageList<PostViewModel>(Config.Setting.PAGE_SIZE)
+                {
+                    DataList = list.ToViewModels(),
+                    TotalCount = count
+                };
+
             //生成Http-head link
-            PageHelper.SetLinkHeader(data, "/api/article", page, new Dictionary<string, object>
+            PageHelper.SetLinkHeader(result, "/api/article", page, new Dictionary<string, object>
                 {
                     {"channel", channel},
                     {"group", group},
@@ -52,23 +58,19 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                     {"search", search},
                 });
 
-            return new PageList<PostViewModel>(Config.Setting.PAGE_SIZE)
-                {
-                    DataList = data.DataList.ToViewModels(),
-                    TotalCount = data.TotalCount
-                };
+            return result;
         }
 
         public PostViewModel Get(string id)
         {
-            var data = QueryFactory.Instance.Post.Find(id);
+            var data = Query.Post.Get(p=>p.Url==id);
 
             if (data == null || data.PostStatus == (int) PostStatusEnum.Trash)
             {
                 return null;
             }
 
-            CommandFactory.Instance.Run(new PostBrowseEvent {PostId = data.PostId});
+            Command.Instance.Run(new PostBrowseEvent {PostId = data.PostId});
 
             return data.ToViewModel();
         }
@@ -77,8 +79,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             if (action == "nav")//上一篇 & 下一篇
             {
-                var prePost = QueryFactory.Instance.Post.PrePost(id) ?? new Post();
-                var nextPost = QueryFactory.Instance.Post.NextPost(id) ?? new Post();
+               var post= Query.Post.Get(id);
+               var prePost = GetPrePost(post)??new Post();
+               var nextPost = GetNextPost(post) ?? new Post();
 
                 var list = new List<Post>();
                 list.AddRange(new List<Post> { prePost , nextPost});
@@ -86,9 +89,42 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
             if (action == "related")//相关文章
             {
-                return QueryFactory.Instance.Post.FindAllByTag(id, 7).ToViewModels();
+                var post = Query.Post.Get(id);
+                IList<Post> result = new List<Post>();
+                if (post.Tags != null)
+                {
+                    foreach (Tag tag in post.Tags)
+                    {
+                        Query.Tag.GetAll(p => p.Name == tag.Name)
+                                      .Select(p => p.Post).ToList().ForEach(result.Add);
+                    }
+                }
+                return result.Distinct().Where(p => p.PostId != id && p.Group == post.Group).Take(10).ToList().ToViewModels();
             }
             return null;
+        }
+
+        private Post GetPrePost(Post entity)
+        {
+            Expression<Func<Post, bool>> specExpr = p => p.PubDate < entity.PubDate
+                                                         && p.PostStatus == (int)PostStatusEnum.Publish
+                                                         && p.GroupId == entity.GroupId;
+            var result = Query.Post.GetAll(1, specExpr,
+                                new OrderByExpression<BlogEngine.Modules.PostModule.Objects.Post, DateTime>(
+                                    p => p.PubDate, OrderMode.DESC));
+            return result.FirstOrDefault();
+        }
+
+        private Post GetNextPost(Post entity)
+        {
+            Expression<Func<BlogEngine.Modules.PostModule.Objects.Post, bool>> specExpr =
+                p => p.PubDate > entity.PubDate
+                     && p.PostStatus == (int)PostStatusEnum.Publish
+                     && p.GroupId == entity.GroupId;
+            var result = Query.Post.GetAll(1, specExpr,
+                                new OrderByExpression<BlogEngine.Modules.PostModule.Objects.Post, DateTime>(
+                                    p => p.PubDate));
+            return result.FirstOrDefault();
         }
 
         //public ActionResult Calendar(string channelUrl)

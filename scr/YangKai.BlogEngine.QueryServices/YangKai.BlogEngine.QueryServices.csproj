@@ -100,10 +100,6 @@
       <Project>{EFFA84BA-D4B9-4365-AB95-7E640D81F3FC}</Project>
       <Name>YangKai.BlogEngine.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.IQueryServices\YangKai.BlogEngine.IQueryServices.csproj">
-      <Project>{78F96B9D-7ACF-4F28-8C85-E0F5E0CFE325}</Project>
-      <Name>YangKai.BlogEngine.IQueryServices</Name>
-    </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.Model\YangKai.BlogEngine.Model.csproj">
       <Project>{8D2C4AE7-628D-4558-BFD9-D897BB81B77F}</Project>
       <Name>YangKai.BlogEngine.Model</Name>

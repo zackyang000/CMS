@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AtomLab.Domain;
+using AtomLab.Domain.Infrastructure;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
-using YangKai.BlogEngine.Modules.PostModule.Repositories;
 
 namespace YangKai.BlogEngine.Modules.PostModule.Services
 {
     public class PostService
     {
-        private readonly PostRepository _postRepository = InstanceLocator.Current.GetInstance<PostRepository>();
+        private readonly Repository<Post, Guid> _postRepository = InstanceLocator.Current.GetInstance<Repository<Post, Guid>>();
 
         public void Update(string postUrl, Post newData, bool existThumbnail)
         {

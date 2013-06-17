@@ -105,12 +105,6 @@
     <Compile Include="Objects\Source.cs" />
     <Compile Include="Objects\Tag.cs" />
     <Compile Include="Objects\Thumbnail.cs" />
-    <Compile Include="Repositories\CategoryRepository.cs" />
-    <Compile Include="Repositories\ChannelRepository.cs" />
-    <Compile Include="Repositories\CommentRepository.cs" />
-    <Compile Include="Repositories\GroupRepository.cs" />
-    <Compile Include="Repositories\PostRepository.cs" />
-    <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PostService.cs" />
     <Compile Include="Services\Rss.cs" />

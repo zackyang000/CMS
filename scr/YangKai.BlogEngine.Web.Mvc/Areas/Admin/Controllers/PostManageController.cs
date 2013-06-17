@@ -28,7 +28,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         [ActionName("index")]
         public ActionResult Index(int? page, string status)
         {
-            PageList<Post> data = QueryFactory.Instance.Post.FindAll(page ?? 1, 50, null, null, null, null, null, null);
+            PageList<Post> data = Query.Post.GetPage(page ?? 1, 50,new OrderByExpression<Post,DateTime>(p=>p.CreateDate,OrderMode.DESC));
             var pagedList = new PagedList<Post>(data.DataList, page ?? 1, 50, data.TotalCount);
             return View(pagedList);
         }
@@ -36,7 +36,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         [ActionName("new-channel-and-group")]
         public PartialViewResult ChannelBox()
         {
-            IList<Channel> entities = QueryFactory.Instance.Post.FindAllByNotDeletion();
+            IList<Channel> entities = Query.Channel.GetAll(p=>!p.IsDeleted).ToList();
             return PartialView(entities);
         }
 
@@ -51,14 +51,14 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         public ActionResult New(FormCollection collection, HttpPostedFileBase uploadpic)
         {
             Post data = GetPost(collection, uploadpic);
-            CommandFactory.Instance.Create(data);
+            Command.Instance.Create(data);
             return PostAction(collection, data);
         }
 
         [ActionName("edit")]
         public ActionResult Edit(string id)
         {
-            Post data = QueryFactory.Instance.Post.Find(id);
+            Post data = Query.Post.Get(p=>p.Url==id);
             return View("New", data);
         }
 
@@ -75,14 +75,14 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
             data.EditDate = data.CreateDate;
 
             var existThumbnail = Convert.ToBoolean(collection["exist-thumbnail"]);
-            CommandFactory.Instance.UpdatePost(postUrl, data, existThumbnail);
+            Command.Instance.UpdatePost(postUrl, data, existThumbnail);
             return PostAction(collection, data);
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult GetChannel()
         {
-            var entities = QueryFactory.Instance.Post.FindAllByNotDeletion()
+            var entities = Query.Channel.GetAll(p=>!p.IsDeleted)
                 .Select(p => new { Value = p.Url, Text = p.Name });
             return Json(entities, JsonRequestBehavior.AllowGet);
         }
@@ -90,7 +90,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult GetGroup(string channelUrl)
         {
-            var entities = QueryFactory.Instance.Post.GetGroupsByChannelUrl(channelUrl)
+            var entities = Query.Group.GetAll(p => p.Channel.Url == channelUrl&&!p.IsDeleted).ToList()
                 .Select(p => new { Value = p.Url, Text = p.Name });
             return Json(entities, JsonRequestBehavior.AllowGet);
         }
@@ -98,16 +98,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult GetCategory(string groupUrl)
         {
-            var entities = QueryFactory.Instance.Post.GetCategories(groupUrl)
+            var entities = Query.Category.GetAll(p => p.Group.Url == groupUrl && !p.IsDeleted)
                 .Select(p => new { Value = p.CategoryId, Text = p.Name });
-            return Json(entities, JsonRequestBehavior.AllowGet);
-        }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public JsonResult GetTag(string groupUrl)
-        {
-            var entities = QueryFactory.Instance.Post.GetTagsList(groupUrl).Data.Take(30)
-                .Select(p => new { Value = p.Key, Text = p.Value });
             return Json(entities, JsonRequestBehavior.AllowGet);
         }
 
@@ -131,7 +123,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         {
             try
             {
-                var g = QueryFactory.Instance.Post.GetGroup(groupUrl);
+                var g = Query.Group.Get(p => p.Url == groupUrl);
                 var entity = new Category
                 {
                     Name = name,
@@ -139,7 +131,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
                     Group = g,
                     OrderId = 1,
                 };
-                CommandFactory.Instance.Create(entity);
+                Command.Instance.Create(entity);
                 return Json(new { result = true },
                             JsonRequestBehavior.AllowGet);
             }
@@ -155,7 +147,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         {
             try
             {
-                CommandFactory.Instance.Run(new PostDeleteEvent() { PostId = id });
+                Command.Instance.Run(new PostDeleteEvent() { PostId = id });
                 return Json(new { result = true });
             }
             catch (Exception e)
@@ -169,7 +161,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         {
             try
             {
-                CommandFactory.Instance.Run(new PostRenewEvent() { PostId = id });
+                Command.Instance.Run(new PostRenewEvent() { PostId = id });
                 return Json(new { result = true });
             }
             catch (Exception e)
@@ -187,14 +179,15 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
 
         private Post GetPost(FormCollection collection, HttpPostedFileBase uploadpic)
         {
+            var groupname = collection["groupRadio"];
             var data = new Post
                 {
-                    GroupId = QueryFactory.Instance.Post.GetGroup(collection["groupRadio"]).GroupId,
+                    GroupId = Query.Group.Get(p => p.Url == groupname).GroupId,
                     Url = collection["post_url"].ToLower(),
                     Title = collection["post_title"],
                     Content = collection["post_content"],
                     Description = collection["post_description"],
-                    PubAdminId = QueryFactory.Instance.User.UserId(),
+                    PubAdminId = WebMasterCookie.Load().Id,
                     PubIp = Request.UserHostAddress,
                     PubAddress = IpLocator.GetIpLocation(Request.UserHostAddress),
                     CreateDate = DateTime.Now,
@@ -213,7 +206,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
                  IList<string> categorysId = collection["category"].Split(',');
                  foreach (var item in categorysId)
                  {
-                     var category = QueryFactory.Instance.Post.GetCategory(new Guid(item));
+                     var category = Query.Category.Get(new Guid(item));
                      data.Categorys.Add(category);
                  }
              }
@@ -253,7 +246,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
             }
 
             //添加Post.Qrcode
-            var g = QueryFactory.Instance.Post.GetGroup(data.GroupId);
+            var g = Query.Group.Get(data.GroupId);
               data.QrCode = new Modules.PostModule.Objects.QrCode
             {
                 Content = data.Title,

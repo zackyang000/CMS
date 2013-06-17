@@ -1573,17 +1573,9 @@
       <Project>{EFFA84BA-D4B9-4365-AB95-7E640D81F3FC}</Project>
       <Name>YangKai.BlogEngine.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.ICommandServices\YangKai.BlogEngine.ICommandServices.csproj">
-      <Project>{35C36FE3-504D-4316-85D1-66129442EBE7}</Project>
-      <Name>YangKai.BlogEngine.ICommandServices</Name>
-    </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.Infrastructure\YangKai.BlogEngine.Infrastructure.csproj">
       <Project>{1DC316D5-46F2-4DD6-8BF8-CA3B618B2B96}</Project>
       <Name>YangKai.BlogEngine.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.IQueryServices\YangKai.BlogEngine.IQueryServices.csproj">
-      <Project>{78F96B9D-7ACF-4F28-8C85-E0F5E0CFE325}</Project>
-      <Name>YangKai.BlogEngine.IQueryServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.Model\YangKai.BlogEngine.Model.csproj">
       <Project>{8D2C4AE7-628D-4558-BFD9-D897BB81B77F}</Project>
@@ -1600,10 +1592,6 @@
     <ProjectReference Include="..\YangKai.BlogEngine.Modules.PostModule\YangKai.BlogEngine.Modules.PostModule.csproj">
       <Project>{829DF227-A993-44A7-B6B2-8255C4836D11}</Project>
       <Name>YangKai.BlogEngine.Modules.PostModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.QueryServices\YangKai.BlogEngine.QueryServices.csproj">
-      <Project>{DB209F46-32EF-418B-8F30-70CADEBB6347}</Project>
-      <Name>YangKai.BlogEngine.QueryServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.ServiceProxy\YangKai.BlogEngine.ServiceProxy.csproj">
       <Project>{9C35E8B4-BEF3-47CF-8074-CCC7CB6A23AB}</Project>

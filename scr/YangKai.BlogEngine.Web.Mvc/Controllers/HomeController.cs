@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using YangKai.BlogEngine.Modules.PostModule.Objects;
 using YangKai.BlogEngine.ServiceProxy;
@@ -19,7 +20,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [ActionName("layout-header")]
         public PartialViewResult Nav()
         {
-            var channels = QueryFactory.Instance.Post.FindAllByNotDeletion();
+            var channels = Query.Channel.GetAll(p=>!p.IsDeleted).ToList();
             return PartialView(channels);
         }
 

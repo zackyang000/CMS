@@ -38,10 +38,8 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",
                 "~/Content/css/style.css"
                                         ));
-
             
-            
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
         }
 
         public void Reset()

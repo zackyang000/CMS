@@ -19,12 +19,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         public IList<CommentViewModel> Get(Guid PostId)
         {
-            var comments = QueryFactory.Instance.Post.GetComments(PostId);
+            var comments = Query.Comment.GetAll(p=>p.PostId==PostId);
             if (!WebMasterCookie.IsLogin)
             {
-                comments = comments.Where(p => !p.IsDeleted).ToList();
+                comments = comments.Where(p => !p.IsDeleted);
             }
-            return comments.ToViewModels();
+            return comments.OrderBy(p=>p.CreateDate).ToList().ToViewModels();
         }
 
         [UserAuthorize]
@@ -45,9 +45,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             var entity = viewModel.ToEntity();
             entity.Ip = HttpContext.Current.Request.UserHostAddress;
             entity.Address = IpLocator.GetIpLocation(entity.Ip);
-            entity.IsAdmin = true;
+            entity.IsAdmin = WebMasterCookie.IsLogin;
 
-            CommandFactory.Instance.Create(entity);
+            Command.Instance.Create(entity);
             WebGuestCookie.Save(entity.Author, entity.Email, entity.Url, true);
 
             return entity.ToViewModel();
@@ -56,14 +56,14 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         // É¾³ýÆÀÂÛ
         public object Delete(Guid id)
         {
-            CommandFactory.Instance.Run(new CommentDeleteEvent() { CommentId = id });
+            Command.Instance.Run(new CommentDeleteEvent() { CommentId = id });
             return true;
         }
 
         // »Ö¸´ÆÀÂÛ
         public object Renew(Guid id)
         {
-            CommandFactory.Instance.Run(new CommentRenewEvent() { CommentId = id });
+            Command.Instance.Run(new CommentRenewEvent() { CommentId = id });
             return true;
         }
     }
