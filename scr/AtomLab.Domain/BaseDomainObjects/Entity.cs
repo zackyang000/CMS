@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace AtomLab.Domain
 {
@@ -16,6 +17,7 @@ namespace AtomLab.Domain
 
         #region IEntity<TEntityId> Members
 
+        [IgnoreDataMember]
         public TEntityId Id { get; private set; }
 
         #endregion

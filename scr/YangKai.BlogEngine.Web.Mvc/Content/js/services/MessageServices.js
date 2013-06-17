@@ -4,12 +4,6 @@ angular.module("MessageServices", ["ngResource"]).factory("Message", [
     return $resource("/api/message/:id", {
       id: '@id'
     }, {
-      recent: {
-        method: "GET",
-        params: {
-          action: "recent"
-        }
-      },
       add: {
         method: "PUT"
       },

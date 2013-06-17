@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Formatting;
+using System.Web.Http;
 using Bootstrap.Extensions.StartupTasks;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
@@ -8,9 +9,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         public void Run()
         {
             RegisterRoutes(GlobalConfiguration.Configuration);
-
-            //TODO 暂时屏蔽WEB API的返回XML数据的方式.
-            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
         }
 
         public void Reset()
@@ -24,6 +22,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                   routeTemplate: "api/{controller}/{id}",
                   defaults: new { id = RouteParameter.Optional }
               );
+
+            config.Formatters.JsonFormatter.AddQueryStringMapping("$format", "json", "application/json");
+            config.Formatters.XmlFormatter.AddQueryStringMapping("$format", "xml", "application/xml");
 
             config.EnableSystemDiagnosticsTracing();
         }

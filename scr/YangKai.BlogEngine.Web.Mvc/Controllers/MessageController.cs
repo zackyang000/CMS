@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.OData.Query;
 using AtomLab.Domain.Infrastructure;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
@@ -17,21 +18,16 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class MessageController : ApiController
     {
-        public IEnumerable<BoardViewModel> Get(string action=null)
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
+        public IQueryable<Board> Get()
         {
             var orderBy = new OrderByExpression<Board, DateTime>(p => p.CreateDate, OrderMode.DESC);
-
-            if (action == "recent")
-            {
-                return Query.Message.GetAll(10, p => !p.IsDeleted, orderBy).ToList().ToViewModels();
-            }
-
             var data = Query.Message.GetAll(Int32.MaxValue, orderBy);
             if (!WebMasterCookie.IsLogin)
             {
                 data = data.Where(p => !p.IsDeleted);
             }
-            return data.ToList().ToViewModels();
+            return data;
         }
 
         [UserAuthorize]
