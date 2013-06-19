@@ -1,7 +1,7 @@
 ﻿MessageController=["$scope","Message", ($scope,Message) ->
       $scope.$parent.title='留言板'
       $scope.$parent.showBanner=false
-      $scope.$parent.loading=true
+      $scope.loading=true
       $scope.entity= {}
 
       $scope.entity.Author = $scope.Name
@@ -10,7 +10,7 @@
       $scope.AuthorForDisplay=$scope.Name
       $scope.editmode=$scope.Name=='' or not $scope.Name?
       $scope.list = Message.query ->
-        $scope.$parent.loading = false 
+        $scope.loading = false 
       
       $scope.del = (item) ->
         Message.del {id:item.BoardId}

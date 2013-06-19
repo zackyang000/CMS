@@ -16,7 +16,7 @@
     codeformat()
 
   $scope.turnpages=(page)->
-    $scope.$parent.loading=true
+    $scope.loading=true
     $scope.page=page
     result = Article.querybypaged
       page:$scope.page
@@ -31,7 +31,7 @@
         $scope.list = result
       else
         $scope.list.DataList = $scope.list.DataList.concat(result.DataList)
-      $scope.$parent.loading=false
+      $scope.loading=false
 
   $scope.turnpages $scope.page 
 ]

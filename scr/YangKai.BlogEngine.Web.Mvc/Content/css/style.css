@@ -88,7 +88,6 @@ article .thumb img {width: 160px;height: 100px;}
 /* detail */
 .breadcrumb{padding-left: 10px;margin-left: 20px;border-left: #F88FB7 20px solid;border-radius: 0;}
 /* list */
-#posts { position: relative;}
 article {margin-bottom: 20px;border-radius: 0;padding: 0px 20px 20px 20px;margin: 10px 0;min-height: 200px;}
 article li{ margin-bottom: 25px;}
 article h2{ margin-top: 0;}

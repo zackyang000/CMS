@@ -4,7 +4,7 @@ MessageController = [
   "$scope", "Message", function($scope, Message) {
     $scope.$parent.title = '留言板';
     $scope.$parent.showBanner = false;
-    $scope.$parent.loading = true;
+    $scope.loading = true;
     $scope.entity = {};
     $scope.entity.Author = $scope.Name;
     $scope.entity.Email = $scope.Email;
@@ -12,7 +12,7 @@ MessageController = [
     $scope.AuthorForDisplay = $scope.Name;
     $scope.editmode = $scope.Name === '' || !($scope.Name != null);
     $scope.list = Message.query(function() {
-      return $scope.$parent.loading = false;
+      return $scope.loading = false;
     });
     $scope.del = function(item) {
       return Message.del({

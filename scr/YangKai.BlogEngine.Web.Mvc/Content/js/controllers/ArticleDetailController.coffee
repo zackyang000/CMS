@@ -1,14 +1,14 @@
 ﻿ArticleDetailController=["$scope","$routeParams","Article","Comment",
 ($scope,$routeParams,Article,Comment) ->
   $scope.$parent.showBanner=false
-  $scope.$parent.loading=true
+  $scope.loading=true
 
   $scope.url =$routeParams.url
   $scope.item = Article.get
     id:$scope.url
   , ->
     $scope.$parent.title=$scope.item.Title
-    $scope.$parent.loading=false
+    $scope.loading=false
     codeformat()#格式化代码
     $scope.entity.PostId = $scope.item.PostId
     #上一篇 & 下一篇

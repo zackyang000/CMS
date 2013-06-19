@@ -1,4 +1,5 @@
 ﻿<div id="posts" ng-controller="ArticleListController">
+    <div class="loadingbox" ng-show="loading">正在加载...</div>
     
     <div ng-show="category">
         <ul class="breadcrumb">
@@ -6,7 +7,6 @@
             <li class="active">‘{{category}}’ 分类的存档</li>
         </ul>
     </div>
-
     <div ng-show="tag">
         <ul class="breadcrumb">
             <li class="active">存档</li>
@@ -25,6 +25,7 @@
             <li class="active">关键字: ‘{{key}}’</li>
         </ul>
     </div>
+
     <div>
         <ul class="list-unstyled">
             <li ng-repeat="item in list.DataList">

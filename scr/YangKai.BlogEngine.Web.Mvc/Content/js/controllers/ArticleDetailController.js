@@ -3,13 +3,13 @@
 ArticleDetailController = [
   "$scope", "$routeParams", "Article", "Comment", function($scope, $routeParams, Article, Comment) {
     $scope.$parent.showBanner = false;
-    $scope.$parent.loading = true;
+    $scope.loading = true;
     $scope.url = $routeParams.url;
     $scope.item = Article.get({
       id: $scope.url
     }, function() {
       $scope.$parent.title = $scope.item.Title;
-      $scope.$parent.loading = false;
+      $scope.loading = false;
       codeformat();
       $scope.entity.PostId = $scope.item.PostId;
       $scope.nav = Article.nav({

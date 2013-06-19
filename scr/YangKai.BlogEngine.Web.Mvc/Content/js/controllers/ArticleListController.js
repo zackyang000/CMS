@@ -18,7 +18,7 @@ ArticleListController = [
     };
     $scope.turnpages = function(page) {
       var result;
-      $scope.$parent.loading = true;
+      $scope.loading = true;
       $scope.page = page;
       return result = Article.querybypaged({
         page: $scope.page,
@@ -34,7 +34,7 @@ ArticleListController = [
         } else {
           $scope.list.DataList = $scope.list.DataList.concat(result.DataList);
         }
-        return $scope.$parent.loading = false;
+        return $scope.loading = false;
       });
     };
     return $scope.turnpages($scope.page);
