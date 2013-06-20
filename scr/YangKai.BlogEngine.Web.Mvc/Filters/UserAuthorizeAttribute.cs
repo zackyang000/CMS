@@ -25,4 +25,35 @@ namespace YangKai.BlogEngine.Web.Mvc.Filters
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
     }
+
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
+    public class UserAuthorizeForMVCAttribute : FilterAttribute, IAuthorizationFilter
+    {
+        public void OnAuthorization(AuthorizationContext filterContext)
+        {
+            if (!WebMasterCookie.IsLogin)
+            {
+                var returnType = ((ReflectedActionDescriptor)filterContext.ActionDescriptor).MethodInfo.ReturnType;
+
+                if (returnType == typeof(JsonResult))
+                {
+                    filterContext.Result = new JsonResult()
+                    {
+                        Data = new { result = false, reason = "Please Lgoin in." },
+                        JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                    };
+                }
+                else
+                {
+                    filterContext.Result = new RedirectToRouteResult(
+                        new RouteValueDictionary
+                        {
+                            {"Area", "Admin"},
+                            {"Controller", "Account"},
+                            {"Action", "Login"}
+                        });
+                }
+            }
+        }
+    }
 }
