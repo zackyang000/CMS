@@ -22,7 +22,7 @@ using YangKai.BlogEngine.Web.Mvc.Areas.Admin.Common;
 
 namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
 {
-    [UserAuthorize]
+    [UserAuthorizeForMVC]
     public class PostManageController : Controller
     {
         [ActionName("index")]
