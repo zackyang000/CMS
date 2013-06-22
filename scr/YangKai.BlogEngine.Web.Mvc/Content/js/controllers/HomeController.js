@@ -5,9 +5,7 @@ HomeController = [
     $scope.$parent.title = '首页';
     $scope.$parent.showBanner = true;
     return $http.get("/data/words.js").success(function(data) {
-      $scope.list = data;
-      debugger;
-      return $scope.$parent.word = $scope.list[0];
+      return $scope.$parent.word = data[Math.floor(Math.random() * data.length + 1) - 1];
     });
   }
 ];

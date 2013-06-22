@@ -3,7 +3,5 @@
   $scope.$parent.showBanner=true
 
   $http.get("/data/words.js").success (data) ->
-    $scope.list = data
-    debugger
-    $scope.$parent.word = $scope.list[0]
+    $scope.$parent.word = data[Math.floor(Math.random() * data.length + 1)-1]
   ]
