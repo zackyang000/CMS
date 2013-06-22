@@ -237,6 +237,9 @@
       <DependentUpon>CommentServices.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\http-link.js" />
+    <Content Include="data\words.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\technology.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

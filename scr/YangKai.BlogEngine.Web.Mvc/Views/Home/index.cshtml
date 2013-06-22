@@ -1,4 +1,4 @@
-﻿<!doctype html>
+﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Channel>
 <!doctype html>
 <!--[if lt IE 7]><html ng-cloak ng-app="app" class="no-js" ng-controller="GlobalController"><![endif]-->
 <!--[if IE 7]><html ng-cloak ng-app="app" class="no-js" ng-controller="GlobalController"><![endif]-->
@@ -31,7 +31,7 @@
         <![endif]-->
     </head>
     <body>
-        @Html.Action("layout-header", "Home")
+        @Html.Partial("layout-header", Model)
         <div id="cta-content" ng-show="showBanner" style="display: none;">
             <div class="lights">
                 <div class="grid-image">
@@ -39,7 +39,7 @@
                         <h1>技术宅拯救世界</h1>
                         <h2>
                             BECAUSE WE CAN
-                            <p class="bottom clearfix">@Model</p>
+                            <p class="bottom clearfix">{{word}}</p>
                         </h2>
                     </div>
                 </div>
