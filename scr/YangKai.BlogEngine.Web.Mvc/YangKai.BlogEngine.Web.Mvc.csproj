@@ -201,6 +201,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\style.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\style.min.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
     <Content Include="Content\img\book.jpg" />
     <Content Include="Content\img\no-ie.jpg" />
     <Content Include="Content\img\technologies\angularJS.png" />
@@ -1398,7 +1404,7 @@
     <Content Include="Content\js\jquery-1.9.1.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\jquery.lazyload.js" />
-    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\style1.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\index.html" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\scripts\shAutoloader.js" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\scripts\shBrushAppleScript.js" />
@@ -1530,6 +1536,7 @@
     <Content Include="Content\js\services\ArticleServices.coffee" />
     <Content Include="Content\js\controllers\ArticleDetailController.coffee" />
     <Content Include="Content\js\services\CommentServices.coffee" />
+    <Content Include="Content\css\style.less" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
