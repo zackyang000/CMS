@@ -201,6 +201,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\style-bak.css" />
     <Content Include="Content\css\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -1404,7 +1405,6 @@
     <Content Include="Content\js\jquery-1.9.1.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\jquery.lazyload.js" />
-    <Content Include="Content\css\style1.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\index.html" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\scripts\shAutoloader.js" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\scripts\shBrushAppleScript.js" />
