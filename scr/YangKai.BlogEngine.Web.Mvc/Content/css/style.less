@@ -4,12 +4,87 @@
     font: 14px "Microsoft YaHei","微软雅黑",PMingLiU,Verdana,Arial,Helvetica,sans-serif;
     background: url(/Content/img/bg.png);
 }
+
+//common
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+::-moz-selection {
+    background: #ffb7b7;
+}
+::selection {
+    background: #ffb7b7;
+}
+::-webkit-selection {
+    background: #ffb7b7;
+}
+
+//textbox
+textarea, input[type="text"], input[type="password"] {
+    border: 2px solid #DDD;
+    border-radius: 0;
+}
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
+    border: 2px solid #24A0DA;
+}
+
+//background-color
+.bg-color-purple {
+    background-color: #603cba !important;
+}
+.bg-color-greenDark {
+    background-color: #008641 !important;
+}
+.bg-color-blue {
+    background-color: #0072BC !important;
+}
+.bg-color-red {
+    background-color: #bc1c48 !important;
+}
+.bg-color-green {
+    background-color: #01a31c !important;
+}
+.bg-color-blueDark {
+    background-color: #662D91 !important;
+}
+.bg-color-darken {
+    background-color: #1c1c1c !important;
+}
+.bg-color-orange {
+    background-color: #CD4900 !important;
+}
+.bg-color-yellow {
+    background-color: #ffc40d !important;
+}
+
+a:hover {
+    color: #24A0DA;
+    text-decoration: none;
+}
+
+.loading {
+    padding:5px 5px 0px 20px;
+    background:url(/Content/img/ajax-loader.gif) 0px 3px no-repeat;
+}
+
 article {
     margin-bottom: 20px;
     border-radius: 0;
     padding: 0px 20px 20px 20px;
     margin: 10px 0;
     min-height: 200px;
+
+    &:hover h2 > a,
+    &:hover h2 > a:hover {
+        display: block;
+    }
+    .categories a:first-child .tags a:first-child {
+        padding-left: 2px;
+    }
+
     section {
         margin-left: 85px;
     }
@@ -35,6 +110,9 @@ article {
         }
         span {
             margin-right: 2px;
+        }
+        span:nth-child(even),article footer span {
+            margin-right: 20px;
         }
     }
     li {
@@ -73,7 +151,7 @@ article {
                 cursor: pointer;
             }
         }
-        & > a {
+        > a {
             font-size: 40px;
             margin-top: -5px;
             -webkit-transform: rotate(-90deg);
@@ -81,42 +159,16 @@ article {
             transform: rotate(-90deg);
             display: none;
         }
-        & > span {
+        > span {
             font-size: 16px;
         }
     }
 }
 
-.boxcaption {
-    background: #E3E4E6;
-    border: 1px solid #CCC;
-    border-bottom: 1px solid #e2e2e2;
-    padding: 3px 12px;
-    border-top-left-radius: 5px 5px;
-    border-top-right-radius: 5px 5px;
-    line-height: 24px;
-}
-textarea, input[type="text"], input[type="password"] {
-    border: 2px solid #DDD;
-    border-radius: 0;
-}
-.bg-color-purple {
-    background-color: #603cba !important;
-}
 .pager {
-    a {
-        cursor: pointer;
-    }
+    a {cursor: pointer;}
 }
-article header span:nth-child(even),article footer span {
-    margin-right: 20px;
-}
-.bg-color-greenDark {
-    background-color: #008641 !important;
-}
-.bg-color-blue {
-    background-color: #0072BC !important;
-}
+
 
 .technologies {
     color: white;
@@ -152,15 +204,6 @@ article header span:nth-child(even),article footer span {
         outline: 3px #225A68 solid;
     }
 }
-.bg-color-red {
-    background-color: #bc1c48 !important;
-}
-.bg-color-green {
-    background-color: #01a31c !important;
-}
-.bg-color-blueDark {
-    background-color: #662D91 !important;
-}
 
 .post-related {
     line-height: 20px;
@@ -193,13 +236,7 @@ article header span:nth-child(even),article footer span {
         }
     }
 }
-::selection {
-    background: #ffb7b7;
-}
-a:hover {
-    color: #24A0DA;
-    text-decoration: none;
-}
+
 .home {
     text-align: center;
     margin-top: 60px;
@@ -221,31 +258,18 @@ a:hover {
         border-radius: 500px;
     }
 }
-#cta-content h1, #cta-content h2 {
-    text-shadow: 0 0 10px rgba(0,0,0,.5);
-}
-textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
-    border: 2px solid #24A0DA;
-}
-.fr {
-    float: right;
-}
-.bg-color-yellow {
-    background-color: #ffc40d !important;
-}
-article:hover h2 &>a,article:hover h2 &>a:hover {
-    display: block;
-}
-.loading {
-    padding:5px 5px 0px 20px;
-    background:url(/Content/img/ajax-loader.gif) 0px 3px no-repeat;
-}
+
+
+
 #cta-content {
     height: 500px;
     width: 100%;
     background: url('/Content/img/main_bg_tile.jpg') repeat-x transparent 50% 50%;
     text-align: center;
     color: #fff;
+    h1,h2{
+        text-shadow: 0 0 10px rgba(0,0,0,.5);
+    }
     .grid-image {
         width: 100%;
         height: 100%;
@@ -284,9 +308,7 @@ article:hover h2 &>a,article:hover h2 &>a:hover {
         }
     }
 }
-::-webkit-selection {
-    background: #ffb7b7;
-}
+
 .post-nav a,.post-nav span {
     height: 35px;
     display: block;
@@ -318,15 +340,8 @@ article:hover h2 &>a,article:hover h2 &>a:hover {
 .bg-color-pink {
     background-color: #c3325f !important;
 }
-article .categories a:first-child,article .tags a:first-child {
-    padding-left: 2px;
-}
-.text {
-    overflow: hidden;
-}
-.bg-color-darken {
-    background-color: #1c1c1c !important;
-}
+
+
 .intro {
     h5 {
         margin: 10px 0 10px 0;
@@ -374,7 +389,7 @@ article .categories a:first-child,article .tags a:first-child {
         color:#E38383;
     }
     .text {
-        & > span {
+        > span {
             float: right;
             padding-right: 5px;
             font-size: 13px;
@@ -448,12 +463,7 @@ article .categories a:first-child,article .tags a:first-child {
     border: 1px solid #CCC;
     border-top: none;
 }
-.fl {
-    float: left;
-}
-.bg-color-orange {
-    background-color: #CD4900 !important;
-}
+
 .navbar {
     .search {
         margin: 12px 15px 0 15px;
@@ -467,8 +477,8 @@ article .categories a:first-child,article .tags a:first-child {
         border-radius: 15px;
     }
     .nav {
-        & > li {
-            & > a {
+        > li {
+            > a {
                 padding: 18px 15px 18px;
             }
         }
@@ -492,7 +502,7 @@ article .categories a:first-child,article .tags a:first-child {
         color: #666;
         padding: 20px;
     }
-    & > footer {
+    > footer {
         text-align: center;
         .footer-links {
             margin-top: 10px;
@@ -509,7 +519,4 @@ article .categories a:first-child,article .tags a:first-child {
             color: #777;
         }
     }
-}
-::-moz-selection {
-    background: #ffb7b7;
 }
