@@ -201,7 +201,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\style-bak.css" />
     <Content Include="Content\css\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>

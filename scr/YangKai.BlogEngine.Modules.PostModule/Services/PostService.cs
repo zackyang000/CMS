@@ -36,7 +36,6 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
 
             //删除Post.Tags
             originalData.Tags.ForEach(p => EventProcessor.DeleteEntity(p));
-
             //添加Post.Tags
             newData.Tags.ToList().ForEach(p => originalData.Tags.Add(p));
 
