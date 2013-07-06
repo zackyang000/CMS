@@ -208,7 +208,6 @@
     <Content Include="Content\css\style.min.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
-    <Content Include="Content\img\book.jpg" />
     <Content Include="Content\img\no-ie.jpg" />
     <Content Include="Content\img\technologies\angularJS.png" />
     <Content Include="Content\js\angular-scenario.js" />
