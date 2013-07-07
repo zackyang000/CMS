@@ -1,0 +1,20 @@
+﻿@model YangKai.BlogEngine.Modules.PostModule.Objects.Post
+<div>
+    <div>标题：</div>
+    <div>@Html.TextBox("post_title", Model == null ? string.Empty : Model.Title, new { style = "width:100%", @class = "text ui-widget-content ui-corner-all" })</div>
+</div>
+<div>
+    <div>URL：<img src="/Content/admin/images/wpspin_light.gif" class="ajax-loading" id="post-url-ajax-loading" alt="" /></div>
+    <div>@Html.TextBox("post_url", Model == null ? string.Empty : Model.Url, new { style = "width:100%", @class = "text ui-widget-content ui-corner-all" })</div>
+</div>
+<div class="fixed-link-div" id="fixed-link-div">
+    <b>固定链接：</b><span id="fixed-link"></span>
+</div>
+<div>
+    <div>内容：</div>
+    <div>@Html.TextArea("post_content", Model == null ? string.Empty : Model.Content, new { style = "width:100%;height:300px;" })</div>
+</div>
+<div>
+    <div>摘要：</div>
+    <div>@Html.TextArea("post_description", Model == null ? string.Empty : Model.Description, new { style = "width:100%;height:300px;" })</div>
+</div>

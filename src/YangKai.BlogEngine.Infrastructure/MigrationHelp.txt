@@ -1,0 +1,6 @@
+﻿When modified:
+	Add-Migration B
+	Update-Database
+
+When Publish:
+	Update-Database -Script -SourceMigration:"A" -TargetMigration:"B"
