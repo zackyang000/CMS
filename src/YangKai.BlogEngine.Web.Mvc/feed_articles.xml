@@ -6,17 +6,39 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by YangKai , 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Mon, 17 Jun 2013 12:29:00 GMT</pubDate>
-    <lastBuildDate>Mon, 17 Jun 2013 12:29:00 GMT</lastBuildDate>
+    <pubDate>Sun, 21 Jul 2013 10:33:18 GMT</pubDate>
+    <lastBuildDate>Sun, 21 Jul 2013 10:33:18 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
     <item>
+      <title>11111111111111</title>
+      <description>&lt;p&gt;
+	1111111&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/#!/post/11111111111111</link>
+      <category>视频 - 默认</category>
+      <guid>1933e9ba-a2a9-4b92-af6b-d56ca6d0ec2a</guid>
+      <pubDate>Sun, 21 Jul 2013 10:30:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>66666666666666666666</title>
+      <description>&lt;p&gt;
+	6666666666666666666666&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/#!/post/666666666666667e19</link>
+      <category>视频 - 默认</category>
+      <guid>c4ce7c6c-d938-4e46-ba3b-c7c3a03d734a</guid>
+      <pubDate>Sun, 21 Jul 2013 10:27:00 GMT</pubDate>
+    </item>
+    <item>
       <title>777777222</title>
       <description>&lt;p&gt;
-	7777777777&lt;/p&gt;
+	1&lt;/p&gt;
 </description>
       <link>http://www.woshinidezhu.com/#!/post/777777222</link>
-      <category>视频 - 默认</category>
+      <category>文章 - 人生箴言</category>
+      <category>文章 - 蛋痛</category>
+      <category>文章 - 实用技巧</category>
       <guid>2035062d-7cc3-4aca-8ca4-c0c285e2edfa</guid>
       <pubDate>Mon, 17 Jun 2013 12:25:00 GMT</pubDate>
     </item>
@@ -2152,31 +2174,6 @@ event.initKeyEvent(&amp;quot;keypress&amp;quot;, true, true, null, null,
       <category>视频 - 欢乐</category>
       <guid>b4c0297b-e28e-e111-b433-00155d5f0243</guid>
       <pubDate>Wed, 25 Apr 2012 22:25:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>天津邮政职工雷人舞</title>
-      <description>&lt;p&gt;
-	往事不堪回首...&lt;/p&gt;
-&lt;p&gt;
-	&lt;embed align="middle" allowfullscreen="true" allowscriptaccess="always" height="400" quality="high" src="http://player.youku.com/player.php/sid/XNjQzNzM0MDg=/v.swf" type="application/x-shockwave-flash" width="480"&gt;&lt;/embed&gt;&lt;/p&gt;
-</description>
-      <link>http://www.woshinidezhu.com/#!/post/tianjin-postal-workers-striking-dance</link>
-      <category>视频 - 欢乐</category>
-      <guid>20359249-ca62-e111-a536-00155d5f0243</guid>
-      <pubDate>Wed, 29 Feb 2012 19:40:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>黑木耳之歌</title>
-      <description>&lt;p&gt;
-	唱出了多少矮穷丑的心声？？？&lt;/p&gt;
-&lt;p&gt;
-	&lt;embed src="http://www.tudou.com/v/DbhpKykkIY0/&amp;resourceId=0_05_02_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"&gt;&lt;/embed&gt;&lt;/p&gt;
-</description>
-      <link>http://www.woshinidezhu.com/#!/post/song-of-auricularia-auricula</link>
-      <category>视频 - 欢乐</category>
-      <category>视频 - 给力</category>
-      <guid>02b8ad47-c962-e111-a536-00155d5f0243</guid>
-      <pubDate>Wed, 29 Feb 2012 19:33:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

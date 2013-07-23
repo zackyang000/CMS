@@ -87,7 +87,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlogEngineExContext.cs" />
+    <Compile Include="BlogEngineContext.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.Designer.cs">
       <DependentUpon>201209290145272_InitialCreate.cs</DependentUpon>

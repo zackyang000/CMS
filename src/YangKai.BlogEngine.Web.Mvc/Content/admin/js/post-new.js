@@ -316,7 +316,6 @@ function channel_tab_click(a) {
 //group单选按钮点击事件
 function group_radio_click() {
     bind_category($("input[name='groupRadio']:checked").val());
-    bind_tag($("input[name='groupRadio']:checked").val());
     set_fixed_link();
 }
 
