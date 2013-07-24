@@ -1600,10 +1600,6 @@
       <Project>{8D2C4AE7-628D-4558-BFD9-D897BB81B77F}</Project>
       <Name>YangKai.BlogEngine.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.ServiceProxy\YangKai.BlogEngine.ServiceProxy.csproj">
-      <Project>{9C35E8B4-BEF3-47CF-8074-CCC7CB6A23AB}</Project>
-      <Name>YangKai.BlogEngine.ServiceProxy</Name>
-    </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.Web.Mvc.BootStrapper\YangKai.BlogEngine.Web.Mvc.BootStrapper.csproj">
       <Project>{B71D40AE-B337-4672-B85D-8ADB3E31239D}</Project>
       <Name>YangKai.BlogEngine.Web.Mvc.BootStrapper</Name>

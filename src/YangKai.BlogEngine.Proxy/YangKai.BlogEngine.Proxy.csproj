@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RSS.NET">
+      <HintPath>..\YangKai.BlogEngine.Web.Mvc\Bin\RSS.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -37,9 +40,25 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="YangKai.BlogEngine.Common">
+      <HintPath>..\YangKai.BlogEngine.Common\bin\Debug\YangKai.BlogEngine.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="Services\PostService.cs" />
+    <Compile Include="Services\Rss.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AtomLab.Core\AtomLab.Core.csproj">
+      <Project>{9ED3547B-D230-4BDE-9834-5019ACC1CCC6}</Project>
+      <Name>AtomLab.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YangKai.BlogEngine.Domain\YangKai.BlogEngine.Domain.csproj">
+      <Project>{B9D4C71B-36B8-4944-898A-84287823724E}</Project>
+      <Name>YangKai.BlogEngine.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,17 +8,14 @@
 //===========================================================
 
 using System;
-using System.Web;
 using System.Linq;
 using System.Text;
-using AtomLab.Domain;
-using AtomLab.Domain.Infrastructure;
-using Microsoft.Practices.Unity;
+using AtomLab.Core;
 using Rss;
 using YangKai.BlogEngine.Common;
-using YangKai.BlogEngine.Domain.Post;
+using YangKai.BlogEngine.Domain;
 
-namespace YangKai.BlogEngine.Modules.PostModule.Services
+namespace YangKai.BlogEngine.Proxy.Services
 {
     public class Rss
     {

@@ -197,10 +197,6 @@
       <Project>{1DC316D5-46F2-4DD6-8BF8-CA3B618B2B96}</Project>
       <Name>YangKai.BlogEngine.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.ServiceProxy\YangKai.BlogEngine.ServiceProxy.csproj">
-      <Project>{9C35E8B4-BEF3-47CF-8074-CCC7CB6A23AB}</Project>
-      <Name>YangKai.BlogEngine.ServiceProxy</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

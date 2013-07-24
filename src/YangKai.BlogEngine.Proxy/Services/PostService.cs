@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using AtomLab.Domain;
-using AtomLab.Domain.Infrastructure;
-using YangKai.BlogEngine.Domain.Post;
+using AtomLab.Core;
+using YangKai.BlogEngine.Domain;
 
-namespace YangKai.BlogEngine.Modules.PostModule.Services
+namespace YangKai.BlogEngine.Proxy.Services
 {
     public class PostService
     {
-        private readonly Repository<Post, Guid> _postRepository = InstanceLocator.Current.GetInstance<Repository<Post, Guid>>();
+        private readonly Repository<Post, Guid> _postRepository = Repository.Post;
 
         public void Update(string postUrl, Post newData, bool existThumbnail)
         {
@@ -22,7 +19,7 @@ namespace YangKai.BlogEngine.Modules.PostModule.Services
             originalData.Description = newData.Description;
             originalData.PostStatus = newData.PostStatus;
 
-            originalData.EditAdminId = newData.EditAdminId;
+            originalData.EditAdmin = Repository.User.Get(newData.EditAdmin.UserId);
             originalData.EditIp = newData.EditIp;
             originalData.EditAddress = newData.EditAddress;
             originalData.EditDate = newData.EditDate;

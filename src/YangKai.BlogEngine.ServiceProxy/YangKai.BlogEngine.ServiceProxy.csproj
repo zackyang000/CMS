@@ -84,10 +84,16 @@
     <Compile Include="Command.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query.cs" />
-    <Compile Include="Services\PostService.cs" />
-    <Compile Include="Services\Rss.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AtomLab.Core\AtomLab.Core.csproj">
+      <Project>{9ED3547B-D230-4BDE-9834-5019ACC1CCC6}</Project>
+      <Name>AtomLab.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YangKai.BlogEngine.Domain\YangKai.BlogEngine.Domain.csproj">
+      <Project>{B9D4C71B-36B8-4944-898A-84287823724E}</Project>
+      <Name>YangKai.BlogEngine.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.ICommandServices\YangKai.BlogEngine.ICommandServices.csproj">
       <Project>{35C36FE3-504D-4316-85D1-66129442EBE7}</Project>
       <Name>YangKai.BlogEngine.ICommandServices</Name>
