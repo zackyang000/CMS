@@ -1,10 +1,9 @@
 ﻿using System;
-using AtomLab.Domain;
-using AtomLab.Domain.Infrastructure;
+using AtomLab.Core;
 
 namespace YangKai.BlogEngine.Infrastructure
 {
-    public class Repository<TEntity> : Repository<TEntity, Guid> where TEntity : class, IEntity<Guid>
+    public class Repository<TEntity> : Repository<TEntity, Guid> where TEntity : class, IEntity
     {
         public Repository(BlogEngineContext context)
             : base(context)

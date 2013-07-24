@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="Events\BoardDeleteEvent.cs" />
     <Compile Include="Events\BoardRenewEvent.cs" />
-    <Compile Include="Objects\Board.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +85,9 @@
       <Project>{A7C46ED1-14AC-4529-9649-1564D6B11497}</Project>
       <Name>AtomLab.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Objects\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

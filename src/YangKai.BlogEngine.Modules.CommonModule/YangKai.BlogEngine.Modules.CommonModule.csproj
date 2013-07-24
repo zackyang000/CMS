@@ -70,14 +70,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\UserEditPasswordCommand.cs" />
-    <Compile Include="Objects\Log.cs" />
-    <Compile Include="Objects\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Objects\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>

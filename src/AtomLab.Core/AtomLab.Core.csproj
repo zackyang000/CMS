@@ -66,15 +66,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Entity.cs" />
+    <Compile Include="Entity\IEntity.cs" />
     <Compile Include="ExpressionTree\ParameterReplacer.cs" />
     <Compile Include="ExpressionTree\SpecExprExtensions.cs" />
-    <Compile Include="IInstanceLocator.cs" />
-    <Compile Include="InstanceLocator.cs" />
-    <Compile Include="OrderByExpression.cs" />
-    <Compile Include="PageList.cs" />
+    <Compile Include="IoC\IInstanceLocator.cs" />
+    <Compile Include="IoC\InstanceLocator.cs" />
+    <Compile Include="Entity\OrderByExpression.cs" />
+    <Compile Include="Entity\PageList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="UnityContainerHelper.cs" />
+    <Compile Include="Entity\Repository.cs" />
+    <Compile Include="IoC\UnityContainerHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

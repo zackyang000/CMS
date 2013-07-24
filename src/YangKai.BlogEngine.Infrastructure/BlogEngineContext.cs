@@ -1,21 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using AtomLab.Domain.Infrastructure;
-using YangKai.BlogEngine.Infrastructure.ModelConfiguration.Board;
-using YangKai.BlogEngine.Infrastructure.ModelConfiguration.Common;
-using YangKai.BlogEngine.Infrastructure.ModelConfiguration.Post;
-using YangKai.BlogEngine.Modules.BoardModule.Objects;
-using YangKai.BlogEngine.Modules.CommonModule.Objects;
-using YangKai.BlogEngine.Modules.PostModule.Objects;
+using YangKai.BlogEngine.Domain;
+using YangKai.BlogEngine.Infrastructure.Mapping.BoardModule;
+using YangKai.BlogEngine.Infrastructure.Mapping.Common;
+using YangKai.BlogEngine.Infrastructure.Mapping.PostModule;
 
 namespace YangKai.BlogEngine.Infrastructure
 {
     [DbModelBuilderVersion(DbModelBuilderVersion.V5_0_Net4)]
-    public class BlogEngineContext : UnitOfWork
+    public class BlogEngineContext : DbContext
     { 
         public DbSet<User> Users { get; set; }
         public DbSet<Log> Logs { get; set; }
