@@ -189,10 +189,6 @@
       <Project>{A7C46ED1-14AC-4529-9649-1564D6B11497}</Project>
       <Name>AtomLab.Utility</Name>
     </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.CommandServices\YangKai.BlogEngine.CommandServices.csproj">
-      <Project>{7CECBEE8-8B42-4AE3-8284-ED93EDFB24A3}</Project>
-      <Name>YangKai.BlogEngine.CommandServices</Name>
-    </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.Infrastructure\YangKai.BlogEngine.Infrastructure.csproj">
       <Project>{1DC316D5-46F2-4DD6-8BF8-CA3B618B2B96}</Project>
       <Name>YangKai.BlogEngine.Infrastructure</Name>
