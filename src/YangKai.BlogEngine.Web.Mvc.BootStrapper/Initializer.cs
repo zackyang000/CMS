@@ -17,17 +17,12 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
       {
           Bootstrap.Bootstrapper.With.StartupTasks()
                    .UsingThisExecutionOrder(s => s
-                                                     .First<DataInitializeConfig>()
-                                                     .DelayStartBy(1).MilliSeconds
-                                                     .Then<AreasConfig>()
-                                                     .DelayStartBy(1).MilliSeconds
                                                      .Then<IoCConfig>()
                                                      .DelayStartBy(1).MilliSeconds
-                                                     .Then<DomainConfig>()
+                                                     .First<DataInitializeConfig>()
                                                      .DelayStartBy(1).MilliSeconds
                                                      .Then<WebApiConfig>()
                                                      .Then<RoutesConfig>()
-                                                     .Then<FiltersConfig>()
                                                      .Then<BundlesConfig>()
               ).Start();
       }

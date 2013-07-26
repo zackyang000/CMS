@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Bootstrap.Extensions.StartupTasks;
+using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Infrastructure;
-using YangKai.BlogEngine.Modules.BoardModule.Objects;
-using YangKai.BlogEngine.Modules.CommonModule.Objects;
-using YangKai.BlogEngine.Modules.PostModule.Objects;
 using YangKai.BlogEngine.Infrastructure.Migrations;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity.InterceptionExtension;
-using YangKai.BlogEngine.Modules.PostModule.Objects;
-using YangKai.BlogEngine.Modules.PostModule.Services;
+using YangKai.BlogEngine.Domain;
+using YangKai.BlogEngine.Proxy.Services;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {

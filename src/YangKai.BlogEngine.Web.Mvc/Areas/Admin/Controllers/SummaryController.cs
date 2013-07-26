@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using YangKai.BlogEngine.ServiceProxy;
 using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers

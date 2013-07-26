@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using AtomLab.Domain;
+using AtomLab.Core;
 using Microsoft.Practices.Unity;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper

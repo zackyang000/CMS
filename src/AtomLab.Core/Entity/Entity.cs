@@ -17,7 +17,7 @@ namespace AtomLab.Core
         public DateTime CreateDate { get; set; }
         public string LastEditUser { get; set; }
         public DateTime? LastEditDate { get; set; }
-        public bool OrderId { get; set; }
+        public int? OrderId { get; set; }
         public bool IsDeleted { get; set; }
         public string Remark { get; set; }
     }

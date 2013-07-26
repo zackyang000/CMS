@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Configuration;
 using System.Reflection;
-using AtomLab.Domain;
-using AtomLab.Utility.IoC;
+using AtomLab.Core;
 using Bootstrap.Extensions.StartupTasks;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
