@@ -1,13 +1,4 @@
-﻿//===========================================================
-// Copyright @ 2010 YangKai. All Rights Reserved.
-// Framework: 4.0
-// Author: 杨凯
-// Email: yangkai-13896222@sohu.com
-// QQ: 83448327
-// CreateTime: 2/12/2011 2:07:39 PM
-//===========================================================
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Text;
 using AtomLab.Core;
@@ -15,7 +6,7 @@ using Rss;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 
-namespace YangKai.BlogEngine.Proxy.Services
+namespace YangKai.BlogEngine.Service
 {
     public class Rss
     {

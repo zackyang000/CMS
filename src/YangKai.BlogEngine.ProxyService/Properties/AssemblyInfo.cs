@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("YangKai.BlogEngine.Proxy")]
+[assembly: AssemblyTitle("YangKai.BlogEngine.ProxyService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("YangKai.BlogEngine.Proxy")]
+[assembly: AssemblyProduct("YangKai.BlogEngine.ProxyService")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1fb46f53-12e6-4cbd-bcd7-f7f9d21f8579")]
+[assembly: Guid("6700282f-10e4-4ce7-9cda-5b4d1bbfcce4")]
 
 // Version information for an assembly consists of the following four values:
 //

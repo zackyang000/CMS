@@ -4,10 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.OData.Query;
 using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
+using YangKai.BlogEngine.ProxyService;
+using YangKai.BlogEngine.Service;
+using YangKai.BlogEngine.Web.Mvc.Extension;
 using YangKai.BlogEngine.Web.Mvc.Filters;
 
 
@@ -15,14 +19,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class CommentController : ApiController
     {
-        public IList<Comment> Get(Guid PostId)
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
+        public IQueryable<Comment> Get(ODataQueryOptions options)
         {
-            var comments = Proxy.Repository.Comment.GetAll(p => p.PostId == PostId);
-            if (!WebMasterCookie.IsLogin)
-            {
-                comments = comments.Where(p => !p.IsDeleted);
-            }
-            return comments.OrderBy(p=>p.CreateDate).ToList();
+            var data = RepositoryProxy.Comment.GetAll(p => !p.IsDeleted);
+            PageHelper.SetLinkHeader(data, options, Request);
+            return data;
         }
 
         [UserAuthorize]
@@ -45,7 +47,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             entity.Address = IpLocator.GetIpLocation(entity.Ip);
             entity.IsAdmin = WebMasterCookie.IsLogin;
 
-            Proxy.Repository.Comment.Add(entity);
+            Proxy.Repository<Comment>().Add(entity);
 
             WebGuestCookie.Save(entity.Author, entity.Email, entity.Url, true);
 
@@ -55,18 +57,18 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         // É¾³ýÆÀÂÛ
         public object Delete(Guid id)
         {
-            var entity=Proxy.Repository.Comment.Get(id);
+            var entity = Proxy.Repository<Comment>().Get(id);
             entity.IsDeleted = true;
-            Proxy.Repository.Comment.Update(entity);
+            Proxy.Repository<Comment>().Update(entity);
             return true;
         }
 
         // »Ö¸´ÆÀÂÛ
         public object Renew(Guid id)
         {
-            var entity = Proxy.Repository.Comment.Get(id);
+            var entity = Proxy.Repository<Comment>().Get(id);
             entity.IsDeleted = false;
-            Proxy.Repository.Comment.Update(entity);
+            Proxy.Repository<Comment>().Update(entity);
             return true;
         }
     }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{13BE38F2-C4DB-4249-8800-220AFFE2B943}</ProjectGuid>
+    <ProjectGuid>{BFC621AF-701F-400E-8D87-1E9E3375B97D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YangKai.BlogEngine.Proxy</RootNamespace>
-    <AssemblyName>YangKai.BlogEngine.Proxy</AssemblyName>
+    <RootNamespace>YangKai.BlogEngine.ProxyService</RootNamespace>
+    <AssemblyName>YangKai.BlogEngine.ProxyService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,24 +40,26 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="YangKai.BlogEngine.Common">
-      <HintPath>..\YangKai.BlogEngine.Common\bin\Debug\YangKai.BlogEngine.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="Services\PostService.cs" />
-    <Compile Include="Services\Rss.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Core\AtomLab.Core.csproj">
       <Project>{9ED3547B-D230-4BDE-9834-5019ACC1CCC6}</Project>
       <Name>AtomLab.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\YangKai.BlogEngine.Common\YangKai.BlogEngine.Common.csproj">
+      <Project>{EFFA84BA-D4B9-4365-AB95-7E640D81F3FC}</Project>
+      <Name>YangKai.BlogEngine.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.Domain\YangKai.BlogEngine.Domain.csproj">
       <Project>{B9D4C71B-36B8-4944-898A-84287823724E}</Project>
       <Name>YangKai.BlogEngine.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YangKai.BlogEngine.Infrastructure\YangKai.BlogEngine.Infrastructure.csproj">
+      <Project>{1DC316D5-46F2-4DD6-8BF8-CA3B618B2B96}</Project>
+      <Name>YangKai.BlogEngine.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

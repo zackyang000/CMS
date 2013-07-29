@@ -9,6 +9,9 @@ using AtomLab.Core;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
+using YangKai.BlogEngine.ProxyService;
+using YangKai.BlogEngine.Service;
+using YangKai.BlogEngine.Web.Mvc.Extension;
 using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
@@ -16,14 +19,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     public class MessageController : ApiController
     {
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
-        public IQueryable<Board> Get()
+        public IQueryable<Board> Get(ODataQueryOptions options)
         {
-            var orderBy = new OrderByExpression<Board, DateTime>(p => p.CreateDate, OrderMode.DESC);
-            var data = Proxy.Repository.Board.GetAll(Int32.MaxValue, orderBy);
-            if (!WebMasterCookie.IsLogin)
-            {
-                data = data.Where(p => !p.IsDeleted);
-            }
+            var data = RepositoryProxy.Board.GetAll(p => !p.IsDeleted);
+            PageHelper.SetLinkHeader(data, options, Request);
             return data;
         }
 
@@ -46,7 +45,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             entity.Ip = HttpContext.Current.Request.UserHostAddress;
             entity.Address = IpLocator.GetIpLocation(entity.Ip);
 
-            Proxy.Repository.Board.Add(entity);
+            Proxy.Repository<Board>().Add(entity);
 
             WebGuestCookie.Save(entity.Author);
 
@@ -56,18 +55,18 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         // 删除留言
         public object Delete(Guid id)
         {
-            var entity = Proxy.Repository.Board.Get(id);
+            var entity = Proxy.Repository<Board>().Get(id);
             entity.IsDeleted = true;
-            Proxy.Repository.Board.Update(entity);
+            Proxy.Repository<Board>().Update(entity);
             return true;
         }
 
         // 恢复留言
         public object Renew(Guid id)
         {
-            var entity = Proxy.Repository.Board.Get(id);
+            var entity = Proxy.Repository<Board>().Get(id);
             entity.IsDeleted = false;
-            Proxy.Repository.Board.Update(entity);
+            Proxy.Repository<Board>().Update(entity);
             return true;
         }
     }

@@ -2,81 +2,58 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Web.Http;
+using System.Web.Http.OData.Query;
 using System.Web.Mvc;
 using System.Linq;
 using AtomLab.Core;
 using Webdiyer.WebControls.Mvc;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
+using YangKai.BlogEngine.Service;
 using YangKai.BlogEngine.Web.Mvc.Extension;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class ArticleController : ApiController
     {
-        public PageList<Post> Get(int page = 1, string channel = null, string group = null,
-                                           string category = null, string tag = null,
-                                           string date = null, string search = null)
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
+        public IQueryable<Post> Get(ODataQueryOptions options)
         {
-            var data = Proxy.Repository.Post.GetAll(
-                p => p.PostStatus == (int) PostStatusEnum.Publish,
-                new OrderByExpression<Post, DateTime>(p => p.CreateDate, OrderMode.DESC));
-
-            data = data.Where(p => p.Group.Channel.Url == channel || string.IsNullOrEmpty(channel))
-                       .Where(p => p.Group.Url == group || string.IsNullOrEmpty(group))
-                       .Where(p => p.Categorys.Any(c => c.Url == category) || string.IsNullOrEmpty(category))
-                       .Where(p => p.Tags.Any(t => t.Name == tag) || string.IsNullOrEmpty(tag))
-                       .Where(p => p.Title.Contains(search) || string.IsNullOrEmpty(search));
-            var count = data.Count();
-            var list = data.Skip((page - 1)*Config.Setting.PAGE_SIZE).Take(Config.Setting.PAGE_SIZE).ToList();
+            var data = Proxy.Repository<Post>().GetAll(p => !p.IsDeleted);
+            PageHelper.SetLinkHeader(data, options, Request);
+            return data;
 
             //保存搜索记录
-            if (!string.IsNullOrEmpty(search))
-            {
-                var log = Log.CreateSearchLog(search);
-                Proxy.Repository.Log.Add(log);
-            }
-
-            var result = new PageList<Post>(Config.Setting.PAGE_SIZE)
-                {
-                    DataList = list,
-                    TotalCount = count
-                };
-
-            //生成Http-head link
-//            PageHelper.SetLinkHeader(result, "/api/article", page, new Dictionary<string, object>
-//                {
-//                    {"channel", channel},
-//                    {"group", group},
-//                    {"category", category},
-//                    {"tag", tag},
-//                    {"date", date},
-//                    {"search", search},
-//                });
-
-            return result;
+            //            if (!string.IsNullOrEmpty(search))
+            //            {
+            //                var log = Log.CreateSearchLog(search);
+            //                Proxy.Repository.Log.Add(log);
+            //            }
         }
 
         public Post Get(string id)
         {
-            var data = Proxy.Repository.Post.Get(p=>p.Url==id);
+            var data = Proxy.Repository<Post>().Get(p => p.Url == id);
 
-            if (data == null || data.PostStatus == (int) PostStatusEnum.Trash)
+            if (!WebMasterCookie.IsLogin)
             {
-                return null;
+                if (data == null || data.PostStatus == (int)PostStatusEnum.Trash)
+                {
+                    return null;
+                }
             }
 
             data.ReplyCount++;
-            Proxy.Repository.Post.Update(data);
+            Proxy.Repository<Post>().Update(data);
 
             return data;
         }
 
-        public object Get(Guid id,string action)
+        public object Get(Guid id, string action)
         {
             if (action == "nav")//上一篇 & 下一篇
             {
-                var post = Proxy.Repository.Post.Get(id);
+                var post = Proxy.Repository<Post>().Get(id);
                var prePost = GetPrePost(post)??new Post();
                var nextPost = GetNextPost(post) ?? new Post();
 
@@ -86,13 +63,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
             if (action == "related")//相关文章
             {
-                var post = Proxy.Repository.Post.Get(id);
+                var post = Proxy.Repository<Post>().Get(id);
                 IList<Post> result = new List<Post>();
                 if (post.Tags != null)
                 {
                     foreach (Tag tag in post.Tags)
                     {
-                        Proxy.Repository.Tag.GetAll(p => p.Name == tag.Name)
+                        Proxy.Repository<Tag>().GetAll(p => p.Name == tag.Name)
                                       .Select(p => p.Post).ToList().ForEach(result.Add);
                     }
                 }
@@ -106,7 +83,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             Expression<Func<Post, bool>> specExpr = p => p.PubDate < entity.PubDate
                                                          && p.PostStatus == (int)PostStatusEnum.Publish
                                                          && p.GroupId == entity.GroupId;
-            var result = Proxy.Repository.Post.GetAll(1, specExpr,
+            var result = Proxy.Repository<Post>().GetAll(1, specExpr,
                                 new OrderByExpression<Post, DateTime>(
                                     p => p.PubDate, OrderMode.DESC));
             return result.FirstOrDefault();
@@ -118,7 +95,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 p => p.PubDate > entity.PubDate
                      && p.PostStatus == (int)PostStatusEnum.Publish
                      && p.GroupId == entity.GroupId;
-            var result = Proxy.Repository.Post.GetAll(1, specExpr,
+            var result = Proxy.Repository<Post>().GetAll(1, specExpr,
                                 new OrderByExpression<Post, DateTime>(
                                     p => p.PubDate));
             return result.FirstOrDefault();

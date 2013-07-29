@@ -183,6 +183,7 @@
     <Compile Include="Areas\Admin\Controllers\PostManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
     <Compile Include="Areas\Admin\Common\SaveRemoteFile.cs" />
+    <Compile Include="Controllers\RestApiController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
@@ -1597,9 +1598,9 @@
       <Project>{1DC316D5-46F2-4DD6-8BF8-CA3B618B2B96}</Project>
       <Name>YangKai.BlogEngine.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\YangKai.BlogEngine.Proxy\YangKai.BlogEngine.Proxy.csproj">
-      <Project>{13be38f2-c4db-4249-8800-220affe2b943}</Project>
-      <Name>YangKai.BlogEngine.Proxy</Name>
+    <ProjectReference Include="..\YangKai.BlogEngine.Service\YangKai.BlogEngine.Service.csproj">
+      <Project>{1A2AEA1E-DE2C-44C9-B9CD-3A2B5328D792}</Project>
+      <Name>YangKai.BlogEngine.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\YangKai.BlogEngine.Web.Mvc.BootStrapper\YangKai.BlogEngine.Web.Mvc.BootStrapper.csproj">
       <Project>{B71D40AE-B337-4672-B85D-8ADB3E31239D}</Project>
