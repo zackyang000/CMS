@@ -5,14 +5,11 @@ using System.Net;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData.Query;
-using AtomLab.Domain.Infrastructure;
+using AtomLab.Core;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
-using YangKai.BlogEngine.Modules.BoardModule.Events;
-using YangKai.BlogEngine.Modules.BoardModule.Objects;
-using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Web.Mvc.Filters;
-using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
@@ -22,7 +19,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         public IQueryable<Board> Get()
         {
             var orderBy = new OrderByExpression<Board, DateTime>(p => p.CreateDate, OrderMode.DESC);
-            var data = Query.Message.GetAll(Int32.MaxValue, orderBy);
+            var data = Proxy.Repository.Board.GetAll(Int32.MaxValue, orderBy);
             if (!WebMasterCookie.IsLogin)
             {
                 data = data.Where(p => !p.IsDeleted);
@@ -31,7 +28,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         [UserAuthorize]
-        public object Post(Guid id, BoardViewModel entity, string action)
+        public object Post(Guid id, Board entity, string action)
         {
             switch (action)
             {
@@ -43,29 +40,34 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             throw new HttpResponseException(HttpStatusCode.NotFound);
         }
 
-        public BoardViewModel Put(BoardViewModel viewModel)
+        public Board Put(Board viewModel)
         {
-            var entity = viewModel.ToEntity();
+            var entity = viewModel;
             entity.Ip = HttpContext.Current.Request.UserHostAddress;
             entity.Address = IpLocator.GetIpLocation(entity.Ip);
-            
-            Command.Instance.Create(entity);
+
+            Proxy.Repository.Board.Add(entity);
+
             WebGuestCookie.Save(entity.Author);
 
-            return entity.ToViewModel();
+            return entity;
         }
 
         // 删除留言
         public object Delete(Guid id)
         {
-            Command.Instance.Run(new BoardDeleteEvent() {BoardId = id});
+            var entity = Proxy.Repository.Board.Get(id);
+            entity.IsDeleted = true;
+            Proxy.Repository.Board.Update(entity);
             return true;
         }
 
         // 恢复留言
         public object Renew(Guid id)
         {
-            Command.Instance.Run(new BoardRenewEvent() {BoardId = id});
+            var entity = Proxy.Repository.Board.Get(id);
+            entity.IsDeleted = false;
+            Proxy.Repository.Board.Update(entity);
             return true;
         }
     }

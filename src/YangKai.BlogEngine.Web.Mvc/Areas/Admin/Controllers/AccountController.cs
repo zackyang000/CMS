@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using YangKai.BlogEngine.Common;
-using YangKai.BlogEngine.ServiceProxy;
 
 namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
 {
@@ -30,12 +29,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
                 var isRemember = Convert.ToBoolean(collection["remember"]);
                 bool login=false;
 
-                var isExist = Query.User.Exist(p => p.LoginName == username && p.Password == password);
+                var isExist = Proxy.Repository.User.Exist(p => p.LoginName == username && p.Password == password);
 
                 if (isExist)
                 {
                     //登录成功
-                    var data = Query.User.Get(p => p.LoginName == username);
+                    var data = Proxy.Repository.User.Get(p => p.LoginName == username);
                     WebMasterCookie.Save(data.UserId, data.LoginName, isRemember);
                     login= true;
                 }

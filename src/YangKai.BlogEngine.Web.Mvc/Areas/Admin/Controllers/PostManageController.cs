@@ -6,18 +6,16 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AtomLab.Domain.Infrastructure;
+using AtomLab.Core;
 using AtomLab.Utility;
 using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Render;
 using Webdiyer.WebControls.Mvc;
 using YangKai.BlogEngine.Common;
-using YangKai.BlogEngine.Model;
-using YangKai.BlogEngine.Modules.PostModule.Commands;
-using YangKai.BlogEngine.Modules.PostModule.Objects;
-using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Web.Mvc.Filters;
 using YangKai.BlogEngine.Web.Mvc.Areas.Admin.Common;
+using QrCode = YangKai.BlogEngine.Domain.QrCode;
 
 
 namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
@@ -28,7 +26,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         [ActionName("index")]
         public ActionResult Index(int? page, string status)
         {
-            PageList<Post> data = Query.Post.GetPage(page ?? 1, 50,new OrderByExpression<Post,DateTime>(p=>p.CreateDate,OrderMode.DESC));
+            PageList<Post> data = Proxy.Repository.Post.GetPage(page ?? 1, 50, new OrderByExpression<Post, DateTime>(p => p.CreateDate, OrderMode.DESC));
             var pagedList = new PagedList<Post>(data.DataList, page ?? 1, 50, data.TotalCount);
             return View(pagedList);
         }
@@ -36,7 +34,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         [ActionName("new-channel-and-group")]
         public PartialViewResult ChannelBox()
         {
-            IList<Channel> entities = Query.Channel.GetAll(p=>!p.IsDeleted).ToList();
+            IList<Channel> entities = Proxy.Repository.Channel.GetAll(p => !p.IsDeleted).ToList();
             return PartialView(entities);
         }
 
@@ -51,14 +49,14 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         public ActionResult New(FormCollection collection, HttpPostedFileBase uploadpic)
         {
             Post data = GetPost(collection, uploadpic);
-            Command.Instance.Create(data);
+            Proxy.Repository.Post.Add(data);
             return PostAction(collection, data);
         }
 
         [ActionName("edit")]
         public ActionResult Edit(string id)
         {
-            Post data = Query.Post.Get(p=>p.Url==id);
+            Post data = Proxy.Repository.Post.Get(p => p.Url == id);
             return View("New", data);
         }
 
@@ -69,20 +67,21 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
             string postUrl = id; //id参数实际为Post.Url
             Post data = GetPost(collection, uploadpic);
 
-            data.EditAdminId = data.PubAdminId;
+            data.LastEditUser = WebMasterCookie.Load().Name;
             data.EditIp = data.PubIp;
             data.EditAddress = data.PubAddress;
             data.EditDate = data.CreateDate;
 
             var existThumbnail = Convert.ToBoolean(collection["exist-thumbnail"]);
-            Command.Instance.UpdatePost(postUrl, data, existThumbnail);
+            throw new Exception("编辑文章");
+            //Command.Instance.UpdatePost(postUrl, data, existThumbnail);
             return PostAction(collection, data);
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult GetChannel()
         {
-            var entities = Query.Channel.GetAll(p=>!p.IsDeleted)
+            var entities = Proxy.Repository.Channel.GetAll(p => !p.IsDeleted)
                 .Select(p => new { Value = p.Url, Text = p.Name });
             return Json(entities, JsonRequestBehavior.AllowGet);
         }
@@ -90,7 +89,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult GetGroup(string channelUrl)
         {
-            var entities = Query.Group.GetAll(p => p.Channel.Url == channelUrl&&!p.IsDeleted).ToList()
+            var entities = Proxy.Repository.Group.GetAll(p => p.Channel.Url == channelUrl && !p.IsDeleted).ToList()
                 .Select(p => new { Value = p.Url, Text = p.Name });
             return Json(entities, JsonRequestBehavior.AllowGet);
         }
@@ -98,7 +97,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult GetCategory(string groupUrl)
         {
-            var entities = Query.Category.GetAll(p => p.Group.Url == groupUrl && !p.IsDeleted)
+            var entities = Proxy.Repository.Category.GetAll(p => p.Group.Url == groupUrl && !p.IsDeleted)
                 .Select(p => new { Value = p.CategoryId, Text = p.Name });
             return Json(entities, JsonRequestBehavior.AllowGet);
         }
@@ -123,7 +122,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         {
             try
             {
-                var g = Query.Group.Get(p => p.Url == groupUrl);
+                var g = Proxy.Repository.Group.Get(p => p.Url == groupUrl);
                 var entity = new Category
                 {
                     Name = name,
@@ -131,7 +130,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
                     Group = g,
                     OrderId = 1,
                 };
-                Command.Instance.Create(entity);
+                Proxy.Repository.Category.Add(entity);
                 return Json(new { result = true },
                             JsonRequestBehavior.AllowGet);
             }
@@ -147,7 +146,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         {
             try
             {
-                Command.Instance.Run(new PostDeleteEvent() { PostId = id });
+                var entity = Proxy.Repository.Post.Get(id);
+                entity.IsDeleted = true;
+                Proxy.Repository.Post.Update(entity);
                 return Json(new { result = true });
             }
             catch (Exception e)
@@ -161,7 +162,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
         {
             try
             {
-                Command.Instance.Run(new PostRenewEvent() { PostId = id });
+                var entity = Proxy.Repository.Post.Get(id);
+                entity.IsDeleted = false;
+                Proxy.Repository.Post.Update(entity);
                 return Json(new { result = true });
             }
             catch (Exception e)
@@ -182,12 +185,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
             var groupname = collection["groupRadio"];
             var data = new Post
                 {
-                    GroupId = Query.Group.Get(p => p.Url == groupname).GroupId,
+                    GroupId = Proxy.Repository.Group.Get(p => p.Url == groupname).GroupId,
                     Url = collection["post_url"].ToLower(),
                     Title = collection["post_title"],
                     Content = collection["post_content"],
                     Description = collection["post_description"],
-                    PubAdminId = WebMasterCookie.Load().Id,
+                    CreateUser = WebMasterCookie.Load().Name,
                     PubIp = Request.UserHostAddress,
                     PubAddress = IpLocator.GetIpLocation(Request.UserHostAddress),
                     CreateDate = DateTime.Now,
@@ -206,7 +209,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
                  IList<string> categorysId = collection["category"].Split(',');
                  foreach (var item in categorysId)
                  {
-                     var category = Query.Category.Get(new Guid(item));
+                     var category = Proxy.Repository.Category.Get(new Guid(item));
                      data.Categorys.Add(category);
                  }
              }
@@ -246,8 +249,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
             }
 
             //添加Post.Qrcode
-            var g = Query.Group.Get(data.GroupId);
-              data.QrCode = new Modules.PostModule.Objects.QrCode
+            var g = Proxy.Repository.Group.Get(data.GroupId);
+              data.QrCode = new QrCode
             {
                 Content = data.Title,
                 Url = data.Url.Replace(" ", "-") + ".png"

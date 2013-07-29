@@ -6,10 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AtomLab.Utility;
+using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Infrastructure;
-using YangKai.BlogEngine.Modules.CommonModule.Objects;
-using YangKai.BlogEngine.Modules.PostModule.Objects;
-using YangKai.BlogEngine.ServiceProxy;
 using YangKai.BlogEngine.Web.Mvc.BootStrapper;
 using YangKai.BlogEngine.Web.Mvc.Controllers;
 
@@ -36,7 +34,7 @@ namespace YangKai.BlogEngine.Web.Mvc
                     {
                         try
                         {
-                            Command.Instance.Create(visitLog);
+                            Proxy.Repository.Log.Add(visitLog);
                         }
                         catch
                         {

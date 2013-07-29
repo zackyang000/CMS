@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using YangKai.BlogEngine.Modules.PostModule.Objects;
-using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Proxy;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
@@ -12,7 +11,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [ActionName("index")]
         public ActionResult Index()
         {
-            var channels = Query.Channel.GetAll(p => !p.IsDeleted).ToList();
+            var channels = Repository.Channel.GetAll(p => !p.IsDeleted).ToList();
             return View(channels);
         }
     }

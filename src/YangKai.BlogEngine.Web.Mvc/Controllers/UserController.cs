@@ -5,11 +5,6 @@ using System.Web.Http;
 using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
-using YangKai.BlogEngine.Modules.PostModule.Commands;
-using YangKai.BlogEngine.Modules.PostModule.Objects;
-using YangKai.BlogEngine.ServiceProxy;
-using YangKai.BlogEngine.Web.Mvc.Filters;
-using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {

@@ -4,25 +4,21 @@ using System.Linq.Expressions;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Linq;
-using AtomLab.Domain.Infrastructure;
+using AtomLab.Core;
 using Webdiyer.WebControls.Mvc;
 using YangKai.BlogEngine.Common;
-using YangKai.BlogEngine.Modules.CommonModule.Objects;
-using YangKai.BlogEngine.Modules.PostModule.Commands;
-using YangKai.BlogEngine.Modules.PostModule.Objects;
-using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Web.Mvc.Extension;
-using YangKai.BlogEngine.Web.Mvc.Models;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class ArticleController : ApiController
     {
-        public PageList<PostViewModel> Get(int page = 1, string channel = null, string group = null,
+        public PageList<Post> Get(int page = 1, string channel = null, string group = null,
                                            string category = null, string tag = null,
                                            string date = null, string search = null)
         {
-            var data = Query.Post.GetAll(
+            var data = Proxy.Repository.Post.GetAll(
                 p => p.PostStatus == (int) PostStatusEnum.Publish,
                 new OrderByExpression<Post, DateTime>(p => p.CreateDate, OrderMode.DESC));
 
@@ -38,48 +34,49 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             if (!string.IsNullOrEmpty(search))
             {
                 var log = Log.CreateSearchLog(search);
-                Command.Instance.Create(log);
+                Proxy.Repository.Log.Add(log);
             }
 
-            var result = new PageList<PostViewModel>(Config.Setting.PAGE_SIZE)
+            var result = new PageList<Post>(Config.Setting.PAGE_SIZE)
                 {
-                    DataList = list.ToViewModels(),
+                    DataList = list,
                     TotalCount = count
                 };
 
             //生成Http-head link
-            PageHelper.SetLinkHeader(result, "/api/article", page, new Dictionary<string, object>
-                {
-                    {"channel", channel},
-                    {"group", group},
-                    {"category", category},
-                    {"tag", tag},
-                    {"date", date},
-                    {"search", search},
-                });
+//            PageHelper.SetLinkHeader(result, "/api/article", page, new Dictionary<string, object>
+//                {
+//                    {"channel", channel},
+//                    {"group", group},
+//                    {"category", category},
+//                    {"tag", tag},
+//                    {"date", date},
+//                    {"search", search},
+//                });
 
             return result;
         }
 
-        public PostViewModel Get(string id)
+        public Post Get(string id)
         {
-            var data = Query.Post.Get(p=>p.Url==id);
+            var data = Proxy.Repository.Post.Get(p=>p.Url==id);
 
             if (data == null || data.PostStatus == (int) PostStatusEnum.Trash)
             {
                 return null;
             }
 
-            Command.Instance.Run(new PostBrowseEvent {PostId = data.PostId});
+            data.ReplyCount++;
+            Proxy.Repository.Post.Update(data);
 
-            return data.ToViewModel();
+            return data;
         }
 
         public object Get(Guid id,string action)
         {
             if (action == "nav")//上一篇 & 下一篇
             {
-               var post= Query.Post.Get(id);
+                var post = Proxy.Repository.Post.Get(id);
                var prePost = GetPrePost(post)??new Post();
                var nextPost = GetNextPost(post) ?? new Post();
 
@@ -89,17 +86,17 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
             if (action == "related")//相关文章
             {
-                var post = Query.Post.Get(id);
+                var post = Proxy.Repository.Post.Get(id);
                 IList<Post> result = new List<Post>();
                 if (post.Tags != null)
                 {
                     foreach (Tag tag in post.Tags)
                     {
-                        Query.Tag.GetAll(p => p.Name == tag.Name)
+                        Proxy.Repository.Tag.GetAll(p => p.Name == tag.Name)
                                       .Select(p => p.Post).ToList().ForEach(result.Add);
                     }
                 }
-                return result.Distinct().Where(p => p.PostId != id && p.Group == post.Group).Take(10).ToList().ToViewModels();
+                return result.Distinct().Where(p => p.PostId != id && p.Group == post.Group).Take(10).ToList();
             }
             return null;
         }
@@ -109,20 +106,20 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             Expression<Func<Post, bool>> specExpr = p => p.PubDate < entity.PubDate
                                                          && p.PostStatus == (int)PostStatusEnum.Publish
                                                          && p.GroupId == entity.GroupId;
-            var result = Query.Post.GetAll(1, specExpr,
-                                new OrderByExpression<BlogEngine.Modules.PostModule.Objects.Post, DateTime>(
+            var result = Proxy.Repository.Post.GetAll(1, specExpr,
+                                new OrderByExpression<Post, DateTime>(
                                     p => p.PubDate, OrderMode.DESC));
             return result.FirstOrDefault();
         }
 
         private Post GetNextPost(Post entity)
         {
-            Expression<Func<BlogEngine.Modules.PostModule.Objects.Post, bool>> specExpr =
+            Expression<Func<Post, bool>> specExpr =
                 p => p.PubDate > entity.PubDate
                      && p.PostStatus == (int)PostStatusEnum.Publish
                      && p.GroupId == entity.GroupId;
-            var result = Query.Post.GetAll(1, specExpr,
-                                new OrderByExpression<BlogEngine.Modules.PostModule.Objects.Post, DateTime>(
+            var result = Proxy.Repository.Post.GetAll(1, specExpr,
+                                new OrderByExpression<Post, DateTime>(
                                     p => p.PubDate));
             return result.FirstOrDefault();
         }

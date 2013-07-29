@@ -7,28 +7,26 @@ using System.Web.Http;
 using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
-using YangKai.BlogEngine.Modules.PostModule.Commands;
-using YangKai.BlogEngine.Modules.PostModule.Objects;
-using YangKai.BlogEngine.ServiceProxy;
+using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Web.Mvc.Filters;
-using YangKai.BlogEngine.Web.Mvc.Models;
+
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class CommentController : ApiController
     {
-        public IList<CommentViewModel> Get(Guid PostId)
+        public IList<Comment> Get(Guid PostId)
         {
-            var comments = Query.Comment.GetAll(p=>p.PostId==PostId);
+            var comments = Proxy.Repository.Comment.GetAll(p => p.PostId == PostId);
             if (!WebMasterCookie.IsLogin)
             {
                 comments = comments.Where(p => !p.IsDeleted);
             }
-            return comments.OrderBy(p=>p.CreateDate).ToList().ToViewModels();
+            return comments.OrderBy(p=>p.CreateDate).ToList();
         }
 
         [UserAuthorize]
-        public object Post(Guid id,CommentViewModel entity, string action)
+        public object Post(Guid id,Comment entity, string action)
         {
             switch (action)
             {
@@ -40,30 +38,35 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             throw new HttpResponseException(HttpStatusCode.NotFound);
         }
 
-        public CommentViewModel Put(CommentViewModel viewModel)
+        public Comment Put(Comment viewModel)
         {
-            var entity = viewModel.ToEntity();
+            var entity = viewModel;
             entity.Ip = HttpContext.Current.Request.UserHostAddress;
             entity.Address = IpLocator.GetIpLocation(entity.Ip);
             entity.IsAdmin = WebMasterCookie.IsLogin;
 
-            Command.Instance.Create(entity);
+            Proxy.Repository.Comment.Add(entity);
+
             WebGuestCookie.Save(entity.Author, entity.Email, entity.Url, true);
 
-            return entity.ToViewModel();
+            return entity;
         }
 
         // É¾³ýÆÀÂÛ
         public object Delete(Guid id)
         {
-            Command.Instance.Run(new CommentDeleteEvent() { CommentId = id });
+            var entity=Proxy.Repository.Comment.Get(id);
+            entity.IsDeleted = true;
+            Proxy.Repository.Comment.Update(entity);
             return true;
         }
 
         // »Ö¸´ÆÀÂÛ
         public object Renew(Guid id)
         {
-            Command.Instance.Run(new CommentRenewEvent() { CommentId = id });
+            var entity = Proxy.Repository.Comment.Get(id);
+            entity.IsDeleted = false;
+            Proxy.Repository.Comment.Update(entity);
             return true;
         }
     }
