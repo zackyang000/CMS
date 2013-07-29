@@ -14,7 +14,7 @@ using YangKai.BlogEngine.Web.Mvc.Extension;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class ArticleController : ApiController
+    public class PostController : ApiController
     {
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
         public IQueryable<Post> Get(ODataQueryOptions options)
@@ -35,7 +35,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             var data = Proxy.Repository<Post>().Get(p => p.Url == id);
 
-            if (!WebMasterCookie.IsLogin)
+            if (!Current.IsLogin)
             {
                 if (data == null || data.PostStatus == (int)PostStatusEnum.Trash)
                 {

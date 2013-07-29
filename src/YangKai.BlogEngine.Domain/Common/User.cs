@@ -32,5 +32,10 @@ namespace YangKai.BlogEngine.Domain
         /// 电子邮件.
         /// </summary>
         public string Email { get; set; }
+
+        /// <summary>
+        /// 头像URL.
+        /// </summary>
+        public string Avatar { get; set; }
     }
 }

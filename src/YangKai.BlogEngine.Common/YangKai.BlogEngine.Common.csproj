@@ -83,8 +83,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="WebGuestCookie.cs" />
-    <Compile Include="WebMasterCookie.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Utility\AtomLab.Utility.csproj">

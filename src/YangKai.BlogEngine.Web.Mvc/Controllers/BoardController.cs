@@ -9,19 +9,18 @@ using AtomLab.Core;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
-using YangKai.BlogEngine.ProxyService;
 using YangKai.BlogEngine.Service;
 using YangKai.BlogEngine.Web.Mvc.Extension;
 using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class MessageController : ApiController
+    public class BoardController : ApiController
     {
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
         public IQueryable<Board> Get(ODataQueryOptions options)
         {
-            var data = RepositoryProxy.Board.GetAll(p => !p.IsDeleted);
+            var data = Proxy.Repository<Board>().GetAll(p => !p.IsDeleted);
             PageHelper.SetLinkHeader(data, options, Request);
             return data;
         }
@@ -47,7 +46,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             Proxy.Repository<Board>().Add(entity);
 
-            WebGuestCookie.Save(entity.Author);
+            Current.User.UserName = entity.Author;
 
             return entity;
         }

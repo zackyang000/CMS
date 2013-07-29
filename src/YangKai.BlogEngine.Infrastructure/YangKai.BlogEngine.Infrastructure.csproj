@@ -88,6 +88,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogEngineContext.cs" />
+    <Compile Include="Migrations\201307291233446_RemoveDDD.cs" />
+    <Compile Include="Migrations\201307291233446_RemoveDDD.Designer.cs">
+      <DependentUpon>201307291233446_RemoveDDD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.Designer.cs">
@@ -170,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304220413485_RemovePageModel.resx">
       <DependentUpon>201304220413485_RemovePageModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307291233446_RemoveDDD.resx">
+      <DependentUpon>201307291233446_RemoveDDD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

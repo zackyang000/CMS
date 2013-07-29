@@ -15,7 +15,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Filters
     {
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            if (!WebMasterCookie.IsLogin)
+            if (!Current.IsLogin)
             {
                 HandleUnauthorizedRequest(actionContext);
             }
@@ -31,7 +31,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Filters
     {
         public void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (!WebMasterCookie.IsLogin)
+            if (!Current.IsLogin)
             {
                 var returnType = ((ReflectedActionDescriptor)filterContext.ActionDescriptor).MethodInfo.ReturnType;
 

@@ -183,10 +183,11 @@
     <Compile Include="Areas\Admin\Controllers\PostManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
     <Compile Include="Areas\Admin\Common\SaveRemoteFile.cs" />
+    <Compile Include="Common\Current.cs" />
     <Compile Include="Controllers\RestApiController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\MessageController.cs" />
-    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\BoardController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LabsController.cs" />

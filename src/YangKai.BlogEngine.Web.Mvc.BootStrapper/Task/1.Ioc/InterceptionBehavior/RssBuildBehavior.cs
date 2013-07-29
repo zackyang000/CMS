@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity.InterceptionExtension;
 using YangKai.BlogEngine.Domain;
-using YangKai.BlogEngine.ProxyService;
+using YangKai.BlogEngine.Service;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {

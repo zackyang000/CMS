@@ -12,24 +12,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         public object Get()
         {
-            if (WebMasterCookie.IsLogin)
-            {
-                var user = WebMasterCookie.Load();
-                return new
-                {
-                    isAdmin = true,
-                    Name = user.Name,
-                };
-            }
-
-            WebGuestCookie cookie = WebGuestCookie.Load();
-            return new
-            {
-                isAdmin = false,
-                Name = cookie.Name,
-                Email = cookie.Email,
-                Url = cookie.Url,
-            };
+            return Current.User;
         }
     }
 }

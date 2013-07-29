@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
-using YangKai.BlogEngine.ProxyService;
 using YangKai.BlogEngine.Service;
 using YangKai.BlogEngine.Web.Mvc.Extension;
 using YangKai.BlogEngine.Web.Mvc.Filters;
@@ -22,7 +21,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
         public IQueryable<Comment> Get(ODataQueryOptions options)
         {
-            var data = RepositoryProxy.Comment.GetAll(p => !p.IsDeleted);
+            var data = Proxy.Repository<Comment>().GetAll(p => !p.IsDeleted);
             PageHelper.SetLinkHeader(data, options, Request);
             return data;
         }
@@ -45,11 +44,16 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             var entity = viewModel;
             entity.Ip = HttpContext.Current.Request.UserHostAddress;
             entity.Address = IpLocator.GetIpLocation(entity.Ip);
-            entity.IsAdmin = WebMasterCookie.IsLogin;
+            entity.IsAdmin = Current.IsLogin;
 
             Proxy.Repository<Comment>().Add(entity);
 
-            WebGuestCookie.Save(entity.Author, entity.Email, entity.Url, true);
+            Current.User = new User()
+                {
+                    UserName = entity.Author,
+                    Email = entity.Email,
+                    Avatar = entity.Url,
+                };
 
             return entity;
         }
