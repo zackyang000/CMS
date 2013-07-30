@@ -9,7 +9,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        [ActionName("index")]
         public ActionResult Index()
         {
             var channels = Proxy.Repository<Channel>().GetAll(p => !p.IsDeleted).ToList();
