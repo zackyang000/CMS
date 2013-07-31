@@ -61,45 +61,7 @@ namespace YangKai.BlogEngine.Web.Mvc
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            Exception exception = Server.GetLastError();
-
-            Response.Clear();
-
-            var routeData = new RouteData();
-            routeData.Values.Add("controller", "Home");
-
-            var httpException = exception as HttpException;
-
-            if (httpException == null)
-            {
-                routeData.Values.Add("action", "Index");
-            }
-            else
-            {
-                switch (httpException.GetHttpCode())
-                {
-                    case 404:
-                        routeData.Values.Add("action", "Index");
-                        break;
-                    case 500:
-                        routeData.Values.Add("action", "Index");
-                        break;
-                    default:
-                        routeData.Values.Add("action", "Index");
-                        break;
-                }
-            }
-
-            //用于页面显示错误信息.
-            //routeData.Values.Add("error", exception);
-
-            Server.ClearError();
-
-            Response.TrySkipIisCustomErrors = true;
-
-            IController errorController = new HomeController();
-            errorController.Execute(new RequestContext(
-                 new HttpContextWrapper(Context), routeData));
+           
         }
 
         protected void Session_End()
