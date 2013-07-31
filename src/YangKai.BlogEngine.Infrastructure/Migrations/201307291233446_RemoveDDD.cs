@@ -7,8 +7,8 @@ namespace YangKai.BlogEngine.Infrastructure.Migrations
     {
         public override void Up()
         {
-            DropForeignKey("dbo.Posts", "PubAdminId", "dbo.Users");
-            DropForeignKey("dbo.Tags", "PostId", "dbo.Posts");
+            //DropForeignKey("dbo.Posts", "PubAdminId", "dbo.Users");
+            //DropForeignKey("dbo.Tags", "PostId", "dbo.Posts");
             DropIndex("dbo.Posts", new[] { "PubAdminId" });
             DropIndex("dbo.Tags", new[] { "PostId" });
             RenameColumn(table: "dbo.Posts", name: "PubAdminId", newName: "PubAdmin_UserId");
@@ -275,8 +275,8 @@ namespace YangKai.BlogEngine.Infrastructure.Migrations
             RenameColumn(table: "dbo.Posts", name: "PubAdmin_UserId", newName: "PubAdminId");
             CreateIndex("dbo.Tags", "PostId");
             CreateIndex("dbo.Posts", "PubAdminId");
-            AddForeignKey("dbo.Tags", "PostId", "dbo.Posts", "PostId", cascadeDelete: true);
-            AddForeignKey("dbo.Posts", "PubAdminId", "dbo.Users", "UserId", cascadeDelete: true);
+            //AddForeignKey("dbo.Tags", "PostId", "dbo.Posts", "PostId", cascadeDelete: true);
+            //AddForeignKey("dbo.Posts", "PubAdminId", "dbo.Users", "UserId", cascadeDelete: true);
         }
     }
 }
