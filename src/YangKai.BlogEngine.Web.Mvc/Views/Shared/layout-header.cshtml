@@ -1,4 +1,4 @@
-﻿@model IList<YangKai.BlogEngine.Modules.PostModule.Objects.Channel>
+﻿@model IList<YangKai.BlogEngine.Domain.Channel>
 <header class="navbar navbar-inverse navbar-fixed-top">
     <nav class="navbar-inner">
         <div class="container">
@@ -31,7 +31,7 @@
                     <li><a ng-href="#!/about">关于</a></li>
                 </ul>
                 <ul class="nav pull-right">
-                    @if (YangKai.BlogEngine.Common.WebMasterCookie.IsLogin)
+                    @if (YangKai.BlogEngine.Web.Mvc.Current.IsLogin)
                     {
                         <li><a target="_blank" href="/admin/postmanage/new">添加文章</a></li>
                         <li><a target="_blank" href="/admin/postmanage">管理</a></li>
