@@ -5,7 +5,7 @@ GlobalController = [
     $scope.isAdmin = false;
     $http.get("/api/user").success(function(data) {
       $scope.isAdmin = data.isAdmin;
-      $scope.Name = data.Name;
+      $scope.Name = data.UserName;
       $scope.Email = data.Email;
       return $scope.Url = data.Url;
     });

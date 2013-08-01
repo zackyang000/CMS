@@ -48,7 +48,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             Proxy.Repository<Comment>().Add(entity);
 
-            Current.User = new User()
+            Current.User = new WebUser()
                 {
                     UserName = entity.Author,
                     Email = entity.Email,

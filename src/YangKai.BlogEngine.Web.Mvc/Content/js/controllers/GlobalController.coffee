@@ -3,7 +3,7 @@
 
   $http.get("/api/user").success (data) ->
     $scope.isAdmin = data.isAdmin
-    $scope.Name = data.Name
+    $scope.Name = data.UserName
     $scope.Email = data.Email
     $scope.Url = data.Url
 

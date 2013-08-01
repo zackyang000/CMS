@@ -10,6 +10,11 @@
       $scope.AuthorForDisplay=$scope.Name
       $scope.editmode=$scope.Name=='' or not $scope.Name?
       $scope.list = Message.query ->
+        for item in $scope.list
+          if item.Email
+            item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
+          else
+            item.Gravatar='/Content/img/avatar.png'
         $scope.loading = false 
       
       $scope.del = (item) ->

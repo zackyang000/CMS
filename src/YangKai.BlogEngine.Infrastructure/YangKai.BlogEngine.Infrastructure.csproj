@@ -92,6 +92,10 @@
     <Compile Include="Migrations\201307291233446_RemoveDDD.Designer.cs">
       <DependentUpon>201307291233446_RemoveDDD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308011336137_AddEmailAndUrlForBoard.cs" />
+    <Compile Include="Migrations\201308011336137_AddEmailAndUrlForBoard.Designer.cs">
+      <DependentUpon>201308011336137_AddEmailAndUrlForBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.Designer.cs">
@@ -177,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307291233446_RemoveDDD.resx">
       <DependentUpon>201307291233446_RemoveDDD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308011336137_AddEmailAndUrlForBoard.resx">
+      <DependentUpon>201308011336137_AddEmailAndUrlForBoard.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

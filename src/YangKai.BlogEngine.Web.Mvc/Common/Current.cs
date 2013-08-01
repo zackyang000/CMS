@@ -17,17 +17,18 @@ namespace YangKai.BlogEngine.Web.Mvc
 {
     public class Current
     {
-        public static User User
+        public static WebUser User
         {
             get
             {
-                return new User
+                return new WebUser
                 {
                     UserName = EncryptionCookieHelper.Load("__Username__"),
                     LoginName = EncryptionCookieHelper.Load("__LoginName__"),
                     Email = EncryptionCookieHelper.Load("__Email__"),
                     Avatar = EncryptionCookieHelper.Load("__Avatar__"),
                     Password = EncryptionCookieHelper.Load("__Pwd__"),
+                    IsAdmin =EncryptionCookieHelper.Load("__IsAdmin__")=="true",
                 };
             }
             set
@@ -39,6 +40,7 @@ namespace YangKai.BlogEngine.Web.Mvc
                     EncryptionCookieHelper.Add("__Email__", value.Email, 180);
                     EncryptionCookieHelper.Add("__Avatar__", value.Avatar, 180);
                     EncryptionCookieHelper.Add("__Pwd__", value.Password, 180);
+                    EncryptionCookieHelper.Add("__IsAdmin__", value.IsAdmin.ToString().ToLower(), 180);
                 }
                 else
                 {
@@ -47,6 +49,7 @@ namespace YangKai.BlogEngine.Web.Mvc
                     EncryptionCookieHelper.Remove("__Email__");
                     EncryptionCookieHelper.Remove("__Avatar__");
                     EncryptionCookieHelper.Remove("__Pwd__");
+                    EncryptionCookieHelper.Remove("__IsAdmin__");
                 }
             }
         }
@@ -61,5 +64,29 @@ namespace YangKai.BlogEngine.Web.Mvc
                 return !string.IsNullOrEmpty(User.UserName);
             }
         }
+
+        /// <summary>
+        /// 是否已登录
+        /// </summary>
+        public static bool IsAdmin
+        {
+            get
+            {
+                return User.IsAdmin;
+            }
+        }
+    }
+
+    public class WebUser : User
+    {
+        /// <summary>
+        /// 头像URL.
+        /// </summary>
+        public string Avatar { get; set; }
+
+        /// <summary>
+        /// 是否为管理员.
+        /// </summary>
+        public bool IsAdmin { get; set; }
     }
 }

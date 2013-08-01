@@ -1,20 +1,26 @@
-﻿
-angular.module("MessageServices", ["ngResource"]).factory("Message", [
+﻿angular.module("MessageServices", ["ngResource"]).factory("Message", [
   '$resource', function($resource) {
-    return $resource("/api/message/:id", {
+    return $resource("/api/board/:id", {
       id: '@id'
     }, {
+      query: {
+        method: "GET",
+        params: {
+          $orderby: "CreateDate desc"
+        },
+        isArray: true
+      },
       add: {
-        method: "PUT"
+        method: "POST"
       },
       del: {
-        method: "POST",
+        method: "PUT",
         params: {
           action: 'delete'
         }
       },
       renew: {
-        method: "POST",
+        method: "PUT",
         params: {
           action: 'renew'
         }

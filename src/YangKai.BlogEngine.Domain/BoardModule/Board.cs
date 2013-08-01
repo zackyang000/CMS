@@ -26,6 +26,16 @@ namespace YangKai.BlogEngine.Domain
         public string Author { get; set; }
 
         /// <summary>
+        /// 发布者电子邮件.
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// 发布者站点.
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
         /// 发布者Ip地址.
         /// </summary>
         public string Ip { get; set; }

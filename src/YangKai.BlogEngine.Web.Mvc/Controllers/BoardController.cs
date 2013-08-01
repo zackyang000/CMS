@@ -20,13 +20,30 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
         public IQueryable<Board> Get(ODataQueryOptions options)
         {
-            var data = Proxy.Repository<Board>().GetAll(p => !p.IsDeleted);
+            var data = Proxy.Repository<Board>().GetAll();
             PageHelper.SetLinkHeader(data, options, Request);
             return data;
         }
 
+        public Board Post(Board viewModel)
+        {
+            var entity = viewModel;
+            entity.Ip = HttpContext.Current.Request.UserHostAddress;
+            entity.Address = IpLocator.GetIpLocation(entity.Ip);
+
+            Proxy.Repository<Board>().Add(entity);
+
+            Current.User = new WebUser()
+            {
+                UserName = entity.Author,
+                Email = entity.Email,
+            };
+
+            return entity;
+        }
+
         [UserAuthorize]
-        public object Post(Guid id, Board entity, string action)
+        public object Put(Guid id, Board entity, string action)
         {
             switch (action)
             {
@@ -36,19 +53,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                     return Renew(id);
             }
             throw new HttpResponseException(HttpStatusCode.NotFound);
-        }
-
-        public Board Put(Board viewModel)
-        {
-            var entity = viewModel;
-            entity.Ip = HttpContext.Current.Request.UserHostAddress;
-            entity.Address = IpLocator.GetIpLocation(entity.Ip);
-
-            Proxy.Repository<Board>().Add(entity);
-
-            Current.User.UserName = entity.Author;
-
-            return entity;
         }
 
         // 删除留言

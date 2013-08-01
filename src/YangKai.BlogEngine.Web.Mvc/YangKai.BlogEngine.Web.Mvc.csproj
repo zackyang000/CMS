@@ -228,6 +228,7 @@
       <DependentUpon>MessageController.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\directives\angular-ui.js" />
+    <Content Include="Content\js\md5.js" />
     <Content Include="Content\js\services\ArticleServices.js">
       <DependentUpon>ArticleServices.coffee</DependentUpon>
     </Content>

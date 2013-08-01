@@ -10,8 +10,18 @@ MessageController = [
     $scope.entity.Email = $scope.Email;
     $scope.entity.Url = $scope.Url;
     $scope.AuthorForDisplay = $scope.Name;
-    $scope.editmode = $scope.Name === '' || !($scope.Name != null);
+    $scope.editmode = $scope.Name === '' || ($scope.Name == null);
     $scope.list = Message.query(function() {
+      var item, _i, _len, _ref;
+      _ref = $scope.list;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        item = _ref[_i];
+        if (item.Email) {
+          item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
+        } else {
+          item.Gravatar = '/Content/img/avatar.png';
+        }
+      }
       return $scope.loading = false;
     });
     $scope.del = function(item) {
