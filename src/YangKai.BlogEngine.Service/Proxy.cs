@@ -9,5 +9,10 @@ namespace YangKai.BlogEngine.Service
         {
             return InstanceLocator.Current.GetInstance<Repository<T>>();
         }
+
+        public static ODataRepository<T> ODataRepository<T>() where T : Entity
+        {
+            return InstanceLocator.Current.GetInstance<ODataRepository<T>>();
+        }
     }
 }

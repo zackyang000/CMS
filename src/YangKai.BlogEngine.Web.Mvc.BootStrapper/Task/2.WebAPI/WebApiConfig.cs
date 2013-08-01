@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Formatting;
 using System.Web.Http;
 using Bootstrap.Extensions.StartupTasks;
+using Newtonsoft.Json;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
@@ -25,6 +26,11 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             config.Formatters.JsonFormatter.AddQueryStringMapping("$format", "json", "application/json");
             config.Formatters.XmlFormatter.AddQueryStringMapping("$format", "xml", "application/xml");
+
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
+            //使EF支持$expand
+            config.Filters.Add(new EFExpandActionFilter());
 
             config.EnableSystemDiagnosticsTracing();
         }

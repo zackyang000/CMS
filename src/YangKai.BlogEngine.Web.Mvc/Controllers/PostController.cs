@@ -19,7 +19,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
         public IQueryable<Post> Get(ODataQueryOptions options)
         {
-            var data = Proxy.Repository<Post>().GetAll(p => !p.IsDeleted);
+            var data = Proxy.ODataRepository<Post>().GetAll(p => !p.IsDeleted);
             PageHelper.SetLinkHeader(data, options, Request);
             return data;
 

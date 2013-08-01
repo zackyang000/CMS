@@ -18,7 +18,7 @@
   $scope.turnpages=(page)->
     $scope.loading=true
     $scope.page=page
-    result = Article.querybypaged
+    result = Article.query
       page:$scope.page
       channel:$scope.channel
       group:$scope.group
@@ -30,7 +30,7 @@
       if page==1
         $scope.list = result
       else
-        $scope.list.DataList = $scope.list.DataList.concat(result.DataList)
+        $scope.list = $scope.list.concat(result)
       $scope.loading=false
 
   $scope.turnpages $scope.page 

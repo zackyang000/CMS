@@ -20,7 +20,7 @@ ArticleListController = [
       var result;
       $scope.loading = true;
       $scope.page = page;
-      return result = Article.querybypaged({
+      return result = Article.query({
         page: $scope.page,
         channel: $scope.channel,
         group: $scope.group,
@@ -32,7 +32,7 @@ ArticleListController = [
         if (page === 1) {
           $scope.list = result;
         } else {
-          $scope.list.DataList = $scope.list.DataList.concat(result.DataList);
+          $scope.list = $scope.list.concat(result);
         }
         return $scope.loading = false;
       });

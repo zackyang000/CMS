@@ -171,6 +171,7 @@
     <Compile Include="Task\1.Ioc\InterceptionBehavior\RssBuildBehavior.cs" />
     <Compile Include="Task\1.Ioc\IocConfig.cs" />
     <Compile Include="Task\1.Ioc\MyInstanceLocator.cs" />
+    <Compile Include="Task\2.WebAPI\EFExpandActionFilter.cs" />
     <Compile Include="Task\3.Routes\RoutesConfig.cs" />
     <Compile Include="Task\4.Bundles\BundlesConfig.cs" />
     <Compile Include="Task\2.WebAPI\WebApiConfig.cs" />

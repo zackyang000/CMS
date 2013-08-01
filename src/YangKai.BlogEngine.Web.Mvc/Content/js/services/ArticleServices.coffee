@@ -1,8 +1,13 @@
 ﻿angular.module("ArticleServices", ["ngResource"])
 .factory "Article", ['$resource',($resource) ->
-  $resource "/api/article/:id", {id:'@id'},
-    querybypaged:
+  $resource "/api/post/:id", {id:'@id'},
+    query:
       method: "GET"
+      params:
+        $top:10
+        $orderby:'CreateDate desc' 
+        $expand:'Categorys,Tags,Group'
+      isArray:true
     nav:
       method: "GET"
       params:

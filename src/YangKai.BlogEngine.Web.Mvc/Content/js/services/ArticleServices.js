@@ -1,11 +1,16 @@
-﻿
-angular.module("ArticleServices", ["ngResource"]).factory("Article", [
+﻿angular.module("ArticleServices", ["ngResource"]).factory("Article", [
   '$resource', function($resource) {
-    return $resource("/api/article/:id", {
+    return $resource("/api/post/:id", {
       id: '@id'
     }, {
-      querybypaged: {
-        method: "GET"
+      query: {
+        method: "GET",
+        params: {
+          $top: 10,
+          $orderby: 'CreateDate desc',
+          $expand: 'Categorys,Tags,Group'
+        },
+        isArray: true
       },
       nav: {
         method: "GET",
