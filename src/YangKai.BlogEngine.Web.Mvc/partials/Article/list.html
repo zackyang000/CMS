@@ -45,13 +45,13 @@
                             <span class="glyphicon-folder-open categories">
                                 <span ng-repeat="category in item.Categorys">
                                     <span ng-hide="$first">,</span>
-                                    <a ng-href="/#!/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
+                                    <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
                                 </span>
                             </span>
                             <span class="glyphicon-tags tags" ng-show="item.Tags.length>0">
                                 <span ng-repeat="tag in item.Tags">
                                     <span ng-hide="$first">,</span>
-                                    <a ng-href="/#!/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/tag/{{tag.Name}}" title="查看 {{tag}} 的全部文章">{{tag.Name}}</a>
+                                    <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag}} 的全部文章">{{tag.Name}}</a>
                                 </span>
                             </span>
                             <span class="glyphicon-user"></span>

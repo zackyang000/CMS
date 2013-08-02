@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Web.Http;
+using System.Web.Http.OData;
+using System.Web.Http.OData.Builder;
 using System.Web.Http.OData.Query;
 using System.Web.Mvc;
 using System.Linq;
 using AtomLab.Core;
+using Microsoft.Data.Edm;
 using Webdiyer.WebControls.Mvc;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
@@ -14,14 +17,12 @@ using YangKai.BlogEngine.Web.Mvc.Extension;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class PostController : ApiController
+    public class PostController : EntitySetController<Post, Guid>
     {
-        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
-        public IQueryable<Post> Get(ODataQueryOptions options)
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All,PageSize = 10)]
+        public override IQueryable<Post> Get()
         {
-            var data = Proxy.ODataRepository<Post>().GetAll(p => !p.IsDeleted);
-            PageHelper.SetLinkHeader(data, options, Request);
-            return data;
+            return Proxy.ODataRepository<Post>().GetAll(p => !p.IsDeleted);
 
             //保存搜索记录
             //            if (!string.IsNullOrEmpty(search))

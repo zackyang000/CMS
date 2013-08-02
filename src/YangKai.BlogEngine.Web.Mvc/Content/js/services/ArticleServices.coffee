@@ -6,7 +6,7 @@
       params:
         $top:10
         $orderby:'CreateDate desc' 
-        $expand:'Categorys,Tags,Group'
+        $expand:'Categorys,Tags,Group,Group.Channel'
       isArray:true
     nav:
       method: "GET"
