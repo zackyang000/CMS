@@ -8,6 +8,23 @@ using YangKai.BlogEngine.Domain;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
+    public class A
+    {
+        public A()
+        {
+            B = new B() { Id = 999 };
+        }
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public B B { get; set; }
+    }
+
+    public class B
+    {
+        public int Id { get; set; }
+    }
+
     public class WebApiConfig : IStartupTask
     {
         public void Run()
@@ -35,7 +52,8 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             modelBuilder.EntitySet<Thumbnail>("Thumbnail");
             modelBuilder.EntitySet<Source>("Source");
             modelBuilder.EntitySet<QrCode>("QrCode");
-
+            modelBuilder.EntitySet<A>("Values");
+            modelBuilder.EntitySet<B>("B");
             var model = modelBuilder.GetEdmModel();
 
             config.Routes.MapODataRoute(routeName: "OData", routePrefix: "odata", model: model);

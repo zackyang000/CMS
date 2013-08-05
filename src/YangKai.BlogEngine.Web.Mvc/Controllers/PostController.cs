@@ -13,10 +13,60 @@ using Webdiyer.WebControls.Mvc;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
+using YangKai.BlogEngine.Web.Mvc.BootStrapper;
 using YangKai.BlogEngine.Web.Mvc.Extension;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
+    public class ValuesController : ODataController
+    {
+        // GET api/values
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, PageSize = 10)]
+        public IEnumerable<A> Get()
+        {
+            return new List<A>()
+            {
+                new A()
+                {
+                    Id=1,
+                    Name = "A"
+                },  new A()
+                {
+                    Id=2,
+                    Name = "B"
+                },  new A()
+                {
+                    Id=3,
+                    Name = "C"
+                },
+            };
+        }
+
+        // GET api/values/5
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/values
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT api/values/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE api/values/5
+        public void Delete(int id)
+        {
+        }
+
+
+
+    }
+
     public class PostController : EntitySetController<Post, Guid>
     {
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All,PageSize = 10)]
