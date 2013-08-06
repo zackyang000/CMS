@@ -10,7 +10,6 @@ using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
-using YangKai.BlogEngine.Web.Mvc.Extension;
 using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
@@ -21,7 +20,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         public IQueryable<Board> Get(ODataQueryOptions options)
         {
             var data = Proxy.Repository<Board>().GetAll();
-            PageHelper.SetLinkHeader(data, options, Request);
             return data;
         }
 
