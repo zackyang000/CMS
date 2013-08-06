@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Metadata.Edm;
 using System.Linq.Expressions;
 using System.Web.Http;
 using System.Web.Http.OData;
@@ -18,61 +19,12 @@ using YangKai.BlogEngine.Web.Mvc.Extension;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class ValuesController : ODataController
-    {
-        // GET api/values
-        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, PageSize = 10)]
-        public IEnumerable<A> Get()
-        {
-            return new List<A>()
-            {
-                new A()
-                {
-                    Id=1,
-                    Name = "A"
-                },  new A()
-                {
-                    Id=2,
-                    Name = "B"
-                },  new A()
-                {
-                    Id=3,
-                    Name = "C"
-                },
-            };
-        }
-
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
-
-
-
-    }
-
     public class PostController : EntitySetController<Post, Guid>
     {
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All,PageSize = 10)]
         public override IQueryable<Post> Get()
         {
-            return Proxy.ODataRepository<Post>().GetAll(p => !p.IsDeleted);
+            return Proxy.Repository<Post>().GetAll(p => !p.IsDeleted);
 
             //保存搜索记录
             //            if (!string.IsNullOrEmpty(search))
@@ -80,6 +32,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             //                var log = Log.CreateSearchLog(search);
             //                Proxy.Repository.Log.Add(log);
             //            }
+        }
+
+        protected override Post GetEntityByKey(Guid key)
+        {
+            return Proxy.ODataRepository<Post>().Get(key);
         }
 
         public Post Get(string id)
