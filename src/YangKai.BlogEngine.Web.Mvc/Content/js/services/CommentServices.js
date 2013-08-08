@@ -1,8 +1,9 @@
 ﻿
 angular.module("CommentServices", ["ngResource"]).factory("Comment", [
   '$resource', function($resource) {
-    return $resource("/api/comment/:id", {
-      id: '@id'
+    return $resource("/odata/Comment:id/:action", {
+      id: '@id',
+      action: '@action'
     }, {
       recent: {
         method: "GET",

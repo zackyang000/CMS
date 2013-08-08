@@ -79,16 +79,13 @@
                     <footer></footer>
                 </article>
             </li>
-            <li ng-show="list.DataList.length==0">
+            <li ng-show="list.length==0">
                 没有找到文章.
             </li>
         </ul>
     </div>
-    <div>
-        <ul class="pager" ng-show="list.PageCount>page">
-            <li>
-                <a ng-click="turnpages(page+1)" rel="next">猛击此处，查看更多 &rarr;</a>
-            </li>
-        </ul>
+    <div class="text-center">
+        <pagination on-select-page="setPage(page)" num-pages="numPages" current-page="currentPage" max-size="10" boundary-links="true" rotate="false"></pagination>
+        <div>{{(currentPage-1)*10+1}} - {{currentPage*10}} of {{pager.count}}</div>
     </div>
 </div>

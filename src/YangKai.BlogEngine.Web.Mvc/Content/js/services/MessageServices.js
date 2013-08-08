@@ -1,7 +1,9 @@
-﻿angular.module("MessageServices", ["ngResource"]).factory("Message", [
+﻿
+angular.module("MessageServices", ["ngResource"]).factory("Message", [
   '$resource', function($resource) {
-    return $resource("/api/board/:id", {
-      id: '@id'
+    return $resource("/odata/Board:id/:action", {
+      id: '@id',
+      action: '@action'
     }, {
       query: {
         method: "GET",

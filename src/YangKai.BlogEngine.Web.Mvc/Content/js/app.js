@@ -1,5 +1,5 @@
 ﻿
-angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'ui']).config([
+angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'ui', 'ui.bootstrap', '$strap.directives']).config([
   "$locationProvider", "$routeProvider", function($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(false).hashPrefix('!');
     return $routeProvider.when("/list/:channel/:group/:page/:type/:query", {

@@ -1,13 +1,12 @@
 ﻿angular.module("ArticleServices", ["ngResource"])
 .factory "Article", ['$resource',($resource) ->
-  $resource "/api/post/:id", {id:'@id'},
+  $resource "/odata/Post:id/:action", {id:'@id',action:'@action'},
     query:
       method: "GET"
       params:
-        $top:10
         $orderby:'CreateDate desc' 
-        $expand:'Categorys,Tags,Group,Group.Channel'
-      isArray:true
+        $expand:'Categorys,Tags,Group,Group/Channel'
+        $inlinecount:'allpages'
     nav:
       method: "GET"
       params:

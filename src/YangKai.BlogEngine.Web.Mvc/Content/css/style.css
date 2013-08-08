@@ -156,7 +156,10 @@ article h2 > a {
 article h2 > span {
   font-size: 16px;
 }
-.pager a {
+.pagination {
+  margin-bottom: 5px;
+}
+.pagination a {
   cursor: pointer;
 }
 .technologies {

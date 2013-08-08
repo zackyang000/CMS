@@ -25,6 +25,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/js/main.js",
                 "~/Content/js/filters.js",
                 "~/Content/js/directives/*.js",
+                "~/Content/js/directives/custom/*.js",
                 "~/Content/js/services/*.js",
                 "~/Content/js/controllers/*.js",
                 "~/Content/js/app.js"

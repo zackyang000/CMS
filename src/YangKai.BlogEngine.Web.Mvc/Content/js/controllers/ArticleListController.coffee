@@ -1,9 +1,7 @@
 ﻿ArticleListController=["$scope","$routeParams","$location","Article", ($scope,$routeParams,$location,Article) ->
   $scope.$parent.showBanner=false
 
-  $scope.page =$routeParams.page ? 1
-  $scope.channel = $routeParams.channel ? ''
-  $scope.group =$routeParams.group ? ''
+  $scope.currentPage =$routeParams.page ? 1
   $scope.category = if $routeParams.type=='category' then $routeParams.query else ''
   $scope.tag = if $routeParams.type=='tag' then $routeParams.query else ''
   $scope.date = if $routeParams.type=='date' then $routeParams.query else ''
@@ -15,23 +13,26 @@
     item.isShowDetail = not item.isShowDetail
     codeformat()
 
-  $scope.turnpages=(page)->
+
+
+  $scope.setPage = (pageNo) ->
     $scope.loading=true
-    $scope.page=page
-    result = Article.query
-      page:$scope.page
-      channel:$scope.channel
-      group:$scope.group
+    $scope.currentPage=pageNo
+    filter="Group/Channel/Url eq '#{$routeParams.channel}'" if $routeParams.channel
+    filter="Group/Url eq '#{$routeParams.group}'" if $routeParams.group
+    Article.query
+      $filter:filter
+      $skip:($scope.currentPage-1)*10
       category:$scope.category
       tag:$scope.tag
       date:$scope.date
       search:$scope.key
-    , ->
-      if page==1
-        $scope.list = result
-      else
-        $scope.list = $scope.list.concat(result)
+    , (data)->
+      $scope.list = data.value
+      $scope.pager={count:data['odata.count'],nextLink:data['nextLink']}
+      $scope.numPages=Math.ceil($scope.pager.count / 10)
+      scroll(0,0)
       $scope.loading=false
 
-  $scope.turnpages $scope.page 
+  $scope.setPage $scope.currentPage 
 ]

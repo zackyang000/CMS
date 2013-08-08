@@ -1,6 +1,6 @@
 ﻿angular.module("CommentServices", ["ngResource"])
 .factory "Comment", ['$resource',($resource) ->
-  $resource "/api/comment/:id", {id:'@id'},
+  $resource "/odata/Comment:id/:action", {id:'@id',action:'@action'},
     recent:
       method: "GET"
       params:

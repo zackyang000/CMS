@@ -1,5 +1,11 @@
 ﻿angular.module("app",
-['formatFilters','MessageServices','ArticleServices','CommentServices','ui'])
+['formatFilters',
+'MessageServices',
+'ArticleServices',
+'CommentServices',
+'ui',
+'ui.bootstrap',
+'$strap.directives'])
 
 .config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
   $locationProvider.html5Mode(false).hashPrefix('!')

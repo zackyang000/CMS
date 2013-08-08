@@ -1,16 +1,17 @@
-﻿angular.module("ArticleServices", ["ngResource"]).factory("Article", [
+﻿
+angular.module("ArticleServices", ["ngResource"]).factory("Article", [
   '$resource', function($resource) {
-    return $resource("/api/post/:id", {
-      id: '@id'
+    return $resource("/odata/Post:id/:action", {
+      id: '@id',
+      action: '@action'
     }, {
       query: {
         method: "GET",
         params: {
-          $top: 10,
           $orderby: 'CreateDate desc',
-          $expand: 'Categorys,Tags,Group,Group.Channel'
-        },
-        isArray: true
+          $expand: 'Categorys,Tags,Group,Group/Channel',
+          $inlinecount: 'allpages'
+        }
       },
       nav: {
         method: "GET",
