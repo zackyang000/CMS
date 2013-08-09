@@ -16,7 +16,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/js/bootstrap.js",
                 "~/Content/js/messenger.js",
                 "~/Content/js/messenger-theme-future.js",
-                "~/Content/js/http-link.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js",

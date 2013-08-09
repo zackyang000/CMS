@@ -17,31 +17,24 @@ ArticleListController = [
     $scope.setPage = function(pageNo) {
       var filter;
       $scope.loading = true;
-      $scope.currentPage = pageNo;
+      filter = '1 eq 1';
       if ($routeParams.channel) {
         filter = "Group/Channel/Url eq '" + $routeParams.channel + "'";
       }
-      if ($routeParams.group) {
-        filter = "Group/Url eq '" + $routeParams.group + "'";
-      }
+      if ($routeParams.group) filter = "Group/Url eq '" + $routeParams.group + "'";
       return Article.query({
         $filter: filter,
-        $skip: ($scope.currentPage - 1) * 10,
+        $skip: (pageNo - 1) * 10,
         category: $scope.category,
         tag: $scope.tag,
         date: $scope.date,
         search: $scope.key
       }, function(data) {
-        $scope.list = data.value;
-        $scope.pager = {
-          count: data['odata.count'],
-          nextLink: data['nextLink']
-        };
-        $scope.numPages = Math.ceil($scope.pager.count / 10);
         scroll(0, 0);
+        $scope.list = data;
         return $scope.loading = false;
       });
     };
-    return $scope.setPage($scope.currentPage);
+    return $scope.setPage(1);
   }
 ];

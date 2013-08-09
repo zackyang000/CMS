@@ -28,7 +28,7 @@
 
     <div>
         <ul class="list-unstyled">
-            <li ng-repeat="item in list">
+            <li ng-repeat="item in list.value">
                 <article>
                     <div class="date">
                         <div>{{item.PubDate | date:"dd"}}</div>
@@ -79,13 +79,10 @@
                     <footer></footer>
                 </article>
             </li>
-            <li ng-show="list.length==0">
+            <li ng-show="list.value.length==0">
                 没有找到文章.
             </li>
         </ul>
     </div>
-    <div class="text-center">
-        <pagination on-select-page="setPage(page)" num-pages="numPages" current-page="currentPage" max-size="10" boundary-links="true" rotate="false"></pagination>
-        <div>{{(currentPage-1)*10+1}} - {{currentPage*10}} of {{pager.count}}</div>
-    </div>
+    <div odata-pager="list" class="text-center"></div>
 </div>

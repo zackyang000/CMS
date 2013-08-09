@@ -3,6 +3,7 @@
 'MessageServices',
 'ArticleServices',
 'CommentServices',
+'customDirectives',#自定义指令
 'ui',
 'ui.bootstrap',
 '$strap.directives'])

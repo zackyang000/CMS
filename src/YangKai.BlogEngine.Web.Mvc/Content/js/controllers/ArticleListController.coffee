@@ -17,22 +17,20 @@
 
   $scope.setPage = (pageNo) ->
     $scope.loading=true
-    $scope.currentPage=pageNo
+    filter='1 eq 1'
     filter="Group/Channel/Url eq '#{$routeParams.channel}'" if $routeParams.channel
     filter="Group/Url eq '#{$routeParams.group}'" if $routeParams.group
     Article.query
       $filter:filter
-      $skip:($scope.currentPage-1)*10
+      $skip:(pageNo-1)*10
       category:$scope.category
       tag:$scope.tag
       date:$scope.date
       search:$scope.key
     , (data)->
-      $scope.list = data.value
-      $scope.pager={count:data['odata.count'],nextLink:data['nextLink']}
-      $scope.numPages=Math.ceil($scope.pager.count / 10)
       scroll(0,0)
+      $scope.list = data
       $scope.loading=false
 
-  $scope.setPage $scope.currentPage 
+  $scope.setPage 1
 ]
