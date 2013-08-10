@@ -236,6 +236,7 @@
       <DependentUpon>oDataPager.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\directives\ui-bootstrap-tpls-0.5.0.js" />
+    <Content Include="Content\js\directives\ui-utils.js" />
     <Content Include="Content\js\md5.js" />
     <Content Include="Content\js\services\ArticleServices.js">
       <DependentUpon>ArticleServices.coffee</DependentUpon>
