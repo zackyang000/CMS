@@ -4,7 +4,7 @@ using AtomLab.Core;
 namespace YangKai.BlogEngine.Domain
 {
     /// <summary>
-    /// 管理员信息.
+    /// 用户信息.
     /// </summary>
     public class User : Entity
     {

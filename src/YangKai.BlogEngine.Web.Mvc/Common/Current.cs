@@ -65,7 +65,7 @@ namespace YangKai.BlogEngine.Web.Mvc
         }
 
         /// <summary>
-        /// 是否已登录
+        /// 是否为管理员
         /// </summary>
         public static bool IsAdmin
         {

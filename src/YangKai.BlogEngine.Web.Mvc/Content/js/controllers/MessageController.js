@@ -10,10 +10,10 @@ MessageController = [
     $scope.entity.Email = $scope.Email;
     $scope.entity.Url = $scope.Url;
     $scope.AuthorForDisplay = $scope.Name;
-    $scope.editmode = $scope.Name === '' || ($scope.Name == null);
+    $scope.editmode = $scope.Name === '' || !($scope.Name != null);
     $scope.list = Message.query(function() {
       var item, _i, _len, _ref;
-      _ref = $scope.list;
+      _ref = $scope.list.value;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
         if (item.Email) {
@@ -48,9 +48,9 @@ MessageController = [
     };
     return $scope.save = function() {
       $scope.submitting = true;
-      return Message.add($scope.entity, function(data) {
+      return Message.save($scope.entity, function(data) {
         message.success("Message has been submitted.");
-        $scope.list.unshift(data);
+        $scope.list.value.unshift(data);
         $scope.entity.Content = "";
         $scope.AuthorForDisplay = data.Author;
         $scope.editmode = false;

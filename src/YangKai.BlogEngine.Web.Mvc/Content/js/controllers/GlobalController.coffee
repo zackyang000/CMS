@@ -1,6 +1,4 @@
-﻿GlobalController=["$scope","$http","$location", ($scope,$http,$location) ->
-  $scope.isAdmin=false
-
+﻿GlobalController=["$scope","$http","$location",'$window', ($scope,$http,$location,$window) ->
   $http.get("/api/user").success (data) ->
     $scope.isAdmin = data.isAdmin
     $scope.Name = data.UserName
@@ -8,9 +6,5 @@
     $scope.Url = data.Url
 
   $scope.search=->
-    $location.path("/search/#{$scope.key}")
-  
-  $scope.breadcrumbchange=(data)->
-    $scope.breadcrumb=data
-    debugger
+    $window.location.href="/#!/search/#{$scope.key}"
 ]

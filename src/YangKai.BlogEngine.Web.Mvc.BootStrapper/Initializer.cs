@@ -5,10 +5,12 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
+using System.Web;
 using System.Web.Security;
 using Bootstrap.Extensions.StartupTasks;
-using YangKai.BlogEngine.Infrastructure;
+using YangKai.BlogEngine.Web.Mvc.BootStrapper;
 
+[assembly: PreApplicationStartMethod(typeof(Initializer), "Initialize")]
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
   public static class Initializer

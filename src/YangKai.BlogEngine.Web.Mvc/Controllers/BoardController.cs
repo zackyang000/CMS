@@ -14,61 +14,40 @@ using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class BoardController : ApiController
+    public class BoardController : EntityController<Board>
     {
-        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
-        public IQueryable<Board> Get(ODataQueryOptions options)
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, PageSize = 1000, MaxExpansionDepth = 5)]
+        public override IQueryable<Board> Get()
         {
-            var data = Proxy.Repository<Board>().GetAll();
-            return data;
+            return base.Get();
         }
 
-        public Board Post(Board viewModel)
+        protected override Board CreateEntity(Board entity)
         {
-            var entity = viewModel;
-            entity.Ip = HttpContext.Current.Request.UserHostAddress;
-            entity.Address = IpLocator.GetIpLocation(entity.Ip);
-
-            Proxy.Repository<Board>().Add(entity);
-
             Current.User = new WebUser()
             {
                 UserName = entity.Author,
                 Email = entity.Email,
             };
-
-            return entity;
+            return base.CreateEntity(entity);
         }
 
-        [UserAuthorize]
-        public object Put(Guid id, Board entity, string action)
-        {
-            switch (action)
-            {
-                case "delete":
-                    return Delete(id);
-                case "renew":
-                    return Renew(id);
-            }
-            throw new HttpResponseException(HttpStatusCode.NotFound);
-        }
-
-        // 删除留言
-        public object Delete(Guid id)
-        {
-            var entity = Proxy.Repository<Board>().Get(id);
-            entity.IsDeleted = true;
-            Proxy.Repository<Board>().Update(entity);
-            return true;
-        }
-
-        // 恢复留言
-        public object Renew(Guid id)
-        {
-            var entity = Proxy.Repository<Board>().Get(id);
-            entity.IsDeleted = false;
-            Proxy.Repository<Board>().Update(entity);
-            return true;
-        }
+//        // 删除留言
+//        public object Delete(Guid id)
+//        {
+//            var entity = Proxy.Repository<Board>().Get(id);
+//            entity.IsDeleted = true;
+//            Proxy.Repository<Board>().Update(entity);
+//            return true;
+//        }
+//
+//        // 恢复留言
+//        public object Renew(Guid id)
+//        {
+//            var entity = Proxy.Repository<Board>().Get(id);
+//            entity.IsDeleted = false;
+//            Proxy.Repository<Board>().Update(entity);
+//            return true;
+//        }
     }
 }

@@ -188,19 +188,18 @@
     <Compile Include="Controllers\LabsController.cs" />
     <Compile Include="Extension\EntityController.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Extension\HttpContextLifetimeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
     <Content Include="Content\css\style.min.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
+    <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\img\no-ie.jpg" />
     <Content Include="Content\img\technologies\angularJS.png" />
     <Content Include="Content\js\angular-scenario.js" />
@@ -299,7 +298,6 @@
     <Content Include="Content\admin\js\jquery.main.js" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\html5reset.css" />
-    <Content Include="Content\fonts\glyphiconshalflings-regular.svg" />
     <Content Include="Content\img\ajax-loader.gif" />
     <Content Include="Content\img\ajax-loader2.gif" />
     <Content Include="Content\img\ajax-loader3.gif" />
@@ -1461,7 +1459,6 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeMidnight.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
     <Content Include="favicon.ico" />
-    <Content Include="Global.asax" />
     <Content Include="partials\about.html" />
     <Content Include="partials\Article\detail.html" />
     <Content Include="partials\Article\list.html" />
@@ -1527,10 +1524,6 @@
     <Content Include="Areas\Admin\Views\Shared\_layout.cshtml" />
     <Content Include="Areas\Admin\Views\Summary\index.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="Content\fonts\glyphiconshalflings-regular.eot" />
-    <Content Include="Content\fonts\glyphiconshalflings-regular.otf" />
-    <Content Include="Content\fonts\glyphiconshalflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphiconshalflings-regular.woff" />
     <Content Include="Content\js\controllers\MessageController.coffee" />
     <Content Include="Content\js\app.coffee" />
     <Content Include="Content\js\filters.coffee" />
@@ -1545,6 +1538,10 @@
     <Content Include="Content\css\style.less" />
     <Content Include="Content\js\directives\custom-base.coffee" />
     <Content Include="Content\js\directives\custom\oDataPager.coffee" />
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\FontAwesome.otf" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />

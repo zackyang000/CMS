@@ -60,6 +60,8 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
     background-color: #ffc40d !important;
 }
 
+.ui-match { background: #FF9632; }
+
 a:hover {
     color: #24A0DA;
     text-decoration: none;
@@ -77,10 +79,6 @@ article {
     margin: 10px 0;
     min-height: 200px;
 
-    &:hover h2 > a,
-    &:hover h2 > a:hover {
-        display: block;
-    }
     .categories a:first-child .tags a:first-child {
         padding-left: 2px;
     }
@@ -142,25 +140,14 @@ article {
     }
     h2 {
         margin-top: 0;
+         a {
+                cursor: pointer;
+            }
         strong {
             margin-left: 10px;
             padding-left: 5px;
             font-size: 24px;
             color: #428BCA;
-            a {
-                cursor: pointer;
-            }
-        }
-        > a {
-            font-size: 40px;
-            margin-top: -5px;
-            -webkit-transform: rotate(-90deg);
-            -moz-transform: rotate(-90deg);
-            transform: rotate(-90deg);
-            display: none;
-        }
-        > span {
-            font-size: 16px;
         }
     }
 }
@@ -240,24 +227,7 @@ article {
 
 .home {
     text-align: center;
-    margin-top: 60px;
-    a {
-        text-decoration: none;
-        font-size: 50px;
-        background: #0072BC;
-        color:#fff;
-    }
-    h2 {
-        padding-top: 20px;
-    }
-    span {
-        background: #0072BC;
-        color:#fff;
-        padding: 70px 32px 30px 32px;
-        -webkit-border-radius: 500px;
-        -moz-border-radius: 500px;
-        border-radius: 500px;
-    }
+    margin-top: 20px;
 }
 
 
@@ -364,7 +334,6 @@ article {
 }
 .breadcrumb {
     padding-left: 10px;
-    margin-left: 20px;
     border-left: #F88FB7 20px solid;
     border-radius: 0;
 }

@@ -16,7 +16,6 @@
       $compile(element.contents())(scope)
 
     scope.$watch attrs.odataPager, (value) ->
-      debugger
       data=value
       return if data==null or data==undefined
       update()

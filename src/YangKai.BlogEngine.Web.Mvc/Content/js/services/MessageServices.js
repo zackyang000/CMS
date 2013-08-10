@@ -9,11 +9,7 @@ angular.module("MessageServices", ["ngResource"]).factory("Message", [
         method: "GET",
         params: {
           $orderby: "CreateDate desc"
-        },
-        isArray: true
-      },
-      add: {
-        method: "POST"
+        }
       },
       del: {
         method: "PUT",

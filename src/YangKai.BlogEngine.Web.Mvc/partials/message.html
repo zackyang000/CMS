@@ -1,69 +1,68 @@
-﻿<div>
-    <div class="loadingbox" ng-show="loading">正在加载...</div>
-    <!-- respond START -->
-    <div>
-        <form name="form" novalidate ng-submit="save()">
-            <p ng-show="AuthorForDisplay.length > 0">
-                欢迎回来, <strong>{{AuthorForDisplay}}</strong>
-                <span>
-                    <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">隐藏 »</a>
-                    <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">更改 »</a>
+﻿<ul class="breadcrumb">
+    <li><a href="/#!/">首页</a></li>
+    <li class="active">留言板</li>
+</ul>
+
+<div class="loadingbox" ng-show="loading">正在加载...</div>
+<!-- respond START -->
+<div>
+    <form name="form" novalidate ng-submit="save()">
+        <p ng-show="AuthorForDisplay.length > 0">
+            欢迎回来, <strong>{{AuthorForDisplay}}</strong>
+            <span>
+                <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">隐藏 »</a>
+                <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">更改 »</a>
+            </span>
+        </p>
+        <div ng-show="editmode">
+            <p>
+                <input class="span3" name="Author" type="text" ng-model="entity.Author" required/>
+                <label>昵称*</label>
+                <span class="text-error" ng-show="form.Author.$dirty && form.Author.$invalid">Invalid:
+                    <span ng-show="form.Author.$error.required">Username is required.</span>
                 </span>
             </p>
-            <div ng-show="editmode">
-                <p>
-                    <input class="span3" name="Author" type="text" ng-model="entity.Author" required/>
-                    <label>昵称*</label>
-                    <span class="text-error" ng-show="form.Author.$dirty && form.Author.$invalid">Invalid:
-                        <span ng-show="form.Author.$error.required">Username is required.</span>
-                    </span>
-                </p>
-                <p>
-                    <input class="span3" name="Email" type="text" ng-model="entity.Email" />
-                    <label>邮箱</label>
-                </p>
-                <p>
-                    <input class="span3" name="Url" type="text" ng-model="entity.Url" />
-                    <label>网址</label>               
-                </p>       
-            </div>
-            <p><textarea name="Content" rows="4"  ng-model="entity.Content" required></textarea></p>
-            <div class="text-error" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
-                <span ng-show="form.Content.$error.required">Content is required.</span>
-            </div>
-            <div>
-                <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">提交</button>
-                <span class="loading"ng-show="submitting">正在提交...</span>
-            </div>
-        </form>
-    </div>
-    <!-- respond END -->
-    <!-- list START -->
-    <div class="comment">
-        <ul>
-            <li ng-repeat="item in list">
-                <div class="gravatar">
-                    <img ng-src="{{item.Gravatar}}" />
-                </div>
-                <div class="text">
-                    <span>
-                        <span class="text-error" ng-show="item.IsDeleted">该回复已删除,仅管理员可见.</span>
-                        <span>#{{list.length-$index}}</span>
-                    </span>
-                    <div>	
-                        <span class="commentid">{{item.Author}}</span> : 
-                        <p>{{item.Content}}</p>
-                    </div>
-                    <div class="comment-meta">
-                        <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 
-                        <span ng-show="isAdmin">
-                            <a href="JavaScript:void(0)" class="text-error" ng-click="del(item)" ng-hide="item.IsDeleted">[删除]</a>
-                            <a href="JavaScript:void(0)" class="text-error" ng-click="renew(item)" ng-show="item.IsDeleted">[恢复]</a>
-                        </span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <!-- list END -->
+            <p>
+                <input class="span3" name="Email" type="text" ng-model="entity.Email" />
+                <label>邮箱</label>
+            </p>     
+        </div>
+        <p><textarea name="Content" rows="4"  ng-model="entity.Content" required></textarea></p>
+        <div class="text-error" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
+            <span ng-show="form.Content.$error.required">Content is required.</span>
+        </div>
+        <div>
+            <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">提交</button>
+            <span class="loading"ng-show="submitting">正在提交...</span>
+        </div>
+    </form>
 </div>
+<!-- respond END -->
+<!-- list START -->
+<div class="comment">
+    <ul>
+        <li ng-repeat="item in list.value">
+            <div class="gravatar">
+                <img ng-src="{{item.Gravatar}}" />
+            </div>
+            <div class="text">
+                <span>
+                    <span class="text-error" ng-show="item.IsDeleted">该回复已删除,仅管理员可见.</span>
+                    <span>#{{list.length-$index}}</span>
+                </span>
+                <div>	
+                    <span class="commentid">{{item.Author}}</span> : 
+                    <p>{{item.Content}}</p>
+                </div>
+                <div class="comment-meta">
+                    <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 
+                    <span ng-show="isAdmin">
+                        <a href="JavaScript:void(0)" class="text-error" ng-click="del(item)" ng-hide="item.IsDeleted">[删除]</a>
+                        <a href="JavaScript:void(0)" class="text-error" ng-click="renew(item)" ng-show="item.IsDeleted">[恢复]</a>
+                    </span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- list END -->

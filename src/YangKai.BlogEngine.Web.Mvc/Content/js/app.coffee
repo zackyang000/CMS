@@ -4,20 +4,14 @@
 'ArticleServices',
 'CommentServices',
 'customDirectives',#自定义指令
-'ui',
+'ui.utils',
 'ui.bootstrap',
 '$strap.directives'])
 
 .config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
   $locationProvider.html5Mode(false).hashPrefix('!')
   $routeProvider
-  .when("/list/:channel/:group/:page/:type/:query",
-    templateUrl: "/partials/Article/list.html"
-    controller: ArticleListController)
   .when("/list/:channel/:group/:type/:query",
-    templateUrl: "/partials/Article/list.html"
-    controller: ArticleListController)
-  .when("/list/:channel/:group/:page",
     templateUrl: "/partials/Article/list.html"
     controller: ArticleListController)
   .when("/list/:channel/:group",

@@ -10,7 +10,7 @@
       $scope.AuthorForDisplay=$scope.Name
       $scope.editmode=$scope.Name=='' or not $scope.Name?
       $scope.list = Message.query ->
-        for item in $scope.list
+        for item in $scope.list.value
           if item.Email
             item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
           else
@@ -35,10 +35,10 @@
 
       $scope.save = () ->
         $scope.submitting=true
-        Message.add $scope.entity
+        Message.save $scope.entity
         ,(data)->
           message.success "Message has been submitted."
-          $scope.list.unshift(data)
+          $scope.list.value.unshift(data)
           $scope.entity.Content=""
           $scope.AuthorForDisplay=data.Author
           $scope.editmode=false

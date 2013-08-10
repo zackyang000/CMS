@@ -16,7 +16,7 @@ myDirectives.directive("odataPager", function($compile) {
       return $compile(element.contents())(scope);
     };
     return scope.$watch(attrs.odataPager, function(value) {
-      debugger;      data = value;
+      data = value;
       if (data === null || data === void 0) return;
       return update();
     });

@@ -33,6 +33,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             BundleTable.Bundles.Add(new StyleBundle("~/Content/style/css").Include(
                 "~/Content/css/html5reset.css",
                 "~/Content/css/bootstrap.css",
+                "~/Content/css/font-awesome.css",
                 "~/Content/css/messenger.css",
                 "~/Content/css/messenger-theme-future.css",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",

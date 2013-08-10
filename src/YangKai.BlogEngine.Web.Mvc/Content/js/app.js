@@ -1,14 +1,8 @@
 ﻿
-angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'customDirectives', 'ui', 'ui.bootstrap', '$strap.directives']).config([
+angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'customDirectives', 'ui.utils', 'ui.bootstrap', '$strap.directives']).config([
   "$locationProvider", "$routeProvider", function($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(false).hashPrefix('!');
-    return $routeProvider.when("/list/:channel/:group/:page/:type/:query", {
-      templateUrl: "/partials/Article/list.html",
-      controller: ArticleListController
-    }).when("/list/:channel/:group/:type/:query", {
-      templateUrl: "/partials/Article/list.html",
-      controller: ArticleListController
-    }).when("/list/:channel/:group/:page", {
+    return $routeProvider.when("/list/:channel/:group/:type/:query", {
       templateUrl: "/partials/Article/list.html",
       controller: ArticleListController
     }).when("/list/:channel/:group", {

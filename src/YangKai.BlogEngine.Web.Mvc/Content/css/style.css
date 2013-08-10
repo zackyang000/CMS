@@ -57,6 +57,9 @@ input[type="password"]:focus {
 .bg-color-yellow {
   background-color: #ffc40d !important;
 }
+.ui-match {
+  background: #FF9632;
+}
 a:hover {
   color: #24A0DA;
   text-decoration: none;
@@ -71,10 +74,6 @@ article {
   padding: 0px 20px 20px 20px;
   margin: 10px 0;
   min-height: 200px;
-}
-article:hover h2 > a,
-article:hover h2 > a:hover {
-  display: block;
 }
 article .categories a:first-child .tags a:first-child {
   padding-left: 2px;
@@ -136,25 +135,14 @@ article .date div:last-child {
 article h2 {
   margin-top: 0;
 }
+article h2 a {
+  cursor: pointer;
+}
 article h2 strong {
   margin-left: 10px;
   padding-left: 5px;
   font-size: 24px;
   color: #428BCA;
-}
-article h2 strong a {
-  cursor: pointer;
-}
-article h2 > a {
-  font-size: 40px;
-  margin-top: -5px;
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-  display: none;
-}
-article h2 > span {
-  font-size: 16px;
 }
 .pagination {
   margin-bottom: 5px;
@@ -229,24 +217,7 @@ article h2 > span {
 }
 .home {
   text-align: center;
-  margin-top: 60px;
-}
-.home a {
-  text-decoration: none;
-  font-size: 50px;
-  background: #0072BC;
-  color: #fff;
-}
-.home h2 {
-  padding-top: 20px;
-}
-.home span {
-  background: #0072BC;
-  color: #fff;
-  padding: 70px 32px 30px 32px;
-  -webkit-border-radius: 500px;
-  -moz-border-radius: 500px;
-  border-radius: 500px;
+  margin-top: 20px;
 }
 #cta-content {
   height: 500px;
@@ -347,7 +318,6 @@ article h2 > span {
 }
 .breadcrumb {
   padding-left: 10px;
-  margin-left: 20px;
   border-left: #F88FB7 20px solid;
   border-radius: 0;
 }

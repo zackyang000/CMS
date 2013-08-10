@@ -5,9 +5,6 @@
       method:"GET"
       params:
         $orderby:"CreateDate desc"
-      isArray:true
-    add:
-      method: "POST"
     del:
       method: "PUT"
       params:

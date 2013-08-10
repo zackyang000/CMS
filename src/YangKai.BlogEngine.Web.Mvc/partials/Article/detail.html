@@ -1,5 +1,5 @@
-﻿<div>
-    <div class="loadingbox" ng-show="loading">正在加载...</div>
+﻿    <div class="loadingbox" ng-show="loading">正在加载...</div>
+
     <div ng-hide="item.Title==null">
         <ul class="breadcrumb">
             <li><a href="/#!/">首页</a></li>
@@ -15,29 +15,27 @@
             <header>
                 <h2>
                     <strong>{{item.Title}}</strong>
-                    <span class="glyphicon-warning-sign text-error" ng-hide="item.PostStatus == 'Publish'">{{item.PostStatus}}</span>
-                    <span class="glyphicon-warning-sign text-warning" ng-show="item.PubDate | isFuture">{{item.PubDate | date:"yyyy-MM-dd HH:mm"}}</span>
                 </h2>
                 <div>
-                    <span class="glyphicon-folder-open categories">
+                    <span class="icon-folder-open categories">
                         <span ng-repeat="category in item.Categories">
                             <span ng-hide="$first">,</span>
                             <a ng-href="/#!/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
                         </span>
                     </span>
-                    <span class="glyphicon-tags tags" ng-show="item.Tags.length>0">
+                    <span class="icon-tags tags" ng-show="item.Tags.length>0">
                         <span ng-repeat="tag in item.Tags">
                             <span ng-hide="$first">,</span>
                             <a ng-href="/#!/list/{{item.ChannelUrl}}/{{item.GroupUrl}}/tag/{{tag}}" title="查看 {{tag}} 的全部文章">{{tag}}</a>
                         </span>
                     </span>
-                    <span class="glyphicon-user"></span>
+                    <span class="icon-user"></span>
                     <span>{{item.Author}}</span>
-                    <span class="glyphicon-hand-right"></span>
+                    <span class="icon-eye-open"></span>
                     <span>{{item.ViewCount}} 次点击</span>
-                    <span class="glyphicon-comment"></span>
+                    <span class="icon-comments"></span>
                     <span>{{item.ReplyCount}} 条评论</span>
-                    <span ng-show="isAdmin" class="glyphicon-pencil"></span>
+                    <span ng-show="isAdmin" class="icon-pencil"></span>
                     <span ng-show="isAdmin"><a target="_blank" ng-href="/admin/postmanage/edit/{{item.Url}}">编辑</a></span>
                 </div>
             </header>
@@ -45,7 +43,7 @@
                 <div ng-bind-html-unsafe="item.Content"></div>
                 <div class="clearfix"></div>
                 <div ng-show="item.QrCodeUrl">
-                    <a href="javascrpit:void(0);" ng-click="qrcode=!qrcode" class="glyphicon-qrcode"></a>
+                    <a href="javascrpit:void(0);" ng-click="qrcode=!qrcode" class="icon-qrcode"></a>
                     <div class="qrcode" ng-show="qrcode">
                         <img ng-src="/upload/qrcode/{{item.QrCodeUrl}}" width="200" height="200" alt="二维码" class="img-thumbnail" />
                     </div> 
@@ -148,11 +146,7 @@
                     <p>
                         <input class="span3" name="Email" type="text" ng-model="entity.Email" />
                         <label>邮箱</label>
-                    </p>
-                    <p>
-                        <input class="span3" name="Url" type="text" ng-model="entity.Url" />
-                        <label>网址</label>               
-                    </p>       
+                    </p>      
                 </div>
                 <p><textarea name="Content" rows="4"  ng-model="entity.Content" required></textarea></p>
                 <div class="text-error" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
@@ -166,5 +160,10 @@
         </div>
         <!-- respond END -->
     </div>
-    <div ng-show="item.Title==null">木有这篇文章.</div>
+<div ng-show="item.Title==null">
+    <ul class="breadcrumb">
+        <li><a href="/#!/">首页</a></li>
+        <li class="active">404</li>
+    </ul>
+    <p>木有这篇文章.</p>
 </div>

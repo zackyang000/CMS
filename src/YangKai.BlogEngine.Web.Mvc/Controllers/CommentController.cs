@@ -15,63 +15,24 @@ using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class CommentController : ApiController
+    public class CommentController : EntityController<Board>
     {
-        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All)]
-        public IQueryable<Comment> Get(ODataQueryOptions options)
-        {
-            var data = Proxy.Repository<Comment>().GetAll(p => !p.IsDeleted);
-            return data;
-        }
-
-        [UserAuthorize]
-        public object Post(Guid id,Comment entity, string action)
-        {
-            switch (action)
-            {
-                case "delete":
-                    return Delete(id);
-                case "renew":
-                    return Renew(id);
-            }
-            throw new HttpResponseException(HttpStatusCode.NotFound);
-        }
-
-        public Comment Put(Comment viewModel)
-        {
-            var entity = viewModel;
-            entity.Ip = HttpContext.Current.Request.UserHostAddress;
-            entity.Address = IpLocator.GetIpLocation(entity.Ip);
-            entity.IsAdmin = Current.IsLogin;
-
-            Proxy.Repository<Comment>().Add(entity);
-
-            Current.User = new WebUser()
-                {
-                    UserName = entity.Author,
-                    Email = entity.Email,
-                    Avatar = entity.Url,
-                };
-
-            return entity;
-        }
-
-        // É¾³ýÆÀÂÛ
-        public object Delete(Guid id)
-        {
-            var entity = Proxy.Repository<Comment>().Get(id);
-            entity.IsDeleted = true;
-            Proxy.Repository<Comment>().Update(entity);
-            return true;
-        }
-
-        // »Ö¸´ÆÀÂÛ
-        public object Renew(Guid id)
-        {
-            var entity = Proxy.Repository<Comment>().Get(id);
-            entity.IsDeleted = false;
-            Proxy.Repository<Comment>().Update(entity);
-            return true;
-        }
+//        // É¾³ýÆÀÂÛ
+//        public object Delete(Guid id)
+//        {
+//            var entity = Proxy.Repository<Comment>().Get(id);
+//            entity.IsDeleted = true;
+//            Proxy.Repository<Comment>().Update(entity);
+//            return true;
+//        }
+//
+//        // »Ö¸´ÆÀÂÛ
+//        public object Renew(Guid id)
+//        {
+//            var entity = Proxy.Repository<Comment>().Get(id);
+//            entity.IsDeleted = false;
+//            Proxy.Repository<Comment>().Update(entity);
+//            return true;
+//        }
     }
 }

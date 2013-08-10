@@ -25,7 +25,8 @@
             <li class="active">关键字: ‘{{key}}’</li>
         </ul>
     </div>
-
+    <style>
+</style>
     <div>
         <ul class="list-unstyled">
             <li ng-repeat="item in list.value">
@@ -36,31 +37,30 @@
                     </div>
                     <header>
                         <h2>
-                            <strong><a ng-click="expand(item)">{{item.Title}}</a></strong>
-                            <span class="glyphicon-warning-sign text-error" ng-hide="item.PostStatus == 'Publish'">{{item.PostStatus}}</span>
-                            <span class="glyphicon-warning-sign text-warning" ng-show="item.PubDate | isFuture">{{item.PubDate | date:"yyyy-MM-dd HH:mm"}}</span>
-                            <a class="glyphicon-download fr" ng-href="/#!/post/{{item.Url}}">&nbsp;</a>
+                            <a ng-href="/#!/post/{{item.Url}}">
+                                <strong ng-bind-html-unsafe="item.Title | highlight:key"></strong>
+                            </a>
                         </h2>
                         <div>
-                            <span class="glyphicon-folder-open categories">
+                            <span class="icon-folder-open categories">
                                 <span ng-repeat="category in item.Categorys">
                                     <span ng-hide="$first">,</span>
                                     <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
                                 </span>
                             </span>
-                            <span class="glyphicon-tags tags" ng-show="item.Tags.length>0">
+                            <span class="icon-tags tags" ng-show="item.Tags.length>0">
                                 <span ng-repeat="tag in item.Tags">
                                     <span ng-hide="$first">,</span>
                                     <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag}} 的全部文章">{{tag.Name}}</a>
                                 </span>
                             </span>
-                            <span class="glyphicon-user"></span>
+                            <span class="icon-user"></span>
                             <span>{{item.Author}}</span>
-                            <span class="glyphicon-hand-right"></span>
+                            <span class="icon-eye-open"></span>
                             <span>{{item.ViewCount}} 次点击</span>
-                            <span class="glyphicon-comment"></span>
+                            <span class="icon-comments"></span>
                             <span>{{item.ReplyCount}} 条评论</span>
-                            <span ng-show="isAdmin" class="glyphicon-pencil"></span>
+                            <span ng-show="isAdmin" class="icon-pencil"></span>
                             <span ng-show="isAdmin"><a target="_blank" ng-href="/admin/postmanage/edit/{{item.Url}}">编辑</a></span>
                         </div>
                     </header>
