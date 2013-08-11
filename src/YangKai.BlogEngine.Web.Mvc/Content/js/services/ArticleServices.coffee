@@ -7,6 +7,10 @@
         $orderby:'CreateDate desc' 
         $expand:'Categorys,Tags,Group,Group/Channel'
         $inlinecount:'allpages'
+    get:
+      method: "GET"
+      params:
+        $expand:'Categorys,Tags,Group,Group/Channel,Comments'
     nav:
       method: "GET"
       params:

@@ -11,9 +11,6 @@ angular.module("CommentServices", ["ngResource"]).factory("Comment", [
           action: "recent"
         }
       },
-      add: {
-        method: "PUT"
-      },
       del: {
         method: "POST",
         params: {

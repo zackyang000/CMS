@@ -15,8 +15,18 @@ using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class CommentController : EntityController<Board>
+    public class CommentController : EntityController<Comment>
     {
+        protected override Comment CreateEntity(Comment entity)
+        {
+            Current.User = new WebUser()
+            {
+                UserName = entity.Author,
+                Email = entity.Email,
+            };
+            return base.CreateEntity(entity);
+        }
+
 //        // É¾³ýÆÀÂÛ
 //        public object Delete(Guid id)
 //        {

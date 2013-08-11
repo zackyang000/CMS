@@ -4,12 +4,13 @@
   $scope.loading=true
 
   $scope.url =$routeParams.url
-  $scope.item = Article.get
-    id:$scope.url
-  , ->
+  Article.get
+    $filter:"Url eq '#{$scope.url}'"
+   , (data)->
+    $scope.item=data.value[0]
     $scope.$parent.title=$scope.item.Title
-    $scope.loading=false
     codeformat()#格式化代码
+    $scope.loading=false
     $scope.entity.PostId = $scope.item.PostId
     #上一篇 & 下一篇
     $scope.nav = Article.nav
@@ -18,8 +19,12 @@
     $scope.related = Article.related
       id:$scope.item.PostId
     #评论
-    $scope.list = Comment.query
-      PostId:$scope.item.PostId
+      for item in $scope.item.Comments
+        if item.Email
+          item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
+        else
+          item.Gravatar='/Content/img/avatar.png'
+
 
   $scope.entity= {}
 
@@ -48,10 +53,10 @@
 
   $scope.save = () ->
     $scope.submitting=true
-    Comment.add $scope.entity
+    Comment.save $scope.entity
     ,(data)->
-      message.success "Message has been submitted."
-      $scope.list.push(data)
+      message.success "Comment has been submitted."
+      $scope.item.Comments.push(data)
       $scope.entity.Content=""
       $scope.AuthorForDisplay=data.Author
       $scope.editmode=false

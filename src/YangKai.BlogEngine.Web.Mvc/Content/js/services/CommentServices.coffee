@@ -5,8 +5,6 @@
       method: "GET"
       params:
         action:"recent"
-    add:
-      method: "PUT"
     del:
       method: "POST"
       params:
