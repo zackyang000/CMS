@@ -1,4 +1,46 @@
-﻿@using YangKai.BlogEngine.Web.Mvc
-
-IsAdmin:@Current.User.IsAdmin
-UserName:@Current.User.UserName
+﻿@model IList<YangKai.BlogEngine.Domain.Channel>
+<!doctype html>
+<html ng-cloak ng-app="app-admin" class="no-js" ng-controller="GlobalController">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>iShare Management</title>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/style/css")
+    <script src="/Content/js/modernizr-2.6.2.min.js"></script>
+    <style>
+        .breadcrumb {border-left-color: #3a87ad;}
+        ::-moz-selection {background: #d9edf7;}
+        ::selection {background: #d9edf7;}
+        ::-webkit-selection {background: #d9edf7;}      
+    </style>
+</head>
+<body>
+<header class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/admin/#!/"><img src="/Content/img/logo.gif" />iShare Management</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a ng-href="/admin/#!/">Article</a></li>
+                    <li><a ng-href="/admin/#!/">Comment</a></li>
+                    <li><a ng-href="/admin/#!/">Board</a></li>
+                    <li><a ng-href="/admin/#!/channel">Channel</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+    <div class="container">
+        <div class="content">
+            <div ng-view></div>
+        </div>
+    </div>
+    @Scripts.Render("~/admin/js")
+</body>
+</html>

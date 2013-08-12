@@ -34,4 +34,23 @@ angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'C
 
 angular.module("app-login", ['UserServices']);
 
-angular.module("app-admin", ['UserServices']);
+angular.module("app-admin", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GroupServices', 'CategoryServices', 'customDirectives', 'ui.utils', 'ui.bootstrap']).config([
+  "$locationProvider", "$routeProvider", function($locationProvider, $routeProvider) {
+    $locationProvider.html5Mode(false).hashPrefix('!');
+    return $routeProvider.when("/channel", {
+      templateUrl: "/partials/Admin/channel.html",
+      controller: ChannelController
+    }).when("/channel(':channel')/group", {
+      templateUrl: "/partials/Admin/group.html",
+      controller: GroupController
+    }).when("/channel(':channel')/group", {
+      templateUrl: "/partials/Admin/group.html",
+      controller: GroupController
+    }).when("/channel(':channel')/group(':group')/category", {
+      templateUrl: "/partials/Admin/category.html",
+      controller: CategoryController
+    }).otherwise({
+      redirectTo: "/channel"
+    });
+  }
+]);

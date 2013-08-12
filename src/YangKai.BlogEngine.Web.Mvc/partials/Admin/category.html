@@ -1,0 +1,24 @@
+﻿<ul class="breadcrumb">
+    <li><a href="/admin/#!/">Admin</a></li>
+    <li><a href="/admin/#!/channel">Channel({{group.Channel.Name}})</a></li>
+    <li><a ng-href="/admin/#!/channel('{{group.Channel.Url}}')/group">Group({{group.Name}})</a></li>
+    <li class="active">Categories</li>
+</ul>
+
+<div class="loadingbox" ng-show="loading">正在加载...</div>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Url</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in list.value">
+            <td>{{item.Url}}</td>
+            <td>{{item.Name}}</td>
+            <td><span ng-show="item.Description" tooltip="{{item.Description}}"><i class="icon-comment"></i></span></td>
+        </tr>
+    </tbody>
+</table>
