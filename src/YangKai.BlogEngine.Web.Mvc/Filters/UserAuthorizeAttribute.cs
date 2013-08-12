@@ -11,7 +11,7 @@ using YangKai.BlogEngine.Common;
 namespace YangKai.BlogEngine.Web.Mvc.Filters
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
-    public class UserAuthorizeAttribute : System.Web.Http.AuthorizeAttribute
+    public class UserAuthorizeForApi : System.Web.Http.AuthorizeAttribute
     {
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
@@ -27,7 +27,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Filters
     }
 
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
-    public class UserAuthorizeForMVCAttribute : FilterAttribute, IAuthorizationFilter
+    public class UserAuthorizeForPage : FilterAttribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationContext filterContext)
         {
@@ -48,8 +48,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Filters
                     filterContext.Result = new RedirectToRouteResult(
                         new RouteValueDictionary
                         {
-                            {"Area", "Admin"},
-                            {"Controller", "Account"},
+                            {"Controller", "Admin"},
                             {"Action", "Login"}
                         });
                 }

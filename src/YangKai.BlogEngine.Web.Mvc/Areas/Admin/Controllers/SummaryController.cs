@@ -3,7 +3,7 @@ using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Controllers
 {
-    [UserAuthorizeForMVC]
+    [UserAuthorizeForPage]
     public class SummaryController : Controller
     {
         // 首页

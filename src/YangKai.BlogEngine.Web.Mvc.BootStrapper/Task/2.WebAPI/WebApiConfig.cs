@@ -21,6 +21,8 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
         public static void RegisterRoutes(HttpConfiguration config)
         {
+            config.EnableQuerySupport();
+
             var modelBuilder = new ODataConventionModelBuilder();
             var user = modelBuilder.EntitySet<User>("User");
             user.EntityType.Ignore(p => p.Password);
@@ -38,16 +40,17 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             modelBuilder.EntitySet<Source>("Source");
             modelBuilder.EntitySet<QrCode>("QrCode");
 
-            var login=  modelBuilder.Entity<User>().Action("Login");
+            var login = modelBuilder.Entity<User>().Action("Login");
             login.Parameter<string>("Username");
             login.Parameter<string>("Password");
             login.Parameter<bool>("IsRemember");
 
             var model = modelBuilder.GetEdmModel();
 
-            config.Routes.MapODataRoute(routeName: "OData", routePrefix: "odata", model: model);
-
-            config.EnableQuerySupport();
+            config.Routes.MapODataRoute(
+                routeName: "OData",
+                routePrefix: "odata",
+                model: model);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

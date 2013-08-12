@@ -15,7 +15,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     public class UserController : EntityController<User>
     {
         [HttpPost]
-        public void RateProduct([FromODataUri] int key, ODataActionParameters parameters)
+        public void Login([FromODataUri] int key, ODataActionParameters parameters)
         {
             var username = (string)parameters["Username"];
             var password = (string)parameters["Password"];
@@ -38,7 +38,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
             else
             {
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                throw new Exception("Username or password wrong,login failed.");
             }
         }
     }

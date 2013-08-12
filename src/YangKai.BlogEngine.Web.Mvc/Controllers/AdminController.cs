@@ -18,6 +18,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class AdminController : Controller
     {
+        [UserAuthorizeForPage]
         public ActionResult Index()
         {
             return View();
