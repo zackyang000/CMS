@@ -26,11 +26,11 @@
                         <span class="icon-tags tags" ng-show="item.Tags.length>0">
                             <span ng-repeat="tag in item.Tags">
                                 <span ng-hide="$first">,</span>
-                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag}} 的全部文章">{{tag.Name}}</a>
+                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
                             </span>
                         </span>
                         <span class="icon-user"></span>
-                        <span>{{item.Author}}</span>
+                        <span>{{item.PubAdmin.UserName}}</span>
                         <span class="icon-eye-open"></span>
                         <span>{{item.ViewCount}} 次点击</span>
                         <span class="icon-comments"></span>
@@ -80,10 +80,10 @@
         <div class="post-nav">
             <ul>
                 <li>
-                    <a ng-show="nav[0].Url" ng-href="/#!/post/{{nav[0].Url}}" rel="prev">&larr; · 上一篇</a>
+                    <a ng-show="prevPost.value" ng-href="/#!/post/{{prevPost.value[0].Url}}" rel="prev">&larr; · 上一篇</a>
                 </li>
                 <li>
-                    <a ng-show="nav[1].Url" ng-href="/#!/post/{{nav[1].Url}}" rel="next">下一篇 · &rarr;</a>
+                    <a ng-show="nextPost.value" tooltip="On the Left!" ng-href="/#!/post/{{nextPost.value[0].Url}}" rel="next">下一篇 · &rarr;</a>
                 </li>
             </ul>
         </div>

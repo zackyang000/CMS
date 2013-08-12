@@ -1,5 +1,5 @@
 ﻿GlobalController=["$scope","$http","$location",'$window', ($scope,$http,$location,$window) ->
-  $http.get("/api/user").success (data) ->
+  $http.get("/admin/getuser").success (data) ->
     $scope.isAdmin = data.isAdmin
     $scope.Name = data.UserName
     $scope.Email = data.Email

@@ -4,7 +4,9 @@ myDirectives.directive("odataPager", function($compile) {
     var data, update;
     data = void 0;
     update = function() {
-      if (scope.numData !== data['odata.count']) scope.currentPage = 1;
+      if (scope.numData !== data['odata.count']) {
+        scope.currentPage = 1;
+      }
       scope.numData = data['odata.count'];
       scope.numPages = Math.ceil(scope.numData / 10);
       element.context.innerHTML = '<pagination on-select-page="setPage(page)" num-pages="numPages" current-page="currentPage" max-size="10" boundary-links="true" rotate="false"></pagination>';
@@ -13,11 +15,16 @@ myDirectives.directive("odataPager", function($compile) {
       } else {
         element.context.innerHTML += '<div>{{(currentPage-1)*10+1}} - {{numData}} of {{numData}}</div>';
       }
+      if (scope.numData === '0') {
+        element.context.innerHTML = '';
+      }
       return $compile(element.contents())(scope);
     };
     return scope.$watch(attrs.odataPager, function(value) {
       data = value;
-      if (data === null || data === void 0) return;
+      if (data === null || data === void 0) {
+        return;
+      }
       return update();
     });
   };

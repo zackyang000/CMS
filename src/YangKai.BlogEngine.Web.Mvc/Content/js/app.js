@@ -1,5 +1,5 @@
 ﻿
-angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'customDirectives', 'ui.utils', 'ui.bootstrap', '$strap.directives']).config([
+angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'customDirectives', 'ui.utils', 'ui.bootstrap']).config([
   "$locationProvider", "$routeProvider", function($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(false).hashPrefix('!');
     return $routeProvider.when("/list/:channel/:group/:type/:query", {
@@ -31,3 +31,7 @@ angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'C
     });
   }
 ]);
+
+angular.module("app-login", ['UserServices']);
+
+angular.module("app-admin", ['UserServices']);

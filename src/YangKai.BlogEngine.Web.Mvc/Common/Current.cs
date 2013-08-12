@@ -34,11 +34,18 @@ namespace YangKai.BlogEngine.Web.Mvc
             {
                 if (value != null)
                 {
+                    if (value.IsRemember)
+                    {
+                        EncryptionCookieHelper.Add("__Pwd__", value.Password, 180);
+                    }
+                    else
+                    {
+                        EncryptionCookieHelper.Add("__Pwd__", value.Password, 180);
+                    }
                     EncryptionCookieHelper.Add("__Username__", value.UserName, 180);
                     EncryptionCookieHelper.Add("__LoginName__", value.LoginName, 180);
                     EncryptionCookieHelper.Add("__Email__", value.Email, 180);
                     EncryptionCookieHelper.Add("__Avatar__", value.Avatar, 180);
-                    EncryptionCookieHelper.Add("__Pwd__", value.Password, 180);
                     EncryptionCookieHelper.Add("__IsAdmin__", value.IsAdmin.ToString().ToLower(), 180);
                 }
                 else
@@ -87,5 +94,10 @@ namespace YangKai.BlogEngine.Web.Mvc
         /// 是否为管理员.
         /// </summary>
         public bool IsAdmin { get; set; }
+
+        /// <summary>
+        /// 记住密码.
+        /// </summary>
+        public bool IsRemember { get; set; }
     }
 }

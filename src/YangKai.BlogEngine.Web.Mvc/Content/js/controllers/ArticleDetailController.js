@@ -14,8 +14,13 @@ ArticleDetailController = [
       codeformat();
       $scope.loading = false;
       $scope.entity.PostId = $scope.item.PostId;
-      $scope.nav = Article.nav({
-        id: $scope.item.PostId
+      $scope.prevPost = Article.nav({
+        $filter: "CreateDate lt datetime'" + $scope.item.CreateDate + "' and Group/Url eq '" + $scope.item.Group.Url + "'",
+        $orderby: 'CreateDate desc'
+      });
+      $scope.nextPost = Article.nav({
+        $filter: "CreateDate gt datetime'" + $scope.item.CreateDate + "' and Group/Url eq '" + $scope.item.Group.Url + "'",
+        $orderby: 'CreateDate'
       });
       return $scope.related = Article.related({
         id: $scope.item.PostId

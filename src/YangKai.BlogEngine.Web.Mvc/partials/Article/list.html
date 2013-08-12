@@ -19,10 +19,10 @@
             <li class="active">发布日期 ‘{{date}}’</li>
         </ul>
     </div>
-    <div ng-show="key">
+    <div ng-show="keyword">
         <ul class="breadcrumb">
             <li class="active">搜索结果</li>
-            <li class="active">关键字: ‘{{key}}’</li>
+            <li class="active">关键字: ‘{{keyword}}’</li>
         </ul>
     </div>
     <style>
@@ -38,7 +38,7 @@
                     <header>
                         <h2>
                             <a ng-href="/#!/post/{{item.Url}}">
-                                <strong ng-bind-html-unsafe="item.Title | highlight:key"></strong>
+                                <strong ng-bind-html-unsafe="item.Title | highlight:keyword"></strong>
                             </a>
                         </h2>
                         <div>
@@ -51,11 +51,11 @@
                             <span class="icon-tags tags" ng-show="item.Tags.length>0">
                                 <span ng-repeat="tag in item.Tags">
                                     <span ng-hide="$first">,</span>
-                                    <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag}} 的全部文章">{{tag.Name}}</a>
+                                    <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
                                 </span>
                             </span>
                             <span class="icon-user"></span>
-                            <span>{{item.Author}}</span>
+                            <span>{{item.PubAdmin.UserName}}</span>
                             <span class="icon-eye-open"></span>
                             <span>{{item.ViewCount}} 次点击</span>
                             <span class="icon-comments"></span>

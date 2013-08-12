@@ -180,6 +180,8 @@
     <Compile Include="Areas\Admin\Controllers\SummaryController.cs" />
     <Compile Include="Areas\Admin\Common\SaveRemoteFile.cs" />
     <Compile Include="Common\Current.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -215,14 +217,18 @@
     <Content Include="Content\js\controllers\ArticleListController.min.js">
       <DependentUpon>ArticleListController.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\controllers\LoginController.js">
+      <DependentUpon>LoginController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\LoginController.min.js">
+      <DependentUpon>LoginController.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\controllers\MessageController.js">
       <DependentUpon>MessageController.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\controllers\MessageController.min.js">
       <DependentUpon>MessageController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\angular-strap.js" />
-    <Content Include="Content\js\directives\angular-ui.js" />
     <Content Include="Content\js\directives\custom-base.js">
       <DependentUpon>custom-base.coffee</DependentUpon>
     </Content>
@@ -249,6 +255,12 @@
     </Content>
     <Content Include="Content\js\services\CommentServices.min.js">
       <DependentUpon>CommentServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\UserServices.js">
+      <DependentUpon>UserServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\UserServices.min.js">
+      <DependentUpon>UserServices.coffee</DependentUpon>
     </Content>
     <Content Include="data\words.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1543,6 +1555,8 @@
     <Content Include="Content\font\fontawesome-webfont.ttf" />
     <Content Include="Content\font\fontawesome-webfont.woff" />
     <Content Include="Content\font\FontAwesome.otf" />
+    <Content Include="Content\js\services\UserServices.coffee" />
+    <Content Include="Content\js\controllers\LoginController.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
@@ -1584,8 +1598,9 @@
     <Content Include="Views\Shared\layout-header.cshtml" />
     <Content Include="Views\Web.config" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="_todo\Labs\export.cshtml" />
+    <Content Include="Views\Admin\index.cshtml" />
+    <Content Include="Views\Admin\login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Core\AtomLab.Core.csproj">

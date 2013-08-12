@@ -2,7 +2,7 @@
 
 GlobalController = [
   "$scope", "$http", "$location", '$window', function($scope, $http, $location, $window) {
-    $http.get("/api/user").success(function(data) {
+    $http.get("/admin/getuser").success(function(data) {
       $scope.isAdmin = data.isAdmin;
       $scope.Name = data.UserName;
       $scope.Email = data.Email;

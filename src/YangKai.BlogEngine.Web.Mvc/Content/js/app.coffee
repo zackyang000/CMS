@@ -3,10 +3,10 @@
 'MessageServices',
 'ArticleServices',
 'CommentServices',
+'UserServices',
 'customDirectives',#自定义指令
 'ui.utils',
-'ui.bootstrap',
-'$strap.directives'])
+'ui.bootstrap'])
 
 .config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
   $locationProvider.html5Mode(false).hashPrefix('!')
@@ -37,3 +37,7 @@
     controller: HomeController)
   .otherwise redirectTo: "/"
 ]
+
+angular.module("app-login",['UserServices'])
+
+angular.module("app-admin",['UserServices'])

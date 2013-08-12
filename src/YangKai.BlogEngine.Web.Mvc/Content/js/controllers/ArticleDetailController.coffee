@@ -12,9 +12,15 @@
     codeformat()#格式化代码
     $scope.loading=false
     $scope.entity.PostId = $scope.item.PostId
-    #上一篇 & 下一篇
-    $scope.nav = Article.nav
-      id:$scope.item.PostId
+    #上一篇
+    $scope.prevPost = Article.nav
+      $filter:"CreateDate lt datetime'#{$scope.item.CreateDate}' and Group/Url eq '#{$scope.item.Group.Url}'"
+      $orderby:'CreateDate desc' 
+    #下一篇
+    $scope.nextPost = Article.nav
+      $filter:"CreateDate gt datetime'#{$scope.item.CreateDate}' and Group/Url eq '#{$scope.item.Group.Url}'"
+      $orderby:'CreateDate' 
+    #$scope.nextPost
     #相关文章
     $scope.related = Article.related
       id:$scope.item.PostId
