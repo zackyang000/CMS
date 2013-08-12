@@ -13,11 +13,7 @@ Front-end: AngularJS(CoffeeScript)+Bootstrap
 
 Back-end: ASP.NET WEB API 2(OData 5.0)+Entity Framework 6
 
-## IDE
-
-Visual Studio 2012.2 +
-
-## How running?
+## How?
 
 1.使用Visual Studio打开解决方案。
 
@@ -26,6 +22,10 @@ Visual Studio 2012.2 +
 2.修改Mvc项目下web.config文件中数据库链接字符串。(SQL2005+)
 
 3.编译运行,程序将自动创建数据库并插入测试数据。
+
+## IDE
+
+Visual Studio 2012.2 +
 
 ## License
 
