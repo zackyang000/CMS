@@ -1,28 +1,33 @@
-CMS
+Blog System
 ===========
 
-####<a href="http://www.woshinidezhu.com">DEMO</a>
+####<a href="http://www.woshinidezhu.com">Live Demo</a>
 
-## 简介
-前端 AngularJS(CoffeeScript) + Bootstrap(Less)
+## Why?
+For study.
 
-后端 ASP.NET WEB API(oData) + Entity Framework
+## What?
+It's a Blog System use the following techniques build:
 
-## 开发环境
+Front-end: AngularJS(CoffeeScript)+Bootstrap
 
-Visual Studio 2012.2 +
+Back-end: ASP.NET WEB API 2(OData 5.0)+Entity Framework 6
 
-## 开始
+## How?
 
 1.使用Visual Studio打开解决方案。
 
-2.使用Nuget获取丢失的Packages。
+2.使用Nuget获取丢失的Packages。(Web Api & OData library use <a href='http://aspnetwebstack.codeplex.com/wikipage?title=Use%20Nightly%20Builds'>Nightly Builds</a>)
 
-2.修改Mvc项目下web.config文件中数据库链接字符串。(采用SQL Server 2005或以上)
+2.修改Mvc项目下web.config文件中数据库链接字符串。(SQL2005+)
 
 3.编译运行,程序将自动创建数据库并插入测试数据。
 
+## IDE
+
+Visual Studio 2012.2 +
+
 ## License
 
-MIT.
+base MIT.
 
