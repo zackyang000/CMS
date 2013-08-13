@@ -5,38 +5,47 @@
 
 <div class="loadingbox" ng-show="loading">正在加载...</div>
 <!-- respond START -->
-<div>
-    <form name="form" novalidate ng-submit="save()">
-        <p ng-show="AuthorForDisplay.length > 0">
-            欢迎回来, <strong>{{AuthorForDisplay}}</strong>
-            <span>
-                <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">隐藏 »</a>
-                <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">更改 »</a>
-            </span>
-        </p>
-        <div ng-show="editmode">
-            <p>
-                <input class="span3" name="Author" type="text" ng-model="entity.Author" required/>
-                <label>昵称*</label>
-                <span class="text-error" ng-show="form.Author.$dirty && form.Author.$invalid">Invalid:
-                    <span ng-show="form.Author.$error.required">Username is required.</span>
+    <div>
+        <form name="form" novalidate ng-submit="save()">
+            <p ng-show="AuthorForDisplay.length > 0">
+                欢迎回来, <strong>{{AuthorForDisplay}}</strong>
+                <span>
+                    <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">隐藏 »</a>
+                    <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">更改 »</a>
                 </span>
             </p>
-            <p>
-                <input class="span3" name="Email" type="text" ng-model="entity.Email" />
-                <label>邮箱</label>
-            </p>     
-        </div>
-        <p><textarea name="Content" rows="4"  ng-model="entity.Content" required></textarea></p>
-        <div class="text-error" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
-            <span ng-show="form.Content.$error.required">Content is required.</span>
-        </div>
-        <div>
-            <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">提交</button>
-            <span class="loading"ng-show="submitting">正在提交...</span>
-        </div>
-    </form>
-</div>
+            <div ng-show="editmode">
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <label>昵称*</label>
+                        <input class="form-control" name="Author" type="text" ng-model="entity.Author" placeholder="昵称*" required/>
+                        <div class="label label-danger" ng-show="form.Author.$dirty && form.Author.$invalid">Invalid:
+                            <span ng-show="form.Author.$error.required">Username is required.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <label>邮箱</label>
+                        <input class="form-control" name="Email" type="text" ng-model="entity.Email" placeholder="邮箱" />
+                    </div>
+                </div>
+            </div>
+                <div class="row form-group">
+                    <div class="col-lg-8">
+                        <label>评论</label>
+                        <textarea name="Content" class="form-control" rows="4"  ng-model="entity.Content" required></textarea>
+                        <div class="label label-danger" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
+                            <span ng-show="form.Content.$error.required">Content is required.</span>
+                        </div>
+                    </div>
+                </div>
+            <div>
+                <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">提交</button>
+                <span class="loading"ng-show="submitting">正在提交...</span>
+            </div>
+        </form>
+    </div>
 <!-- respond END -->
 <!-- list START -->
 <div class="comment">

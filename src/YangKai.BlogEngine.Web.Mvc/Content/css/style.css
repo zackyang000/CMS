@@ -19,17 +19,6 @@
 ::-webkit-selection {
   background: #f2dede;
 }
-textarea,
-input[type="text"],
-input[type="password"] {
-  border: 2px solid #DDD;
-  border-radius: 0;
-}
-textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus {
-  border: 2px solid #24A0DA;
-}
 .bg-color-purple {
   background-color: #603cba !important;
 }
@@ -387,8 +376,8 @@ article h2 strong {
 }
 .loadingbox {
   text-align: center;
-  height: 14px;
-  line-height: 14px;
+  height: 24px;
+  line-height: 12px;
   position: absolute;
   left: 50%;
   top: 0;

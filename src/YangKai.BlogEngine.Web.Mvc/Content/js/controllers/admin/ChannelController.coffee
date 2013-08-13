@@ -2,6 +2,7 @@
   $scope.loading=true
   Channel.query (data)->
     $scope.list = data
+    $scope.loading=false
 
   $scope.opts=
     backdrop: true
@@ -9,7 +10,6 @@
     backdropClick: true
     dialogFade:true
     backdropFade:true
-
 
   $scope.open = ->
     $scope.shouldBeOpen = true

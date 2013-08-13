@@ -4,7 +4,8 @@ ChannelController = [
   "$scope", "$dialog", "Channel", function($scope, $dialog, Channel) {
     $scope.loading = true;
     Channel.query(function(data) {
-      return $scope.list = data;
+      $scope.list = data;
+      return $scope.loading = false;
     });
     $scope.opts = {
       backdrop: true,
