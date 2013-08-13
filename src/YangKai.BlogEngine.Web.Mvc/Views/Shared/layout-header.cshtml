@@ -17,7 +17,7 @@
                         <ul class="dropdown-menu">
                             <li><a ng-href="/#!/list/@channel.Url">浏览全部</a></li>
                             <li class="divider"></li>
-                            <li class="nav-header">以分组浏览</li>
+                            <li class="dropdown-header">以分组浏览</li>
                             @foreach (var group in channel.Groups.Where(p => !p.IsDeleted))
                             {
                                 <li><a ng-href="/#!/list/@channel.Url/@group.Url">@group.Name</a></li>
