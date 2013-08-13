@@ -4,6 +4,21 @@
   font-family: "Microsoft YaHei", "微软雅黑", PMingLiU, Verdana, Arial, Helvetica, sans-serif;
   background: url(/Content/img/bg.png);
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "Microsoft YaHei", "微软雅黑", PMingLiU, Verdana, Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
 .fl {
   float: left;
 }
@@ -81,6 +96,18 @@ article .thumb img {
   width: 160px;
   height: 100px;
 }
+article header h2 {
+  margin-top: 0;
+}
+article header h2 a {
+  cursor: pointer;
+}
+article header h2 strong {
+  margin-left: 10px;
+  padding-left: 5px;
+  font-size: 24px;
+  color: #428BCA;
+}
 article header div {
   margin: -10px 5px 20px 80px;
   padding-top: 3px;
@@ -120,18 +147,6 @@ article .date div:last-child {
   font-size: 15px;
   height: 18px;
   line-height: 18px;
-}
-article h2 {
-  margin-top: 0;
-}
-article h2 a {
-  cursor: pointer;
-}
-article h2 strong {
-  margin-left: 10px;
-  padding-left: 5px;
-  font-size: 24px;
-  color: #428BCA;
 }
 .pagination {
   margin-bottom: 5px;

@@ -4,6 +4,10 @@
     font-family: "Microsoft YaHei","微软雅黑",PMingLiU,Verdana,Arial,Helvetica,sans-serif;
     background: url(/Content/img/bg.png);
 }
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+font-family: "Microsoft YaHei","微软雅黑",PMingLiU,Verdana,Arial,Helvetica,sans-serif;
+line-height:1.4
+}
 
 //common
 .fl {
@@ -77,36 +81,60 @@ article {
     section {
         margin-left: 85px;
     }
+
     .categories {
         margin-right: 10px;
     }
+
     .thumb {
         margin: 0px 15px 0px 10px;
         float: left;
+
         img {
             width: 160px;
             height: 100px;
         }
     }
+
     header {
+        h2 {
+            margin-top: 0;
+
+            a {
+                cursor: pointer;
+            }
+
+            strong {
+                margin-left: 10px;
+                padding-left: 5px;
+                font-size: 24px;
+                color: #428BCA;
+            }
+        }
+
         div {
             margin: -10px 5px 20px 80px;
             padding-top: 3px;
             border-top: 1px solid #27AAE2;
         }
+
         span:last-child {
             margin-right: 0;
         }
+
         span {
             margin-right: 2px;
         }
-        span:nth-child(even),article footer span {
-            margin-right: 20px;
-        }
+
+            span:nth-child(even), article footer span {
+                margin-right: 20px;
+            }
     }
+
     li {
         margin-bottom: 25px;
     }
+
     .date {
         width: 70px;
         height: 70px;
@@ -116,29 +144,19 @@ article {
         text-align: center;
         font-weight: bold;
         font-family: Georgia, Arial, Tahoma, Geneva;
+
         div:first-child {
             font-size: 38px;
             margin-top: 2px;
             height: 46px;
             line-height: 46px;
         }
+
         div:last-child {
             margin-top: -3px;
             font-size: 15px;
             height: 18px;
             line-height: 18px;
-        }
-    }
-    h2 {
-        margin-top: 0;
-         a {
-                cursor: pointer;
-            }
-        strong {
-            margin-left: 10px;
-            padding-left: 5px;
-            font-size: 24px;
-            color: #428BCA;
         }
     }
 }
