@@ -16,7 +16,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class BoardController : EntityController<Board>
     {
-        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, PageSize = 1000, MaxExpansionDepth = 5)]
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, PageSize = 10, MaxExpansionDepth = 5)]
         public override IQueryable<Board> Get()
         {
             return base.Get();

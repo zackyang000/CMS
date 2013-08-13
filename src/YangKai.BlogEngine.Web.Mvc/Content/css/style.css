@@ -1,7 +1,7 @@
 ﻿body {
-  padding-top: 56px;
+  padding-top: 50px;
   padding-bottom: 20px;
-  font: 14px "Microsoft YaHei", "微软雅黑", PMingLiU, Verdana, Arial, Helvetica, sans-serif;
+  font-family: "Microsoft YaHei", "微软雅黑", PMingLiU, Verdana, Arial, Helvetica, sans-serif;
   background: url(/Content/img/bg.png);
 }
 .fl {
@@ -422,18 +422,15 @@ article h2 strong {
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
-.navbar .nav > li > a {
-  padding: 18px 15px 18px;
-}
 .navbar .btn-navbar {
   margin-top: 10px;
 }
-.navbar .brand {
+.navbar .navbar-brand {
   padding: 5px 20px 5px;
 }
-.navbar .brand img {
-  width: 45px;
-  height: 45px;
+.navbar .navbar-brand img {
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
 }
 .container .content {

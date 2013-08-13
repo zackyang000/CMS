@@ -1,45 +1,44 @@
 ﻿@model IList<YangKai.BlogEngine.Domain.Channel>
+
 <header class="navbar navbar-inverse navbar-fixed-top">
-    <nav class="navbar-inner">
-        <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="/#!/"><img src="/Content/img/logo.gif" />iShare</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    @foreach (var channel in Model)
-                    {
-                        <li class="dropdown openable">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@channel.Name <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="/#!/list/@channel.Url">浏览全部</a></li>
-                                <li class="divider"></li>
-                                <li class="nav-header">以分组浏览</li>
-                                @foreach (var group in channel.Groups.Where(p=>!p.IsDeleted))
-                                {
-                                    <li><a ng-href="/#!/list/@channel.Url/@group.Url">@group.Name</a></li>
-                                }
-                                <li class="divider"></li>
-                                @*<li><a href="/calendar/@channel.Url">存档</a></li>*@
-                            </ul>
-                        </li>
-                    }
-                    <li><a ng-href="#!/board">留言板</a></li>
-                    <li><a ng-href="#!/about">关于</a></li>
-                </ul>
-                <ul class="nav pull-right">
-                    @if (YangKai.BlogEngine.Web.Mvc.Current.IsAdmin)
-                    {
-                        <li><a target="_blank" href="/admin">管理</a></li>
-                    }
-                    <li>
-                        <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="search" placeholder="Search articles" />
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/admin/#!/"><img src="/Content/img/logo.gif" />iShare</a>
+        <div class="nav-collapse collapse">
+            <ul class="nav navbar-nav">
+                @foreach (var channel in Model)
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@channel.Name <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-href="/#!/list/@channel.Url">浏览全部</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">以分组浏览</li>
+                            @foreach (var group in channel.Groups.Where(p => !p.IsDeleted))
+                            {
+                                <li><a ng-href="/#!/list/@channel.Url/@group.Url">@group.Name</a></li>
+                            }
+                            <li class="divider"></li>
+                            @*<li><a href="/calendar/@channel.Url">存档</a></li>*@
+                        </ul>
                     </li>
-                </ul>
-            </div>
+                }
+                <li><a ng-href="#!/board">留言板</a></li>
+                <li><a ng-href="#!/about">关于</a></li>
+            </ul>
+            <ul class="nav pull-right">
+                @if (YangKai.BlogEngine.Web.Mvc.Current.IsAdmin)
+                {
+                    <li><a target="_blank" href="/admin">管理</a></li>
+                }
+                <li>
+                    <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="search" placeholder="Search articles" />
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
 </header>

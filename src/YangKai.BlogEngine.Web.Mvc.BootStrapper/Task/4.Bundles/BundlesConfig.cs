@@ -63,8 +63,11 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/css/messenger-theme-future.css",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",
                 "~/Content/css/style.css"
-                                        ));
-            
+                ));
+
+            //http://getbootstrap.com/2.3.2/assets/css/bootstrap.css //2.3.2
+            //http://getbootstrap.com/dist/css/bootstrap.css  //3.0.0
+
             //BundleTable.EnableOptimizations = true;
         }
 

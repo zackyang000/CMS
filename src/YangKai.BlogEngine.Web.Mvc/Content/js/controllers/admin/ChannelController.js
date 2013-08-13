@@ -1,11 +1,24 @@
 ﻿var ChannelController;
 
 ChannelController = [
-  "$scope", "Channel", function($scope, Channel) {
+  "$scope", "$dialog", "Channel", function($scope, $dialog, Channel) {
     $scope.loading = true;
-    return Channel.query(function(data) {
-      $scope.list = data;
-      return $scope.loading = false;
+    Channel.query(function(data) {
+      return $scope.list = data;
     });
+    $scope.opts = {
+      backdrop: true,
+      keyboard: true,
+      backdropClick: true,
+      dialogFade: true,
+      backdropFade: true
+    };
+    $scope.open = function() {
+      return $scope.shouldBeOpen = true;
+    };
+    return $scope.close = function() {
+      $scope.closeMsg = 'I was closed at: ' + new Date();
+      return $scope.shouldBeOpen = false;
+    };
   }
 ];

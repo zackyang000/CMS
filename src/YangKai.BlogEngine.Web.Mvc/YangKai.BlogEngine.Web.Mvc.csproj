@@ -261,7 +261,7 @@
     <Content Include="Content\js\directives\custom\oDataPager.min.js">
       <DependentUpon>oDataPager.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\ui-bootstrap-tpls-0.5.0.js" />
+    <Content Include="Content\js\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
     <Content Include="Content\js\directives\ui-utils.js" />
     <Content Include="Content\js\md5.js" />
     <Content Include="Content\js\services\ArticleServices.js">
@@ -326,6 +326,7 @@
     <Content Include="Content\img\technologies\RSS.png" />
     <Content Include="partials\Admin\channel.html" />
     <Content Include="partials\Admin\category.html" />
+    <Content Include="partials\Admin\channel-edit-dialog.html" />
     <Content Include="partials\Admin\group.html" />
     <Content Include="_todo\admin\js\common.js" />
     <Content Include="_todo\admin\js\post-manage.js" />
