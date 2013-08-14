@@ -65,7 +65,6 @@ h6,
   background: #FF9632;
 }
 a:hover {
-  color: #24A0DA;
   text-decoration: none;
 }
 .loading {
@@ -406,15 +405,6 @@ article .date div:last-child {
   border-radius: 5px;
   z-index: 10000;
 }
-.box {
-  background: #F4F5F7;
-  margin-bottom: 10px;
-  padding: 6px 12px;
-  border-bottom-left-radius: 5px 5px;
-  border-bottom-right-radius: 5px 5px;
-  border: 1px solid #CCC;
-  border-top: none;
-}
 .navbar .search {
   margin: 12px 15px 0 15px;
   height: 28px;
@@ -459,4 +449,28 @@ article .date div:last-child {
 .container > footer p {
   margin-bottom: 0;
   color: #777;
+}
+.avatar-mini {
+  width: 24px;
+  height: 24px;
+}
+.personal-box {
+  padding: 15px;
+  width: 320px;
+}
+.personal-box p {
+  color: #666;
+}
+.personal-box .avatar {
+  width: 80px;
+  height: 80px;
+}
+.personal-box .hr {
+  border-bottom: 1px solid #BEBEBE;
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  -o-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  margin-bottom: 15px;
+  padding-bottom: 15px;
 }

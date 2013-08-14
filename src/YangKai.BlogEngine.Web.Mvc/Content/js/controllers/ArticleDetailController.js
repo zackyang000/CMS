@@ -40,11 +40,11 @@ ArticleDetailController = [
       })());
     });
     $scope.entity = {};
-    $scope.entity.Author = $scope.Name;
-    $scope.entity.Email = $scope.Email;
-    $scope.entity.Url = $scope.Url;
-    $scope.AuthorForDisplay = $scope.Name;
-    $scope.editmode = $scope.Name === '' || !($scope.Name != null);
+    $scope.entity.Author = $scope.User.UserName;
+    $scope.entity.Email = $scope.User.Email;
+    $scope.entity.Url = $scope.User.Url;
+    $scope.AuthorForDisplay = $scope.User.UserName;
+    $scope.editmode = $scope.User.UserName === '' || !($scope.User.UserName != null);
     $scope.del = function(item) {
       return Comment.del({
         id: item.CommentId

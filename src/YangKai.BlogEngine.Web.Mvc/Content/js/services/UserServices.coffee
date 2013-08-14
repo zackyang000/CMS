@@ -1,8 +1,12 @@
 ﻿angular.module("UserServices", ["ngResource"])
 .factory "User", ['$resource',($resource) ->
   $resource "/odata/User:id/:action", {id:'@id',action:'@action'},
-    login:
+    signin:
       method: "POST"
       params:
-        action:'Login' 
+        action:'Signin' 
+    signout:
+      method: "POST"
+      params:
+        action:'Signout' 
 ]

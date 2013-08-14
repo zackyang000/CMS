@@ -15,7 +15,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     public class UserController : EntityController<User>
     {
         [HttpPost]
-        public void Login([FromODataUri] int key, ODataActionParameters parameters)
+        public void Signin([FromODataUri] int key, ODataActionParameters parameters)
         {
             var username = (string)parameters["Username"];
             var password = (string)parameters["Password"];
@@ -40,6 +40,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             {
                 throw new Exception("Username or password wrong,login failed.");
             }
+        }
+
+        [HttpPost]
+        public void Signout([FromODataUri] int key, ODataActionParameters parameters)
+        {
+            Current.User = null;
         }
     }
 }

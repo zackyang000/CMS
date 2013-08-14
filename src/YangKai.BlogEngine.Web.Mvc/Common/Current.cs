@@ -86,11 +86,6 @@ namespace YangKai.BlogEngine.Web.Mvc
     public class WebUser : User
     {
         /// <summary>
-        /// 头像URL.
-        /// </summary>
-        public string Avatar { get; set; }
-
-        /// <summary>
         /// 是否为管理员.
         /// </summary>
         public bool IsAdmin { get; set; }

@@ -40,10 +40,12 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             modelBuilder.EntitySet<Source>("Source");
             modelBuilder.EntitySet<QrCode>("QrCode");
 
-            var login = modelBuilder.Entity<User>().Action("Login");
-            login.Parameter<string>("Username");
-            login.Parameter<string>("Password");
-            login.Parameter<bool>("IsRemember");
+            var signin = modelBuilder.Entity<User>().Action("Signin");
+            signin.Parameter<string>("Username");
+            signin.Parameter<string>("Password");
+            signin.Parameter<bool>("IsRemember");
+
+            var signout = modelBuilder.Entity<User>().Action("Signout");
 
             var model = modelBuilder.GetEdmModel();
 

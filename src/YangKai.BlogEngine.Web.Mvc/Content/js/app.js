@@ -32,7 +32,7 @@ angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'C
   }
 ]);
 
-angular.module("app-login", ['UserServices']);
+angular.module("app-login", ['UserServices', 'ui.utils', 'ui.bootstrap']);
 
 angular.module("app-admin", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GroupServices', 'CategoryServices', 'customDirectives', 'ui.utils', 'ui.bootstrap']).config([
   "$locationProvider", "$routeProvider", function($locationProvider, $routeProvider) {

@@ -16,6 +16,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/js/bootstrap.js",
                 "~/Content/js/messenger.js",
                 "~/Content/js/messenger-theme-future.js",
+                "~/Content/js/buttons.js",
                 "~/Content/js/md5.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js",
@@ -39,6 +40,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                "~/Content/js/bootstrap.js",
                "~/Content/js/messenger.js",
                "~/Content/js/messenger-theme-future.js",
+               "~/Content/js/buttons.js",
                "~/Content/js/md5.js",
                "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
                "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js",
@@ -61,12 +63,10 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/css/font-awesome.css",
                 "~/Content/css/messenger.css",
                 "~/Content/css/messenger-theme-future.css",
+                "~/Content/css/buttons.css",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",
                 "~/Content/css/style.css"
                 ));
-
-            //http://getbootstrap.com/2.3.2/assets/css/bootstrap.css //2.3.2
-            //http://getbootstrap.com/dist/css/bootstrap.css  //3.0.0
 
             //BundleTable.EnableOptimizations = true;
         }

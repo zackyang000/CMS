@@ -37,7 +37,9 @@
   .otherwise redirectTo: "/"
 ]
 
-angular.module("app-login",['UserServices'])
+angular.module("app-login",['UserServices',
+'ui.utils',
+'ui.bootstrap'])
 
 angular.module("app-admin",['formatFilters',
 'MessageServices',

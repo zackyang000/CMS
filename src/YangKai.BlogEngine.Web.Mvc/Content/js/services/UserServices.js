@@ -5,10 +5,16 @@ angular.module("UserServices", ["ngResource"]).factory("User", [
       id: '@id',
       action: '@action'
     }, {
-      login: {
+      signin: {
         method: "POST",
         params: {
-          action: 'Login'
+          action: 'Signin'
+        }
+      },
+      signout: {
+        method: "POST",
+        params: {
+          action: 'Signout'
         }
       }
     });

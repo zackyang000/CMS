@@ -1,88 +1,69 @@
 ﻿<div id="posts">
     <div class="loadingbox" ng-show="loading">正在加载...</div>
-    
-    <div ng-show="category">
-        <ul class="breadcrumb">
-            <li class="active">存档</li>
-            <li class="active">‘{{category}}’ 分类的存档</li>
-        </ul>
-    </div>
-    <div ng-show="tag">
-        <ul class="breadcrumb">
-            <li class="active">存档</li>
-            <li class="active">文章标签 ‘{{tag}}’</li>
-        </ul>
-    </div>
-    <div ng-show="date">
-        <ul class="breadcrumb">
-            <li class="active">存档</li>
-            <li class="active">发布日期 ‘{{date}}’</li>
-        </ul>
-    </div>
-    <div ng-show="keyword">
-        <ul class="breadcrumb">
-            <li class="active">搜索结果</li>
-            <li class="active">关键字: ‘{{keyword}}’</li>
-        </ul>
-    </div>
-    <style>
-</style>
-    <div>
-        <ul class="list-unstyled">
-            <li ng-repeat="item in list.value">
-                <article>
-                    <div class="date">
-                        <div>{{item.PubDate | date:"dd"}}</div>
-                        <div>{{item.PubDate | date:"yyyy.MM"}}</div>
+    <ul class="breadcrumb">
+        <li><a href="/#!/">Home</a></li>
+        <li ng-show="channel && group"><a href="/#!/list/{{channel}}">{{channel}}</a></li>
+        <li ng-show="channel && !group">{{channel}}</li>
+        <li ng-show="group && !(!category && !tag && !keyword)"><a href="/#!/list/{{channel}}/{{group}}">{{group}}</a></li>
+        <li class="active" ng-show="group && (!category && !tag && !keyword)">{{group}}</li>
+        <li class="active" ng-show="category">‘{{category}}’ 分类的存档</li>
+        <li class="active" ng-show="tag">文章标签 ‘{{tag}}’</li>
+        <li class="active" ng-show="keyword">关键字 ‘{{keyword}}’</li>
+    </ul>
+    <ul class="list-unstyled">
+        <li ng-repeat="item in list.value">
+            <article>
+                <div class="date">
+                    <div>{{item.PubDate | date:"dd"}}</div>
+                    <div>{{item.PubDate | date:"yyyy.MM"}}</div>
+                </div>
+                <header>
+                    <h2>
+                        <a ng-href="/#!/post/{{item.Url}}">
+                            <strong ng-bind-html-unsafe="item.Title | highlight:keyword"></strong>
+                        </a>
+                    </h2>
+                    <div>
+                        <span class="icon-folder-open categories">
+                            <span ng-repeat="category in item.Categorys">
+                                <span ng-hide="$first">,</span>
+                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
+                            </span>
+                        </span>
+                        <span class="icon-tags tags" ng-show="item.Tags.length>0">
+                            <span ng-repeat="tag in item.Tags">
+                                <span ng-hide="$first">,</span>
+                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
+                            </span>
+                        </span>
+                        <span class="icon-user"></span>
+                        <span>{{item.PubAdmin.UserName}}</span>
+                        <span class="icon-eye-open"></span>
+                        <span>{{item.ViewCount}} 次点击</span>
+                        <span class="icon-comments"></span>
+                        <span>{{item.ReplyCount}} 条评论</span>
+                        <span ng-show="isAdmin" class="icon-pencil"></span>
+                        <span ng-show="isAdmin"><a target="_blank" ng-href="/admin/postmanage/edit/{{item.Url}}">编辑</a></span>
                     </div>
-                    <header>
-                        <h2>
-                            <a ng-href="/#!/post/{{item.Url}}">
-                                <strong ng-bind-html-unsafe="item.Title | highlight:keyword"></strong>
+                </header>
+                <section>
+                    <div ng-hide="item.isShowDetail">
+                        <div class="thumb" ng-show="item.ThumbnailUrl">
+                            <a href="JavaScript:void(0);" ng-click="expand(item)">
+                                <img class="img-thumbnail" ng-src="/upload/thumbnail/{{item.ThumbnailUrl}}" alt="{{item.Title}}" title="{{item.Title}}" />
                             </a>
-                        </h2>
-                        <div>
-                            <span class="icon-folder-open categories">
-                                <span ng-repeat="category in item.Categorys">
-                                    <span ng-hide="$first">,</span>
-                                    <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
-                                </span>
-                            </span>
-                            <span class="icon-tags tags" ng-show="item.Tags.length>0">
-                                <span ng-repeat="tag in item.Tags">
-                                    <span ng-hide="$first">,</span>
-                                    <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
-                                </span>
-                            </span>
-                            <span class="icon-user"></span>
-                            <span>{{item.PubAdmin.UserName}}</span>
-                            <span class="icon-eye-open"></span>
-                            <span>{{item.ViewCount}} 次点击</span>
-                            <span class="icon-comments"></span>
-                            <span>{{item.ReplyCount}} 条评论</span>
-                            <span ng-show="isAdmin" class="icon-pencil"></span>
-                            <span ng-show="isAdmin"><a target="_blank" ng-href="/admin/postmanage/edit/{{item.Url}}">编辑</a></span>
                         </div>
-                    </header>
-                    <section>
-                        <div ng-hide="item.isShowDetail">
-                            <div class="thumb" ng-show="item.ThumbnailUrl">
-                                <a href="JavaScript:void(0);" ng-click="expand(item)">
-                                    <img class="img-thumbnail" ng-src="/upload/thumbnail/{{item.ThumbnailUrl}}" alt="{{item.Title}}" title="{{item.Title}}" />
-                                </a>
-                            </div>
-                            <div ng-bind-html-unsafe="item.Description"></div>
-                        </div>
-                        <div ng-show="item.isShowDetail" ng-bind-html-unsafe="item.Content"></div>
-                        <div class="clearfix"></div>
-                    </section>
-                    <footer></footer>
-                </article>
-            </li>
-            <li ng-show="list.value.length==0">
-                没有找到文章.
-            </li>
-        </ul>
-    </div>
+                        <div ng-bind-html-unsafe="item.Description"></div>
+                    </div>
+                    <div ng-show="item.isShowDetail" ng-bind-html-unsafe="item.Content"></div>
+                    <div class="clearfix"></div>
+                </section>
+                <footer></footer>
+            </article>
+        </li>
+        <li ng-show="list.value.length==0">
+            没有找到文章.
+        </li>
+    </ul>
     <div odata-pager="list" class="text-center"></div>
 </div>

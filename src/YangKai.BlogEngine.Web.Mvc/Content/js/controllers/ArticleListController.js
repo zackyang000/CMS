@@ -9,6 +9,8 @@ ArticleListController = [
     $scope.currentPage = (_ref2 = $routeParams.p) != null ? _ref2 : 1;
     $scope.category = $routeParams.type === 'category' ? $routeParams.query : '';
     $scope.tag = $routeParams.type === 'tag' ? $routeParams.query : '';
+    $scope.channel = $routeParams.channel;
+    $scope.group = $routeParams.group;
     $scope.keyword = $routeParams.key;
     $scope.setPage = function(pageNo) {
       return $location.search({

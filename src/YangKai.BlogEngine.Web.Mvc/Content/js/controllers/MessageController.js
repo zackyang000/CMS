@@ -6,11 +6,11 @@ MessageController = [
     $scope.$parent.showBanner = false;
     $scope.loading = true;
     $scope.entity = {};
-    $scope.entity.Author = $scope.Name;
-    $scope.entity.Email = $scope.Email;
-    $scope.entity.Url = $scope.Url;
-    $scope.AuthorForDisplay = $scope.Name;
-    $scope.editmode = $scope.Name === '' || !($scope.Name != null);
+    $scope.entity.Author = $scope.User.UserName;
+    $scope.entity.Email = $scope.User.Email;
+    $scope.entity.Url = $scope.User.Url;
+    $scope.AuthorForDisplay = $scope.User.UserName;
+    $scope.editmode = $scope.User.UserName === '' || !($scope.User.UserName != null);
     $scope.list = Message.query(function() {
       var item, _i, _len, _ref;
       _ref = $scope.list.value;
