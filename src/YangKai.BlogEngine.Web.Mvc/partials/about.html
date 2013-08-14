@@ -5,28 +5,26 @@
 
 <div>
     <div class="row intro">
-        <div class="span4">
+        <div class="col-lg-4">
             <h5 class="green">What?</h5>
-            <p>Blog site.</p> 
+            <p>It's a blog system.</p> 
         </div>
-        <div class="span4">
+        <div class="col-lg-4">
             <h5 class="yellow">Why?</h5>
             <p>Because we can.</p> 
         </div>
-        <div class="span4">
+        <div class="col-lg-4">
             <h5 class="red">How?</h5>
             <p>Front-end<br />AngularJS(CoffeeScript)+Bootstrap</p>
             <p>Back-end<br />ASP.NET WEB API 2(OData 5.0)+Entity Framework 6</p>
             <p>More at <a href="https://github.com/TossShinHwa/CMS">GitHub</a>.</p>
         </div>
-
     </div>
-    <p>Began in 12/06/2008.</p>
-    
     <div class="row technologies">
-        <a ng-repeat="item in list" class="span1 {{item.css}}" ng-href="{{item.Link}}">
+        <a ng-repeat="item in list" class="col-lg-1 {{item.css}}" ng-href="{{item.Link}}">
             <div><img ng-src="/Content/img/technologies/{{item.Image}}" /></div>
             <p>{{item.Name}}</p>
         </a>
     </div>
+    <p>Began in 12/06/2008.</p>
 </div>

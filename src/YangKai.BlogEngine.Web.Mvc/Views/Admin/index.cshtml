@@ -1,45 +1,50 @@
 ﻿@model IList<YangKai.BlogEngine.Domain.Channel>
 <!doctype html>
 <html ng-cloak ng-app="app-admin" class="no-js" ng-controller="GlobalController">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>iShare Management</title>
-    <meta name="viewport" content="width=device-width" />
-    @Styles.Render("~/Content/style/css")
-    <script src="/Content/js/modernizr-2.6.2.min.js"></script>
-    <style>
-        .breadcrumb {border-left-color: #3a87ad;}
-        ::-moz-selection {background: #d9edf7;}
-        ::selection {background: #d9edf7;}
-        ::-webkit-selection {background: #d9edf7;}    
-    </style>
-</head>
-<body>
-    <header class="navbar navbar-inverse navbar-fixed-top">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>iShare Management</title>
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/style/css")
+        <script src="/Content/js/modernizr-2.6.2.min.js"></script>
+        <style>
+            .breadcrumb {border-left-color: #3a87ad;}
+            ::-moz-selection {background: #d9edf7;}
+            ::selection {background: #d9edf7;}
+            ::-webkit-selection {background: #d9edf7;}    
+        </style>
+    </head>
+    <body>
+        <header class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/admin/#!/"><img src="/Content/img/logo.gif" />Management</a>
+                </div>
+                <nav class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a ng-href="/admin/#!/">Article</a></li>
+                        <li><a ng-href="/admin/#!/">Comment</a></li>
+                        <li><a ng-href="/admin/#!/">Board</a></li>
+                        <li><a ng-href="/admin/#!/channel">Channel</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        123
+                    </ul>
+                </nav>
+            </div>
+        </header>
         <div class="container">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/admin/#!/">Management</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a ng-href="/admin/#!/">Article</a></li>
-                    <li><a ng-href="/admin/#!/">Comment</a></li>
-                    <li><a ng-href="/admin/#!/">Board</a></li>
-                    <li><a ng-href="/admin/#!/channel">Channel</a></li>
-                </ul>
+            <div class="content">
+                <div ng-view></div>
             </div>
         </div>
-    </header>
-    <div class="container">
-        <div class="content">
-            <div ng-view></div>
-        </div>
-    </div>
-    @Scripts.Render("~/admin/js")
-</body>
+        @Scripts.Render("~/admin/js")
+    </body>
 </html>
