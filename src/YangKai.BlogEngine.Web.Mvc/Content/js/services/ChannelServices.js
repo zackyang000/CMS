@@ -12,6 +12,9 @@ angular.module("ChannelServices", ["ngResource"]).factory("Channel", [
           $inlinecount: 'allpages',
           $filter: 'IsDeleted eq false'
         }
+      },
+      edit: {
+        method: "PUT"
       }
     });
   }

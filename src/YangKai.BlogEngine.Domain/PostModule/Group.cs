@@ -40,11 +40,6 @@ namespace YangKai.BlogEngine.Domain
         public virtual List<Post> Posts { get; set; }
 
         /// <summary>
-        /// 分组所属频道信息外键.
-        /// </summary>
-        public Guid ChannelId { get; set; }
-
-        /// <summary>
         /// 分组所属频道信息.
         /// </summary>
         public virtual Channel Channel { get; set; }

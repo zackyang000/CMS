@@ -69,3 +69,19 @@ angular.module("app-admin",['formatFilters',
     controller: CategoryController)
   .otherwise redirectTo: "/channel"
 ]
+
+interceptor = ["$rootScope", "$q", (scope, $q) ->
+  success = (response) ->
+    response
+  error = (response) ->
+    status = response.status
+    if status is 401
+      window.location = "/admin/login"
+    else if status is 400
+      alert response.data['odata.error'].innererror.message
+    else if status is 500
+      alert response.data['odata.error'].innererror.message
+    $q.reject(response)
+  (promise) ->
+    promise.then success, error
+]

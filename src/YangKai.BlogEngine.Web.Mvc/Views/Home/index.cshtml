@@ -10,21 +10,6 @@
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
         @Styles.Render("~/Content/style/css")
         <script src="/Content/js/modernizr-2.6.2.min.js"></script>
-        <!--[if lt IE 7]>
-            <script>
-                window.onload=(function () {
-                    document.open();
-                    document.clear();
-                    document.close();
-                    document.write("<div style='text-align: center;color: #ffb7b7;'>");
-                    document.write("<h1>矮油！浏览器好像不太对劲.</h1>");
-                    document.write("<h4>您看到这个页面，说明您目前正在使用 IE6 浏览器.</h4>");
-                    document.write("<h4>我们建议您升级至 IE7/8/9/10 或切换至<a href='http://browsehappy.com/'>现代浏览器</a>，以浏览本网站.</h4>");
-                    document.write("<h2><img src='/Content/img/no-ie.jpg'' /></h2>");
-                    document.write("</div>");
-                });
-            </script>
-        <![endif]-->
     </head>
     <body>
         @Html.Partial("layout-header", Model)

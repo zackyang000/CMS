@@ -30,16 +30,6 @@ namespace YangKai.BlogEngine.Domain
         public string Description { get; set; }
 
         /// <summary>
-        /// css样式配置相对路径.(如"/Content/style.css")
-        /// </summary>
-        public string StyleConfigurePath { get; set; }
-
-        /// <summary>
-        /// Banner图片地址.
-        /// </summary>
-        public string BannerUrl { get; set; }
-
-        /// <summary>
         /// 频道所有分组信息.
         /// </summary>
         public virtual List<Group> Groups { get; set; }

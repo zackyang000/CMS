@@ -59,7 +59,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                     Url = "channel",
                     Description = "这是一个默认频道.",
                     OrderId = 1,
-                    BannerUrl = "/Content/Image/banner.png",
                 };
         }
 

@@ -302,6 +302,7 @@
     <Content Include="Content\js\services\UserServices.min.js">
       <DependentUpon>UserServices.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\uuid.js" />
     <Content Include="data\words.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -475,3 +475,6 @@ article .date div:last-child {
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
+table .action {
+  width: 20px;
+}

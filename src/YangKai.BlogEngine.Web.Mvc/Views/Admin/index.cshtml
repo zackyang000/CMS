@@ -29,13 +29,19 @@
                 <nav class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
-                        <li><a ng-href="/admin/#!/">Article</a></li>
-                        <li><a ng-href="/admin/#!/">Comment</a></li>
-                        <li><a ng-href="/admin/#!/">Board</a></li>
-                        <li><a ng-href="/admin/#!/channel">Channel</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Article <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a ng-href="/admin/#!/">List</a></li>
+                                <li><a ng-href="/admin/#!/">New Article</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-href="/admin/#!/">Base Data</a></li>
+                            </ul>
+                        </li>
+                        <li><a ng-href="/admin/#!/">Message boards</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        123
+                        <li><a ng-href="/">Back</a></li>
                     </ul>
                 </nav>
             </div>

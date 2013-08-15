@@ -7,4 +7,6 @@
         $orderby:'Url' 
         $inlinecount:'allpages'
         $filter:'IsDeleted eq false'
+    edit:
+      method: "PUT"
 ]

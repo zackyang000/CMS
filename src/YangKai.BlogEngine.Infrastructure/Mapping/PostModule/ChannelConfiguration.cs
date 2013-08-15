@@ -9,7 +9,6 @@ namespace YangKai.BlogEngine.Infrastructure.Mapping.PostModule
         public ChannelConfiguration()
         {
             HasKey(p => p.ChannelId);
-            Property(p => p.ChannelId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿var interceptor;
+
 angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'customDirectives', 'ui.utils', 'ui.bootstrap']).config([
   "$locationProvider", "$routeProvider", function($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(false).hashPrefix('!');
@@ -54,3 +55,27 @@ angular.module("app-admin", ['formatFilters', 'MessageServices', 'ArticleService
     });
   }
 ]);
+
+interceptor = [
+  "$rootScope", "$q", function(scope, $q) {
+    var error, success;
+    success = function(response) {
+      return response;
+    };
+    error = function(response) {
+      var status;
+      status = response.status;
+      if (status === 401) {
+        window.location = "/admin/login";
+      } else if (status === 400) {
+        alert(response.data['odata.error'].innererror.message);
+      } else if (status === 500) {
+        alert(response.data['odata.error'].innererror.message);
+      }
+      return $q.reject(response);
+    };
+    return function(promise) {
+      return promise.then(success, error);
+    };
+  }
+];

@@ -9,7 +9,6 @@ namespace YangKai.BlogEngine.Infrastructure.Mapping.PostModule
         public CategoryConfiguration()
         {
             HasKey(p => p.CategoryId);
-            Property(p => p.CategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

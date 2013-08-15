@@ -12,6 +12,9 @@ angular.module("CategoryServices", ["ngResource"]).factory("Category", [
           $inlinecount: 'allpages',
           $filter: 'IsDeleted eq false'
         }
+      },
+      edit: {
+        method: "PUT"
       }
     });
   }

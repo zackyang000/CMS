@@ -12,6 +12,9 @@ angular.module("GroupServices", ["ngResource"]).factory("Group", [
           $inlinecount: 'allpages',
           $filter: 'IsDeleted eq false'
         }
+      },
+      edit: {
+        method: "PUT"
       }
     });
   }

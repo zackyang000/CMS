@@ -106,13 +106,36 @@ function mapDictionaryToArray(dictionary) {
 //alert方法
 var message = {
     success: function (msg) {
-        Messenger().post({ message: msg, type: 'success' });
+        Messenger().post({ message: msg, type: 'success', showCloseButton: true });
     },
     error: function (msg) {
         if (msg == '401') {
             msg = 'Unauthorized.';
         }
-        Messenger().post({ message: 'Error, reason: ' + msg, type: 'error' });
+        Messenger().post({ message: 'Error, reason: ' + msg, type: 'error', showCloseButton: true, delay: 60 });
+    },
+    confirm: function (callback) {
+        var msg = Messenger().post({
+            message: "Do you want to continue?",
+            id: "Only-one-message",
+            showCloseButton: true,
+            actions: {
+                OK: {
+                    label: 'OK',
+                    phrase: 'Confirm',
+                    delay: 60,
+                    action: function () {
+                        callback();
+                        msg.cancel();
+                    }
+                },
+                cancel: {
+                    action: function () {
+                        return msg.cancel();
+                    }
+                }
+            }
+        });
     }
 };
 
