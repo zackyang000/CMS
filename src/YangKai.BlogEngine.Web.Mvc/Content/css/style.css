@@ -406,6 +406,7 @@ article .date div:last-child {
   z-index: 10000;
 }
 .navbar .search {
+  width: 150px;
   margin: 12px 15px 0 15px;
   height: 28px;
   margin-bottom: 0;
