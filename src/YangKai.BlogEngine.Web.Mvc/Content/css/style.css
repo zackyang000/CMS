@@ -1,5 +1,5 @@
 ﻿body {
-  padding-top: 50px;
+  padding-top: 60px;
   padding-bottom: 20px;
   font-family: "Microsoft YaHei", "微软雅黑", PMingLiU, Verdana, Arial, Helvetica, sans-serif;
   background: url(/Content/img/bg.png);
@@ -429,10 +429,8 @@ article .date div:last-child {
   margin-right: 10px;
 }
 .container .content {
-  margin-top: 30px;
   margin: 0px auto;
   color: #666;
-  padding: 20px;
 }
 .container > footer {
   text-align: center;
@@ -477,4 +475,22 @@ article .date div:last-child {
 }
 table .action {
   width: 20px;
+}
+/* Responsive variations
+-------------------------------------------------- */
+/* Hide code snippets on mobile devices */
+@media screen and (max-width: 480px) {
+  
+}
+/* Tablets and up */
+@media screen and (min-width: 768px) {
+  
+}
+/* Tablets/desktops and up */
+@media screen and (min-width: 992px) {
+  
+}
+/* Large desktops and up */
+@media screen and (min-width: 1200px) {
+  
 }
