@@ -329,7 +329,6 @@
     <Content Include="Content\img\technologies\RSS.png" />
     <Content Include="partials\Admin\channel.html" />
     <Content Include="partials\Admin\category.html" />
-    <Content Include="partials\Admin\channel-edit-dialog.html" />
     <Content Include="partials\Admin\login-dialog.html" />
     <Content Include="partials\Admin\group.html" />
     <Content Include="_todo\admin\js\common.js" />
