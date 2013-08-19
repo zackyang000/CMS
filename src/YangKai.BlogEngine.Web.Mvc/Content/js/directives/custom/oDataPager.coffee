@@ -4,6 +4,7 @@
     data=undefined
 
     update = ->
+      scope.currentPage=1 if scope.currentPage is undefined
       scope.currentPage=1 if scope.numData isnt data['odata.count'] and scope.numData #如果数量发生变化则重置为第一页.
       scope.numData=data['odata.count']
       scope.numPages=Math.ceil(scope.numData / 10)

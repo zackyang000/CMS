@@ -1,0 +1,90 @@
+﻿<ul class="breadcrumb">
+    <li><a href="/admin/#!/">Home</a></li>
+    <li><a href="/admin/#!/article">Articles</a></li>
+    <li class="active" ng-hide="id">New</li>
+    <li class="active" ng-show="id">Edit</li>
+</ul>
+<div class="row">
+    <div class="col-lg-8">
+            <div class="form-group">
+                <label class="control-label">Url</label>
+                <div>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Title</label>
+                <div>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+        <div class="form-group">
+            <label class="control-label">Content</label>
+            <div>
+                <textarea ck-editor ng-model="AAB"></textarea>
+            </div>
+        </div>
+         <div class="form-group">
+        <label class="control-label">Description</label>
+        <div>
+            <textarea ck-editor ng-model="AAA"></textarea>
+        </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="sider">
+            <div>Action</div>
+            <div><button class="button button-flat-primary">Submit</button></div>
+        </div>
+        <div class="sider">
+            <div>Thumbnail</div>
+            <div>
+                <input type="file"/>
+            </div>
+        </div>
+        <div class="sider">
+            <div>Channel</div>
+            <div>
+                <label class="radio-inline" ng-repeat="item in channels.value">
+                    <input type="radio" value="{{item.ChannelId}}" ng-model="$parent.channelId"> {{item.Name}}
+                </label>
+            </div>
+        </div>
+        <div class="sider">
+            <div>Group</div>
+            <div>
+                <label class="radio-inline" ng-repeat="item in getGroups()">
+                    <input type="radio" value="{{item.GroupId}}" ng-model="$parent.groupId"> {{item.Name}}
+                </label>
+                &nbsp;
+            </div>
+        </div>
+        <div class="sider">
+            <div>Categories</div>
+            <div ng-repeat="item in getCategories()">
+                <label>
+                    <input type="checkbox" value="{{item.CategoryId}}" ng-click="item.checked = item.checked ? !item.checked : false" ng-model="item.checked"> {{item.Name}}
+                </label>
+            </div>
+        </div>
+        <div class="sider">
+            <div>Tags</div>
+            <input type="text" class="form-control"/>
+            <p>多个标签请用英文逗号（,）分开</p>
+        </div>
+        <div class="sider">
+            <div>Source</div>
+            <div>
+                <div class="form-group">
+                    <label class="control-label">Url</label>
+                        <input type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Title</label>
+                        <input type="text" class="form-control"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

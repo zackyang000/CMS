@@ -55,19 +55,37 @@ angular.module("app-admin",['formatFilters',
 .config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
   $locationProvider.html5Mode(false).hashPrefix('!')
   $routeProvider
+  #Channel
   .when("/channel",
-    templateUrl: "/partials/Admin/channel.html"
+    templateUrl: "/partials/Admin/channel/list.html"
     controller: ChannelController)
+  #Group
   .when("/channel(':channel')/group",
-    templateUrl: "/partials/Admin/group.html"
+    templateUrl: "/partials/Admin/group/list.html"
     controller: GroupController)
-  .when("/channel(':channel')/group",
-    templateUrl: "/partials/Admin/group.html"
-    controller: GroupController)
+  #Category
   .when("/channel(':channel')/group(':group')/category",
-    templateUrl: "/partials/Admin/category.html"
+    templateUrl: "/partials/Admin/category/list.html"
     controller: CategoryController)
-  .otherwise redirectTo: "/channel"
+  #Article
+  .when("/article",
+    templateUrl: "/partials/Admin/article/list.html"
+    controller: ArticleController)
+  .when("/article(':id')",
+    templateUrl: "/partials/Admin/article/detail.html"
+    controller: ArticleDetailController)
+  .when("/article/new",
+    templateUrl: "/partials/Admin/article/detail.html"
+    controller: ArticleDetailController)
+  #Message boards
+  .when("/board",
+    templateUrl: "/partials/Admin/board/list.html"
+    controller: BoardController)
+  #home
+  .when("/",
+    templateUrl: "/partials/Admin/index.html"
+    controller: HomeController)
+  .otherwise redirectTo: "/"
 ]
 
 interceptor = ["$rootScope", "$q", (scope, $q) ->

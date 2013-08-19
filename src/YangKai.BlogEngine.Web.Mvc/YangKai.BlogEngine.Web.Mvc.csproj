@@ -209,6 +209,24 @@
     <Content Include="Content\img\no-ie.jpg" />
     <Content Include="Content\img\technologies\angularJS.png" />
     <Content Include="Content\js\angular-scenario.js" />
+    <Content Include="Content\js\controllers\admin\ArticleController.js">
+      <DependentUpon>ArticleController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\ArticleController.min.js">
+      <DependentUpon>ArticleController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\ArticleDetailController.js">
+      <DependentUpon>ArticleDetailController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\ArticleDetailController.min.js">
+      <DependentUpon>ArticleDetailController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\BoardController.js">
+      <DependentUpon>BoardController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\BoardController.min.js">
+      <DependentUpon>BoardController.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\controllers\admin\CategoryController.js">
       <DependentUpon>CategoryController.coffee</DependentUpon>
     </Content>
@@ -226,6 +244,12 @@
     </Content>
     <Content Include="Content\js\controllers\admin\GroupController.min.js">
       <DependentUpon>GroupController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\HomeController.js">
+      <DependentUpon>HomeController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\HomeController.min.js">
+      <DependentUpon>HomeController.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\controllers\ArticleDetailController.js">
       <DependentUpon>ArticleDetailController.coffee</DependentUpon>
@@ -256,6 +280,12 @@
     </Content>
     <Content Include="Content\js\directives\custom-base.min.js">
       <DependentUpon>custom-base.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\directives\custom\ckeditor.js">
+      <DependentUpon>ckeditor.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\directives\custom\ckeditor.min.js">
+      <DependentUpon>ckeditor.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\directives\custom\oDataPager.js">
       <DependentUpon>oDataPager.coffee</DependentUpon>
@@ -327,10 +357,14 @@
     <Content Include="Content\img\technologies\none.png" />
     <Content Include="Content\img\technologies\NPOI.jpg" />
     <Content Include="Content\img\technologies\RSS.png" />
-    <Content Include="partials\Admin\channel.html" />
-    <Content Include="partials\Admin\category.html" />
+    <Content Include="partials\Admin\article\detail.html" />
+    <Content Include="partials\Admin\article\list.html" />
+    <Content Include="partials\Admin\channel\list.html" />
+    <Content Include="partials\Admin\category\list.html" />
+    <Content Include="partials\Admin\board\list.html" />
+    <Content Include="partials\Admin\index.html" />
     <Content Include="partials\Admin\login-dialog.html" />
-    <Content Include="partials\Admin\group.html" />
+    <Content Include="partials\Admin\group\list.html" />
     <Content Include="_todo\admin\js\common.js" />
     <Content Include="_todo\admin\js\post-manage.js" />
     <Content Include="_todo\admin\js\post-new.js" />
@@ -1180,6 +1214,11 @@
     <Content Include="Content\js\services\GroupServices.coffee" />
     <Content Include="Content\js\controllers\admin\CategoryController.coffee" />
     <Content Include="Content\js\services\CategoryServices.coffee" />
+    <Content Include="Content\js\controllers\admin\ArticleController.coffee" />
+    <Content Include="Content\js\controllers\admin\ArticleDetailController.coffee" />
+    <Content Include="Content\js\controllers\admin\HomeController.coffee" />
+    <Content Include="Content\js\controllers\admin\BoardController.coffee" />
+    <Content Include="Content\js\directives\custom\ckeditor.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />

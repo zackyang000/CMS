@@ -1,11 +1,12 @@
 ﻿<ul class="breadcrumb">
-    <li><a href="/admin/#!/">Admin</a></li>
-    <li class="active">Channels</li>
+    <li><a href="/admin/#!/">Home</a></li>
+    <li><a href="/admin/#!/channel">Channel({{channel.Name}})</a></li>
+    <li class="active">Groups</li>
 </ul>
 
 <div class="loadingbox" ng-show="loading">正在加载...</div>
 <button class="button button-flat-primary pull-right" type="button" ng-click="add()" >
-    <i class="icon-plus"></i> New Channel
+    <i class="icon-plus"></i> New Group
 </button>
 <table class="table table-hover table-striped">
     <thead>
@@ -22,7 +23,7 @@
             <td>{{item.Name}}</td>
             <td>{{item.Url}}</td>
             <td><span ng-show="item.Description" tooltip="{{item.Description}}"><i class="icon-comment"></i></span></td>
-            <td><a ng-href="/admin/#!/channel('{{item.Url}}')/group">Groups</a></td>
+            <td><a ng-href="/admin/#!/channel('{{channel.Url}}')/group('{{item.Url}}')/category">Categories</a></td>
             <td><a href="JavaScript:void(0)" class="icon-pencil" ng-click="edit(item)"></a></td>
             <td><a href="JavaScript:void(0)" class="icon-remove" ng-click="remove(item)"></a></td>
         </tr>
@@ -33,7 +34,7 @@
     <div class="modal-dialog">
         <form name="form" class="modal-content" ng-submit="save()">
             <div class="modal-header">
-                Edit Channel
+                Edit Group
             </div>
             <div class="modal-body">
                 <div class="form-horizontal">
