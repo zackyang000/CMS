@@ -31,10 +31,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             modelBuilder.EntitySet<Channel>("Channel");
             modelBuilder.EntitySet<Group>("Group");
             modelBuilder.EntitySet<Category>("Category");
-            modelBuilder.EntitySet<Post>("Post");
             modelBuilder.EntitySet<Comment>("Comment");
             modelBuilder.EntitySet<Board>("Board");
-            modelBuilder.EntitySet<Post>("Post");
+            modelBuilder.EntitySet<Post>("Article");
             modelBuilder.EntitySet<Tag>("Tag");
             modelBuilder.EntitySet<Thumbnail>("Thumbnail");
             modelBuilder.EntitySet<Source>("Source");

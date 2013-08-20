@@ -18,8 +18,12 @@ using YangKai.BlogEngine.Web.Mvc.BootStrapper;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class PostController : EntityController<Post>
+    public class ArticleController : EntityController<Post>
     {
-      
+        protected override Post CreateEntity(Post entity)
+        {
+            //return Proxy.Repository<Post>().Add(entity);
+            return null;
+        }
     }
 }

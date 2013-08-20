@@ -1,6 +1,6 @@
 ﻿angular.module("ArticleServices", ["ngResource"])
 .factory "Article", ['$resource',($resource) ->
-  $resource "/odata/Post:id/:action", {id:'@id',action:'@action'},
+  $resource "/odata/Article:id/:action", {id:'@id',action:'@action'},
     query:
       method: "GET"
       params:

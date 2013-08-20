@@ -1,7 +1,7 @@
 ﻿
 angular.module("ArticleServices", ["ngResource"]).factory("Article", [
   '$resource', function($resource) {
-    return $resource("/odata/Post:id/:action", {
+    return $resource("/odata/Article:id/:action", {
       id: '@id',
       action: '@action'
     }, {
