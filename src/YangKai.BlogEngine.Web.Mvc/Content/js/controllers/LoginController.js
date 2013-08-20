@@ -27,7 +27,7 @@ LoginController = [
         return $scope.submitting = false;
       });
     };
-    return $scope.signout = function() {
+    $scope.signout = function() {
       $scope.submitting = true;
       return User.signout({
         id: '(1)'
@@ -35,6 +35,12 @@ LoginController = [
         $scope.submitting = false;
         return $window.location.href = '/';
       });
+    };
+    $scope.manage = function() {
+      return $window.location.href = '/admin/';
+    };
+    return $scope.view = function() {
+      return $window.location.href = '/';
     };
   }
 ];

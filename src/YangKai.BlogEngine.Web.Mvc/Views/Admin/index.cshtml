@@ -40,8 +40,32 @@
                         </li>
                         <li><a ng-href="/admin/#!/board">Message boards</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a ng-href="/">Back</a></li>
+                    <ul class="nav navbar-nav navbar-right" ng-controller="LoginController">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <img ng-src="{{User.Gravatar}}" class="avatar-mini" />
+                                &nbsp;<span>{{User.UserName}}</span>
+                            </a>
+                            <ul class="dropdown-menu personal-box">
+                                <li>
+                                    <div class="row hr">
+                                        <div class="col-lg-4">
+                                            <img ng-src="{{User.Gravatar}}" class="avatar" />
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div><strong>{{User.UserName}}</strong></div>
+                                            <p>{{User.Email}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="pull-left">
+                                        <button class="button button-flat-action" ng-click="view()">Back</button>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button class="button button-flat-caution" ng-click="signout()">Sign out</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>

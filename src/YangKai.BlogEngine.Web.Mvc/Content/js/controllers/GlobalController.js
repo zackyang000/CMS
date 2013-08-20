@@ -10,11 +10,6 @@ GlobalController = [
       }
       return $scope.User = data;
     });
-    $scope.manage = function() {
-      return $window.location.href = '/admin/';
-    };
-    $scope.signin = function() {};
-    $scope.signout = function() {};
     return $scope.search = function() {
       return $window.location.href = "/#!/search/" + $scope.key;
     };

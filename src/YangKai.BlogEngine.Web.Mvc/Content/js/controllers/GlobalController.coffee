@@ -6,14 +6,6 @@
       data.Gravatar='/Content/img/avatar.png'
     $scope.User=data
 
-  $scope.manage = ->
-    $window.location.href='/admin/'
-
-  $scope.signin = ->
-
-  $scope.signout = ->
-
-
   $scope.search = ->
     $window.location.href="/#!/search/#{$scope.key}"
 ]

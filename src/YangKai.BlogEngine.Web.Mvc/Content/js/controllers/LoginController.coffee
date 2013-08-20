@@ -29,6 +29,12 @@
       ,(data)->
         $scope.submitting=false
         $window.location.href='/'
+
+  $scope.manage = ->
+    $window.location.href='/admin/'
+
+  $scope.view = ->
+    $window.location.href='/'
 ]
 
 LoginDialogController=["$scope","$window", "dialog","User",($scope,$window, dialog,User) ->

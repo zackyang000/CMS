@@ -56,6 +56,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/js/directives/custom/*.js",
                 "~/Content/js/services/*.js",
                 "~/Content/js/controllers/GlobalController.js",
+                "~/Content/js/controllers/LoginController.js",
                 "~/Content/js/controllers/admin/*.js",
                 "~/Content/js/app.js"
                 ));
