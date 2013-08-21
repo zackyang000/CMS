@@ -1,7 +1,8 @@
 ﻿var interceptor;
 
 angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'customDirectives', 'ui.utils', 'ui.bootstrap']).config([
-  "$locationProvider", "$routeProvider", function($locationProvider, $routeProvider) {
+  "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
+    $httpProvider.responseInterceptors.push(interceptor);
     $locationProvider.html5Mode(false).hashPrefix('!');
     return $routeProvider.when("/list/:channel/:group/:type/:query", {
       templateUrl: "/partials/Article/list.html",
@@ -36,7 +37,8 @@ angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'C
 angular.module("app-login", ['UserServices', 'ui.utils', 'ui.bootstrap']);
 
 angular.module("app-admin", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GroupServices', 'CategoryServices', 'customDirectives', 'ui.utils', 'ui.bootstrap']).config([
-  "$locationProvider", "$routeProvider", function($locationProvider, $routeProvider) {
+  "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
+    $httpProvider.responseInterceptors.push(interceptor);
     $locationProvider.html5Mode(false).hashPrefix('!');
     return $routeProvider.when("/channel", {
       templateUrl: "/partials/Admin/channel/list.html",
@@ -75,14 +77,15 @@ interceptor = [
       return response;
     };
     error = function(response) {
+      debugger;
       var status;
       status = response.status;
       if (status === 401) {
-        window.location = "/admin/login";
+        window.location = "/login";
       } else if (status === 400) {
-        alert(response.data['odata.error'].innererror.message);
+        message.error(response.data['odata.error'].innererror.message);
       } else if (status === 500) {
-        alert(response.data['odata.error'].innererror.message);
+        message.error(response.data['odata.error'].innererror.message);
       }
       return $q.reject(response);
     };

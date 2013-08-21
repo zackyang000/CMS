@@ -7,7 +7,8 @@
 'customDirectives',
 'ui.utils',
 'ui.bootstrap'])
-.config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
+.config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
+  $httpProvider.responseInterceptors.push(interceptor)  
   $locationProvider.html5Mode(false).hashPrefix('!')
   $routeProvider
   .when("/list/:channel/:group/:type/:query",
@@ -52,7 +53,8 @@ angular.module("app-admin",['formatFilters',
 'customDirectives',
 'ui.utils',
 'ui.bootstrap'])
-.config ["$locationProvider","$routeProvider", ($locationProvider,$routeProvider) ->
+.config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
+  $httpProvider.responseInterceptors.push(interceptor)  
   $locationProvider.html5Mode(false).hashPrefix('!')
   $routeProvider
   #Channel
@@ -92,13 +94,15 @@ interceptor = ["$rootScope", "$q", (scope, $q) ->
   success = (response) ->
     response
   error = (response) ->
+    debugger
     status = response.status
-    if status is 401
-      window.location = "/admin/login"
-    else if status is 400
-      alert response.data['odata.error'].innererror.message
+    if status is 401 # unauthorized - redirect to login again
+      window.location = "/login"
+    else if status is 400 # validation error display errors
+      message.error response.data['odata.error'].innererror.message
     else if status is 500
-      alert response.data['odata.error'].innererror.message
+      message.error response.data['odata.error'].innererror.message
+
     $q.reject(response)
   (promise) ->
     promise.then success, error

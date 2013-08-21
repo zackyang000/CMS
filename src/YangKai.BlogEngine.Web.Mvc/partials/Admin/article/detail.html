@@ -69,19 +69,19 @@
         </div>
         <div class="sider">
             <div>Tags</div>
-            <input type="text" class="form-control" ng-mode="tags"/>
+            <input type="text" class="form-control" ng-model="tags"/>
             <p>多个标签请用英文逗号（,）分开</p>
         </div>
         <div class="sider">
             <div>Source</div>
             <div>
                 <div class="form-group">
-                    <label class="control-label" ng-model="source.Url">Url</label>
-                        <input type="text" class="form-control"/>
+                    <label class="control-label">Url</label>
+                        <input type="text" class="form-control" ng-model="source.Url"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" ng-model="source.Title">Title</label>
-                        <input type="text" class="form-control"/>
+                    <label class="control-label">Title</label>
+                        <input type="text" class="form-control" ng-model="source.Title"/>
                 </div>
             </div>
         </div>

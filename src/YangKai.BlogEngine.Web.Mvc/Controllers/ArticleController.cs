@@ -22,8 +22,17 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         protected override Post CreateEntity(Post entity)
         {
-            //return Proxy.Repository<Post>().Add(entity);
-            return null;
+            entity.Group = Proxy.Repository<Group>().Get(entity.Group.GroupId);
+
+            for (int i = 0; i < entity.Categorys.Count; i++)
+            {
+                entity.Categorys[i] = Proxy.Repository<Category>().Get(entity.Categorys[i].CategoryId); 
+            }
+
+            entity.PubAdmin = Proxy.Repository<User>().Get(p => p.UserName == Current.User.UserName);
+            entity.PubDate = DateTime.Now;
+
+            return Proxy.Repository<Post>().Add(entity);
         }
     }
 }
