@@ -51,6 +51,7 @@ angular.module("app-admin",['formatFilters',
 'GroupServices',
 'CategoryServices',
 'customDirectives',
+'FileUpload',
 'ui.utils',
 'ui.bootstrap'])
 .config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->

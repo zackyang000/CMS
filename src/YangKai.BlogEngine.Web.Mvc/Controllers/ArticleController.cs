@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Metadata.Edm;
+using System.IO;
 using System.Linq.Expressions;
+using System.Net;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Builder;
@@ -31,6 +34,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             entity.PubAdmin = Proxy.Repository<User>().Get(p => p.UserName == Current.User.UserName);
             entity.PubDate = DateTime.Now;
+
+            if (entity.Thumbnail != null)
+            {
+                string sourcePath = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"), entity.Thumbnail.Url);
+                string targetPath = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/thumbnail"), entity.Thumbnail.Url);
+                File.Move(sourcePath, targetPath);
+            }
 
             return Proxy.Repository<Post>().Add(entity);
         }

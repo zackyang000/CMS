@@ -1,8 +1,8 @@
-﻿ArticleDetailController=["$scope","$routeParams","$window","Article","Channel",
-($scope,$routeParams,$window,Article,Channel) ->
+﻿ArticleDetailController=["$scope","$routeParams","$window","$rootScope","uploadManager","Article","Channel",
+($scope,$routeParams,$window,$rootScope,uploadManager,Article,Channel) ->
   $scope.id =$routeParams.id
-
   $scope.entity={}
+  $scope.entity.PostId=UUID.generate()
   $scope.thumbnail={}
 
   $scope.channels=Channel.query $expand:'Groups,Groups/Categorys'
@@ -19,9 +19,12 @@
 
   $scope.submit = ->
     #valid
+    if $scope.files.length
+      uploadManager.upload()
+    else
+      save()
 
-
-    #save
+  save = ->
     entity=$scope.entity
     entity.PostId=UUID.generate()
     entity.Group={}
@@ -36,7 +39,23 @@
     if $scope.source
       entity.Source=$scope.source 
       entity.Source.SourceId=UUID.generate()
-    entity.Thumbnail=null
+
     Article.save entity,(data)->
       $window.location.href = "/#!/post/#{entity.Url}"
+
+  $scope.files = []
+  $rootScope.$on "fileAdded", (e, call) ->
+    $scope.files.push call
+    $scope.$apply()
+
+  $rootScope.$on "fileUploaded", (e, call) ->
+    debugger
+    #更新实体
+    $scope.entity.Thumbnail=
+      ThumbnailId:UUID.generate()
+      Title:$scope.entity.Title
+      Url:call.result
+    debugger
+    save()
+    $scope.$apply()
 ]

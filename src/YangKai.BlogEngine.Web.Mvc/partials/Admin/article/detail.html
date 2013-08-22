@@ -39,7 +39,22 @@
         <div class="sider">
             <div>Thumbnail</div>
             <div>
-                <input type="file"/>
+                <p>
+                    <span class="button button-flat-action fileinput-button">
+                        <i class="icon-plus icon-white"></i>
+                        <span>Add files</span>
+                        <input type='file' name='file' data-url='/FileManage/upload' upload />
+                    </span>
+                </p>
+                <span ng-show="!files.length">No Attachments.</span>
+                <ul>
+                    <li ng-repeat="file in files">
+                        <span>{{file.name}}</span>
+                        <span>{{file.size | formatFileSize}}</span>
+                        <button type="button" class="glyphicon-remove btn btn-link" ng-show="percentage==0" ng-click="del(file)"></button>
+                        <button type="button" class="icon-reply btn btn-link" ng-show="percentage!=0" ng-click="cancel(file)"></button>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="sider">

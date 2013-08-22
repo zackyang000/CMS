@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ChannelController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="_todo\Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="_todo\Areas\Admin\Controllers\AccountController.cs" />
@@ -197,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\buttons.css" />
+    <Content Include="Content\css\jquery.fileupload-ui.css" />
     <Content Include="Content\js\buttons.js" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\style.css">
@@ -293,8 +295,16 @@
     <Content Include="Content\js\directives\custom\oDataPager.min.js">
       <DependentUpon>oDataPager.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\directives\custom\upload.js">
+      <DependentUpon>upload.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\directives\custom\upload.min.js">
+      <DependentUpon>upload.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
     <Content Include="Content\js\directives\ui-utils.js" />
+    <Content Include="Content\js\jquery-ui-1.10.3.js" />
+    <Content Include="Content\js\jquery.fileupload.js" />
     <Content Include="Content\js\md5.js" />
     <Content Include="Content\js\services\ArticleServices.js">
       <DependentUpon>ArticleServices.coffee</DependentUpon>
@@ -370,7 +380,6 @@
     <Content Include="_todo\admin\js\post-new.js" />
     <Content Include="_todo\admin\js\jquery.main.js" />
     <Content Include="Content\css\bootstrap.css" />
-    <Content Include="Content\css\html5reset.css" />
     <Content Include="Content\img\ajax-loader.gif" />
     <Content Include="Content\img\ajax-loader2.gif" />
     <Content Include="Content\img\ajax-loader3.gif" />
@@ -1163,6 +1172,7 @@
     <Folder Include="UpLoad\images\" />
     <Folder Include="UpLoad\offsite\" />
     <Folder Include="UpLoad\qrcode\" />
+    <Folder Include="UpLoad\temp\" />
     <Folder Include="UpLoad\thumbnail\" />
     <Folder Include="_todo\Areas\Admin\Models\" />
   </ItemGroup>
@@ -1219,6 +1229,7 @@
     <Content Include="Content\js\controllers\admin\HomeController.coffee" />
     <Content Include="Content\js\controllers\admin\BoardController.coffee" />
     <Content Include="Content\js\directives\custom\ckeditor.coffee" />
+    <Content Include="Content\js\directives\custom\upload.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.pack" />
     <None Include="Content\plugin\ckeditor_3.6.1\ckeditor.php" />
