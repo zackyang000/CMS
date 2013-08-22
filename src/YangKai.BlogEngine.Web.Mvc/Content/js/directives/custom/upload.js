@@ -45,11 +45,13 @@ angular.module("FileUpload", []).factory("uploadManager", function($rootScope) {
       _files.push(file);
       return $rootScope.$broadcast("fileAdded", file.files[0]);
     },
-    del: function(file) {
+    cancel: function(file) {
       var deleteFile, f, _i, _len;
       for (_i = 0, _len = _files.length; _i < _len; _i++) {
         f = _files[_i];
-        if (f.files[0].name === file.name) deleteFile = f;
+        if (f.files[0].name === file.name) {
+          deleteFile = f;
+        }
       }
       return _files.splice(_files.indexOf(deleteFile), 1);
     },

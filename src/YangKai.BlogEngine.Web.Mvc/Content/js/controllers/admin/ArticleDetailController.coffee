@@ -19,10 +19,33 @@
 
   $scope.submit = ->
     #valid
+    $scope.isSubmit=true
+    return false if !$scope.channelValid()
+    return false if !$scope.groupValid()
+    return false if !$scope.categoryValid()
+    return false if !$scope.entity.Url
+    return false if !$scope.entity.Title
+    return false if !$scope.entity.Content
+    return false if !$scope.entity.Description
+
     if $scope.files.length
       uploadManager.upload()
     else
       save()
+
+  $scope.channelValid=->
+    return true if $scope.getGroups()
+    return false
+
+  $scope.groupValid=->
+    return true if $scope.getCategories()
+    return false
+
+  $scope.categoryValid=->
+    return false if !$scope.getCategories()
+    for item in $scope.getCategories() when item.checked
+      return true
+    return false
 
   save = ->
     entity=$scope.entity
@@ -44,18 +67,20 @@
       $window.location.href = "/#!/post/#{entity.Url}"
 
   $scope.files = []
+
+  $scope.removeImg = (file)->
+    deleteFile=f for f in $scope.files when f.name is file.name
+    $scope.files.splice($scope.files.indexOf(deleteFile),1)
+    uploadManager.cancel file
+
   $rootScope.$on "fileAdded", (e, call) ->
     $scope.files.push call
     $scope.$apply()
 
   $rootScope.$on "fileUploaded", (e, call) ->
-    debugger
-    #更新实体
     $scope.entity.Thumbnail=
       ThumbnailId:UUID.generate()
       Title:$scope.entity.Title
       Url:call.result
-    debugger
     save()
-    $scope.$apply()
 ]

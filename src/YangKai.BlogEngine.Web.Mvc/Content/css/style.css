@@ -504,6 +504,9 @@ table .action {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.sider.error {
+  border-color: #bc1c48;
+}
 /* Responsive variations
 -------------------------------------------------- */
 /* Hide code snippets on mobile devices */

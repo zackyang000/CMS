@@ -32,7 +32,7 @@ angular.module("FileUpload",[])
     _files.push file
     $rootScope.$broadcast "fileAdded", file.files[0]
 
-  del: (file)->
+  cancel: (file)->
     deleteFile=f for f in _files when f.files[0].name is file.name
     _files.splice(_files.indexOf(deleteFile),1)
 
