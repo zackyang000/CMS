@@ -35,6 +35,7 @@
 
     $scope.save = () ->
       $scope.submitting=true
+      $scope.entity.BoardId=UUID.generate()
       Message.save $scope.entity
       ,(data)->
         message.success "Message has been submitted."

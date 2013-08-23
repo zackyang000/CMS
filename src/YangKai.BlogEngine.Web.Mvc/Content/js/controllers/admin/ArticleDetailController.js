@@ -2,13 +2,48 @@
 
 ArticleDetailController = [
   "$scope", "$routeParams", "$window", "$rootScope", "uploadManager", "Article", "Channel", function($scope, $routeParams, $window, $rootScope, uploadManager, Article, Channel) {
-    var save;
-    $scope.id = $routeParams.id;
-    $scope.entity = {};
-    $scope.entity.PostId = UUID.generate();
-    $scope.thumbnail = {};
+    var isNew, save;
+    isNew = false;
     $scope.channels = Channel.query({
       $expand: 'Groups,Groups/Categorys'
+    }, function() {
+      if ($routeParams.id) {
+        $scope.loading = true;
+        return Article.get({
+          $filter: "PostId eq (guid'" + $routeParams.id + "')"
+        }, function(data) {
+          var category, item, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+          $scope.entity = data.value[0];
+          $scope.sourceTitle = $scope.entity.Title;
+          $scope.channelId = $scope.entity.Group.Channel.ChannelId;
+          $scope.groupId = $scope.entity.Group.GroupId;
+          _ref = $scope.entity.Categorys;
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            category = _ref[_i];
+            _ref1 = $scope.getCategories();
+            for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+              item = _ref1[_j];
+              if (item.CategoryId === category.CategoryId) {
+                item.checked = true;
+              }
+            }
+          }
+          if ($scope.entity.Tags) {
+            $scope.tags = '';
+            _ref2 = $scope.entity.Tags;
+            for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+              item = _ref2[_k];
+              $scope.tags += ',' + item.Name;
+            }
+            $scope.tags = $scope.tags.substring(1);
+          }
+          return $scope.loading = false;
+        });
+      } else {
+        $scope.entity = {};
+        $scope.entity.PostId = UUID.generate();
+        return isNew = true;
+      }
     });
     $scope.getGroups = function() {
       var item, _i, _len, _ref;
@@ -36,6 +71,9 @@ ArticleDetailController = [
         }
       }
     };
+    $scope.categorySelect = function(item) {
+      return item.checked = item.checked ? true : false;
+    };
     $scope.submit = function() {
       $scope.isSubmit = true;
       if (!$scope.channelValid()) {
@@ -59,6 +97,7 @@ ArticleDetailController = [
       if (!$scope.entity.Description) {
         return false;
       }
+      $scope.loading = true;
       if ($scope.files.length) {
         return uploadManager.upload();
       } else {
@@ -94,7 +133,6 @@ ArticleDetailController = [
     save = function() {
       var entity, item, _i, _j, _len, _len1, _ref, _ref1;
       entity = $scope.entity;
-      entity.PostId = UUID.generate();
       entity.Group = {};
       entity.Group.GroupId = ((function() {
         var _i, _len, _ref, _results;
@@ -129,13 +167,21 @@ ArticleDetailController = [
           });
         }
       }
-      if ($scope.source) {
-        entity.Source = $scope.source;
+      if (entity.Source) {
         entity.Source.SourceId = UUID.generate();
       }
-      return Article.save(entity, function(data) {
-        return $window.location.href = "/#!/post/" + entity.Url;
-      });
+      if (isNew) {
+        entity.PostId = UUID.generate();
+        return Article.save(entity, function(data) {
+          return $window.location.href = "/#!/post/" + data.Url;
+        });
+      } else {
+        return Article.update({
+          id: "(guid'" + entity.PostId + "')"
+        }, entity, function(data) {
+          return $window.location.href = "/#!/post/" + data.Url;
+        });
+      }
     };
     $scope.files = [];
     $scope.removeImg = function(file) {
@@ -150,11 +196,14 @@ ArticleDetailController = [
       $scope.files.splice($scope.files.indexOf(deleteFile), 1);
       return uploadManager.cancel(file);
     };
+    $scope.removeServerImg = function() {
+      return $scope.entity.Thumbnail = null;
+    };
     $rootScope.$on("fileAdded", function(e, call) {
       $scope.files.push(call);
       return $scope.$apply();
     });
-    return $rootScope.$on("fileUploaded", function(e, call) {
+    $rootScope.$on("fileUploaded", function(e, call) {
       $scope.entity.Thumbnail = {
         ThumbnailId: UUID.generate(),
         Title: $scope.entity.Title,
@@ -162,5 +211,21 @@ ArticleDetailController = [
       };
       return save();
     });
+    return $scope.getUrl = function() {
+      var s;
+      $scope.TranslateUrl = true;
+      $window.mycallback = function(response) {
+        response = $.trim(response);
+        response = response.toLowerCase();
+        response = response.replace(/[^_a-zA-Z\d\s]/g, '');
+        response = response.replace(/[\s]/g, "-");
+        $scope.entity.Url = response;
+        $scope.TranslateUrl = false;
+        return $scope.$apply();
+      };
+      s = document.createElement("script");
+      s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=A4D660A48A6A97CCA791C34935E4C02BBB1BEC1C&from=zh-cn&to=en&text=" + $scope.entity.Title;
+      return document.getElementsByTagName("head")[0].appendChild(s);
+    };
   }
 ];

@@ -69,6 +69,7 @@ ArticleDetailController = [
     };
     return $scope.save = function() {
       $scope.submitting = true;
+      $scope.entity.CommentId = UUID.generate();
       return Comment.save($scope.entity, function(data) {
         message.success("Comment has been submitted.");
         $scope.item.Comments.push(data);

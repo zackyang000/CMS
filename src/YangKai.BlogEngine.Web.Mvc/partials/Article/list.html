@@ -50,7 +50,7 @@
                     <div ng-hide="item.isShowDetail">
                         <div class="thumb" ng-show="item.Thumbnail">
                             <a href="JavaScript:void(0);" ng-click="expand(item)">
-                                <img class="img-thumbnail" ng-src="/upload/thumbnail/{{item.Thumbnail.Url}}" alt="{{item.Title}}" title="{{item.Title}}" />
+                                <img class="img-thumbnail img-article-thumbnail" ng-src="/upload/thumbnail/{{item.Thumbnail.Url}}" alt="{{item.Title}}" title="{{item.Title}}" />
                             </a>
                         </div>
                         <div ng-bind-html-unsafe="item.Description"></div>

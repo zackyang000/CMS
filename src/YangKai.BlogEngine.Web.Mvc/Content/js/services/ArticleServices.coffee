@@ -12,14 +12,6 @@
       params:
         $top:1
         $expand:'Categorys,Tags,Thumbnail,Source,Group,Group/Channel,PubAdmin,Comments'
-    nav:
-      method: "GET"
-      params:
-        $top:1
-        $select:'Url,Title'
-    related:
-      method: "GET"
-      params:
-        action:"related"
-      isArray:true
+    update:
+      method: "PUT"
 ]

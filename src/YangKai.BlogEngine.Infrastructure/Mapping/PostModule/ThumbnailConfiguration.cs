@@ -9,7 +9,6 @@ namespace YangKai.BlogEngine.Infrastructure.Mapping.PostModule
         public ThumbnailConfiguration()
         {
             HasKey(p => p.ThumbnailId);
-            Property(p => p.ThumbnailId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

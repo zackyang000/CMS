@@ -1,62 +1,69 @@
-﻿<ul class="breadcrumb">
+﻿<div class="loadingbox" ng-show="loading">正在加载...</div>
+<ul class="breadcrumb">
     <li><a href="/admin/#!/">Home</a></li>
     <li><a href="/admin/#!/article">Articles</a></li>
-    <li class="active" ng-hide="id">New</li>
-    <li class="active" ng-show="id">Edit</li>
+    <li class="active" ng-hide="sourceTitle">New</li>
+    <li class="active" ng-show="sourceTitle">Edit ({{sourceTitle}})</li>
 </ul>
 <div class="row">
     <div class="col-lg-8">
-            <div class="form-group" ng-class="{'has-error': isSubmit && !entity.Url}">
-                <label class="control-label">Url</label>
-                <div>
-                    <input type="text" class="form-control" ng-model="entity.Url" required />
-                </div>
+        <div class="form-group" ng-class="{'has-error': isSubmit && !entity.Title}">
+            <label class="control-label">Title</label>
+            <div>
+                <input type="text" class="form-control" ng-model="entity.Title" ng-change="getUrl()" required />
             </div>
-            <div class="form-group" ng-class="{'has-error': isSubmit && !entity.Title}">
-                <label class="control-label">Title</label>
-                <div>
-                    <input type="text" class="form-control" ng-model="entity.Title" required />
-                </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': isSubmit && !entity.Url,'has-warning':TranslateUrl}">
+            <label class="control-label">Url <i class="icon-spinner icon-spin icon-large" ng-show="TranslateUrl"></i></label>
+            <div>
+                <input type="text" class="form-control" ng-model="entity.Url" required />
             </div>
+        </div>
         <div class="form-group" ng-class="{'has-error': isSubmit && !entity.Content}">
             <label class="control-label">Content</label>
             <div>
                 <textarea ck-editor ng-model="entity.Content"></textarea>
             </div>
         </div>
-         <div class="form-group" ng-class="{'has-error': isSubmit && !entity.Description}">
-        <label class="control-label">Description</label>
-        <div>
-            <textarea ck-editor ng-model="entity.Description"></textarea>
+        <div class="form-group" ng-class="{'has-error': isSubmit && !entity.Description}">
+            <label class="control-label">Description</label>
+            <div>
+                <textarea ck-editor ng-model="entity.Description"></textarea>
+            </div>
         </div>
-    </div>
     </div>
     <div class="col-lg-4">
         <div class="sider">
             <div>Action</div>
-            <div><button class="button button-flat-primary" ng-click="submit()" data-loading-text="Loading...">Submit</button></div>
+            <div>
+                <button class="button button-flat-primary" ng-disabled="loading" ng-click="submit()">Submit</button>
+            </div>
         </div>
         <div class="sider">
             <div>Thumbnail</div>
             <div>
-                <p ng-show="files.length<1">
+                <p ng-show="files.length<1 && !entity.Thumbnail">
                     <span class="button button-flat-action fileinput-button">
                         <i class="icon-plus icon-white"></i>
                         <span>Add image</span>
                         <input type='file' name='file' data-url='/FileManage/upload' upload />
                     </span>
                 </p>
-                <span ng-show="!files.length">No Attachments.</span>
+                <span ng-show="!files.length && !entity.Thumbnail">No Attachments.</span>
                 <ul class="list-unstyled">
                     <li ng-repeat="file in files">
                         <span>{{file.name}}</span>
-                        <span>{{file.size | formatFileSize}}</span>
+                        <span class="label label-info">{{file.size | formatFileSize}}</span>
                         <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeImg(file)"></a>
                     </li>
                 </ul>
+                <p ng-show="entity.Thumbnail">
+                    <img class="img-thumbnail img-article-thumbnail" ng-src="/upload/thumbnail/{{entity.Thumbnail.Url}}" alt="{{item.Title}}" title="{{item.Title}}" />
+                    <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeServerImg(file)"></a>
+                </p>
             </div>
         </div>
-        <div class="sider" ng-class="{error: isSubmit && !channelValid()}">
+        <div class="sider" ng-class="{'has-error': isSubmit && !channelValid()}">
             <div>Channel</div>
             <div>
                 <label class="radio-inline" ng-repeat="item in channels.value">
@@ -64,7 +71,7 @@
                 </label>
             </div>
         </div>
-        <div class="sider" ng-class="{error: isSubmit && !groupValid()}">
+        <div class="sider" ng-class="{'has-error': isSubmit && !groupValid()}">
             <div>Group</div>
             <div>
                 <label class="radio-inline" ng-repeat="item in getGroups()">
@@ -73,11 +80,11 @@
                 &nbsp;
             </div>
         </div>
-        <div class="sider" ng-class="{error: isSubmit && !categoryValid()}">
+        <div class="sider" ng-class="{'has-error': isSubmit && !categoryValid()}">
             <div>Categories</div>
             <div ng-repeat="item in getCategories()">
                 <label>
-                    <input type="checkbox" value="{{item.CategoryId}}" ng-click="item.checked = item.checked ? !item.checked : false" ng-model="item.checked"> {{item.Name}}
+                    <input type="checkbox" value="{{item.CategoryId}}" ng-click="categorySelect(item)" ng-model="item.checked"> {{item.Name}}
                 </label>
             </div>
         </div>
@@ -91,11 +98,11 @@
             <div>
                 <div class="form-group">
                     <label class="control-label">Url</label>
-                        <input type="text" class="form-control" ng-model="source.Url"/>
+                        <input type="text" class="form-control" ng-model="entity.Source.Url"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Title</label>
-                        <input type="text" class="form-control" ng-model="source.Title"/>
+                        <input type="text" class="form-control" ng-model="entity.Source.Title"/>
                 </div>
             </div>
         </div>

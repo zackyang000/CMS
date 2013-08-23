@@ -64,13 +64,6 @@ function codeformat() {
 
 //#endregion
 
-//sider搜索
-function SearchkeyDown(txt) {
-    if (window.event.keyCode == 13) {
-        location.href = '/search/' + txt;
-    }
-}
-
 //#region common
 
 //判断是否为数字
@@ -140,4 +133,3 @@ var message = {
 };
 
 //#endregion
-

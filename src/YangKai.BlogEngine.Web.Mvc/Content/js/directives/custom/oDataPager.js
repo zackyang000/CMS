@@ -21,8 +21,7 @@ myDirectives.directive("odataPager", function($compile) {
       if (scope.numData === '0') {
         element.context.innerHTML = '';
       }
-      $compile(element.contents())(scope);
-      debugger;
+      return $compile(element.contents())(scope);
     };
     return scope.$watch(attrs.odataPager, function(value) {
       data = value;

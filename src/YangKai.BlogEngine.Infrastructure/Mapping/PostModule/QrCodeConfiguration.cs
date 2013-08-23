@@ -9,7 +9,6 @@ namespace YangKai.BlogEngine.Infrastructure.Mapping.PostModule
         public QrCodeConfiguration()
         {
             HasKey(p => p.QrCodeId);
-            Property(p => p.QrCodeId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

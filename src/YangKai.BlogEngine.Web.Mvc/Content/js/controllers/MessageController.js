@@ -48,6 +48,7 @@ MessageController = [
     };
     return $scope.save = function() {
       $scope.submitting = true;
+      $scope.entity.BoardId = UUID.generate();
       return Message.save($scope.entity, function(data) {
         message.success("Message has been submitted.");
         $scope.list.value.unshift(data);

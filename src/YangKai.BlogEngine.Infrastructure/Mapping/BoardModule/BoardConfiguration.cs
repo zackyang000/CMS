@@ -9,7 +9,6 @@ namespace YangKai.BlogEngine.Infrastructure.Mapping.BoardModule
         public BoardConfiguration()
         {
             HasKey(p => p.BoardId);
-            Property(p => p.BoardId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

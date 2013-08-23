@@ -31,6 +31,10 @@ namespace AtomLab.Core
 
         public TEntity Remove(TEntity T)
         {
+            if (T == null)
+            {
+                return null;
+            }
             _context.Set<TEntity>().Remove(T);
            _context.SaveChanges();
             return T;

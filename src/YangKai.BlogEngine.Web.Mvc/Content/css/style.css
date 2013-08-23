@@ -67,6 +67,9 @@ h6,
 a:hover {
   text-decoration: none;
 }
+a.button:hover {
+  color: #ffffff;
+}
 .loading {
   padding: 5px 5px 0px 20px;
   background: url(/Content/img/ajax-loader.gif) 0px 3px no-repeat;
@@ -90,10 +93,6 @@ article .categories {
 article .thumb {
   margin: 0px 15px 0px 10px;
   float: left;
-}
-article .thumb img {
-  width: 160px;
-  height: 100px;
 }
 article header h2 {
   margin-top: 0;
@@ -146,6 +145,10 @@ article .date div:last-child {
   font-size: 15px;
   height: 18px;
   line-height: 18px;
+}
+.img-article-thumbnail {
+  width: 160px;
+  height: 100px;
 }
 .pagination {
   margin-bottom: 5px;
@@ -504,8 +507,14 @@ table .action {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-.sider.error {
-  border-color: #bc1c48;
+.sider.has-error {
+  border-color: #b94a48;
+}
+.sider.has-error > div:first-child {
+  color: #b94a48;
+}
+.form-group.has-error span[class*="cke_editor_"] {
+  border-color: #b94a48;
 }
 /* Responsive variations
 -------------------------------------------------- */

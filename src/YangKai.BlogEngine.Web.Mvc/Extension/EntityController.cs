@@ -21,13 +21,13 @@ namespace YangKai.BlogEngine.Web.Mvc
     public class EntityController<T> : EntitySetController<T, Guid>
         where T : Entity
     {
-        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All,PageSize = 10,MaxExpansionDepth = 5)]
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All,PageSize = 500,MaxExpansionDepth = 5)]
         public override IQueryable<T> Get()
         {
             return Proxy.Repository<T>().GetAll();
         }
 
-        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, PageSize = 10, MaxExpansionDepth = 5)]
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, MaxExpansionDepth = 5)]
         protected override T GetEntityByKey(Guid key)
         {
             return Proxy.Repository<T>().Get(key);

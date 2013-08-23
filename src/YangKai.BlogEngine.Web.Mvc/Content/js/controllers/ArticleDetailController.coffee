@@ -59,6 +59,7 @@
 
   $scope.save = () ->
     $scope.submitting=true
+    $scope.entity.CommentId=UUID.generate()
     Comment.save $scope.entity
     ,(data)->
       message.success "Comment has been submitted."

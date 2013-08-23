@@ -59,6 +59,9 @@ line-height:1.4
 .ui-match { background: #FF9632; }
 
 a:hover {text-decoration: none;}
+a.button:hover{
+    color:#FFF
+}
 
 .loading {
     padding:5px 5px 0px 20px;
@@ -87,11 +90,6 @@ article {
     .thumb {
         margin: 0px 15px 0px 10px;
         float: left;
-
-        img {
-            width: 160px;
-            height: 100px;
-        }
     }
 
     header {
@@ -157,6 +155,11 @@ article {
             line-height: 18px;
         }
     }
+}
+
+.img-article-thumbnail {
+    width: 160px;
+    height: 100px;
 }
 
 .pagination {
@@ -547,8 +550,14 @@ color: #bbb;
 text-transform: uppercase;
 letter-spacing: 1px;
 }
-.sider.error{
-    border-color: #bc1c48;
+.sider.has-error{
+    border-color: #b94a48;
+}
+.sider.has-error > div:first-child {
+color: #b94a48;
+}
+.form-group.has-error span[class*="cke_editor_"]{
+    border-color: #b94a48;
 }
 /* Responsive variations
 -------------------------------------------------- */

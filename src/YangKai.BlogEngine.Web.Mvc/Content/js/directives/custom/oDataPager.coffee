@@ -15,7 +15,7 @@
         element.context.innerHTML+='<div>{{(currentPage-1)*10+1}} - {{numData}} of {{numData}}</div>'
       element.context.innerHTML='' if scope.numData is '0'
       $compile(element.contents())(scope)
-      debugger
+
     scope.$watch attrs.odataPager, (value) ->
       data=value
       return if data==null or data==undefined
