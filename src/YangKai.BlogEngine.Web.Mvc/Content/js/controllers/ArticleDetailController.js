@@ -8,7 +8,7 @@ ArticleDetailController = [
     Article.get({
       $filter: "Url eq '" + $scope.url + "'"
     }, function(data) {
-      var item;
+      var item, _i, _len, _ref, _results;
       $scope.item = data.value[0];
       $scope.$parent.title = $scope.item.Title;
       codeformat();
@@ -22,22 +22,17 @@ ArticleDetailController = [
         $filter: "CreateDate gt datetime'" + $scope.item.CreateDate + "' and Group/Url eq '" + $scope.item.Group.Url + "'",
         $orderby: 'CreateDate'
       });
-      return $scope.related = Article.related({
-        id: $scope.item.PostId
-      }, (function() {
-        var _i, _len, _ref, _results;
-        _ref = $scope.item.Comments;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          item = _ref[_i];
-          if (item.Email) {
-            _results.push(item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email));
-          } else {
-            _results.push(item.Gravatar = '/Content/img/avatar.png');
-          }
+      _ref = $scope.item.Comments;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        item = _ref[_i];
+        if (item.Email) {
+          _results.push(item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email));
+        } else {
+          _results.push(item.Gravatar = '/Content/img/avatar.png');
         }
-        return _results;
-      })());
+      }
+      return _results;
     });
     $scope.entity = {};
     $scope.entity.Author = $scope.User.UserName;

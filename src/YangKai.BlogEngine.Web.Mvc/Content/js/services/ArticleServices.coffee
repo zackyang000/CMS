@@ -14,4 +14,9 @@
         $expand:'Categorys,Tags,Thumbnail,Source,Group,Group/Channel,PubAdmin,Comments'
     update:
       method: "PUT"
+    nav:
+      method: "GET"
+      params:
+        $top:1
+        $select:'Url,Title'
 ]

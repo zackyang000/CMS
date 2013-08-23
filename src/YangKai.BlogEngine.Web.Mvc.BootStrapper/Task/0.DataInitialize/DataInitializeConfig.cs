@@ -44,6 +44,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             return new User()
                 {
+                    UserId = Guid.NewGuid(),
                     UserName = "管理员",
                     LoginName = "admin",
                     Password = "123",
@@ -55,6 +56,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             return new Channel()
                 {
+                    ChannelId = Guid.NewGuid(),
                     Name = "channel",
                     Url = "channel",
                     Description = "这是一个默认频道.",
@@ -66,6 +68,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             return new Group()
                 {
+                    GroupId = Guid.NewGuid(),
                     Name = "group",
                     Url = "group",
                     Description = "这是一个默认分组.",
@@ -78,17 +81,20 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             return new Post()
                 {
+                    PostId = Guid.NewGuid(),
                     Url = "test",
                     Title = "测试文章",
                     Content = "<p>这是文章的正文内容.</p>",
                     Description = "<p>这是文章的描述内容.</p>",
                     PubAdmin = user,
+                    PubDate = DateTime.Now,
                     Group = group,
                     Tags = new List<Tag> {new Tag {Name = "Test Tag"}},
                     Categorys = new List<Category>
                         {
                             new Category
                                 {
+                                    CategoryId = Guid.NewGuid(),
                                     Name = "default",
                                     Url = "default",
                                     Description = "这是一个默认分类.",
@@ -103,6 +109,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             return new Comment
                 {
+                    CommentId = Guid.NewGuid(),
                     Content = "这是评论的内容.",
                     Author="guest",
                     Post = post,
@@ -113,6 +120,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             return new Board
             {
+                BoardId = Guid.NewGuid(),
                 Content = "这是留言的内容.",
                 Author = "guest",
             };

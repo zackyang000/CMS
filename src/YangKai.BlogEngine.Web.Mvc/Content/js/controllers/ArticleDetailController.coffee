@@ -22,14 +22,14 @@
       $orderby:'CreateDate' 
     #$scope.nextPost
     #相关文章
-    $scope.related = Article.related
-      id:$scope.item.PostId
+    #$scope.related = Article.related
+    #  id:$scope.item.PostId
     #评论
-      for item in $scope.item.Comments
-        if item.Email
-          item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
-        else
-          item.Gravatar='/Content/img/avatar.png'
+    for item in $scope.item.Comments
+      if item.Email
+        item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
+      else
+        item.Gravatar='/Content/img/avatar.png'
 
 
   $scope.entity= {}

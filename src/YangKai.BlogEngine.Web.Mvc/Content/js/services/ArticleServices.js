@@ -22,6 +22,13 @@ angular.module("ArticleServices", ["ngResource"]).factory("Article", [
       },
       update: {
         method: "PUT"
+      },
+      nav: {
+        method: "GET",
+        params: {
+          $top: 1,
+          $select: 'Url,Title'
+        }
       }
     });
   }
