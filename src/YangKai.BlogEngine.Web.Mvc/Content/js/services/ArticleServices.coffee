@@ -19,4 +19,12 @@
       params:
         $top:1
         $select:'Url,Title'
+    browsed:
+      method: "POST"
+      params:
+        action:'Browsed' 
+    commented:
+      method: "POST"
+      params:
+        action:'Commented' 
 ]

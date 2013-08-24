@@ -8,11 +8,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Common
 {
     public class SaveRemoteFile
     {
-        /// <summary>
-        /// 水印图片路径
-        /// </summary>
-        private static readonly string PicWaterMarkFile = HttpContext.Current.Server.MapPath("/water.png");
-
         public static string SaveContentPic(string content, string title)
         {
             var folder = string.Format("{0}.{1}", DateTime.Now.ToString("yyyy.MM.dd"), title);

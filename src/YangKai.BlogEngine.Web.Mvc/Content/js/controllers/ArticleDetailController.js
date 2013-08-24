@@ -8,7 +8,7 @@ ArticleDetailController = [
     Article.get({
       $filter: "Url eq '" + $scope.url + "'"
     }, function(data) {
-      var item, _i, _len, _ref, _results;
+      var item, _i, _len, _ref;
       $scope.item = data.value[0];
       $scope.$parent.title = $scope.item.Title;
       codeformat();
@@ -23,16 +23,17 @@ ArticleDetailController = [
         $orderby: 'CreateDate'
       });
       _ref = $scope.item.Comments;
-      _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
         if (item.Email) {
-          _results.push(item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email));
+          item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
         } else {
-          _results.push(item.Gravatar = '/Content/img/avatar.png');
+          item.Gravatar = '/Content/img/avatar.png';
         }
       }
-      return _results;
+      return Article.browsed({
+        id: "(guid'" + $scope.item.PostId + "')"
+      });
     });
     $scope.entity = {};
     $scope.entity.Author = $scope.User.UserName;
@@ -72,7 +73,10 @@ ArticleDetailController = [
         $scope.AuthorForDisplay = data.Author;
         $scope.editmode = false;
         angular.resetForm($scope, 'form');
-        return $scope.submitting = false;
+        $scope.submitting = false;
+        return Article.commented({
+          id: "(guid'" + $scope.item.PostId + "')"
+        });
       }, function(error) {
         var _ref;
         return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);

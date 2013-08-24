@@ -177,11 +177,7 @@
     <Compile Include="Controllers\ChannelController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
-    <Compile Include="_todo\Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="_todo\Areas\Admin\Controllers\AccountController.cs" />
-    <Compile Include="_todo\Areas\Admin\Controllers\PostManageController.cs" />
-    <Compile Include="_todo\Areas\Admin\Controllers\SummaryController.cs" />
-    <Compile Include="_todo\Areas\Admin\Common\SaveRemoteFile.cs" />
+    <Compile Include="Common\SaveRemoteFile.cs" />
     <Compile Include="Common\Current.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -375,10 +371,6 @@
     <Content Include="partials\Admin\index.html" />
     <Content Include="partials\Admin\login-dialog.html" />
     <Content Include="partials\Admin\group\list.html" />
-    <Content Include="_todo\admin\js\common.js" />
-    <Content Include="_todo\admin\js\post-manage.js" />
-    <Content Include="_todo\admin\js\post-new.js" />
-    <Content Include="_todo\admin\js\jquery.main.js" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\img\ajax-loader.gif" />
     <Content Include="Content\img\ajax-loader2.gif" />
@@ -1174,7 +1166,6 @@
     <Folder Include="UpLoad\qrcode\" />
     <Folder Include="UpLoad\temp\" />
     <Folder Include="UpLoad\thumbnail\" />
-    <Folder Include="_todo\Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -1185,19 +1176,6 @@
     <None Include="App_Data\QQWry.Dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="_todo\Areas\Admin\Views\Account\login.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\PostManage\Index.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\PostManage\new-category-box.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\PostManage\new-channel-and-group.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\PostManage\new-main.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\PostManage\new-source.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\PostManage\new-submit.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\PostManage\new-tag-box.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\PostManage\new-thumbnail.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\PostManage\New.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\Shared\_layout.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\Summary\index.cshtml" />
-    <Content Include="_todo\Areas\Admin\Views\Web.config" />
     <Content Include="Content\js\controllers\MessageController.coffee" />
     <Content Include="Content\js\app.coffee" />
     <Content Include="Content\js\filters.coffee" />

@@ -1,23 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Metadata.Edm;
 using System.IO;
-using System.Linq.Expressions;
-using System.Net;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData;
-using System.Web.Http.OData.Builder;
 using System.Web.Http.OData.Query;
-using System.Web.Mvc;
 using System.Linq;
-using AtomLab.Core;
-using Microsoft.Data.Edm;
-using Webdiyer.WebControls.Mvc;
-using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
-using YangKai.BlogEngine.Web.Mvc.BootStrapper;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
@@ -87,6 +76,22 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
 
             return Proxy.Repository<Post>().Add(entity);
+        }
+
+        [HttpPost]
+        public void Browsed([FromODataUri] Guid key, ODataActionParameters parameters)
+        {
+            var entity = Proxy.Repository<Post>().Get(key);
+            entity.ViewCount++;
+            Proxy.Repository<Post>().Update(entity);
+        }
+
+        [HttpPost]
+        public void Commented([FromODataUri] Guid key, ODataActionParameters parameters)
+        {
+            var entity = Proxy.Repository<Post>().Get(key);
+            entity.ReplyCount = entity.Comments.Count(p=>!p.IsDeleted);
+            Proxy.Repository<Post>().Update(entity);
         }
     }
 }

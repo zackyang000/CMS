@@ -30,7 +30,7 @@
         item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
       else
         item.Gravatar='/Content/img/avatar.png'
-
+    Article.browsed id:"(guid'#{$scope.item.PostId}')"
 
   $scope.entity= {}
 
@@ -69,6 +69,7 @@
       $scope.editmode=false
       angular.resetForm($scope, 'form')
       $scope.submitting=false
+      Article.commented id:"(guid'#{$scope.item.PostId}')"
     ,(error)->
       message.error error.data.ExceptionMessage ? error.status
 ]
