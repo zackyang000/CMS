@@ -72,4 +72,9 @@
       Article.commented id:"(guid'#{$scope.item.PostId}')"
     ,(error)->
       message.error error.data.ExceptionMessage ? error.status
+
+  $scope.remove = (item) ->
+    Comment.remove id:"(guid'#{item.CommentId}')",->
+      item.IsDeleted=true
+      message.success "Comment has been removed."
 ]

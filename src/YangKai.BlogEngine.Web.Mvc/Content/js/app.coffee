@@ -97,9 +97,9 @@ interceptor = ["$rootScope", "$q", (scope, $q) ->
   error = (response) ->
     debugger
     status = response.status
-    if status is 401 # unauthorized - redirect to login again
-      window.location = "/login"
-    else if status is 400 # validation error display errors
+    if status is 401
+      message.error '401 Unauthorized'
+    else if status is 400
       message.error response.data['odata.error'].innererror.message
     else if status is 500
       message.error response.data['odata.error'].innererror.message

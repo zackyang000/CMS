@@ -11,16 +11,16 @@ angular.module("MessageServices", ["ngResource"]).factory("Message", [
           $orderby: "CreateDate desc"
         }
       },
-      del: {
-        method: "PUT",
+      remove: {
+        method: "POST",
         params: {
-          action: 'delete'
+          action: 'Remove'
         }
       },
-      renew: {
-        method: "PUT",
+      recover: {
+        method: "POST",
         params: {
-          action: 'renew'
+          action: 'Recover'
         }
       }
     });

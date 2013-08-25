@@ -187,9 +187,9 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LabsController.cs" />
-    <Compile Include="Extension\EntityController.cs" />
+    <Compile Include="Common\EntityController.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
-    <Compile Include="Extension\HttpContextLifetimeManager.cs" />
+    <Compile Include="Common\HttpContextLifetimeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

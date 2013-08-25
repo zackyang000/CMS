@@ -11,7 +11,9 @@ MessageController = [
     $scope.entity.Url = $scope.User.Url;
     $scope.AuthorForDisplay = $scope.User.UserName;
     $scope.editmode = $scope.User.UserName === '' || !($scope.User.UserName != null);
-    $scope.list = Message.query(function() {
+    $scope.list = Message.query({
+      $filter: 'IsDeleted eq false'
+    }, function() {
       var item, _i, _len, _ref;
       _ref = $scope.list.value;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -24,29 +26,7 @@ MessageController = [
       }
       return $scope.loading = false;
     });
-    $scope.del = function(item) {
-      return Message.del({
-        id: item.BoardId
-      }, function(data) {
-        message.success("“#" + item.Content + "”  be moved to trash.");
-        return item.IsDeleted = true;
-      }, function(error) {
-        var _ref;
-        return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
-      });
-    };
-    $scope.renew = function(item) {
-      return Message.renew({
-        id: item.BoardId
-      }, function(data) {
-        message.success("“#" + item.Content + "”  be renew.");
-        return item.IsDeleted = false;
-      }, function(error) {
-        var _ref;
-        return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
-      });
-    };
-    return $scope.save = function() {
+    $scope.save = function() {
       $scope.submitting = true;
       $scope.entity.BoardId = UUID.generate();
       return Message.save($scope.entity, function(data) {
@@ -57,9 +37,14 @@ MessageController = [
         $scope.editmode = false;
         angular.resetForm($scope, 'form');
         return $scope.submitting = false;
-      }, function(error) {
-        var _ref;
-        return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
+      });
+    };
+    return $scope.remove = function(item) {
+      return Message.remove({
+        id: "(guid'" + item.BoardId + "')"
+      }, function() {
+        item.IsDeleted = true;
+        return message.success("Message has been removed.");
       });
     };
   }

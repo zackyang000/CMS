@@ -337,7 +337,11 @@ article .date div:last-child {
 .comment li:hover .gravatar {
   border-right-color: #E38383;
 }
-.comment .comment-meta {
+.comment li:hover .comment-meta a {
+  display: inline;
+}
+.comment .comment-meta a {
+  display: none;
   margin-top: 5px;
   color: #CCC;
 }

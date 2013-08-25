@@ -99,30 +99,27 @@
         <div class="comment">
             <div class="title"><span>文章评论</span></div>
             <ul>
-                <li ng-repeat="item in item.Comments | orderBy:'CreateDate'">
+                <li ng-repeat="item in item.Comments | orderBy:'CreateDate'" ng-hide="item.IsDeleted">
                     <div class="gravatar">
                         <img ng-src="{{item.Gravatar}}" />
                     </div>
                     <div class="text">
                         <span>
-                            <span class="text-error" ng-show="item.IsDeleted">该回复已删除,仅管理员可见.</span>
                             <span>#{{$index+1}}</span>
                         </span>
-                        <div>	
+                        <div>
                             <span class="commentid">{{item.Author}}</span> : 
                             <p>{{item.Content}}</p>
                         </div>
                         <div class="comment-meta">
                             <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 
-                            <span ng-show="isAdmin">
-                                <a href="JavaScript:void(0)" class="text-error" ng-click="del(item)" ng-hide="item.IsDeleted">[删除]</a>
-                                <a href="JavaScript:void(0)" class="text-error" ng-click="renew(item)" ng-show="item.IsDeleted">[恢复]</a>
+                            <span ng-show="User.IsAdmin">
+                                <a href="JavaScript:void(0)" ng-click="remove(item)">Remove</a>
                             </span>
                         </div>
                     </div>
                 </li>
             </ul>
-            <div ng-show="list.length==0" class="nocomment">还没有评论.</div>
         </div>
         <!-- list END -->
         <!-- respond START -->

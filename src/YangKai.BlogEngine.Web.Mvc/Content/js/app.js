@@ -81,7 +81,7 @@ interceptor = [
       var status;
       status = response.status;
       if (status === 401) {
-        window.location = "/login";
+        message.error('401 Unauthorized');
       } else if (status === 400) {
         message.error(response.data['odata.error'].innererror.message);
       } else if (status === 500) {

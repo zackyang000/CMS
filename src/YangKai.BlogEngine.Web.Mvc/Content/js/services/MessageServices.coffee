@@ -5,12 +5,12 @@
       method:"GET"
       params:
         $orderby:"CreateDate desc"
-    del:
-      method: "PUT"
+    remove:
+      method: "POST"
       params:
-        action:'delete'
-    renew:
-      method: "PUT"
+        action:'Remove'
+    recover:
+      method: "POST"
       params:
-        action:'renew'
+        action:'Recover'
 ]

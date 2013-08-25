@@ -13,4 +13,12 @@
       method: "POST"
       params:
         action:'renew'
+    remove:
+      method: "POST"
+      params:
+        action:'Remove'
+    recover:
+      method: "POST"
+      params:
+        action:'Recover'
 ]

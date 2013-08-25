@@ -63,7 +63,7 @@ ArticleDetailController = [
         return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
       });
     };
-    return $scope.save = function() {
+    $scope.save = function() {
       $scope.submitting = true;
       $scope.entity.CommentId = UUID.generate();
       return Comment.save($scope.entity, function(data) {
@@ -80,6 +80,14 @@ ArticleDetailController = [
       }, function(error) {
         var _ref;
         return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
+      });
+    };
+    return $scope.remove = function(item) {
+      return Comment.remove({
+        id: "(guid'" + item.CommentId + "')"
+      }, function() {
+        item.IsDeleted = true;
+        return message.success("Comment has been removed.");
       });
     };
   }

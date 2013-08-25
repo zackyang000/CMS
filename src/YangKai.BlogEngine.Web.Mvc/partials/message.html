@@ -42,7 +42,7 @@
                 </div>
             <div>
                 <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">提交</button>
-                <span class="loading" ng-show="submitting">正在提交...</span>
+                <span class="loading" ng-show="submitting">submitting...</span>
             </div>
         </form>
     </div>
@@ -50,24 +50,22 @@
 <!-- list START -->
 <div class="comment">
     <ul>
-        <li ng-repeat="item in list.value">
+        <li ng-repeat="item in list.value" ng-hide="item.IsDeleted">
             <div class="gravatar">
                 <img ng-src="{{item.Gravatar}}" />
             </div>
             <div class="text">
                 <span>
-                    <span class="text-error" ng-show="item.IsDeleted">该回复已删除,仅管理员可见.</span>
-                    <span>#{{list.length-$index}}</span>
+                    <span>#{{list.value.length-$index}}</span>
                 </span>
-                <div>	
+                <div>
                     <span class="commentid">{{item.Author}}</span> : 
                     <p>{{item.Content}}</p>
                 </div>
                 <div class="comment-meta">
                     <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 
-                    <span ng-show="isAdmin">
-                        <a href="JavaScript:void(0)" class="text-error" ng-click="del(item)" ng-hide="item.IsDeleted">[删除]</a>
-                        <a href="JavaScript:void(0)" class="text-error" ng-click="renew(item)" ng-show="item.IsDeleted">[恢复]</a>
+                    <span ng-show="User.IsAdmin">
+                        <a href="JavaScript:void(0)" ng-click="remove(item)">Remove</a>
                     </span>
                 </div>
             </div>
