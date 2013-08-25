@@ -120,3 +120,4 @@ scr/YangKai.BlogEngine.Web.Mvc/feed_comments.xml
 scr/YangKai.BlogEngine.Web.Mvc/feed_comments.xml
 scr/YangKai.BlogEngine.Web.Mvc/feed_comments.xml
 src/YangKai.BlogEngine.Web.Mvc/error/error-*
+src/YangKai.BlogEngine.Web.Mvc/UpLoad/thumbnail/*

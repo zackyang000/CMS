@@ -58,7 +58,7 @@
                     </li>
                 </ul>
                 <p ng-show="entity.Thumbnail">
-                    <img class="img-thumbnail img-article-thumbnail" ng-src="/upload/thumbnail/{{entity.Thumbnail.Url}}" alt="{{item.Title}}" title="{{item.Title}}" />
+                    <img class="img-thumbnail img-article-thumbnail" ng-src="{{'/upload/thumbnail/'+entity.Thumbnail.Url | image}}" alt="{{item.Title}}" title="{{item.Title}}" />
                     <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeServerImg(file)"></a>
                 </p>
             </div>
