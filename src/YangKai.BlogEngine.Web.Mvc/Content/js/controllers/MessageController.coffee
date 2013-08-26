@@ -1,4 +1,5 @@
-﻿MessageController=["$scope","Message", ($scope,Message) ->
+﻿MessageController=["$scope","progressbar","Message", 
+($scope,progressbar,Message) ->
   $scope.$parent.title='留言板'
   $scope.$parent.showBanner=false
   $scope.loading=true
@@ -18,6 +19,7 @@
     $scope.loading = false 
       
   $scope.save = () ->
+    progressbar.start()
     $scope.submitting=true
     $scope.entity.BoardId=UUID.generate()
     Message.save $scope.entity
@@ -29,6 +31,7 @@
       $scope.editmode=false
       angular.resetForm($scope, 'form')
       $scope.submitting=false
+      progressbar.complete()
 
   $scope.remove = (item) ->
     Message.remove id:"(guid'#{item.BoardId}')",->

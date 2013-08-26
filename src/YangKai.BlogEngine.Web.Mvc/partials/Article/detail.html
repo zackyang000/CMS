@@ -41,16 +41,15 @@
             </header>
             <section>
                 <div ng-bind-html-unsafe="item.Content"></div>
-                <div class="clearfix"></div>
-                <div ng-show="item.QrCodeUrl">
+                <div ng-show="item.QrCode">
                     <a href="javascrpit:void(0);" ng-click="qrcode=!qrcode" class="icon-qrcode"></a>
                     <div class="qrcode" ng-show="qrcode">
-                        <img ng-src="/upload/qrcode/{{item.QrCodeUrl}}" width="200" height="200" alt="二维码" class="img-thumbnail" />
+                        <img ng-src="{{'/upload/qrcode/'+item.QrCode.Url | image}}" width="200" height="200" alt="二维码" class="img-thumbnail" />
                     </div> 
                 </div>
-                <div ng-show="item.SourceUrl" class="text-success">
-                    本文转载于：<a ng-href="{{item.SourceUrl}}">{{item.SourceTitle}}</a>
-                </div>
+                <p ng-show="item.Source" class="text-success">
+                    本文转载于：<a ng-href="{{item.Source.Url}}">{{item.Source.Title}}</a>
+                </p>
             </section>
             <footer>
                 <div id="jiathis_style_32x32" style="margin-top: 30px;" class="clearfix">
@@ -87,10 +86,10 @@
                 </li>
             </ul>
         </div>
-        <div class="post-related" ng-show="related.length>0">
+        <div class="post-related" ng-show="relatedPost.value">
             <div class="title"><span>相关文章</span></div>
             <ul>
-                <li ng-repeat="item in related">
+                <li ng-repeat="item in relatedPost.value">
                     {{item.PubDate | date:"yyyy年MM月dd日"}} -- <a ng-href="/#!/post/{{item.Url}}">{{item.Title}}</a>
                 </li>
             </ul>
@@ -160,13 +159,13 @@
                     </div>
                 <div>
                     <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">提交</button>
-                    <span class="loading"ng-show="submitting">正在提交...</span>
+                    <span class="loading" ng-show="submitting">正在提交...</span>
                 </div>
             </form>
         </div>
         <!-- respond END -->
     </div>
-<div ng-show="item.Title==null">
+<div ng-show="!loading && item.Title==null">
     <ul class="breadcrumb">
         <li><a href="/#!/">首页</a></li>
         <li class="active">404</li>

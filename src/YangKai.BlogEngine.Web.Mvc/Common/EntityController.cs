@@ -41,7 +41,7 @@ namespace YangKai.BlogEngine.Web.Mvc
         }
 
         [HttpPost]
-        public void Remove([FromODataUri] Guid key, ODataActionParameters parameters)
+        public virtual void Remove([FromODataUri] Guid key, ODataActionParameters parameters)
         {
             if (!Current.IsAdmin)
             {
@@ -54,7 +54,7 @@ namespace YangKai.BlogEngine.Web.Mvc
         }
 
         [HttpPost]
-        public void Recover([FromODataUri] Guid key, ODataActionParameters parameters)
+        public virtual void Recover([FromODataUri] Guid key, ODataActionParameters parameters)
         {
             if (!Current.IsAdmin)
             {

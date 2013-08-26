@@ -1,7 +1,7 @@
 ﻿var MessageController;
 
 MessageController = [
-  "$scope", "Message", function($scope, Message) {
+  "$scope", "progressbar", "Message", function($scope, progressbar, Message) {
     $scope.$parent.title = '留言板';
     $scope.$parent.showBanner = false;
     $scope.loading = true;
@@ -27,6 +27,7 @@ MessageController = [
       return $scope.loading = false;
     });
     $scope.save = function() {
+      progressbar.start();
       $scope.submitting = true;
       $scope.entity.BoardId = UUID.generate();
       return Message.save($scope.entity, function(data) {
@@ -36,7 +37,8 @@ MessageController = [
         $scope.AuthorForDisplay = data.Author;
         $scope.editmode = false;
         angular.resetForm($scope, 'form');
-        return $scope.submitting = false;
+        $scope.submitting = false;
+        return progressbar.complete();
       });
     };
     return $scope.remove = function(item) {

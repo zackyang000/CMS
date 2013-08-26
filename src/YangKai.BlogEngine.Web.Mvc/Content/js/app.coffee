@@ -5,6 +5,7 @@
 'CommentServices',
 'UserServices',
 'customDirectives',
+'ngProgress',
 'ui.utils',
 'ui.bootstrap'])
 .config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
@@ -51,6 +52,7 @@ angular.module("app-admin",['formatFilters',
 'GroupServices',
 'CategoryServices',
 'customDirectives',
+'ngProgress',
 'FileUpload',
 'ui.utils',
 'ui.bootstrap'])

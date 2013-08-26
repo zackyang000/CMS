@@ -20,7 +20,7 @@ ArticleListController = [
     $scope.load = function() {
       var filter;
       $scope.loading = true;
-      filter = '1 eq 1';
+      filter = 'IsDeleted eq false';
       if ($routeParams.channel) {
         filter += " and Group/Channel/Url eq '" + $routeParams.channel + "'";
       }

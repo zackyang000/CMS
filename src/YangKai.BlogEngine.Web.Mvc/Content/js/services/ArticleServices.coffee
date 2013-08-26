@@ -19,6 +19,11 @@
       params:
         $top:1
         $select:'Url,Title'
+    related:
+      method: "GET"
+      params:
+        $top:8
+        $select:'Url,Title,PubDate'
     browsed:
       method: "POST"
       params:

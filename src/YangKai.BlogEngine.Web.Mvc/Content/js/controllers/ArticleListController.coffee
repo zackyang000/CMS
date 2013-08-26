@@ -14,7 +14,7 @@
 
   $scope.load = ->
     $scope.loading=true
-    filter='1 eq 1'
+    filter='IsDeleted eq false'
     filter+=" and Group/Channel/Url eq '#{$routeParams.channel}'" if $routeParams.channel
     filter+=" and Group/Url eq '#{$routeParams.group}'" if $routeParams.group
     filter+=" and indexof(Title, '#{$routeParams.key}') gt 0" if $routeParams.key

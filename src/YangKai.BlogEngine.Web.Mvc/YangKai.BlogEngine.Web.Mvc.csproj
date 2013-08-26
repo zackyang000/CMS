@@ -297,6 +297,7 @@
     <Content Include="Content\js\directives\custom\upload.min.js">
       <DependentUpon>upload.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\directives\ngProgress.js" />
     <Content Include="Content\js\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
     <Content Include="Content\js\directives\ui-utils.js" />
     <Content Include="Content\js\jquery-ui-1.10.3.js" />

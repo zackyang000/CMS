@@ -30,6 +30,13 @@ angular.module("ArticleServices", ["ngResource"]).factory("Article", [
           $select: 'Url,Title'
         }
       },
+      related: {
+        method: "GET",
+        params: {
+          $top: 8,
+          $select: 'Url,Title,PubDate'
+        }
+      },
       browsed: {
         method: "POST",
         params: {
