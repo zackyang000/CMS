@@ -55,8 +55,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/css/messenger.css",
                 "~/Content/css/messenger-theme-future.css",
                 "~/Content/css/buttons.css",
-                "~/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",
+                "~/Content/css/ng-grid.css",
                 "~/Content/css/jquery.fileupload-ui.css",
+                "~/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",
                 "~/Content/css/style.css"
                 ));
 

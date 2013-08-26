@@ -195,6 +195,7 @@
   <ItemGroup>
     <Content Include="Content\css\buttons.css" />
     <Content Include="Content\css\jquery.fileupload-ui.css" />
+    <Content Include="Content\css\ng-grid.css" />
     <Content Include="Content\js\buttons.js" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\style.css">
@@ -285,6 +286,7 @@
     <Content Include="Content\js\directives\custom\ckeditor.min.js">
       <DependentUpon>ckeditor.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\directives\ng-grid-2.0.7.debug.js" />
     <Content Include="Content\js\directives\custom\oDataPager.js">
       <DependentUpon>oDataPager.coffee</DependentUpon>
     </Content>

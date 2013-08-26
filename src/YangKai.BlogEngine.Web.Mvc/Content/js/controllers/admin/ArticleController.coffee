@@ -5,5 +5,6 @@
       $skip:(pageNo-1)*10
     , (data)->
       $scope.list = data
+
   $scope.setPage 1
 ]

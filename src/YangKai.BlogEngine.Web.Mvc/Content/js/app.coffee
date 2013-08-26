@@ -7,7 +7,8 @@
 'customDirectives',
 'ngProgress',
 'ui.utils',
-'ui.bootstrap'])
+'ui.bootstrap',
+'ngGrid'])
 .config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
   $httpProvider.responseInterceptors.push(interceptor)  
   $locationProvider.html5Mode(false).hashPrefix('!')
@@ -55,7 +56,8 @@ angular.module("app-admin",['formatFilters',
 'ngProgress',
 'FileUpload',
 'ui.utils',
-'ui.bootstrap'])
+'ui.bootstrap',
+'ngGrid'])
 .config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
   $httpProvider.responseInterceptors.push(interceptor)  
   $locationProvider.html5Mode(false).hashPrefix('!')
