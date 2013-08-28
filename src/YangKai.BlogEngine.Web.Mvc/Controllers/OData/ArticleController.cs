@@ -1,14 +1,14 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Query;
-using System.Linq;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
 
-namespace YangKai.BlogEngine.Web.Mvc.Controllers
+namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
     public class ArticleController : EntityController<Post>
     {
@@ -36,7 +36,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             return AddArticle(update,false);
         }
 
-        private Post AddArticle(Post entity,bool isNew = true)
+        private Post AddArticle(Post entity, bool isNew = true)
         {
             entity.Title = entity.Title.Trim();
             entity.Url = entity.Url.Trim().ToLower().Replace(" ", "-");
@@ -61,8 +61,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 
             if (entity.Thumbnail != null)
             {
-                var filename = entity.PubDate.ToString("yyyy.MM.dd.") + entity.Url + Path.GetExtension(entity.Thumbnail.Url);
-                var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"), entity.Thumbnail.Url);
+                var filename = entity.PubDate.ToString("yyyy.MM.dd.") + entity.Url +
+                               Path.GetExtension(entity.Thumbnail.Url);
+                var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"),
+                    entity.Thumbnail.Url);
                 var target = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/thumbnail"), filename);
                 if (File.Exists(source))
                 {
@@ -75,7 +77,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 }
             }
 
-            return Proxy.Repository<Post>().Add(entity);
+            entity = Proxy.Repository<Post>().Add(entity);
+            Rss.BuildPostRss();
+            return entity;
         }
 
         [HttpPost]

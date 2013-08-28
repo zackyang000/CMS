@@ -1,4 +1,4 @@
-﻿    <div class="loadingbox" ng-show="loading">正在加载...</div>
+﻿    <div class="loadingbox" ng-show="loading">loading...</div>
 
     <div ng-hide="item.Title==null">
         <ul class="breadcrumb">
@@ -20,23 +20,31 @@
                         <span class="icon-folder-open categories">
                             <span ng-repeat="category in item.Categorys">
                                 <span ng-hide="$first">,</span>
-                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
+                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="View all articles of {{category.Name}}">{{category.Name}}</a>
                             </span>
                         </span>
                         <span class="icon-tags tags" ng-show="item.Tags.length>0">
                             <span ng-repeat="tag in item.Tags">
                                 <span ng-hide="$first">,</span>
-                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
+                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="View all articles of {{tag.Name}}">{{tag.Name}}</a>
                             </span>
                         </span>
-                        <span class="icon-user"></span>
-                        <span>{{item.PubAdmin.UserName}}</span>
-                        <span class="icon-eye-open"></span>
-                        <span>{{item.ViewCount}} 次点击</span>
-                        <span class="icon-comments"></span>
-                        <span>{{item.ReplyCount}} 条评论</span>
-                        <span ng-show="isAdmin" class="icon-pencil"></span>
-                        <span ng-show="isAdmin"><a target="_blank" ng-href="/admin/postmanage/edit/{{item.Url}}">编辑</a></span>
+                        <span>
+                            <i class="icon-user"></i>
+                            {{item.PubAdmin.UserName}}
+                        </span>
+                        <span>
+                            <i class="icon-eye-open"></i>
+                            {{item.ViewCount}} Views
+                        </span>
+                        <span>
+                            <i class="icon-comments"></i>
+                            {{item.ReplyCount}} Comments
+                        </span>
+                        <span ng-show="User.IsAdmin">
+                            <i class="icon-pencil"></i>
+                            <a target="_blank" ng-href="/admin/#!/article('{{item.PostId}}')">Edit</a>
+                        </span>
                     </div>
             </header>
             <section>
@@ -44,11 +52,11 @@
                 <div ng-show="item.QrCode">
                     <a href="javascrpit:void(0);" ng-click="qrcode=!qrcode" class="icon-qrcode"></a>
                     <div class="qrcode" ng-show="qrcode">
-                        <img ng-src="{{'/upload/qrcode/'+item.QrCode.Url | image}}" width="200" height="200" alt="二维码" class="img-thumbnail" />
+                        <img ng-src="{{'/upload/qrcode/'+item.QrCode.Url | image}}" width="200" height="200" alt="qrcode" class="img-thumbnail" />
                     </div> 
                 </div>
                 <p ng-show="item.Source" class="text-success">
-                    本文转载于：<a ng-href="{{item.Source.Url}}">{{item.Source.Title}}</a>
+                    Source：<a ng-href="{{item.Source.Url}}">{{item.Source.Title}}</a>
                 </p>
             </section>
             <footer>
@@ -79,15 +87,15 @@
         <div class="post-nav">
             <ul>
                 <li>
-                    <a ng-show="prevPost.value" ng-href="/#!/post/{{prevPost.value[0].Url}}" rel="prev">&larr; · 上一篇</a>
+                    <a ng-show="prevPost.value" ng-href="/#!/post/{{prevPost.value[0].Url}}" rel="prev">&larr; · Prev</a>
                 </li>
                 <li>
-                    <a ng-show="nextPost.value" tooltip="On the Left!" ng-href="/#!/post/{{nextPost.value[0].Url}}" rel="next">下一篇 · &rarr;</a>
+                    <a ng-show="nextPost.value" tooltip="On the Left!" ng-href="/#!/post/{{nextPost.value[0].Url}}" rel="next">Next · &rarr;</a>
                 </li>
             </ul>
         </div>
         <div class="post-related" ng-show="relatedPost.value">
-            <div class="title"><span>相关文章</span></div>
+            <div class="title"><span>Related</span></div>
             <ul>
                 <li ng-repeat="item in relatedPost.value">
                     {{item.PubDate | date:"yyyy年MM月dd日"}} -- <a ng-href="/#!/post/{{item.Url}}">{{item.Title}}</a>
@@ -96,7 +104,7 @@
         </div>
         <!-- list START -->
         <div class="comment">
-            <div class="title"><span>文章评论</span></div>
+            <div class="title"><span>Comments</span></div>
             <ul>
                 <li ng-repeat="item in item.Comments | orderBy:'CreateDate'" ng-hide="item.IsDeleted">
                     <div class="gravatar">
@@ -113,7 +121,9 @@
                         <div class="comment-meta">
                             <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 
                             <span ng-show="User.IsAdmin">
-                                <a href="JavaScript:void(0)" ng-click="remove(item)">Remove</a>
+                                <a href="JavaScript:void(0)" ng-click="remove(item)">
+                                    <i class="icon-remove"></i>
+                                </a>
                             </span>
                         </div>
                     </div>
@@ -125,16 +135,16 @@
         <div>
             <form name="form" novalidate ng-submit="save()">
                 <p ng-show="AuthorForDisplay.length > 0">
-                    欢迎回来, <strong>{{AuthorForDisplay}}</strong>
+                    Welcome, <strong>{{AuthorForDisplay}}</strong>
                     <span>
-                        <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">隐藏 »</a>
-                        <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">更改 »</a>
+                        <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">Hide »</a>
+                        <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">Change »</a>
                     </span>
                 </p>
                 <div ng-show="editmode">
                     <div class="row form-group">
                         <div class="col-lg-4">
-                            <label>昵称*</label>
+                            <label>Name*</label>
                             <input class="form-control input-sm" name="Author" type="text" ng-model="entity.Author" placeholder="昵称*" required/>
                             <div class="label label-danger" ng-show="form.Author.$dirty && form.Author.$invalid">Invalid:
                                 <span ng-show="form.Author.$error.required">Username is required.</span>
@@ -143,14 +153,14 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-lg-4">
-                            <label>邮箱</label>
+                            <label>Email</label>
                             <input class="form-control input-sm" name="Email" type="text" ng-model="entity.Email" placeholder="邮箱" />
                         </div>
                     </div>
                 </div>
                     <div class="row form-group">
                         <div class="col-lg-8">
-                            <label>评论</label>
+                            <label>Content</label>
                             <textarea name="Content" class="form-control" rows="4"  ng-model="entity.Content" required></textarea>
                             <div class="label label-danger" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
                                 <span ng-show="form.Content.$error.required">Content is required.</span>
@@ -158,8 +168,8 @@
                         </div>
                     </div>
                 <div>
-                    <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">提交</button>
-                    <span class="loading" ng-show="submitting">正在提交...</span>
+                    <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">Submit</button>
+                    <span class="loading" ng-show="submitting">submitting...</span>
                 </div>
             </form>
         </div>
@@ -167,8 +177,8 @@
     </div>
 <div ng-show="!loading && item.Title==null">
     <ul class="breadcrumb">
-        <li><a href="/#!/">首页</a></li>
+        <li><a href="/#!/">Home</a></li>
         <li class="active">404</li>
     </ul>
-    <p>木有这篇文章.</p>
+    <p>Not found article.</p>
 </div>

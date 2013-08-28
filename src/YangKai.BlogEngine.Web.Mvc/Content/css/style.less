@@ -9,59 +9,26 @@ font-family: "Microsoft YaHei","微软雅黑",PMingLiU,Verdana,Arial,Helvetica,s
 line-height:1.4
 }
 
-//common
-.fl {
-    float: left;
-}
-.fr {
-    float: right;
-}
-::-moz-selection {
-    background: #f2dede;
-}
-::selection {
-    background: #f2dede;
-}
-::-webkit-selection {
-    background: #f2dede;
-}
+.bg-color-purple {background-color: #603cba !important;}
+.bg-color-greenDark {background-color: #008641 !important;}
+.bg-color-blue {background-color: #0072BC !important;}
+.bg-color-red {background-color: #bc1c48 !important;}
+.bg-color-green {background-color: #01a31c !important;}
+.bg-color-blueDark {background-color: #662D91 !important;}
+.bg-color-darken {background-color: #1c1c1c !important;}
+.bg-color-orange {background-color: #CD4900 !important;}
+.bg-color-yellow {background-color: #ffc40d !important;}
 
-//background-color
-.bg-color-purple {
-    background-color: #603cba !important;
-}
-.bg-color-greenDark {
-    background-color: #008641 !important;
-}
-.bg-color-blue {
-    background-color: #0072BC !important;
-}
-.bg-color-red {
-    background-color: #bc1c48 !important;
-}
-.bg-color-green {
-    background-color: #01a31c !important;
-}
-.bg-color-blueDark {
-    background-color: #662D91 !important;
-}
-.bg-color-darken {
-    background-color: #1c1c1c !important;
-}
-.bg-color-orange {
-    background-color: #CD4900 !important;
-}
-.bg-color-yellow {
-    background-color: #ffc40d !important;
-}
+//文章选中颜色
+::-moz-selection {background: #f2dede;}
+::selection {background: #f2dede;}
+::-webkit-selection {background: #f2dede;}
 
 //搜索高亮
 .ui-match { background: #FF9632; }
 
 a:hover {text-decoration: none;}
-a.button:hover{
-    color:#FFF
-}
+a.button:hover{color:#FFF}
 
 .loading {
     padding:5px 5px 0px 20px;
@@ -114,17 +81,9 @@ article {
             border-top: 1px solid #27AAE2;
         }
 
-        span:last-child {
-            margin-right: 0;
+        div > span, article footer span {
+            margin-right: 20px;
         }
-
-        span {
-            margin-right: 2px;
-        }
-
-            span:nth-child(even), article footer span {
-                margin-right: 20px;
-            }
     }
 
     li {

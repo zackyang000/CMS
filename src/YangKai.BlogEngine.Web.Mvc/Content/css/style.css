@@ -19,21 +19,6 @@ h6,
   font-family: "Microsoft YaHei", "微软雅黑", PMingLiU, Verdana, Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
-.fl {
-  float: left;
-}
-.fr {
-  float: right;
-}
-::-moz-selection {
-  background: #f2dede;
-}
-::selection {
-  background: #f2dede;
-}
-::-webkit-selection {
-  background: #f2dede;
-}
 .bg-color-purple {
   background-color: #603cba !important;
 }
@@ -60,6 +45,15 @@ h6,
 }
 .bg-color-yellow {
   background-color: #ffc40d !important;
+}
+::-moz-selection {
+  background: #f2dede;
+}
+::selection {
+  background: #f2dede;
+}
+::-webkit-selection {
+  background: #f2dede;
 }
 .ui-match {
   background: #FF9632;
@@ -111,13 +105,7 @@ article header div {
   padding-top: 3px;
   border-top: 1px solid #27AAE2;
 }
-article header span:last-child {
-  margin-right: 0;
-}
-article header span {
-  margin-right: 2px;
-}
-article header span:nth-child(even),
+article header div > span,
 article header article footer span {
   margin-right: 20px;
 }

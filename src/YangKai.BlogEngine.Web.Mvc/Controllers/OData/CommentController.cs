@@ -5,8 +5,7 @@ using System.Web.Http.OData;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
 
-
-namespace YangKai.BlogEngine.Web.Mvc.Controllers
+namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
     public class CommentController : EntityController<Comment>
     {
@@ -14,14 +13,15 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             if (!Current.IsAdmin)
             {
-                Current.User = new WebUser()
+                Current.User = new WebUser
                 {
                     UserName = entity.Author,
                     Email = entity.Email,
                 };
             }
-
-            return base.CreateEntity(entity);
+            entity= base.CreateEntity(entity);
+            Rss.BuildCommentRss();
+            return entity;
         }
 
         public override void Remove([FromODataUri] Guid key, ODataActionParameters parameters)
@@ -34,7 +34,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         }
 
         [HttpPost]
-        public void Recover([FromODataUri] Guid key, ODataActionParameters parameters)
+        public override void Recover([FromODataUri] Guid key, ODataActionParameters parameters)
         {
             base.Recover(key, parameters);
 

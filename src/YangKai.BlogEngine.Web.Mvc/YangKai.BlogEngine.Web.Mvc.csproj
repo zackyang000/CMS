@@ -174,19 +174,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ChannelController.cs" />
+    <Compile Include="Controllers\OData\ChannelController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
-    <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\OData\GroupController.cs" />
     <Compile Include="Common\SaveRemoteFile.cs" />
     <Compile Include="Common\Current.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\OData\CategoryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\BoardController.cs" />
-    <Compile Include="Controllers\ArticleController.cs" />
-    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\OData\UserController.cs" />
+    <Compile Include="Controllers\OData\BoardController.cs" />
+    <Compile Include="Controllers\OData\ArticleController.cs" />
+    <Compile Include="Controllers\OData\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LabsController.cs" />
     <Compile Include="Common\EntityController.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Common\HttpContextLifetimeManager.cs" />
@@ -1128,6 +1127,7 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
     <Content Include="favicon.ico" />
     <Content Include="partials\about.html" />
+    <Content Include="partials\Article\archives.html" />
     <Content Include="partials\Article\detail.html" />
     <Content Include="partials\Article\list.html" />
     <Content Include="partials\message.html" />

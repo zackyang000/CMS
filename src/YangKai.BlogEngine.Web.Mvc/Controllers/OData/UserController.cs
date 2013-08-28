@@ -4,7 +4,7 @@ using System.Web.Http.OData;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
 
-namespace YangKai.BlogEngine.Web.Mvc.Controllers
+namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
     public class UserController : EntityController<User>
     {
@@ -15,12 +15,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             var password = (string)parameters["Password"];
             var isRemember = (bool)parameters["IsRemember"];
 
-            var isExist = Proxy.Repository<User>().Exist(p => p.LoginName == username && p.Password == password);
+            var data = Proxy.Repository<User>().Get(p => p.LoginName == username && p.Password == password);
 
-            if (isExist)
+            if (!string.IsNullOrEmpty(data.UserName))
             {
-                var data = Proxy.Repository<User>().Get(p => p.LoginName == username);
-                Current.User = new WebUser()
+                Current.User = new WebUser
                 {
                     UserName = data.UserName,
                     LoginName = data.LoginName,

@@ -27,7 +27,6 @@ ArticleDetailController = [
         $orderby: 'CreateDate'
       });
       if ($scope.item.Tags.length) {
-        debugger;
         relatedFilter = '';
         _ref = $scope.item.Tags;
         for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {

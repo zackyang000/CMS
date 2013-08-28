@@ -25,7 +25,6 @@
       $orderby:'CreateDate'
     #相关文章
     if $scope.item.Tags.length
-      debugger
       relatedFilter=''
       for tag,i in $scope.item.Tags
         relatedFilter+=" or Tags/any(tag#{i}:tag#{i}/Name eq '#{tag.Name}')"

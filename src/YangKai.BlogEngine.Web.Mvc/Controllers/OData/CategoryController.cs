@@ -2,7 +2,7 @@
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
 
-namespace YangKai.BlogEngine.Web.Mvc.Controllers
+namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
     public class CategoryController : EntityController<Category>
     {

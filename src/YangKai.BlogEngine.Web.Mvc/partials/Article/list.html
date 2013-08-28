@@ -1,14 +1,14 @@
 ﻿<div id="posts">
-    <div class="loadingbox" ng-show="loading">正在加载...</div>
+    <div class="loadingbox" ng-show="loading">loading...</div>
     <ul class="breadcrumb">
         <li><a href="/#!/">Home</a></li>
         <li ng-show="channel && group"><a href="/#!/list/{{channel}}">{{channel}}</a></li>
         <li ng-show="channel && !group">{{channel}}</li>
         <li ng-show="group && !(!category && !tag && !keyword)"><a href="/#!/list/{{channel}}/{{group}}">{{group}}</a></li>
         <li class="active" ng-show="group && (!category && !tag && !keyword)">{{group}}</li>
-        <li class="active" ng-show="category">‘{{category}}’ 分类的存档</li>
-        <li class="active" ng-show="tag">文章标签 ‘{{tag}}’</li>
-        <li class="active" ng-show="keyword">关键字 ‘{{keyword}}’</li>
+        <li class="active" ng-show="category">category of ‘{{category}}’</li>
+        <li class="active" ng-show="tag">tag of ‘{{tag}}’</li>
+        <li class="active" ng-show="keyword">keyword: ‘{{keyword}}’</li>
     </ul>
     <ul class="list-unstyled">
         <li ng-repeat="item in list.value">
@@ -27,23 +27,31 @@
                         <span class="icon-folder-open categories">
                             <span ng-repeat="category in item.Categorys">
                                 <span ng-hide="$first">,</span>
-                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
+                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="View all articles of {{category.Name}}">{{category.Name}}</a>
                             </span>
                         </span>
                         <span class="icon-tags tags" ng-show="item.Tags.length>0">
                             <span ng-repeat="tag in item.Tags">
                                 <span ng-hide="$first">,</span>
-                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
+                                <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="View all articles of {{tag.Name}}">{{tag.Name}}</a>
                             </span>
                         </span>
-                        <span class="icon-user"></span>
-                        <span>{{item.PubAdmin.UserName}}</span>
-                        <span class="icon-eye-open"></span>
-                        <span>{{item.ViewCount}} 次点击</span>
-                        <span class="icon-comments"></span>
-                        <span>{{item.ReplyCount}} 条评论</span>
-                        <span ng-show="isAdmin" class="icon-pencil"></span>
-                        <span ng-show="isAdmin"><a target="_blank" ng-href="/admin/postmanage/edit/{{item.Url}}">编辑</a></span>
+                        <span>
+                            <i class="icon-user"></i>
+                            {{item.PubAdmin.UserName}}
+                        </span>
+                        <span>
+                            <i class="icon-eye-open"></i>
+                            {{item.ViewCount}} Views
+                        </span>
+                        <span>
+                            <i class="icon-comments"></i>
+                            {{item.ReplyCount}} Comments
+                        </span>
+                        <span ng-show="User.IsAdmin">
+                            <i class="icon-pencil"></i>
+                            <a target="_blank" ng-href="/admin/#!/article('{{item.PostId}}')">Edit</a>
+                        </span>
                     </div>
                 </header>
                 <section>
@@ -62,7 +70,7 @@
             </article>
         </li>
         <li ng-show="list.value.length==0">
-            没有找到文章.
+            No articles.
         </li>
     </ul>
     <div odata-pager="list" class="text-center"></div>

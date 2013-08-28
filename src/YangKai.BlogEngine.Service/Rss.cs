@@ -10,20 +10,20 @@ namespace YangKai.BlogEngine.Service
 {
     public class Rss
     {
-        private readonly Repository<Post, Guid> _postRepository = InstanceLocator.Current.GetInstance<Repository<Post, Guid>>();
-        private readonly Repository<Comment, Guid> _commentRepository = InstanceLocator.Current.GetInstance<Repository<Comment, Guid>>();
+        private readonly Repository<Post, Guid> _postRepository = Proxy.Repository<Post>();
+        private readonly Repository<Comment, Guid> _commentRepository = Proxy.Repository<Comment>();
 
         #region  Public Static Methods
 
         public static void BuildPostRss()
         {
-            var rss = InstanceLocator.Current.GetInstance<Rss>();
+            var rss = new Rss();
             rss.BuildPost();
         }
 
         public static void BuildCommentRss()
         {
-            var rss = InstanceLocator.Current.GetInstance<Rss>();
+            var rss = new Rss();
             rss.BuildComment();
         }
 
@@ -114,6 +114,7 @@ namespace YangKai.BlogEngine.Service
 
         private RssItem BuildCommentRssItem(Comment item)
         {
+            item.Post = _postRepository.Get(item.PostId);
             var link = string.Format("{0}/#!/post/{1}", Config.URL.Domain, item.Post.Url);
 
             var rssItem = new RssItem

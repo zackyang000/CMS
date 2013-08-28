@@ -1,11 +1,9 @@
 ﻿using System.Linq;
-using System.Net;
 using System.Web.Http;
 using System.Web.Http.OData.Query;
 using YangKai.BlogEngine.Domain;
-using YangKai.BlogEngine.Web.Mvc.Filters;
 
-namespace YangKai.BlogEngine.Web.Mvc.Controllers
+namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
     public class BoardController : EntityController<Board>
     {
@@ -19,7 +17,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         {
             if (!Current.IsAdmin)
             {
-                Current.User = new WebUser()
+                Current.User = new WebUser
                 {
                     UserName = entity.Author,
                     Email = entity.Email,
