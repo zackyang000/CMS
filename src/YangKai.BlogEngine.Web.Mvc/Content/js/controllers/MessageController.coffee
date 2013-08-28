@@ -1,6 +1,6 @@
 ﻿MessageController=["$scope","progressbar","Message", 
 ($scope,progressbar,Message) ->
-  $scope.$parent.title='留言板'
+  $scope.$parent.title='Message Boards'
   $scope.$parent.showBanner=false
   $scope.loading=true
   $scope.entity= {}

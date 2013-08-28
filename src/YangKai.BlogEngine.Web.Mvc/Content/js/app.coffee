@@ -28,6 +28,9 @@
   .when("/post/:url",
     templateUrl: "/partials/Article/detail.html"
     controller: ArticleDetailController)
+  .when("/archives",
+    templateUrl: "/partials/Article/archives.html"
+    controller: ArchivesController)
   .when("/board",
     templateUrl: "/partials/message.html"
     controller: MessageController)

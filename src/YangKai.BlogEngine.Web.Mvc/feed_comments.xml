@@ -6,525 +6,462 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by YangKai , 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Wed, 28 Aug 2013 14:41:28 GMT</pubDate>
-    <lastBuildDate>Wed, 28 Aug 2013 14:41:28 GMT</lastBuildDate>
+    <pubDate>Wed, 28 Aug 2013 19:01:20 GMT</pubDate>
+    <lastBuildDate>Wed, 28 Aug 2013 19:01:20 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
     <item>
-      <title>777</title>
-      <description>777&lt;br /&gt;发表于:77</description>
-      <link>http://www.woshinidezhu.com/#!/post/77</link>
+      <title>36</title>
+      <description>36&lt;br /&gt;发表于:如何成为强大的程序员？</description>
+      <link>http://www.woshinidezhu.com/#!/post/how-to-be-a-great-programmer</link>
+      <category>技术 - 程序人生</category>
+      <author>我是你的猪</author>
+      <guid>8ada5e55-1887-4a95-8f38-d2427d425d65</guid>
+      <pubDate>Wed, 28 Aug 2013 19:01:20 GMT</pubDate>
+    </item>
+    <item>
+      <title>123</title>
+      <description>123&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>21e11522-27e9-4634-80ac-7013b32b9627</guid>
+      <pubDate>Mon, 26 Aug 2013 14:15:18 GMT</pubDate>
+    </item>
+    <item>
+      <title>123</title>
+      <description>123&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>45b9dac3-c095-4c30-a0a4-ea8c1f957cbd</guid>
+      <pubDate>Mon, 26 Aug 2013 14:15:15 GMT</pubDate>
+    </item>
+    <item>
+      <title>00</title>
+      <description>00&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>1ee5cd0c-e5ec-4654-9a8f-2a101e6640fa</guid>
+      <pubDate>Mon, 26 Aug 2013 14:15:01 GMT</pubDate>
+    </item>
+    <item>
+      <title>22</title>
+      <description>22&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>c2247792-52c5-4a47-bbd5-268e4b3f0fbe</guid>
+      <pubDate>Mon, 26 Aug 2013 14:14:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>222</title>
+      <description>222&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>b25f56c9-08ac-4785-aca6-20c50b7112cd</guid>
+      <pubDate>Mon, 26 Aug 2013 14:14:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>11</title>
+      <description>11&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>10113573-7b27-4c76-960c-c2822dfd9f20</guid>
+      <pubDate>Mon, 26 Aug 2013 14:14:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>3</title>
+      <description>3&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>d31d5a1d-0c03-49d1-8435-8818071baaf8</guid>
+      <pubDate>Mon, 26 Aug 2013 14:13:45 GMT</pubDate>
+    </item>
+    <item>
+      <title>123</title>
+      <description>123&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>b7253afd-3a4f-41c5-b143-fad02049da4f</guid>
+      <pubDate>Mon, 26 Aug 2013 14:13:14 GMT</pubDate>
+    </item>
+    <item>
+      <title>1321</title>
+      <description>1321&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>d7934f9a-4eed-40d8-8c1a-7d7102549652</guid>
+      <pubDate>Mon, 26 Aug 2013 14:13:07 GMT</pubDate>
+    </item>
+    <item>
+      <title>1</title>
+      <description>1&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>eca65623-debd-44c1-a944-a4f5cdc43d5d</guid>
+      <pubDate>Mon, 26 Aug 2013 14:12:55 GMT</pubDate>
+    </item>
+    <item>
+      <title>123</title>
+      <description>123&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>0e389d63-f8c1-4a41-9966-912bd7b37fc3</guid>
+      <pubDate>Mon, 26 Aug 2013 14:12:52 GMT</pubDate>
+    </item>
+    <item>
+      <title>123</title>
+      <description>123&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>9bbea22d-e0ed-459e-b061-c414a85316a7</guid>
+      <pubDate>Mon, 26 Aug 2013 14:12:49 GMT</pubDate>
+    </item>
+    <item>
+      <title>4</title>
+      <description>4&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>3205ccdc-2447-40e8-8f5e-3d4a6e8dd94f</guid>
+      <pubDate>Mon, 26 Aug 2013 14:10:41 GMT</pubDate>
+    </item>
+    <item>
+      <title>4</title>
+      <description>4&lt;br /&gt;发表于:你是想读书，还是想读完书？</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-you-want-to-read-or-do-you-want-to-read-a-book</link>
+      <category>技术 - 杂类</category>
+      <author>我是你的猪</author>
+      <guid>42b79ffc-9ca6-45f3-b3d1-65174a999ec5</guid>
+      <pubDate>Mon, 26 Aug 2013 14:10:39 GMT</pubDate>
+    </item>
+    <item>
+      <title>888888888</title>
+      <description>888888888&lt;br /&gt;发表于:4444</description>
+      <link>http://www.woshinidezhu.com/#!/post/4444</link>
       <category>技术 - 默认</category>
       <author>我是你的猪</author>
-      <guid>e97c7ae6-61e8-426d-bf42-8ba875071ee1</guid>
-      <pubDate>Wed, 28 Aug 2013 14:41:28 GMT</pubDate>
+      <guid>ada078c5-7faa-4b14-bf5b-bb1053766368</guid>
+      <pubDate>Mon, 26 Aug 2013 14:01:04 GMT</pubDate>
+    </item>
+    <item>
+      <title>888</title>
+      <description>888&lt;br /&gt;发表于:4444</description>
+      <link>http://www.woshinidezhu.com/#!/post/4444</link>
+      <category>技术 - 默认</category>
+      <author>我是你的猪</author>
+      <guid>d502d539-271f-4c77-a7b3-6174311dea24</guid>
+      <pubDate>Mon, 26 Aug 2013 14:01:00 GMT</pubDate>
     </item>
     <item>
       <title>77</title>
-      <description>77&lt;br /&gt;发表于:77</description>
-      <link>http://www.woshinidezhu.com/#!/post/77</link>
+      <description>77&lt;br /&gt;发表于:4444</description>
+      <link>http://www.woshinidezhu.com/#!/post/4444</link>
       <category>技术 - 默认</category>
       <author>我是你的猪</author>
-      <guid>41fcd25e-9bee-4b67-97c0-b13b3801b251</guid>
-      <pubDate>Wed, 28 Aug 2013 14:40:45 GMT</pubDate>
+      <guid>7b212c8c-fb33-419b-8abc-0018ec8f4e0d</guid>
+      <pubDate>Mon, 26 Aug 2013 14:00:57 GMT</pubDate>
+    </item>
+    <item>
+      <title>11</title>
+      <description>11&lt;br /&gt;发表于:4444</description>
+      <link>http://www.woshinidezhu.com/#!/post/4444</link>
+      <category>技术 - 默认</category>
+      <author>我是你的猪</author>
+      <guid>708d221c-04ab-49cd-8a8d-c9f2ab5dc03d</guid>
+      <pubDate>Mon, 26 Aug 2013 13:59:33 GMT</pubDate>
+    </item>
+    <item>
+      <title>333</title>
+      <description>333&lt;br /&gt;发表于:4444</description>
+      <link>http://www.woshinidezhu.com/#!/post/4444</link>
+      <category>技术 - 默认</category>
+      <author>我是你的猪</author>
+      <guid>cebfd3e3-e327-49d4-b34d-79e461ad4145</guid>
+      <pubDate>Mon, 26 Aug 2013 13:59:24 GMT</pubDate>
     </item>
     <item>
       <title>33</title>
-      <description>33&lt;br /&gt;发表于:77</description>
-      <link>http://www.woshinidezhu.com/#!/post/77</link>
+      <description>33&lt;br /&gt;发表于:4444</description>
+      <link>http://www.woshinidezhu.com/#!/post/4444</link>
       <category>技术 - 默认</category>
       <author>我是你的猪</author>
-      <guid>f95df5e3-59d3-43e5-9ff2-f8ed7ee2ea98</guid>
-      <pubDate>Wed, 28 Aug 2013 14:40:21 GMT</pubDate>
-    </item>
-    <item>
-      <title>33</title>
-      <description>33&lt;br /&gt;发表于:77</description>
-      <link>http://www.woshinidezhu.com/#!/post/77</link>
-      <category>技术 - 默认</category>
-      <author>我是你的猪</author>
-      <guid>4fb05610-24f1-4a6f-896d-bc824b8eab26</guid>
-      <pubDate>Wed, 28 Aug 2013 14:38:34 GMT</pubDate>
-    </item>
-    <item>
-      <title>33</title>
-      <description>33&lt;br /&gt;发表于:77</description>
-      <link>http://www.woshinidezhu.com/#!/post/77</link>
-      <category>技术 - 默认</category>
-      <author>我是你的猪</author>
-      <guid>b40d32a7-73b7-4ee1-a93b-d134f5e034ef</guid>
-      <pubDate>Wed, 28 Aug 2013 14:38:09 GMT</pubDate>
-    </item>
-    <item>
-      <title>33</title>
-      <description>33&lt;br /&gt;发表于:77</description>
-      <link>http://www.woshinidezhu.com/#!/post/77</link>
-      <category>技术 - 默认</category>
-      <author>我是你的猪</author>
-      <guid>41034ace-dd0f-4702-85f8-948612c95d23</guid>
-      <pubDate>Wed, 28 Aug 2013 14:37:44 GMT</pubDate>
+      <guid>c0812d74-dbdb-4742-87a8-53985d0f31b6</guid>
+      <pubDate>Mon, 26 Aug 2013 13:53:48 GMT</pubDate>
     </item>
     <item>
       <title>77</title>
-      <description>77&lt;br /&gt;发表于:77</description>
-      <link>http://www.woshinidezhu.com/#!/post/77</link>
+      <description>77&lt;br /&gt;发表于:4444</description>
+      <link>http://www.woshinidezhu.com/#!/post/4444</link>
       <category>技术 - 默认</category>
       <author>我是你的猪</author>
-      <guid>ffc79f3f-2bc8-49f6-be7e-ff3ebf518272</guid>
-      <pubDate>Wed, 28 Aug 2013 14:36:56 GMT</pubDate>
+      <guid>a5dbe165-65e8-4c17-bcb9-83833d83add8</guid>
+      <pubDate>Sun, 25 Aug 2013 11:12:25 GMT</pubDate>
     </item>
     <item>
-      <title>66</title>
-      <description>66&lt;br /&gt;发表于:77</description>
-      <link>http://www.woshinidezhu.com/#!/post/77</link>
+      <title>我朝好无用。。我好无语。。。</title>
+      <description>我朝好无用。。我好无语。。。&lt;br /&gt;发表于:发错药之后美国护士vs中国护士</description>
+      <link>http://www.woshinidezhu.com/#!/post/after-the-wrong-medicine-united-states-nurse-vs-china-nurse</link>
+      <category>文章 - 欢乐</category>
+      <author>子不语</author>
+      <guid>09a2b7a3-ebb2-e111-8bf5-00155d5f0243</guid>
+      <pubDate>Sun, 10 Jun 2012 19:02:44 GMT</pubDate>
+    </item>
+    <item>
+      <title>哥们今晚看了您几篇文章，感触很深，问题结合实际且很实用。祝您身体健康哥们！我一直关注中。</title>
+      <description>哥们今晚看了您几篇文章，感触很深，问题结合实际且很实用。祝您身体健康哥们！我一直关注中。&lt;br /&gt;发表于:带你走进缓存世界</description>
+      <link>http://www.woshinidezhu.com/#!/post/take-you-into-the-world-of-caching</link>
+      <category>技术 - .NET</category>
+      <author>monkey</author>
+      <guid>4a52f83d-db5f-e111-a536-00155d5f0243</guid>
+      <pubDate>Sun, 26 Feb 2012 02:06:26 GMT</pubDate>
+    </item>
+    <item>
+      <title>12</title>
+      <description>12&lt;br /&gt;发表于:To我是你的猪</description>
+      <link>http://www.woshinidezhu.com/#!/post/to-im-a-pig</link>
+      <category>宝宝老婆 - 日记</category>
+      <author>12</author>
+      <guid>54a258cc-79f1-e011-98b8-0025900b8575</guid>
+      <pubDate>Sat, 08 Oct 2011 14:53:27 GMT</pubDate>
+    </item>
+    <item>
+      <title>也不全是做作，感情随着歌曲自然流露。</title>
+      <description>也不全是做作，感情随着歌曲自然流露。&lt;br /&gt;发表于:绝唱 可惜不是你</description>
+      <link>http://www.woshinidezhu.com/#!/post/end-dont-love-you</link>
+      <category>视频 - 给力</category>
+      <author>SuJay</author>
+      <guid>320309a0-95d6-e011-bae0-0025900b8575</guid>
+      <pubDate>Sun, 04 Sep 2011 09:34:13 GMT</pubDate>
+    </item>
+    <item>
+      <title>...</title>
+      <description>...&lt;br /&gt;发表于:关于那个科大寝室的笑话</description>
+      <link>http://www.woshinidezhu.com/#!/post/kedaqinshi-xiaohua</link>
+      <category>文章 - 欢乐</category>
+      <author>1</author>
+      <guid>34b9f9de-37d4-e011-bae0-0025900b8575</guid>
+      <pubDate>Thu, 01 Sep 2011 09:18:02 GMT</pubDate>
+    </item>
+    <item>
+      <title>你长得太秀气了吧！</title>
+      <description>你长得太秀气了吧！&lt;br /&gt;发表于:昨晚和一个普通男性朋友睡在一起，发现男生的自制力真差！</description>
+      <link>http://www.woshinidezhu.com/#!/post/nansheng-zizhili-zhencha</link>
+      <category>文章 - 欢乐</category>
+      <author>靠</author>
+      <guid>7b0defea-5192-e011-b6e5-0025900b8575</guid>
+      <pubDate>Thu, 09 Jun 2011 12:37:24 GMT</pubDate>
+    </item>
+    <item>
+      <title>原已注明转载. 感谢关注.</title>
+      <description>原已注明转载. 感谢关注.&lt;br /&gt;发表于:谈谈对于企业级系统架构的理解</description>
+      <link>http://www.woshinidezhu.com/#!/post/the-enterprise-system-architecture</link>
       <category>技术 - 默认</category>
       <author>我是你的猪</author>
-      <guid>46502038-5ab4-40e5-bf3f-3052f37ce8bf</guid>
-      <pubDate>Wed, 28 Aug 2013 14:36:46 GMT</pubDate>
+      <guid>dc4b768f-2d90-e011-b6e5-0025900b8575</guid>
+      <pubDate>Mon, 06 Jun 2011 19:11:59 GMT</pubDate>
     </item>
     <item>
-      <title>55</title>
-      <description>55&lt;br /&gt;发表于:999999999999</description>
-      <link>http://www.woshinidezhu.com/#!/post/9999</link>
-      <category>技术 - ASP.NET</category>
-      <category>技术 - ASP.NET MVC</category>
-      <category>技术 - C#</category>
-      <category>技术 - Entity Framework</category>
-      <category>技术 - Web 2.0</category>
-      <category>技术 - 编程思想</category>
-      <category>技术 - SEO</category>
-      <category>技术 - 用户体验</category>
-      <category>技术 - SQL Server</category>
-      <category>技术 - .NET</category>
-      <category>技术 - 程序人生</category>
+      <title>貌似在博客园见到过...</title>
+      <description>貌似在博客园见到过...&lt;br /&gt;发表于:谈谈对于企业级系统架构的理解</description>
+      <link>http://www.woshinidezhu.com/#!/post/the-enterprise-system-architecture</link>
+      <category>技术 - 默认</category>
+      <author>希望</author>
+      <guid>4ac522aa-1f90-e011-b6e5-0025900b8575</guid>
+      <pubDate>Mon, 06 Jun 2011 17:32:30 GMT</pubDate>
+    </item>
+    <item>
+      <title>征婚</title>
+      <description>征婚&lt;br /&gt;发表于:艾伦回忆盖茨十大疯狂之举：劫持登机口</description>
+      <link>http://www.woshinidezhu.com/#!/post/gates-held-the-top-ten-crazy</link>
       <category>技术 - 杂类</category>
-      <category>技术 - CSS</category>
-      <category>技术 - TDD</category>
-      <author>123</author>
-      <guid>19e71705-37ba-4f37-84ed-0c6f4014b6ac</guid>
-      <pubDate>Sat, 24 Aug 2013 17:36:31 GMT</pubDate>
+      <author>芙蓉</author>
+      <guid>2e7e66f2-de70-e011-903c-0025900b8575</guid>
+      <pubDate>Wed, 27 Apr 2011 23:00:41 GMT</pubDate>
     </item>
     <item>
-      <title>44444</title>
-      <description>44444&lt;br /&gt;发表于:999999999999</description>
-      <link>http://www.woshinidezhu.com/#!/post/9999</link>
-      <category>技术 - ASP.NET</category>
-      <category>技术 - ASP.NET MVC</category>
-      <category>技术 - C#</category>
-      <category>技术 - Entity Framework</category>
-      <category>技术 - Web 2.0</category>
-      <category>技术 - 编程思想</category>
-      <category>技术 - SEO</category>
-      <category>技术 - 用户体验</category>
-      <category>技术 - SQL Server</category>
-      <category>技术 - .NET</category>
-      <category>技术 - 程序人生</category>
-      <category>技术 - 杂类</category>
-      <category>技术 - CSS</category>
-      <category>技术 - TDD</category>
-      <author>123</author>
-      <guid>12651171-54e2-4257-8fc5-7f9ffa05d20c</guid>
-      <pubDate>Sat, 24 Aug 2013 17:34:43 GMT</pubDate>
-    </item>
-    <item>
-      <title>3223</title>
-      <description>3223&lt;br /&gt;发表于:999999999999</description>
-      <link>http://www.woshinidezhu.com/#!/post/9999</link>
-      <category>技术 - ASP.NET</category>
-      <category>技术 - ASP.NET MVC</category>
-      <category>技术 - C#</category>
-      <category>技术 - Entity Framework</category>
-      <category>技术 - Web 2.0</category>
-      <category>技术 - 编程思想</category>
-      <category>技术 - SEO</category>
-      <category>技术 - 用户体验</category>
-      <category>技术 - SQL Server</category>
-      <category>技术 - .NET</category>
-      <category>技术 - 程序人生</category>
-      <category>技术 - 杂类</category>
-      <category>技术 - CSS</category>
-      <category>技术 - TDD</category>
-      <author>123</author>
-      <guid>1662b55b-9a71-4ea6-b371-0b349ed9a68d</guid>
-      <pubDate>Sat, 24 Aug 2013 17:34:29 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:999999999999</description>
-      <link>http://www.woshinidezhu.com/#!/post/9999</link>
-      <category>技术 - ASP.NET</category>
-      <category>技术 - ASP.NET MVC</category>
-      <category>技术 - C#</category>
-      <category>技术 - Entity Framework</category>
-      <category>技术 - Web 2.0</category>
-      <category>技术 - 编程思想</category>
-      <category>技术 - SEO</category>
-      <category>技术 - 用户体验</category>
-      <category>技术 - SQL Server</category>
-      <category>技术 - .NET</category>
-      <category>技术 - 程序人生</category>
-      <category>技术 - 杂类</category>
-      <category>技术 - CSS</category>
-      <category>技术 - TDD</category>
-      <author>123</author>
-      <guid>aaa74d69-0597-48f9-88ff-9354d3c876cc</guid>
-      <pubDate>Sat, 24 Aug 2013 17:34:12 GMT</pubDate>
-    </item>
-    <item>
-      <title>00000</title>
-      <description>00000&lt;br /&gt;发表于:999999999999</description>
-      <link>http://www.woshinidezhu.com/#!/post/9999</link>
-      <category>技术 - ASP.NET</category>
-      <category>技术 - ASP.NET MVC</category>
-      <category>技术 - C#</category>
-      <category>技术 - Entity Framework</category>
-      <category>技术 - Web 2.0</category>
-      <category>技术 - 编程思想</category>
-      <category>技术 - SEO</category>
-      <category>技术 - 用户体验</category>
-      <category>技术 - SQL Server</category>
-      <category>技术 - .NET</category>
-      <category>技术 - 程序人生</category>
-      <category>技术 - 杂类</category>
-      <category>技术 - CSS</category>
-      <category>技术 - TDD</category>
-      <author>123</author>
-      <guid>e7d19b1b-4b0d-4096-9ae0-287489ff3670</guid>
-      <pubDate>Sat, 24 Aug 2013 17:16:42 GMT</pubDate>
-    </item>
-    <item>
-      <title>这是一条用于测试的评论.(2013年6月11日 上午9:53:05)</title>
-      <description>这是一条用于测试的评论.(2013年6月11日 上午9:53:05)&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>Tester</author>
-      <guid>164d549a-0ed3-464c-bf52-e674bdc8dcab</guid>
-      <pubDate>Tue, 11 Jun 2013 09:53:08 GMT</pubDate>
-    </item>
-    <item>
-      <title>这是一条用于测试的评论.(2013年6月11日 上午9:52:29)</title>
-      <description>这是一条用于测试的评论.(2013年6月11日 上午9:52:29)&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>Tester</author>
-      <guid>895bf5f9-470e-4ee7-a168-ed2f15dd7c2a</guid>
-      <pubDate>Tue, 11 Jun 2013 09:52:39 GMT</pubDate>
-    </item>
-    <item>
-      <title>这是一条用于测试的评论.(2013年6月4日 下午5:06:45)</title>
-      <description>这是一条用于测试的评论.(2013年6月4日 下午5:06:45)&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>Tester</author>
-      <guid>d7fa80e1-3d95-48f3-a460-587c19645201</guid>
-      <pubDate>Tue, 04 Jun 2013 17:06:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>这是一条用于测试的评论.(2013年6月4日 下午5:04:39)</title>
-      <description>这是一条用于测试的评论.(2013年6月4日 下午5:04:39)&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>Tester</author>
-      <guid>e5797524-723b-4090-a7da-a5084ca2dd5a</guid>
-      <pubDate>Tue, 04 Jun 2013 17:04:41 GMT</pubDate>
-    </item>
-    <item>
-      <title>这是一条用于测试的评论.(1370336642306)</title>
-      <description>这是一条用于测试的评论.(1370336642306)&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>Tester</author>
-      <guid>591fdf78-7e97-4840-a76d-1614d075711f</guid>
-      <pubDate>Tue, 04 Jun 2013 17:04:05 GMT</pubDate>
-    </item>
-    <item>
-      <title>这是一条用于测试的评论 1370336297083</title>
-      <description>这是一条用于测试的评论 1370336297083&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>Tester</author>
-      <guid>f93a1a43-f2b1-4a31-a53f-7b90ba56c047</guid>
-      <pubDate>Tue, 04 Jun 2013 16:58:42 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>d238af34-9d82-4fe2-8e3d-6caa00466532</guid>
-      <pubDate>Tue, 04 Jun 2013 16:31:49 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>73faf782-ad2f-4d84-b1e1-aff998a724c0</guid>
-      <pubDate>Tue, 04 Jun 2013 16:29:51 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>9fce293c-3484-4894-aa08-df63fd4b0c16</guid>
-      <pubDate>Tue, 04 Jun 2013 16:29:30 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>5ce515a1-68af-4405-a9db-ed90b9c93ad6</guid>
-      <pubDate>Tue, 04 Jun 2013 16:29:13 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>5ed961bc-c44b-4bd8-a078-12e81bb476a7</guid>
-      <pubDate>Tue, 04 Jun 2013 16:29:02 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>f4afef78-f622-484c-b845-08bf21c829d4</guid>
-      <pubDate>Tue, 04 Jun 2013 16:28:36 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>fbede5b9-c852-4f7f-a9ed-ce2c3dccc393</guid>
-      <pubDate>Tue, 04 Jun 2013 16:28:11 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>96927db8-160e-4f6e-aa62-8fe1d296ba3b</guid>
-      <pubDate>Tue, 04 Jun 2013 16:27:37 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>45020c1b-2c7f-40ff-8b28-5a9a21d289aa</guid>
-      <pubDate>Tue, 04 Jun 2013 16:17:50 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>46d84030-ccca-4345-bff4-78d29d24005d</guid>
-      <pubDate>Tue, 04 Jun 2013 16:15:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>2d765110-837e-4161-8bb5-001d3ffc5fe4</guid>
-      <pubDate>Tue, 04 Jun 2013 16:10:52 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>500044be-f401-4103-8520-9e72e9070fd4</guid>
-      <pubDate>Tue, 04 Jun 2013 16:09:21 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>a5367e11-a5cd-4893-b2e7-cf10c4416719</guid>
-      <pubDate>Tue, 04 Jun 2013 16:08:52 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>6cdcf160-02c8-4ee8-9dfb-65dc3029eabf</guid>
-      <pubDate>Tue, 04 Jun 2013 16:08:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>c678f6cc-fac9-4568-8013-73bbcb05d2e0</guid>
-      <pubDate>Tue, 04 Jun 2013 15:52:57 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>494457a5-0a96-4d0c-b608-a20d7855d6d8</guid>
-      <pubDate>Tue, 04 Jun 2013 15:52:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>38433663-0e21-464b-a070-9084fc94d420</guid>
-      <pubDate>Tue, 04 Jun 2013 15:50:31 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>51605067-7383-47c8-bfcc-d728d2975a32</guid>
-      <pubDate>Tue, 04 Jun 2013 15:50:19 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>6f7e0265-61e9-4229-9b7b-6156b6d5898b</guid>
-      <pubDate>Tue, 04 Jun 2013 15:49:41 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>6ec55c62-6ece-4e80-9f64-a2e2254ad4f3</guid>
-      <pubDate>Tue, 04 Jun 2013 15:49:12 GMT</pubDate>
-    </item>
-    <item>
-      <title>333</title>
-      <description>333&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>entity.Author</author>
-      <guid>0ac60314-55d6-4b7e-97f4-c131e86645ba</guid>
-      <pubDate>Tue, 04 Jun 2013 15:44:45 GMT</pubDate>
-    </item>
-    <item>
-      <title>567</title>
-      <description>567&lt;br /&gt;发表于:22222222222222</description>
-      <link>http://www.woshinidezhu.com/#!/post/22222222222222</link>
-      <category>视频 - 默认</category>
-      <author>我是你的猪</author>
-      <guid>d2a32a93-e5e7-40b9-ba0e-724e056edd31</guid>
-      <pubDate>Sat, 01 Jun 2013 17:10:09 GMT</pubDate>
-    </item>
-    <item>
-      <title>11111111</title>
-      <description>11111111&lt;br /&gt;发表于:撒旦撒</description>
-      <link>http://www.woshinidezhu.com/#!/post/satan-sub</link>
+      <title>还是大团圆结局。。。中文字幕更给力</title>
+      <description>还是大团圆结局。。。中文字幕更给力&lt;br /&gt;发表于:【神曲】WRONG HOLE</description>
+      <link>http://www.woshinidezhu.com/#!/post/wrong-hole</link>
       <category>视频 - 早期数据</category>
-      <author>1111111</author>
-      <guid>259bbc3d-a340-4416-8db2-3ac9451fb3d6</guid>
-      <pubDate>Sat, 01 Jun 2013 16:50:40 GMT</pubDate>
+      <author>a</author>
+      <guid>705e14d8-7263-e011-8a7d-0025900b8575</guid>
+      <pubDate>Sun, 10 Apr 2011 21:03:52 GMT</pubDate>
     </item>
     <item>
-      <title>232323</title>
-      <description>232323&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>我是你的猪</author>
-      <guid>14d7ffff-6718-478a-ae82-2016ed100d52</guid>
-      <pubDate>Sat, 01 Jun 2013 14:12:31 GMT</pubDate>
+      <title>........</title>
+      <description>........&lt;br /&gt;发表于:YD的印度歌曲</description>
+      <link>http://www.woshinidezhu.com/#!/post/YD-yindu-gequ</link>
+      <category>视频 - 早期数据</category>
+      <author>a</author>
+      <guid>66ac8d12-7163-e011-8a7d-0025900b8575</guid>
+      <pubDate>Sun, 10 Apr 2011 20:51:12 GMT</pubDate>
     </item>
     <item>
-      <title>232</title>
-      <description>232&lt;br /&gt;发表于:Asp.net Mvc 2向Mvc 3升级</description>
-      <link>http://www.woshinidezhu.com/#!/post/asp-net-mvc2-to-mvc3-rc</link>
-      <category>原创地 - 默认</category>
-      <author>1323</author>
-      <guid>cc94a17e-da0b-4890-8f13-4cd7b0d185f7</guid>
-      <pubDate>Sat, 01 Jun 2013 14:12:08 GMT</pubDate>
+      <title>......</title>
+      <description>......&lt;br /&gt;发表于:同志们纷纷表示这是中国最好的科幻片</description>
+      <link>http://www.woshinidezhu.com/#!/post/zhongguo-kehuanpian</link>
+      <category>视频 - 早期数据</category>
+      <author>a</author>
+      <guid>ae6c369e-7063-e011-8a7d-0025900b8575</guid>
+      <pubDate>Sun, 10 Apr 2011 20:47:56 GMT</pubDate>
     </item>
     <item>
-      <title>232323</title>
-      <description>232323&lt;br /&gt;发表于:配置SVN编辑日志功能</description>
-      <link>http://www.woshinidezhu.com/#!/post/svn-pre-revprop-change-hook</link>
-      <category>原创地 - 默认</category>
-      <author>我是你的猪</author>
-      <guid>b190746b-59c2-45df-b817-59e9c8fd349c</guid>
-      <pubDate>Sat, 01 Jun 2013 14:02:13 GMT</pubDate>
+      <title>太长了，先赞一个</title>
+      <description>太长了，先赞一个&lt;br /&gt;发表于:80后的经典回忆[90后群众纷纷表示也是自己的回忆]</description>
+      <link>http://www.woshinidezhu.com/#!/post/80-jingdian-huiyi</link>
+      <category>视频 - 早期数据</category>
+      <author>a</author>
+      <guid>48d72304-6e63-e011-8a7d-0025900b8575</guid>
+      <pubDate>Sun, 10 Apr 2011 20:29:19 GMT</pubDate>
     </item>
     <item>
-      <title>23232</title>
-      <description>23232&lt;br /&gt;发表于:配置SVN编辑日志功能</description>
-      <link>http://www.woshinidezhu.com/#!/post/svn-pre-revprop-change-hook</link>
-      <category>原创地 - 默认</category>
-      <author>我是你的猪</author>
-      <guid>3977751c-49ec-4c33-8078-ef0286fab075</guid>
-      <pubDate>Sat, 01 Jun 2013 14:02:09 GMT</pubDate>
+      <title>haha</title>
+      <description>haha&lt;br /&gt;发表于:只有强奸犯才能听懂的笑话</description>
+      <link>http://www.woshinidezhu.com/#!/post/qiangjianfan-xiaohua</link>
+      <category>视频 - 早期数据</category>
+      <author>a</author>
+      <guid>10dc2a2a-6a63-e011-8a7d-0025900b8575</guid>
+      <pubDate>Sun, 10 Apr 2011 20:01:45 GMT</pubDate>
     </item>
     <item>
-      <title>232323</title>
-      <description>232323&lt;br /&gt;发表于:对架构的思考</description>
-      <link>http://www.woshinidezhu.com/#!/post/structure-thinking</link>
-      <category>技术 - 编程思想</category>
-      <author>我是你的猪</author>
-      <guid>6ef15a78-6c45-4f15-8f98-23269d718df3</guid>
-      <pubDate>Sat, 01 Jun 2013 13:56:43 GMT</pubDate>
+      <title>无语</title>
+      <description>无语&lt;br /&gt;发表于:飞起来了!!!</description>
+      <link>http://www.woshinidezhu.com/#!/post/feiqilaile</link>
+      <category>视频 - 给力</category>
+      <author>a</author>
+      <guid>32c9ad05-5c63-e011-8a7d-0025900b8575</guid>
+      <pubDate>Sun, 10 Apr 2011 18:20:30 GMT</pubDate>
     </item>
     <item>
-      <title>2332</title>
-      <description>2332&lt;br /&gt;发表于:对架构的思考</description>
-      <link>http://www.woshinidezhu.com/#!/post/structure-thinking</link>
-      <category>技术 - 编程思想</category>
-      <author>我是你的猪</author>
-      <guid>d7b02b61-17bf-4c18-80d2-729740f5bd20</guid>
-      <pubDate>Sat, 01 Jun 2013 13:55:29 GMT</pubDate>
+      <title>有才</title>
+      <description>有才&lt;br /&gt;发表于:外国朋友听周杰伦歌曲的后果！</description>
+      <link>http://www.woshinidezhu.com/#!/post/guowai-ting-jay</link>
+      <category>视频 - 欢乐</category>
+      <author>a</author>
+      <guid>7e050168-5a63-e011-8a7d-0025900b8575</guid>
+      <pubDate>Sun, 10 Apr 2011 18:08:56 GMT</pubDate>
     </item>
     <item>
-      <title>323232</title>
-      <description>323232&lt;br /&gt;发表于:纯忽悠程序员的开发要求：开发语言不重要，重要的是思想！</description>
-      <link>http://www.woshinidezhu.com/#!/post/the-most-import-is-think</link>
-      <category>技术 - 编程思想</category>
-      <category>技术 - 程序人生</category>
-      <author>我是你的猪</author>
-      <guid>b53a99af-d4b5-4322-9ac9-55a6b27ea7ca</guid>
-      <pubDate>Sat, 01 Jun 2013 13:55:15 GMT</pubDate>
+      <title>我去</title>
+      <description>我去&lt;br /&gt;发表于:强悍</description>
+      <link>http://www.woshinidezhu.com/#!/post/qianghan</link>
+      <category>视频 - 重口味</category>
+      <author>a</author>
+      <guid>ea01a085-5363-e011-8a7d-0025900b8575</guid>
+      <pubDate>Sun, 10 Apr 2011 17:19:40 GMT</pubDate>
     </item>
     <item>
-      <title>34343</title>
-      <description>34343&lt;br /&gt;发表于:技术帝出没：对做梦推的强力回复们</description>
-      <link>http://www.woshinidezhu.com/#!/post/on-twitter-dream</link>
-      <category>技术 - 程序人生</category>
-      <author>我是你的猪</author>
-      <guid>74b35e0c-1498-4bed-af67-7d4013cc0a50</guid>
-      <pubDate>Sat, 01 Jun 2013 13:53:16 GMT</pubDate>
+      <title>哈哈哈   我喜欢这个视频啊！</title>
+      <description>哈哈哈   我喜欢这个视频啊！&lt;br /&gt;发表于:外国朋友听周杰伦歌曲的后果！</description>
+      <link>http://www.woshinidezhu.com/#!/post/guowai-ting-jay</link>
+      <category>视频 - 欢乐</category>
+      <author>h41234</author>
+      <guid>66243d96-d553-e011-8a7d-0025900b8575</guid>
+      <pubDate>Tue, 22 Mar 2011 00:10:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>支持一下.</title>
+      <description>支持一下.&lt;br /&gt;发表于:看来以后玩游戏还是不要坐一起.</description>
+      <link>http://www.woshinidezhu.com/#!/post/do-not-sit-together-to-play-games</link>
+      <category>视频 - 给力</category>
+      <author>D</author>
+      <guid>53b781ed-0068-4898-a2ad-227f547d41aa</guid>
+      <pubDate>Sat, 12 Feb 2011 16:59:19 GMT</pubDate>
+    </item>
+    <item>
+      <title>NB</title>
+      <description>NB&lt;br /&gt;发表于:Why would you do that</description>
+      <link>http://www.woshinidezhu.com/#!/post/Why-would-you-do-that</link>
+      <category>视频 - 欢乐</category>
+      <author>Niu</author>
+      <guid>c2794728-9c58-4bf6-a0df-f5dafff41c09</guid>
+      <pubDate>Thu, 20 Jan 2011 15:04:59 GMT</pubDate>
+    </item>
+    <item>
+      <title>d</title>
+      <description>d&lt;br /&gt;发表于:太祖的身体很好啊</description>
+      <link>http://www.woshinidezhu.com/#!/post/mao-body-nice</link>
+      <category>视频 - 欢乐</category>
+      <author>d</author>
+      <guid>fc8b38f3-fa6d-4fa4-b5e4-9a02baa56340</guid>
+      <pubDate>Thu, 16 Sep 2010 17:38:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>d</title>
+      <description>d&lt;br /&gt;发表于:太祖的身体很好啊</description>
+      <link>http://www.woshinidezhu.com/#!/post/mao-body-nice</link>
+      <category>视频 - 欢乐</category>
+      <author>匿名</author>
+      <guid>97e7ba6a-fb5b-4c99-81cb-cc95bcc3ceb5</guid>
+      <pubDate>Thu, 16 Sep 2010 17:38:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>不错很有娱乐精神。。。。。。</title>
+      <description>不错很有娱乐精神。。。。。。&lt;br /&gt;发表于:搞笑恶搞彩虹糖的梦—三炮山人组之2人世界</description>
+      <link>http://www.woshinidezhu.com/#!/post/caihongtangzhimeng</link>
+      <category>视频 - 重口味</category>
+      <author>匿名</author>
+      <guid>55a3dabf-0db2-df11-99ad-000c29f1398f</guid>
+      <pubDate>Tue, 10 Aug 2010 12:46:23 GMT</pubDate>
+    </item>
+    <item>
+      <title>中午的牛肉面全吐了。。。
+麻烦没胸肌的把衣服穿上。。。</title>
+      <description>中午的牛肉面全吐了。。。
+麻烦没胸肌的把衣服穿上。。。&lt;br /&gt;发表于:搞笑恶搞彩虹糖的梦—三炮山人组之2人世界</description>
+      <link>http://www.woshinidezhu.com/#!/post/caihongtangzhimeng</link>
+      <category>视频 - 重口味</category>
+      <author>匿名</author>
+      <guid>54a3dabf-0db2-df11-99ad-000c29f1398f</guid>
+      <pubDate>Tue, 10 Aug 2010 12:43:24 GMT</pubDate>
+    </item>
+    <item>
+      <title>伤人自尊吧</title>
+      <description>伤人自尊吧&lt;br /&gt;发表于:我被这篇文章的结尾惊呆了</description>
+      <link>http://www.woshinidezhu.com/#!/post/wenzhang-jingdaile</link>
+      <category>文章 - 蛋痛</category>
+      <category>文章 - 欢乐</category>
+      <author>匿名</author>
+      <guid>fca2dabf-0db2-df11-99ad-000c29f1398f</guid>
+      <pubDate>Mon, 09 Aug 2010 22:02:43 GMT</pubDate>
+    </item>
+    <item>
+      <title>回复1楼 (游客)：dede</title>
+      <description>回复1楼 (游客)：dede&lt;br /&gt;发表于:小提琴版超级玛丽</description>
+      <link>http://www.woshinidezhu.com/#!/post/xiaotixing-chaojimali</link>
+      <category>视频 - 早期数据</category>
+      <author>匿名</author>
+      <guid>4ca3dabf-0db2-df11-99ad-000c29f1398f</guid>
+      <pubDate>Tue, 06 Jul 2010 16:02:56 GMT</pubDate>
+    </item>
+    <item>
+      <title>那个是套子   sb</title>
+      <description>那个是套子   sb&lt;br /&gt;发表于:女朋友不让我亲她,还老是叫我吹气球，我该怎么办</description>
+      <link>http://www.woshinidezhu.com/#!/post/nvpengyou-qinta</link>
+      <category>文章 - 欢乐</category>
+      <author>匿名</author>
+      <guid>1aa3dabf-0db2-df11-99ad-000c29f1398f</guid>
+      <pubDate>Mon, 05 Jul 2010 00:18:43 GMT</pubDate>
+    </item>
+    <item>
+      <title>天真的男孩~</title>
+      <description>天真的男孩~&lt;br /&gt;发表于:女朋友不让我亲她,还老是叫我吹气球，我该怎么办</description>
+      <link>http://www.woshinidezhu.com/#!/post/nvpengyou-qinta</link>
+      <category>文章 - 欢乐</category>
+      <author>匿名</author>
+      <guid>19a3dabf-0db2-df11-99ad-000c29f1398f</guid>
+      <pubDate>Tue, 08 Jun 2010 11:16:50 GMT</pubDate>
     </item>
   </channel>
 </rss>
