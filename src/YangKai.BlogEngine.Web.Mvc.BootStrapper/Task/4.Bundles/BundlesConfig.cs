@@ -20,8 +20,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/js/buttons.js",
                 "~/Content/js/md5.js",
                 "~/Content/js/uuid.js",
-                "~/Content/plugin/ckeditor_3.6.1/ckeditor.js",
-                "~/Content/plugin/ckfinder_aspnet_2.0.1/ckfinder.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js",

@@ -36,11 +36,11 @@
                 <li><a ng-href="#!/board">Boards</a></li>
                 <li><a ng-href="#!/about">About</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right" ng-controller="LoginController">
+            <ul class="nav navbar-nav navbar-right">
                 <li>
                     <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="form-control search" placeholder="Search" />
                 </li>
-                <li class="dropdown" ng-show="User.IsAdmin">
+                <li class="dropdown" ng-show="User.IsAdmin" ng-controller="LoginController">
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                         <img ng-src="{{User.Gravatar}}" class="avatar-mini" />
                         &nbsp;<span>{{User.UserName}}</span>
@@ -65,7 +65,7 @@
                         </li>
                     </ul>
                 </li>
-                <li ng-show="!User.IsAdmin">
+                <li ng-show="!User.IsAdmin" ng-controller="LoginController">
                     <a href="JavaScript:void(0)" ng-click="open()">Sgin in</a>
                 </li>
             </ul>

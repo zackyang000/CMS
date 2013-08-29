@@ -23,7 +23,6 @@ LoginController = [
         return $window.location.href = '/admin';
       }, function(error) {
         $scope.user.Password = '';
-        message.error(error.data['odata.error'].innererror.message);
         return $scope.submitting = false;
       });
     };
@@ -59,7 +58,6 @@ LoginDialogController = [
         return $window.location.href = '/';
       }, function(error) {
         $scope.user.Password = '';
-        message.error(error.data['odata.error'].innererror.message);
         return $scope.submitting = false;
       });
     };

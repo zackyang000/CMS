@@ -1,4 +1,4 @@
-﻿myDirectives.directive "odataPager", ($compile)->
+﻿myDirectives.directive "odataPager", ['$compile',($compile)->
   
   (scope, element, attrs) ->
     data=undefined
@@ -20,4 +20,4 @@
       data=value
       return if data==null or data==undefined
       update()
-    
+]

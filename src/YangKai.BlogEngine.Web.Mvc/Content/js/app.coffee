@@ -4,6 +4,7 @@
 'ArticleServices',
 'CommentServices',
 'UserServices',
+'ChannelServices',
 'customDirectives',
 'ngProgress',
 'ui.utils',
@@ -92,10 +93,10 @@ angular.module("app-admin",['formatFilters',
     templateUrl: "/partials/Admin/board/list.html"
     controller: BoardController)
   #home
-  .when("/",
-    templateUrl: "/partials/Admin/index.html"
-    controller: HomeController)
-  .otherwise redirectTo: "/"
+  #.when("/",
+  #  templateUrl: "/partials/Admin/index.html"
+  #  controller: HomeController)
+  .otherwise redirectTo: "/article"
 ]
 
 interceptor = ["$rootScope", "$q", (scope, $q) ->

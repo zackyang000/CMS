@@ -1,6 +1,6 @@
 ﻿var interceptor;
 
-angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'customDirectives', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'ngGrid']).config([
+angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'customDirectives', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'ngGrid']).config([
   "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
     $httpProvider.responseInterceptors.push(interceptor);
     $locationProvider.html5Mode(false).hashPrefix('!');
@@ -64,11 +64,8 @@ angular.module("app-admin", ['formatFilters', 'MessageServices', 'ArticleService
     }).when("/board", {
       templateUrl: "/partials/Admin/board/list.html",
       controller: BoardController
-    }).when("/", {
-      templateUrl: "/partials/Admin/index.html",
-      controller: HomeController
     }).otherwise({
-      redirectTo: "/"
+      redirectTo: "/article"
     });
   }
 ]);

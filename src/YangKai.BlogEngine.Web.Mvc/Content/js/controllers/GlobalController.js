@@ -11,7 +11,7 @@ GlobalController = [
       return $scope.User = data;
     });
     return $scope.search = function() {
-      return $window.location.href = "/#!/search/" + $scope.key;
+      debugger;      return $window.location.href = "/#!/search/" + $scope.key;
     };
   }
 ];

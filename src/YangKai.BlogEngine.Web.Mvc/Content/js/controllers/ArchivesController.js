@@ -1,8 +1,16 @@
 ﻿var ArchivesController;
 
 ArchivesController = [
-  "$scope", "$http", function($scope, $http) {
+  "$scope", "Channel", function($scope, Channel) {
     $scope.$parent.title = 'Archives';
-    return $scope.$parent.showBanner = false;
+    $scope.$parent.showBanner = false;
+    $scope.load = function() {
+      $scope.loading = true;
+      return Channel.archives(function(data) {
+        $scope.list = data;
+        return $scope.loading = false;
+      });
+    };
+    return $scope.load();
   }
 ];

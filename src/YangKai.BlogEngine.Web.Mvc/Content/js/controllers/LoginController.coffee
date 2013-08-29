@@ -20,7 +20,6 @@
         $window.location.href='/admin'
       ,(error)->
         $scope.user.Password=''
-        message.error error.data['odata.error'].innererror.message
         $scope.submitting=false
 
   $scope.signout = ->
@@ -49,6 +48,5 @@ LoginDialogController=["$scope","$window", "dialog","User",($scope,$window, dial
         $window.location.href='/'
       ,(error)->
         $scope.user.Password=''
-        message.error error.data['odata.error'].innererror.message
         $scope.submitting=false
 ]

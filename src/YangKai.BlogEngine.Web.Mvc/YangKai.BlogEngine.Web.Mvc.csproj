@@ -1247,7 +1247,6 @@
     <Content Include="unity.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="_todo\Article\calendar.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\layout-footer.cshtml" />
     <Content Include="Views\Shared\layout-header.cshtml" />

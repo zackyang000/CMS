@@ -15,7 +15,7 @@
 ]
 
 
-myDirectives.directive "dynamicUpload", ($compile)->
+myDirectives.directive "dynamicUpload", ['$compile',($compile)->
   (scope, element, attrs) ->
     update =(value) ->
       element.context.innerHTML="<input type='file' name='file' data-url='fileupload/upload/#{value}' upload />"
@@ -23,10 +23,11 @@ myDirectives.directive "dynamicUpload", ($compile)->
 
     scope.$watch attrs.dynamicUpload, (value) ->
       update('1')
+]
 
 
 angular.module("FileUpload",[])
-.factory "uploadManager", ($rootScope) ->
+.factory "uploadManager", ["$rootScope",($rootScope) ->
   _files = []
   add: (file) ->
     _files.push file
@@ -55,3 +56,4 @@ angular.module("FileUpload",[])
 
   setFileStatus: (data) ->
     $rootScope.$broadcast "fileUploaded", data
+]

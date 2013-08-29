@@ -87,6 +87,9 @@ h6,
 .bg-color-yellow {
   background-color: #ffc40d !important;
 }
+.bg-color-pink {
+  background-color: #c3325f !important;
+}
 ::-moz-selection {
   background: #f2dede;
 }
@@ -329,8 +332,13 @@ article .date div:last-child {
   color: #FFF;
   float: left;
 }
-.bg-color-pink {
-  background-color: #c3325f !important;
+#archives .group > a,
+.group > a:hover {
+  color: #333333;
+}
+#archives ul {
+  padding: 5px;
+  margin-left: 10px;
 }
 .intro h5 {
   margin: 10px 0 10px 0;
