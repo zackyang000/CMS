@@ -43,12 +43,13 @@
 
   $scope.entity= {}
 
-  #TODO 如果Global中用户信息读取比此处慢,将无法绑定用户信息到界面.
-  $scope.entity.Author = $scope.User.UserName
-  $scope.entity.Email = $scope.User.Email
-  $scope.entity.Url = $scope.User.Url
-  $scope.AuthorForDisplay=$scope.User.UserName
-  $scope.editmode=$scope.User.UserName=='' or not $scope.User.UserName?
+  $scope.$watch 'User',->
+    if $scope.User
+      $scope.entity.Author = $scope.User.UserName
+      $scope.entity.Email = $scope.User.Email
+      $scope.entity.Url = $scope.User.Url
+      $scope.AuthorForDisplay=$scope.User.UserName
+      $scope.editmode=$scope.User.UserName=='' or not $scope.User.UserName?
       
   $scope.del = (item) ->
     Comment.del {id:item.CommentId}

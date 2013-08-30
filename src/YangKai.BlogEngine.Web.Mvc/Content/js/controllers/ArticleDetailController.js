@@ -54,11 +54,15 @@ ArticleDetailController = [
       });
     });
     $scope.entity = {};
-    $scope.entity.Author = $scope.User.UserName;
-    $scope.entity.Email = $scope.User.Email;
-    $scope.entity.Url = $scope.User.Url;
-    $scope.AuthorForDisplay = $scope.User.UserName;
-    $scope.editmode = $scope.User.UserName === '' || !($scope.User.UserName != null);
+    $scope.$watch('User', function() {
+      if ($scope.User) {
+        $scope.entity.Author = $scope.User.UserName;
+        $scope.entity.Email = $scope.User.Email;
+        $scope.entity.Url = $scope.User.Url;
+        $scope.AuthorForDisplay = $scope.User.UserName;
+        return $scope.editmode = $scope.User.UserName === '' || !($scope.User.UserName != null);
+      }
+    });
     $scope.del = function(item) {
       return Comment.del({
         id: item.CommentId

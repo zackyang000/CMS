@@ -264,19 +264,19 @@ namespace AtomLab.Utility
         /// </summary>
         /// <remarks>吴剑 2010-11-15</remarks>
         /// <param name="postedFile">原图HttpPostedFile对象</param>
-        /// <param name="fileSaveUrl">保存路径</param>
+        /// <param name="file">保存路径</param>
         /// <param name="maxWidth">最大宽(单位:px)</param>
         /// <param name="maxHeight">最大高(单位:px)</param>
         /// <param name="quality">质量（范围0-100）</param>
-        public static void CutForCustom(System.Web.HttpPostedFile postedFile, string fileSaveUrl, int maxWidth, int maxHeight, int quality)
+        public static void CutForCustom(string file, int maxWidth, int maxHeight, int quality)
         {
             //从文件获取原始图片，并使用流中嵌入的颜色管理信息
-            System.Drawing.Image initImage = System.Drawing.Image.FromStream(postedFile.InputStream, true);
+            System.Drawing.Image initImage = System.Drawing.Image.FromFile(file, true);
 
             //原图宽高均小于模版，不作处理，直接保存
             if (initImage.Width <= maxWidth && initImage.Height <= maxHeight)
             {
-                initImage.Save(fileSaveUrl, System.Drawing.Imaging.ImageFormat.Jpeg);
+                initImage.Save(file, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             else
             {
@@ -295,7 +295,7 @@ namespace AtomLab.Utility
                     templateG.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                     templateG.Clear(Color.White);
                     templateG.DrawImage(initImage, new System.Drawing.Rectangle(0, 0, maxWidth, maxHeight), new System.Drawing.Rectangle(0, 0, initImage.Width, initImage.Height), System.Drawing.GraphicsUnit.Pixel);
-                    templateImage.Save(fileSaveUrl, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    templateImage.Save(file, System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 //原图与模版比例不等，裁剪后缩放
                 else
@@ -374,13 +374,10 @@ namespace AtomLab.Utility
                     ep.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, (long)quality);
 
                     //保存缩略图
-                    templateImage.Save(fileSaveUrl, ici, ep);
-                    //templateImage.Save(fileSaveUrl, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                    //释放资源
+                    initImage.Dispose();
+                    templateImage.Save(file, ici, ep);
                     templateG.Dispose();
                     templateImage.Dispose();
-
                     pickedG.Dispose();
                     pickedImage.Dispose();
                 }

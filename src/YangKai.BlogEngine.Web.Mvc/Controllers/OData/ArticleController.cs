@@ -1,12 +1,20 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Query;
+using AtomLab.Utility;
+using Gma.QrCodeNet.Encoding;
+using Gma.QrCodeNet.Encoding.Windows.Render;
+using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
+using YangKai.BlogEngine.Web.Mvc.Areas.Admin.Common;
+using QrCode = YangKai.BlogEngine.Domain.QrCode;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
@@ -73,9 +81,27 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                         File.Delete(target);
                     }
                     File.Move(source, target);
+                    ImageProcessing.CutForCustom(target, 160, 100, 100);
                     entity.Thumbnail.Url = filename;
                 }
             }
+
+            //添加Post.Qrcode
+            entity.QrCode = new QrCode
+            {
+                Content = entity.Title,
+                Url = entity.Url + ".png"
+            };
+            var gRender = new GraphicsRenderer(new FixedModuleSize(30, QuietZoneModules.Four));
+            var fullUrl = Config.URL.Domain + "/#!/post/" + entity.Url;
+            BitMatrix matrix = new QrEncoder().Encode(entity.QrCode.Content + " | " + fullUrl).Matrix;
+            using (var stream = new FileStream(HttpContext.Current.Server.MapPath("/upload/qrcode/" + entity.QrCode.Url), FileMode.Create))
+            {
+                gRender.WriteToStream(matrix, ImageFormat.Png, stream, new Point(1000, 1000));
+            }
+
+            entity.Content = SaveRemoteFile.SaveContentPic(entity.Content, entity.Url);
+            entity.Description = SaveRemoteFile.SaveContentPic(entity.Description, entity.Url);
 
             entity = Proxy.Repository<Post>().Add(entity);
             Rss.BuildPostRss();
