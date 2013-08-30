@@ -89,6 +89,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             //添加Post.Qrcode
             entity.QrCode = new QrCode
             {
+                QrCodeId = Guid.NewGuid(),
                 Content = entity.Title,
                 Url = entity.Url + ".png"
             };

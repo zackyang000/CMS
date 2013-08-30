@@ -274,11 +274,7 @@ namespace AtomLab.Utility
             System.Drawing.Image initImage = System.Drawing.Image.FromFile(file, true);
 
             //原图宽高均小于模版，不作处理，直接保存
-            if (initImage.Width <= maxWidth && initImage.Height <= maxHeight)
-            {
-                initImage.Save(file, System.Drawing.Imaging.ImageFormat.Jpeg);
-            }
-            else
+            if (initImage.Width > maxWidth || initImage.Height > maxHeight)
             {
                 //模版的宽高比例
                 double templateRate = (double)maxWidth / maxHeight;
