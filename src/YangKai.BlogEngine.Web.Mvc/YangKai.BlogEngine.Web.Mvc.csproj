@@ -192,11 +192,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\buttons.css" />
-    <Content Include="Content\css\jquery.fileupload-ui.css" />
-    <Content Include="Content\css\ng-grid.css" />
-    <Content Include="Content\js\buttons.js" />
-    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\vendor\buttons.css" />
+    <Content Include="Content\css\vendor\jquery.fileupload-ui.css" />
+    <Content Include="Content\css\vendor\ng-grid.css" />
+    <Content Include="Content\js\vendor\buttons.js" />
+    <Content Include="Content\css\vendor\font-awesome.css" />
     <Content Include="Content\css\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -307,9 +307,9 @@
     <Content Include="Content\js\directives\ngProgress.js" />
     <Content Include="Content\js\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
     <Content Include="Content\js\directives\ui-utils.js" />
-    <Content Include="Content\js\jquery-ui-1.10.3.js" />
-    <Content Include="Content\js\jquery.fileupload.js" />
-    <Content Include="Content\js\md5.js" />
+    <Content Include="Content\js\vendor\jquery-ui-1.10.3.js" />
+    <Content Include="Content\js\vendor\jquery.fileupload.js" />
+    <Content Include="Content\js\vendor\md5.js" />
     <Content Include="Content\js\services\ArticleServices.js">
       <DependentUpon>ArticleServices.coffee</DependentUpon>
     </Content>
@@ -346,7 +346,7 @@
     <Content Include="Content\js\services\UserServices.min.js">
       <DependentUpon>UserServices.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\uuid.js" />
+    <Content Include="Content\js\vendor\uuid.js" />
     <Content Include="data\words.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -379,7 +379,7 @@
     <Content Include="partials\Admin\index.html" />
     <Content Include="partials\Admin\login-dialog.html" />
     <Content Include="partials\Admin\group\list.html" />
-    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\vendor\bootstrap.css" />
     <Content Include="Content\img\ajax-loader.gif" />
     <Content Include="Content\img\ajax-loader2.gif" />
     <Content Include="Content\img\ajax-loader3.gif" />
@@ -400,7 +400,7 @@
     <Content Include="Content\js\app.min.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\vendor\bootstrap.js" />
     <Content Include="Content\js\controllers\AboutController.js">
       <DependentUpon>AboutController.coffee</DependentUpon>
     </Content>
@@ -435,7 +435,7 @@
     <Content Include="Content\img\main_bg_image.jpg" />
     <Content Include="Content\img\main_bg_tile.jpg" />
     <Content Include="Content\img\warning.png" />
-    <Content Include="Content\js\modernizr-2.6.2.min.js" />
+    <Content Include="Content\js\vendor\modernizr-2.6.2.min.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\adapters\jquery.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\CHANGES.html" />
     <Content Include="Content\plugin\ckeditor_3.6.1\ckeditor.asp" />
@@ -1077,11 +1077,11 @@
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\richcombo.css" />
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\skin.js" />
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\uipanel.css" />
-    <Content Include="Content\css\messenger-theme-future.css" />
-    <Content Include="Content\css\messenger.css" />
-    <Content Include="Content\js\jquery-1.9.1.js" />
+    <Content Include="Content\css\vendor\messenger-theme-future.css" />
+    <Content Include="Content\css\vendor\messenger.css" />
+    <Content Include="Content\js\vendor\jquery-1.9.1.js" />
     <Content Include="Content\js\main.js" />
-    <Content Include="Content\js\jquery.lazyload.js" />
+    <Content Include="Content\js\vendor\jquery.lazyload.js" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\index.html" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\scripts\shAutoloader.js" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\scripts\shBrushAppleScript.js" />
@@ -1139,9 +1139,8 @@
     <Content Include="partials\message.html" />
     <Content Include="partials\index.html" />
     <Content Include="robots.txt" />
-    <Content Include="Content\js\messenger-theme-future.js" />
-    <Content Include="Content\js\messenger.js" />
-    <Content Include="Content\js\modernizr-2.6.2.js" />
+    <Content Include="Content\js\vendor\messenger.js" />
+    <Content Include="Content\js\vendor\modernizr-2.6.2.js" />
     <Content Include="sitemap.xml" />
     <Content Include="sitemap.xsl" />
     <Content Include="test\e2e\runner.html" />

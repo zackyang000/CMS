@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Query;
@@ -60,7 +61,6 @@ namespace YangKai.BlogEngine.Web.Mvc
             {
                 throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
-
             var entity = Proxy.Repository<T>().Get(key);
             entity.IsDeleted = false;
             Proxy.Repository<T>().Update(entity);

@@ -10,12 +10,4 @@ namespace YangKai.BlogEngine.Infrastructure
         {
         }
     }
-        public class ODataRepository<TEntity> :Repository<TEntity> where TEntity : class, IEntity
-    {
-            public ODataRepository(BlogEngineContext context)
-            : base(context)
-            {
-                context.Configuration.ProxyCreationEnabled = false;
-            }
-    }
 }
