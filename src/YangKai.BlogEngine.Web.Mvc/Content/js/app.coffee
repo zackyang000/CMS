@@ -47,6 +47,10 @@
 angular.module("app-login",['UserServices',
 'ui.utils',
 'ui.bootstrap'])
+.config ["$locationProvider","$routeProvider","$httpProvider", 
+($locationProvider,$routeProvider,$httpProvider) ->
+  $httpProvider.responseInterceptors.push(interceptor)
+]
 
 angular.module("app-admin",['formatFilters',
 'MessageServices',
@@ -111,7 +115,6 @@ interceptor = ["$rootScope", "$q", (scope, $q) ->
       message.error response.data['odata.error'].innererror.message
     else if status is 500
       message.error response.data['odata.error'].innererror.message
-
     $q.reject(response)
   (promise) ->
     promise.then success, error

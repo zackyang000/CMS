@@ -37,7 +37,11 @@ angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'C
   }
 ]);
 
-angular.module("app-login", ['UserServices', 'ui.utils', 'ui.bootstrap']);
+angular.module("app-login", ['UserServices', 'ui.utils', 'ui.bootstrap']).config([
+  "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
+    return $httpProvider.responseInterceptors.push(interceptor);
+  }
+]);
 
 angular.module("app-admin", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GroupServices', 'CategoryServices', 'customDirectives', 'ngProgress', 'FileUpload', 'ui.utils', 'ui.bootstrap', 'ngGrid']).config([
   "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {

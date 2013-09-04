@@ -1,58 +1,57 @@
 ﻿<!doctype html>
-<html ng-cloak ng-app="app-login">
+<html ng-cloak ng-app="app-login" ng-controller="LoginController">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>iShare - Login</title>
+        <title>Login</title>
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/style/css")
-        <script src="/Content/js/modernizr-2.6.2.min.js"></script>
+        <script src="/Content/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body ng-controller="LoginController">
+    <body>
         <div class="container">
-            <div class="col-sm-offset-3 col-sm-6">
+            <div class="col-md-offset-3 col-md-6">
                 <form name="form" class="form-horizontal well" ng-submit="signin()">
                     <fieldset>
-                        <legend>Sign in</legend>
-                        <div class="container">
-                            <div class="content">
-                                <form name="form" class="modal-content" ng-submit="signin()">
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">User Name</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control" id="inputEmail1" placeholder="User name" ng-model="user.Username" required />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Password</label>
-                                            <div class="col-lg-9">
-                                                <input type="password" class="form-control" placeholder="Password" ng-model="user.Password" required />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-lg-offset-3 col-lg-9">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" ng-init="user.IsRemember=false" ng-model="user.IsRemember"> Remember me
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-lg-offset-3 col-lg-9">
-                                                <button class="button button-flat-primary" ng-disabled="form.$invalid">Sign in</button>
-                                            </div>
-                                        </div>
+                        <legend>Login</legend>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">User</label>
+                                    <div class="col-md-10">
+                                        <span class="input-group">
+                                            <span class="input-group-addon"><i class="icon-user"></i></span>
+                                            <input type="text" placeholder="User" ng-model="user.Username" class="form-control" required />
+                                        </span>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Pwd</label>
+                                    <div class="col-md-10">
+                                        <span class="input-group">
+                                            <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                            <input type="password" placeholder="Pwd" ng-model="user.Password" class="form-control" required />
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <label class="checkbox">
+                                            <input type="checkbox" ng-init="user.IsRemember=false" ng-model="user.IsRememberMe" />Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <button class="button button-flat-primary" ng-disabled="submitting || form.$invalid">Sgin In</button>
+                                        <span ng-show="submitting">
+                                            <i class="icon-spinner icon-spin icon-large"></i>                                            
+                                            sgin in...
+                                        </span>
+                                    </div>
+                                </div>
                             <hr>
-                        </div>
-                    </fieldset>
-                </form>
+                    </fieldset> </form>
             </div>
         </div>
-    @Scripts.Render("~/js")
+        @Scripts.Render("~/js")
     </body>
 </html>

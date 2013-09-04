@@ -15,10 +15,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             var password = (string)parameters["Password"];
             var isRemember = (bool)parameters["IsRemember"];
 
-            var data = Proxy.Repository<User>().Get(p => p.LoginName == username && p.Password == password);
-
-            if (!string.IsNullOrEmpty(data.UserName))
+            var login = Proxy.Repository<User>().Exist(p => p.LoginName == username && p.Password == password);
+            if (login)
             {
+                var data = Proxy.Repository<User>().Get(p => p.LoginName == username);
                 Current.User = new WebUser
                 {
                     UserName = data.UserName,

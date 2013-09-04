@@ -105,7 +105,7 @@ var message = {
         if (msg == '401') {
             msg = 'Unauthorized.';
         }
-        Messenger().post({ message: 'Error, reason: ' + msg, type: 'error', showCloseButton: true, delay: 60 });
+        Messenger().post({ message: msg, type: 'error', showCloseButton: true, delay: 60 });
     },
     confirm: function (callback) {
         var msg = Messenger().post({
