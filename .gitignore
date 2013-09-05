@@ -121,3 +121,7 @@ scr/YangKai.BlogEngine.Web.Mvc/feed_comments.xml
 scr/YangKai.BlogEngine.Web.Mvc/feed_comments.xml
 src/YangKai.BlogEngine.Web.Mvc/error/error-*
 src/YangKai.BlogEngine.Web.Mvc/UpLoad/thumbnail/*
+src/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/*
+src/YangKai.BlogEngine.Web.Mvc/feed_articles.xml
+src/YangKai.BlogEngine.Web.Mvc/feed_articles.xml
+src/YangKai.BlogEngine.Web.Mvc/feed_*.xml

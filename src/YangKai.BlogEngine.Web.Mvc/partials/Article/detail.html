@@ -41,6 +41,13 @@
                             <i class="icon-comments"></i>
                             {{item.ReplyCount}} Comments
                         </span>
+                        <span ng-show="item.Source" class="text-success">
+                            <a target="_blank" ng-href="{{item.Source.Url}}" class="text-success">
+                                <i class="icon-external-link"></i>
+                                Source
+                            </a>
+                        </span>
+
                         <span ng-show="User.IsAdmin">
                             <i class="icon-pencil"></i>
                             <a target="_blank" ng-href="/admin/#!/article('{{item.PostId}}')">Edit</a>
@@ -49,15 +56,13 @@
             </header>
             <section>
                 <div ng-bind-html-unsafe="item.Content"></div>
-                <div ng-show="item.QrCode">
-                    <a href="javascrpit:void(0);" ng-click="qrcode=!qrcode" class="icon-qrcode"></a>
-                    <div class="qrcode" ng-show="qrcode">
-                        <img ng-src="{{'/upload/qrcode/'+item.QrCode.Url | image}}" width="200" height="200" alt="qrcode" class="img-thumbnail" />
-                    </div> 
-                </div>
-                <p ng-show="item.Source" class="text-success">
-                    Source：<a ng-href="{{item.Source.Url}}">{{item.Source.Title}}</a>
-                </p>
+                <span ng-show="item.QrCode">
+                    <a href="javascrpit:void(0);"
+                       tooltip-placement="bottom"
+                       tooltip-html-unsafe='<img src="/upload/qrcode/{{item.QrCode.Url}}" class="img-thumbnail" width="200" height="200" alt="qrcode" />'>
+                        <i class="icon-qrcode"></i>
+                    </a>
+                </span>
             </section>
             <footer>
                 <div id="jiathis_style_32x32" style="margin-top: 30px;" class="clearfix">
