@@ -37,16 +37,21 @@ namespace YangKai.BlogEngine.Web.Mvc
                     if (value.IsRemember)
                     {
                         EncryptionCookieHelper.Add("__Pwd__", value.Password, 180);
+                        EncryptionCookieHelper.Add("__Username__", value.UserName, 180);
+                        EncryptionCookieHelper.Add("__LoginName__", value.LoginName, 180);
+                        EncryptionCookieHelper.Add("__Email__", value.Email, 180);
+                        EncryptionCookieHelper.Add("__Avatar__", value.Avatar, 180);
+                        EncryptionCookieHelper.Add("__IsAdmin__", value.IsAdmin.ToString().ToLower(), 180);
                     }
                     else
                     {
-                        EncryptionCookieHelper.Add("__Pwd__", value.Password, 180);
+                        EncryptionCookieHelper.Add("__Pwd__", value.Password);
+                        EncryptionCookieHelper.Add("__Username__", value.UserName);
+                        EncryptionCookieHelper.Add("__LoginName__", value.LoginName);
+                        EncryptionCookieHelper.Add("__Email__", value.Email);
+                        EncryptionCookieHelper.Add("__Avatar__", value.Avatar);
+                        EncryptionCookieHelper.Add("__IsAdmin__", value.IsAdmin.ToString().ToLower());
                     }
-                    EncryptionCookieHelper.Add("__Username__", value.UserName, 180);
-                    EncryptionCookieHelper.Add("__LoginName__", value.LoginName, 180);
-                    EncryptionCookieHelper.Add("__Email__", value.Email, 180);
-                    EncryptionCookieHelper.Add("__Avatar__", value.Avatar, 180);
-                    EncryptionCookieHelper.Add("__IsAdmin__", value.IsAdmin.ToString().ToLower(), 180);
                 }
                 else
                 {
