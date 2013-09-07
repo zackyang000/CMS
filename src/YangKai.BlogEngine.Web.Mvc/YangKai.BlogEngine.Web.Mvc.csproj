@@ -192,9 +192,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\vendor\animate_animo.css" />
     <Content Include="Content\css\vendor\buttons.css" />
     <Content Include="Content\css\vendor\jquery.fileupload-ui.css" />
     <Content Include="Content\css\vendor\ng-grid.css" />
+    <Content Include="Content\js\vendor\animo.js" />
     <Content Include="Content\js\vendor\buttons.js" />
     <Content Include="Content\css\vendor\font-awesome.css" />
     <Content Include="Content\css\style.css">
@@ -307,6 +309,7 @@
     <Content Include="Content\js\directives\ngProgress.js" />
     <Content Include="Content\js\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
     <Content Include="Content\js\directives\ui-utils.js" />
+    <Content Include="Content\js\vendor\jquery-2.0.3.js" />
     <Content Include="Content\js\vendor\jquery-ui-1.10.3.js" />
     <Content Include="Content\js\vendor\jquery.fileupload.js" />
     <Content Include="Content\js\vendor\md5.js" />
@@ -1079,7 +1082,6 @@
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\uipanel.css" />
     <Content Include="Content\css\vendor\messenger-theme-future.css" />
     <Content Include="Content\css\vendor\messenger.css" />
-    <Content Include="Content\js\vendor\jquery-1.9.1.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\vendor\jquery.lazyload.js" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\index.html" />
