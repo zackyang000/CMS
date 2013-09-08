@@ -32,7 +32,7 @@ namespace YangKai.BlogEngine.Domain
         /// <summary>
         /// 所包含的文章列表.
         /// </summary>
-        public List<Post> Posts { get; set; }
+        public virtual List<Post> Posts { get; set; }
 
         /// <summary>
         /// 所属分组信息.

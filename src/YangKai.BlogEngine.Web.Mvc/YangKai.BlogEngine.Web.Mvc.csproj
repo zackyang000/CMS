@@ -192,11 +192,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\vendor\animate_animo.css" />
     <Content Include="Content\css\vendor\buttons.css" />
     <Content Include="Content\css\vendor\jquery.fileupload-ui.css" />
     <Content Include="Content\css\vendor\ng-grid.css" />
-    <Content Include="Content\js\vendor\animo.js" />
     <Content Include="Content\js\vendor\buttons.js" />
     <Content Include="Content\css\vendor\font-awesome.css" />
     <Content Include="Content\css\style.css">

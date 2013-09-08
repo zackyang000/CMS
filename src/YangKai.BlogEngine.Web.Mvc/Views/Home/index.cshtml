@@ -45,35 +45,5 @@
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
             })();
         </script>
-<script>
-    // I made a function that ran through the "fading out" animations, then called a function that handles the "fading in"
-    // Fading out
-    $('#demo-i').animo({ animation: "fadeOutLeft", duration: 0.5, keep: true }, function() {
-        $('#demo-s').animo({ animation: "fadeOutUp", duration: 0.5, keep: true }, function() {
-            $('#demo-h').animo({ animation: "fadeOutDown", duration: 0.5, keep: true }, function() {
-                $('#demo-a').animo({ animation: "fadeOutRight", duration: 0.5, keep: true }, function () {
-                    $('#demo-r').animo({ animation: "fadeOutLeft", duration: 0.5, keep: true }, function() {
-                        $('#demo-e').animo({ animation: "fadeOutUp", duration: 0.5, keep: true }, doMagicIn());
-                    });
-                });
-            });
-        });
-    });
-
-    // Fading in
-    function doMagicIn() {
-        $('#demo-i').animo({ animation: "fadeInLeft", duration: 0.5 }, function() {
-            $('#demo-s').animo({ animation: "fadeInUp", duration: 0.5 }, function() {
-                $('#demo-h').animo({ animation: "fadeInDown", duration: 0.5 }, function() {
-                    $('#demo-a').animo({ animation: "fadeInRight", duration: 0.5 }, function () {
-                        $('#demo-r').animo({ animation: "fadeInLeft", duration: 0.5 }, function() {
-                            $('#demo-e').animo({ animation: "fadeInUp", duration: 0.5 });
-                        });
-                    });
-                });
-            });
-        });
-    }
-</script>
     </body>
 </html>
