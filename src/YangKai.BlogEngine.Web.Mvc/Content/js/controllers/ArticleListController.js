@@ -27,7 +27,7 @@ ArticleListController = [
         filter += " and Group/Url eq '" + $routeParams.group + "'";
       }
       if ($routeParams.key) {
-        filter += " and indexof(Title, '" + $routeParams.key + "') gt 0";
+        filter += " and indexof(Title, '" + $routeParams.key + "') gt -1";
       }
       if ($scope.category) {
         filter += " and Categorys/any(category:category/Url eq '" + $scope.category + "')";

@@ -17,7 +17,7 @@
     filter='IsDeleted eq false'
     filter+=" and Group/Channel/Url eq '#{$routeParams.channel}'" if $routeParams.channel
     filter+=" and Group/Url eq '#{$routeParams.group}'" if $routeParams.group
-    filter+=" and indexof(Title, '#{$routeParams.key}') gt 0" if $routeParams.key
+    filter+=" and indexof(Title, '#{$routeParams.key}') gt -1" if $routeParams.key
     filter+=" and Categorys/any(category:category/Url eq '#{$scope.category}')" if $scope.category
     filter+=" and Tags/any(tag:tag/Name eq '#{$scope.tag}')" if $scope.tag
     Article.query
