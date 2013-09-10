@@ -6,10 +6,28 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by YangKai , 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Fri, 30 Aug 2013 17:14:25 GMT</pubDate>
-    <lastBuildDate>Fri, 30 Aug 2013 17:14:25 GMT</lastBuildDate>
+    <pubDate>Tue, 10 Sep 2013 10:12:07 GMT</pubDate>
+    <lastBuildDate>Tue, 10 Sep 2013 10:12:07 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>00</title>
+      <description>00&lt;br /&gt;发表于:4</description>
+      <link>http://www.woshinidezhu.com/#!/post/4</link>
+      <category>视频 - 默认</category>
+      <author>zy55</author>
+      <guid>5c591dd5-6ad2-4ed8-af71-5d9ef3fd48bc</guid>
+      <pubDate>Tue, 10 Sep 2013 10:12:07 GMT</pubDate>
+    </item>
+    <item>
+      <title>888</title>
+      <description>888&lt;br /&gt;发表于:4</description>
+      <link>http://www.woshinidezhu.com/#!/post/4</link>
+      <category>视频 - 默认</category>
+      <author>zy55</author>
+      <guid>6f65f004-c41b-4258-9a46-059c365f2b0b</guid>
+      <pubDate>Tue, 10 Sep 2013 10:12:03 GMT</pubDate>
+    </item>
     <item>
       <title>77</title>
       <description>77&lt;br /&gt;发表于:配置SVN编辑日志功能</description>
@@ -506,24 +524,6 @@
       <author>1323</author>
       <guid>cc94a17e-da0b-4890-8f13-4cd7b0d185f7</guid>
       <pubDate>Sat, 01 Jun 2013 14:12:08 GMT</pubDate>
-    </item>
-    <item>
-      <title>232323</title>
-      <description>232323&lt;br /&gt;发表于:配置SVN编辑日志功能</description>
-      <link>http://www.woshinidezhu.com/#!/post/svn-pre-revprop-change-hook</link>
-      <category>原创地 - 默认</category>
-      <author>我是你的猪</author>
-      <guid>b190746b-59c2-45df-b817-59e9c8fd349c</guid>
-      <pubDate>Sat, 01 Jun 2013 14:02:13 GMT</pubDate>
-    </item>
-    <item>
-      <title>23232</title>
-      <description>23232&lt;br /&gt;发表于:配置SVN编辑日志功能</description>
-      <link>http://www.woshinidezhu.com/#!/post/svn-pre-revprop-change-hook</link>
-      <category>原创地 - 默认</category>
-      <author>我是你的猪</author>
-      <guid>3977751c-49ec-4c33-8078-ef0286fab075</guid>
-      <pubDate>Sat, 01 Jun 2013 14:02:09 GMT</pubDate>
     </item>
   </channel>
 </rss>

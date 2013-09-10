@@ -125,3 +125,4 @@ src/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/*
 src/YangKai.BlogEngine.Web.Mvc/feed_articles.xml
 src/YangKai.BlogEngine.Web.Mvc/feed_articles.xml
 src/YangKai.BlogEngine.Web.Mvc/feed_*.xml
+src/YangKai.BlogEngine.Web.Mvc/feed_*.xml
