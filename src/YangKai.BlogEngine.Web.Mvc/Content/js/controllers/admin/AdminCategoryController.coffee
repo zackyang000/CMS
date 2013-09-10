@@ -1,4 +1,4 @@
-﻿CategoryController=["$scope","$dialog","$routeParams","Category","Group", 
+﻿AdminCategoryController=["$scope","$dialog","$routeParams","Category","Group", 
 ($scope,$dialog,$routeParams,Category,Group) ->
   $scope.loading=true
 

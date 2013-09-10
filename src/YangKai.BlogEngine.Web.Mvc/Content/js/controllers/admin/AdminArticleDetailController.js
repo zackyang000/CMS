@@ -1,6 +1,6 @@
-﻿var ArticleDetailController;
+﻿var AdminArticleDetailController;
 
-ArticleDetailController = [
+AdminArticleDetailController = [
   "$scope", "$routeParams", "$window", "$rootScope", "uploadManager", "Article", "Channel", function($scope, $routeParams, $window, $rootScope, uploadManager, Article, Channel) {
     var isNew, save;
     isNew = false;
@@ -23,9 +23,7 @@ ArticleDetailController = [
             _ref1 = $scope.getCategories();
             for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
               item = _ref1[_j];
-              if (item.CategoryId === category.CategoryId) {
-                item.checked = true;
-              }
+              if (item.CategoryId === category.CategoryId) item.checked = true;
             }
           }
           if ($scope.entity.Tags) {
@@ -47,28 +45,20 @@ ArticleDetailController = [
     });
     $scope.getGroups = function() {
       var item, _i, _len, _ref;
-      if ($scope.channels.value === void 0) {
-        return void 0;
-      }
+      if ($scope.channels.value === void 0) return void 0;
       _ref = $scope.channels.value;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
-        if (item.ChannelId === $scope.channelId) {
-          return item.Groups;
-        }
+        if (item.ChannelId === $scope.channelId) return item.Groups;
       }
     };
     $scope.getCategories = function() {
       var item, _i, _len, _ref;
-      if ($scope.getGroups() === void 0) {
-        return void 0;
-      }
+      if ($scope.getGroups() === void 0) return void 0;
       _ref = $scope.getGroups();
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
-        if (item.GroupId === $scope.groupId) {
-          return item.Categorys;
-        }
+        if (item.GroupId === $scope.groupId) return item.Categorys;
       }
     };
     $scope.categorySelect = function(item) {
@@ -76,27 +66,13 @@ ArticleDetailController = [
     };
     $scope.submit = function() {
       $scope.isSubmit = true;
-      if (!$scope.channelValid()) {
-        return false;
-      }
-      if (!$scope.groupValid()) {
-        return false;
-      }
-      if (!$scope.categoryValid()) {
-        return false;
-      }
-      if (!$scope.entity.Url) {
-        return false;
-      }
-      if (!$scope.entity.Title) {
-        return false;
-      }
-      if (!$scope.entity.Content) {
-        return false;
-      }
-      if (!$scope.entity.Description) {
-        return false;
-      }
+      if (!$scope.channelValid()) return false;
+      if (!$scope.groupValid()) return false;
+      if (!$scope.categoryValid()) return false;
+      if (!$scope.entity.Url) return false;
+      if (!$scope.entity.Title) return false;
+      if (!$scope.entity.Content) return false;
+      if (!$scope.entity.Description) return false;
       $scope.loading = true;
       if ($scope.files.length) {
         return uploadManager.upload();
@@ -105,28 +81,20 @@ ArticleDetailController = [
       }
     };
     $scope.channelValid = function() {
-      if ($scope.getGroups()) {
-        return true;
-      }
+      if ($scope.getGroups()) return true;
       return false;
     };
     $scope.groupValid = function() {
-      if ($scope.getCategories()) {
-        return true;
-      }
+      if ($scope.getCategories()) return true;
       return false;
     };
     $scope.categoryValid = function() {
       var item, _i, _len, _ref;
-      if (!$scope.getCategories()) {
-        return false;
-      }
+      if (!$scope.getCategories()) return false;
       _ref = $scope.getCategories();
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
-        if (item.checked) {
-          return true;
-        }
+        if (item.checked) return true;
       }
       return false;
     };
@@ -140,9 +108,7 @@ ArticleDetailController = [
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           item = _ref[_i];
-          if (item.GroupId === $scope.groupId) {
-            _results.push(item);
-          }
+          if (item.GroupId === $scope.groupId) _results.push(item);
         }
         return _results;
       })())[0].GroupId;
@@ -167,9 +133,7 @@ ArticleDetailController = [
           });
         }
       }
-      if (entity.Source) {
-        entity.Source.SourceId = UUID.generate();
-      }
+      if (entity.Source) entity.Source.SourceId = UUID.generate();
       if (isNew) {
         entity.PostId = UUID.generate();
         return Article.save(entity, function(data) {
@@ -189,9 +153,7 @@ ArticleDetailController = [
       _ref = $scope.files;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         f = _ref[_i];
-        if (f.name === file.name) {
-          deleteFile = f;
-        }
+        if (f.name === file.name) deleteFile = f;
       }
       $scope.files.splice($scope.files.indexOf(deleteFile), 1);
       return uploadManager.cancel(file);

@@ -1,4 +1,4 @@
-﻿ChannelController=["$scope","$dialog","Channel", 
+﻿AdminChannelController=["$scope","$dialog","Channel", 
 ($scope,$dialog,Channel) ->
   $scope.loading=true
 

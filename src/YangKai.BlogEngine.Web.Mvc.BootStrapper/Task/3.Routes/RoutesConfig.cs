@@ -17,14 +17,14 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
         }
 
-        public static void RegisterRoutes(RouteCollection routes)
+        private void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             RegisterDefaultRoute(routes);
         }
 
-        private static void RegisterDefaultRoute(RouteCollection routes)
+        private void RegisterDefaultRoute(RouteCollection routes)
         {
             routes.MapRoute(
                 "Default",

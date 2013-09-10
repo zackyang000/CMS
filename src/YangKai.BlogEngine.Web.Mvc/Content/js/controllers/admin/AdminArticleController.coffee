@@ -1,4 +1,4 @@
-﻿ArticleController=["$scope","$routeParams","$location","Article", ($scope,$routeParams,$location,Article) ->
+﻿AdminArticleController=["$scope","$routeParams","$location","Article", ($scope,$routeParams,$location,Article) ->
   $scope.setPage = (pageNo) ->
     Article.query
       $filter:'Group/IsDeleted eq false and Group/Channel/IsDeleted eq false'

@@ -1,4 +1,4 @@
-﻿ArticleDetailController=["$scope","$routeParams","$window","$rootScope","uploadManager","Article","Channel",
+﻿AdminArticleDetailController=["$scope","$routeParams","$window","$rootScope","uploadManager","Article","Channel",
 ($scope,$routeParams,$window,$rootScope,uploadManager,Article,Channel) ->
   isNew=false
 
