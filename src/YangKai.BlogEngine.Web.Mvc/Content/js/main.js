@@ -15,11 +15,6 @@
 
 //#region  setup
 
-$(document).ready(function () {
-    //ajax禁用IE缓存
-    $.ajaxSetup({ cache: false });
-});
-
 //fix Array indexOf() in JavaScript for IE browsers
 if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function (elt /*, from*/) {
@@ -54,24 +49,16 @@ String.prototype.Format = function (fmt) {
     return fmt;
 };
 
+//#endregion
+
+//#region common
+
 function codeformat() {
     jQuery(function () {
         SyntaxHighlighter.defaults['gutter'] = true;
         SyntaxHighlighter.defaults['collapse'] = false;
         SyntaxHighlighter.highlight();
     });
-}
-
-//#endregion
-
-//#region common
-
-//判断是否为数字
-function IsNum(s) {
-    if (s != null && s != "") {
-        return !isNaN(s);
-    }
-    return false;
 }
 
 //json日期转换为Date对象

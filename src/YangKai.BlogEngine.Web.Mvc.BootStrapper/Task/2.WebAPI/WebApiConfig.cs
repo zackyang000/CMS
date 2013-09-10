@@ -19,7 +19,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
         }
 
-        public static void RegisterRoutes(HttpConfiguration config)
+        private void RegisterRoutes(HttpConfiguration config)
         {
             config.EnableQuerySupport();
 
@@ -40,7 +40,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 );
         }
 
-        private static void SetAction(ODataConventionModelBuilder modelBuilder)
+        private void SetAction(ODataConventionModelBuilder modelBuilder)
         {
             //管理员登陆
             var signin = modelBuilder.Entity<User>().Action("Signin");
@@ -65,7 +65,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             modelBuilder.Entity<Board>().Action("Recover");
         }
 
-        private static void SetEntity(ODataConventionModelBuilder modelBuilder)
+        private void SetEntity(ODataConventionModelBuilder modelBuilder)
         {
             var user = modelBuilder.EntitySet<User>("User");
             user.EntityType.Ignore(p => p.Password);

@@ -1,18 +1,18 @@
-﻿var GroupController;
+﻿var AdminCategoryController;
 
-GroupController = [
-  "$scope", "$dialog", "$routeParams", "Group", "Channel", function($scope, $dialog, $routeParams, Group, Channel) {
+AdminCategoryController = [
+  "$scope", "$dialog", "$routeParams", "Category", "Group", function($scope, $dialog, $routeParams, Category, Group) {
     var load;
     $scope.loading = true;
-    Channel.query({
-      $filter: "Url eq '" + $routeParams.channel + "'"
+    Group.query({
+      $filter: "Url eq '" + $routeParams.group + "'",
+      $expand: 'Channel'
     }, function(data) {
-      return $scope.channel = data.value[0];
+      return $scope.group = data.value[0];
     });
-    $scope.entity = {};
     load = function() {
-      return Group.query({
-        $filter: "IsDeleted eq false and Channel/Url eq '" + $routeParams.channel + "'"
+      return Category.query({
+        $filter: "IsDeleted eq false and Group/Url eq '" + $routeParams.group + "'"
       }, function(data) {
         $scope.list = data;
         return $scope.loading = false;
@@ -27,20 +27,20 @@ GroupController = [
       return $scope.editDialog = true;
     };
     $scope.save = function() {
-      $scope.entity.Channel = $scope.channel;
-      if ($scope.entity.GroupId) {
-        return Group.edit({
-          id: "(guid'" + $scope.entity.GroupId + "')"
+      $scope.entity.Group = $scope.group;
+      if ($scope.entity.CategoryId) {
+        return Category.edit({
+          id: "(guid'" + $scope.entity.CategoryId + "')"
         }, $scope.entity, function(data) {
-          message.success("Edit group successfully.");
+          message.success("Edit category successfully.");
           $scope.close();
           return load();
         });
       } else {
         debugger;
-        $scope.entity.GroupId = UUID.generate();
-        return Group.save($scope.entity, function(data) {
-          message.success("Add group successfully.");
+        $scope.entity.CategoryId = UUID.generate();
+        return Category.save($scope.entity, function(data) {
+          message.success("Add category successfully.");
           $scope.close();
           return load();
         });
@@ -49,10 +49,10 @@ GroupController = [
     $scope.remove = function(item) {
       return message.confirm(function() {
         item.IsDeleted = true;
-        return Group.edit({
-          id: "(guid'" + item.GroupId + "')"
+        return Category.edit({
+          id: "(guid'" + item.CategoryId + "')"
         }, item, function(data) {
-          message.success("Delete group successfully.");
+          message.success("Delete category successfully.");
           return load();
         });
       });

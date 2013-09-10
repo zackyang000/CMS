@@ -1,4 +1,4 @@
-﻿GroupController=["$scope","$dialog","$routeParams","Group","Channel", 
+﻿AdminGroupController=["$scope","$dialog","$routeParams","Group","Channel", 
 ($scope,$dialog,$routeParams,Group,Channel) ->
   $scope.loading=true
 

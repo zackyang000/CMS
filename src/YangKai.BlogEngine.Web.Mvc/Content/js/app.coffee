@@ -8,8 +8,7 @@
 'customDirectives',
 'ngProgress',
 'ui.utils',
-'ui.bootstrap',
-'ngGrid'])
+'ui.bootstrap'])
 .config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
   $httpProvider.responseInterceptors.push(interceptor)  
   $locationProvider.html5Mode(false).hashPrefix('!')
@@ -64,8 +63,7 @@ angular.module("app-admin",['formatFilters',
 'ngProgress',
 'FileUpload',
 'ui.utils',
-'ui.bootstrap',
-'ngGrid'])
+'ui.bootstrap'])
 .config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
   $httpProvider.responseInterceptors.push(interceptor)  
   $locationProvider.html5Mode(false).hashPrefix('!')
@@ -73,33 +71,33 @@ angular.module("app-admin",['formatFilters',
   #Channel
   .when("/channel",
     templateUrl: "/partials/Admin/channel/list.html"
-    controller: ChannelController)
+    controller: AdminChannelController)
   #Group
   .when("/channel(':channel')/group",
     templateUrl: "/partials/Admin/group/list.html"
-    controller: GroupController)
+    controller: AdminGroupController)
   #Category
   .when("/channel(':channel')/group(':group')/category",
     templateUrl: "/partials/Admin/category/list.html"
-    controller: CategoryController)
+    controller: AdminCategoryController)
   #Article
   .when("/article",
     templateUrl: "/partials/Admin/article/list.html"
-    controller: ArticleController)
+    controller: AdminArticleController)
   .when("/article(':id')",
     templateUrl: "/partials/Admin/article/detail.html"
-    controller: ArticleDetailController)
+    controller: AdminArticleDetailController)
   .when("/article/new",
     templateUrl: "/partials/Admin/article/detail.html"
-    controller: ArticleDetailController)
+    controller: AdminArticleDetailController)
   #Message boards
   .when("/board",
     templateUrl: "/partials/Admin/board/list.html"
-    controller: BoardController)
+    controller: AdminBoardController)
   #home
   #.when("/",
   #  templateUrl: "/partials/Admin/index.html"
-  #  controller: HomeController)
+  #  controller: AdminHomeController)
   .otherwise redirectTo: "/article"
 ]
 

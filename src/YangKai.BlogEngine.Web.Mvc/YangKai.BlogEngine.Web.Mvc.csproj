@@ -194,7 +194,48 @@
   <ItemGroup>
     <Content Include="Content\css\vendor\buttons.css" />
     <Content Include="Content\css\vendor\jquery.fileupload-ui.css" />
-    <Content Include="Content\css\vendor\ng-grid.css" />
+    <Content Include="Content\js\controllers\admin\AdminArticleController.js">
+      <DependentUpon>AdminArticleController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminArticleController.min.js">
+      <DependentUpon>AdminArticleController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminArticleDetailController.js">
+      <DependentUpon>AdminArticleDetailController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminArticleDetailController.min.js">
+      <DependentUpon>AdminArticleDetailController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminBoardController.js">
+      <DependentUpon>AdminBoardController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminBoardController.min.js">
+      <DependentUpon>AdminBoardController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminCategoryController.js">
+      <DependentUpon>AdminCategoryController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminCategoryController.min.js">
+      <DependentUpon>AdminCategoryController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminChannelController.js">
+      <DependentUpon>AdminChannelController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminChannelController.min.js">
+      <DependentUpon>AdminChannelController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminGroupController.js">
+      <DependentUpon>AdminGroupController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminGroupController.min.js">
+      <DependentUpon>AdminGroupController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminHomeController.js">
+      <DependentUpon>AdminHomeController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\controllers\admin\AdminHomeController.min.js">
+      <DependentUpon>AdminHomeController.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\vendor\buttons.js" />
     <Content Include="Content\css\vendor\font-awesome.css" />
     <Content Include="Content\css\style.css">
@@ -206,49 +247,7 @@
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\img\no-ie.jpg" />
     <Content Include="Content\img\technologies\angularJS.png" />
-    <Content Include="Content\js\angular-scenario.js" />
-    <Content Include="Content\js\controllers\admin\ArticleController.js">
-      <DependentUpon>ArticleController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\ArticleController.min.js">
-      <DependentUpon>ArticleController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\ArticleDetailController.js">
-      <DependentUpon>ArticleDetailController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\ArticleDetailController.min.js">
-      <DependentUpon>ArticleDetailController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\BoardController.js">
-      <DependentUpon>BoardController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\BoardController.min.js">
-      <DependentUpon>BoardController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\CategoryController.js">
-      <DependentUpon>CategoryController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\CategoryController.min.js">
-      <DependentUpon>CategoryController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\ChannelController.js">
-      <DependentUpon>ChannelController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\ChannelController.min.js">
-      <DependentUpon>ChannelController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\GroupController.js">
-      <DependentUpon>GroupController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\GroupController.min.js">
-      <DependentUpon>GroupController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\HomeController.js">
-      <DependentUpon>HomeController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\admin\HomeController.min.js">
-      <DependentUpon>HomeController.coffee</DependentUpon>
-    </Content>
+    <Content Include="Content\js\test\angular-scenario.js" />
     <Content Include="Content\js\controllers\ArchivesController.js">
       <DependentUpon>ArchivesController.coffee</DependentUpon>
     </Content>
@@ -291,7 +290,6 @@
     <Content Include="Content\js\directives\custom\ckeditor.min.js">
       <DependentUpon>ckeditor.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\ng-grid-2.0.7.js" />
     <Content Include="Content\js\directives\custom\oDataPager.js">
       <DependentUpon>oDataPager.coffee</DependentUpon>
     </Content>
@@ -393,8 +391,8 @@
     <Content Include="Content\img\postline.png" />
     <Content Include="Content\img\technologies\sammy.png" />
     <Content Include="Content\img\technologies\sql.jpg" />
-    <Content Include="Content\js\angular-resource.js" />
-    <Content Include="Content\js\angular.js" />
+    <Content Include="Content\js\vendor\angular-resource.js" />
+    <Content Include="Content\js\vendor\angular.js" />
     <Content Include="Content\js\app.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
@@ -420,10 +418,10 @@
     <Content Include="Content\js\controllers\HomeController.min.js">
       <DependentUpon>HomeController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\filters.js">
+    <Content Include="Content\js\filters\filters.js">
       <DependentUpon>filters.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\filters.min.js">
+    <Content Include="Content\js\filters\filters.min.js">
       <DependentUpon>filters.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\services\MessageServices.js">
@@ -1143,11 +1141,11 @@
     <Content Include="Content\js\vendor\modernizr-2.6.2.js" />
     <Content Include="sitemap.xml" />
     <Content Include="sitemap.xsl" />
-    <Content Include="test\e2e\runner.html" />
-    <Content Include="test\e2e\scenarios.js" />
-    <Content Include="test\lib\angular\angular-mocks.js" />
-    <Content Include="test\lib\angular\angular-scenario.js" />
-    <Content Include="test\lib\angular\version.txt" />
+    <Content Include="Content\js\test\e2e\runner.html" />
+    <Content Include="Content\js\test\e2e\scenarios.js" />
+    <Content Include="Content\js\test\lib\angular\angular-mocks.js" />
+    <Content Include="Content\js\test\lib\angular\angular-scenario.js" />
+    <Content Include="Content\js\test\lib\angular\version.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1184,7 +1182,7 @@
     </None>
     <Content Include="Content\js\controllers\MessageController.coffee" />
     <Content Include="Content\js\app.coffee" />
-    <Content Include="Content\js\filters.coffee" />
+    <Content Include="Content\js\filters\filters.coffee" />
     <Content Include="Content\js\controllers\GlobalController.coffee" />
     <Content Include="Content\js\services\MessageServices.coffee" />
     <Content Include="Content\js\controllers\HomeController.coffee" />
@@ -1202,16 +1200,16 @@
     <Content Include="Content\font\FontAwesome.otf" />
     <Content Include="Content\js\services\UserServices.coffee" />
     <Content Include="Content\js\controllers\LoginController.coffee" />
-    <Content Include="Content\js\controllers\admin\ChannelController.coffee" />
+    <Content Include="Content\js\controllers\admin\AdminChannelController.coffee" />
     <Content Include="Content\js\services\ChannelServices.coffee" />
-    <Content Include="Content\js\controllers\admin\GroupController.coffee" />
+    <Content Include="Content\js\controllers\admin\AdminGroupController.coffee" />
     <Content Include="Content\js\services\GroupServices.coffee" />
-    <Content Include="Content\js\controllers\admin\CategoryController.coffee" />
+    <Content Include="Content\js\controllers\admin\AdminCategoryController.coffee" />
     <Content Include="Content\js\services\CategoryServices.coffee" />
-    <Content Include="Content\js\controllers\admin\ArticleController.coffee" />
-    <Content Include="Content\js\controllers\admin\ArticleDetailController.coffee" />
-    <Content Include="Content\js\controllers\admin\HomeController.coffee" />
-    <Content Include="Content\js\controllers\admin\BoardController.coffee" />
+    <Content Include="Content\js\controllers\admin\AdminArticleController.coffee" />
+    <Content Include="Content\js\controllers\admin\AdminArticleDetailController.coffee" />
+    <Content Include="Content\js\controllers\admin\AdminHomeController.coffee" />
+    <Content Include="Content\js\controllers\admin\AdminBoardController.coffee" />
     <Content Include="Content\js\directives\custom\ckeditor.coffee" />
     <Content Include="Content\js\directives\custom\upload.coffee" />
     <Content Include="Content\js\controllers\ArchivesController.coffee" />

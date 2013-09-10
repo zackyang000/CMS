@@ -1,6 +1,6 @@
-﻿var ArticleController;
+﻿var AdminArticleController;
 
-ArticleController = [
+AdminArticleController = [
   "$scope", "$routeParams", "$location", "Article", function($scope, $routeParams, $location, Article) {
     $scope.setPage = function(pageNo) {
       return Article.query({

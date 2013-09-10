@@ -1,6 +1,6 @@
-﻿var ChannelController;
+﻿var AdminChannelController;
 
-ChannelController = [
+AdminChannelController = [
   "$scope", "$dialog", "Channel", function($scope, $dialog, Channel) {
     var load;
     $scope.loading = true;

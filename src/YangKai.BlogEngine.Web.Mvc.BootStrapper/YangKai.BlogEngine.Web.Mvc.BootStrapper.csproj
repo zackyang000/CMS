@@ -203,8 +203,10 @@
     <Compile Include="Task\1.Ioc\IocConfig.cs" />
     <Compile Include="Task\1.Ioc\MyInstanceLocator.cs" />
     <Compile Include="Task\3.Routes\RoutesConfig.cs" />
-    <Compile Include="Task\4.Bundles\BundlesConfig.cs" />
+    <Compile Include="Task\4.Filters\FiltersConfig.cs" />
+    <Compile Include="Task\5.Bundles\BundlesConfig.cs" />
     <Compile Include="Task\2.WebAPI\WebApiConfig.cs" />
+    <Compile Include="Task\4.Filters\ProfilerFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Core\AtomLab.Core.csproj">
