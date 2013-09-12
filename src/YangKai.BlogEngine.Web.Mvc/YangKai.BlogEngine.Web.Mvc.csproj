@@ -1132,6 +1132,7 @@
     <Content Include="favicon.ico" />
     <Content Include="partials\about.html" />
     <Content Include="partials\Article\archives.html" />
+    <Content Include="partials\Article\post-sub-header.html" />
     <Content Include="partials\Article\detail.html" />
     <Content Include="partials\Article\list.html" />
     <Content Include="partials\message.html" />
