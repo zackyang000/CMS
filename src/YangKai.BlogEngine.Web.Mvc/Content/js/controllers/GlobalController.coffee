@@ -7,6 +7,5 @@
     $scope.User=data
 
   $scope.search = ->
-    debugger
     $window.location.href="/#!/search/#{$scope.key}"
 ]
