@@ -192,8 +192,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\vendor\ace\ace-skins.css" />
+    <Content Include="Content\css\vendor\ace\ace.css" />
     <Content Include="Content\css\vendor\buttons.css" />
+    <Content Include="Content\css\vendor\colorbox.css" />
+    <Content Include="Content\css\vendor\dropzone.css" />
+    <Content Include="Content\css\vendor\jquery-ui-1.10.3.full.css" />
     <Content Include="Content\css\vendor\jquery.fileupload-ui.css" />
+    <Content Include="Content\css\vendor\jquery.gritter.css" />
+    <Content Include="Content\css\vendor\messenger-theme-flat.css" />
     <Content Include="Content\js\controllers\admin\AdminArticleController.js">
       <DependentUpon>AdminArticleController.coffee</DependentUpon>
     </Content>
@@ -236,6 +243,29 @@
     <Content Include="Content\js\controllers\admin\AdminHomeController.min.js">
       <DependentUpon>AdminHomeController.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\vendor\ace\ace-elements.js" />
+    <Content Include="Content\js\vendor\ace\ace-extra.js" />
+    <Content Include="Content\js\vendor\ace\ace.js" />
+    <Content Include="Content\js\vendor\ace\bootbox.js" />
+    <Content Include="Content\js\vendor\ace\bootstrap-colorpicker.js" />
+    <Content Include="Content\js\vendor\ace\bootstrap-tag.js" />
+    <Content Include="Content\js\vendor\ace\dropzone.js" />
+    <Content Include="Content\js\vendor\ace\fuelux.spinner.js" />
+    <Content Include="Content\js\vendor\ace\jquery.autosize.js" />
+    <Content Include="Content\js\vendor\ace\jquery.colorbox.js" />
+    <Content Include="Content\js\vendor\ace\jquery.easy-pie-chart.js" />
+    <Content Include="Content\js\vendor\ace\jquery.flot.js" />
+    <Content Include="Content\js\vendor\ace\jquery.flot.pie.js" />
+    <Content Include="Content\js\vendor\ace\jquery.flot.resize.js" />
+    <Content Include="Content\js\vendor\ace\jquery.gritter.js" />
+    <Content Include="Content\js\vendor\ace\jquery.inputlimiter.1.3.1.js" />
+    <Content Include="Content\js\vendor\ace\jquery.knob.js" />
+    <Content Include="Content\js\vendor\ace\jquery.maskedinput.js" />
+    <Content Include="Content\js\vendor\ace\jquery.slimscroll.js" />
+    <Content Include="Content\js\vendor\ace\jquery.sparkline.js" />
+    <Content Include="Content\js\vendor\ace\jquery.ui.touch-punch.js" />
+    <Content Include="Content\js\vendor\ace\spin.js" />
+    <Content Include="Content\js\vendor\ace\typeahead-bs2.js" />
     <Content Include="Content\js\vendor\buttons.js" />
     <Content Include="Content\css\vendor\font-awesome.css" />
     <Content Include="Content\css\style.css">
@@ -307,6 +337,7 @@
     <Content Include="Content\js\directives\ui-utils.js" />
     <Content Include="Content\js\vendor\jquery-2.0.3.js" />
     <Content Include="Content\js\vendor\jquery-ui-1.10.3.js" />
+    <Content Include="Content\js\vendor\jquery-ui-zh-CN.js" />
     <Content Include="Content\js\vendor\jquery.fileupload.js" />
     <Content Include="Content\js\vendor\md5.js" />
     <Content Include="Content\js\services\ArticleServices.js">
@@ -345,6 +376,8 @@
     <Content Include="Content\js\services\UserServices.min.js">
       <DependentUpon>UserServices.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\vendor\messenger-theme-flat.js" />
+    <Content Include="Content\js\vendor\moment.js" />
     <Content Include="Content\js\vendor\uuid.js" />
     <Content Include="data\words.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
