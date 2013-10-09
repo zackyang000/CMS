@@ -284,7 +284,7 @@
     </Content>
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\img\technologies\angularJS.png" />
-    <Content Include="Content\js\test\angular-scenario.js" />
+    <Content Include="Content\test\angular-scenario.js" />
     <Content Include="Content\js\controllers\ArchivesController.js">
       <DependentUpon>ArchivesController.coffee</DependentUpon>
     </Content>
@@ -1017,11 +1017,11 @@
     <Content Include="Content\js\vendor\modernizr-2.6.2.js" />
     <Content Include="sitemap.xml" />
     <Content Include="sitemap.xsl" />
-    <Content Include="Content\js\test\e2e\runner.html" />
-    <Content Include="Content\js\test\e2e\scenarios.js" />
-    <Content Include="Content\js\test\lib\angular\angular-mocks.js" />
-    <Content Include="Content\js\test\lib\angular\angular-scenario.js" />
-    <Content Include="Content\js\test\lib\angular\version.txt" />
+    <Content Include="Content\test\e2e\runner.html" />
+    <Content Include="Content\test\e2e\scenarios.js" />
+    <Content Include="Content\test\lib\angular\angular-mocks.js" />
+    <Content Include="Content\test\lib\angular\angular-scenario.js" />
+    <Content Include="Content\test\lib\angular\version.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
