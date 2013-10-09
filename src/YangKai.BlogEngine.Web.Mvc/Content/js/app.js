@@ -1,6 +1,6 @@
 ﻿var interceptor;
 
-angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'customDirectives', 'ngProgress', 'ui.utils', 'ui.bootstrap']).config([
+angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'customDirectives', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'angulartics', 'angulartics.google.analytics']).config([
   "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
     $httpProvider.responseInterceptors.push(interceptor);
     $locationProvider.html5Mode(false).hashPrefix('!');

@@ -193,8 +193,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\vendor\pace-theme-corner-indicator.css" />
-    <Content Include="Content\css\vendor\ace\ace-skins.css" />
-    <Content Include="Content\css\vendor\ace\ace.css" />
+    <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
+    <Content Include="Content\plugin\ace_1.2\ace.css" />
     <Content Include="Content\css\vendor\buttons.css" />
     <Content Include="Content\css\vendor\colorbox.css" />
     <Content Include="Content\css\vendor\dropzone.css" />
@@ -244,29 +244,36 @@
     <Content Include="Content\js\controllers\admin\AdminHomeController.min.js">
       <DependentUpon>AdminHomeController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\vendor\ace\ace-elements.js" />
-    <Content Include="Content\js\vendor\ace\ace-extra.js" />
-    <Content Include="Content\js\vendor\ace\ace.js" />
-    <Content Include="Content\js\vendor\ace\bootbox.js" />
-    <Content Include="Content\js\vendor\ace\bootstrap-colorpicker.js" />
-    <Content Include="Content\js\vendor\ace\bootstrap-tag.js" />
-    <Content Include="Content\js\vendor\ace\dropzone.js" />
-    <Content Include="Content\js\vendor\ace\fuelux.spinner.js" />
-    <Content Include="Content\js\vendor\ace\jquery.autosize.js" />
-    <Content Include="Content\js\vendor\ace\jquery.colorbox.js" />
-    <Content Include="Content\js\vendor\ace\jquery.easy-pie-chart.js" />
-    <Content Include="Content\js\vendor\ace\jquery.flot.js" />
-    <Content Include="Content\js\vendor\ace\jquery.flot.pie.js" />
-    <Content Include="Content\js\vendor\ace\jquery.flot.resize.js" />
-    <Content Include="Content\js\vendor\ace\jquery.gritter.js" />
-    <Content Include="Content\js\vendor\ace\jquery.inputlimiter.1.3.1.js" />
-    <Content Include="Content\js\vendor\ace\jquery.knob.js" />
-    <Content Include="Content\js\vendor\ace\jquery.maskedinput.js" />
-    <Content Include="Content\js\vendor\ace\jquery.slimscroll.js" />
-    <Content Include="Content\js\vendor\ace\jquery.sparkline.js" />
-    <Content Include="Content\js\vendor\ace\jquery.ui.touch-punch.js" />
-    <Content Include="Content\js\vendor\ace\spin.js" />
-    <Content Include="Content\js\vendor\ace\typeahead-bs2.js" />
+    <Content Include="Content\plugin\ace_1.2\ace-elements.js" />
+    <Content Include="Content\plugin\ace_1.2\ace-extra.js" />
+    <Content Include="Content\plugin\ace_1.2\ace.js" />
+    <Content Include="Content\js\vendor\angulartics\angulartics-chartbeat.js" />
+    <Content Include="Content\js\vendor\angulartics\angulartics-google-analytics.js" />
+    <Content Include="Content\js\vendor\angulartics\angulartics-kissmetrics.js" />
+    <Content Include="Content\js\vendor\angulartics\angulartics-mixpanel.js" />
+    <Content Include="Content\js\vendor\angulartics\angulartics-scroll.js" />
+    <Content Include="Content\js\vendor\angulartics\angulartics-segmentio.js" />
+    <Content Include="Content\js\vendor\angulartics\angulartics.js" />
+    <Content Include="Content\js\vendor\bootbox.js" />
+    <Content Include="Content\js\vendor\bootstrap-colorpicker.js" />
+    <Content Include="Content\js\vendor\bootstrap-tag.js" />
+    <Content Include="Content\js\vendor\dropzone.js" />
+    <Content Include="Content\js\vendor\fuelux.spinner.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.autosize.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.colorbox.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.easy-pie-chart.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.flot.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.flot.pie.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.flot.resize.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.gritter.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.inputlimiter.1.3.1.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.knob.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.maskedinput.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.slimscroll.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.sparkline.js" />
+    <Content Include="Content\js\vendor\jquery\jquery.ui.touch-punch.js" />
+    <Content Include="Content\js\vendor\spin.js" />
+    <Content Include="Content\js\vendor\typeahead-bs2.js" />
     <Content Include="Content\js\vendor\buttons.js" />
     <Content Include="Content\css\vendor\font-awesome.css" />
     <Content Include="Content\css\style.css">
@@ -276,7 +283,6 @@
       <DependentUpon>style.less</DependentUpon>
     </Content>
     <Content Include="Content\font\fontawesome-webfont.svg" />
-    <Content Include="Content\img\no-ie.jpg" />
     <Content Include="Content\img\technologies\angularJS.png" />
     <Content Include="Content\js\test\angular-scenario.js" />
     <Content Include="Content\js\controllers\ArchivesController.js">
@@ -336,9 +342,9 @@
     <Content Include="Content\js\directives\ngProgress.js" />
     <Content Include="Content\js\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
     <Content Include="Content\js\directives\ui-utils.js" />
-    <Content Include="Content\js\vendor\jquery-2.0.3.js" />
-    <Content Include="Content\js\vendor\jquery-ui-1.10.3.js" />
-    <Content Include="Content\js\vendor\jquery-ui-zh-CN.js" />
+    <Content Include="Content\js\vendor\jquery\jquery-2.0.3.js" />
+    <Content Include="Content\js\vendor\jquery\jquery-ui-1.10.3.js" />
+    <Content Include="Content\js\vendor\jquery\jquery-ui-zh-CN.js" />
     <Content Include="Content\js\vendor\jquery.fileupload.js" />
     <Content Include="Content\js\vendor\md5.js" />
     <Content Include="Content\js\services\ArticleServices.js">
@@ -473,8 +479,6 @@
     <Content Include="Content\img\main_bg_grid_tile.png" />
     <Content Include="Content\img\main_bg_image.jpg" />
     <Content Include="Content\img\main_bg_tile.jpg" />
-    <Content Include="Content\img\warning.png" />
-    <Content Include="Content\js\vendor\modernizr-2.6.2.min.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\adapters\jquery.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\ckeditor.js" />
     <Content Include="Content\plugin\ckeditor_3.6.1\ckeditor_basic.js" />

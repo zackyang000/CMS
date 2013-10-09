@@ -9,7 +9,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
         @Styles.Render("~/Content/style/css")
-        <script src="/Content/js/vendor/modernizr-2.6.2.min.js"></script>
+        @Scripts.Render("~/js")
     </head>
     <body>
         @Html.Partial("layout-header", Model)
@@ -18,21 +18,16 @@
                 <div class="grid-image">
                     <div class="wrapped-content">
                         <h1>BECAUSE WE CAN</h1>
-                        <h2>
-                            <p class="bottom clearfix">{{word}}</p>
-                        </h2>
+                        <h2><p class="bottom clearfix">{{word}}</p></h2>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
-            <div class="content">
-                <div ng-view></div>
-            </div>
+            <div class="content" ng-view></div>
             <hr>
             @Html.Partial("layout-footer")
         </div>
-        @Scripts.Render("~/js")
         <script>
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-21831838-1']);

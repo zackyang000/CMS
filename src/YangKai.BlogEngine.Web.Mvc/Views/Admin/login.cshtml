@@ -6,7 +6,7 @@
         <title>Login</title>
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/style/css")
-        <script src="/Content/js/vendor/modernizr-2.6.2.min.js"></script>
+        @Scripts.Render("~/js")
     </head>
     <body>
         <div class="container">
@@ -14,44 +14,44 @@
                 <form name="form" class="form-horizontal well" ng-submit="signin()">
                     <fieldset>
                         <legend>Login</legend>
-                                <div class="form-group">
-                                    <label class="control-label col-md-2">User</label>
-                                    <div class="col-md-10">
-                                        <span class="input-group">
-                                            <span class="input-group-addon"><i class="icon-user"></i></span>
-                                            <input type="text" placeholder="User" ng-model="user.Username" class="form-control" required />
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-2">Pwd</label>
-                                    <div class="col-md-10">
-                                        <span class="input-group">
-                                            <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                            <input type="password" placeholder="Pwd" ng-model="user.Password" class="form-control" required />
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <label class="checkbox">
-                                            <input type="checkbox" ng-init="user.IsRemember=false" ng-model="user.IsRememberMe" />Remember me
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <button class="button button-flat-primary" ng-disabled="submitting || form.$invalid">Sgin In</button>
-                                        <span ng-show="submitting">
-                                            <i class="icon-spinner icon-spin icon-large"></i>                                            
-                                            sgin in...
-                                        </span>
-                                    </div>
-                                </div>
-                            <hr>
-                    </fieldset> </form>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">User</label>
+                            <div class="col-md-10">
+                                <span class="input-group">
+                                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                                    <input type="text" placeholder="User" ng-model="user.Username" class="form-control" required />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Pwd</label>
+                            <div class="col-md-10">
+                                <span class="input-group">
+                                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                    <input type="password" placeholder="Pwd" ng-model="user.Password" class="form-control" required />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <label class="checkbox">
+                                    <input type="checkbox" ng-init="user.IsRemember=false" ng-model="user.IsRememberMe" />Remember me
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="button button-flat-primary" ng-disabled="submitting || form.$invalid">Sgin In</button>
+                                <span ng-show="submitting">
+                                    <i class="icon-spinner icon-spin icon-large"></i>                                            
+                                    sgin in...
+                                </span>
+                            </div>
+                        </div>
+                        <hr>
+                    </fieldset> 
+                </form>
             </div>
         </div>
-        @Scripts.Render("~/js")
     </body>
 </html>

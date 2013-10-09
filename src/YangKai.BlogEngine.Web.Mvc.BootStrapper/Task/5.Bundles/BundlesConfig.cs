@@ -41,8 +41,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             messengerFiles.Files.Add("messenger-*.js");
             BundleTable.Bundles.FileSetOrderList.Add(messengerFiles);
 
+            //js
             var bundle = new ScriptBundle("~/js")
-                .IncludeDirectory("~/Content/js/vendor", "*.js", false)
+                .IncludeDirectory("~/Content/js/vendor", "*.js", true)
                 .Include("~/Content/js/main.js")
                 .IncludeDirectory("~/Content/js/directives", "*.js", true)
                 .IncludeDirectory("~/Content/js/services", "*.js", true)
@@ -52,6 +53,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 .Include(plugin);
             BundleTable.Bundles.Add(bundle);
 
+            //ace-js
             var aceBundle = new ScriptBundle("~/ace-js")
                 .IncludeDirectory("~/Content/js/vendor", "*.js", true)
                 .Include("~/Content/js/main.js")
@@ -60,6 +62,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 .IncludeDirectory("~/Content/js/filters", "*.js", true)
                 .IncludeDirectory("~/Content/js/controllers", "*.js", true)
                 .Include("~/Content/js/app.js")
+                .IncludeDirectory("~/Content/plugin/ace_1.2", "*.js", true)
                 .Include(plugin);
             BundleTable.Bundles.Add(aceBundle);
         }
@@ -71,15 +74,18 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             messengerFiles.Files.Add("messenger-*.css");
             BundleTable.Bundles.FileSetOrderList.Add(messengerFiles);
 
+            //css
             var bundle = new StyleBundle("~/Content/style/css")
-                .IncludeDirectory("~/Content/css/vendor", "*.css", false)
+                .IncludeDirectory("~/Content/css/vendor", "*.css", true)
                 .Include(plugin)
                 .Include("~/Content/css/style.css");
             BundleTable.Bundles.Add(bundle);
 
+            //ace-css
             var aceBundle = new StyleBundle("~/Content/style/ace-css")
                 .IncludeDirectory("~/Content/css/vendor", "*.css", true)
                 .Include(plugin)
+                .IncludeDirectory("~/Content/plugin/ace_1.2", "*.css", true)
                 .Include("~/Content/css/style.css");
             BundleTable.Bundles.Add(aceBundle);
         }
