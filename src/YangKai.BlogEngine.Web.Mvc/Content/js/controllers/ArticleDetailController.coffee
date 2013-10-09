@@ -1,13 +1,11 @@
 ﻿ArticleDetailController=["$scope","$routeParams","progressbar","Article","Comment",
 ($scope,$routeParams,progressbar,Article,Comment) ->
   $scope.$parent.showBanner=false
-  $scope.loading=true
 
   $scope.url =$routeParams.url
   Article.get
     $filter:"Url eq '#{$scope.url}'"
    , (data)->
-    $scope.loading=false
     $scope.item=data.value[0]
     if !$scope.item
       $scope.$parent.title='404'

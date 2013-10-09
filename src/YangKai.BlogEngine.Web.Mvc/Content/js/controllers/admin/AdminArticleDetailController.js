@@ -8,7 +8,6 @@ AdminArticleDetailController = [
       $expand: 'Groups,Groups/Categorys'
     }, function() {
       if ($routeParams.id) {
-        $scope.loading = true;
         return Article.get({
           $filter: "PostId eq (guid'" + $routeParams.id + "')"
         }, function(data) {
@@ -33,9 +32,8 @@ AdminArticleDetailController = [
               item = _ref2[_k];
               $scope.tags += ',' + item.Name;
             }
-            $scope.tags = $scope.tags.substring(1);
+            return $scope.tags = $scope.tags.substring(1);
           }
-          return $scope.loading = false;
         });
       } else {
         $scope.entity = {};
@@ -73,7 +71,6 @@ AdminArticleDetailController = [
       if (!$scope.entity.Title) return false;
       if (!$scope.entity.Content) return false;
       if (!$scope.entity.Description) return false;
-      $scope.loading = true;
       if ($scope.files.length) {
         return uploadManager.upload();
       } else {

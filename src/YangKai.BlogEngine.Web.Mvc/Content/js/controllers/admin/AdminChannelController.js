@@ -3,12 +3,10 @@
 AdminChannelController = [
   "$scope", "$dialog", "Channel", function($scope, $dialog, Channel) {
     var load;
-    $scope.loading = true;
     $scope.entity = {};
     load = function() {
       return Channel.query(function(data) {
-        $scope.list = data;
-        return $scope.loading = false;
+        return $scope.list = data;
       });
     };
     $scope.add = function() {

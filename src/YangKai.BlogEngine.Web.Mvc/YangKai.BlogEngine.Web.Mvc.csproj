@@ -192,6 +192,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\vendor\pace-theme-corner-indicator.css" />
     <Content Include="Content\css\vendor\ace\ace-skins.css" />
     <Content Include="Content\css\vendor\ace\ace.css" />
     <Content Include="Content\css\vendor\buttons.css" />
@@ -378,6 +379,12 @@
     </Content>
     <Content Include="Content\js\vendor\messenger-theme-flat.js" />
     <Content Include="Content\js\vendor\moment.js" />
+    <Content Include="Content\js\vendor\pace.js">
+      <DependentUpon>pace.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\vendor\pace.min.js">
+      <DependentUpon>pace.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\vendor\uuid.js" />
     <Content Include="Content\data\words.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -941,7 +948,6 @@
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\richcombo.css" />
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\skin.js" />
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\uipanel.css" />
-    <Content Include="Content\css\vendor\messenger-theme-future.css" />
     <Content Include="Content\css\vendor\messenger.css" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\vendor\jquery.lazyload.js" />
@@ -1077,6 +1083,7 @@
     <Content Include="Content\js\directives\custom\ckeditor.coffee" />
     <Content Include="Content\js\directives\custom\upload.coffee" />
     <Content Include="Content\js\controllers\ArchivesController.coffee" />
+    <Content Include="Content\js\vendor\pace.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

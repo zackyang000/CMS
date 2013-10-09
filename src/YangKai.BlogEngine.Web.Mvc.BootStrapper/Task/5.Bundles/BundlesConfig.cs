@@ -29,6 +29,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         private void BundleJs(params string[] plugin)
         {
             var angularFiles = new BundleFileSetOrdering("Angular");
+            angularFiles.Files.Add("pace.js");
             angularFiles.Files.Add("angular.js");
             angularFiles.Files.Add("angular-{version}.js");
             angularFiles.Files.Add("angular-*.js");

@@ -4,7 +4,6 @@ MessageController = [
   "$scope", "progressbar", "Message", function($scope, progressbar, Message) {
     $scope.$parent.title = 'Message Boards';
     $scope.$parent.showBanner = false;
-    $scope.loading = true;
     $scope.entity = {};
     $scope.$watch('User', function() {
       if ($scope.User) {
@@ -18,17 +17,18 @@ MessageController = [
     $scope.list = Message.query({
       $filter: 'IsDeleted eq false'
     }, function() {
-      var item, _i, _len, _ref;
+      var item, _i, _len, _ref, _results;
       _ref = $scope.list.value;
+      _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
         if (item.Email) {
-          item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
+          _results.push(item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email));
         } else {
-          item.Gravatar = '/Content/img/avatar.png';
+          _results.push(item.Gravatar = '/Content/img/avatar.png');
         }
       }
-      return $scope.loading = false;
+      return _results;
     });
     $scope.save = function() {
       progressbar.start();

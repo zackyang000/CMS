@@ -10,7 +10,7 @@ namespace AtomLab.Utility
     public static class EncryptStringHelper
     {
         //密钥 remark:改变密钥将改变DES加密/解密结果.
-        private static readonly byte[] Key64 = { 254, 72, 48, 66, 12, 123, 55, 45 };
+        private static readonly byte[] Key64 = { 254, 72, 48, 66, 12, 123, 55, 46 };
         private static readonly byte[] IV64 = { 25, 251, 244, 15, 13, 88, 168, 33 };
 
         /// <summary>

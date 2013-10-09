@@ -4,7 +4,6 @@
 
   $scope.channels=Channel.query $expand:'Groups,Groups/Categorys',()->
     if $routeParams.id
-      $scope.loading=true
       Article.get $filter:"PostId eq (guid'#{$routeParams.id}')",(data)->
         $scope.entity=data.value[0]
         $scope.sourceTitle=$scope.entity.Title
@@ -20,7 +19,6 @@
           for item in $scope.entity.Tags 
             $scope.tags+=','+item.Name
           $scope.tags=$scope.tags.substring(1)
-        $scope.loading=false
     else
       $scope.entity={}
       $scope.entity.PostId=UUID.generate()
@@ -49,8 +47,6 @@
     return false if !$scope.entity.Title
     return false if !$scope.entity.Content
     return false if !$scope.entity.Description
-
-    $scope.loading=true
 
     if $scope.files.length
       uploadManager.upload()

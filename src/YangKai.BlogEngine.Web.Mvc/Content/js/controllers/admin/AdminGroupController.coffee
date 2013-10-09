@@ -1,7 +1,5 @@
 ﻿AdminGroupController=["$scope","$dialog","$routeParams","Group","Channel", 
 ($scope,$dialog,$routeParams,Group,Channel) ->
-  $scope.loading=true
-
   Channel.query
     $filter:"Url eq '#{$routeParams.channel}'"
     ,(data)->
@@ -14,7 +12,6 @@
       $filter:"IsDeleted eq false and Channel/Url eq '#{$routeParams.channel}'"
       ,(data)->
         $scope.list=data
-        $scope.loading=false
 
   $scope.add = ()->
     $scope.entity = {}

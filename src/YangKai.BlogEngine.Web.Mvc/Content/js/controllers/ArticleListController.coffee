@@ -13,7 +13,6 @@
     $location.search({p: pageNo})
 
   $scope.load = ->
-    $scope.loading=true
     filter='IsDeleted eq false'
     filter+=" and Group/Channel/Url eq '#{$routeParams.channel}'" if $routeParams.channel
     filter+=" and Group/Url eq '#{$routeParams.group}'" if $routeParams.group
@@ -26,7 +25,6 @@
     , (data)->
       scroll(0,0)
       $scope.list = data
-      $scope.loading=false
 
   $scope.load $scope.currentPage
 ]

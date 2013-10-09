@@ -2,7 +2,6 @@
 ($scope,progressbar,Message) ->
   $scope.$parent.title='Message Boards'
   $scope.$parent.showBanner=false
-  $scope.loading=true
   $scope.entity= {}
 
   $scope.$watch 'User',->
@@ -19,7 +18,6 @@
         item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
       else
         item.Gravatar='/Content/img/avatar.png'
-    $scope.loading = false 
       
   $scope.save = () ->
     progressbar.start()

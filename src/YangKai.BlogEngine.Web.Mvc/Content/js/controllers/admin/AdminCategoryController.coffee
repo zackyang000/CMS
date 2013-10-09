@@ -1,7 +1,5 @@
 ﻿AdminCategoryController=["$scope","$dialog","$routeParams","Category","Group", 
 ($scope,$dialog,$routeParams,Category,Group) ->
-  $scope.loading=true
-
   Group.query
     $filter:"Url eq '#{$routeParams.group}'"
     $expand:'Channel'
@@ -13,7 +11,6 @@
       $filter:"IsDeleted eq false and Group/Url eq '#{$routeParams.group}'"
       ,(data)->
         $scope.list=data
-        $scope.loading=false
 
   $scope.add = ()->
     $scope.entity = {}

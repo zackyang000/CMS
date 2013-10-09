@@ -1,13 +1,10 @@
 ﻿AdminChannelController=["$scope","$dialog","Channel", 
 ($scope,$dialog,Channel) ->
-  $scope.loading=true
-
   $scope.entity = {}
 
   load = ->
     Channel.query (data)->
       $scope.list = data
-      $scope.loading=false
 
   $scope.add = ()->
     $scope.entity = {}

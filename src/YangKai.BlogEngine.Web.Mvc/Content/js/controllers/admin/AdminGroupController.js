@@ -3,7 +3,6 @@
 AdminGroupController = [
   "$scope", "$dialog", "$routeParams", "Group", "Channel", function($scope, $dialog, $routeParams, Group, Channel) {
     var load;
-    $scope.loading = true;
     Channel.query({
       $filter: "Url eq '" + $routeParams.channel + "'"
     }, function(data) {
@@ -14,8 +13,7 @@ AdminGroupController = [
       return Group.query({
         $filter: "IsDeleted eq false and Channel/Url eq '" + $routeParams.channel + "'"
       }, function(data) {
-        $scope.list = data;
-        return $scope.loading = false;
+        return $scope.list = data;
       });
     };
     $scope.add = function() {
