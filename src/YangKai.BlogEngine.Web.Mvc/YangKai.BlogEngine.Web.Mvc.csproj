@@ -192,7 +192,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\vendor\pace-theme-corner-indicator.css" />
     <Content Include="Content\js\init.js">
       <DependentUpon>init.coffee</DependentUpon>
     </Content>

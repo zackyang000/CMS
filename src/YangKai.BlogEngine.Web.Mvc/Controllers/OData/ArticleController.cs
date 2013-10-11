@@ -102,6 +102,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             }
 
             entity.Content = SaveRemoteFile.SaveContentPic(entity.Content, entity.Url);
+
+            if (entity.Description == null) entity.Description = string.Empty;
             entity.Description = SaveRemoteFile.SaveContentPic(entity.Description, entity.Url);
 
             entity = Proxy.Repository<Post>().Add(entity);

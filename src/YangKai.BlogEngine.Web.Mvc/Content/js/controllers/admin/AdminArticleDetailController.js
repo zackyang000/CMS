@@ -70,7 +70,6 @@ AdminArticleDetailController = [
       if (!$scope.entity.Url) return false;
       if (!$scope.entity.Title) return false;
       if (!$scope.entity.Content) return false;
-      if (!$scope.entity.Description) return false;
       if ($scope.files.length) {
         return uploadManager.upload();
       } else {

@@ -46,7 +46,6 @@
     return false if !$scope.entity.Url
     return false if !$scope.entity.Title
     return false if !$scope.entity.Content
-    return false if !$scope.entity.Description
 
     if $scope.files.length
       uploadManager.upload()

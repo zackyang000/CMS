@@ -7,9 +7,7 @@ myDirectives.directive('ckEditor', function() {
       ck = CKEDITOR.replace(elm[0], {
         toolbar: 'Main'
       });
-      if (!ngModel) {
-        return;
-      }
+      if (!ngModel) return;
       ck.on('pasteState', function() {
         return scope.$apply(function() {
           return ngModel.$setViewValue(ck.getData());
