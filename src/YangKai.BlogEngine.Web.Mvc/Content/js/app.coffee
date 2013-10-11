@@ -68,6 +68,7 @@ angular.module("app-admin",['formatFilters',
 'ui.bootstrap'])
 .config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
   $httpProvider.responseInterceptors.push(interceptor)  
+
   $locationProvider.html5Mode(false).hashPrefix('!')
   $routeProvider
   #Channel

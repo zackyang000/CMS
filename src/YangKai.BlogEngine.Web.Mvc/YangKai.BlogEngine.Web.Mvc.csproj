@@ -193,6 +193,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\vendor\pace-theme-corner-indicator.css" />
+    <Content Include="Content\js\init.js">
+      <DependentUpon>init.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\init.min.js">
+      <DependentUpon>init.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
     <Content Include="Content\css\vendor\buttons.css" />
@@ -953,7 +959,7 @@
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\skin.js" />
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\uipanel.css" />
     <Content Include="Content\css\vendor\messenger.css" />
-    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\common.js" />
     <Content Include="Content\js\vendor\jquery.lazyload.js" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\index.html" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\scripts\shAutoloader.js" />
@@ -1088,6 +1094,7 @@
     <Content Include="Content\js\directives\custom\upload.coffee" />
     <Content Include="Content\js\controllers\ArchivesController.coffee" />
     <Content Include="Content\js\vendor\pace.coffee" />
+    <Content Include="Content\js\init.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

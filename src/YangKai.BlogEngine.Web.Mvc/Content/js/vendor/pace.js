@@ -153,6 +153,7 @@ Bar = (function() {
       } else {
         targetElement.appendChild(this.el);
       }
+      if (options.start && typeof options.start === 'function') options.start();
     }
     return this.el;
   };
@@ -161,7 +162,8 @@ Bar = (function() {
     var el;
     el = this.getElement();
     el.className = el.className.replace('pace-active', '');
-    return el.className += ' pace-inactive';
+    el.className += ' pace-inactive';
+    if (options.stop && typeof options.stop === 'function') return options.stop();
   };
 
   Bar.prototype.update = function(prog) {

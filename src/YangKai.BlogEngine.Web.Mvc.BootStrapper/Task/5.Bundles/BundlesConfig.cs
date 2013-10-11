@@ -29,7 +29,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         private void BundleJs(params string[] plugin)
         {
             var angularFiles = new BundleFileSetOrdering("Angular");
-            angularFiles.Files.Add("pace.js");
             angularFiles.Files.Add("angular.js");
             angularFiles.Files.Add("angular-{version}.js");
             angularFiles.Files.Add("angular-*.js");
@@ -43,8 +42,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             //js
             var bundle = new ScriptBundle("~/js")
+                .Include("~/Content/js/init.js")
                 .IncludeDirectory("~/Content/js/vendor", "*.js", true)
-                .Include("~/Content/js/main.js")
+                .Include("~/Content/js/common.js")
                 .IncludeDirectory("~/Content/js/directives", "*.js", true)
                 .IncludeDirectory("~/Content/js/services", "*.js", true)
                 .IncludeDirectory("~/Content/js/filters", "*.js", true)
