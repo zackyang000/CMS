@@ -54,7 +54,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             BundleTable.Bundles.Add(bundle);
 
             //ace-js
-            var aceBundle = new ScriptBundle("~/ace-js")
+            var aceBundle = new ScriptBundle("~/admin-js")
                 .IncludeDirectory("~/Content/js/vendor", "*.js", true)
                 .Include("~/Content/js/main.js")
                 .IncludeDirectory("~/Content/js/directives", "*.js", true)
@@ -82,7 +82,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             BundleTable.Bundles.Add(bundle);
 
             //ace-css
-            var aceBundle = new StyleBundle("~/Content/style/ace-css")
+            var aceBundle = new StyleBundle("~/Content/style/admin-css")
                 .IncludeDirectory("~/Content/css/vendor", "*.css", true)
                 .Include(plugin)
                 .IncludeDirectory("~/Content/plugin/ace_1.2", "*.css", true)
