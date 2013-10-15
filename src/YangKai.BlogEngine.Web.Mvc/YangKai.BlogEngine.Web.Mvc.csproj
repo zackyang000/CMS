@@ -1046,7 +1046,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\app\" />
+    <Folder Include="Content\app\admin\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Debug\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Release\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Debug\" />

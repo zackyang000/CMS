@@ -4,25 +4,17 @@
         <li><a href="/#!/">Home</a></li>
         <li class="active">Archives</li>
     </ul>
+    <h1 style="margin-bottom: 0;">Post Archives</h1>
     <ul class="list-unstyled">
-        <li ng-repeat="channel in list.value">
-            <div>
-                <i class="icon-caret-down"></i>
-                {{channel.Name}}
-            </div>
+        <li ng-repeat="item in list | orderBy:'-date'">
+            <h3 style="border-bottom: 1px solid #999">
+                {{item.date}}
+            </h3>
             <ul class="list-unstyled">
-                <li ng-repeat="group in channel.Groups" ng-show="!group.IsDeleted" class="group">
-                    <a href="JavaScript:void(0)" ng-click="group.show=!group.show">
-                        <i class="icon-caret-right" ng-hide="group.show"></i>
-                        <i class="icon-caret-down" ng-show="group.show"></i>
-                        {{group.Name}}
-                    </a>
-                    <ul ng-show="group.show" class="list-unstyled">
-                        <li ng-repeat="post in group.Posts | orderBy:'-PubDate'" ng-show="group.show && !post.IsDeleted" class="post">
-                            {{post.PubDate | date:"yy.MM.dd"}}: 
-                            <a href="/#!/post/{{post.Url}}">{{post.Title}}</a>
-                        </li>
-                    </ul>
+                <li ng-repeat="post in item.posts">
+                    {{post.PubDate | date:"yyyy-MM-dd"}}
+                    »  
+                    <a href="/#!/post/{{post.Url}}" title="{{post.channel}} - {{post.group}}">{{post.Title}}</a>
                 </li>
             </ul>
         </li>
