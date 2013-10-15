@@ -6,12 +6,22 @@
     <link>http://www.woshinidezhu.com/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by YangKai , 2008-2013, All Rights Reserved. 蜀ICP备09016538号.</copyright>
-    <pubDate>Fri, 11 Oct 2013 16:52:19 GMT</pubDate>
-    <lastBuildDate>Fri, 11 Oct 2013 16:52:19 GMT</lastBuildDate>
+    <pubDate>Tue, 15 Oct 2013 16:42:06 GMT</pubDate>
+    <lastBuildDate>Tue, 15 Oct 2013 16:42:06 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
     <item>
-      <title>44444</title>
+      <title>123123</title>
+      <description>&lt;p&gt;
+	123132123&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/#!/post/231231</link>
+      <category>技术 - 默认</category>
+      <guid>37bca5c0-d0ba-4700-948b-590c9f522b4c</guid>
+      <pubDate>Tue, 15 Oct 2013 16:38:06 GMT</pubDate>
+    </item>
+    <item>
+      <title>4444488</title>
       <description>&lt;p&gt;
 	44444444444444444&lt;/p&gt;
 </description>
@@ -41,7 +51,7 @@
       <pubDate>Thu, 05 Sep 2013 18:31:54 GMT</pubDate>
     </item>
     <item>
-      <title>4</title>
+      <title>455555555555飞凤飞飞凤飞飞</title>
       <description>&lt;p&gt;
 	4444&lt;/p&gt;
 </description>
@@ -1404,18 +1414,6 @@ event.initKeyEvent(&amp;quot;keypress&amp;quot;, true, true, null, null,
       <link>http://www.woshinidezhu.com/#!/post/god-music-</link>
       <category>视频 - 欢乐</category>
       <guid>9832713a-08df-e111-afdf-00155d5f0243</guid>
-      <pubDate>Sun, 05 Aug 2012 22:04:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>神奇的视错觉：艾姆斯窗</title>
-      <description>&lt;p&gt;
-	大脑犯二的赶脚...&lt;/p&gt;
-&lt;p&gt;
-	&lt;embed align="middle" allowfullscreen="true" allowscriptaccess="sameDomain" height="400" quality="high" src="http://player.youku.com/player.php/sid/XNDMyMDg4NjY4/v.swf" type="application/x-shockwave-flash" width="480"&gt;&lt;/embed&gt;&lt;/p&gt;
-</description>
-      <link>http://www.woshinidezhu.com/#!/post/ames-window</link>
-      <category>视频 - 欢乐</category>
-      <guid>50e84b8e-07df-e111-afdf-00155d5f0243</guid>
       <pubDate>Sun, 05 Aug 2012 22:04:00 GMT</pubDate>
     </item>
   </channel>

@@ -3,7 +3,7 @@
 GlobalController = [
   "$scope", "$http", "$location", '$window', function($scope, $http, $location, $window) {
     $http.get("/admin/getuser").success(function(data) {
-      if (data.Email) {
+      debugger;      if (data.Email) {
         data.Gravatar = 'http://www.gravatar.com/avatar/' + md5(data.Email);
       } else {
         data.Gravatar = '/Content/img/avatar.png';

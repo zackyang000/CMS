@@ -45,13 +45,7 @@
   .otherwise redirectTo: "/"
 ]
 
-angular.module("app-login",['UserServices',
-'ui.utils',
-'ui.bootstrap'])
-.config ["$locationProvider","$routeProvider","$httpProvider", 
-($locationProvider,$routeProvider,$httpProvider) ->
-  $httpProvider.responseInterceptors.push(interceptor)
-]
+angular.module("app-login",['UserServices'])
 
 angular.module("app-admin",['formatFilters',
 'MessageServices',
@@ -68,39 +62,38 @@ angular.module("app-admin",['formatFilters',
 'ui.bootstrap'])
 .config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
   $httpProvider.responseInterceptors.push(interceptor)  
-
   $locationProvider.html5Mode(false).hashPrefix('!')
   $routeProvider
   #Channel
   .when("/channel",
-    templateUrl: "/partials/Admin/channel/list.html"
+    templateUrl: "/content/app/admin/basedata/channel/channel.tpl.html"
     controller: AdminChannelController)
   #Group
   .when("/channel(':channel')/group",
-    templateUrl: "/partials/Admin/group/list.html"
+    templateUrl: "/content/app/admin/basedata/group/group.tpl.html"
     controller: AdminGroupController)
   #Category
   .when("/channel(':channel')/group(':group')/category",
-    templateUrl: "/partials/Admin/category/list.html"
+    templateUrl: "/content/app/admin/basedata/category/category.tpl.html"
     controller: AdminCategoryController)
   #Article
   .when("/article",
-    templateUrl: "/partials/Admin/article/list.html"
+    templateUrl: "/content/app/admin/article/list/list.tpl.html"
     controller: AdminArticleController)
   .when("/article(':id')",
-    templateUrl: "/partials/Admin/article/detail.html"
+    templateUrl: "/content/app/admin/article/detail/detai.tpl.html"
     controller: AdminArticleDetailController)
   .when("/article/new",
-    templateUrl: "/partials/Admin/article/detail.html"
+    templateUrl: "/content/app/admin/article/detail/detai.tpl.html"
     controller: AdminArticleDetailController)
   #Message boards
   .when("/board",
-    templateUrl: "/partials/Admin/board/list.html"
+    templateUrl: "/content/app/admin/board/board.tpl.html"
     controller: AdminBoardController)
   #home
-  #.when("/",
-  #  templateUrl: "/partials/Admin/index.html"
-  #  controller: AdminHomeController)
+  .when("/",
+    templateUrl: "/content/app/admin/dashboard/dashboard.tpl.html"
+    controller: AdminHomeController)
   .otherwise redirectTo: "/article"
 ]
 

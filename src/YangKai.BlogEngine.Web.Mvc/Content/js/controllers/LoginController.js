@@ -1,7 +1,7 @@
-﻿var LoginController, LoginDialogController;
+﻿var LoginController;
 
 LoginController = [
-  "$scope", "$window", "$dialog", "User", function($scope, $window, $dialog, User) {
+  "$scope", "$window", "User", function($scope, $window, User) {
     $scope.opts = {
       dialogFade: true,
       backdropFade: true,
@@ -9,10 +9,7 @@ LoginController = [
       controller: 'LoginDialogController'
     };
     $scope.open = function() {
-      return $dialog.dialog($scope.opts).open();
-    };
-    $scope.close = function() {
-      return $scope.sgindialog = false;
+      return $window.location.href = '/admin/';
     };
     $scope.signin = function() {
       $scope.submitting = true;
@@ -20,8 +17,9 @@ LoginController = [
         id: '(1)'
       }, $scope.user, function(data) {
         $scope.submitting = false;
-        return $window.location.href = '/admin';
+        return $window.location.href = '/admin/';
       }, function(error) {
+        $scope.error = error.data['odata.error'].innererror.message;
         $scope.user.Password = '';
         return $scope.submitting = false;
       });
@@ -40,26 +38,6 @@ LoginController = [
     };
     return $scope.view = function() {
       return $window.location.href = '/';
-    };
-  }
-];
-
-LoginDialogController = [
-  "$scope", "$window", "dialog", "User", function($scope, $window, dialog, User) {
-    $scope.close = function(result) {
-      return dialog.close(result);
-    };
-    return $scope.signin = function() {
-      $scope.submitting = true;
-      return User.signin({
-        id: '(1)'
-      }, $scope.user, function(data) {
-        $scope.submitting = false;
-        return $window.location.href = '/';
-      }, function(error) {
-        $scope.user.Password = '';
-        return $scope.submitting = false;
-      });
     };
   }
 ];

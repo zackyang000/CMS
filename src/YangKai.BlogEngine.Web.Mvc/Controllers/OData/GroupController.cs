@@ -8,7 +8,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
     {
         protected override Group CreateEntity(Group entity)
         {
-            if (Proxy.Repository<Group>().Exist(p => !p.IsDeleted && p.Url == entity.Url && p.GroupId != entity.GroupId))
+            if (Proxy.Repository<Group>().Exist(p => !p.IsDeleted
+                                                     && p.Url == entity.Url
+                                                     && p.Channel.ChannelId == entity.Channel.ChannelId
+                                                     && p.GroupId != entity.GroupId))
             {
                 throw new Exception("Group has been exist.");
             }
@@ -19,7 +22,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
         protected override Group UpdateEntity(Guid key, Group update)
         {
-            if (Proxy.Repository<Group>().Exist(p => !p.IsDeleted && p.Url == update.Url && p.GroupId != update.GroupId))
+            if (Proxy.Repository<Group>().Exist(p => !p.IsDeleted
+                                                     && p.Url == update.Url
+                                                     && p.Channel.ChannelId == update.Channel.ChannelId
+                                                     && p.GroupId != update.GroupId))
             {
                 throw new Exception("Group has been exist.");
             }

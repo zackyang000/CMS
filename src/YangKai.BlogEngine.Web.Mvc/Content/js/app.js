@@ -37,37 +37,36 @@ angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'C
   }
 ]);
 
-angular.module("app-login", ['UserServices', 'ui.utils', 'ui.bootstrap']).config([
-  "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
-    return $httpProvider.responseInterceptors.push(interceptor);
-  }
-]);
+angular.module("app-login", ['UserServices']);
 
 angular.module("app-admin", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GroupServices', 'CategoryServices', 'customDirectives', 'ngProgress', 'FileUpload', 'ui.utils', 'ui.bootstrap']).config([
   "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
     $httpProvider.responseInterceptors.push(interceptor);
     $locationProvider.html5Mode(false).hashPrefix('!');
     return $routeProvider.when("/channel", {
-      templateUrl: "/partials/Admin/channel/list.html",
+      templateUrl: "/content/app/admin/basedata/channel/channel.tpl.html",
       controller: AdminChannelController
     }).when("/channel(':channel')/group", {
-      templateUrl: "/partials/Admin/group/list.html",
+      templateUrl: "/content/app/admin/basedata/group/group.tpl.html",
       controller: AdminGroupController
     }).when("/channel(':channel')/group(':group')/category", {
-      templateUrl: "/partials/Admin/category/list.html",
+      templateUrl: "/content/app/admin/basedata/category/category.tpl.html",
       controller: AdminCategoryController
     }).when("/article", {
-      templateUrl: "/partials/Admin/article/list.html",
+      templateUrl: "/content/app/admin/article/list/list.tpl.html",
       controller: AdminArticleController
     }).when("/article(':id')", {
-      templateUrl: "/partials/Admin/article/detail.html",
+      templateUrl: "/content/app/admin/article/detail/detai.tpl.html",
       controller: AdminArticleDetailController
     }).when("/article/new", {
-      templateUrl: "/partials/Admin/article/detail.html",
+      templateUrl: "/content/app/admin/article/detail/detai.tpl.html",
       controller: AdminArticleDetailController
     }).when("/board", {
-      templateUrl: "/partials/Admin/board/list.html",
+      templateUrl: "/content/app/admin/board/board.tpl.html",
       controller: AdminBoardController
+    }).when("/", {
+      templateUrl: "/content/app/admin/dashboard/dashboard.tpl.html",
+      controller: AdminHomeController
     }).otherwise({
       redirectTo: "/article"
     });

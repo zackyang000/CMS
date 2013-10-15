@@ -6,10 +6,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>iShare Management</title>
         <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/style/css")
+        @Styles.Render("~/Content/style/admin-css")
         <script src="/Content/plugin/ckeditor_3.6.1/ckeditor.js"></script>
         <script src="/Content/plugin/ckfinder_aspnet_2.0.1/ckfinder.js"></script>
-        @Scripts.Render("~/js")
+        @Scripts.Render("~/admin-js")
         <style>
             .breadcrumb {border-left-color: #3a87ad;}
             ::-moz-selection {background: #d9edf7;}
@@ -18,63 +18,174 @@
         </style>
     </head>
     <body>
-        <header class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/admin/#!/"><img src="/Content/img/logo.gif" />Management</a>
+        <div class="navbar navbar-default" id="navbar">
+            <script type="text/javascript">
+                try { ace.settings.check('navbar', 'fixed'); } catch (e) { }
+            </script>
+            <div class="navbar-container" id="navbar-container">
+                <div class="navbar-header pull-left">
+                    <a href="#" class="navbar-brand">
+                        <small>
+                            <i class="icon-bug"></i>
+                            iShare
+                        </small>
+                    </a>
                 </div>
-                <nav class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Article <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="/admin/#!/article">Manage</a></li>
-                                <li class="divider"></li>
-                                <li><a ng-href="/admin/#!/channel">Base Data</a></li>
-                            </ul>
-                        </li>
-                        <li><a ng-href="/admin/#!/board">Message boards</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right" ng-controller="LoginController">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                                <img ng-src="{{User.Gravatar}}" class="avatar-mini" />
-                                &nbsp;<span>{{User.UserName}}</span>
+                <div class="navbar-header pull-right" role="navigation" ng-controller="LoginController">
+                    <ul class="nav ace-nav">
+                        <li class="light-blue">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                <img class="nav-user-photo" ng-src="{{User.Gravatar}}" />
+                                <span class="user-info">
+                                    <small>欢迎,</small>
+                                    {{User.UserName}}
+                                </span>
+                                <i class="icon-caret-down"></i>
                             </a>
-                            <ul class="dropdown-menu personal-box">
+
+                            <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                                 <li>
-                                    <div class="row hr">
-                                        <div class="col-lg-4">
-                                            <img ng-src="{{User.Gravatar}}" class="avatar" />
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div><strong>{{User.UserName}}</strong></div>
-                                            <p>{{User.Email}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="pull-left">
-                                        <button class="button button-flat-action" ng-click="view()">Back</button>
-                                    </div>
-                                    <div class="pull-right">
-                                        <button class="button button-flat-caution" ng-click="signout()">Sign out</button>
-                                    </div>
+                                    <a href="JavaScript:void(0)" ng-click="signout()">
+                                        <i class="icon-off"></i>
+                                        注销
+                                    </a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
-                </nav>
-            </div>
-        </header>
-        <div class="container">
-            <div class="content">
-                <div ng-view></div>
+                </div>
             </div>
         </div>
+ 
+        <div class="main-container" id="main-container">
+            <script type="text/javascript">
+                try { ace.settings.check('main-container', 'fixed'); } catch (e) { }
+            </script>
+            <div class="main-container-inner">
+                <a class="menu-toggler" id="menu-toggler" href="#">
+                    <span class="menu-text"></span>
+                </a>
+                <div class="sidebar" id="sidebar">
+                    <script type="text/javascript">
+                        try { ace.settings.check('sidebar', 'fixed'); } catch (e) { }
+                    </script>
+                    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                            <button class="btn btn-success"></button>
+                            <button class="btn btn-info"></button>
+                            <button class="btn btn-warning"></button>
+                            <button class="btn btn-danger"></button>
+                        </div>
+                        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                            <span class="btn btn-success"></span>
+                            <span class="btn btn-info"></span>
+                            <span class="btn btn-warning"></span>
+                            <span class="btn btn-danger"></span>
+                        </div>
+                    </div>
+                    <ul class="nav nav-list">
+                        <li active-link="active">
+                            <a href="/admin/#!/">
+                                <i class="icon-leaf"></i>
+                                <span class="menu-text">Home</span>
+                            </a>
+                        </li>
+                        <li active-parent-link="open active">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-building"></i>
+                                <span class="menu-text">Article</span>
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+                            <ul class="submenu">
+                                <li active-link="active">
+                                    <a ng-href="/admin/#!/article">
+                                        <i class="icon-double-angle-right"></i>
+                                        Manage
+                                    </a>
+                                </li>
+                                <li active-link="active">
+                                    <a ng-href="/admin/#!/channel">
+                                        <i class="icon-double-angle-right"></i>
+                                        Base Data
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li active-link="active">
+                            <a href="/admin/#!/board">
+                                <i class="icon-leaf"></i>
+                                <span class="menu-text">Message</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="sidebar-collapse" id="sidebar-collapse">
+                        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                    </div>
+
+                    <script type="text/javascript">
+                        try { ace.settings.check('sidebar', 'collapsed'); } catch (e) { }
+                    </script>
+                </div>
+
+                <div class="main-content">
+                    <div class="breadcrumbs" id="breadcrumbs">
+                        <script type="text/javascript">
+                            try { ace.settings.check('breadcrumbs', 'fixed'); } catch (e) { }
+                        </script>
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home home-icon"></i>
+                                <a href="/#!/">首页</a>
+                            </li>
+                            <li class="active">系统管理</li>
+                        </ul>
+                    </div>
+                    <div class="page-content" ng-view></div>
+                </div>
+
+                <div class="ace-settings-container" id="ace-settings-container" style="display: none;">
+                    <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                        <i class="icon-cog bigger-150"></i>
+                    </div>
+                    <div class="ace-settings-box" id="ace-settings-box">
+                        <div>
+                            <div class="pull-left">
+                                <select id="skin-colorpicker" class="hide">
+                                    <option data-skin="default" value="#438EB9">#438EB9</option>
+                                    <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                    <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                    <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                </select>
+                            </div>
+                            <span>&nbsp; Choose Skin</span>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                            <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                            <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+                            <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+                <i class="icon-double-angle-up icon-only bigger-110"></i>
+            </a>
+        </div>
+
+        <script>
+            $(function () {
+                if ($('.breadcrumbs-fixed').length == 0) {
+                    $('#ace-settings-breadcrumbs').click();
+                }
+            });
+        </script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-﻿LoginController=["$scope","$window","$dialog","User",($scope,$window,$dialog,User) ->
+﻿LoginController=["$scope","$window","User",($scope,$window,User) ->
 
   $scope.opts=
     dialogFade:true
@@ -7,18 +7,16 @@
     controller: 'LoginDialogController'
 
   $scope.open = ->
-    $dialog.dialog($scope.opts).open()
-
-  $scope.close = ->
-    $scope.sgindialog = false
+    $window.location.href='/admin/'
 
   $scope.signin = ->
     $scope.submitting=true
     User.signin {id:'(1)'},$scope.user
       ,(data)->
         $scope.submitting=false
-        $window.location.href='/admin'
+        $window.location.href='/admin/'
       ,(error)->
+        $scope.error=error.data['odata.error'].innererror.message
         $scope.user.Password=''
         $scope.submitting=false
 
@@ -34,19 +32,4 @@
 
   $scope.view = ->
     $window.location.href='/'
-]
-
-LoginDialogController=["$scope","$window", "dialog","User",($scope,$window, dialog,User) ->
-  $scope.close = (result) ->
-    dialog.close(result)
-
-  $scope.signin = ->
-    $scope.submitting=true
-    User.signin {id:'(1)'},$scope.user
-      ,(data)->
-        $scope.submitting=false
-        $window.location.href='/'
-      ,(error)->
-        $scope.user.Password=''
-        $scope.submitting=false
 ]

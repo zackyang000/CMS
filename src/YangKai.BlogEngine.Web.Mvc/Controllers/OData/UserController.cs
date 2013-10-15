@@ -31,7 +31,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             }
             else
             {
-                throw new Exception("Username or password wrong,login failed.");
+                throw new Exception("Username or password error.");
             }
         }
 

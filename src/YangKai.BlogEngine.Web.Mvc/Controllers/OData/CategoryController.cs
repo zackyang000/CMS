@@ -8,7 +8,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
     {
         protected override Category CreateEntity(Category entity)
         {
-            if (Proxy.Repository<Category>().Exist(p => !p.IsDeleted && p.Url == entity.Url && p.CategoryId != entity.CategoryId))
+            if (Proxy.Repository<Category>().Exist(p => !p.IsDeleted
+                                                        && p.Url == entity.Url
+                                                        && p.CategoryId != entity.CategoryId
+                                                        && p.Group.GroupId == entity.Group.GroupId
+                ))
             {
                 throw new Exception("Category has been exist.");
             }
@@ -19,7 +23,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
         protected override Category UpdateEntity(Guid key, Category update)
         {
-            if (Proxy.Repository<Category>().Exist(p => !p.IsDeleted && p.Url == update.Url && p.CategoryId != update.CategoryId))
+            if (Proxy.Repository<Category>().Exist(p => !p.IsDeleted
+                                                        && p.Url == update.Url
+                                                        && p.Group.GroupId == update.Group.GroupId
+                                                        && p.CategoryId != update.CategoryId))
             {
                 throw new Exception("Category has been exist.");
             }

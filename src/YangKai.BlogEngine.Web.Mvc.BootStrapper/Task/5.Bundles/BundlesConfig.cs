@@ -49,19 +49,21 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 .IncludeDirectory("~/Content/js/services", "*.js", true)
                 .IncludeDirectory("~/Content/js/filters", "*.js", true)
                 .IncludeDirectory("~/Content/js/controllers", "*.js", true)
+                .IncludeDirectory("~/Content/app", "*.js", true)
                 .Include("~/Content/js/app.js")
                 .Include(plugin);
             BundleTable.Bundles.Add(bundle);
 
-            //ace-js
+            //admin-js
             var aceBundle = new ScriptBundle("~/admin-js")
                 .IncludeDirectory("~/Content/js/vendor", "*.js", true)
-                .Include("~/Content/js/main.js")
+                .Include("~/Content/js/common.js")
                 .IncludeDirectory("~/Content/js/directives", "*.js", true)
                 .IncludeDirectory("~/Content/js/services", "*.js", true)
                 .IncludeDirectory("~/Content/js/filters", "*.js", true)
                 .IncludeDirectory("~/Content/js/controllers", "*.js", true)
                 .Include("~/Content/js/app.js")
+                .IncludeDirectory("~/Content/app", "*.js", true)
                 .IncludeDirectory("~/Content/plugin/ace_1.2", "*.js", true)
                 .Include(plugin);
             BundleTable.Bundles.Add(aceBundle);
@@ -78,15 +80,16 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             var bundle = new StyleBundle("~/Content/style/css")
                 .IncludeDirectory("~/Content/css/vendor", "*.css", true)
                 .Include(plugin)
+                .IncludeDirectory("~/Content/app", "*.css", true)
                 .Include("~/Content/css/style.css");
             BundleTable.Bundles.Add(bundle);
 
-            //ace-css
+            //admin-css
             var aceBundle = new StyleBundle("~/Content/style/admin-css")
                 .IncludeDirectory("~/Content/css/vendor", "*.css", true)
                 .Include(plugin)
                 .IncludeDirectory("~/Content/plugin/ace_1.2", "*.css", true)
-                .Include("~/Content/css/style.css");
+                .IncludeDirectory("~/Content/app", "*.css", true);
             BundleTable.Bundles.Add(aceBundle);
         }
     }
