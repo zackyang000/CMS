@@ -23,10 +23,24 @@ namespace AtomLab.Core
             return T;
         }
 
+        public void Add(IList<TEntity> list)
+        {
+            foreach (var entity in list)
+            {
+                _context.Set<TEntity>().Add(entity);
+            }
+            _context.SaveChanges();
+        }
+
         public TEntity Update(TEntity T)
         {
             _context.SaveChanges();
            return T;
+        }
+
+        public void Update(IList<TEntity> list)
+        {
+            _context.SaveChanges();
         }
 
         public TEntity Remove(TEntity T)
