@@ -200,11 +200,65 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\app\admin\article\detail\detail.css">
-      <DependentUpon>detail.less</DependentUpon>
+    <Content Include="Content\app\admin\article\article-list.js">
+      <DependentUpon>article.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\app\admin\article\detail\detail.min.css">
-      <DependentUpon>detail.less</DependentUpon>
+    <Content Include="Content\app\admin\article\article-list.min.js">
+      <DependentUpon>article.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\article\article.js">
+      <DependentUpon>article.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\article\article.min.js">
+      <DependentUpon>article.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\article\edit\article-edit.css">
+      <DependentUpon>article-edit.less</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\article\edit\article-edit.js">
+      <DependentUpon>article-edit.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\article\edit\article-edit.min.css">
+      <DependentUpon>article-edit.less</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\article\edit\article-edit.min.js">
+      <DependentUpon>article-edit.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\basedata\basedata.js">
+      <DependentUpon>basedata.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\basedata\basedata.min.js">
+      <DependentUpon>basedata.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\basedata\category\basedata-category.js">
+      <DependentUpon>basedata-category.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\basedata\category\basedata-category.min.js">
+      <DependentUpon>basedata-category.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\basedata\channel\basedata-channel.js">
+      <DependentUpon>basedata-channel.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\basedata\channel\basedata-channel.min.js">
+      <DependentUpon>basedata-channel.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\basedata\group\basedata-group.js">
+      <DependentUpon>basedata-group.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\basedata\group\basedata-group.min.js">
+      <DependentUpon>basedata-group.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\board\board.js">
+      <DependentUpon>board.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\board\board.min.js">
+      <DependentUpon>board.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\dashboard\dashboard.js">
+      <DependentUpon>dashboard.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\dashboard\dashboard.min.js">
+      <DependentUpon>dashboard.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\directives\custom\activeLink.js">
       <DependentUpon>activeLink.coffee</DependentUpon>
@@ -233,48 +287,6 @@
     <Content Include="Content\css\vendor\jquery.fileupload-ui.css" />
     <Content Include="Content\css\vendor\jquery.gritter.css" />
     <Content Include="Content\css\vendor\messenger-theme-flat.css" />
-    <Content Include="Content\app\admin\article\list\AdminArticleController.js">
-      <DependentUpon>AdminArticleController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\article\list\AdminArticleController.min.js">
-      <DependentUpon>AdminArticleController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\article\detail\AdminArticleDetailController.js">
-      <DependentUpon>AdminArticleDetailController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\article\detail\AdminArticleDetailController.min.js">
-      <DependentUpon>AdminArticleDetailController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\board\AdminBoardController.js">
-      <DependentUpon>AdminBoardController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\board\AdminBoardController.min.js">
-      <DependentUpon>AdminBoardController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\basedata\category\AdminCategoryController.js">
-      <DependentUpon>AdminCategoryController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\basedata\category\AdminCategoryController.min.js">
-      <DependentUpon>AdminCategoryController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\basedata\channel\AdminChannelController.js">
-      <DependentUpon>AdminChannelController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\basedata\channel\AdminChannelController.min.js">
-      <DependentUpon>AdminChannelController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\basedata\group\AdminGroupController.js">
-      <DependentUpon>AdminGroupController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\basedata\group\AdminGroupController.min.js">
-      <DependentUpon>AdminGroupController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\dashboard\AdminHomeController.js">
-      <DependentUpon>AdminHomeController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\dashboard\AdminHomeController.min.js">
-      <DependentUpon>AdminHomeController.coffee</DependentUpon>
-    </Content>
     <Content Include="Content\plugin\ace_1.2\ace-elements.js" />
     <Content Include="Content\plugin\ace_1.2\ace-extra.js" />
     <Content Include="Content\plugin\ace_1.2\ace.js" />
@@ -447,13 +459,13 @@
     <Content Include="Content\img\technologies\none.png" />
     <Content Include="Content\img\technologies\NPOI.jpg" />
     <Content Include="Content\img\technologies\RSS.png" />
-    <Content Include="Content\app\admin\article\detail\detai.tpl.html" />
-    <Content Include="Content\app\admin\article\list\list.tpl.html" />
-    <Content Include="Content\app\admin\basedata\channel\channel.tpl.html" />
-    <Content Include="Content\app\admin\basedata\category\category.tpl.html" />
+    <Content Include="Content\app\admin\article\edit\article-edit.tpl.html" />
+    <Content Include="Content\app\admin\article\article.tpl.html" />
+    <Content Include="Content\app\admin\basedata\channel\basedata-channel.tpl.html" />
+    <Content Include="Content\app\admin\basedata\category\basedata-category.tpl.html" />
     <Content Include="Content\app\admin\board\board.tpl.html" />
     <Content Include="Content\app\admin\dashboard\dashboard.tpl.html" />
-    <Content Include="Content\app\admin\basedata\group\group.tpl.html" />
+    <Content Include="Content\app\admin\basedata\group\basedata-group.tpl.html" />
     <Content Include="Content\css\vendor\bootstrap.css" />
     <Content Include="Content\img\ajax-loader.gif" />
     <Content Include="Content\img\ajax-loader2.gif" />
@@ -1105,16 +1117,16 @@
     <Content Include="Content\font\FontAwesome.otf" />
     <Content Include="Content\js\services\UserServices.coffee" />
     <Content Include="Content\js\controllers\LoginController.coffee" />
-    <Content Include="Content\app\admin\basedata\channel\AdminChannelController.coffee" />
+    <Content Include="Content\app\admin\basedata\channel\basedata-channel.coffee" />
     <Content Include="Content\js\services\ChannelServices.coffee" />
-    <Content Include="Content\app\admin\basedata\group\AdminGroupController.coffee" />
+    <Content Include="Content\app\admin\basedata\group\basedata-group.coffee" />
     <Content Include="Content\js\services\GroupServices.coffee" />
-    <Content Include="Content\app\admin\basedata\category\AdminCategoryController.coffee" />
+    <Content Include="Content\app\admin\basedata\category\basedata-category.coffee" />
     <Content Include="Content\js\services\CategoryServices.coffee" />
-    <Content Include="Content\app\admin\article\list\AdminArticleController.coffee" />
-    <Content Include="Content\app\admin\article\detail\AdminArticleDetailController.coffee" />
-    <Content Include="Content\app\admin\dashboard\AdminHomeController.coffee" />
-    <Content Include="Content\app\admin\board\AdminBoardController.coffee" />
+    <Content Include="Content\app\admin\article\article.coffee" />
+    <Content Include="Content\app\admin\article\edit\article-edit.coffee" />
+    <Content Include="Content\app\admin\dashboard\dashboard.coffee" />
+    <Content Include="Content\app\admin\board\board.coffee" />
     <Content Include="Content\js\directives\custom\ckeditor.coffee" />
     <Content Include="Content\js\directives\custom\upload.coffee" />
     <Content Include="Content\js\controllers\ArchivesController.coffee" />
@@ -1122,7 +1134,8 @@
     <Content Include="Content\js\init.coffee" />
     <Content Include="Content\js\directives\custom\activeLink.coffee" />
     <Content Include="Content\js\directives\custom\myDatepicker.coffee" />
-    <Content Include="Content\app\admin\article\detail\detail.less" />
+    <Content Include="Content\app\admin\article\edit\article-edit.less" />
+    <Content Include="Content\app\admin\basedata\basedata.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

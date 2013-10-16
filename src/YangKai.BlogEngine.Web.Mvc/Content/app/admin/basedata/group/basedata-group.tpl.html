@@ -1,0 +1,81 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/#!/">Home</a>
+        </li>
+        <li><a href="/admin/#!/channel">Channel({{channel.Name}})</a></li>
+        <li class="active">Groups</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <button class="button button-flat-primary pull-right" type="button" ng-click="add()" >
+        <i class="icon-plus"></i> New Group
+    </button>
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Url</th>
+                <th>Description</th>
+                <th class="action"></th>
+                <th class="action"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in list.value">
+                <td>{{item.Name}}</td>
+                <td>{{item.Url}}</td>
+                <td><span ng-show="item.Description" tooltip="{{item.Description}}"><i class="icon-comment"></i></span></td>
+                <td><a ng-href="/admin/#!/channel('{{channel.Url}}')/group('{{item.Url}}')/category">Categories</a></td>
+                <td><a href="JavaScript:void(0)" class="icon-pencil" ng-click="edit(item)"></a></td>
+                <td><a href="JavaScript:void(0)" class="icon-remove" ng-click="remove(item)"></a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div modal="editDialog" close="close()" options="{backdrop: true,dialogFade:true}">
+        <div class="modal-dialog">
+            <form name="form" class="modal-content" ng-submit="save()">
+                <div class="modal-header">
+                    Edit Group
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Name</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="entity.Name" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Url</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="entity.Url" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Description</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control" ng-model="entity.Description" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="button button-flat-primary" ng-disabled="form.$invalid">
+                        <i class="icon-save"></i>
+                        Save
+                    </button>
+                    <button type="button" class="button button-flat" ng-click="close()">
+                        <i class="icon-undo"></i>
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

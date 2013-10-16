@@ -12,5 +12,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             var channels = Proxy.Repository<Channel>().GetAll(p => !p.IsDeleted).ToList();
             return View(channels);
         }
+
+        public ActionResult Config()
+        {
+            return Json(new {a = "1"});
+        }
     }
 }

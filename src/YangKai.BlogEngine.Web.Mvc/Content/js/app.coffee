@@ -48,6 +48,10 @@
 angular.module("app-login",['UserServices'])
 
 angular.module("app-admin",['formatFilters',
+'admin-dashboard',
+'admin-basedata',
+'admin-article',
+'admin-board',
 'MessageServices',
 'ArticleServices',
 'CommentServices',
@@ -66,35 +70,35 @@ angular.module("app-admin",['formatFilters',
   $routeProvider
   #Channel
   .when("/channel",
-    templateUrl: "/content/app/admin/basedata/channel/channel.tpl.html"
-    controller: AdminChannelController)
+    templateUrl: "/content/app/admin/basedata/channel/basedata-channel.tpl.html"
+    controller: 'ChannelCtrl')
   #Group
   .when("/channel(':channel')/group",
-    templateUrl: "/content/app/admin/basedata/group/group.tpl.html"
-    controller: AdminGroupController)
+    templateUrl: "/content/app/admin/basedata/group/basedata-group.tpl.html"
+    controller: 'GroupCtrl')
   #Category
   .when("/channel(':channel')/group(':group')/category",
-    templateUrl: "/content/app/admin/basedata/category/category.tpl.html"
-    controller: AdminCategoryController)
+    templateUrl: "/content/app/admin/basedata/category/basedata-category.tpl.html"
+    controller: 'CategoryCtrl')
   #Article
   .when("/article",
-    templateUrl: "/content/app/admin/article/list/list.tpl.html"
-    controller: AdminArticleController)
+    templateUrl: "/content/app/admin/article/article.tpl.html"
+    controller: 'ArticleListCtrl')
   .when("/article(':id')",
-    templateUrl: "/content/app/admin/article/detail/detai.tpl.html"
-    controller: AdminArticleDetailController)
+    templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
+    controller: 'ArticleEditCtrl')
   .when("/article/new",
-    templateUrl: "/content/app/admin/article/detail/detai.tpl.html"
-    controller: AdminArticleDetailController)
-  #Message boards
+    templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
+    controller: 'ArticleEditCtrl')
+  #Board
   .when("/board",
     templateUrl: "/content/app/admin/board/board.tpl.html"
-    controller: AdminBoardController)
+    controller: 'BoardCtrl')
   #home
   .when("/",
     templateUrl: "/content/app/admin/dashboard/dashboard.tpl.html"
-    controller: AdminHomeController)
-  .otherwise redirectTo: "/article"
+    controller: 'DashboardCtrl')
+  .otherwise redirectTo: "/"
 ]
 
 interceptor = ["$rootScope", "$q", (scope, $q) ->

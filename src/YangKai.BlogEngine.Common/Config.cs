@@ -7,14 +7,6 @@ namespace YangKai.BlogEngine.Common
 {
     public class Config
     {
-        public class Setting
-        {
-            /// <summary>
-            /// 每页文章条数
-            /// </summary>
-            public const int PAGE_SIZE = 10;
-        }
-
         public class Path
         {
             /// <summary>
@@ -36,7 +28,6 @@ namespace YangKai.BlogEngine.Common
             /// logo图片路径
             /// </summary>
             public const string LOGO_PIC_PATH = "/Content/Image/logo.gif";
-            
 
             /// <summary>
             /// 作者默认avatar头像地址
