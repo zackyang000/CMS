@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -34,8 +37,33 @@ namespace AtomLab.Core
 
         public TEntity Update(TEntity T)
         {
+            if (T is Entity)
+            {
+                (T as Entity).LastEditUser = Auth.UserName;
+                (T as Entity).LastEditDate = DateTime.Now;
+            }
+
+            var entry = _context.Entry(T);
+            var key = GetPrimaryKey(entry);
+
+            if (entry.State == EntityState.Detached)
+            {
+                var currentEntry = _context.Set<TEntity>().Find(key);
+                if (currentEntry != null)
+                {
+                    var attachedEntry = _context.Entry(currentEntry);
+                    attachedEntry.CurrentValues.SetValues(T);
+                }
+                else
+                {
+                    _context.Set<TEntity>().Attach(T);
+                    entry.State = EntityState.Modified;
+                }
+            }
+
             _context.SaveChanges();
-           return T;
+
+            return T;
         }
 
         public void Update(IList<TEntity> list)
@@ -60,6 +88,11 @@ namespace AtomLab.Core
             {
                 _context.Set<TEntity>().Remove(list[0]);
             }
+            _context.SaveChanges();
+        }
+
+        public void Commit()
+        {
             _context.SaveChanges();
         }
 
@@ -295,5 +328,16 @@ namespace AtomLab.Core
         }
 
         #endregion
+
+        private Guid GetPrimaryKey(DbEntityEntry entry)
+        {
+            var myObject = entry.Entity;
+
+            var entityName = myObject.GetType().Name.Split('_')[0] + "Id";
+            var property =
+                myObject.GetType().GetProperties().FirstOrDefault(p => p.Name == entityName);
+            return (Guid)property.GetValue(myObject, null);
+        }
+ 
     }
 }

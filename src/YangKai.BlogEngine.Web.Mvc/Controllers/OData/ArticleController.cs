@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -28,26 +29,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
         protected override Post CreateEntity(Post entity)
         {
-            return AddArticle(entity);
-        }
-
-        protected override Post UpdateEntity(Guid key, Post update)
-        {
-            var entity = Proxy.Repository<Post>().Get(key);
-            entity.Categorys.Clear();
-            Proxy.Repository<Tag>().Remove(entity.Tags);
-            Proxy.Repository<Source>().Remove(entity.Source);
-            Proxy.Repository<Thumbnail>().Remove(entity.Thumbnail);
-            Proxy.Repository<QrCode>().Remove(entity.QrCode);
-            Proxy.Repository<Post>().Remove(entity);
-
-            return AddArticle(update,false);
-        }
-
-        private Post AddArticle(Post entity, bool isNew = true)
-        {
-            entity.Title = entity.Title.Trim();
-            entity.Url = entity.Url.Trim().ToLower().Replace(" ", "-");
+            entity = PreHandle(entity);
 
             entity.Group = Proxy.Repository<Group>().Get(entity.Group.GroupId);
 
@@ -56,17 +38,94 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 entity.Categorys[i] = Proxy.Repository<Category>().Get(entity.Categorys[i].CategoryId);
             }
 
-            if (isNew)
+            entity.PubAdmin = Proxy.Repository<User>().Get(p => p.LoginName == Current.User.LoginName);
+            entity.PubDate = DateTime.Now;
+
+            SaveThumbnail(entity);
+
+            entity.QrCode = new QrCode
             {
-                entity.PubAdmin = Proxy.Repository<User>().Get(p => p.UserName == Current.User.UserName);
-                entity.PubDate = DateTime.Now;
-            }
-            else
+                QrCodeId = Guid.NewGuid(),
+                Content = entity.Title,
+                Url = entity.Url + ".png"
+            };
+            SaveQrCode(entity);
+
+            entity = Proxy.Repository<Post>().Add(entity);
+
+            Rss.BuildPostRss();
+            return entity;
+        }
+
+        protected override Post UpdateEntity(Guid key, Post update)
+        {
+            update = PreHandle(update);
+
+            update = Proxy.Repository<Post>().Update(update);
+
+            var entity = Proxy.Repository<Post>().Get(update.PostId);
+            entity.Categorys.Clear();
+            foreach (var item in update.Categorys.Select(p => p.CategoryId))
             {
-                entity.EditAdmin = Proxy.Repository<User>().Get(p => p.UserName == Current.User.UserName);
-                entity.EditDate = DateTime.Now;
+                entity.Categorys.Add(Proxy.Repository<Category>().Get(item));
             }
 
+            if (entity.Source != null)
+            {
+                Proxy.Repository<Source>().Remove(entity.Source);
+            }
+            entity.Source = update.Source;
+
+            if (entity.Source != null)
+            {
+                Proxy.Repository<Thumbnail>().Remove(entity.Thumbnail);
+            }
+            entity.Thumbnail = update.Thumbnail;
+            SaveThumbnail(entity);
+
+            if (entity.QrCode != null)
+            {
+                Proxy.Repository<QrCode>().Remove(entity.QrCode);
+            }
+            entity.QrCode = new QrCode
+            {
+                QrCodeId = Guid.NewGuid(),
+                Content = entity.Title,
+                Url = entity.Url + ".png"
+            };
+            SaveQrCode(entity);
+
+            if (entity.Tags != null)
+            {
+                Proxy.Repository<Tag>().Remove(entity.Tags);
+            }
+            entity.Tags = update.Tags;
+
+            entity.EditAdmin = Proxy.Repository<User>().Get(p => p.LoginName == Current.User.LoginName);
+            entity.EditDate = DateTime.Now;
+
+            entity.Group = Proxy.Repository<Group>().Get(update.Group.GroupId);
+
+            Proxy.Repository<Post>().Commit();
+
+            Rss.BuildPostRss();
+            return update;
+        }
+
+        private Post PreHandle(Post entity)
+        {
+            entity.Title = entity.Title.Trim();
+            entity.Url = entity.Url.Trim().ToLower().Replace(" ", "-");
+            entity.Content = SaveRemoteFile.SaveContentPic(entity.Content, entity.Url);
+
+            entity.Description = entity.Description ?? string.Empty;
+            entity.Description = SaveRemoteFile.SaveContentPic(entity.Description, entity.Url);
+
+            return entity;
+        }
+
+        private static void SaveThumbnail(Post entity)
+        {
             if (entity.Thumbnail != null)
             {
                 var filename = entity.PubDate.ToString("yyyy.MM.dd.") + entity.Url +
@@ -85,14 +144,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                     entity.Thumbnail.Url = filename;
                 }
             }
+        }
 
-            //添加Post.Qrcode
-            entity.QrCode = new QrCode
-            {
-                QrCodeId = Guid.NewGuid(),
-                Content = entity.Title,
-                Url = entity.Url + ".png"
-            };
+        private static void SaveQrCode(Post entity)
+        {
             var gRender = new GraphicsRenderer(new FixedModuleSize(30, QuietZoneModules.Four));
             var fullUrl = Config.URL.Domain + "/#!/post/" + entity.Url;
             BitMatrix matrix = new QrEncoder().Encode(entity.QrCode.Content + " | " + fullUrl).Matrix;
@@ -100,15 +155,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             {
                 gRender.WriteToStream(matrix, ImageFormat.Png, stream, new Point(1000, 1000));
             }
-
-            entity.Content = SaveRemoteFile.SaveContentPic(entity.Content, entity.Url);
-
-            if (entity.Description == null) entity.Description = string.Empty;
-            entity.Description = SaveRemoteFile.SaveContentPic(entity.Description, entity.Url);
-
-            entity = Proxy.Repository<Post>().Add(entity);
-            Rss.BuildPostRss();
-            return entity;
         }
 
         [HttpPost]

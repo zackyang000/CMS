@@ -11,7 +11,7 @@
       method: "GET"
       params:
         $top:1
-        $expand:'Categorys,Tags,Source,Group,Group/Channel,PubAdmin,Comments,QrCode'
+        $expand:'Categorys,Tags,Thumbnail,Source,Group,Group/Channel,PubAdmin,Comments,QrCode'
     update:
       method: "PUT"
     nav:

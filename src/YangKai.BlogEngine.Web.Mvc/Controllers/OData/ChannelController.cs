@@ -24,13 +24,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 throw new Exception("Channel has been exist.");
             }
 
-            var entitiy = Proxy.Repository<Channel>().Get(key);
-            entitiy.Name = update.Name;
-            entitiy.Url = update.Url;
-            entitiy.Description = update.Description;
-            entitiy.IsDeleted = update.IsDeleted;
-            Proxy.Repository<Channel>().Update(entitiy);
-            return entitiy;
+            return Proxy.Repository<Channel>().Update(update);
         }
     }
 }

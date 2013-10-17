@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Auth.cs" />
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="Entity\IEntity.cs" />
     <Compile Include="ExpressionTree\ParameterReplacer.cs" />

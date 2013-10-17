@@ -30,13 +30,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 throw new Exception("Group has been exist.");
             }
 
-            var entitiy = Proxy.Repository<Group>().Get(key);
-            entitiy.Name = update.Name;
-            entitiy.Url = update.Url;
-            entitiy.Description = update.Description;
-            entitiy.IsDeleted = update.IsDeleted;
-            Proxy.Repository<Group>().Update(entitiy);
-            return entitiy;
+            return Proxy.Repository<Group>().Update(update);
         }
     }
 }

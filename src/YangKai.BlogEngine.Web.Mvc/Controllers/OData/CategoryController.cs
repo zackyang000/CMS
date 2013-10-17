@@ -31,13 +31,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 throw new Exception("Category has been exist.");
             }
 
-            var entitiy = Proxy.Repository<Category>().Get(key);
-            entitiy.Name = update.Name;
-            entitiy.Url = update.Url;
-            entitiy.Description = update.Description;
-            entitiy.IsDeleted = update.IsDeleted;
-            Proxy.Repository<Category>().Update(entitiy);
-            return entitiy;
+            return Proxy.Repository<Category>().Update(update);
         }
     }
 }

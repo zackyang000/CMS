@@ -1,4 +1,6 @@
 ﻿using System.Web;
+using AtomLab.Core;
+using AtomLab.Utility;
 using Bootstrap.Extensions.StartupTasks;
 using YangKai.BlogEngine.Web.Mvc.BootStrapper;
 
@@ -9,6 +11,8 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
     {
         public static void Initialize()
         {
+            Auth.GetName = () => EncryptionCookieHelper.Load("__Username__");
+
             Bootstrap.Bootstrapper.With.StartupTasks()
                 .UsingThisExecutionOrder(s => s
                     .Then<IoCConfig>()

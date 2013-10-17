@@ -337,22 +337,41 @@ article .date div:last-child {
   padding: 5px;
   margin-left: 10px;
 }
-.intro h5 {
+.intro h3 {
   margin: 10px 0 10px 0;
-  padding-bottom: 10px;
   border-bottom: 5px solid;
 }
-.intro h5.green {
+.intro .green {
   border-color: #008641;
   color: #008641;
 }
-.intro h5.red {
+.intro .red {
   border-color: #bc1c48;
   color: #bc1c48;
 }
-.intro h5.yellow {
+.intro .yellow {
   border-color: #ffc40d;
   color: #ffc40d;
+}
+.intro .blue {
+  border-color: #0072BC;
+  color: #0072BC;
+}
+.intro .orange {
+  border-color: #CD4900;
+  color: #CD4900;
+}
+.intro .pink {
+  border-color: #c3325f;
+  color: #c3325f;
+}
+.intro img {
+  width: 96px;
+  height: 96px;
+  margin: 5px 10px 0px 5px;
+}
+.intro small a {
+  color: #999999;
 }
 .breadcrumb {
   padding-left: 10px;
