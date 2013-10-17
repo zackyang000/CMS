@@ -2,6 +2,8 @@
   $scope.$parent.showBanner=false
   $scope.$parent.title=$routeParams.group ? $routeParams.channel ? "Search Result '#{$scope.key}'"
   
+  $scope.$routeParams=$routeParams
+
   $scope.currentPage =$routeParams.p ? 1
   $scope.category = if $routeParams.type=='category' then $routeParams.query else ''
   $scope.tag = if $routeParams.type=='tag' then $routeParams.query else ''

@@ -5,6 +5,7 @@ ArticleListController = [
     var _ref, _ref1, _ref2;
     $scope.$parent.showBanner = false;
     $scope.$parent.title = (_ref = (_ref1 = $routeParams.group) != null ? _ref1 : $routeParams.channel) != null ? _ref : "Search Result '" + $scope.key + "'";
+    $scope.$routeParams = $routeParams;
     $scope.currentPage = (_ref2 = $routeParams.p) != null ? _ref2 : 1;
     $scope.category = $routeParams.type === 'category' ? $routeParams.query : '';
     $scope.tag = $routeParams.type === 'tag' ? $routeParams.query : '';

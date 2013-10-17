@@ -10,39 +10,75 @@
         <li class="active" ng-show="tag">tag of ‘{{tag}}’</li>
         <li class="active" ng-show="keyword">keyword: ‘{{keyword}}’</li>
     </ul>
-    <ul class="list-unstyled">
-        <li ng-repeat="item in list.value">
-            <article>
-                <div class="date">
-                    <div>{{item.PubDate | date:"dd"}}</div>
-                    <div>{{item.PubDate | date:"yyyy.MM"}}</div>
-                </div>
-                <header>
-                    <h2>
-                        <a ng-href="/#!/post/{{item.Url}}">
-                            <strong ng-bind-html-unsafe="item.Title | highlight:keyword"></strong>
-                        </a>
-                    </h2>
-                    <div ng-include="'/partials/Article/post-sub-header.html'"></div>
-                </header>
-                <section>
-                    <div ng-hide="item.isShowDetail">
-                        <div class="thumb" ng-show="item.Thumbnail">
-                            <a href="JavaScript:void(0);" ng-click="expand(item)">
-                                <img class="img-thumbnail img-article-thumbnail" ng-src="{{'/upload/thumbnail/'+item.Thumbnail.Url | image}}" alt="{{item.Title}}" title="{{item.Title}}" />
-                            </a>
+    <div class="row">
+        <style>
+
+        </style>
+        <div class="col-xs-9 col-md-10 article">
+            <ul class="list-unstyled">
+                <li ng-repeat="item in list.value">
+                    <article>
+                        <div class="date">
+                            <div>{{item.PubDate | date:"dd"}}</div>
+                            <div>{{item.PubDate | date:"yyyy.MM"}}</div>
                         </div>
-                        <div ng-bind-html-unsafe="item.Description"></div>
-                    </div>
-                    <div ng-show="item.isShowDetail" ng-bind-html-unsafe="item.Content"></div>
-                    <div class="clearfix"></div>
-                </section>
-                <footer></footer>
-            </article>
-        </li>
-        <li ng-show="list.value.length==0">
-            No articles.
-        </li>
-    </ul>
-    <div odata-pager="list" class="text-center"></div>
+                        <header>
+                            <h2>
+                                <a ng-href="/#!/post/{{item.Url}}">
+                                    <strong ng-bind-html-unsafe="item.Title | highlight:keyword"></strong>
+                                </a>
+                            </h2>
+                            <div ng-include="'/partials/Article/post-sub-header.html'"></div>
+                        </header>
+                        <section>
+                            <div ng-hide="item.isShowDetail">
+                                <div class="thumb" ng-show="item.Thumbnail">
+                                    <a href="JavaScript:void(0);" ng-click="expand(item)">
+                                        <img class="img-thumbnail img-article-thumbnail" ng-src="{{'/upload/thumbnail/'+item.Thumbnail.Url | image}}" alt="{{item.Title}}" title="{{item.Title}}" />
+                                    </a>
+                                </div>
+                                <div ng-bind-html-unsafe="item.Description"></div>
+                            </div>
+                            <div ng-show="item.isShowDetail" ng-bind-html-unsafe="item.Content"></div>
+                            <div class="clearfix"></div>
+                        </section>
+                        <footer></footer>
+                    </article>
+                </li>
+                <li ng-show="list.value.length==0">
+                    No articles.
+                </li>
+            </ul>
+            <div odata-pager="list" class="text-center"></div>
+        </div>
+        <div class="col-xs-3 col-md-2 widget filter">
+            <h3>Categories</h3>
+            <div ng-repeat="channel in $parent.Channels | filter:{Url:channel}">
+                <ul>
+                    <li ng-repeat="group in channel.Groups | filter:{IsDeleted:false}">
+                        <i class="icon-double-angle-right"></i>
+                        <a ng-hide="$routeParams.channel==channel.Url && $routeParams.group==group.Url && $routeParams.type!='category'" 
+                            ng-href="/#!/list/{{channel.Url}}/{{group.Url}}">
+                            {{group.Name}}
+                        </a>
+                        <strong ng-show="$routeParams.channel==channel.Url && $routeParams.group==group.Url && $routeParams.type!='category'">
+                            {{group.Name}}
+                        </strong>
+                        <ul>
+                            <li ng-repeat="category in group.Categorys | filter:{IsDeleted:false}">
+                                <i class="icon-angle-right"></i>
+                            <a ng-hide="$routeParams.channel==channel.Url && $routeParams.group==group.Url && $routeParams.type=='category' && $routeParams.query==category.Url"
+                                ng-href="/#!/list/{{channel.Url}}/{{group.Url}}/category/{{category.Url}}">
+                                {{category.Name}}
+                            </a>
+                            <strong ng-show="$routeParams.channel==channel.Url && $routeParams.group==group.Url && $routeParams.type=='category' && $routeParams.query==category.Url">
+                                {{category.Name}}
+                            </strong>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
