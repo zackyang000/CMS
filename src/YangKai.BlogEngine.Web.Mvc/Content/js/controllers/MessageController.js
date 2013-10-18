@@ -14,21 +14,21 @@ MessageController = [
         return $scope.editmode = $scope.User.UserName === '' || !($scope.User.UserName != null);
       }
     });
+    $scope.loading = "Loading";
     $scope.list = Message.query({
       $filter: 'IsDeleted eq false'
     }, function() {
-      var item, _i, _len, _ref, _results;
+      var item, _i, _len, _ref;
       _ref = $scope.list.value;
-      _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
         if (item.Email) {
-          _results.push(item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email));
+          item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
         } else {
-          _results.push(item.Gravatar = '/Content/img/avatar.png');
+          item.Gravatar = '/Content/img/avatar.png';
         }
       }
-      return _results;
+      return $scope.loading = "";
     });
     $scope.save = function() {
       progressbar.start();

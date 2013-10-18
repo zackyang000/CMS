@@ -51,7 +51,7 @@ namespace YangKai.BlogEngine.Service
                               {
                                   Title = Config.Literal.SITE_NAME,
                                   Link = new Uri(Config.URL.Domain),
-                                  Description = Config.Literal.DESCRIPTION,
+                                  Description = Config.Literal.SITE_NAME,
                                   PubDate = now,
                                   LastBuildDate = now,
                                   Language = "zh-cn",
@@ -103,7 +103,7 @@ namespace YangKai.BlogEngine.Service
                               {
                                   Title = string.Format("{0} - 评论", Config.Literal.SITE_NAME),
                                   Link = new Uri(Config.URL.Domain),
-                                  Description = string.Format("{0} - 评论", Config.Literal.DESCRIPTION),
+                                  Description = string.Format("{0} - 评论",  Config.Literal.SITE_NAME),
                                   PubDate = now,
                                   LastBuildDate = now,
                                   Language = "zh-cn",

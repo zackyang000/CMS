@@ -11,14 +11,16 @@
       $scope.entity.Url = $scope.User.Url
       $scope.AuthorForDisplay=$scope.User.UserName
       $scope.editmode=$scope.User.UserName=='' or not $scope.User.UserName?
-      
+  
+  $scope.loading="Loading"
   $scope.list = Message.query $filter:'IsDeleted eq false',->
     for item in $scope.list.value
       if item.Email
         item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
       else
         item.Gravatar='/Content/img/avatar.png'
-      
+    $scope.loading=""
+
   $scope.save = () ->
     progressbar.start()
     $scope.submitting=true

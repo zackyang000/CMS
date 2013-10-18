@@ -3,6 +3,7 @@
   $scope.$parent.showBanner=false
 
   $scope.load = ->
+    $scope.loading="Loading"
     Channel.archives (data)->
       obj={}
       for channel in data.value when !channel.IsDeleted
@@ -22,5 +23,6 @@
             date:key
             posts:value
       $scope.list = result
+      $scope.loading=""
   $scope.load()
 ]

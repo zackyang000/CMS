@@ -326,3 +326,6 @@
 .syntaxhighlighter .keyword {
   font-weight: bold !important;
 }
+
+.syntaxhighlighter table {margin: 1px 0 !important;}
+.syntaxhighlighter .line {white-space: pre-wrap !important;}

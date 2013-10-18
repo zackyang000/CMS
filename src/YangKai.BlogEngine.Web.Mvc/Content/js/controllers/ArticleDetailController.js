@@ -3,12 +3,14 @@
 ArticleDetailController = [
   "$scope", "$routeParams", "progressbar", "Article", "Comment", function($scope, $routeParams, progressbar, Article, Comment) {
     $scope.$parent.showBanner = false;
+    $scope.loading = "Loading";
     $scope.url = $routeParams.url;
     Article.get({
       $filter: "Url eq '" + $scope.url + "'"
     }, function(data) {
       var i, item, relatedFilter, tag, _i, _j, _len, _len1, _ref, _ref1;
       $scope.item = data.value[0];
+      $scope.loading = "";
       if (!$scope.item) {
         $scope.$parent.title = '404';
         return;

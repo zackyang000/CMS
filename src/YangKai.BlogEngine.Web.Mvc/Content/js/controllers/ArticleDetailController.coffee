@@ -2,11 +2,13 @@
 ($scope,$routeParams,progressbar,Article,Comment) ->
   $scope.$parent.showBanner=false
 
+  $scope.loading="Loading"
   $scope.url =$routeParams.url
   Article.get
     $filter:"Url eq '#{$scope.url}'"
    , (data)->
     $scope.item=data.value[0]
+    $scope.loading=""
     if !$scope.item
       $scope.$parent.title='404'
       return

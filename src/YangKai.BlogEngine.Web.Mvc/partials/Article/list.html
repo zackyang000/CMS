@@ -1,5 +1,6 @@
-﻿<div id="posts">
-    <div class="loadingbox" ng-show="loading">loading...</div>
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div id="posts">
     <ul class="breadcrumb">
         <li><a href="/#!/">Home</a></li>
         <li ng-show="channel && group"><a href="/#!/list/{{channel}}">{{channel}}</a></li>

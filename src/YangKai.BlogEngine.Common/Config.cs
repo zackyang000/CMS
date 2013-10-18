@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -43,9 +44,15 @@ namespace YangKai.BlogEngine.Common
         public class URL
         {
             /// <summary>
-            /// 网站根域名
+            /// 网站域名
             /// </summary>
-            public const string Domain = "http://www.woshinidezhu.com";
+            public static string Domain
+            {
+                get
+                {
+                    return GetConfig("Domain");
+                }
+            }
         }
 
         public class Literal
@@ -53,25 +60,35 @@ namespace YangKai.BlogEngine.Common
             /// <summary>
             /// 网站标题
             /// </summary>
-            public const string SITE_NAME = "iShare";
-
-            /// <summary>
-            /// 网站描述
-            /// </summary>
-            public const string DESCRIPTION = "Share Link Fun";
+            public static string SITE_NAME
+            {
+                get
+                {
+                    return GetConfig("SiteName");
+                }
+            }
 
             /// <summary>
             /// 版权信息
             /// </summary>
-            public const string COPYRIGHT = "&copy; Powered by YangKai , 2008-2013, All Rights Reserved. 蜀ICP备09016538号.";
+            public static string COPYRIGHT
+            {
+                get
+                {
+                    return GetConfig("Copyright");
+                }
+            }
         }
 
-        public class Format
+        private static string GetConfig(string key)
         {
-            /// <summary>
-            /// 页面标题格式
-            /// </summary>
-            public const string PAGE_TITLE = "{0} - iShare";
+            //TODO:需要缓存结果以减少I/O
+            var value = ConfigurationManager.AppSettings[key];
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                throw new ConfigurationErrorsException(string.Format("the '{0}' must not be null or empty.", key));
+            }
+            return value;
         }
     }
 }

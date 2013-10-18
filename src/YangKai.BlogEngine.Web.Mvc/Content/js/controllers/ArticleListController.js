@@ -19,6 +19,7 @@ ArticleListController = [
     };
     $scope.load = function() {
       var filter;
+      $scope.loading = "Loading";
       filter = 'IsDeleted eq false';
       if ($routeParams.channel) {
         filter += " and Group/Channel/Url eq '" + $routeParams.channel + "'";
@@ -40,7 +41,8 @@ ArticleListController = [
         $skip: ($scope.currentPage - 1) * 10
       }, function(data) {
         scroll(0, 0);
-        return $scope.list = data;
+        $scope.list = data;
+        return $scope.loading = "";
       });
     };
     return $scope.load($scope.currentPage);

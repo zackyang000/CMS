@@ -5,6 +5,7 @@ ArchivesController = [
     $scope.$parent.title = 'Archives';
     $scope.$parent.showBanner = false;
     $scope.load = function() {
+      $scope.loading = "Loading";
       return Channel.archives(function(data) {
         var channel, date, group, key, obj, post, result, value, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
         obj = {};
@@ -40,7 +41,8 @@ ArchivesController = [
             });
           }
         }
-        return $scope.list = result;
+        $scope.list = result;
+        return $scope.loading = "";
       });
     };
     return $scope.load();

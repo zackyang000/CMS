@@ -428,12 +428,6 @@
     </Content>
     <Content Include="Content\js\vendor\messenger-theme-flat.js" />
     <Content Include="Content\js\vendor\moment.js" />
-    <Content Include="Content\js\vendor\pace.js">
-      <DependentUpon>pace.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\vendor\pace.min.js">
-      <DependentUpon>pace.coffee</DependentUpon>
-    </Content>
     <Content Include="Content\js\vendor\uuid.js" />
     <Content Include="Content\data\words.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1047,12 +1041,12 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeMidnight.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
     <Content Include="favicon.ico" />
-    <Content Include="partials\about22.html" />
+    <Content Include="partials\about.html" />
     <Content Include="partials\Article\archives.html" />
     <Content Include="partials\Article\post-sub-header.html" />
     <Content Include="partials\Article\detail.html" />
     <Content Include="partials\Article\list.html" />
-    <Content Include="partials\about.html" />
+    <Content Include="partials\about3.html" />
     <Content Include="partials\message.html" />
     <Content Include="partials\index.html" />
     <Content Include="robots.txt" />
@@ -1131,7 +1125,6 @@
     <Content Include="Content\js\directives\custom\ckeditor.coffee" />
     <Content Include="Content\js\directives\custom\upload.coffee" />
     <Content Include="Content\js\controllers\ArchivesController.coffee" />
-    <Content Include="Content\js\vendor\pace.coffee" />
     <Content Include="Content\js\init.coffee" />
     <Content Include="Content\js\directives\custom\activeLink.coffee" />
     <Content Include="Content\js\directives\custom\myDatepicker.coffee" />
@@ -1165,8 +1158,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Views\Shared\layout-footer.cshtml" />
-    <Content Include="Views\Shared\layout-header.cshtml" />
     <Content Include="Views\Web.config" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <Content Include="Views\Admin\index.cshtml" />

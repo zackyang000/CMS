@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title ng-bind="'iShare - '+title">iShare</title>
+        <title ng-bind="'@YangKai.BlogEngine.Common.Config.Literal.SITE_NAME - '+title">@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME)</title>
         <meta name="viewport" content="width=device-width" />
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
@@ -12,8 +12,61 @@
         @Scripts.Render("~/js")
     </head>
     <body>
-        <div class="loadingbox pace-loadingbox">loading...</div>
-        @Html.Partial("layout-header", Model)
+        <header class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/#!/"><img src="/Content/img/logo.gif" />@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME)</a>
+                </div>
+                <nav class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li ng-repeat="channel in Channels">
+                            <a ng-href="/#!/list/{{channel.Url}}">{{channel.Name}}</a>
+                        </li>
+                        <li><a href="/#!/archives">Archives</a></li>
+                        <li><a ng-href="#!/board">Boards</a></li>
+                        <li><a ng-href="#!/about">About</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="form-control search" placeholder="Search" />
+                        </li>
+                        <li class="dropdown" ng-show="User.IsAdmin" ng-controller="LoginController">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <img ng-src="{{User.Gravatar}}" class="avatar-mini" />
+                                &nbsp;<span>{{User.UserName}}</span>
+                            </a>
+                            <ul class="dropdown-menu personal-box">
+                                <li>
+                                    <div class="row hr">
+                                        <div class="col-xs-4">
+                                            <img ng-src="{{User.Gravatar}}" class="avatar" />
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <div><strong>{{User.UserName}}</strong></div>
+                                            <p>{{User.Email}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="pull-left">
+                                        <button class="button button-flat-action" ng-click="manage()">Manage</button>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button class="button button-flat-caution" ng-click="signout()">Sign out</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li ng-show="!User.IsAdmin" ng-controller="LoginController">
+                            <a href="JavaScript:void(0)" ng-click="open()">Sgin in</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
         <div id="cta-content" ng-show="showBanner" style="display: none;">
             <div class="lights">
                 <div class="grid-image">
@@ -27,7 +80,12 @@
         <div class="container">
             <div class="content" ng-view></div>
             <hr>
-            @Html.Partial("layout-footer")
+            <footer>
+                <p>@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT)</p>
+                <ul class="footer-links">
+                    <li><a href="/elmah.axd" target = "_blank">Error Log</a></li>
+                </ul>
+            </footer>
         </div>
         <script>
             var _gaq = _gaq || [];
