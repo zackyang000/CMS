@@ -1,6 +1,6 @@
 ﻿var interceptor;
 
-angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'customDirectives', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'angulartics', 'angulartics.google.analytics']).config([
+angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GalleryServices', 'PhotoServices', 'customDirectives', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'angulartics', 'angulartics.google.analytics']).config([
   "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
     $httpProvider.responseInterceptors.push(interceptor);
     $locationProvider.html5Mode(false).hashPrefix('!');
@@ -39,7 +39,7 @@ angular.module("app", ['formatFilters', 'MessageServices', 'ArticleServices', 'C
 
 angular.module("app-login", ['UserServices']);
 
-angular.module("app-admin", ['formatFilters', 'admin-dashboard', 'admin-basedata', 'admin-article', 'admin-board', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GroupServices', 'CategoryServices', 'customDirectives', 'ngProgress', 'FileUpload', 'ui.utils', 'ui.bootstrap']).config([
+angular.module("app-admin", ['formatFilters', 'admin-dashboard', 'admin-basedata', 'admin-article', 'admin-board', 'admin-gallery', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GroupServices', 'CategoryServices', 'GalleryServices', 'PhotoServices', 'customDirectives', 'ngProgress', 'FileUpload', 'ui.utils', 'ui.bootstrap']).config([
   "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
     $httpProvider.responseInterceptors.push(interceptor);
     $locationProvider.html5Mode(false).hashPrefix('!');

@@ -69,6 +69,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         {
             var user = modelBuilder.EntitySet<User>("User");
             user.EntityType.Ignore(p => p.Password);
+
             modelBuilder.EntitySet<Log>("Log");
             modelBuilder.EntitySet<Channel>("Channel");
             modelBuilder.EntitySet<Group>("Group");
@@ -80,6 +81,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             modelBuilder.EntitySet<Thumbnail>("Thumbnail");
             modelBuilder.EntitySet<Source>("Source");
             modelBuilder.EntitySet<QrCode>("QrCode");
+            modelBuilder.EntitySet<Gallery>("Gallery");
+            modelBuilder.EntitySet<Photo>("Photo");
+            modelBuilder.EntitySet<PhotoComment>("PhotoComment");
         }
     }
 }

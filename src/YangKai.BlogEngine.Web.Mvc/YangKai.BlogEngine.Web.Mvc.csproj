@@ -182,17 +182,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\OData\ChannelController.cs" />
+    <Compile Include="Controllers\OData\GalleryModule\PhotoCommentController.cs" />
+    <Compile Include="Controllers\OData\GalleryModule\PhotoController.cs" />
+    <Compile Include="Controllers\OData\GalleryModule\GalleryController.cs" />
+    <Compile Include="Controllers\OData\PostModule\ChannelController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
-    <Compile Include="Controllers\OData\GroupController.cs" />
+    <Compile Include="Controllers\OData\PostModule\GroupController.cs" />
     <Compile Include="Common\SaveRemoteFile.cs" />
     <Compile Include="Common\Current.cs" />
-    <Compile Include="Controllers\OData\CategoryController.cs" />
+    <Compile Include="Controllers\OData\PostModule\CategoryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\OData\UserController.cs" />
-    <Compile Include="Controllers\OData\BoardController.cs" />
-    <Compile Include="Controllers\OData\ArticleController.cs" />
-    <Compile Include="Controllers\OData\CommentController.cs" />
+    <Compile Include="Controllers\OData\BoardModule\BoardController.cs" />
+    <Compile Include="Controllers\OData\PostModule\ArticleController.cs" />
+    <Compile Include="Controllers\OData\PostModule\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Common\EntityController.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
@@ -260,6 +263,20 @@
     <Content Include="Content\app\admin\dashboard\dashboard.min.js">
       <DependentUpon>dashboard.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\app\admin\gallery\gallery-edit.html" />
+    <Content Include="Content\app\admin\gallery\gallery-edit.js">
+      <DependentUpon>gallery-edit.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\gallery\gallery-edit.min.js">
+      <DependentUpon>gallery-edit.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\gallery\gallery.js">
+      <DependentUpon>gallery.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\gallery\gallery.min.js">
+      <DependentUpon>gallery.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\gallery\gallery.tpl.html" />
     <Content Include="Content\js\directives\custom\activeLink.js">
       <DependentUpon>activeLink.coffee</DependentUpon>
     </Content>
@@ -277,6 +294,18 @@
     </Content>
     <Content Include="Content\js\init.min.js">
       <DependentUpon>init.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\GalleryServices.js">
+      <DependentUpon>GalleryServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\GalleryServices.min.js">
+      <DependentUpon>GalleryServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\PhotoServices.js">
+      <DependentUpon>PhotoServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\PhotoServices.min.js">
+      <DependentUpon>PhotoServices.coffee</DependentUpon>
     </Content>
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
@@ -1070,7 +1099,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\app\admin\comment\" />
+    <Folder Include="Content\app\admin\article\comment\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Debug\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Release\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Debug\" />
@@ -1130,6 +1159,10 @@
     <Content Include="Content\js\directives\custom\myDatepicker.coffee" />
     <Content Include="Content\app\admin\article\edit\article-edit.less" />
     <Content Include="Content\app\admin\basedata\basedata.coffee" />
+    <Content Include="Content\app\admin\gallery\gallery.coffee" />
+    <Content Include="Content\app\admin\gallery\gallery-edit.coffee" />
+    <Content Include="Content\js\services\GalleryServices.coffee" />
+    <Content Include="Content\js\services\PhotoServices.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />
