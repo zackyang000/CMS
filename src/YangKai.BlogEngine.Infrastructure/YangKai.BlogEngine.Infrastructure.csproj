@@ -100,6 +100,10 @@
     <Compile Include="Migrations\201308151441242_RemoveUselessColumnOfChannel.Designer.cs">
       <DependentUpon>201308151441242_RemoveUselessColumnOfChannel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310180858151_AddGallery.cs" />
+    <Compile Include="Migrations\201310180858151_AddGallery.Designer.cs">
+      <DependentUpon>201310180858151_AddGallery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.Designer.cs">
@@ -138,18 +142,6 @@
       <DependentUpon>201304220413485_RemovePageModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Mapping\BoardModule\BoardConfiguration.cs" />
-    <Compile Include="Mapping\Common\LogConfiguration.cs" />
-    <Compile Include="Mapping\Common\UserConfiguration.cs" />
-    <Compile Include="Mapping\PostModule\CategoryConfiguration.cs" />
-    <Compile Include="Mapping\PostModule\ChannelConfiguration.cs" />
-    <Compile Include="Mapping\PostModule\CommentConfiguration.cs" />
-    <Compile Include="Mapping\PostModule\QrCodeConfiguration.cs" />
-    <Compile Include="Mapping\PostModule\GroupConfiguration.cs" />
-    <Compile Include="Mapping\PostModule\PostConfiguration.cs" />
-    <Compile Include="Mapping\PostModule\SourceConfiguration.cs" />
-    <Compile Include="Mapping\PostModule\TagConfiguration.cs" />
-    <Compile Include="Mapping\PostModule\ThumbnailConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308151441242_RemoveUselessColumnOfChannel.resx">
       <DependentUpon>201308151441242_RemoveUselessColumnOfChannel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310180858151_AddGallery.resx">
+      <DependentUpon>201310180858151_AddGallery.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

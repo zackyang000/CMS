@@ -12,6 +12,7 @@ namespace YangKai.BlogEngine.Domain
         {
             return new Log
                           {
+                              LogId = Guid.NewGuid(),
                               AppName = "Web",
                               ModuleName = "PostModule",
                               ActionType = "Search",
@@ -24,6 +25,7 @@ namespace YangKai.BlogEngine.Domain
         {
             return new Log
             {
+                LogId = Guid.NewGuid(),
                 AppName = "Web",
                 ModuleName = "CommonModule",
                 ActionType = "SiteVisit",

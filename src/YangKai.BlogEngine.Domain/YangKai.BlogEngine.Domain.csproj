@@ -42,6 +42,9 @@
     <Compile Include="BoardModule\Board.cs" />
     <Compile Include="Common\Log.cs" />
     <Compile Include="Common\User.cs" />
+    <Compile Include="GalleryModule\Photo.cs" />
+    <Compile Include="GalleryModule\Gallery.cs" />
+    <Compile Include="GalleryModule\PhotoComment.cs" />
     <Compile Include="PostModule\Category.cs" />
     <Compile Include="PostModule\Channel.cs" />
     <Compile Include="PostModule\Comment.cs" />
