@@ -26,3 +26,7 @@ Visual Studio 2012.2 +
 License
 
 MIT.
+
+TODO:
+数据库中的图片路径如Thumbnail应使用完整相对路径(检查所有使用image过滤器的代码,最终去掉该过滤器)
+统一使用PUT来新增和保存数据

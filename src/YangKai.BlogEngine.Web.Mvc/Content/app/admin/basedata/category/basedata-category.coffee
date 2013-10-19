@@ -1,5 +1,13 @@
 ﻿angular.module('admin-basedata-category',[])
 
+.config(["$routeProvider",
+($routeProvider) ->
+  $routeProvider
+  .when("/channel(':channel')/group(':group')/category",
+    templateUrl: "/content/app/admin/basedata/category/basedata-category.tpl.html"
+    controller: 'CategoryCtrl')
+])
+
 .controller('CategoryCtrl',
 ["$scope","$dialog","$routeParams","Category","Group", 
 ($scope,$dialog,$routeParams,Category,Group) ->

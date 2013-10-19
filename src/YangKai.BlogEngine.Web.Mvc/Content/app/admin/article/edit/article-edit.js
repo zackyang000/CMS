@@ -1,5 +1,15 @@
 ﻿
-angular.module('admin-article-edit', []).controller('ArticleEditCtrl', [
+angular.module('admin-article-edit', []).config([
+  "$routeProvider", function($routeProvider) {
+    return $routeProvider.when("/article(':id')", {
+      templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html",
+      controller: 'ArticleEditCtrl'
+    }).when("/article/new", {
+      templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html",
+      controller: 'ArticleEditCtrl'
+    });
+  }
+]).controller('ArticleEditCtrl', [
   "$scope", "$routeParams", "$window", "$rootScope", "uploadManager", "Article", "Channel", function($scope, $routeParams, $window, $rootScope, uploadManager, Article, Channel) {
     var save;
     $scope.channels = Channel.query({
@@ -11,7 +21,6 @@ angular.module('admin-article-edit', []).controller('ArticleEditCtrl', [
         }, function(data) {
           var category, item, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
           $scope.entity = data.value[0];
-          $scope.sourceTitle = $scope.entity.Title;
           $scope.channelId = $scope.entity.Group.Channel.ChannelId;
           $scope.groupId = $scope.entity.Group.GroupId;
           _ref = $scope.entity.Categorys;
@@ -34,8 +43,7 @@ angular.module('admin-article-edit', []).controller('ArticleEditCtrl', [
           }
         });
       } else {
-        $scope.entity = {};
-        return $scope.entity.PostId = UUID.generate();
+        return $scope.entity = {};
       }
     });
     $scope.getGroups = function() {

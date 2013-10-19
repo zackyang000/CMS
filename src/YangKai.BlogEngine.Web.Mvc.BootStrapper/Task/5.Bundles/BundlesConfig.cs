@@ -10,6 +10,8 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             BundleJs(
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js",
+                "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJava.js",
+                "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushSql.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"
@@ -19,7 +21,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 "~/Content/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
                 );
 
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
         }
 
         public void Reset()
@@ -56,6 +58,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             //admin-js
             var aceBundle = new ScriptBundle("~/admin-js")
+                .Include("~/Content/js/init.js")
                 .IncludeDirectory("~/Content/js/vendor", "*.js", true)
                 .Include("~/Content/js/common.js")
                 .IncludeDirectory("~/Content/js/directives", "*.js", true)

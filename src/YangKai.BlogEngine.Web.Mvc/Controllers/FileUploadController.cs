@@ -2,6 +2,8 @@
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using YangKai.BlogEngine.Domain;
+using YangKai.BlogEngine.Service;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
@@ -18,7 +20,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             }
             return Content(id+ Path.GetExtension(filename));
         }
-
 
         public ActionResult Delete(string id)
         {
@@ -41,6 +42,30 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             {
                 return Json(new { result = false, reason = err.Message });
             }
+        }
+
+        public ActionResult Photo(Guid id, HttpPostedFileBase file)
+        {
+            var fileNo = Guid.NewGuid();
+            var oName = Path.GetFileName(file.FileName);
+            var name = fileNo + Path.GetExtension(oName);
+            var dir = Server.MapPath("~/upload/gallery/" + id);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+            var path = string.Format("{0}/{1}", dir, name);
+            file.SaveAs(path);
+
+            var gallery = Proxy.Repository<Gallery>().Get(id);
+            gallery.Photos.Add(new Photo()
+            {
+                PhotoId = fileNo,
+                Name = Path.GetFileNameWithoutExtension(oName),
+                Path = "/upload/gallery/" + id + "/" + name,
+            });
+            Proxy.Repository<Gallery>().Commit();
+            return Json(fileNo, JsonRequestBehavior.AllowGet);
         }
     }
 }

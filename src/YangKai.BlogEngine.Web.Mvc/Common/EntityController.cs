@@ -17,7 +17,7 @@ namespace YangKai.BlogEngine.Web.Mvc
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All,PageSize = 500,MaxExpansionDepth = 5)]
         public override IQueryable<T> Get()
         {
-            return Proxy.Repository<T>().GetAll();
+            return Proxy.Repository<T>().GetAll(p=>!p.IsDeleted);
         }
 
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, MaxExpansionDepth = 5)]
@@ -38,7 +38,15 @@ namespace YangKai.BlogEngine.Web.Mvc
 
         protected override T UpdateEntity(Guid key, T update)
         {
-            return Proxy.Repository<T>().Update(update);
+            var isEdit = Proxy.Repository<T>().Exist(update);
+            if (isEdit)
+            {
+                return Proxy.Repository<T>().Update(update);
+            }
+            else
+            {
+                return CreateEntity(update);
+            }
         }
 
         [HttpPost]

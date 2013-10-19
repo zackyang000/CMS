@@ -1,5 +1,12 @@
 ﻿
-angular.module('admin-basedata-group', []).controller('GroupCtrl', [
+angular.module('admin-basedata-group', []).config([
+  "$routeProvider", function($routeProvider) {
+    return $routeProvider.when("/channel(':channel')/group", {
+      templateUrl: "/content/app/admin/basedata/group/basedata-group.tpl.html",
+      controller: 'GroupCtrl'
+    });
+  }
+]).controller('GroupCtrl', [
   "$scope", "$dialog", "$routeParams", "Group", "Channel", function($scope, $dialog, $routeParams, Group, Channel) {
     var load;
     Channel.query({

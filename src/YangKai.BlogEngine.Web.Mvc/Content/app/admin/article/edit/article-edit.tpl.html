@@ -4,11 +4,11 @@
     <ul class="breadcrumb">
         <li>
             <i class="icon-home home-icon"></i>
-            <a href="/#!/">Home</a>
+            <a href="/admin/#!/">Home</a>
         </li>
         <li><a href="/admin/#!/article">Article</a></li>
-        <li class="active" ng-hide="sourceTitle">New</li>
-        <li class="active" ng-show="sourceTitle">Edit ({{sourceTitle}})</li>
+        <li class="active" ng-hide="entity.CreateDate">New</li>
+        <li class="active" ng-show="entity.CreateDate">Edit (<span bindonce="entity" bo-html="entity.Title"></span>)</li>
     </ul>
 </div>
 

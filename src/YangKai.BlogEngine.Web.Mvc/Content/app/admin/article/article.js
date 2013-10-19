@@ -1,5 +1,12 @@
 ﻿
-angular.module('admin-article', ['admin-article-edit']).controller('ArticleListCtrl', [
+angular.module('admin-article', ['admin-article-edit']).config([
+  "$routeProvider", function($routeProvider) {
+    return $routeProvider.when("/article", {
+      templateUrl: "/content/app/admin/article/article.tpl.html",
+      controller: 'ArticleListCtrl'
+    });
+  }
+]).controller('ArticleListCtrl', [
   "$scope", "$routeParams", "$location", "Article", function($scope, $routeParams, $location, Article) {
     $scope.setPage = function(pageNo) {
       return Article.query({

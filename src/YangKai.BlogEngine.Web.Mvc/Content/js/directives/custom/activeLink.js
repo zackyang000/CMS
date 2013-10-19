@@ -4,17 +4,25 @@ myDirectives.directive("activeLink", [
     return {
       restrict: "A",
       link: function(scope, element, attrs, controller) {
-        var clazz, path;
+        var clazz, match, path;
         clazz = attrs.activeLink;
         path = $(element).children("a")[0].hash.substring(2);
         scope.location = location;
-        return scope.$watch("location.path()", function(newPath) {
-          if (path === newPath) {
+        scope.$watch("location.path()", function(currentPath) {
+          if (match(path, currentPath)) {
             return element.addClass(clazz);
           } else {
             return element.removeClass(clazz);
           }
         });
+        return match = function(path, currentPath) {
+          if (path === '/') {
+            if (currentPath === '/') return true;
+          } else if (currentPath.indexOf(path) === 0) {
+            return true;
+          }
+          return false;
+        };
       }
     };
   }
@@ -25,7 +33,7 @@ myDirectives.directive("activeParentLink", [
     return {
       restrict: "A",
       link: function(scope, element, attrs, controller) {
-        var clazz, item, links, paths, _i, _len;
+        var clazz, item, links, match, paths, _i, _len;
         clazz = attrs.activeParentLink;
         links = $(element).children("ul").children("li").children("a");
         paths = [];
@@ -34,13 +42,13 @@ myDirectives.directive("activeParentLink", [
           paths.push(item.hash.substring(2));
         }
         scope.location = location;
-        return scope.$watch("location.path()", function(newPath) {
+        scope.$watch("location.path()", function(currentPath) {
           var path, _j, _len1, _results;
           element.removeClass(clazz);
           _results = [];
           for (_j = 0, _len1 = paths.length; _j < _len1; _j++) {
             path = paths[_j];
-            if (path === newPath) {
+            if (match(path, currentPath)) {
               _results.push(element.addClass(clazz));
             } else {
               _results.push(void 0);
@@ -48,6 +56,14 @@ myDirectives.directive("activeParentLink", [
           }
           return _results;
         });
+        return match = function(path, currentPath) {
+          if (path === '/') {
+            if (currentPath === '/') return true;
+          } else if (currentPath.indexOf(path) === 0) {
+            return true;
+          }
+          return false;
+        };
       }
     };
   }

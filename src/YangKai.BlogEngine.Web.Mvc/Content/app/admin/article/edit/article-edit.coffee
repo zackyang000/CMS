@@ -1,5 +1,16 @@
 ﻿angular.module('admin-article-edit',[])
 
+.config(["$routeProvider",
+($routeProvider) ->
+  $routeProvider
+  .when("/article(':id')",
+    templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
+    controller: 'ArticleEditCtrl')
+  .when("/article/new",
+    templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
+    controller: 'ArticleEditCtrl')
+])
+
 .controller('ArticleEditCtrl',
 ["$scope","$routeParams","$window","$rootScope","uploadManager","Article","Channel",
 ($scope,$routeParams,$window,$rootScope,uploadManager,Article,Channel) ->
@@ -7,7 +18,6 @@
     if $routeParams.id
       Article.get $filter:"PostId eq (guid'#{$routeParams.id}')",(data)->
         $scope.entity=data.value[0]
-        $scope.sourceTitle=$scope.entity.Title
         $scope.channelId=$scope.entity.Group.Channel.ChannelId
         $scope.groupId=$scope.entity.Group.GroupId
         #加载Category
@@ -22,7 +32,6 @@
           $scope.tags=$scope.tags.substring(1)
     else
       $scope.entity={}
-      $scope.entity.PostId=UUID.generate()
 
   $scope.getGroups = ->
     return undefined if $scope.channels.value is undefined

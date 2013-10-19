@@ -4,7 +4,7 @@ using YangKai.BlogEngine.Domain;
 
 namespace YangKai.BlogEngine.Infrastructure
 {
-    [DbModelBuilderVersion(DbModelBuilderVersion.V5_0_Net4)]
+    [DbModelBuilderVersion(DbModelBuilderVersion.V6_0)]
     public class BlogEngineContext : DbContext
     { 
         public DbSet<User> Users { get; set; }

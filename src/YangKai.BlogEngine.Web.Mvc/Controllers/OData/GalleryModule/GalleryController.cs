@@ -24,5 +24,29 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         {
             return Proxy.Repository<Gallery>().GetAll();
         }
+
+        protected override Gallery UpdateEntity(Guid key, Gallery update)
+        {
+            if (!string.IsNullOrEmpty(update.Cover))
+            {
+                var filename = update.GalleryId + Path.GetExtension(update.Cover);
+                var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"),
+                    update.Cover);
+                var target = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/gallery"),
+                    filename);
+                if (File.Exists(source))
+                {
+                    if (File.Exists(target))
+                    {
+                        File.Delete(target);
+                    }
+                    File.Move(source, target);
+                    ImageProcessing.CutForCustom(target, 300, 300, 100);
+                    update.Cover = "/upload/gallery/" + filename;
+                }
+            }
+            return base.UpdateEntity(key, update);
+        }
+
     }
 }

@@ -12,7 +12,7 @@ namespace YangKai.BlogEngine.Domain
         public Guid GalleryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string CoverPath { get; set; }
+        public string Cover { get; set; }
 
         public virtual List<Photo> Photos { get; set; } 
     }

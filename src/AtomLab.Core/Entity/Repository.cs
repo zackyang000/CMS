@@ -43,9 +43,8 @@ namespace AtomLab.Core
                 (T as Entity).LastEditDate = DateTime.Now;
             }
 
+            var key = GetPrimaryKey(T);
             var entry = _context.Entry(T);
-            var key = GetPrimaryKey(entry);
-
             if (entry.State == EntityState.Detached)
             {
                 var currentEntry = _context.Set<TEntity>().Find(key);
@@ -320,6 +319,17 @@ namespace AtomLab.Core
         /// <summary>
         /// 判断实体是否存在.
         /// </summary>
+        /// <returns></returns>
+        public virtual bool Exist(TEntity T)
+        {
+            var key = GetPrimaryKey(T);
+            var currentEntry = _context.Set<TEntity>().Find(key);
+            return currentEntry != null;
+        }
+
+        /// <summary>
+        /// 判断实体是否存在.
+        /// </summary>
         /// <param name="specExpr">查询条件</param>
         /// <returns></returns>
         public virtual bool Exist(Expression<Func<TEntity, bool>> specExpr)
@@ -329,14 +339,12 @@ namespace AtomLab.Core
 
         #endregion
 
-        private Guid GetPrimaryKey(DbEntityEntry entry)
+        private Guid GetPrimaryKey(TEntity T)
         {
-            var myObject = entry.Entity;
-
-            var entityName = myObject.GetType().Name.Split('_')[0] + "Id";
+            var entityName = T.GetType().Name.Split('_')[0] + "Id";
             var property =
-                myObject.GetType().GetProperties().FirstOrDefault(p => p.Name == entityName);
-            return (Guid)property.GetValue(myObject, null);
+                T.GetType().GetProperties().FirstOrDefault(p => p.Name == entityName);
+            return (Guid)property.GetValue(T, null);
         }
  
     }
