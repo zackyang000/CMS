@@ -1,15 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
   <channel>
-    <title>BTS's Blogs</title>
-    <description>BTS's Blogs</description>
+    <title>BTS Blogs</title>
+    <description>BTS Blogs</description>
     <link>http://10.16.75.10:8002/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by BackendTechSupport Team , 2013, All Rights Reserved.</copyright>
-    <pubDate>Fri, 18 Oct 2013 14:29:08 GMT</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2013 14:29:08 GMT</lastBuildDate>
+    <pubDate>Sat, 19 Oct 2013 10:06:21 GMT</pubDate>
+    <lastBuildDate>Sat, 19 Oct 2013 10:06:21 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>44444</title>
+      <description>&lt;p&gt;
+	444444444444&lt;/p&gt;
+</description>
+      <link>http://10.16.75.10:8002/#!/post/323223</link>
+      <category>视频 - 默认</category>
+      <guid>e42b5bf2-4f5c-48eb-a515-e4793c85c3c1</guid>
+      <pubDate>Sat, 19 Oct 2013 10:06:21 GMT</pubDate>
+    </item>
     <item>
       <title>232323111111111111111111</title>
       <description>&lt;p&gt;
@@ -1394,19 +1404,6 @@ event.initKeyEvent(&amp;quot;keypress&amp;quot;, true, true, null, null,
       <category>技术 - 杂类</category>
       <guid>3a469d5c-09df-e111-afdf-00155d5f0243</guid>
       <pubDate>Sun, 05 Aug 2012 22:24:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>让人笑不停的十大动物精选</title>
-      <description>&lt;p&gt;
-	欢乐多啊....&lt;/p&gt;
-&lt;p&gt;
-	&lt;embed src="http://www.tudou.com/v/A1DXsHoR8Ak/&amp;resourceId=1320712_05_02_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"&gt;&lt;/embed&gt;&lt;/p&gt;
-</description>
-      <link>http://10.16.75.10:8002/#!/post/ten-animals-to-make-people-laugh-to-keep-selected</link>
-      <category>视频 - 欢乐</category>
-      <category>视频 - 卖萌</category>
-      <guid>1cdb4d12-09df-e111-afdf-00155d5f0243</guid>
-      <pubDate>Sun, 05 Aug 2012 22:23:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

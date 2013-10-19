@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Web;
 using Microsoft.Practices.Unity;
 
-namespace YangKai.BlogEngine.Web.Mvc
+namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
     /// <summary>
     /// 当使用多线程时,因为HttpContext.Current为null.
