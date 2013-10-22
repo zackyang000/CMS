@@ -1,5 +1,6 @@
 ﻿angular.module("app",
 ['formatFilters',
+'issue',
 'MessageServices',
 'ArticleServices',
 'CommentServices',

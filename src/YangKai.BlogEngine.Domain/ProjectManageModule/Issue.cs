@@ -18,6 +18,7 @@ namespace YangKai.BlogEngine.Domain
         public string Author { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public string Result { get; set; }
         public string Statu { get; set; }
     }
 }

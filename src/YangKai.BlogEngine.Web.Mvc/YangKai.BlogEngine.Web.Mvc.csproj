@@ -180,6 +180,7 @@
     <Compile Include="Common\Current.cs" />
     <Compile Include="Controllers\OData\PostModule\CategoryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\OData\ProjectManageModule\IssueController.cs" />
     <Compile Include="Controllers\OData\UserController.cs" />
     <Compile Include="Controllers\OData\BoardModule\BoardController.cs" />
     <Compile Include="Controllers\OData\PostModule\ArticleController.cs" />
@@ -270,6 +271,13 @@
     <Content Include="Content\app\admin\app.min.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\app\issue\issue.js">
+      <DependentUpon>issue.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\issue\issue.min.js">
+      <DependentUpon>issue.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\issue\issue.tpl.html" />
     <Content Include="Content\js\directives\bindonce.js" />
     <Content Include="Content\js\directives\custom\activeLink.js">
       <DependentUpon>activeLink.coffee</DependentUpon>
@@ -294,6 +302,12 @@
     </Content>
     <Content Include="Content\js\services\GalleryServices.min.js">
       <DependentUpon>GalleryServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\IssueServices.js">
+      <DependentUpon>IssueServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\IssueServices.min.js">
+      <DependentUpon>IssueServices.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\services\PhotoServices.js">
       <DependentUpon>PhotoServices.coffee</DependentUpon>
@@ -1157,6 +1171,8 @@
     <Content Include="Content\js\services\GalleryServices.coffee" />
     <Content Include="Content\js\services\PhotoServices.coffee" />
     <Content Include="Content\app\admin\app.coffee" />
+    <Content Include="Content\app\issue\issue.coffee" />
+    <Content Include="Content\js\services\IssueServices.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

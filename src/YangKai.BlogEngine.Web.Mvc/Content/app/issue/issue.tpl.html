@@ -1,0 +1,164 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<ul class="breadcrumb">
+    <li><a href="/#!/">Home</a></li>
+    <li class="active">Issues</li>
+</ul>
+<div class="issue">
+
+    <div class="clearfix">
+        <div class="pull-left" style="width: 200px;">
+            <div class="issue-statu">
+                <h4>Statu</h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active">
+                        <a href="">
+                            <span class="pull-right">{{list.length}}</span>
+                            All
+                        </a>
+                    </li>
+                    <li ng-repeat="item in statu">
+                        <a href="">
+                            {{item.key}}
+                            <span class="pull-right">{{item.value}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <hr/>
+            <div class="issue-project">
+                <h4>Project</h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active">
+                        <a href="">
+                            <span class="pull-right">{{list.length}}</span>
+                            All
+                        </a>
+                    </li>
+                    <li ng-repeat="item in project">
+                        <a href="">
+                            {{item.key}}
+                            <span class="pull-right">{{item.value}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <hr/>
+            <div class="issue-user">
+                <h4>User</h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active">
+                        <a href="">
+                            <span class="pull-right">{{list.length}}</span>
+                            All
+                        </a>
+                    </li>
+                    <li ng-repeat="item in user">
+                        <a href="">
+                            {{item.key}}
+                            <span class="pull-right">{{item.value}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-left: 220px;">
+            <p class="text-right">
+                <button type="button" class="btn btn-primary" ng-click="add()">
+                    New issue
+                </button>
+            </p>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="item in list">
+                        <h5>
+                            <a href="">{{item.Title}}</a>
+                            <br/>
+                            <small>
+                                Create by {{item.Author}} {{item.CreateDate}}
+                                <i class="icon-flag" style="margin-left:10px;"></i>
+                                {{item.Project}}
+                            </small>
+                        </h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div modal="editDialog" close="editDialog = false" options="{backdrop: true,dialogFade:true}">
+        <div class="modal-dialog">
+            <form name="form" class="modal-content" ng-submit="save()">
+                <div class="modal-header">
+                    New issue
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Author</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="entity.Author" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Project</label>
+                            <div class="col-lg-9">
+                                <select class="form-control" ng-model="entity.Project" required>
+                                    <option ng-repeat="item in projects" value="{{item}}">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Title</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="entity.Title" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Content</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control" ng-model="entity.Content" required rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-disabled="form.$invalid || loading">
+                        Submit new issue
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .issue-statu .nav-pills > li.active > a, 
+        .issue-statu .nav-pills > li.active > a:hover, 
+        .issue-statu .nav-pills > li.active > a:focus {
+            background-color: #0072BC;
+        }
+        .issue-user .nav-pills > li.active > a, 
+        .issue-user .nav-pills > li.active > a:hover, 
+        .issue-user .nav-pills > li.active > a:focus {
+            background-color: #bc1c48;
+        }
+        .issue-project .nav-pills > li.active > a, 
+        .issue-project .nav-pills > li.active > a:hover, 
+        .issue-project .nav-pills > li.active > a:focus {
+            background-color: #01a31c;
+        }
+
+        .issue .nav > li > a {
+            padding: 3px 15px;
+        }
+        .issue .nav-pills > li > a {
+            border-radius: 0;
+        }
+
+        .issue .badge {
+margin-top: 1px;
+margin-right: -10px;
+}
+    </style>
+    
+</div>
