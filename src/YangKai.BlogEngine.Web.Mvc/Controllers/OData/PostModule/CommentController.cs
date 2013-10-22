@@ -20,7 +20,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 };
             }
             entity= base.CreateEntity(entity);
-            Rss.BuildCommentRss();
+            Rss.Current.BuildComment();
             return entity;
         }
 

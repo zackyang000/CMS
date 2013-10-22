@@ -25,11 +25,11 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 {
                     if (parameters[0].ParameterType == typeof(Post))
                     {
-                        Task.Factory.StartNew(Rss.BuildPostRss);
+                        Task.Factory.StartNew(Rss.Current.BuildPost);
                     }
                     if (parameters[0].ParameterType == typeof(Comment))
                     {
-                        Task.Factory.StartNew(Rss.BuildCommentRss);
+                        Task.Factory.StartNew(Rss.Current.BuildComment);
                     }
                 }
             }

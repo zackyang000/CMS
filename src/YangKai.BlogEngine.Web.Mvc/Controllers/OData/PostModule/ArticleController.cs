@@ -53,7 +53,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
             entity = Proxy.Repository<Post>().Add(entity);
 
-            Rss.BuildPostRss();
+            Rss.Current.BuildPost();
             return entity;
         }
 
@@ -108,7 +108,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
             Proxy.Repository<Post>().Commit();
 
-            Rss.BuildPostRss();
+            Rss.Current.BuildPost();
             return update;
         }
 

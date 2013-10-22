@@ -10,30 +10,14 @@ namespace YangKai.BlogEngine.Service
 {
     public class Rss
     {
-        private readonly Repository<Post, Guid> _postRepository = Proxy.Repository<Post>();
-        private readonly Repository<Comment, Guid> _commentRepository = Proxy.Repository<Comment>();
-
-        #region  Public Static Methods
-
-        public static void BuildPostRss()
+        public static Rss Current
         {
-            var rss = new Rss();
-            rss.BuildPost();
+            get { return new Rss(); }
         }
 
-        public static void BuildCommentRss()
+        public void BuildPost()
         {
-            var rss = new Rss();
-            rss.BuildComment();
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        private void BuildPost()
-        {
-            var data = _postRepository.GetAll(p => p.PostStatus == (int)PostStatusEnum.Publish).OrderByDescending(p => p.CreateDate).Take(50);
+            var data = Proxy.Repository<Post>().GetAll(p => p.PostStatus == (int)PostStatusEnum.Publish).OrderByDescending(p => p.CreateDate).Take(50);
             var feed = new RssFeed(Encoding.UTF8);
             var channel = BuildPostRssChannel();
             foreach (var item in data)
@@ -70,7 +54,7 @@ namespace YangKai.BlogEngine.Service
                                   Link = new Uri(link),
                                   Description = item.Content,
                                   PubDate = item.PubDate,
-                                  //Author = item.PubAdmin.Name, //TODO:ef出错
+                                  Author = item.CreateUser,
                                   Guid = new RssGuid {Name = item.PostId.ToString()}
                               };
             foreach (var cat in item.Categorys)
@@ -83,9 +67,9 @@ namespace YangKai.BlogEngine.Service
             return rssItem;
         }
 
-        private void BuildComment()
+        public void BuildComment()
         {
-            var data = _commentRepository.GetAll(p => !p.IsDeleted).OrderByDescending(p => p.CreateDate).Take(50);
+            var data = Proxy.Repository<Comment>().GetAll(p => !p.IsDeleted).OrderByDescending(p => p.CreateDate).Take(50);
             var feed = new RssFeed(Encoding.UTF8);
             var channel = BuildCommentRssChannel();
             foreach (var item in data)
@@ -114,14 +98,14 @@ namespace YangKai.BlogEngine.Service
 
         private RssItem BuildCommentRssItem(Comment item)
         {
-            item.Post = _postRepository.Get(item.PostId);
+            item.Post = Proxy.Repository<Post>().Get(item.PostId);
             var link = string.Format("{0}/#!/post/{1}", Config.URL.Domain, item.Post.Url);
 
             var rssItem = new RssItem
                               {
                                   Title = item.Content,
                                   Link = new Uri(link),
-                                  Description = string.Format("{0}<br />发表于:{1}", item.Content, item.Post.Title),
+                                  Description = string.Format("{0}<br /><br /><<{1}>>", item.Content, item.Post.Title),
                                   PubDate = item.CreateDate,
                                   Author = item.Author,
                                   Guid = new RssGuid {Name = item.CommentId.ToString()}
@@ -135,7 +119,5 @@ namespace YangKai.BlogEngine.Service
             }
             return rssItem;
         }
-
-        #endregion
     }
 }
