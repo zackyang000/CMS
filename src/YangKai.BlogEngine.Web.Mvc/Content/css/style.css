@@ -412,6 +412,9 @@ article .date div:last-child {
   font-size: 13px;
   color: #CCC;
 }
+.comment .text p {
+  margin-left: 80px;
+}
 .comment li {
   margin-bottom: 15px;
   padding-bottom: 21px;

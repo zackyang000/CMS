@@ -62,7 +62,7 @@
                 </span>
                 <div>
                     <span class="commentid">{{item.Author}}</span> : 
-                    <p>{{item.Content}}</p>
+                    <p ng-bind-html="item.Content | line"></p>
                 </div>
                 <div class="comment-meta">
                     <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 

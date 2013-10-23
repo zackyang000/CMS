@@ -1,5 +1,6 @@
 ﻿angular.module("app-admin",
-['formatFilters',
+['ngRoute','ngSanitize','ngAnimate',
+'formatFilters',
 'admin-dashboard',
 'admin-basedata',
 'admin-article',

@@ -17,7 +17,7 @@
             <div ng-include="'/partials/Article/post-sub-header.html'"></div>
         </header>
         <section>
-            <div ng-bind-html-unsafe="item.Content"></div>
+            <div ng-bind-html="item.Content"></div>
             <span ng-show="item.QrCode">
                 <a href="javascrpit:void(0);"
                    tooltip-placement="bottom"
@@ -83,7 +83,7 @@
                     </span>
                     <div>
                         <span class="commentid">{{item.Author}}</span> : 
-                        <p>{{item.Content}}</p>
+                        <p ng-bind-html="item.Content | line"></p>
                     </div>
                     <div class="comment-meta">
                         <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 

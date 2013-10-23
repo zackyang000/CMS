@@ -76,7 +76,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             }
             entity.Source = update.Source;
 
-            if (entity.Source != null)
+            if (entity.Thumbnail != null)
             {
                 Proxy.Repository<Thumbnail>().Remove(entity.Thumbnail);
             }

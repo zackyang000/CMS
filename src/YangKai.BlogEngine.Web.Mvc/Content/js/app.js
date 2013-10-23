@@ -1,5 +1,5 @@
 ﻿
-angular.module("app", ['formatFilters', 'issue', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GalleryServices', 'PhotoServices', 'customDirectives', 'pasvaz.bindonce', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'angulartics', 'angulartics.google.analytics']).config([
+angular.module("app", ['ngRoute', 'ngSanitize', 'ngAnimate', 'formatFilters', 'issue', 'MessageServices', 'ArticleServices', 'CommentServices', 'UserServices', 'ChannelServices', 'GalleryServices', 'PhotoServices', 'customDirectives', 'pasvaz.bindonce', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'angulartics', 'angulartics.google.analytics']).config([
   "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
     $httpProvider.responseInterceptors.push(interceptor);
     $locationProvider.html5Mode(false).hashPrefix('!');
@@ -36,4 +36,4 @@ angular.module("app", ['formatFilters', 'issue', 'MessageServices', 'ArticleServ
   }
 ]);
 
-angular.module("app-login", ['UserServices']);
+angular.module("app-login", ['ngRoute', 'ngSanitize', 'ngAnimate', 'UserServices']);

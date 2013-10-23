@@ -23,7 +23,7 @@
                         <header>
                             <h2>
                                 <a ng-href="/#!/post/{{item.Url}}">
-                                    <strong ng-bind-html-unsafe="item.Title | highlight:keyword"></strong>
+                                    <strong ng-bind-html="item.Title | highlight:keyword"></strong>
                                 </a>
                             </h2>
                             <div ng-include="'/partials/Article/post-sub-header.html'"></div>
@@ -35,9 +35,9 @@
                                         <img class="img-thumbnail img-article-thumbnail" ng-src="{{'/upload/thumbnail/'+item.Thumbnail.Url | image}}" alt="{{item.Title}}" title="{{item.Title}}" />
                                     </a>
                                 </div>
-                                <div ng-bind-html-unsafe="item.Description"></div>
+                                <div ng-bind-html="item.Description"></div>
                             </div>
-                            <div ng-show="item.isShowDetail" ng-bind-html-unsafe="item.Content"></div>
+                            <div ng-show="item.isShowDetail" ng-bind-html="item.Content"></div>
                             <div class="clearfix"></div>
                         </section>
                         <footer></footer>

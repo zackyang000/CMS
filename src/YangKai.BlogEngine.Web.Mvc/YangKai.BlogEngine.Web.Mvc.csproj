@@ -315,6 +315,11 @@
     <Content Include="Content\js\services\PhotoServices.min.js">
       <DependentUpon>PhotoServices.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\vendor\angular-animate.js" />
+    <Content Include="Content\js\vendor\angular-resource.js" />
+    <Content Include="Content\js\vendor\angular-route.js" />
+    <Content Include="Content\js\vendor\angular-sanitize.js" />
+    <Content Include="Content\js\vendor\angular.js" />
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
     <Content Include="Content\css\vendor\buttons.css" />
@@ -510,8 +515,6 @@
     <Content Include="Content\img\postline.png" />
     <Content Include="Content\img\technologies\sammy.png" />
     <Content Include="Content\img\technologies\sql.jpg" />
-    <Content Include="Content\js\vendor\angular-resource.js" />
-    <Content Include="Content\js\vendor\angular.js" />
     <Content Include="Content\js\app.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>

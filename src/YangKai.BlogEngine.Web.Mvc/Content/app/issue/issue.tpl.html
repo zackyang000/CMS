@@ -5,9 +5,8 @@
     <li class="active">Issues</li>
 </ul>
 <div class="issue">
-
     <div class="clearfix">
-        <div class="pull-left" style="width: 200px;">
+        <div class="issue-side">
             <div class="issue-statu">
                 <h4>Status</h4>
                 <ul class="nav nav-pills nav-stacked">
@@ -86,7 +85,7 @@
                 </ul>
             </div>
         </div>
-        <div style="margin-left: 220px;">
+        <div class="issue-main">
             <p class="text-right">
                 <button type="button" class="btn btn-primary" ng-click="add()">
                     New issue
@@ -100,13 +99,18 @@
                             <span ng-show="item.Statu=='Closed'" class="label label-warning">Closed</span>
                             <span ng-show="item.Statu=='Cancel'" class="label label-danger">Cancel</span>
                             <a href="JavaScript:void(0)" ng-click="item.show=!item.show">{{item.Title}}</a>
-                            <small ng-show="User.IsAdmin" ng-click="edit(item)" style="cursor: pointer">edit</small>
+                            <small class="pull-right" ng-show="User.IsAdmin && item.show" ng-click="edit(item)">
+                                <a href="JavaScript:void(0)">
+                                    <i class="icon-edit"></i>
+                                    Edit
+                                </a>
+                            </small>
                         </h5>
                         <div ng-show="item.show">
-                            <div ng-bind-html-unsafe="item.Content | line"></div>
+                            <div ng-bind-html="item.Content | line"></div>
                             <p ng-show="item.Result" class="text-success">
                                 <strong>{{item.LastEditUser}}:</strong> 
-                                <span ng-bind-html-unsafe="item.Result | line"></span>
+                                <span ng-bind-html="item.Result | line"></span>
                             </p>
                             <div ng-show="User.IsAdmin && item.edit" class="alert alert-success">
                                 <p>Title</p>
@@ -128,11 +132,15 @@
                                 </p>
                             </div>
                         </div>
-                            <small style="color:#999">
+                        <small class="issue-footer">
+                            <span>
                                 Create by {{item.Author}} {{item.date}}
-                                <i class="icon-flag" style="margin-left:10px;"></i>
+                            </span>
+                            <span>
+                                <i class="icon-flag"></i>
                                 {{item.Project}}
-                            </small>
+                            </span>
+                        </small>
                     </li>
                 </ul>
             </div>
@@ -183,35 +191,4 @@
             </form>
         </div>
     </div>
-
-    <style>
-        .issue-statu .nav-pills > li.active > a, 
-        .issue-statu .nav-pills > li.active > a:hover, 
-        .issue-statu .nav-pills > li.active > a:focus {
-            background-color: #0072BC;
-        }
-        .issue-user .nav-pills > li.active > a, 
-        .issue-user .nav-pills > li.active > a:hover, 
-        .issue-user .nav-pills > li.active > a:focus {
-            background-color: #bc1c48;
-        }
-        .issue-project .nav-pills > li.active > a, 
-        .issue-project .nav-pills > li.active > a:hover, 
-        .issue-project .nav-pills > li.active > a:focus {
-            background-color: #01a31c;
-        }
-
-        .issue .nav > li > a {
-            padding: 3px 15px;
-        }
-        .issue .nav-pills > li > a {
-            border-radius: 0;
-        }
-
-        .issue .badge {
-margin-top: 1px;
-margin-right: -10px;
-}
-    </style>
-    
 </div>

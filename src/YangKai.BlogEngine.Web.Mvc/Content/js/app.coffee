@@ -1,5 +1,6 @@
 ﻿angular.module("app",
-['formatFilters',
+['ngRoute','ngSanitize','ngAnimate'
+'formatFilters',
 'issue',
 'MessageServices',
 'ArticleServices',
@@ -49,4 +50,4 @@
   .otherwise redirectTo: "/"
 ]
 
-angular.module("app-login",['UserServices'])
+angular.module("app-login",['ngRoute','ngSanitize','ngAnimate','UserServices'])
