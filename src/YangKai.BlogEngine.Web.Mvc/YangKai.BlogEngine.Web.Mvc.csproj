@@ -278,6 +278,7 @@
       <DependentUpon>issue.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\issue\issue.tpl.html" />
+    <Content Include="Content\app\issue\issue.css" />
     <Content Include="Content\js\directives\bindonce.js" />
     <Content Include="Content\js\directives\custom\activeLink.js">
       <DependentUpon>activeLink.coffee</DependentUpon>
