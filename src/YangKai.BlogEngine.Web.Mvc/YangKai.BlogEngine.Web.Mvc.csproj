@@ -1078,12 +1078,12 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeMidnight.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
     <Content Include="favicon.ico" />
-    <Content Include="partials\about.html" />
+    <Content Include="partials\about2.html" />
     <Content Include="partials\Article\archives.html" />
     <Content Include="partials\Article\post-sub-header.html" />
     <Content Include="partials\Article\detail.html" />
     <Content Include="partials\Article\list.html" />
-    <Content Include="partials\about3.html" />
+    <Content Include="partials\about.html" />
     <Content Include="partials\message.html" />
     <Content Include="partials\index.html" />
     <Content Include="robots.txt" />

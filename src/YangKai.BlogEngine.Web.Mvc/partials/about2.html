@@ -1,0 +1,30 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<ul class="breadcrumb">
+    <li><a href="/#!/">Home</a></li>
+    <li class="active">About</li>
+</ul>
+
+<div>
+    <div class="row intro">
+        <div class="col-lg-4">
+            <h3 class="green">What?</h3>
+            <p>It's a blog system.</p> 
+        </div>
+        <div class="col-lg-4">
+            <h3 class="yellow">Why?</h3>
+            <p>Because we can.</p> 
+        </div>
+        <div class="col-lg-4">
+            <h3 class="red">How?</h3>
+            <p>More at <a href="https://github.com/TossShinHwa/CMS">GitHub</a>.</p>
+        </div>
+    </div>
+    <div class="row technologies">
+        <a ng-repeat="item in list" class="col-lg-1 {{item.css}}" ng-href="{{item.Link}}">
+            <div><img ng-src="/Content/img/technologies/{{item.Image}}" /></div>
+            <p>{{item.Name}}</p>
+        </a>
+    </div>
+    <p>Began in 12/06/2008.</p>
+</div>

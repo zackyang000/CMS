@@ -9,52 +9,76 @@
     <div class="clearfix">
         <div class="pull-left" style="width: 200px;">
             <div class="issue-statu">
-                <h4>Statu</h4>
+                <h4>Status</h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active">
-                        <a href="">
-                            <span class="pull-right">{{list.length}}</span>
+                    <li ng-class="{active:filter.Statu==''}">
+                        <a href="JavaScript:void(0)" ng-init="filter.Statu='Open'" ng-click="filter.Statu='';setGroup()">
+                            <span class="pull-right">{{count.statu}}</span>
                             All
                         </a>
                     </li>
-                    <li ng-repeat="item in statu">
-                        <a href="">
-                            {{item.key}}
-                            <span class="pull-right">{{item.value}}</span>
+                    <li ng-class="{active:filter.Statu=='Open'}">
+                        <a href="JavaScript:void(0)" ng-click="filter.Statu='Open';setGroup()">
+                            Open
+                            <span class="pull-right">{{statu['Open']}}</span>
                         </a>
                     </li>
-                </ul>
-            </div>
-            <hr/>
-            <div class="issue-project">
-                <h4>Project</h4>
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active">
-                        <a href="">
-                            <span class="pull-right">{{list.length}}</span>
-                            All
+                    <li ng-class="{active:filter.Statu=='Closed'}">
+                        <a href="JavaScript:void(0)" ng-click="filter.Statu='Closed';setGroup()">
+                            Closed
+                            <span class="pull-right">{{statu['Closed']}}</span>
                         </a>
                     </li>
-                    <li ng-repeat="item in project">
-                        <a href="">
-                            {{item.key}}
-                            <span class="pull-right">{{item.value}}</span>
+                    <li ng-class="{active:filter.Statu=='Cancel'}">
+                        <a href="JavaScript:void(0)" ng-click="filter.Statu='Cancel';setGroup()">
+                            Cancel
+                            <span class="pull-right">{{statu['Cancel']}}</span>
                         </a>
                     </li>
                 </ul>
             </div>
             <hr/>
             <div class="issue-user">
-                <h4>User</h4>
+                <h4>Date</h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active">
-                        <a href="">
-                            <span class="pull-right">{{list.length}}</span>
+                    <li ng-class="{active:filterDate==''}">
+                        <a href="JavaScript:void(0)" ng-init="filterDate=''" ng-click="filterDate='';setGroup()">
+                            <span class="pull-right">{{count.date}}</span>
                             All
                         </a>
                     </li>
-                    <li ng-repeat="item in user">
-                        <a href="">
+                    <li ng-class="{active:filterDate=='day'}">
+                        <a href="JavaScript:void(0)" ng-click="filterDate='day';setGroup()">
+                            <span class="pull-right">{{date['day']}}</span>
+                            Day
+                        </a>
+                    </li>
+                    <li ng-class="{active:filterDate=='week'}">
+                        <a href="JavaScript:void(0)" ng-click="filterDate='week';setGroup()">
+                            <span class="pull-right">{{date['week']}}</span>
+                            Week
+                        </a>
+                    </li>
+                    <li ng-class="{active:filterDate=='month'}">
+                        <a href="JavaScript:void(0)" ng-click="filterDate='month';setGroup()">
+                            <span class="pull-right">{{date['month']}}</span>
+                            Month
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <hr/>
+            <div class="issue-project">
+                <h4>Projects</h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li ng-class="{active:filter.Project==''}">
+                        <a href="JavaScript:void(0)" ng-init="filter.Project=''" ng-click="filter.Project='';setGroup()">
+                            <span class="pull-right">{{count.project}}</span>
+                            All
+                        </a>
+                    </li>
+                    <li ng-repeat="item in project" ng-class="{active:filter.Project==item.key}">
+                        <a href="JavaScript:void(0)" ng-click="filter.Project=item.key;setGroup()">
                             {{item.key}}
                             <span class="pull-right">{{item.value}}</span>
                         </a>
@@ -70,16 +94,45 @@
             </p>
             <div>
                 <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="item in list">
+                    <li class="list-group-item" ng-repeat="item in list | filter:filter | filterByDate:filterDate">
                         <h5>
-                            <a href="">{{item.Title}}</a>
-                            <br/>
-                            <small>
-                                Create by {{item.Author}} {{item.CreateDate}}
+                            <span ng-show="item.Statu=='Open'" class="label label-success">Open</span>
+                            <span ng-show="item.Statu=='Closed'" class="label label-warning">Closed</span>
+                            <span ng-show="item.Statu=='Cancel'" class="label label-danger">Cancel</span>
+                            <a href="JavaScript:void(0)" ng-click="item.show=!item.show">{{item.Title}}</a>
+                            <small ng-show="User.IsAdmin" ng-click="edit(item)" style="cursor: pointer">edit</small>
+                        </h5>
+                        <div ng-show="item.show">
+                            <div ng-bind-html-unsafe="item.Content | line"></div>
+                            <p ng-show="item.Result" class="text-success">
+                                <strong>{{item.LastEditUser}}:</strong> 
+                                <span ng-bind-html-unsafe="item.Result | line"></span>
+                            </p>
+                            <div ng-show="User.IsAdmin && item.edit" class="alert alert-success">
+                                <p>Title</p>
+                                <p><input type="text" class="form-control" ng-model="item.title" /></p>
+                                <p>Content</p>
+                                <p><textarea class="form-control" ng-model="item.content" rows="3"></textarea></p>
+                                <p>Result</p>
+                                <p><textarea class="form-control" ng-model="item.result" rows="3"></textarea></p>
+                                <p>Statu</p>
+                                <p>
+                                    <select ng-model="item.statu" class="form-control">
+                                        <option value="Open">Open</option>
+                                        <option value="Closed">Closed</option>
+                                        <option value="Cancel">Cancel</option>
+                                    </select>
+                                </p>
+                                <p>
+                                    <button class="btn btn-success btn-sm" type="button" ng-click="handle(item)">Submit Comment</button>
+                                </p>
+                            </div>
+                        </div>
+                            <small style="color:#999">
+                                Create by {{item.Author}} {{item.date}}
                                 <i class="icon-flag" style="margin-left:10px;"></i>
                                 {{item.Project}}
                             </small>
-                        </h5>
                     </li>
                 </ul>
             </div>

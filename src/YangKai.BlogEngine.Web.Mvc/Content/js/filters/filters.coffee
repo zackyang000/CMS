@@ -1,10 +1,11 @@
 ﻿angular.module("formatFilters", [])
-.filter "jsondate", ->
-  (input,fmt) ->
-    input.Format(fmt)
 .filter "isFuture", ->
   (input) ->
     new Date(input)>new Date()
+.filter "line", ->
+  (input) ->
+    return input if !input
+    return input.replace(/\n/g,'<br />')
 #转换文件size单位
 .filter 'formatFileSize', ->
   (bytes) ->
@@ -13,7 +14,7 @@
     return (bytes / 1000000000).toFixed(2) + ' GB' if bytes >= 1000000000
     return (bytes / 1000000).toFixed(2) + ' MB' if bytes >= 1000000
     (bytes / 1000).toFixed(2) + ' KB'
-#转换文件size单位
+#在URL不完整时不显示
 .filter 'image', ->
   (url) ->
     return '' if url.charAt(url.length - 1) is '/'
