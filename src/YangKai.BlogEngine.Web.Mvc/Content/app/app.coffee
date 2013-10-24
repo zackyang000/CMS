@@ -6,6 +6,7 @@
 'board',
 'about',
 'issue',
+'gallery',
 'UserServices',
 'customDirectives',
 'pasvaz.bindonce',

@@ -72,19 +72,22 @@
             unless statu[item.Statu]
               statu[item.Statu]=0
             statu[item.Statu]++
+            $scope.count.statu++
           if $scope.filterDate=='day' && moment(new Date()).format('YYYY-MM-DD')==moment(item.CreateDate).format('YYYY-MM-DD')
             unless statu[item.Statu]
               statu[item.Statu]=0
             statu[item.Statu]++
+            $scope.count.statu++
           if $scope.filterDate=='week' && moment(new Date()).diff(item.CreateDate, 'days')<=7
             unless statu[item.Statu]
               statu[item.Statu]=0
             statu[item.Statu]++
+            $scope.count.statu++
           if $scope.filterDate=='month' && moment(new Date()).diff(item.CreateDate, 'days')<=30
             unless statu[item.Statu]
               statu[item.Statu]=0
             statu[item.Statu]++
-          $scope.count.statu++
+            $scope.count.statu++
 
 
       for item in $scope.list
@@ -93,19 +96,22 @@
             unless project[item.Project]
               project[item.Project]=0
             project[item.Project]++
+            $scope.count.project++
           if $scope.filterDate=='day' && moment(new Date()).format('YYYY-MM-DD')==moment(item.CreateDate).format('YYYY-MM-DD')
             unless project[item.Project]
               project[item.Project]=0
             project[item.Project]++
+            $scope.count.project++
           if $scope.filterDate=='week' && moment(new Date()).diff(item.CreateDate, 'days')<=7
             unless project[item.Project]
               project[item.Project]=0
             project[item.Project]++
+            $scope.count.project++
           if $scope.filterDate=='month' && moment(new Date()).diff(item.CreateDate, 'days')<=30
             unless project[item.Project]
               project[item.Project]=0
             project[item.Project]++
-          $scope.count.project++
+            $scope.count.project++
       
       date['day']=0
       date['week']=0

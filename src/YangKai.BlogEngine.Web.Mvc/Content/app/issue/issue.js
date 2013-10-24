@@ -63,20 +63,23 @@ angular.module('issue', ['IssueServices']).filter('filterByDate', function() {
           if ($scope.filterDate === '') {
             if (!statu[item.Statu]) statu[item.Statu] = 0;
             statu[item.Statu]++;
+            $scope.count.statu++;
           }
           if ($scope.filterDate === 'day' && moment(new Date()).format('YYYY-MM-DD') === moment(item.CreateDate).format('YYYY-MM-DD')) {
             if (!statu[item.Statu]) statu[item.Statu] = 0;
             statu[item.Statu]++;
+            $scope.count.statu++;
           }
           if ($scope.filterDate === 'week' && moment(new Date()).diff(item.CreateDate, 'days') <= 7) {
             if (!statu[item.Statu]) statu[item.Statu] = 0;
             statu[item.Statu]++;
+            $scope.count.statu++;
           }
           if ($scope.filterDate === 'month' && moment(new Date()).diff(item.CreateDate, 'days') <= 30) {
             if (!statu[item.Statu]) statu[item.Statu] = 0;
             statu[item.Statu]++;
+            $scope.count.statu++;
           }
-          $scope.count.statu++;
         }
       }
       _ref1 = $scope.list;
@@ -86,20 +89,23 @@ angular.module('issue', ['IssueServices']).filter('filterByDate', function() {
           if ($scope.filterDate === '') {
             if (!project[item.Project]) project[item.Project] = 0;
             project[item.Project]++;
+            $scope.count.project++;
           }
           if ($scope.filterDate === 'day' && moment(new Date()).format('YYYY-MM-DD') === moment(item.CreateDate).format('YYYY-MM-DD')) {
             if (!project[item.Project]) project[item.Project] = 0;
             project[item.Project]++;
+            $scope.count.project++;
           }
           if ($scope.filterDate === 'week' && moment(new Date()).diff(item.CreateDate, 'days') <= 7) {
             if (!project[item.Project]) project[item.Project] = 0;
             project[item.Project]++;
+            $scope.count.project++;
           }
           if ($scope.filterDate === 'month' && moment(new Date()).diff(item.CreateDate, 'days') <= 30) {
             if (!project[item.Project]) project[item.Project] = 0;
             project[item.Project]++;
+            $scope.count.project++;
           }
-          $scope.count.project++;
         }
       }
       date['day'] = 0;

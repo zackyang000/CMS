@@ -6,14 +6,108 @@
     <link>http://10.16.75.10:8002/</link>
     <language>zh-cn</language>
     <copyright>&amp;copy; Powered by BackendTechSupport Team , 2013, All Rights Reserved.</copyright>
-    <pubDate>Thu, 24 Oct 2013 15:39:09 GMT</pubDate>
-    <lastBuildDate>Thu, 24 Oct 2013 15:39:09 GMT</lastBuildDate>
+    <pubDate>Thu, 24 Oct 2013 17:24:55 GMT</pubDate>
+    <lastBuildDate>Thu, 24 Oct 2013 17:24:55 GMT</lastBuildDate>
     <docs>http://backend.userland.com/rss</docs>
     <generator>RSS.NET: http://www.rssdotnet.com/</generator>
     <item>
       <title>44444444244</title>
       <description>&lt;p&gt;
-	4444444444444&lt;/p&gt;
+	最近在对gateway进行性能分析，Zeeman前天突然跟我说为什么Message那个service这么慢呢？这个service就是往MQ里写一条消息，直接调用service，也就几十ms的开销，为什么gateway却要200ms以上。&lt;/p&gt;
+&lt;p&gt;
+	这个问题引起了我们的重视，马上利用gateway自身的profile功能看了一下（以下为了便于测试和重现，所有分析步骤都没有使用这个message API，换了一个类似的API）。&lt;/p&gt;
+&lt;p&gt;
+	&lt;img alt="" src="/UpLoad/images/20131024164910857.PNG" style="width: 727px; height: 297px;" /&gt;&lt;/p&gt;
+&lt;p&gt;
+	根据profile来看，gateway自身大概花了200ms的时间，再用fiddler看一下呢&lt;/p&gt;
+&lt;p&gt;
+	&lt;img alt="" src="/UpLoad/images/20131024164958497.PNG" style="width: 364px; height: 296px;" /&gt;&lt;/p&gt;
+&lt;p&gt;
+	fiddler说一共花了400多，这个就奇怪了，那剩下的200ms去哪里呢？同时大家可以看到，传输数据量很少，header和body加起来不到1kb。&lt;/p&gt;
+&lt;p&gt;
+	然后我们开始了诸多的猜测，我下面挨个列举一下我们的排查思路：&lt;/p&gt;
+&lt;p&gt;
+	1. 网络开销。不过这个思路很快被否定了，client和server都在成都office，不到1kb的数据量，不可能开销200ms。&lt;/p&gt;
+&lt;p&gt;
+	2. 按照fiddler的说法，大概在请求到200多ms的时候拿到了header，这个时候说明gateway已经完成对真实service的请求，开始回传数据了，那么也就是说header有可能和body是分开传输的。按照node.js是单线程异步事件的编程模式，那会不会是在传输body之前有什么处理阻塞了线程？按照这个思路，在网上Google了一下，有人说如果你代码里有console.log，那么会大大降低你的性能。好，把代码里所有console.log都去掉。结果依然不好。&lt;/p&gt;
+&lt;p&gt;
+	3. 会不会是我们使用的request模块的bug？所以，在github上发了一个帖子质问作者（&lt;a href="https://github.com/mikeal/request/issues/687"&gt;https://github.com/mikeal/request/issues/687&lt;/a&gt;）没人理会。&lt;/p&gt;
+&lt;p&gt;
+	第一天结束。&lt;/p&gt;
+&lt;p&gt;
+	4. 换成node原生的request来做反向代理，依然没有得到解决，这个时候意识到错快request的作者了。当然这个时候发现我们反向代理使用的是stream的pipe API。会不会是pipe的问题呢？&lt;/p&gt;
+&lt;p&gt;
+	5. 改变思路，不使用pipe，而是将真实service的数据先请求到，然后用res.end方法像client进行数据传输。结果！！！真的解决了这个问题。希望的曙光啊。&lt;/p&gt;
+&lt;p&gt;
+	6. 分析pipe和end到底有什么不同。当然，还是花了好几个小时，包括看了node的源码。头都看晕了，依然没看出个头绪。&lt;/p&gt;
+&lt;p&gt;
+	7. 网上继续变换关键字Google，结果发现了一个帖子（这个帖子很重要，直接导致了我们最后朝向正确的方向前进：&lt;a href="http://stackoverflow.com/questions/16726543/node-js-response-writedata-taking-long-time-when-size-of-data-is-small"&gt;http://stackoverflow.com/questions/16726543/node-js-response-writedata-taking-long-time-when-size-of-data-is-small&lt;/a&gt;）。他里面提到了有可能是由于TCP传输时造成的问题。好，按照他提供的线索，安装了一个tcp抓包工具wireshark。开始抓包：&lt;/p&gt;
+&lt;p&gt;
+	&lt;img alt="" src="/UpLoad/images/20131024170429335.PNG" style="width: 1127px; height: 70px;" /&gt;&lt;/p&gt;
+&lt;p&gt;
+	根据抓包结果，终于发现了这个诡异的200ms出现的地方，在第一行和第二行之间，第一行是server向client发送header，大小为347b，第三行是发送body，大小是533b。那么，为什么server一定要等client ACK后才发送body？为什么client要等200ms才向server发送ACK。&lt;/p&gt;
+&lt;p&gt;
+	8. 依然无解，只能再次求助Google。关键字：200ms。找到维基百科（&lt;a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol"&gt;http://en.wikipedia.org/wiki/Transmission_Control_Protocol&lt;/a&gt;）对TCP的解释，有一段值得注意的：&lt;/p&gt;
+&lt;div&gt;
+	&lt;em&gt;Normally, TCP waits for 200 ms or for a full packet of data to send (Nagle&amp;#39;s Algorithm tries to group small messages into a single packet). This creates minor, but potentially serious delays if repeated constantly during a file transfer. For example a typical send block would be 4 KB, a typical MSS is 1460, so 2 packets go out on a 10 Mbit/s ethernet taking ~1.2 ms each followed by a third carrying the remaining 1176 after a 197 ms pause because TCP is waiting for a full buffer.&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+	&lt;em&gt;In the case of telnet, each user keystroke is echoed back by the server before the user can see it on the screen. This delay would become very annoying.&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+	&lt;em&gt;Setting the socket option TCP_NODELAY overrides the default 200 ms send delay. Application programs use this socket option to force output to be sent after writing a character or line of characters.&lt;/em&gt;&lt;/div&gt;
+&lt;p&gt;
+	这里提到了200ms，那么里面的Nagle算法又是什么呢？再次Google：&lt;/p&gt;
+&lt;div&gt;
+	&lt;em&gt;　　TCP/IP协议中，无论发送多少数据，总是要在数据前面加上协议头，同时，对方接收到数据，也需要发送ACK表示确认。为了尽可能的利用网络带宽，TCP总是希望尽可能的发送足够大的数据。（一个连接会设置MSS参数，因此，TCP/IP希望每次都能够以MSS尺寸的数据块来发送数据）。Nagle算法就是为了尽可能发送大块数据，避免网络中充斥着许多小数据块。&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+	&lt;em&gt;　　Nagle算法的基本定义是任意时刻，最多只能有一个未被确认的小段。 所谓&amp;ldquo;小段&amp;rdquo;，指的是小于MSS尺寸的数据块，所谓&amp;ldquo;未被确认&amp;rdquo;，是指一个数据块发送出去后，没有收到对方发送的ACK确认该数据已收到。&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+	&lt;em&gt;　　Nagle算法的规则（可参考tcp_output.c文件里tcp_nagle_check函数注释）：&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+	&lt;em&gt;（1）如果包长度达到MSS，则允许发送；&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+	&lt;em&gt;（2）如果该包含有FIN，则允许发送；&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+	&lt;em&gt;（3）设置了TCP_NODELAY选项，则允许发送；&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+	&lt;em&gt;（4）未设置TCP_CORK选项时，若所有发出去的小数据包（包长度小于MSS）均被确认，则允许发送；&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+	&lt;em&gt;（5）上述条件都未满足，但发生了超时（一般为200ms），则立即发送&lt;/em&gt;。&lt;/div&gt;
+&lt;div&gt;
+	&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;
+	看到这里，各位应该清楚了，我也不解释了。&lt;/div&gt;
+&lt;div&gt;
+	那么造成这个问题的原因是：刚好这个service返回的header和body都不到1460b，所以，body不能被立即传递，必须等待client ACK，等待的时间恰好是200ms。&lt;/div&gt;
+&lt;div&gt;
+	&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;
+	好吧，这个是TCP传输协议的问题，看来我可以不管了，但是又想到这样有点不负责任吧，本来这个service执行时间也就是几十ms，你这里白白浪费了200ms，情何以堪啊？&lt;/div&gt;
+&lt;div&gt;
+	&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;
+	重新阅读下，看到说可以通过设置TCP_NODELAY把这个200干掉，于是想是不是可以在node里设置呢？看了一下node的文档，果然可以：&lt;/div&gt;
+&lt;div&gt;
+	&lt;pre class="brush:jscript;"&gt;
+var server = http.createServer(function(req, res) {
+  reverseProxy(req, res);
+});
+
+server.on(&amp;quot;connection&amp;quot;, function(socket){
+	socket.setNoDelay(true);
+});&lt;/pre&gt;
+	&lt;p&gt;
+		对，就这么简单，重新run一下看看效果：&lt;/p&gt;
+	&lt;p&gt;
+		&lt;img alt="" src="/UpLoad/images/20131024171608643.PNG" style="width: 376px; height: 296px;" /&gt;&lt;/p&gt;
+	&lt;p&gt;
+		好，大功告成。&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&lt;/p&gt;
+	&lt;p&gt;
+		回忆整个性能排查过程，虽然最后的解决只是那么两行代码，但是过程确实非常的繁杂。也充分说明了底层原理还是不能丢呀，基础知识还需打牢。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+	&amp;nbsp;&lt;/div&gt;
 </description>
       <link>http://10.16.75.10:8002/#!/post/44444444244</link>
       <category>视频 - 默认</category>

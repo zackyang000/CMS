@@ -107,7 +107,7 @@
                             </small>
                         </h5>
                         <div ng-show="item.show">
-                            <div ng-bind-html="item.Content | line"></div>
+                            <p ng-bind-html="item.Content | line"></p>
                             <p ng-show="item.Result" class="text-success">
                                 <strong>{{item.LastEditUser}}:</strong> 
                                 <span ng-bind-html="item.Result | line"></span>

@@ -301,6 +301,20 @@
     <Content Include="Content\app\board\board.min.js">
       <DependentUpon>board.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\app\gallery\detail\gallery-detail.js">
+      <DependentUpon>gallery-detail.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\gallery\detail\gallery-detail.min.js">
+      <DependentUpon>gallery-detail.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\gallery\detail\gallery-detail.tpl.html" />
+    <Content Include="Content\app\gallery\gallery.js">
+      <DependentUpon>gallery.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\gallery\gallery.min.js">
+      <DependentUpon>gallery.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\gallery\gallery.tpl.html" />
     <Content Include="Content\app\index.js">
       <DependentUpon>index.coffee</DependentUpon>
     </Content>
@@ -357,6 +371,8 @@
     <Content Include="Content\js\vendor\angular-route.js" />
     <Content Include="Content\js\vendor\angular-sanitize.js" />
     <Content Include="Content\js\vendor\angular.js" />
+    <Content Include="Content\css\vendor\photobox.css" />
+    <Content Include="Content\js\vendor\photobox.js" />
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
     <Content Include="Content\css\vendor\buttons.css" />
@@ -1178,6 +1194,8 @@
     <Content Include="Content\app\issue\issue.coffee" />
     <Content Include="Content\js\services\IssueServices.coffee" />
     <Content Include="Content\app\article\article.coffee" />
+    <Content Include="Content\app\gallery\gallery.coffee" />
+    <Content Include="Content\app\gallery\detail\gallery-detail.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />
