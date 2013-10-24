@@ -6,7 +6,7 @@ angular.module("formatFilters", []).filter("isFuture", function() {
 }).filter("line", function() {
   return function(input) {
     if (!input) return input;
-    return input.replace(/\n/g, '<br />');
+    return input.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br />');
   };
 }).filter('formatFileSize', function() {
   return function(bytes) {

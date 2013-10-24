@@ -62,10 +62,10 @@
         </ul>
     </div>
     <div class="post-related" ng-show="relatedPost.value">
-        <div class="title"><span>Related</span></div>
+        <div class="title"><span>Related Posts</span></div>
         <ul>
             <li ng-repeat="item in relatedPost.value">
-                {{item.PubDate | date:"yyyy年MM月dd日"}} -- <a ng-href="/#!/post/{{item.Url}}">{{item.Title}}</a>
+                {{item.PubDate | date:"yyyy.MM.dd"}} -- <a ng-href="/#!/post/{{item.Url}}">{{item.Title}}</a>
             </li>
         </ul>
     </div>

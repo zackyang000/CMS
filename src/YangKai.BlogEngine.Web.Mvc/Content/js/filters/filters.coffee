@@ -5,7 +5,7 @@
 .filter "line", ->
   (input) ->
     return input if !input
-    return input.replace(/\n/g,'<br />')
+    return input.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br />')
 #转换文件size单位
 .filter 'formatFileSize', ->
   (bytes) ->

@@ -1206,6 +1206,7 @@
     </Content>
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Web.config" />
+    <None Include="Properties\PublishProfiles\file %28D disk%29.pubxml" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <Content Include="Views\Admin\index.cshtml" />
     <Content Include="Views\Admin\login.cshtml" />
