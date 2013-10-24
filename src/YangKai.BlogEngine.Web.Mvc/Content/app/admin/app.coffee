@@ -26,3 +26,6 @@
   $locationProvider.html5Mode(false).hashPrefix('!')
   $routeProvider.otherwise redirectTo: "/"
 ]
+
+angular.module("app-login",
+['ngRoute','ngSanitize','ngAnimate','UserServices'])

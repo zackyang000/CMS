@@ -31,7 +31,7 @@ namespace YangKai.BlogEngine.Common
             public const string LOGO_PIC_PATH = "/Content/Image/logo.gif";
 
             /// <summary>
-            /// 作者默认avatar头像地址
+            /// 默认avatar头像地址
             /// </summary>
             public const string AUTHOR_DEFAULT_AVATAR_PATH = "/Content/img/avatar.png";
 

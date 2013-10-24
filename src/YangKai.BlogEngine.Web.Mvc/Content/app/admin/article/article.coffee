@@ -4,7 +4,7 @@
 ($routeProvider) ->
   $routeProvider
   .when("/article",
-    templateUrl: "/content/app/admin/article/article.tpl.html"
+    templateUrl: "/Content/app/admin/article/article.tpl.html"
     controller: 'ArticleListCtrl')
 ])
 

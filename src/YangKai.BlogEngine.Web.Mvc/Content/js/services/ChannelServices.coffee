@@ -15,10 +15,4 @@
         $expand:'Groups/Posts'
         $filter:'IsDeleted eq false'
         $select:'Name,Url,Groups/Name,Groups/Url,Groups/IsDeleted,Groups/Posts/Title,Groups/Posts/Url,Groups/Posts/PubDate,Groups/Posts/IsDeleted'
-    categories:
-      method: "GET"
-      params:
-        $expand:'Groups/Categorys'
-        $filter:'IsDeleted eq false'
-        $select:'Name,Url,Groups/Name,Groups/Url,Groups/IsDeleted,Groups/Categorys/Name,Groups/Categorys/Url,Groups/Categorys/IsDeleted'
 ]

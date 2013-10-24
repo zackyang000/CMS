@@ -8,3 +8,5 @@ angular.module("app-admin", ['ngRoute', 'ngSanitize', 'ngAnimate', 'formatFilter
     });
   }
 ]);
+
+angular.module("app-login", ['ngRoute', 'ngSanitize', 'ngAnimate', 'UserServices']);

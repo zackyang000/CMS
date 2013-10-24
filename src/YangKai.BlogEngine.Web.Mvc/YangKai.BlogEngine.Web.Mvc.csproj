@@ -191,11 +191,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\app\admin\article\article-list.js">
-      <DependentUpon>article.coffee</DependentUpon>
+    <Content Include="Content\app\about\about.js">
+      <DependentUpon>about.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\app\admin\article\article-list.min.js">
-      <DependentUpon>article.coffee</DependentUpon>
+    <Content Include="Content\app\about\about.min.js">
+      <DependentUpon>about.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\admin\article\article.js">
       <DependentUpon>article.coffee</DependentUpon>
@@ -270,6 +270,42 @@
     </Content>
     <Content Include="Content\app\admin\app.min.js">
       <DependentUpon>app.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\article\archives\article-archives.js">
+      <DependentUpon>article-archives.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\article\archives\article-archives.min.js">
+      <DependentUpon>article-archives.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\article\article.js">
+      <DependentUpon>article.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\article\article.min.js">
+      <DependentUpon>article.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\article\detail\article-detail.js">
+      <DependentUpon>article-detail.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\article\detail\article-detail.min.js">
+      <DependentUpon>article-detail.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\article\list\article-list.js">
+      <DependentUpon>article-list.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\article\list\article-list.min.js">
+      <DependentUpon>article-list.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\board\board.js">
+      <DependentUpon>board.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\board\board.min.js">
+      <DependentUpon>board.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\index.js">
+      <DependentUpon>index.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\index.min.js">
+      <DependentUpon>index.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\issue\issue.js">
       <DependentUpon>issue.coffee</DependentUpon>
@@ -371,35 +407,11 @@
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\img\technologies\angularJS.png" />
     <Content Include="Content\test\angular-scenario.js" />
-    <Content Include="Content\js\controllers\ArchivesController.js">
-      <DependentUpon>ArchivesController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\ArchivesController.min.js">
-      <DependentUpon>ArchivesController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\ArticleDetailController.js">
-      <DependentUpon>ArticleDetailController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\ArticleDetailController.min.js">
-      <DependentUpon>ArticleDetailController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\ArticleListController.js">
-      <DependentUpon>ArticleListController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\ArticleListController.min.js">
-      <DependentUpon>ArticleListController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\LoginController.js">
+    <Content Include="Content\app\LoginController.js">
       <DependentUpon>LoginController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\controllers\LoginController.min.js">
+    <Content Include="Content\app\LoginController.min.js">
       <DependentUpon>LoginController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\MessageController.js">
-      <DependentUpon>MessageController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\MessageController.min.js">
-      <DependentUpon>MessageController.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\directives\custom-base.js">
       <DependentUpon>custom-base.coffee</DependentUpon>
@@ -516,30 +528,18 @@
     <Content Include="Content\img\postline.png" />
     <Content Include="Content\img\technologies\sammy.png" />
     <Content Include="Content\img\technologies\sql.jpg" />
-    <Content Include="Content\js\app.js">
+    <Content Include="Content\app\app.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\app.min.js">
+    <Content Include="Content\app\app.min.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\vendor\bootstrap.js" />
-    <Content Include="Content\js\controllers\AboutController.js">
-      <DependentUpon>AboutController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\AboutController.min.js">
-      <DependentUpon>AboutController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\GlobalController.js">
+    <Content Include="Content\app\GlobalController.js">
       <DependentUpon>GlobalController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\controllers\GlobalController.min.js">
+    <Content Include="Content\app\GlobalController.min.js">
       <DependentUpon>GlobalController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\HomeController.js">
-      <DependentUpon>HomeController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\controllers\HomeController.min.js">
-      <DependentUpon>HomeController.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\filters\filters.js">
       <DependentUpon>filters.coffee</DependentUpon>
@@ -1082,14 +1082,14 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeMidnight.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
     <Content Include="favicon.ico" />
-    <Content Include="partials\about2.html" />
-    <Content Include="partials\Article\archives.html" />
-    <Content Include="partials\Article\post-sub-header.html" />
-    <Content Include="partials\Article\detail.html" />
-    <Content Include="partials\Article\list.html" />
-    <Content Include="partials\about.html" />
-    <Content Include="partials\message.html" />
-    <Content Include="partials\index.html" />
+    <Content Include="Content\app\about\about.tpl.html" />
+    <Content Include="Content\app\article\archives\article-archives.tpl.html" />
+    <Content Include="Content\app\article\article-post-header.tpl.html" />
+    <Content Include="Content\app\article\detail\article-detail.tpl.html" />
+    <Content Include="Content\app\article\list\article-list.tpl.html" />
+    <Content Include="Content\app\about\about-newegg.tpl.html" />
+    <Content Include="Content\app\board\board.tpl.html" />
+    <Content Include="Content\app\index.tpl.html" />
     <Content Include="robots.txt" />
     <Content Include="Content\js\vendor\messenger.js" />
     <Content Include="Content\js\vendor\modernizr-2.6.2.js" />
@@ -1132,16 +1132,16 @@
     <None Include="App_Data\QQWry.Dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Content\js\controllers\MessageController.coffee" />
-    <Content Include="Content\js\app.coffee" />
+    <Content Include="Content\app\board\board.coffee" />
+    <Content Include="Content\app\app.coffee" />
     <Content Include="Content\js\filters\filters.coffee" />
-    <Content Include="Content\js\controllers\GlobalController.coffee" />
+    <Content Include="Content\app\GlobalController.coffee" />
     <Content Include="Content\js\services\MessageServices.coffee" />
-    <Content Include="Content\js\controllers\HomeController.coffee" />
-    <Content Include="Content\js\controllers\AboutController.coffee" />
-    <Content Include="Content\js\controllers\ArticleListController.coffee" />
+    <Content Include="Content\app\index.coffee" />
+    <Content Include="Content\app\about\about.coffee" />
+    <Content Include="Content\app\article\list\article-list.coffee" />
     <Content Include="Content\js\services\ArticleServices.coffee" />
-    <Content Include="Content\js\controllers\ArticleDetailController.coffee" />
+    <Content Include="Content\app\article\detail\article-detail.coffee" />
     <Content Include="Content\js\services\CommentServices.coffee" />
     <Content Include="Content\css\style.less" />
     <Content Include="Content\js\directives\custom-base.coffee" />
@@ -1151,7 +1151,7 @@
     <Content Include="Content\font\fontawesome-webfont.woff" />
     <Content Include="Content\font\FontAwesome.otf" />
     <Content Include="Content\js\services\UserServices.coffee" />
-    <Content Include="Content\js\controllers\LoginController.coffee" />
+    <Content Include="Content\app\LoginController.coffee" />
     <Content Include="Content\app\admin\basedata\channel\basedata-channel.coffee" />
     <Content Include="Content\js\services\ChannelServices.coffee" />
     <Content Include="Content\app\admin\basedata\group\basedata-group.coffee" />
@@ -1164,7 +1164,7 @@
     <Content Include="Content\app\admin\board\board.coffee" />
     <Content Include="Content\js\directives\custom\ckeditor.coffee" />
     <Content Include="Content\js\directives\custom\upload.coffee" />
-    <Content Include="Content\js\controllers\ArchivesController.coffee" />
+    <Content Include="Content\app\article\archives\article-archives.coffee" />
     <Content Include="Content\js\init.coffee" />
     <Content Include="Content\js\directives\custom\activeLink.coffee" />
     <Content Include="Content\js\directives\custom\myDatepicker.coffee" />
@@ -1177,6 +1177,7 @@
     <Content Include="Content\app\admin\app.coffee" />
     <Content Include="Content\app\issue\issue.coffee" />
     <Content Include="Content\js\services\IssueServices.coffee" />
+    <Content Include="Content\app\article\article.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

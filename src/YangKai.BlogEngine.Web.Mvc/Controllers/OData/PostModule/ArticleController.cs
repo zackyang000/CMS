@@ -31,6 +31,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         {
             entity = PreHandle(entity);
 
+            if (Proxy.Repository<Post>().Exist(p => p.Url == entity.Url))
+            {
+                throw new Exception("URL already exists.");
+            }
+
+            SaveRemoteImg(entity);
+
             entity.Group = Proxy.Repository<Group>().Get(entity.Group.GroupId);
 
             for (int i = 0; i < entity.Categorys.Count; i++)
@@ -60,6 +67,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         protected override Post UpdateEntity(Guid key, Post update)
         {
             update = PreHandle(update);
+
+            if (Proxy.Repository<Post>().Exist(p => p.Url == update.Url && p.PostId!=update.PostId))
+            {
+                throw new Exception("URL already exists.");
+            }
+
+            SaveRemoteImg(update);
 
             update = Proxy.Repository<Post>().Update(update);
 
@@ -116,12 +130,15 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         {
             entity.Title = entity.Title.Trim();
             entity.Url = entity.Url.Trim().ToLower().Replace(" ", "-");
-            entity.Content = SaveRemoteFile.SaveContentPic(entity.Content, entity.Url);
-
             entity.Description = entity.Description ?? string.Empty;
-            entity.Description = SaveRemoteFile.SaveContentPic(entity.Description, entity.Url);
 
             return entity;
+        }
+
+        private void SaveRemoteImg(Post entity)
+        {
+            entity.Content = SaveRemoteFile.SaveContentPic(entity.Content, entity.Url);
+            entity.Description = SaveRemoteFile.SaveContentPic(entity.Description, entity.Url);
         }
 
         private static void SaveThumbnail(Post entity)

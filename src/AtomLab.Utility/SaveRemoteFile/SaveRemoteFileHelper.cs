@@ -32,8 +32,8 @@ namespace AtomLab.Utility
         /// <param name="physicalRootPath">图片保存物理根路径</param>
         /// <param name="folder">文件夹名</param>
         /// <returns></returns>
-        public static ContentData SavePic(string htmlContent, string physicalRootPath, 
-                                          string folder, string picWaterMarkFile)
+        public static ContentData SavePic(string htmlContent, string physicalRootPath,
+                                          string folder, string picWaterMarkFile = "")
         {
             var cData = new ContentData
                 {
@@ -79,18 +79,6 @@ namespace AtomLab.Utility
             client.Dispose();
             cData.Content = htmlContent;
             return cData;
-        }
-
-        /// <summary>
-        /// 保存图片.
-        /// </summary>
-        /// <param name="htmlContent">HTML内容</param>
-        /// <param name="physicalRootPath">图片保存物理根路径</param>
-        /// <param name="folder">文件夹名</param>
-        /// <returns></returns>
-        public static ContentData SavePic(string htmlContent, string physicalRootPath, string folder)
-        {
-            return SavePic(htmlContent, physicalRootPath, folder, string.Empty);
         }
     }
 }
