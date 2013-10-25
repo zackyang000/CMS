@@ -24,7 +24,6 @@
         preload = {}, preloadPrev = new Image(), preloadNext = new Image(),
         // DOM elements
         closeBtn, image, video, prevBtn, nextBtn, caption, captionText, pbLoader, autoplayBtn, thumbs, wrapper, 
-
         defaults = {
             loop:       true,   // Allows to navigate between first and last images
             thumbs:     true,   // Show gallery thumbnails below the presented photo
@@ -60,6 +59,7 @@
                         thumbs = $('<div>').addClass('pbThumbs')
                     )
         );
+    
     /*---------------------------------------------------------------
         Initialization (on DOM ready)
     */
@@ -836,7 +836,7 @@
         }
     };
 	
-	$(doc).ready(prepareDOM);
+	//$(doc).ready(prepareDOM);
 	
 	// expose outside
 	window._photobox = {

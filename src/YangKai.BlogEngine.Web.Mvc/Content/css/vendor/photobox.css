@@ -1,3 +1,9 @@
+#pbOverlay *,#pbOverlay *:before,#pbOverlay *:after {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+
 #pbOverlay.show{ opacity:1; pointer-events:auto; }
 #pbOverlay{
 	opacity:0; overflow:hidden; width:100%; height:100%; position:fixed; z-index:9999; left:0; top:0; text-align:center; pointer-events:none;
@@ -8,6 +14,7 @@
 	-webkit-transition:opacity 300ms ease;
 	-ms-transition:opacity 300ms ease;
 	transition:opacity 300ms ease;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 #pbOverlay.msie{ background-color:rgba(0,0,0,.6); }
 #pbOverlay.msie.pbLoading .wrapper{ background:url('../images/loading.gif') no-repeat center center; }

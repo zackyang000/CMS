@@ -3,28 +3,18 @@
 <ul class="breadcrumb">
     <li><a href="/#!/">Home</a></li>
     <li><a href="/#!/gallery">Galleries</a></li>
-    <li class="active">{{name}}</li>
+    <li class="active">{{item.Name}} <small>{{item.Description}}</small></li>
 </ul>
 
 <div class='gallery'>
     <ul id='gallery'>
-        <li class="loaded" ng-repeat="photo in item.Photos">
+        <li ng-repeat="photo in item.Photos">
             <a href="{{photo.Path}}">
                 <img src="{{photo.Path}}" alt="{{photo.Name}}">
             </a>
         </li>
     </ul>
 </div>
-
-<script>
-    // finally, initialize photobox on all retrieved images
-    //$('#gallery').photobox('a', { thumbs: true }, callbackAAA);
-    // using setTimeout to make sure all images were in the DOM, before the history.load() function is looking them up to match the url hash
-    setTimeout(window._photobox.history.load, 1000);
-    function callbackAAA() {
-        console.log('callback for loaded content:', this);
-    };
-</script>
 
 <style>
     @-webkit-keyframes bg{ 

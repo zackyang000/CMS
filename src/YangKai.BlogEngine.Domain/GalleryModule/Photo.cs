@@ -13,6 +13,7 @@ namespace YangKai.BlogEngine.Domain
         public string Name { get; set; }
         public string Description { get; set; }
         public string Path { get; set; }
+        public string Thumbnail { get; set; }
 
         public virtual Gallery Gallery { get; set; } 
         public virtual List<PhotoComment> Comment { get; set; } 

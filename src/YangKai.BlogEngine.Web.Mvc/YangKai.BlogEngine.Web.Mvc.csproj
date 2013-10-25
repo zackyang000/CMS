@@ -191,6 +191,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\js\directives\custom\_ngBindHtmlUnsafe.js">
+      <DependentUpon>_ngBindHtmlUnsafe.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\directives\custom\_ngBindHtmlUnsafe.min.js">
+      <DependentUpon>_ngBindHtmlUnsafe.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\vendor\angular-resource.js" />
     <Content Include="Content\app\about\about.js">
       <DependentUpon>about.coffee</DependentUpon>
@@ -370,8 +376,9 @@
     <Content Include="Content\js\vendor\angular-animate.js" />
     <Content Include="Content\js\vendor\angular-route.js" />
     <Content Include="Content\js\vendor\angular-sanitize.js" />
-    <Content Include="Content\photobox.css" />
-    <Content Include="Content\photobox.js" />
+    <Content Include="Content\js\vendor\angular.js" />
+    <Content Include="Content\css\vendor\photobox.css" />
+    <Content Include="Content\js\vendor\photobox.js" />
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
     <Content Include="Content\css\vendor\buttons.css" />
@@ -1131,6 +1138,7 @@
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Release\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Debug\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Release\" />
+    <Folder Include="Content\plugin\photobox\" />
     <Folder Include="UpLoad\gallery\" />
     <Folder Include="UpLoad\images\" />
     <Folder Include="UpLoad\offsite\" />
@@ -1195,6 +1203,7 @@
     <Content Include="Content\app\article\article.coffee" />
     <Content Include="Content\app\gallery\gallery.coffee" />
     <Content Include="Content\app\gallery\detail\gallery-detail.coffee" />
+    <Content Include="Content\js\directives\custom\_ngBindHtmlUnsafe.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

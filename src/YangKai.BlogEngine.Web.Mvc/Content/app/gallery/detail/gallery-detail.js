@@ -7,7 +7,7 @@ angular.module('gallery-detail', []).config([
     });
   }
 ]).controller('GalleryDetailCtrl', [
-  "$scope", "$routeParams", "progressbar", "Gallery", function($scope, $routeParams, progressbar, Gallery) {
+  "$scope", "$routeParams", "$timeout", "progressbar", "Gallery", function($scope, $routeParams, $timeout, progressbar, Gallery) {
     $scope.$parent.title = 'Gallery ' + $routeParams.name;
     $scope.$parent.showBanner = false;
     $scope.loading = "Loading";
@@ -16,11 +16,28 @@ angular.module('gallery-detail', []).config([
       $filter: "Name eq '" + $scope.name + "'",
       $expand: "Photos"
     }, function(data) {
+      var i, j;
       $scope.item = data.value[0];
       $scope.loading = "";
-      return $('#gallery').photobox('a', {
-        thumbs: true
+      $.fn.photobox('prepareDOM');
+      $('#gallery').photobox('a', {
+        history: false
       });
+      i = 0;
+      j = 0;
+      return $timeout(function() {
+        var item, _i, _len, _ref, _results;
+        _ref = $("#gallery li");
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          item = _ref[_i];
+          _results.push($timeout(function() {
+            i;
+            return $($("#gallery li")[j++]).addClass('loaded');
+          }, 25 * i++));
+        }
+        return _results;
+      }, 1000);
     });
   }
 ]);

@@ -9,8 +9,8 @@
 ])
 
 .controller('GalleryDetailCtrl',
-["$scope","$routeParams","progressbar","Gallery",
-($scope,$routeParams,progressbar,Gallery) ->
+["$scope","$routeParams","$timeout","progressbar","Gallery",
+($scope,$routeParams,$timeout,progressbar,Gallery) ->
   $scope.$parent.title='Gallery '+$routeParams.name
   $scope.$parent.showBanner=false
 
@@ -22,5 +22,15 @@
    , (data)->
     $scope.item=data.value[0]
     $scope.loading=""
-    $('#gallery').photobox('a', { }###, callbackAAA###)
+    $.fn.photobox('prepareDOM')
+    $('#gallery').photobox('a',{history:false})
+    i=0
+    j=0
+    $timeout(->
+      for item in $("#gallery li")
+        $timeout(->
+          i
+          $($("#gallery li")[j++]).addClass('loaded')
+        25 * i++)
+    1000)
 ])

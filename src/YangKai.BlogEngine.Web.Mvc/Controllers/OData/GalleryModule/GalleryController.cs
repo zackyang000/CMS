@@ -29,20 +29,24 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         {
             if (!string.IsNullOrEmpty(update.Cover))
             {
-                var filename = update.GalleryId + Path.GetExtension(update.Cover);
-                var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"),
-                    update.Cover);
-                var target = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/gallery"),
-                    filename);
+                var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"),update.Cover);
+                var target = string.Format("{0}/{1}/cover{2}", HttpContext.Current.Server.MapPath("~/upload/gallery"),update.GalleryId, Path.GetExtension(update.Cover));
                 if (File.Exists(source))
                 {
+                    var dir = HttpContext.Current.Server.MapPath("~/upload/gallery/" + update.GalleryId);
+                    if (!Directory.Exists(dir))
+                    {
+                        Directory.CreateDirectory(dir);
+                        Directory.CreateDirectory(dir+"/photo");
+                        Directory.CreateDirectory(dir+"/thumbnail");
+                    }
                     if (File.Exists(target))
                     {
                         File.Delete(target);
                     }
                     File.Move(source, target);
                     ImageProcessing.CutForCustom(target, 300, 300, 100);
-                    update.Cover = "/upload/gallery/" + filename;
+                    update.Cover = "/upload/gallery/"+update.GalleryId+"/cover"+ Path.GetExtension(update.Cover);
                 }
             }
             return base.UpdateEntity(key, update);

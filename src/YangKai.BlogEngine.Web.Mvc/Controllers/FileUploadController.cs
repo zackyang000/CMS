@@ -2,6 +2,7 @@
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using AtomLab.Utility;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
 
@@ -54,15 +55,19 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             {
                 Directory.CreateDirectory(dir);
             }
-            var path = string.Format("{0}/{1}", dir, name);
+            var path = string.Format("{0}/photo/{1}", dir, name);
             file.SaveAs(path);
+            var thumbnail = string.Format("{0}/thumbnail/{1}", dir, name);
+            System.IO.File.Copy(path, thumbnail);
+            ImageProcessing.CutForCustom(thumbnail, 100, 100, 100);
 
             var gallery = Proxy.Repository<Gallery>().Get(id);
             gallery.Photos.Add(new Photo()
             {
                 PhotoId = fileNo,
                 Name = Path.GetFileNameWithoutExtension(oName),
-                Path = "/upload/gallery/" + id + "/" + name,
+                Path = string.Format("/upload/gallery/{0}/photo/{1}", id,name),
+                Thumbnail = string.Format("/upload/gallery/{0}/thumbnail/{1}", id, name),
             });
             Proxy.Repository<Gallery>().Commit();
             return Json(fileNo, JsonRequestBehavior.AllowGet);
