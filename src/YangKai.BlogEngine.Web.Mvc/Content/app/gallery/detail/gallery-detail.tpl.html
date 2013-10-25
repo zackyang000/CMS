@@ -8,9 +8,9 @@
 
 <div class='gallery'>
     <ul id='gallery'>
-        <li ng-repeat="photo in item.Photos">
+        <li ng-repeat="photo in item.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
             <a href="{{photo.Path}}">
-                <img src="{{photo.Path}}" alt="{{photo.Name}}">
+                <img src="{{photo.Thumbnail}}" alt="{{photo.Name}}">
             </a>
         </li>
     </ul>

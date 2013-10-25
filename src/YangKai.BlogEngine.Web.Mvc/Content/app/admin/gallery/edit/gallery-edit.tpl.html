@@ -77,7 +77,7 @@
                     </button>
                 </div>
                 <ul class="ace-thumbnails clearfix">
-                    <li ng-repeat="item in entity.Photos | filter:{IsDeleted:false}">
+                    <li ng-repeat="item in entity.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
                         <a ng-href="{{item.Path}}" data-rel="colorbox">
                             <img alt="150x150" ng-src="{{item.Path}}" style="width: 150px;height: 150px;" />
                             <div class="tags">
