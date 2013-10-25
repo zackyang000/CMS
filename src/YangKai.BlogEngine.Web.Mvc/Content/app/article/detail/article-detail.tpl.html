@@ -17,7 +17,7 @@
             <div ng-include="'/Content/app/article/article-post-header.tpl.html'"></div>
         </header>
         <section>
-            <div ng-bind-html="item.Content"></div>
+            <div ng-bind-html-unsafe="item.Content"></div>
             <span ng-show="item.QrCode">
                 <a href="javascrpit:void(0);"
                    tooltip-placement="bottom"

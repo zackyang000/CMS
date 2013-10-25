@@ -22,5 +22,5 @@
    , (data)->
     $scope.item=data.value[0]
     $scope.loading=""
-    $('#gallery').photobox('a', { thumbs: true }###, callbackAAA###)
+    $('#gallery').photobox('a', { }###, callbackAAA###)
 ])

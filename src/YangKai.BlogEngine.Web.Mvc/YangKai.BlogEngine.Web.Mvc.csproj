@@ -191,6 +191,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\js\vendor\angular-resource.js" />
     <Content Include="Content\app\about\about.js">
       <DependentUpon>about.coffee</DependentUpon>
     </Content>
@@ -367,12 +368,10 @@
       <DependentUpon>PhotoServices.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\vendor\angular-animate.js" />
-    <Content Include="Content\js\vendor\angular-resource.js" />
     <Content Include="Content\js\vendor\angular-route.js" />
     <Content Include="Content\js\vendor\angular-sanitize.js" />
-    <Content Include="Content\js\vendor\angular.js" />
-    <Content Include="Content\css\vendor\photobox.css" />
-    <Content Include="Content\js\vendor\photobox.js" />
+    <Content Include="Content\photobox.css" />
+    <Content Include="Content\photobox.js" />
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
     <Content Include="Content\css\vendor\buttons.css" />
