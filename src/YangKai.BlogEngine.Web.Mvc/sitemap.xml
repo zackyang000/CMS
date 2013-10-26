@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
-<!-- generated-on="2010年12月08日 8:07 pm" -->
+
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>http://www.woshinidezhu.com/</loc>
-        <!--<lastmod>2010-12-02T10:59:42+00:00</lastmod>-->
+        <!--<lastmod>2013-10-01T10:59:42+00:00</lastmod>-->
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://www.woshinidezhu.com/Home/SEO</loc>
+        <!--<lastmod>2013-10-01T10:59:42+00:00</lastmod>-->
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
     </url>
 </urlset>

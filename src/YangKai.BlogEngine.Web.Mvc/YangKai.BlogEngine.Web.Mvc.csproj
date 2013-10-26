@@ -1244,6 +1244,7 @@
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <Content Include="Views\Admin\index.cshtml" />
     <Content Include="Views\Admin\login.cshtml" />
+    <Content Include="Views\Home\SEO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtomLab.Core\AtomLab.Core.csproj">
