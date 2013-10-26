@@ -18,10 +18,12 @@
       $scope.group=data.value[0]
 
   load = ->
+    $scope.loading="Loading"
     Category.query 
       $filter:"IsDeleted eq false and Group/Url eq '#{$routeParams.group}'"
       ,(data)->
         $scope.list=data
+        $scope.loading=""
 
   $scope.add = ()->
     $scope.entity = {}
@@ -32,6 +34,7 @@
     $scope.editDialog = true
 
   $scope.save = ->
+    $scope.loading="Saving"
     $scope.entity.Group=$scope.group
     if $scope.entity.CategoryId
       Category.edit {id:"(guid'#{$scope.entity.CategoryId}')"},$scope.entity
@@ -40,7 +43,6 @@
         $scope.close()
         load()
     else
-      debugger
       $scope.entity.CategoryId=UUID.generate()
       Category.save $scope.entity
       ,(data)->
@@ -49,6 +51,8 @@
         load()
 
   $scope.remove = (item)->
+    $scope.loading="Deleting"
+    item.Group=$scope.group
     message.confirm ->
       item.IsDeleted=true
       Category.edit {id:"(guid'#{item.CategoryId}')"},item

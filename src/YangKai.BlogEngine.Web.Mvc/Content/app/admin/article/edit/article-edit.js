@@ -16,6 +16,7 @@ angular.module('admin-article-edit', []).config([
       $expand: 'Groups,Groups/Categorys'
     }, function() {
       if ($routeParams.id) {
+        $scope.loading = "Loading";
         return Article.get({
           $filter: "PostId eq (guid'" + $routeParams.id + "')"
         }, function(data) {
@@ -39,8 +40,9 @@ angular.module('admin-article-edit', []).config([
               item = _ref2[_k];
               $scope.tags += ',' + item.Name;
             }
-            return $scope.tags = $scope.tags.substring(1);
+            $scope.tags = $scope.tags.substring(1);
           }
+          return $scope.loading = "";
         });
       } else {
         return $scope.entity = {};
@@ -75,6 +77,7 @@ angular.module('admin-article-edit', []).config([
       if (!$scope.entity.Url) return false;
       if (!$scope.entity.Title) return false;
       if (!$scope.entity.Content) return false;
+      $scope.loading = "Saving";
       if ($scope.files.length) {
         return uploadManager.upload();
       } else {

@@ -18,10 +18,12 @@
   $scope.entity = {}
 
   load = ->
+    $scope.loading="Loading"
     Group.query 
       $filter:"IsDeleted eq false and Channel/Url eq '#{$routeParams.channel}'"
       ,(data)->
         $scope.list=data
+        $scope.loading=""
 
   $scope.add = ()->
     $scope.entity = {}
@@ -32,6 +34,7 @@
     $scope.editDialog = true
 
   $scope.save = ->
+    $scope.loading="Saving"
     $scope.entity.Channel=$scope.channel
     if $scope.entity.GroupId
       Group.edit {id:"(guid'#{$scope.entity.GroupId}')"},$scope.entity
@@ -40,7 +43,6 @@
         $scope.close()
         load()
     else
-      debugger
       $scope.entity.GroupId=UUID.generate()
       Group.save $scope.entity
       ,(data)->
@@ -49,6 +51,8 @@
         load()
 
   $scope.remove = (item)->
+    $scope.loading="Deleting"
+    item.Channel=$scope.channel
     message.confirm ->
       item.IsDeleted=true
       Group.edit {id:"(guid'#{item.GroupId}')"},item

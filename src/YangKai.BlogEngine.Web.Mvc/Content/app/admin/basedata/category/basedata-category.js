@@ -16,10 +16,12 @@ angular.module('admin-basedata-category', []).config([
       return $scope.group = data.value[0];
     });
     load = function() {
+      $scope.loading = "Loading";
       return Category.query({
         $filter: "IsDeleted eq false and Group/Url eq '" + $routeParams.group + "'"
       }, function(data) {
-        return $scope.list = data;
+        $scope.list = data;
+        return $scope.loading = "";
       });
     };
     $scope.add = function() {
@@ -31,6 +33,7 @@ angular.module('admin-basedata-category', []).config([
       return $scope.editDialog = true;
     };
     $scope.save = function() {
+      $scope.loading = "Saving";
       $scope.entity.Group = $scope.group;
       if ($scope.entity.CategoryId) {
         return Category.edit({
@@ -41,7 +44,6 @@ angular.module('admin-basedata-category', []).config([
           return load();
         });
       } else {
-        debugger;
         $scope.entity.CategoryId = UUID.generate();
         return Category.save($scope.entity, function(data) {
           message.success("Add category successfully.");
@@ -51,6 +53,8 @@ angular.module('admin-basedata-category', []).config([
       }
     };
     $scope.remove = function(item) {
+      $scope.loading = "Deleting";
+      item.Group = $scope.group;
       return message.confirm(function() {
         item.IsDeleted = true;
         return Category.edit({

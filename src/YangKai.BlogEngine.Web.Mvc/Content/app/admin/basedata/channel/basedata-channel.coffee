@@ -14,8 +14,10 @@
   $scope.entity = {}
 
   load = ->
+    $scope.loading="Loading"
     Channel.query (data)->
       $scope.list = data
+      $scope.loading=""
 
   $scope.add = ()->
     $scope.entity = {}
@@ -26,6 +28,7 @@
     $scope.editDialog = true
 
   $scope.save = ->
+    $scope.loading="Saving"
     if $scope.entity.ChannelId
       Channel.edit {id:"(guid'#{$scope.entity.ChannelId}')"},$scope.entity
       ,(data)->
@@ -41,6 +44,7 @@
         load()
 
   $scope.remove = (item)->
+    $scope.loading="Deleting"
     message.confirm ->
       item.IsDeleted = true
       Channel.edit {id:"(guid'#{item.ChannelId}')"},item

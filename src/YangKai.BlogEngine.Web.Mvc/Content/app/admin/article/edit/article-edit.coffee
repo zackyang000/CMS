@@ -16,6 +16,7 @@
 ($scope,$routeParams,$window,$rootScope,uploadManager,Article,Channel) ->
   $scope.channels=Channel.query $expand:'Groups,Groups/Categorys',()->
     if $routeParams.id
+      $scope.loading="Loading"
       Article.get $filter:"PostId eq (guid'#{$routeParams.id}')",(data)->
         $scope.entity=data.value[0]
         $scope.channelId=$scope.entity.Group.Channel.ChannelId
@@ -30,6 +31,7 @@
           for item in $scope.entity.Tags 
             $scope.tags+=','+item.Name
           $scope.tags=$scope.tags.substring(1)
+        $scope.loading=""
     else
       $scope.entity={}
 
@@ -55,6 +57,8 @@
     return false if !$scope.entity.Url
     return false if !$scope.entity.Title
     return false if !$scope.entity.Content
+
+    $scope.loading="Saving"
 
     if $scope.files.length
       uploadManager.upload()

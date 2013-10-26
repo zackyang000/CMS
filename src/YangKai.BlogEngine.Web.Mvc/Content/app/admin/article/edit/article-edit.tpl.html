@@ -44,15 +44,15 @@
             <div class="sider">
                 <div>Action</div>
                 <div>
-                    <button class="button button-flat-primary" ng-disabled="loading" ng-click="submit()">Submit</button>
+                    <button class="btn btn-primary btn-sm" ng-disabled="loading" ng-click="submit()">Submit</button>
                 </div>
             </div>
             <div class="sider">
                 <div>Thumbnail</div>
                 <div>
                     <p ng-show="files.length<1 && !entity.Thumbnail">
-                        <span class="button button-flat-action fileinput-button">
-                            <i class="icon-plus icon-white"></i>
+                        <span class="btn btn-success btn-sm fileinput-button">
+                            <i class="icon-cloud-upload icon-white"></i>
                             <span>Add image</span>
                             <input type='file' name='file' data-url='/FileManage/upload' upload />
                         </span>

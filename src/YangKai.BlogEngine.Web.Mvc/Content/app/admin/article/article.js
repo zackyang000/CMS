@@ -9,11 +9,13 @@ angular.module('admin-article', ['admin-article-edit']).config([
 ]).controller('ArticleListCtrl', [
   "$scope", "$routeParams", "$location", "Article", function($scope, $routeParams, $location, Article) {
     $scope.setPage = function(pageNo) {
+      $scope.loading = "Loading";
       return Article.query({
         $filter: 'Group/IsDeleted eq false and Group/Channel/IsDeleted eq false',
         $skip: (pageNo - 1) * 10
       }, function(data) {
-        return $scope.list = data;
+        $scope.list = data;
+        return $scope.loading = "";
       });
     };
     return $scope.setPage(1);

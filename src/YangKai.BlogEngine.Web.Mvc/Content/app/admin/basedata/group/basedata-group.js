@@ -16,10 +16,12 @@ angular.module('admin-basedata-group', []).config([
     });
     $scope.entity = {};
     load = function() {
+      $scope.loading = "Loading";
       return Group.query({
         $filter: "IsDeleted eq false and Channel/Url eq '" + $routeParams.channel + "'"
       }, function(data) {
-        return $scope.list = data;
+        $scope.list = data;
+        return $scope.loading = "";
       });
     };
     $scope.add = function() {
@@ -31,6 +33,7 @@ angular.module('admin-basedata-group', []).config([
       return $scope.editDialog = true;
     };
     $scope.save = function() {
+      $scope.loading = "Saving";
       $scope.entity.Channel = $scope.channel;
       if ($scope.entity.GroupId) {
         return Group.edit({
@@ -41,7 +44,6 @@ angular.module('admin-basedata-group', []).config([
           return load();
         });
       } else {
-        debugger;
         $scope.entity.GroupId = UUID.generate();
         return Group.save($scope.entity, function(data) {
           message.success("Add group successfully.");
@@ -51,6 +53,8 @@ angular.module('admin-basedata-group', []).config([
       }
     };
     $scope.remove = function(item) {
+      $scope.loading = "Deleting";
+      item.Channel = $scope.channel;
       return message.confirm(function() {
         item.IsDeleted = true;
         return Group.edit({

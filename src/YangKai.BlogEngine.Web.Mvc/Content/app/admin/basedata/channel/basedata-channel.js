@@ -11,8 +11,10 @@ angular.module('admin-basedata-channel', []).config([
     var load;
     $scope.entity = {};
     load = function() {
+      $scope.loading = "Loading";
       return Channel.query(function(data) {
-        return $scope.list = data;
+        $scope.list = data;
+        return $scope.loading = "";
       });
     };
     $scope.add = function() {
@@ -24,6 +26,7 @@ angular.module('admin-basedata-channel', []).config([
       return $scope.editDialog = true;
     };
     $scope.save = function() {
+      $scope.loading = "Saving";
       if ($scope.entity.ChannelId) {
         return Channel.edit({
           id: "(guid'" + $scope.entity.ChannelId + "')"
@@ -42,6 +45,7 @@ angular.module('admin-basedata-channel', []).config([
       }
     };
     $scope.remove = function(item) {
+      $scope.loading = "Deleting";
       return message.confirm(function() {
         item.IsDeleted = true;
         return Channel.edit({

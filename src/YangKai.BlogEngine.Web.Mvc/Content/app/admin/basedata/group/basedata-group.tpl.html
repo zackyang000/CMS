@@ -13,7 +13,7 @@
 
 <div class="page-content">
     <div class="text-right">
-        <button class="btn btn-primary" type="button" ng-click="add()" >
+        <button class="btn btn-primary btn-sm" type="button" ng-click="add()" >
             <i class="icon-plus"></i> New Group
         </button>
     </div>
@@ -24,18 +24,26 @@
                 <th>Name</th>
                 <th>Url</th>
                 <th>Description</th>
-                <th class="action"></th>
-                <th class="action"></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in list.value">
                 <td>{{item.Name}}</td>
                 <td>{{item.Url}}</td>
-                <td><span ng-show="item.Description" tooltip="{{item.Description}}"><i class="icon-comment"></i></span></td>
+                <td>{{item.Description}}</td>
                 <td><a ng-href="/admin/#!/channel('{{channel.Url}}')/group('{{item.Url}}')/category">Categories</a></td>
-                <td><a href="JavaScript:void(0)" class="icon-pencil" ng-click="edit(item)"></a></td>
-                <td><a href="JavaScript:void(0)" class="icon-remove" ng-click="remove(item)"></a></td>
+                <td>
+                    <div class="action-buttons">
+                        <a class="green" href="JavaScript:void(0)" ng-click="edit(item)">
+                            <i class="icon-pencil bigger-130"></i>
+                        </a>
+                        <a class="red" href="JavaScript:void(0)" ng-click="remove(item)">
+                            <i class="icon-trash bigger-130"></i>
+                        </a>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -69,11 +77,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="button button-flat-primary" ng-disabled="form.$invalid">
+                    <button class="btn btn-primary btn-sm" ng-disabled="form.$invalid || loading">
                         <i class="icon-save"></i>
                         Save
                     </button>
-                    <button type="button" class="button button-flat" ng-click="close()">
+                    <button type="button" class="btn btn-default btn-sm" ng-click="close()">
                         <i class="icon-undo"></i>
                         Cancel
                     </button>
