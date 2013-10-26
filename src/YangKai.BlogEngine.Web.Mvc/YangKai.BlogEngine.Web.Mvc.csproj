@@ -518,12 +518,8 @@
     <Content Include="Content\js\vendor\messenger-theme-flat.js" />
     <Content Include="Content\js\vendor\moment.js" />
     <Content Include="Content\js\vendor\uuid.js" />
-    <Content Include="Content\data\words.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\data\technology.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Content\data\words.js" />
+    <Content Include="Content\data\technology.js" />
     <Content Include="Content\img\technologies\Bootstrap.png" />
     <Content Include="Content\img\technologies\bootstrapper.png" />
     <Content Include="Content\img\technologies\CKEditor.png" />
