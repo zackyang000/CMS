@@ -16,7 +16,7 @@
   $scope.loading="Loading"
   $scope.url =$routeParams.url
   Article.get
-    $filter:"Url eq '#{$scope.url}'"
+    $filter:"Url eq '#{$scope.url}' and IsDeleted eq false"
    , (data)->
     $scope.item=data.value[0]
     $scope.loading=""

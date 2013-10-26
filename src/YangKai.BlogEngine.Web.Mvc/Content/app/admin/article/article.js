@@ -11,7 +11,7 @@ angular.module('admin-article', ['admin-article-edit']).config([
     $scope.setPage = function(pageNo) {
       $scope.loading = "Loading";
       return Article.query({
-        $filter: 'Group/IsDeleted eq false and Group/Channel/IsDeleted eq false',
+        $filter: 'IsDeleted eq false and Group/IsDeleted eq false and Group/Channel/IsDeleted eq false',
         $skip: (pageNo - 1) * 10
       }, function(data) {
         $scope.list = data;

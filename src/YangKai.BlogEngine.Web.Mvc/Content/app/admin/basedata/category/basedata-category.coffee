@@ -51,9 +51,9 @@
         load()
 
   $scope.remove = (item)->
-    $scope.loading="Deleting"
     item.Group=$scope.group
     message.confirm ->
+      $scope.loading="Deleting"
       item.IsDeleted=true
       Category.edit {id:"(guid'#{item.CategoryId}')"},item
       ,(data)->

@@ -14,7 +14,7 @@
   $scope.setPage = (pageNo) ->
     $scope.loading="Loading"
     Article.query
-      $filter:'Group/IsDeleted eq false and Group/Channel/IsDeleted eq false'
+      $filter:'IsDeleted eq false and Group/IsDeleted eq false and Group/Channel/IsDeleted eq false'
       $skip:(pageNo-1)*10
     , (data)->
       $scope.list = data

@@ -44,8 +44,8 @@
         load()
 
   $scope.remove = (item)->
-    $scope.loading="Deleting"
     message.confirm ->
+      $scope.loading="Deleting"
       item.IsDeleted = true
       Channel.edit {id:"(guid'#{item.ChannelId}')"},item
       ,(data)->

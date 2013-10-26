@@ -53,9 +53,9 @@ angular.module('admin-basedata-category', []).config([
       }
     };
     $scope.remove = function(item) {
-      $scope.loading = "Deleting";
       item.Group = $scope.group;
       return message.confirm(function() {
+        $scope.loading = "Deleting";
         item.IsDeleted = true;
         return Category.edit({
           id: "(guid'" + item.CategoryId + "')"

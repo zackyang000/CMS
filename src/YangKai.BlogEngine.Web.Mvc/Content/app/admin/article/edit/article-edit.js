@@ -151,6 +151,21 @@ angular.module('admin-article-edit', []).config([
         });
       }
     };
+    $scope.remove = function() {
+      return message.confirm(function() {
+        var entity;
+        $scope.loading = "Deleting";
+        entity = $scope.entity;
+        entity.IsDeleted = true;
+        debugger;
+        return Article.update({
+          id: "(guid'" + entity.PostId + "')"
+        }, entity, function(data) {
+          message.success("Delete post successfully.");
+          return $window.location.href = "/admin/#!/article";
+        });
+      });
+    };
     $scope.files = [];
     $scope.removeImg = function(file) {
       var deleteFile, f, _i, _len, _ref;

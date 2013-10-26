@@ -43,8 +43,13 @@
         <div class="col-lg-4">
             <div class="sider">
                 <div>Action</div>
-                <div>
-                    <button class="btn btn-primary btn-sm" ng-disabled="loading" ng-click="submit()">Submit</button>
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <button class="btn btn-primary btn-sm" ng-disabled="loading" ng-click="submit()">Submit</button>
+                    </div>
+                    <div class="pull-right" ng-show="entity.CreateDate">
+                        <button class="btn btn-danger btn-sm" ng-disabled="loading" ng-click="remove()">Remove</button>
+                    </div>
                 </div>
             </div>
             <div class="sider">
@@ -82,7 +87,7 @@
             <div class="sider" ng-class="{'has-error': isSubmit && !groupValid()}">
                 <div>Group</div>
                 <div>
-                    <label class="radio-inline" ng-repeat="item in getGroups()">
+                    <label class="radio-inline" ng-repeat="item in getGroups() | filter:{IsDeleted:false}">
                         <input type="radio" value="{{item.GroupId}}" ng-model="$parent.groupId"> {{item.Name}}
                     </label>
                     &nbsp;
@@ -90,7 +95,7 @@
             </div>
             <div class="sider" ng-class="{'has-error': isSubmit && !categoryValid()}">
                 <div>Categories</div>
-                <div ng-repeat="item in getCategories()">
+                <div ng-repeat="item in getCategories() | filter:{IsDeleted:false}">
                     <label>
                         <input type="checkbox" value="{{item.CategoryId}}" ng-click="categorySelect(item)" ng-model="item.checked"> {{item.Name}}
                     </label>

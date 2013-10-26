@@ -100,6 +100,17 @@
       Article.update {id:"(guid'#{entity.PostId}')"},entity,(data)->
         $window.location.href = "/#!/post/#{data.Url}"
 
+  $scope.remove = ->
+    message.confirm ->
+      $scope.loading="Deleting"
+      entity=$scope.entity
+      entity.IsDeleted=true
+      debugger
+      Article.update {id:"(guid'#{entity.PostId}')"},entity
+      ,(data)->
+          message.success "Delete post successfully."
+          $window.location.href = "/admin/#!/article"
+
   #上传图片处理
   $scope.files = []
 

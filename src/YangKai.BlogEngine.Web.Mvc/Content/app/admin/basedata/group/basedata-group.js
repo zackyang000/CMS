@@ -53,9 +53,9 @@ angular.module('admin-basedata-group', []).config([
       }
     };
     $scope.remove = function(item) {
-      $scope.loading = "Deleting";
       item.Channel = $scope.channel;
       return message.confirm(function() {
+        $scope.loading = "Deleting";
         item.IsDeleted = true;
         return Group.edit({
           id: "(guid'" + item.GroupId + "')"

@@ -197,6 +197,12 @@
     <Content Include="Content\app\admin\style.min.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
+    <Content Include="Content\app\article\article.css">
+      <DependentUpon>article.less</DependentUpon>
+    </Content>
+    <Content Include="Content\app\article\article.min.css">
+      <DependentUpon>article.less</DependentUpon>
+    </Content>
     <Content Include="Content\js\directives\custom\_ngBindHtmlUnsafe.js">
       <DependentUpon>_ngBindHtmlUnsafe.coffee</DependentUpon>
     </Content>
@@ -1211,6 +1217,7 @@
     <Content Include="Content\app\gallery\detail\gallery-detail.coffee" />
     <Content Include="Content\js\directives\custom\_ngBindHtmlUnsafe.coffee" />
     <Content Include="Content\app\admin\style.less" />
+    <Content Include="Content\app\article\article.less" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

@@ -45,8 +45,8 @@ angular.module('admin-basedata-channel', []).config([
       }
     };
     $scope.remove = function(item) {
-      $scope.loading = "Deleting";
       return message.confirm(function() {
+        $scope.loading = "Deleting";
         item.IsDeleted = true;
         return Channel.edit({
           id: "(guid'" + item.ChannelId + "')"

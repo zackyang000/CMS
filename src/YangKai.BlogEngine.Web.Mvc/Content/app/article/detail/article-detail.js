@@ -12,7 +12,7 @@ angular.module('article-detail', []).config([
     $scope.loading = "Loading";
     $scope.url = $routeParams.url;
     Article.get({
-      $filter: "Url eq '" + $scope.url + "'"
+      $filter: "Url eq '" + $scope.url + "' and IsDeleted eq false"
     }, function(data) {
       var i, item, relatedFilter, tag, _i, _j, _len, _len1, _ref, _ref1;
       $scope.item = data.value[0];
