@@ -388,6 +388,7 @@
     <Content Include="Content\js\vendor\angular-animate.js" />
     <Content Include="Content\js\vendor\angular-route.js" />
     <Content Include="Content\js\vendor\angular-sanitize.js" />
+    <Content Include="Content\js\vendor\angular-translate.js" />
     <Content Include="Content\js\vendor\angular.js" />
     <Content Include="Content\css\vendor\photobox.css" />
     <Content Include="Content\js\vendor\photobox.js" />
