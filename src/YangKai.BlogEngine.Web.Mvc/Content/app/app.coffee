@@ -1,5 +1,6 @@
 ﻿angular.module("app",
-['ngRoute','ngSanitize','ngAnimate'
+['ngRoute','ngSanitize','ngAnimate','ngCookies',
+'l18n'
 'formatFilters',
 'index',
 'article',
@@ -13,10 +14,19 @@
 'ngProgress',
 'ui.utils',
 'ui.bootstrap',
-'angulartics', 
+'pascalprecht.translate',
+'angulartics',
 'angulartics.google.analytics'])
-.config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
-  $httpProvider.responseInterceptors.push(interceptor)  
+.config(["$locationProvider",($locationProvider) ->
   $locationProvider.html5Mode(false).hashPrefix('!')
+])
+.config(["$httpProvider",($httpProvider) ->
+  $httpProvider.responseInterceptors.push(interceptor)  
+])
+.config(["$routeProvider",($routeProvider) ->
   $routeProvider.otherwise redirectTo: "/"
-]
+])
+.config(["$translateProvider",($translateProvider) ->
+  $translateProvider.preferredLanguage('en')
+  $translateProvider.useLocalStorage()
+])

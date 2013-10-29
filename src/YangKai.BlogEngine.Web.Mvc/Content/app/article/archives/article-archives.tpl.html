@@ -1,10 +1,11 @@
-﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+﻿<ul class="breadcrumb">
+    <li><a href="/#!/">Home</a></li>
+    <li class="active">Archives</li>
+</ul>
+
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
 <div id="archives">
-    <ul class="breadcrumb">
-        <li><a href="/#!/">Home</a></li>
-        <li class="active">Archives</li>
-    </ul>
     <ul class="list-unstyled">
         <li ng-repeat="item in list | orderBy:'-date'">
             <h3 style="border-bottom: 1px solid #999">
@@ -22,6 +23,5 @@
     </ul>
 </div>
 <style>
-    #archives .group >a,.group >a:hover{color:#333}
-    #archives ul{ padding: 5px;margin-left: 10px;}
+
 </style>

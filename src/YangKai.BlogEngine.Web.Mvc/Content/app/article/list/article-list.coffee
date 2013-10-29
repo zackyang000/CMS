@@ -20,16 +20,16 @@
 .controller('ArticleListCtrl',
 ["$scope","$routeParams","$location","Article", ($scope,$routeParams,$location,Article) ->
   $scope.$parent.showBanner=false
-  $scope.$parent.title=$routeParams.group ? $routeParams.channel ? "Search Result '#{$scope.key}'"
-  
-  $scope.$routeParams=$routeParams
 
+  $scope.$parent.title=$routeParams.group ? $routeParams.channel ? "Search Result '#{$scope.key}'"
   $scope.currentPage =$routeParams.p ? 1
-  $scope.category = if $routeParams.type=='category' then $routeParams.query else ''
-  $scope.tag = if $routeParams.type=='tag' then $routeParams.query else ''
-  $scope.channel=$routeParams.channel
-  $scope.group=$routeParams.group
-  $scope.keyword=$routeParams.key
+
+  $scope.params=
+    channel:$routeParams.channel
+    group:$routeParams.group
+    key:$routeParams.key
+    category:if $routeParams.type=='category' then $routeParams.query else ''
+    tag:if $routeParams.type=='tag' then $routeParams.query else ''
 
   $scope.setPage = (pageNo) ->
     $location.search({p: pageNo})
@@ -37,11 +37,11 @@
   $scope.load = ->
     $scope.loading="Loading"
     filter='IsDeleted eq false'
-    filter+=" and Group/Channel/Url eq '#{$routeParams.channel}'" if $routeParams.channel
-    filter+=" and Group/Url eq '#{$routeParams.group}'" if $routeParams.group
-    filter+=" and indexof(Title, '#{$routeParams.key}') gt -1" if $routeParams.key
-    filter+=" and Categorys/any(category:category/Url eq '#{$scope.category}')" if $scope.category
-    filter+=" and Tags/any(tag:tag/Name eq '#{$scope.tag}')" if $scope.tag
+    filter+=" and Group/Channel/Url eq '#{$scope.params.channel}'" if $scope.params.channel
+    filter+=" and Group/Url eq '#{$scope.params.group}'" if $scope.params.group
+    filter+=" and indexof(Title, '#{$scope.params.key}') gt -1" if $scope.params.key
+    filter+=" and Categorys/any(category:category/Url eq '#{$scope.params.category}')" if $scope.params.category
+    filter+=" and Tags/any(tag:tag/Name eq '#{$scope.params.tag}')" if $scope.params.tag
     Article.query
       $filter:filter
       $skip:($scope.currentPage-1)*10

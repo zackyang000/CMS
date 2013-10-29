@@ -50,6 +50,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 .IncludeDirectory("~/Content/js/directives", "*.js", true)
                 .IncludeDirectory("~/Content/js/services", "*.js", true)
                 .IncludeDirectory("~/Content/js/filters", "*.js", true)
+                .IncludeDirectory("~/Content/i18n", "*.js", true)
                 .IncludeDirectory("~/Content/app", "*.js", true)
                 .Include(plugin);
             BundleTable.Bundles.Add(bundle);
@@ -62,6 +63,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 .IncludeDirectory("~/Content/js/directives", "*.js", true)
                 .IncludeDirectory("~/Content/js/services", "*.js", true)
                 .IncludeDirectory("~/Content/js/filters", "*.js", true)
+                .IncludeDirectory("~/Content/i18n", "*.js", true)
                 .IncludeDirectory("~/Content/app", "*.js", true)
                 .IncludeDirectory("~/Content/plugin/ace_1.2", "*.js", true)
                 .Include(plugin);

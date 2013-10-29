@@ -1,10 +1,21 @@
 ﻿
-angular.module("app", ['ngRoute', 'ngSanitize', 'ngAnimate', 'formatFilters', 'index', 'article', 'board', 'about', 'issue', 'gallery', 'UserServices', 'customDirectives', 'pasvaz.bindonce', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'angulartics', 'angulartics.google.analytics']).config([
-  "$locationProvider", "$routeProvider", "$httpProvider", function($locationProvider, $routeProvider, $httpProvider) {
-    $httpProvider.responseInterceptors.push(interceptor);
-    $locationProvider.html5Mode(false).hashPrefix('!');
+angular.module("app", ['ngRoute', 'ngSanitize', 'ngAnimate', 'ngCookies', 'l18n', 'formatFilters', 'index', 'article', 'board', 'about', 'issue', 'gallery', 'UserServices', 'customDirectives', 'pasvaz.bindonce', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'pascalprecht.translate', 'angulartics', 'angulartics.google.analytics']).config([
+  "$locationProvider", function($locationProvider) {
+    return $locationProvider.html5Mode(false).hashPrefix('!');
+  }
+]).config([
+  "$httpProvider", function($httpProvider) {
+    return $httpProvider.responseInterceptors.push(interceptor);
+  }
+]).config([
+  "$routeProvider", function($routeProvider) {
     return $routeProvider.otherwise({
       redirectTo: "/"
     });
+  }
+]).config([
+  "$translateProvider", function($translateProvider) {
+    $translateProvider.preferredLanguage('en');
+    return $translateProvider.useLocalStorage();
   }
 ]);

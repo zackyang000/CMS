@@ -2,14 +2,14 @@
 
 <div id="posts">
     <ul class="breadcrumb">
-        <li><a href="/#!/">Home</a></li>
-        <li ng-show="channel && group"><a href="/#!/list/{{channel}}">{{channel}}</a></li>
-        <li ng-show="channel && !group">{{channel}}</li>
-        <li ng-show="group && !(!category && !tag && !keyword)"><a href="/#!/list/{{channel}}/{{group}}">{{group}}</a></li>
-        <li class="active" ng-show="group && (!category && !tag && !keyword)">{{group}}</li>
-        <li class="active" ng-show="category">category of ‘{{category}}’</li>
-        <li class="active" ng-show="tag">tag of ‘{{tag}}’</li>
-        <li class="active" ng-show="keyword">keyword: ‘{{keyword}}’</li>
+        <li><a href="/#!/">{{'global.breadcrumb.home' | translate}}</a></li>
+        <li ng-show="params.channel && params.group"><a href="/#!/list/{{params.channel}}">{{params.channel}}</a></li>
+        <li ng-show="params.channel && !params.group">{{params.channel}}</li>
+        <li ng-show="params.group && !(!params.category && !params.tag && !params.key)"><a href="/#!/list/{{params.channel}}/{{params.group}}">{{params.group}}</a></li>
+        <li class="active" ng-show="params.group && (!params.category && !params.tag && !params.key)">{{params.group}}</li>
+        <li class="active" ng-show="params.category">{{'article.breadcrumb.category' | translate:params}}</li>
+        <li class="active" ng-show="params.tag">{{'article.breadcrumb.tag' | translate:params}}</li>
+        <li class="active" ng-show="params.key">{{'article.breadcrumb.key' | translate:params}}</li>
     </ul>
     <ul class="list-unstyled">
         <li ng-repeat="item in list.value">
@@ -21,7 +21,7 @@
                 <header>
                     <h2>
                         <a ng-href="/#!/post/{{item.Url}}">
-                            <strong ng-bind-html="item.Title | highlight:keyword"></strong>
+                            <strong ng-bind-html="item.Title | highlight:params.key"></strong>
                         </a>
                     </h2>
                     <div ng-include="'/Content/app/article/article-post-header.tpl.html'"></div>

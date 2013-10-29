@@ -20,13 +20,14 @@ angular.module('article-list', []).config([
     var _ref, _ref1, _ref2;
     $scope.$parent.showBanner = false;
     $scope.$parent.title = (_ref = (_ref1 = $routeParams.group) != null ? _ref1 : $routeParams.channel) != null ? _ref : "Search Result '" + $scope.key + "'";
-    $scope.$routeParams = $routeParams;
     $scope.currentPage = (_ref2 = $routeParams.p) != null ? _ref2 : 1;
-    $scope.category = $routeParams.type === 'category' ? $routeParams.query : '';
-    $scope.tag = $routeParams.type === 'tag' ? $routeParams.query : '';
-    $scope.channel = $routeParams.channel;
-    $scope.group = $routeParams.group;
-    $scope.keyword = $routeParams.key;
+    $scope.params = {
+      channel: $routeParams.channel,
+      group: $routeParams.group,
+      key: $routeParams.key,
+      category: $routeParams.type === 'category' ? $routeParams.query : '',
+      tag: $routeParams.type === 'tag' ? $routeParams.query : ''
+    };
     $scope.setPage = function(pageNo) {
       return $location.search({
         p: pageNo
@@ -36,20 +37,20 @@ angular.module('article-list', []).config([
       var filter;
       $scope.loading = "Loading";
       filter = 'IsDeleted eq false';
-      if ($routeParams.channel) {
-        filter += " and Group/Channel/Url eq '" + $routeParams.channel + "'";
+      if ($scope.params.channel) {
+        filter += " and Group/Channel/Url eq '" + $scope.params.channel + "'";
       }
-      if ($routeParams.group) {
-        filter += " and Group/Url eq '" + $routeParams.group + "'";
+      if ($scope.params.group) {
+        filter += " and Group/Url eq '" + $scope.params.group + "'";
       }
-      if ($routeParams.key) {
-        filter += " and indexof(Title, '" + $routeParams.key + "') gt -1";
+      if ($scope.params.key) {
+        filter += " and indexof(Title, '" + $scope.params.key + "') gt -1";
       }
-      if ($scope.category) {
-        filter += " and Categorys/any(category:category/Url eq '" + $scope.category + "')";
+      if ($scope.params.category) {
+        filter += " and Categorys/any(category:category/Url eq '" + $scope.params.category + "')";
       }
-      if ($scope.tag) {
-        filter += " and Tags/any(tag:tag/Name eq '" + $scope.tag + "')";
+      if ($scope.params.tag) {
+        filter += " and Tags/any(tag:tag/Name eq '" + $scope.params.tag + "')";
       }
       return Article.query({
         $filter: filter,

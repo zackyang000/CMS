@@ -7,8 +7,8 @@
         <title ng-bind="'@YangKai.BlogEngine.Common.Config.Literal.SITE_NAME - '+title">@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME)</title>
         <meta name="viewport" content="width=device-width" />
         <meta name="fragment" content="!">
-        <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
-        <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
+        <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 文章" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
+        <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
         @Styles.Render("~/Content/style/css")
         @Scripts.Render("~/js")
     </head>
@@ -28,23 +28,23 @@
                         <li class="dropdown" ng-repeat="channel in Channels">
                             <a href="JavaScript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{{channel.Name}} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a ng-href="/#!/list/{{channel.Url}}">View All</a></li>
+                                <li><a ng-href="/#!/list/{{channel.Url}}">{{'article.menu.view_all' | translate}}</a></li>
                                 <li class="divider"></li>
-                                <li class="dropdown-header">View by group</li>
+                                <li class="dropdown-header">{{'article.menu.view_by_group' | translate}}</li>
                                 <li ng-repeat="group in channel.Groups | filter:{IsDeleted:false} | orderBy:'OrderId'">
                                     <a href="/#!/list/{{channel.Url}}/{{group.Url}}">{{group.Name}}</a>
                                 </li>
                             </ul>
                         </li>
-                        <li><a ng-href="/#!/archives">Archives</a></li>
-                        <li><a ng-href="/#!/board">Boards</a></li>
-                        <li><a ng-href="/#!/issue">Issues</a></li>
-                        <li><a ng-href="/#!/gallery">Galleries</a></li>
-                        <li><a ng-href="/#!/about">About</a></li>
+                        <li><a ng-href="/#!/archives">{{'global.menu.archive' | translate}}</a></li>
+                        <li><a ng-href="/#!/board">{{'global.menu.board' | translate}}</a></li>
+                        <li><a ng-href="/#!/issue">{{'global.menu.issue' | translate}}</a></li>
+                        <li><a ng-href="/#!/gallery">{{'global.menu.gallery' | translate}}</a></li>
+                        <li><a ng-href="/#!/about">{{'global.menu.about' | translate}}</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="form-control search" placeholder="Search" />
+                            <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="form-control search" placeholder="{{'global.menu.search' | translate}}" />
                         </li>
                         <li class="dropdown" ng-show="User.IsAdmin" ng-controller="LoginController">
                             <a class="dropdown-toggle" href="JavaScript:void(0)" data-toggle="dropdown">
@@ -72,7 +72,7 @@
                             </ul>
                         </li>
                         <li ng-show="!User.IsAdmin" ng-controller="LoginController">
-                            <a href="JavaScript:void(0)" ng-click="open()">Sgin in</a>
+                            <a href="JavaScript:void(0)" ng-click="open()">{{'global.menu.admin' | translate}}</a>
                         </li>
                     </ul>
                 </nav>
@@ -93,8 +93,10 @@
             <hr>
             <footer>
                 <p>@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT)</p>
-                <ul class="footer-links">
-                    <li><a ng-href="/elmah.axd" target = "_blank">Error Log</a></li>
+                <ul class="footer-links" ng-controller="TranslateCtrl">
+                    <li><a ng-click="changeLanguage('en')" href="JavaScript:void(0)">English</a></li>
+                    <li>|</li>
+                    <li><a ng-click="changeLanguage('zh')" href="JavaScript:void(0)">简体中文</a></li>
                 </ul>
             </footer>
         </div>
