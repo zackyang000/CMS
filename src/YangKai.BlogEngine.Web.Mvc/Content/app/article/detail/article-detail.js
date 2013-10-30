@@ -70,25 +70,16 @@ angular.module('article-detail', []).config([
       }
     });
     $scope.del = function(item) {
-      return Comment.del({
-        id: item.CommentId
-      }, function(data) {
-        message.success("“#" + item.Content + "”  be moved to trash.");
-        return item.IsDeleted = true;
-      }, function(error) {
-        var _ref;
-        return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
-      });
-    };
-    $scope.renew = function(item) {
-      return Comment.renew({
-        id: item.CommentId
-      }, function(data) {
-        message.success("“#" + item.Content + "”  be renew.");
-        return item.IsDeleted = false;
-      }, function(error) {
-        var _ref;
-        return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
+      return message.confirm(function() {
+        return Comment.del({
+          id: item.CommentId
+        }, function(data) {
+          message.success("“#" + item.Content + "”  be moved to trash.");
+          return item.IsDeleted = true;
+        }, function(error) {
+          var _ref;
+          return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
+        });
       });
     };
     $scope.save = function() {

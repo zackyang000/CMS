@@ -52,11 +52,13 @@ angular.module('board', ['MessageServices']).config([
       });
     };
     return $scope.remove = function(item) {
-      return Message.remove({
-        id: "(guid'" + item.BoardId + "')"
-      }, function() {
-        item.IsDeleted = true;
-        return message.success("Message has been removed.");
+      return message.confirm(function() {
+        return Message.remove({
+          id: "(guid'" + item.BoardId + "')"
+        }, function() {
+          item.IsDeleted = true;
+          return message.success("Message has been removed.");
+        });
       });
     };
   }

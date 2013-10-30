@@ -105,7 +105,7 @@ namespace YangKai.BlogEngine.Service
                               {
                                   Title = item.Content,
                                   Link = new Uri(link),
-                                  Description = string.Format("{0}<br /><br /><<{1}>>", item.Content, item.Post.Title),
+                                  Description = string.Format("{0}<br /><br />《{1}》", item.Content, item.Post.Title),
                                   PubDate = item.CreateDate,
                                   Author = item.Author,
                                   Guid = new RssGuid {Name = item.CommentId.ToString()}

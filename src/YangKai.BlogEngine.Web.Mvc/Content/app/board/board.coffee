@@ -48,7 +48,8 @@
       progressbar.complete()
 
   $scope.remove = (item) ->
-    Message.remove id:"(guid'#{item.BoardId}')",->
-      item.IsDeleted=true
-      message.success "Message has been removed."
+    message.confirm ->
+      Message.remove id:"(guid'#{item.BoardId}')",->
+        item.IsDeleted=true
+        message.success "Message has been removed."
 ])

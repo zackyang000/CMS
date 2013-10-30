@@ -63,20 +63,13 @@
       $scope.editmode=$scope.User.UserName=='' or not $scope.User.UserName?
       
   $scope.del = (item) ->
-    Comment.del {id:item.CommentId}
-    ,(data)->
-      message.success "“##{item.Content}”  be moved to trash."
-      item.IsDeleted = true
-    ,(error)->
-      message.error error.data.ExceptionMessage ? error.status
-
-  $scope.renew = (item) ->
-    Comment.renew {id:item.CommentId}
-    ,(data)->
-      message.success "“##{item.Content}”  be renew."
-      item.IsDeleted = false
-    ,(error)->
-      message.error error.data.ExceptionMessage ? error.status
+    message.confirm ->
+      Comment.del {id:item.CommentId}
+      ,(data)->
+        message.success "“##{item.Content}”  be moved to trash."
+        item.IsDeleted = true
+      ,(error)->
+        message.error error.data.ExceptionMessage ? error.status
 
   $scope.save = () ->
     progressbar.start()
