@@ -26,6 +26,11 @@ namespace YangKai.BlogEngine.Common
             public const string COMMENTS_RSS_PATH = "/feed_comments.xml";
 
             /// <summary>
+            /// Issues RSS文件路径
+            /// </summary>
+            public const string ISSUES_RSS_PATH = "/feed_issues.xml";
+
+            /// <summary>
             /// logo图片路径
             /// </summary>
             public const string LOGO_PIC_PATH = "/Content/Image/logo.gif";

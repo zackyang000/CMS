@@ -109,7 +109,7 @@
                         <div ng-show="item.show">
                             <p ng-bind-html="item.Content | line"></p>
                             <p ng-show="item.Result" class="text-success">
-                                <strong>{{item.LastEditUser}}:</strong> 
+                                <div><strong>{{item.LastEditUser}}:</strong></div>
                                 <span ng-bind-html="item.Result | line"></span>
                             </p>
                             <div ng-show="User.IsAdmin && item.edit" class="alert alert-success">
