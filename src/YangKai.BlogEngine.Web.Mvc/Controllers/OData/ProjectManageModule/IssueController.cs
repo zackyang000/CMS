@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
 
@@ -9,7 +10,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         protected override Issue UpdateEntity(Guid key, Issue update)
         {
             var data = base.UpdateEntity(key, update);
-            Rss.Current.BuildIssue();
+            Task.Factory.StartNew(() => Rss.Current.BuildIssue());
             return data;
         }
     }

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
-using System.Text;
 using AtomLab.Core;
+using RazorEngine;
 using Rss;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
+using Encoding = System.Text.Encoding;
 
 namespace YangKai.BlogEngine.Service
 {
@@ -38,7 +40,7 @@ namespace YangKai.BlogEngine.Service
             }
             var feed = new RssFeed(Encoding.UTF8);
             feed.Channels.Add(channel);
-            feed.Write(AppDomain.CurrentDomain.BaseDirectory + Config.Path.ARTICLES_RSS_PATH);
+            feed.Write(Config.Path.PHYSICAL_ROOT_PATH + Config.Path.ARTICLES_RSS_PATH);
         }
 
         private RssItem BuildPostItem(Post item)
@@ -73,33 +75,41 @@ namespace YangKai.BlogEngine.Service
                 Language = "zh-cn",
                 Copyright = Config.Literal.COPYRIGHT
             };
+
+            var template = File.ReadAllText(Config.Path.PHYSICAL_ROOT_PATH + "bin/RSS/comment.cshtml");
+
             foreach (var item in data)
             {
-                channel.Items.Add(BuildCommentItem(item));
+                channel.Items.Add(BuildCommentItem(item, template));
             }
             var feed = new RssFeed(Encoding.UTF8);
             feed.Channels.Add(channel);
-            feed.Write(AppDomain.CurrentDomain.BaseDirectory + Config.Path.COMMENTS_RSS_PATH);
+            feed.Write(Config.Path.PHYSICAL_ROOT_PATH + Config.Path.COMMENTS_RSS_PATH);
         }
 
-        private RssItem BuildCommentItem(Comment item)
+        private RssItem BuildCommentItem(Comment item,string template)
         {
             item.Post = Proxy.Repository<Post>().Get(item.PostId);
 
             var link = string.Format("{0}/#!/post/{1}", Config.URL.Domain, item.Post.Url);
 
-            var rssItem = new RssItem
+            return new RssItem
             {
-                Title = item.Content,
+                Title = "Re:"+item.Post.Title,
                 Link = new Uri(link),
-                Description = string.Format("{0}<br /><br />评论于:《{1}》", item.Content.Replace("\r","<br />"), item.Post.Title),
+                Description = Razor.Parse(template, new
+                {
+                    Author = item.Author,
+                    Content = item.Content,
+                    CreateDate = item.CreateDate,
+                    Title = item.Post.Title,
+                    User = item.Post.CreateUser,
+                }),
                 PubDate = item.CreateDate,
                 Author = item.Author,
                 Guid = new RssGuid {Name = item.CommentId.ToString()}
             };
-            return rssItem;
         }
-
 
         public void BuildIssue()
         {
@@ -118,26 +128,38 @@ namespace YangKai.BlogEngine.Service
                 Language = "zh-cn",
                 Copyright = Config.Literal.COPYRIGHT
             };
+
+            var template = File.ReadAllText(Config.Path.PHYSICAL_ROOT_PATH + "bin/RSS/issue.cshtml");
+
             foreach (var item in data)
             {
-                channel.Items.Add(BuildIssueItem(item));
+                channel.Items.Add(BuildIssueItem(item, template));
             }
             var feed = new RssFeed(Encoding.UTF8);
             feed.Channels.Add(channel);
-            feed.Write(AppDomain.CurrentDomain.BaseDirectory + Config.Path.ISSUES_RSS_PATH);
+            feed.Write(Config.Path.PHYSICAL_ROOT_PATH + Config.Path.ISSUES_RSS_PATH);
         }
 
-        private RssItem BuildIssueItem(Issue item)
+        private RssItem BuildIssueItem(Issue item, string template)
         {
             var link = string.Format("{0}/#!/issue", Config.URL.Domain);
 
             var rssItem = new RssItem
             {
-                Title = item.Title,
+                Title = item.Project+" - "+item.Title,
                 Link = new Uri(link),
-                Description = string.Format("{0}:{1}<br />","Project",item.Project)
-                + string.Format("{0}:{1}<br /><br />", "Status", item.Statu)
-                +item.Content.Replace("\r", "<br />"),
+                Description = Razor.Parse(template, new
+                {
+                    Title = item.Title,
+                    Project = item.Project,
+                    Statu = item.Statu,
+                    Content = item.Content,
+                    Author = item.Author,
+                    CreateDate = item.CreateDate,
+                    Result = item.Result ?? string.Empty,
+                    User=item.LastEditUser??string.Empty,
+                    EditDate = item.LastEditDate ?? DateTime.Now,
+                }),
                 PubDate = item.CreateDate,
                 Author = item.CreateUser,
                 Guid = new RssGuid { Name = item.IssueId.ToString() }

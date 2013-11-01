@@ -13,7 +13,8 @@ namespace YangKai.BlogEngine.Common
             /// <summary>
             /// 物理根路径
             /// </summary>
-            public static readonly string PHYSICAL_ROOT_PATH = HttpContext.Current.Server.MapPath("~/");
+            public static readonly string PHYSICAL_ROOT_PATH = AppDomain.CurrentDomain.BaseDirectory;
+            //public static readonly string PHYSICAL_ROOT_PATH = HttpContext.Current.Server.MapPath("~/");
 
             /// <summary>
             /// 文章RSS文件路径

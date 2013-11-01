@@ -107,11 +107,11 @@
                             </small>
                         </h5>
                         <div ng-show="item.show">
-                            <p ng-bind-html="item.Content | line"></p>
-                            <p ng-show="item.Result" class="text-success">
+                            <p ng-bind-html-unsafe="item.Content | line"></p>
+                            <div ng-show="item.Result" class="text-success">
                                 <div><strong>{{item.LastEditUser}}:</strong></div>
-                                <span ng-bind-html="item.Result | line"></span>
-                            </p>
+                                <p ng-bind-html-unsafe="item.Result | line"></p>
+                            </div>
                             <div ng-show="User.IsAdmin && item.edit" class="alert alert-success">
                                 <p>Title</p>
                                 <p><input type="text" class="form-control" ng-model="item.title" /></p>

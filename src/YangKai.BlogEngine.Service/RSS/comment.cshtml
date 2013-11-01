@@ -1,0 +1,9 @@
+﻿<div style="font-size: 13px;">
+    <p>Re:@Model.Title</p>
+    <p>
+        @Raw(Model.Content.Replace("\n","<br />"))<br/>
+        <hr />
+        by <span style="font-weight: bold;color: #E38383">@Model.Author</span>
+        <span style="color:#ccc;padding-left: 10px;">@Model.CreateDate.ToString("yyyy.MM.dd HH:mm")</span>
+    </p>
+</div>

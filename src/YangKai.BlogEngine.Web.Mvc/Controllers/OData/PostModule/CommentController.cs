@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
 using YangKai.BlogEngine.Domain;
@@ -20,7 +21,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 };
             }
             entity= base.CreateEntity(entity);
-            Rss.Current.BuildComment();
+            Task.Factory.StartNew(() => Rss.Current.BuildComment());
             return entity;
         }
 
