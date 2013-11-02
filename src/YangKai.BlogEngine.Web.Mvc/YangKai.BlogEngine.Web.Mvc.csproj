@@ -487,12 +487,6 @@
     <Content Include="Content\app\LoginController.min.js">
       <DependentUpon>LoginController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom-base.js">
-      <DependentUpon>custom-base.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\directives\custom-base.min.js">
-      <DependentUpon>custom-base.coffee</DependentUpon>
-    </Content>
     <Content Include="Content\js\directives\custom\ckeditor.js">
       <DependentUpon>ckeditor.coffee</DependentUpon>
     </Content>
@@ -1215,7 +1209,6 @@
     <Content Include="Content\app\article\detail\article-detail.coffee" />
     <Content Include="Content\js\services\REST\CommentServices.coffee" />
     <Content Include="Content\css\style.less" />
-    <Content Include="Content\js\directives\custom-base.coffee" />
     <Content Include="Content\js\directives\custom\oDataPager.coffee" />
     <Content Include="Content\font\fontawesome-webfont.eot" />
     <Content Include="Content\font\fontawesome-webfont.ttf" />
