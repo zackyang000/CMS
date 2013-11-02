@@ -27,6 +27,6 @@
   $routeProvider.otherwise redirectTo: "/"
 ])
 .config(["$translateProvider",($translateProvider) ->
-  $translateProvider.preferredLanguage('en')
+  $translateProvider.preferredLanguage('zh')
   $translateProvider.useLocalStorage()
 ])
