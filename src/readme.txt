@@ -5,13 +5,15 @@ DEMO: http://www.woshinidezhu.com
 
 简介
 
-前端 AngularJS(CoffeeScript) + Bootstrap(Less)
+本系统主要用于搭建博客系统。
 
-后端 ASP.NET WEB API(oData) + Entity Framework
+前端基于AngularJS构建。
+
+服务端基于ASP.NET WEB API编写，采用微软OData协议的RESTful API与前端进行通信。基于Entity Framework的持久化方案。
 
 开发环境
 
-Visual Studio 2012.2 +
+Visual Studio 2012 或以上
 
 开始
 
