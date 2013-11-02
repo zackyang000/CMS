@@ -1,13 +1,7 @@
 ﻿GlobalController=
-["$scope","$http","$location",'$window',"Channel" 
-($scope,$http,$location,$window,Channel) ->
-  $http.get("/admin/getuser").success (data) ->
-    if data.Email
-      data.Gravatar='http://www.gravatar.com/avatar/' + md5(data.Email) 
-    else
-      data.Gravatar='/Content/img/avatar.png'
-    $scope.User=data
-
+["$scope","$http","$location",'$window',"Channel" ,"account"
+($scope,$http,$location,$window,Channel,account) ->
+  
   Channel.query 
     $orderby:'OrderId' 
     $filter:'IsDeleted eq false'

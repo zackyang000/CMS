@@ -62,8 +62,8 @@
                                                         </label>
 
                                                         <button class="width-35 pull-right btn btn-sm btn-primary" ng-disabled="submitting || form.$invalid">
-                                                            <i ng-show="submitting" class="icon-spinner icon-spin icon-large"></i>
-                                                            <i ng-show="!submitting" class="icon-key"></i>
+                                                            <span ng-show="submitting"><i class="icon-spinner icon-spin icon-large"></i></span>                                                            
+                                                            <span ng-hide="submitting"><i class="icon-key"></i></span>                                                            
                                                             Login
                                                         </button>
                                                     </div>

@@ -9,6 +9,7 @@
 'issue',
 'gallery',
 'UserServices',
+'AccountServices',
 'customDirectives',
 'pasvaz.bindonce',
 'ngProgress',
