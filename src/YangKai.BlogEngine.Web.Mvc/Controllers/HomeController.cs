@@ -18,7 +18,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
                 {
                     var url = query[2];
                     var post = Proxy.Repository<Post>().Get(p => p.Url == url);
-                    return Content(post.Content);
+                    return View("google-detail",post);
                 }
             }
 
@@ -29,7 +29,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
         public ActionResult SEO()
         {
             var data = Proxy.Repository<Post>().GetAll(p => !p.IsDeleted).OrderByDescending(p => p.CreateDate).ToList();
-            return View(data);
+            return View("google-list",data);
         }
 
         public ActionResult Config()

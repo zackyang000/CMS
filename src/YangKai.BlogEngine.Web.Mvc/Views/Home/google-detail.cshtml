@@ -1,0 +1,15 @@
+﻿@model YangKai.BlogEngine.Domain.Post
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width" />
+        <title>@Model.Title - @Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME)</title>
+    </head>
+    <body>
+        <h1>@Model.Title</h1>
+        <time>@Model.CreateDate.ToString("yyyy-MM-dd")</time>
+        <article>@Html.Raw(Model.Content)</article>
+    </body>
+</html>
