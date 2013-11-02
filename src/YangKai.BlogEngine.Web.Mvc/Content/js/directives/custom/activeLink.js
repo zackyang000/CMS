@@ -1,5 +1,6 @@
 ﻿
-angular.module("customDirectives", []).directive("activeLink", [
+
+myDirectives.directive("activeLink", [
   "$location", function(location) {
     return {
       restrict: "A",
@@ -17,7 +18,9 @@ angular.module("customDirectives", []).directive("activeLink", [
         });
         return match = function(path, currentPath) {
           if (path === '/') {
-            if (currentPath === '/') return true;
+            if (currentPath === '/') {
+              return true;
+            }
           } else if (currentPath.indexOf(path) === 0) {
             return true;
           }
@@ -28,7 +31,7 @@ angular.module("customDirectives", []).directive("activeLink", [
   }
 ]);
 
-angular.module("customDirectives", []).directive("activeParentLink", [
+myDirectives.directive("activeParentLink", [
   "$location", function(location) {
     return {
       restrict: "A",
@@ -58,7 +61,9 @@ angular.module("customDirectives", []).directive("activeParentLink", [
         });
         return match = function(path, currentPath) {
           if (path === '/') {
-            if (currentPath === '/') return true;
+            if (currentPath === '/') {
+              return true;
+            }
           } else if (currentPath.indexOf(path) === 0) {
             return true;
           }

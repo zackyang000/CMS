@@ -1,4 +1,4 @@
-﻿angular.module("customDirectives", []).directive "myDatepicker", ->
+﻿myDirectives.directive "myDatepicker", ->
   restrict: "A"
   require: "ngModel"
   link: (scope, element, attrs, ngModelCtrl) ->

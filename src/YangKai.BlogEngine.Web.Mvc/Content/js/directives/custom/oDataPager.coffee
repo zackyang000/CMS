@@ -1,4 +1,4 @@
-﻿angular.module("customDirectives", []).directive "odataPager", 
+﻿myDirectives.directive "odataPager", 
 ['$compile',($compile)->
   (scope, element, attrs) ->
     data=undefined

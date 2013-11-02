@@ -223,6 +223,12 @@
     <Content Include="Content\i18n\TranslateCtrl.min.js">
       <DependentUpon>TranslateCtrl.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\js\directives\customDirectives.js">
+      <DependentUpon>customDirectives.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\directives\customDirectives.min.js">
+      <DependentUpon>customDirectives.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\js\directives\custom\_ngBindHtmlUnsafe.js">
       <DependentUpon>_ngBindHtmlUnsafe.coffee</DependentUpon>
     </Content>
@@ -1252,6 +1258,7 @@
     <Content Include="Content\i18n\i18n.coffee" />
     <Content Include="Content\app\article\archives\archives.css" />
     <Content Include="Content\js\services\AccountServices.coffee" />
+    <Content Include="Content\js\directives\customDirectives.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

@@ -1,4 +1,4 @@
-﻿angular.module("customDirectives", []).directive "activeLink", 
+﻿myDirectives.directive "activeLink", 
 ["$location", (location) ->
   restrict: "A"
   link: (scope, element, attrs, controller) ->
@@ -20,7 +20,7 @@
       return false
 ]
 
-angular.module("customDirectives", []).directive "activeParentLink", ["$location", (location) ->
+myDirectives.directive "activeParentLink", ["$location", (location) ->
   restrict: "A"
   link: (scope, element, attrs, controller) ->
     clazz = attrs.activeParentLink

@@ -1,6 +1,8 @@
 ﻿var factory;
 
-angular.module("customDirectives", []).directive("upload", [
+
+
+myDirectives.directive("upload", [
   "uploadManager", factory = function(uploadManager) {
     return {
       restrict: "A",
@@ -24,7 +26,7 @@ angular.module("customDirectives", []).directive("upload", [
   }
 ]);
 
-angular.module("customDirectives", []).directive("dynamicUpload", [
+myDirectives.directive("dynamicUpload", [
   '$compile', function($compile) {
     return function(scope, element, attrs) {
       var update;
@@ -52,7 +54,9 @@ angular.module("FileUpload", []).factory("uploadManager", [
         var deleteFile, f, _i, _len;
         for (_i = 0, _len = _files.length; _i < _len; _i++) {
           f = _files[_i];
-          if (f.files[0].name === file.name) deleteFile = f;
+          if (f.files[0].name === file.name) {
+            deleteFile = f;
+          }
         }
         return _files.splice(_files.indexOf(deleteFile), 1);
       },

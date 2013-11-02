@@ -1,4 +1,4 @@
-﻿angular.module("customDirectives", []).directive "upload", 
+﻿myDirectives.directive "upload", 
 ["uploadManager", factory = (uploadManager) ->
   restrict: "A"
   link: (scope, element, attrs) ->
@@ -15,7 +15,7 @@
         uploadManager.setFileStatus data
 ]
 
-angular.module("customDirectives", []).directive "dynamicUpload",
+myDirectives.directive "dynamicUpload",
 ['$compile',($compile)->
   (scope, element, attrs) ->
     update =(value) ->

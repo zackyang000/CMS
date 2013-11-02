@@ -1,5 +1,6 @@
 ﻿
-angular.module("customDirectives", []).directive("ngBindHtmlUnsafe", [
+
+myDirectives.directive("ngBindHtmlUnsafe", [
   function() {
     return function(scope, element, attr) {
       var ngBindHtmlUnsafeWatchAction;

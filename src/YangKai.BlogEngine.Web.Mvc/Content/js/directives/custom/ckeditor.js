@@ -1,5 +1,6 @@
 ﻿
-angular.module("customDirectives", []).directive('ckEditor', function() {
+
+myDirectives.directive('ckEditor', function() {
   return {
     require: '?ngModel',
     link: function(scope, elm, attr, ngModel) {
@@ -7,7 +8,9 @@ angular.module("customDirectives", []).directive('ckEditor', function() {
       ck = CKEDITOR.replace(elm[0], {
         toolbar: 'Main'
       });
-      if (!ngModel) return;
+      if (!ngModel) {
+        return;
+      }
       ck.on('pasteState', function() {
         return scope.$apply(function() {
           return ngModel.$setViewValue(ck.getData());

@@ -1,11 +1,14 @@
 ﻿
-angular.module("customDirectives", []).directive("odataPager", [
+
+myDirectives.directive("odataPager", [
   '$compile', function($compile) {
     return function(scope, element, attrs) {
       var data, update;
       data = void 0;
       update = function() {
-        if (scope.currentPage === void 0) scope.currentPage = 1;
+        if (scope.currentPage === void 0) {
+          scope.currentPage = 1;
+        }
         if (scope.numData !== data['odata.count'] && scope.numData) {
           scope.currentPage = 1;
         }
@@ -17,12 +20,16 @@ angular.module("customDirectives", []).directive("odataPager", [
         } else {
           element.context.innerHTML += '<div>{{(currentPage-1)*10+1}} - {{numData}} of {{numData}}</div>';
         }
-        if (scope.numData === '0') element.context.innerHTML = '';
+        if (scope.numData === '0') {
+          element.context.innerHTML = '';
+        }
         return $compile(element.contents())(scope);
       };
       return scope.$watch(attrs.odataPager, function(value) {
         data = value;
-        if (data === null || data === void 0) return;
+        if (data === null || data === void 0) {
+          return;
+        }
         return update();
       });
     };
