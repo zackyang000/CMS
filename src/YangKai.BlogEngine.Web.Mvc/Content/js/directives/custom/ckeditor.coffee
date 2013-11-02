@@ -1,4 +1,4 @@
-﻿myDirectives.directive 'ckEditor', ->
+﻿angular.module("customDirectives", []).directive 'ckEditor', ->
   require: '?ngModel'
   link: (scope, elm, attr, ngModel)->
     ck = CKEDITOR.replace elm[0], { toolbar: 'Main' }

@@ -1,5 +1,5 @@
 ﻿
-myDirectives.directive("myDatepicker", function() {
+angular.module("customDirectives", []).directive("myDatepicker", function() {
   return {
     restrict: "A",
     require: "ngModel",

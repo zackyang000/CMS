@@ -1,5 +1,5 @@
 ﻿
-myDirectives.directive('ckEditor', function() {
+angular.module("customDirectives", []).directive('ckEditor', function() {
   return {
     require: '?ngModel',
     link: function(scope, elm, attr, ngModel) {

@@ -1,5 +1,5 @@
 ﻿
-myDirectives.directive("activeLink", [
+angular.module("customDirectives", []).directive("activeLink", [
   "$location", function(location) {
     return {
       restrict: "A",
@@ -28,7 +28,7 @@ myDirectives.directive("activeLink", [
   }
 ]);
 
-myDirectives.directive("activeParentLink", [
+angular.module("customDirectives", []).directive("activeParentLink", [
   "$location", function(location) {
     return {
       restrict: "A",

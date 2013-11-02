@@ -1,8 +1,7 @@
-﻿myDirectives.directive "odataPager", ['$compile',($compile)->
-  
+﻿angular.module("customDirectives", []).directive "odataPager", 
+['$compile',($compile)->
   (scope, element, attrs) ->
     data=undefined
-
     update = ->
       scope.currentPage=1 if scope.currentPage is undefined
       scope.currentPage=1 if scope.numData isnt data['odata.count'] and scope.numData #如果数量发生变化则重置为第一页.
