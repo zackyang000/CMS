@@ -10,12 +10,12 @@
 ])
 
 .controller('GalleryCtrl',
-["$scope","$routeParams","$location","Gallery","Photo"
-($scope,$routeParams,$location,Gallery,Photo) ->
+["$scope","$translate","$routeParams","$location","Gallery","Photo"
+($scope,$translate,$routeParams,$location,Gallery,Photo) ->
   $scope.$parent.title='Galleries'
   $scope.$parent.showBanner=false
 
-  $scope.loading="Loading"
+  $scope.loading=$translate("global.loading")
   Gallery.query (data) ->
     $scope.list=data
     $scope.loading=""

@@ -9,12 +9,12 @@
 ])
 
 .controller('GalleryDetailCtrl',
-["$scope","$routeParams","$timeout","progressbar","Gallery",
-($scope,$routeParams,$timeout,progressbar,Gallery) ->
+["$scope","$translate","$routeParams","$timeout","progressbar","Gallery",
+($scope,$translate,$routeParams,$timeout,progressbar,Gallery) ->
   $scope.$parent.title='Gallery '+$routeParams.name
   $scope.$parent.showBanner=false
 
-  $scope.loading="Loading"
+  $scope.loading=$translate("global.loading")
   $scope.name = $routeParams.name
   Gallery.get
     $filter:"Name eq '#{$scope.name}'"
@@ -23,14 +23,14 @@
     $scope.item=data.value[0]
     $scope.loading=""
     $.fn.photobox('prepareDOM')
-    $('#gallery').photobox('a',{history:false})
+    $('.gallery').photobox('a',{history:false})
     i=0
     j=0
     $timeout(->
-      for item in $("#gallery li")
+      for item in $(".gallery li")
         $timeout(->
           i
-          $($("#gallery li")[j++]).addClass('loaded')
+          $($(".gallery li")[j++]).addClass('loaded')
         25 * i++)
-    1000)
+    500)
 ])

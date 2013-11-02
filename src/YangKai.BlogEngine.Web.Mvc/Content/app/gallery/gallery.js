@@ -7,10 +7,10 @@ angular.module('gallery', ['gallery-detail', 'GalleryServices', 'PhotoServices']
     });
   }
 ]).controller('GalleryCtrl', [
-  "$scope", "$routeParams", "$location", "Gallery", "Photo", function($scope, $routeParams, $location, Gallery, Photo) {
+  "$scope", "$translate", "$routeParams", "$location", "Gallery", "Photo", function($scope, $translate, $routeParams, $location, Gallery, Photo) {
     $scope.$parent.title = 'Galleries';
     $scope.$parent.showBanner = false;
-    $scope.loading = "Loading";
+    $scope.loading = $translate("global.loading");
     return Gallery.query(function(data) {
       $scope.list = data;
       return $scope.loading = "";

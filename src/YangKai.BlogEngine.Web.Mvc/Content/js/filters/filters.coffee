@@ -19,3 +19,9 @@
   (url) ->
     return '' if url.charAt(url.length - 1) is '/'
     return url
+
+.filter 'fromNow', ->
+  (input) ->
+    return if input==null 
+    return if input==undefined 
+    moment(input).fromNow()

@@ -9,11 +9,11 @@
 ])
 
 .controller('AboutCtrl',
-["$scope","$http", ($scope,$http) ->
+["$scope","$translate","$http", ($scope,$translate,$http) ->
   $scope.$parent.title='About'
   $scope.$parent.showBanner=false
 
-  $scope.loading="Loading"
+  $scope.loading=$translate("global.loading")
   $http.get("/Content/data/technology.js").success (data) ->
     $scope.list = data
     $scope.loading=""

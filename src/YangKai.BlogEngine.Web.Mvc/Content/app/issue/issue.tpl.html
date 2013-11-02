@@ -1,8 +1,8 @@
 ﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
 <ul class="breadcrumb">
-    <li><a href="/#!/">Home</a></li>
-    <li class="active">Issues</li>
+    <li><a href="/#!/">{{'global.breadcrumb.home' | translate}}</a></li>
+    <li class="active">{{'global.menu.issue' | translate}}</li>
 </ul>
 <div class="issue">
     <div class="clearfix">
@@ -134,7 +134,7 @@
                         </div>
                         <small class="issue-footer">
                             <span>
-                                Create by {{item.Author}} {{item.date}}
+                                Create by {{item.Author}} {{item.CreateDate | fromNow}}
                             </span>
                             <span>
                                 <i class="icon-flag"></i>

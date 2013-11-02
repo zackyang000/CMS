@@ -7,9 +7,9 @@ angular.module('article-detail', []).config([
     });
   }
 ]).controller('ArticleDetailCtrl', [
-  "$scope", "$routeParams", "progressbar", "Article", "Comment", function($scope, $routeParams, progressbar, Article, Comment) {
+  "$scope", "$translate", "$routeParams", "progressbar", "Article", "Comment", function($scope, $translate, $routeParams, progressbar, Article, Comment) {
     $scope.$parent.showBanner = false;
-    $scope.loading = "Loading";
+    $scope.loading = $translate("global.loading");
     $scope.url = $routeParams.url;
     Article.get({
       $filter: "Url eq '" + $scope.url + "' and IsDeleted eq false"
@@ -84,20 +84,20 @@ angular.module('article-detail', []).config([
     };
     $scope.save = function() {
       progressbar.start();
-      $scope.submitting = true;
+      $scope.loading = $translate("global.post");
       $scope.entity.CommentId = UUID.generate();
       return Comment.save($scope.entity, function(data) {
-        message.success("Comment has been submitted.");
+        message.success($translate("article.comment.complete"));
         $scope.item.Comments.push(data);
         $scope.entity.Content = "";
         $scope.AuthorForDisplay = data.Author;
         $scope.editmode = false;
         angular.resetForm($scope, 'form');
-        $scope.submitting = false;
         Article.commented({
           id: "(guid'" + $scope.item.PostId + "')"
         });
-        return progressbar.complete();
+        progressbar.complete();
+        return $scope.loading = "";
       }, function(error) {
         var _ref;
         return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);

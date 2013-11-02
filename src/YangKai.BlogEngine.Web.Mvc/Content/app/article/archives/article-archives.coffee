@@ -9,12 +9,13 @@
 ])
 
 .controller('ArticleArchivesCtrl',
-["$scope","Channel", ($scope,Channel) ->
+["$scope","$translate","Channel", 
+($scope,$translate,Channel) ->
   $scope.$parent.title='Archives'
   $scope.$parent.showBanner=false
 
   $scope.load = ->
-    $scope.loading="Loading"
+    $scope.loading=$translate("global.loading")
     Channel.archives (data)->
       obj={}
       for channel in data.value when !channel.IsDeleted

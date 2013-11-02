@@ -21,4 +21,10 @@ angular.module("formatFilters", []).filter("isFuture", function() {
     if (url.charAt(url.length - 1) === '/') return '';
     return url;
   };
+}).filter('fromNow', function() {
+  return function(input) {
+    if (input === null) return;
+    if (input === void 0) return;
+    return moment(input).fromNow();
+  };
 });

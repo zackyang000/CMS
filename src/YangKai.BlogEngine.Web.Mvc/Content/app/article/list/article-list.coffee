@@ -18,7 +18,8 @@
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$routeParams","$location","Article", ($scope,$routeParams,$location,Article) ->
+["$scope","$translate","$routeParams","$location","Article", 
+($scope,$translate,$routeParams,$location,Article) ->
   $scope.$parent.showBanner=false
 
   $scope.$parent.title=$routeParams.group ? $routeParams.channel ? "Search Result '#{$scope.key}'"

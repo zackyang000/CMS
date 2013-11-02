@@ -7,7 +7,7 @@ angular.module('board', ['MessageServices']).config([
     });
   }
 ]).controller('BoardCtrl', [
-  "$scope", "progressbar", "Message", function($scope, progressbar, Message) {
+  "$scope", "$translate", "progressbar", "Message", function($scope, $translate, progressbar, Message) {
     $scope.$parent.title = 'Message Boards';
     $scope.$parent.showBanner = false;
     $scope.entity = {};
@@ -20,7 +20,7 @@ angular.module('board', ['MessageServices']).config([
         return $scope.editmode = $scope.User.UserName === '' || !($scope.User.UserName != null);
       }
     });
-    $scope.loading = "Loading";
+    $scope.loading = $translate("global.loading");
     $scope.list = Message.query({
       $filter: 'IsDeleted eq false'
     }, function() {
@@ -38,17 +38,17 @@ angular.module('board', ['MessageServices']).config([
     });
     $scope.save = function() {
       progressbar.start();
-      $scope.submitting = true;
+      $scope.loading = $translate("global.post");
       $scope.entity.BoardId = UUID.generate();
       return Message.save($scope.entity, function(data) {
-        message.success("Message has been submitted.");
+        message.success($translate("board.complete"));
         $scope.list.value.unshift(data);
         $scope.entity.Content = "";
         $scope.AuthorForDisplay = data.Author;
         $scope.editmode = false;
         angular.resetForm($scope, 'form');
-        $scope.submitting = false;
-        return progressbar.complete();
+        progressbar.complete();
+        return $scope.loading = "";
       });
     };
     return $scope.remove = function(item) {

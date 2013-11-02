@@ -9,8 +9,8 @@
 ])
 
 .controller('BoardCtrl',
-["$scope","progressbar","Message", 
-($scope,progressbar,Message) ->
+["$scope","$translate","progressbar","Message", 
+($scope,$translate,progressbar,Message) ->
   $scope.$parent.title='Message Boards'
   $scope.$parent.showBanner=false
   $scope.entity= {}
@@ -23,7 +23,7 @@
       $scope.AuthorForDisplay=$scope.User.UserName
       $scope.editmode=$scope.User.UserName=='' or not $scope.User.UserName?
   
-  $scope.loading="Loading"
+  $scope.loading=$translate("global.loading")
   $scope.list = Message.query $filter:'IsDeleted eq false',->
     for item in $scope.list.value
       if item.Email
@@ -34,18 +34,18 @@
 
   $scope.save = () ->
     progressbar.start()
-    $scope.submitting=true
+    $scope.loading = $translate("global.post")
     $scope.entity.BoardId=UUID.generate()
     Message.save $scope.entity
     ,(data)->
-      message.success "Message has been submitted."
+      message.success $translate("board.complete")
       $scope.list.value.unshift(data)
       $scope.entity.Content=""
       $scope.AuthorForDisplay=data.Author
       $scope.editmode=false
       angular.resetForm($scope, 'form')
-      $scope.submitting=false
       progressbar.complete()
+      $scope.loading = ""
 
   $scope.remove = (item) ->
     message.confirm ->

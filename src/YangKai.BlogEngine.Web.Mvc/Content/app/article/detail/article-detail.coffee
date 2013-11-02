@@ -9,11 +9,11 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$routeParams","progressbar","Article","Comment",
-($scope,$routeParams,progressbar,Article,Comment) ->
+["$scope","$translate","$routeParams","progressbar","Article","Comment",
+($scope,$translate,$routeParams,progressbar,Article,Comment) ->
   $scope.$parent.showBanner=false
 
-  $scope.loading="Loading"
+  $scope.loading=$translate("global.loading")
   $scope.url =$routeParams.url
   Article.get
     $filter:"Url eq '#{$scope.url}' and IsDeleted eq false"
@@ -73,19 +73,19 @@
 
   $scope.save = () ->
     progressbar.start()
-    $scope.submitting=true
+    $scope.loading = $translate("global.post")
     $scope.entity.CommentId=UUID.generate()
     Comment.save $scope.entity
     ,(data)->
-      message.success "Comment has been submitted."
+      message.success $translate("article.comment.complete")
       $scope.item.Comments.push(data)
       $scope.entity.Content=""
       $scope.AuthorForDisplay=data.Author
       $scope.editmode=false
       angular.resetForm($scope, 'form')
-      $scope.submitting=false
       Article.commented id:"(guid'#{$scope.item.PostId}')"
       progressbar.complete()
+      $scope.loading = ""
     ,(error)->
       message.error error.data.ExceptionMessage ? error.status
 

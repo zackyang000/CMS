@@ -7,11 +7,11 @@ angular.module('article-archives', []).config([
     });
   }
 ]).controller('ArticleArchivesCtrl', [
-  "$scope", "Channel", function($scope, Channel) {
+  "$scope", "$translate", "Channel", function($scope, $translate, Channel) {
     $scope.$parent.title = 'Archives';
     $scope.$parent.showBanner = false;
     $scope.load = function() {
-      $scope.loading = "Loading";
+      $scope.loading = $translate("global.loading");
       return Channel.archives(function(data) {
         var channel, date, group, key, obj, post, result, value, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
         obj = {};

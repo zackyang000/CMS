@@ -2,7 +2,7 @@
 
 <div ng-hide="item.Title==null">
     <ul class="breadcrumb">
-        <li><a href="/#!/">Home</a></li>
+        <li><a href="/#!/">{{'global.breadcrumb.home' | translate}}</a></li>
         <li><a href="/#!/list/{{item.Group.Channel.Url}}">{{item.Group.Channel.Name}}</a></li>
         <li><a href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}">{{item.Group.Name}}</a></li>
         <li class="active">{{item.Title}}</li>
@@ -18,51 +18,26 @@
         </header>
         <section>
             <div ng-bind-html-unsafe="item.Content"></div>
-            <span ng-show="item.QrCode">
-                <a href="javascrpit:void(0);"
-                   tooltip-placement="bottom"
-                   tooltip-html-unsafe='<img src="/upload/qrcode/{{item.QrCode.Url}}" class="img-thumbnail" width="200" height="200" alt="qrcode" />'>
-                    <i class="icon-qrcode"></i>
-                </a>
-            </span>
         </section>
         <footer>
-            <div id="jiathis_style_32x32" style="margin-top: 30px;" class="clearfix">
-                <a class="jiathis_button_qzone"></a>
-                <a class="jiathis_button_tsina"></a>
-                <a class="jiathis_button_tqq"></a>
-                <a class="jiathis_button_t163"></a>
-                <a class="jiathis_button_tsohu"></a>
-                <a class="jiathis_button_renren"></a>
-                <a class="jiathis_button_douban"></a>
-                <a class="jiathis_button_kaixin001"></a>
-                <a class="jiathis_button_fb"></a>
-                <a class="jiathis_button_twitter"></a>
-                <a class="jiathis_counter_style"></a>
-            </div>
-            <script type="text/javascript" >
-                var jiathis_config = {
-                    data_track_clickback: true,
-                    siteNum: 15,
-                    summary: "",
-                    hideMore: true
-                }
-            </script>
-            <script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=902651" charset="utf-8"></script>
         </footer>
     </article>
     <div class="post-nav">
         <ul>
             <li>
-                <a ng-show="prevPost.value" ng-href="/#!/post/{{prevPost.value[0].Url}}" rel="prev">&larr; · Prev</a>
+                <a ng-show="prevPost.value" ng-href="/#!/post/{{prevPost.value[0].Url}}" rel="prev">
+                    &larr; · {{'article.preview' | translate}}
+                </a>
             </li>
             <li>
-                <a ng-show="nextPost.value" tooltip="On the Left!" ng-href="/#!/post/{{nextPost.value[0].Url}}" rel="next">Next · &rarr;</a>
+                <a ng-show="nextPost.value" ng-href="/#!/post/{{nextPost.value[0].Url}}" rel="next">
+                    {{'article.next' | translate}} · &rarr;
+                </a>
             </li>
         </ul>
     </div>
     <div class="post-related" ng-show="relatedPost.value">
-        <div class="title"><span>Related Posts</span></div>
+        <div class="title"><span>{{'article.related_posts' | translate}}</span></div>
         <ul>
             <li ng-repeat="item in relatedPost.value">
                 {{item.PubDate | date:"yyyy.MM.dd"}} -- <a ng-href="/#!/post/{{item.Url}}">{{item.Title}}</a>
@@ -71,7 +46,7 @@
     </div>
     <!-- list START -->
     <div class="comment">
-        <div class="title"><span>Comments</span></div>
+        <div class="title"><span>{{'article.comments' | translate}}</span></div>
         <ul>
             <li ng-repeat="item in item.Comments | orderBy:'CreateDate'" ng-hide="item.IsDeleted">
                 <div class="gravatar">
@@ -102,41 +77,42 @@
     <div>
         <form name="form" novalidate ng-submit="save()">
             <p ng-show="AuthorForDisplay.length > 0">
-                Welcome, <strong>{{AuthorForDisplay}}</strong>
+                {{'article.comment.welcome' | translate}}, <strong>{{AuthorForDisplay}}</strong>
                 <span>
-                    <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">Hide »</a>
-                    <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">Change »</a>
+                    <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'article.comment.hide' | translate}} »</a>
+                    <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'article.comment.change' | translate}} »</a>
                 </span>
             </p>
             <div ng-show="editmode">
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <label>Name*</label>
-                        <input class="form-control input-sm" name="Author" type="text" ng-model="entity.Author" placeholder="昵称*" required/>
-                        <div class="label label-danger" ng-show="form.Author.$dirty && form.Author.$invalid">Invalid:
-                            <span ng-show="form.Author.$error.required">Username is required.</span>
+                        <label>{{'article.comment.name' | translate}}*</label>
+                        <input class="form-control input-sm" name="Author" type="text" ng-model="entity.Author" placeholder="{{'article.comment.name' | translate}}*" required/>
+                        <div class="label label-danger" ng-show="form.Author.$dirty && form.Author.$invalid">
+                            <span ng-show="form.Author.$error.required">{{'article.comment.nameValidTxt' | translate}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <label>Email</label>
-                        <input class="form-control input-sm" name="Email" type="text" ng-model="entity.Email" placeholder="邮箱" />
+                        <label>{{'article.comment.email' | translate}}</label>
+                        <input class="form-control input-sm" name="Email" type="text" ng-model="entity.Email" placeholder="{{'article.comment.email' | translate}}" />
                     </div>
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-lg-8">
-                    <label>Content</label>
+                    <label>{{'article.comment.content' | translate}}</label>
                     <textarea name="Content" class="form-control" rows="4"  ng-model="entity.Content" required></textarea>
-                    <div class="label label-danger" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
-                        <span ng-show="form.Content.$error.required">Content is required.</span>
+                    <div class="label label-danger" ng-show="form.Content.$dirty && form.Content.$invalid">
+                        <span ng-show="form.Content.$error.required">{{'article.comment.contentValidTxt' | translate}}</span>
                     </div>
                 </div>
             </div>
             <div>
-                <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">Submit</button>
-                <span class="loading" ng-show="submitting">submitting...</span>
+                <button class="btn btn-primary btn-large" ng-disabled="loading || form.$invalid">
+                    {{'article.comment.submit' | translate}}
+                </button>
             </div>
         </form>
     </div>
@@ -144,8 +120,8 @@
 </div>
 <div ng-show="!loading && item.Title==null">
     <ul class="breadcrumb">
-        <li><a href="/#!/">Home</a></li>
+        <li><a href="/#!/">{{'global.breadcrumb.home' | translate}}</a></li>
         <li class="active">404</li>
     </ul>
-    <p>Not found article.</p>
+    <p>{{'article.not_found' | translate}}</p>
 </div>

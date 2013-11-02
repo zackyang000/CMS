@@ -7,10 +7,10 @@ angular.module('about', []).config([
     });
   }
 ]).controller('AboutCtrl', [
-  "$scope", "$http", function($scope, $http) {
+  "$scope", "$translate", "$http", function($scope, $translate, $http) {
     $scope.$parent.title = 'About';
     $scope.$parent.showBanner = false;
-    $scope.loading = "Loading";
+    $scope.loading = $translate("global.loading");
     return $http.get("/Content/data/technology.js").success(function(data) {
       $scope.list = data;
       return $scope.loading = "";

@@ -1,13 +1,13 @@
 ﻿<span class="icon-folder-open categories">
     <span ng-repeat="category in item.Categorys">
         <span ng-hide="$first">,</span>
-        <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="View all articles of {{category.Name}}">{{category.Name}}</a>
+        <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="{{category.Name}}">{{category.Name}}</a>
     </span>
 </span>
 <span class="icon-tags tags" ng-show="item.Tags.length>0">
     <span ng-repeat="tag in item.Tags">
         <span ng-hide="$first">,</span>
-        <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="View all articles of {{tag.Name}}">{{tag.Name}}</a>
+        <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="{{tag.Name}}">{{tag.Name}}</a>
     </span>
 </span>
 <span>
@@ -16,17 +16,25 @@
 </span>
 <span>
     <i class="icon-eye-open"></i>
-    {{item.ViewCount}} Views
+    {{'article.views_count' | translate:item}}
 </span>
 <span>
     <i class="icon-comments"></i>
-    {{item.ReplyCount}} Comments
+    {{'article.comments_count' | translate:item}}
 </span>
 <span ng-show="item.Source">
     <i class="icon-external-link"></i>
     <a ng-href="{{item.Source.Url}}" title="{{item.Source.Title}}">
-        Source
+        {{'article.source' | translate}}
     </a>
+</span>
+<span class="dropdown" ng-show="item.QrCode">
+    <a data-toggle="dropdown" href="JavaScript:void(0)"><i class="icon-qrcode"></i></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li>
+            <img src="/upload/qrcode/{{item.QrCode.Url}}" width="200" height="200" alt="qrcode" />
+        </li>
+    </ul>
 </span>
 <span ng-show="User.IsAdmin">
     <i class="icon-edit"></i>

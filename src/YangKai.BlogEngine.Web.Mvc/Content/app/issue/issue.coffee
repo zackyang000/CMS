@@ -24,8 +24,8 @@
 ])
 
 .controller('IssueCtrl',
-["$scope","$routeParams","$location","Issue"
-($scope,$routeParams,$location,Issue) ->
+["$scope","$translate","$routeParams","$location","Issue"
+($scope,$translate,$routeParams,$location,Issue) ->
   $scope.$parent.title='Issues'
   $scope.$parent.showBanner=false
 
@@ -46,12 +46,11 @@
     'HR Tools'].sort()
 
   $scope.get = ->
+    $scope.loading=$translate("global.loading")
     Issue.query (data)->
-      for item in data.value
-        item.date=moment(item.CreateDate).fromNow()
-
       $scope.list=data.value
       $scope.setGroup()
+      $scope.loading=""
 
   $scope.setGroup = ->
       statu={}
@@ -142,7 +141,7 @@
     $scope.editDialog = true
 
   $scope.save = ->
-    $scope.loading = 'save'
+    $scope.loading = $translate("global.post")
     entity = $scope.entity
     entity.IssueId=UUID.generate()
     entity.Statu='Open'

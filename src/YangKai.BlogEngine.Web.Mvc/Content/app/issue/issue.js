@@ -27,20 +27,16 @@ angular.module('issue', ['IssueServices']).filter('filterByDate', function() {
     });
   }
 ]).controller('IssueCtrl', [
-  "$scope", "$routeParams", "$location", "Issue", function($scope, $routeParams, $location, Issue) {
+  "$scope", "$translate", "$routeParams", "$location", "Issue", function($scope, $translate, $routeParams, $location, Issue) {
     $scope.$parent.title = 'Issues';
     $scope.$parent.showBanner = false;
     $scope.projects = ['API Portal', 'API Framework', 'ServiceStack.Text', 'Framework API/ API SDK', 'Oversea WCF Framework', 'Framework Tools', 'Auth Service', 'Gateway', 'Oversea Data Access', 'Cassandra Adapter', 'Document Tool', 'Common API', 'API Notify', 'Newegg Central Framework', 'HR Tools'].sort();
     $scope.get = function() {
+      $scope.loading = $translate("global.loading");
       return Issue.query(function(data) {
-        var item, _i, _len, _ref;
-        _ref = data.value;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          item = _ref[_i];
-          item.date = moment(item.CreateDate).fromNow();
-        }
         $scope.list = data.value;
-        return $scope.setGroup();
+        $scope.setGroup();
+        return $scope.loading = "";
       });
     };
     $scope.setGroup = function() {
@@ -152,7 +148,7 @@ angular.module('issue', ['IssueServices']).filter('filterByDate', function() {
     };
     $scope.save = function() {
       var entity;
-      $scope.loading = 'save';
+      $scope.loading = $translate("global.post");
       entity = $scope.entity;
       entity.IssueId = UUID.generate();
       entity.Statu = 'Open';

@@ -1,13 +1,13 @@
 ﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
 <ul class="breadcrumb">
-    <li><a href="/#!/">Home</a></li>
-    <li><a href="/#!/gallery">Galleries</a></li>
+    <li><a href="/#!/">{{'global.breadcrumb.home' | translate}}</a></li>
+    <li><a href="/#!/gallery">{{'global.menu.gallery' | translate}}</a></li>
     <li class="active">{{item.Name}} <small>{{item.Description}}</small></li>
 </ul>
 
 <div class='gallery'>
-    <ul id='gallery'>
+    <ul>
         <li ng-repeat="photo in item.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
             <a href="{{photo.Path}}">
                 <img src="{{photo.Thumbnail}}" alt="{{photo.Name}}">
@@ -15,48 +15,3 @@
         </li>
     </ul>
 </div>
-
-<style>
-    @-webkit-keyframes bg{ 
-        0%{ background-size:120% 120%; }
-        100%{ background-size:100% 100%; } 
-    }
-
-    @font-face {
-        font-family:'Romanesco';
-        font-style:normal;
-        font-weight:400;
-        src:local('Romanesco'), local('Romanesco-Regular'), url(http://themes.googleusercontent.com/static/fonts/romanesco/v1/ulV2bu0ivcWDuAzM7oh4XT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
-    }
-
-    @font-face {
-        font-family:'Cuprum';
-        font-style:normal;
-        font-weight:400;
-        src:local('Cuprum'), local('Cuprum-Regular'), url(http://themes.googleusercontent.com/static/fonts/cuprum/v4/sp1_LTSOMWWV0K5VTuZzvQ.woff) format('woff');
-    }
-
-    .gallery{ overflow:hidden; padding:3%; }
-
-    #gallery{ float:left; }
-    #gallery li{ list-style:none; perspective:100px; -webkit-perspective:100px; margin:1px; float:left; position:relative; transition:.1s; -webkit-transition:0.1s; }
-    #gallery li.video::before{ content:'\25BA'; color:#FFF; font-size:20px; height:20px; width:20px; line-height:0.9; position:absolute; bottom:3px; left:4px; z-index:1; background:rgba(0,0,0,0.4); box-shadow:0 0 0 3px rgba(0,0,0,0.4); border-radius:0 3px 0 0; pointer-events:none; opacity:0; transition:.5s 0.2s; }
-    #gallery li.loaded.video::before{ opacity:1; }
-    #gallery a{ display:block; width:75px; height:68px; vertical-align:bottom; overflow:hidden; background:rgba(0,0,0,0.1);
-        transition:.4s ease-out; -webkit-transition:0.4s ease-out; -webkit-transform:rotateX(90deg) translate(-50px,-50%); transform:rotateX(90deg) translate(-50px,-50%); }
-    #gallery a:active, #gallery a:focus{ outline:none; }
-    #gallery a img{ min-height:100%; width:100%; transition:.3s ease-out; -webkit-transition:0.3s ease-out; }
-    #gallery .loaded a{ -webkit-transform:rotateX(0deg) translate(0,0); transform:rotateX(0deg) translate(0,0); }
-    #gallery li.loaded:hover{ z-index:2; transform:scale(1.5); -webkit-transform:scale(1.5); }
-    #gallery li.loaded a:hover{ box-shadow:0 0 0 2px #FFF, 0 0 20px 5px #000; transition:.1s; -webkit-transition:0.1s; }
-    #gallery li.loaded:hover img{ transform:scale(1.2); -webkit-transform:scale(1.2); }
-    #gallery li.loaded.video:hover::before{ opacity:0; }
-	
-    /*------- media queries -----------*/
-    @media all and (max-width:700px){
-        #gallery li{ margin:0; }
-        #gallery a{ width:55px; height:50px; }
-        #gallery li.loaded:hover img, #gallery li.loaded:hover{ transform:none; -webkit-transform:none; }
-    } 
-</style>
-

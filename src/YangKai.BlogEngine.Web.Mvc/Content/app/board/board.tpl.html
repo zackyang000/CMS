@@ -1,50 +1,50 @@
 ﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
 <ul class="breadcrumb">
-    <li><a href="/#!/">Home</a></li>
-    <li class="active">Message boards</li>
+    <li><a href="/#!/">{{'global.breadcrumb.home' | translate}}</a></li>
+    <li class="active">{{'global.menu.board' | translate}}</li>
 </ul>
 
-<div class="loadingbox" ng-show="loading">loading...</div>
 <!-- respond START -->
     <div>
         <form name="form" novalidate ng-submit="save()">
             <p ng-show="AuthorForDisplay.length > 0">
-                Welcome, <strong>{{AuthorForDisplay}}</strong>
+                {{'board.welcome' | translate}}, <strong>{{AuthorForDisplay}}</strong>
                 <span>
-                    <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">Hide »</a>
-                    <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">Change »</a>
+                    <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'board.hide' | translate}} »</a>
+                    <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'board.change' | translate}} »</a>
                 </span>
             </p>
             <div ng-show="editmode">
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <label>Name*</label>
-                        <input class="form-control input-sm" name="Author" type="text" ng-model="entity.Author" placeholder="昵称*" required/>
-                        <div class="label label-danger" ng-show="form.Author.$dirty && form.Author.$invalid">Invalid:
-                            <span ng-show="form.Author.$error.required">Username is required.</span>
+                        <label>{{'board.name' | translate}}*</label>
+                        <input class="form-control input-sm" name="Author" type="text" ng-model="entity.Author" placeholder="{{'board.name' | translate}}*" required/>
+                        <div class="label label-danger" ng-show="form.Author.$dirty && form.Author.$invalid">
+                            <span ng-show="form.Author.$error.required">{{'board.nameValidTxt' | translate}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <label>Email</label>
-                        <input class="form-control input-sm" name="Email" type="text" ng-model="entity.Email" placeholder="邮箱" />
+                        <label>{{'board.email' | translate}}</label>
+                        <input class="form-control input-sm" name="Email" type="text" ng-model="entity.Email" placeholder="{{'board.email' | translate}}" />
                     </div>
                 </div>
             </div>
-                <div class="row form-group">
-                    <div class="col-lg-8">
-                        <label>Content</label>
-                        <textarea name="Content" class="form-control" rows="4"  ng-model="entity.Content" required></textarea>
-                        <div class="label label-danger" ng-show="form.Content.$dirty && form.Content.$invalid">Invalid:
-                            <span ng-show="form.Content.$error.required">Content is required.</span>
-                        </div>
+            <div class="row form-group">
+                <div class="col-lg-8">
+                    <label>{{'board.content' | translate}}</label>
+                    <textarea name="Content" class="form-control" rows="4"  ng-model="entity.Content" required></textarea>
+                    <div class="label label-danger" ng-show="form.Content.$dirty && form.Content.$invalid">
+                        <span ng-show="form.Content.$error.required">{{'board.contentValidTxt' | translate}}</span>
                     </div>
                 </div>
+            </div>
             <div>
-                <button class="btn btn-primary btn-large" ng-disabled="submitting || form.$invalid">Submit</button>
-                <span class="loading" ng-show="submitting">submitting...</span>
+                <button class="btn btn-primary btn-large" ng-disabled="loading || form.$invalid">
+                    {{'board.submit' | translate}}
+                </button>
             </div>
         </form>
     </div>

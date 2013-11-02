@@ -16,7 +16,7 @@ angular.module('article-list', []).config([
     });
   }
 ]).controller('ArticleListCtrl', [
-  "$scope", "$routeParams", "$location", "Article", function($scope, $routeParams, $location, Article) {
+  "$scope", "$translate", "$routeParams", "$location", "Article", function($scope, $translate, $routeParams, $location, Article) {
     var _ref, _ref1, _ref2;
     $scope.$parent.showBanner = false;
     $scope.$parent.title = (_ref = (_ref1 = $routeParams.group) != null ? _ref1 : $routeParams.channel) != null ? _ref : "Search Result '" + $scope.key + "'";
