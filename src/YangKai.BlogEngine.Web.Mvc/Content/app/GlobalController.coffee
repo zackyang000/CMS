@@ -11,5 +11,5 @@
     $scope.Channels=data.value
 
   $scope.search = ->
-    $window.location.href="/#!/search/#{$scope.key}"
+    $window.location.href="/search/#{$scope.key}"
 ]

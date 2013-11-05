@@ -1,13 +1,13 @@
 ﻿<span class="icon-folder-open categories">
     <span ng-repeat="category in item.Categorys">
         <span ng-hide="$first">,</span>
-        <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="{{category.Name}}">{{category.Name}}</a>
+        <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="{{category.Name}}">{{category.Name}}</a>
     </span>
 </span>
 <span class="icon-tags tags" ng-show="item.Tags.length>0">
     <span ng-repeat="tag in item.Tags">
         <span ng-hide="$first">,</span>
-        <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="{{tag.Name}}">{{tag.Name}}</a>
+        <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="{{tag.Name}}">{{tag.Name}}</a>
     </span>
 </span>
 <span>
@@ -38,5 +38,5 @@
 </span>
 <span ng-show="User.IsAdmin">
     <i class="icon-edit"></i>
-    <a ng-href="/admin/#!/article('{{item.PostId}}')">Edit</a>
+    <a ng-href="/admin/article('{{item.PostId}}')">Edit</a>
 </span>

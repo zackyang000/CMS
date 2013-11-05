@@ -11,7 +11,7 @@ GlobalController = [
       return $scope.Channels = data.value;
     });
     return $scope.search = function() {
-      return $window.location.href = "/#!/search/" + $scope.key;
+      return $window.location.href = "/search/" + $scope.key;
     };
   }
 ];

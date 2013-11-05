@@ -2,9 +2,9 @@
 
 <div ng-hide="item.Title==null">
     <ul class="breadcrumb">
-        <li><a href="/#!/">{{'global.breadcrumb.home' | translate}}</a></li>
-        <li><a href="/#!/list/{{item.Group.Channel.Url}}">{{item.Group.Channel.Name}}</a></li>
-        <li><a href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}">{{item.Group.Name}}</a></li>
+        <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+        <li><a href="/list/{{item.Group.Channel.Url}}">{{item.Group.Channel.Name}}</a></li>
+        <li><a href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}">{{item.Group.Name}}</a></li>
         <li class="active">{{item.Title}}</li>
     </ul>
     <article>
@@ -25,12 +25,12 @@
     <div class="post-nav">
         <ul>
             <li>
-                <a ng-show="prevPost.value" ng-href="/#!/post/{{prevPost.value[0].Url}}" rel="prev">
+                <a ng-show="prevPost.value" ng-href="/post/{{prevPost.value[0].Url}}" rel="prev">
                     &larr; · {{'article.preview' | translate}}
                 </a>
             </li>
             <li>
-                <a ng-show="nextPost.value" ng-href="/#!/post/{{nextPost.value[0].Url}}" rel="next">
+                <a ng-show="nextPost.value" ng-href="/post/{{nextPost.value[0].Url}}" rel="next">
                     {{'article.next' | translate}} · &rarr;
                 </a>
             </li>
@@ -40,7 +40,7 @@
         <div class="title"><span>{{'article.related_posts' | translate}}</span></div>
         <ul>
             <li ng-repeat="item in relatedPost.value">
-                {{item.PubDate | date:"yyyy.MM.dd"}} -- <a ng-href="/#!/post/{{item.Url}}">{{item.Title}}</a>
+                {{item.PubDate | date:"yyyy.MM.dd"}} -- <a ng-href="/post/{{item.Url}}">{{item.Title}}</a>
             </li>
         </ul>
     </div>
@@ -120,7 +120,7 @@
 </div>
 <div ng-show="!loading && item.Title==null">
     <ul class="breadcrumb">
-        <li><a href="/#!/">{{'global.breadcrumb.home' | translate}}</a></li>
+        <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
         <li class="active">404</li>
     </ul>
     <p>{{'article.not_found' | translate}}</p>

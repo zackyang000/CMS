@@ -141,13 +141,13 @@ angular.module('admin-article-edit', []).config([
       if (!$routeParams.id) {
         entity.PostId = UUID.generate();
         return Article.save(entity, function(data) {
-          return $window.location.href = "/#!/post/" + data.Url;
+          return $window.location.href = "/post/" + data.Url;
         });
       } else {
         return Article.update({
           id: "(guid'" + entity.PostId + "')"
         }, entity, function(data) {
-          return $window.location.href = "/#!/post/" + data.Url;
+          return $window.location.href = "/post/" + data.Url;
         });
       }
     };

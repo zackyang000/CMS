@@ -45,7 +45,7 @@ namespace YangKai.BlogEngine.Service
 
         private RssItem BuildPostItem(Post item)
         {
-            var link = string.Format("{0}/#!/post/{1}", Config.URL.Domain, item.Url);
+            var link = string.Format("{0}/post/{1}", Config.URL.Domain, item.Url);
 
             var rssItem = new RssItem
             {
@@ -91,7 +91,7 @@ namespace YangKai.BlogEngine.Service
         {
             item.Post = Proxy.Repository<Post>().Get(item.PostId);
 
-            var link = string.Format("{0}/#!/post/{1}", Config.URL.Domain, item.Post.Url);
+            var link = string.Format("{0}/post/{1}", Config.URL.Domain, item.Post.Url);
 
             return new RssItem
             {
@@ -142,7 +142,7 @@ namespace YangKai.BlogEngine.Service
 
         private RssItem BuildIssueItem(Issue item, string template)
         {
-            var link = string.Format("{0}/#!/issue", Config.URL.Domain);
+            var link = string.Format("{0}/issue", Config.URL.Domain);
 
             var rssItem = new RssItem
             {

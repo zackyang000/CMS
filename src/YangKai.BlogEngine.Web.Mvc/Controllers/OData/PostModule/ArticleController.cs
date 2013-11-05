@@ -166,7 +166,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         private static void SaveQrCode(Post entity)
         {
             var gRender = new GraphicsRenderer(new FixedModuleSize(30, QuietZoneModules.Four));
-            var fullUrl = Config.URL.Domain + "/#!/post/" + entity.Url;
+            var fullUrl = Config.URL.Domain + "/post/" + entity.Url;
             BitMatrix matrix = new QrEncoder().Encode(entity.QrCode.Content + " | " + fullUrl).Matrix;
             using (var stream = new FileStream(HttpContext.Current.Server.MapPath("/upload/qrcode/" + entity.QrCode.Url), FileMode.Create))
             {

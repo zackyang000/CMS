@@ -1,5 +1,5 @@
 ﻿<ul class="breadcrumb">
-    <li><a href="/#!/">{{'global.breadcrumb.home' | translate}}</a></li>
+    <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
     <li class="active">{{'global.menu.archive' | translate}}</li>
 </ul>
 
@@ -16,7 +16,7 @@
                 <li ng-repeat="post in item.posts | orderBy:'-PubDate'">
                     {{post.PubDate | date:"yyyy-MM-dd"}}
                     »  
-                    <a href="/#!/post/{{post.Url}}" title="{{post.channel}} - {{post.group}}">{{post.Title}}</a>
+                    <a href="/post/{{post.Url}}" title="{{post.channel}} - {{post.group}}">{{post.Title}}</a>
                 </li>
             </ul>
         </li>

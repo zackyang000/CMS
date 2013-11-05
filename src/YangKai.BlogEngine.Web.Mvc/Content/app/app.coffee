@@ -19,7 +19,7 @@
 'angulartics',
 'angulartics.google.analytics'])
 .config(["$locationProvider",($locationProvider) ->
-  $locationProvider.html5Mode(false).hashPrefix('!')
+  $locationProvider.html5Mode(true)
 ])
 .config(["$httpProvider",($httpProvider) ->
   $httpProvider.responseInterceptors.push(interceptor)  

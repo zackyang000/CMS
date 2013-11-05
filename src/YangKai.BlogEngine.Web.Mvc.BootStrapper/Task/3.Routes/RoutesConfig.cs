@@ -27,10 +27,28 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         private void RegisterDefaultRoute(RouteCollection routes)
         {
             routes.MapRoute(
-                "Default",
-                "{controller}/{action}/{id}",
-                new {controller = "Home", action = "Index", id = UrlParameter.Optional},
-                CONTROLLERS_NAMESPACE);
+                name: "Home",
+                url: "Home/{action}/{id}",
+                defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional}
+                );
+
+            routes.MapRoute(
+                name: "Admin",
+                url: "Admin/{action}/{id}",
+                defaults: new {controller = "Admin", action = "Index", id = UrlParameter.Optional}
+                );
+
+            routes.MapRoute(
+                name: "FileUpload",
+                url: "FileUpload/{action}/{id}",
+                defaults: new {controller = "FileUpload", action = "Index", id = UrlParameter.Optional}
+                );
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{*all}",
+                defaults: new {controller = "Home", action = "Index"}
+                );
         }
     }
 }

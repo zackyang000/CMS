@@ -95,10 +95,10 @@
     if !$routeParams.id
       entity.PostId=UUID.generate()
       Article.save entity,(data)->
-        $window.location.href = "/#!/post/#{data.Url}"
+        $window.location.href = "/post/#{data.Url}"
     else
       Article.update {id:"(guid'#{entity.PostId}')"},entity,(data)->
-        $window.location.href = "/#!/post/#{data.Url}"
+        $window.location.href = "/post/#{data.Url}"
 
   $scope.remove = ->
     message.confirm ->
