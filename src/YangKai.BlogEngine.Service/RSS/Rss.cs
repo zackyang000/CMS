@@ -36,27 +36,24 @@ namespace YangKai.BlogEngine.Service
             };
             foreach (var item in data)
             {
-                channel.Items.Add(BuildPostItem(item));
+                channel.Items.Add(CreatePostItem(item));
             }
             var feed = new RssFeed(Encoding.UTF8);
             feed.Channels.Add(channel);
             feed.Write(Config.Path.PHYSICAL_ROOT_PATH + Config.Path.ARTICLES_RSS_PATH);
         }
 
-        private RssItem BuildPostItem(Post item)
+        private RssItem CreatePostItem(Post item)
         {
-            var link = string.Format("{0}/post/{1}", Config.URL.Domain, item.Url);
-
-            var rssItem = new RssItem
+            return new RssItem
             {
                 Title = item.Title,
-                Link = new Uri(link),
+                Link = new Uri(string.Format("{0}/post/{1}", Config.URL.Domain, item.Url)),
                 Description = item.Content,
                 PubDate = item.PubDate,
                 Author = item.CreateUser,
                 Guid = new RssGuid {Name = item.PostId.ToString()}
             };
-            return rssItem;
         }
 
         public void BuildComment()
@@ -80,23 +77,21 @@ namespace YangKai.BlogEngine.Service
 
             foreach (var item in data)
             {
-                channel.Items.Add(BuildCommentItem(item, template));
+                channel.Items.Add(CreateCommentItem(item, template));
             }
             var feed = new RssFeed(Encoding.UTF8);
             feed.Channels.Add(channel);
             feed.Write(Config.Path.PHYSICAL_ROOT_PATH + Config.Path.COMMENTS_RSS_PATH);
         }
 
-        private RssItem BuildCommentItem(Comment item,string template)
+        private RssItem CreateCommentItem(Comment item,string template)
         {
             item.Post = Proxy.Repository<Post>().Get(item.PostId);
-
-            var link = string.Format("{0}/post/{1}", Config.URL.Domain, item.Post.Url);
 
             return new RssItem
             {
                 Title = "Re:"+item.Post.Title,
-                Link = new Uri(link),
+                Link = new Uri(string.Format("{0}/post/{1}", Config.URL.Domain, item.Post.Url)),
                 Description = Razor.Parse(template, new
                 {
                     Author = item.Author,
@@ -142,12 +137,10 @@ namespace YangKai.BlogEngine.Service
 
         private RssItem BuildIssueItem(Issue item, string template)
         {
-            var link = string.Format("{0}/issue", Config.URL.Domain);
-
             var rssItem = new RssItem
             {
                 Title = item.Project+" - "+item.Title,
-                Link = new Uri(link),
+                Link = new Uri(string.Format("{0}/issue", Config.URL.Domain)),
                 Description = Razor.Parse(template, new
                 {
                     Title = item.Title,

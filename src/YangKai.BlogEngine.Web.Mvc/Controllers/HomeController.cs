@@ -10,18 +10,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         public ActionResult Index(string _escaped_fragment_)
         {
-            //SEO
-            if (!string.IsNullOrEmpty(_escaped_fragment_))
-            {
-                var query = _escaped_fragment_.Split('/');
-                if (query[1] == "post")
-                {
-                    var url = query[2];
-                    var post = Proxy.Repository<Post>().Get(p => p.Url == url);
-                    return View("google-detail",post);
-                }
-            }
-
             var channels = Proxy.Repository<Channel>().GetAll(p => !p.IsDeleted).ToList();
             return View(channels);
         }
