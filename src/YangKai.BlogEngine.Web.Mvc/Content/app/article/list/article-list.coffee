@@ -18,8 +18,8 @@
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$translate","$routeParams","$location","Article", 
-($scope,$translate,$routeParams,$location,Article) ->
+["$scope","$window","$translate","$routeParams","$location","Article", 
+($scope,$window,$translate,$routeParams,$location,Article) ->
   $scope.$parent.showBanner=false
 
   $scope.$parent.title=$routeParams.group ? $routeParams.channel ? "Search Result '#{$scope.key}'"
@@ -50,6 +50,9 @@
       scroll(0,0)
       $scope.list = data
       $scope.loading=""
+
+  $scope.edit = (item) ->
+    $window.location.href="/admin/#!/article('#{item.PostId}')"
 
   $scope.load $scope.currentPage
 ])

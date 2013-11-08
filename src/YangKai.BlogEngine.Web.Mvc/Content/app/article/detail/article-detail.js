@@ -7,7 +7,7 @@ angular.module('article-detail', []).config([
     });
   }
 ]).controller('ArticleDetailCtrl', [
-  "$scope", "$translate", "$routeParams", "progressbar", "Article", "Comment", function($scope, $translate, $routeParams, progressbar, Article, Comment) {
+  "$scope", "$window", "$translate", "$routeParams", "progressbar", "Article", "Comment", function($scope, $window, $translate, $routeParams, progressbar, Article, Comment) {
     $scope.$parent.showBanner = false;
     $scope.loading = $translate("global.loading");
     $scope.url = $routeParams.url;
@@ -103,13 +103,16 @@ angular.module('article-detail', []).config([
         return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
       });
     };
-    return $scope.remove = function(item) {
+    $scope.remove = function(item) {
       return Comment.remove({
         id: "(guid'" + item.CommentId + "')"
       }, function() {
         item.IsDeleted = true;
         return message.success("Comment has been removed.");
       });
+    };
+    return $scope.edit = function(item) {
+      return $window.location.href = "/admin/#!/article('" + item.PostId + "')";
     };
   }
 ]);

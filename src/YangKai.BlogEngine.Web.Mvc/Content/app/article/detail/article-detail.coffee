@@ -9,8 +9,8 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$translate","$routeParams","progressbar","Article","Comment",
-($scope,$translate,$routeParams,progressbar,Article,Comment) ->
+["$scope","$window","$translate","$routeParams","progressbar","Article","Comment",
+($scope,$window,$translate,$routeParams,progressbar,Article,Comment) ->
   $scope.$parent.showBanner=false
 
   $scope.loading=$translate("global.loading")
@@ -93,4 +93,7 @@
     Comment.remove id:"(guid'#{item.CommentId}')",->
       item.IsDeleted=true
       message.success "Comment has been removed."
+
+  $scope.edit = (item) ->
+    $window.location.href="/admin/#!/article('#{item.PostId}')"
 ])

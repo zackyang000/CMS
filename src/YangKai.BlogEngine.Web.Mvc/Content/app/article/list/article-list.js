@@ -16,7 +16,7 @@ angular.module('article-list', []).config([
     });
   }
 ]).controller('ArticleListCtrl', [
-  "$scope", "$translate", "$routeParams", "$location", "Article", function($scope, $translate, $routeParams, $location, Article) {
+  "$scope", "$window", "$translate", "$routeParams", "$location", "Article", function($scope, $window, $translate, $routeParams, $location, Article) {
     var _ref, _ref1, _ref2;
     $scope.$parent.showBanner = false;
     $scope.$parent.title = (_ref = (_ref1 = $routeParams.group) != null ? _ref1 : $routeParams.channel) != null ? _ref : "Search Result '" + $scope.key + "'";
@@ -60,6 +60,9 @@ angular.module('article-list', []).config([
         $scope.list = data;
         return $scope.loading = "";
       });
+    };
+    $scope.edit = function(item) {
+      return $window.location.href = "/admin/#!/article('" + item.PostId + "')";
     };
     return $scope.load($scope.currentPage);
   }
