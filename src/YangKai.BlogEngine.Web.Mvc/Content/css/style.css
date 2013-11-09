@@ -19,6 +19,13 @@ h6,
   font-family: "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
   line-height: 1.4;
 }
+a,
+a:hover {
+  -webkit-transition: color 0.2s ease-in-out;
+  -moz-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
 .dropdown-submenu {
   position: relative;
 }
@@ -107,10 +114,6 @@ a:hover {
 }
 a.button:hover {
   color: #ffffff;
-}
-.loading {
-  padding: 5px 5px 0px 20px;
-  background: url(/Content/img/ajax-loader.gif) 0px 3px no-repeat;
 }
 article {
   margin-bottom: 20px;
@@ -546,6 +549,9 @@ article .date div:last-child {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
   margin-bottom: 15px;
   padding-bottom: 15px;
+}
+table .action {
+  width: 20px;
 }
 /* admin */
 .sider {

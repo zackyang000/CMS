@@ -9,6 +9,13 @@ font-family: "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体
 line-height:1.4
 }
 
+a,a:hover {
+    -webkit-transition: color 0.2s ease-in-out;
+    -moz-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+}
+
 .dropdown-submenu{position:relative;}
 .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
 .dropdown-submenu:hover>.dropdown-menu{display:block;}
@@ -37,11 +44,6 @@ line-height:1.4
 
 a:hover {text-decoration: none;}
 a.button:hover{color:#FFF}
-
-.loading {
-    padding:5px 5px 0px 20px;
-    background:url(/Content/img/ajax-loader.gif) 0px 3px no-repeat;
-}
 
 article {
     margin-bottom: 20px;
