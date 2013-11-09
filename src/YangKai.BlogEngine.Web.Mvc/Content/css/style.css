@@ -21,10 +21,10 @@ h6,
 }
 a,
 a:hover {
-  -webkit-transition: color 0.2s ease-in-out;
-  -moz-transition: color 0.2s ease-in-out;
-  -o-transition: color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
 }
 .dropdown-submenu {
   position: relative;
@@ -187,40 +187,6 @@ article .date div:last-child {
 }
 .pagination a {
   cursor: pointer;
-}
-.technologies {
-  color: white;
-  margin: 20px auto;
-}
-.technologies a {
-  height: 130px;
-  width: 130px;
-  margin: 5px;
-  padding: 15px;
-  color: #000;
-  display: block;
-  cursor: pointer;
-  overflow: hidden;
-  text-decoration: none;
-  border: 1px solid #ccc;
-}
-.technologies a p {
-  padding-top: 15px;
-  font-size: 12px;
-}
-.technologies a div {
-  text-align: center;
-  display: block;
-}
-.technologies a div img {
-  width: 80px;
-  height: 80px;
-}
-.technologies a.wide {
-  width: 270px;
-}
-.technologies a:hover {
-  outline: 3px #225A68 solid;
 }
 .post-related {
   line-height: 20px;

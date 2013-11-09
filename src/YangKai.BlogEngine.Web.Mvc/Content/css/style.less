@@ -10,10 +10,10 @@ line-height:1.4
 }
 
 a,a:hover {
-    -webkit-transition: color 0.2s ease-in-out;
-    -moz-transition: color 0.2s ease-in-out;
-    -o-transition: color 0.2s ease-in-out;
-    transition: color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out,background 0.2s ease-in-out;
+    -moz-transition: color 0.2s ease-in-out,background 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out,background 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out,background 0.2s ease-in-out;
 }
 
 .dropdown-submenu{position:relative;}
@@ -34,7 +34,7 @@ a,a:hover {
 .bg-color-yellow {background-color: #ffc40d !important;}
 .bg-color-pink {background-color: #c3325f !important;}
 
-//文章选中颜色
+//选中颜色
 ::-moz-selection {background: #d9edf7;}
 ::selection {background: #d9edf7;}
 ::-webkit-selection {background: #d9edf7;}
@@ -130,41 +130,6 @@ article {
 .pagination {
     margin-bottom:5px;
     a {cursor: pointer;}
-}
-
-.technologies {
-    color: white;
-    margin: 20px auto;
-    a {
-        height: 130px;
-        width: 130px;
-        margin: 5px;
-        padding: 15px;
-        color: #000;
-        display: block;
-        cursor: pointer;
-        overflow: hidden;
-        text-decoration: none;
-        border: 1px solid #ccc;
-        p {
-            padding-top: 15px;
-            font-size: 12px;
-        }
-        div {
-            text-align: center;
-            display: block;
-            img {
-                width: 80px;
-                height: 80px;
-            }
-        }
-    }
-    a.wide {
-        width: 270px;
-    }
-    a:hover {
-        outline: 3px #225A68 solid;
-    }
 }
 
 .post-related {
