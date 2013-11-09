@@ -36,7 +36,7 @@
     $location.search({p: pageNo})
 
   $scope.load = ->
-    $scope.loading="Loading"
+    $scope.loading=$translate("global.loading")
     filter='IsDeleted eq false'
     filter+=" and Group/Channel/Url eq '#{$scope.params.channel}'" if $scope.params.channel
     filter+=" and Group/Url eq '#{$scope.params.group}'" if $scope.params.group

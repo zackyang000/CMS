@@ -35,7 +35,7 @@ angular.module('article-list', []).config([
     };
     $scope.load = function() {
       var filter;
-      $scope.loading = "Loading";
+      $scope.loading = $translate("global.loading");
       filter = 'IsDeleted eq false';
       if ($scope.params.channel) {
         filter += " and Group/Channel/Url eq '" + $scope.params.channel + "'";
