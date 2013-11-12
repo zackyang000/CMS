@@ -485,7 +485,6 @@
       <DependentUpon>style.less</DependentUpon>
     </Content>
     <Content Include="Content\font\fontawesome-webfont.svg" />
-    <Content Include="Content\img\technologies\angularJS.png" />
     <Content Include="Content\test\angular-scenario.js" />
     <Content Include="Content\app\LoginController.js">
       <DependentUpon>LoginController.coffee</DependentUpon>
@@ -559,25 +558,6 @@
     <Content Include="Content\js\vendor\moment.js" />
     <Content Include="Content\js\vendor\uuid.js" />
     <Content Include="Content\data\words.js" />
-    <Content Include="Content\data\technology.js" />
-    <Content Include="Content\img\technologies\Bootstrap.png" />
-    <Content Include="Content\img\technologies\bootstrapper.png" />
-    <Content Include="Content\img\technologies\CKEditor.png" />
-    <Content Include="Content\img\technologies\CKFinder.png" />
-    <Content Include="Content\img\technologies\coffeescript.jpg" />
-    <Content Include="Content\img\technologies\css3.png" />
-    <Content Include="Content\img\technologies\ddd.png" />
-    <Content Include="Content\img\technologies\entityframework.png" />
-    <Content Include="Content\img\technologies\html5.png" />
-    <Content Include="Content\img\technologies\jquery.jpg" />
-    <Content Include="Content\img\technologies\konckout.png" />
-    <Content Include="Content\img\technologies\metro.jpg" />
-    <Content Include="Content\img\technologies\modernizr.png" />
-    <Content Include="Content\img\technologies\mvc.png" />
-    <Content Include="Content\img\technologies\net.jpg" />
-    <Content Include="Content\img\technologies\none.png" />
-    <Content Include="Content\img\technologies\NPOI.jpg" />
-    <Content Include="Content\img\technologies\RSS.png" />
     <Content Include="Content\app\admin\article\edit\article-edit.tpl.html" />
     <Content Include="Content\app\admin\article\article.tpl.html" />
     <Content Include="Content\app\admin\basedata\channel\basedata-channel.tpl.html" />
@@ -596,8 +576,6 @@
     <Content Include="Content\img\lab\refstat_pre.jpg" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\postline.png" />
-    <Content Include="Content\img\technologies\sammy.png" />
-    <Content Include="Content\img\technologies\sql.jpg" />
     <Content Include="Content\app\app.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>

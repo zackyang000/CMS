@@ -12,7 +12,7 @@
         @Scripts.Render("~/js")
     </head>
     <body>
-        <header class="navbar navbar-inverse navbar-fixed-top">
+        <header class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -47,7 +47,7 @@
                         </li>
                         <li class="dropdown" ng-show="User.IsAdmin" ng-controller="LoginController">
                             <a class="dropdown-toggle" href="JavaScript:void(0)" data-toggle="dropdown">
-                                <img ng-src="{{User.Gravatar}}" class="avatar-mini" />
+                                <img ng-src="{{User.Gravatar}}" class="avatar-mini pull-left" />
                                 &nbsp;<span>{{User.UserName}}</span>
                             </a>
                             <ul class="dropdown-menu personal-box">
