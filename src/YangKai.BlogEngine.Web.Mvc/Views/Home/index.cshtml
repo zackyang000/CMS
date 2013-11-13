@@ -12,7 +12,7 @@
         @Scripts.Render("~/js")
     </head>
     <body>
-        <header class="navbar navbar-fixed-top">
+        <header class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -42,36 +42,11 @@
                         <li><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li ng-controller="LoginController">
+                            <a href="JavaScript:void(0)" ng-click="open()">{{'global.menu.admin' | translate}}</a>
+                        </li>
                         <li>
                             <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="form-control search" placeholder="{{'global.menu.search' | translate}}" />
-                        </li>
-                        <li class="dropdown" ng-show="User.IsAdmin" ng-controller="LoginController">
-                            <a class="dropdown-toggle" href="JavaScript:void(0)" data-toggle="dropdown">
-                                <img ng-src="{{User.Gravatar}}" class="avatar-mini pull-left" />
-                                &nbsp;<span>{{User.UserName}}</span>
-                            </a>
-                            <ul class="dropdown-menu personal-box">
-                                <li>
-                                    <div class="row hr">
-                                        <div class="col-xs-4">
-                                            <img ng-src="{{User.Gravatar}}" class="avatar" />
-                                        </div>
-                                        <div class="col-xs-8">
-                                            <div><strong>{{User.UserName}}</strong></div>
-                                            <p>{{User.Email}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="pull-left">
-                                        <button class="button button-flat-action" ng-click="manage()">Manage</button>
-                                    </div>
-                                    <div class="pull-right">
-                                        <button class="button button-flat-caution" ng-click="signout()">Sign out</button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li ng-show="!User.IsAdmin" ng-controller="LoginController">
-                            <a href="JavaScript:void(0)" ng-click="open()">{{'global.menu.admin' | translate}}</a>
                         </li>
                     </ul>
                 </nav>
