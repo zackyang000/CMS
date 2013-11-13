@@ -4,7 +4,7 @@
 ($routeProvider) ->
   $routeProvider
   .when("/about",
-    templateUrl: "/Content/app/about/about-newegg.tpl.html"
+    templateUrl: "/Content/app/about/about.tpl.html"
     controller: 'AboutCtrl')
 ])
 
