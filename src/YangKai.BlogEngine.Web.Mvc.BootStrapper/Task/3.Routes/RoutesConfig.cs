@@ -33,27 +33,27 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 );
 
             routes.MapRoute(
-                name: "Admin1",
+                name: "Admin-Login",
                 url: "Admin/Login",
-                defaults: new { controller = "Admin", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Admin", action = "Login"}
                 );
 
             routes.MapRoute(
-                name: "Admin2",
+                name: "Admin-GetUser",
                 url: "Admin/GetUser",
-                defaults: new { controller = "Admin", action = "GetUser", id = UrlParameter.Optional }
-                );
-
-            routes.MapRoute(
-                name: "Admin",
-                url: "Admin/{*all}",
-                defaults: new {controller = "Admin", action = "Index", id = UrlParameter.Optional}
+                defaults: new { controller = "Admin", action = "GetUser"}
                 );
 
             routes.MapRoute(
                 name: "FileUpload",
                 url: "FileUpload/{action}/{id}",
-                defaults: new {controller = "FileUpload", action = "Index", id = UrlParameter.Optional}
+                defaults: new { controller = "FileUpload", action = "Index", id = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
+                name: "Admin",
+                url: "Admin/{*all}",
+                defaults: new {controller = "Admin", action = "Index"}
                 );
 
             routes.MapRoute(
