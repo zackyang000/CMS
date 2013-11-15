@@ -33,8 +33,20 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 );
 
             routes.MapRoute(
+                name: "Admin1",
+                url: "Admin/Login",
+                defaults: new { controller = "Admin", action = "Login", id = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
+                name: "Admin2",
+                url: "Admin/GetUser",
+                defaults: new { controller = "Admin", action = "GetUser", id = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
                 name: "Admin",
-                url: "Admin/{action}/{id}",
+                url: "Admin/{*all}",
                 defaults: new {controller = "Admin", action = "Index", id = UrlParameter.Optional}
                 );
 

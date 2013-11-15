@@ -62,7 +62,7 @@ angular.module('article-list', []).config([
       });
     };
     $scope.edit = function(item) {
-      return $window.location.href = "/admin/#!/article('" + item.PostId + "')";
+      return $window.location.href = "/admin/article('" + item.PostId + "')";
     };
     return $scope.load($scope.currentPage);
   }

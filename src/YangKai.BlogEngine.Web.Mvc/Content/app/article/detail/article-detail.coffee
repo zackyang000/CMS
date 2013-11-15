@@ -95,5 +95,5 @@
       message.success "Comment has been removed."
 
   $scope.edit = (item) ->
-    $window.location.href="/admin/#!/article('#{item.PostId}')"
+    $window.location.href="/admin/article('#{item.PostId}')"
 ])

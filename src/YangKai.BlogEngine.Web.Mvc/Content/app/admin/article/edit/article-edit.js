@@ -1,10 +1,10 @@
 ﻿
 angular.module('admin-article-edit', []).config([
   "$routeProvider", function($routeProvider) {
-    return $routeProvider.when("/article(':id')", {
+    return $routeProvider.when("/admin/article(':id')", {
       templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html",
       controller: 'ArticleEditCtrl'
-    }).when("/article/new", {
+    }).when("/admin/article/new", {
       templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html",
       controller: 'ArticleEditCtrl'
     });
@@ -162,7 +162,7 @@ angular.module('admin-article-edit', []).config([
           id: "(guid'" + entity.PostId + "')"
         }, entity, function(data) {
           message.success("Delete post successfully.");
-          return $window.location.href = "/admin/#!/article";
+          return $window.location.href = "/admin/article";
         });
       });
     };

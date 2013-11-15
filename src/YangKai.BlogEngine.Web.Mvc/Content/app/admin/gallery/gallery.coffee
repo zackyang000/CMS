@@ -4,7 +4,7 @@
 .config(["$routeProvider",
 ($routeProvider) ->
   $routeProvider
-  .when("/gallery",
+  .when("/admin/gallery",
     templateUrl: "/content/app/admin/gallery/gallery.tpl.html"
     controller: 'GalleryCtrl')
 ])

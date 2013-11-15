@@ -3,7 +3,7 @@
 .config(["$routeProvider",
 ($routeProvider) ->
   $routeProvider
-  .when("/channel(':channel')/group",
+  .when("/admin/channel(':channel')/group",
     templateUrl: "/content/app/admin/basedata/group/basedata-group.tpl.html"
     controller: 'GroupCtrl')
 ])

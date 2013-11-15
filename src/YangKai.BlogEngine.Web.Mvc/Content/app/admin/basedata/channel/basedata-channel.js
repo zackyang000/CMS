@@ -1,7 +1,7 @@
 ﻿
 angular.module('admin-basedata-channel', []).config([
   "$routeProvider", function($routeProvider) {
-    return $routeProvider.when("/channel", {
+    return $routeProvider.when("/admin/channel", {
       templateUrl: "/content/app/admin/basedata/channel/basedata-channel.tpl.html",
       controller: 'ChannelCtrl'
     });

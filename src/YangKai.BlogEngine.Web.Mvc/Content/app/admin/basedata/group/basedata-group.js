@@ -1,7 +1,7 @@
 ﻿
 angular.module('admin-basedata-group', []).config([
   "$routeProvider", function($routeProvider) {
-    return $routeProvider.when("/channel(':channel')/group", {
+    return $routeProvider.when("/admin/channel(':channel')/group", {
       templateUrl: "/content/app/admin/basedata/group/basedata-group.tpl.html",
       controller: 'GroupCtrl'
     });

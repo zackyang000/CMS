@@ -24,7 +24,7 @@
 'ui.bootstrap'])
 .config ["$locationProvider","$routeProvider","$httpProvider", ($locationProvider,$routeProvider,$httpProvider) ->
   $httpProvider.responseInterceptors.push(interceptor)  
-  $locationProvider.html5Mode(false).hashPrefix('!')
+  $locationProvider.html5Mode(true)
   $routeProvider.otherwise redirectTo: "/"
 ]
 

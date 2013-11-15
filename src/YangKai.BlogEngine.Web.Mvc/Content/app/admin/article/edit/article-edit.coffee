@@ -3,10 +3,10 @@
 .config(["$routeProvider",
 ($routeProvider) ->
   $routeProvider
-  .when("/article(':id')",
+  .when("/admin/article(':id')",
     templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
     controller: 'ArticleEditCtrl')
-  .when("/article/new",
+  .when("/admin/article/new",
     templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
     controller: 'ArticleEditCtrl')
 ])
@@ -109,7 +109,7 @@
       Article.update {id:"(guid'#{entity.PostId}')"},entity
       ,(data)->
           message.success "Delete post successfully."
-          $window.location.href = "/admin/#!/article"
+          $window.location.href = "/admin/article"
 
   #上传图片处理
   $scope.files = []

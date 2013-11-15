@@ -52,7 +52,7 @@
       $scope.loading=""
 
   $scope.edit = (item) ->
-    $window.location.href="/admin/#!/article('#{item.PostId}')"
+    $window.location.href="/admin/article('#{item.PostId}')"
 
   $scope.load $scope.currentPage
 ])

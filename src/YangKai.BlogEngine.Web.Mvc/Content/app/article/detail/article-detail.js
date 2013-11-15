@@ -112,7 +112,7 @@ angular.module('article-detail', []).config([
       });
     };
     return $scope.edit = function(item) {
-      return $window.location.href = "/admin/#!/article('" + item.PostId + "')";
+      return $window.location.href = "/admin/article('" + item.PostId + "')";
     };
   }
 ]);

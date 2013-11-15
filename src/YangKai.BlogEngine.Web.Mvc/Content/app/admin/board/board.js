@@ -1,7 +1,7 @@
 ﻿
 angular.module('admin-board', []).config([
   "$routeProvider", function($routeProvider) {
-    return $routeProvider.when("/board", {
+    return $routeProvider.when("/admin/board", {
       templateUrl: "/content/app/admin/board/board.tpl.html",
       controller: 'BoardCtrl'
     });

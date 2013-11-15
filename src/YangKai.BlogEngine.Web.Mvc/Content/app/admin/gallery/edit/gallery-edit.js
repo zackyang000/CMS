@@ -1,10 +1,10 @@
 ﻿
 angular.module('admin-gallery-edit', []).config([
   "$routeProvider", function($routeProvider) {
-    return $routeProvider.when("/gallery(':id')", {
+    return $routeProvider.when("/admin/gallery(':id')", {
       templateUrl: "/content/app/admin/gallery/edit/gallery-edit.tpl.html",
       controller: 'GalleryEditCtrl'
-    }).when("/gallery/new", {
+    }).when("/admin/gallery/new", {
       templateUrl: "/content/app/admin/gallery/edit/gallery-edit.tpl.html",
       controller: 'GalleryEditCtrl'
     });

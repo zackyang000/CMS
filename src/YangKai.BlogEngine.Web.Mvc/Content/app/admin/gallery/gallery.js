@@ -1,7 +1,7 @@
 ﻿
 angular.module('admin-gallery', ['admin-gallery-edit', 'GalleryServices', 'PhotoServices']).config([
   "$routeProvider", function($routeProvider) {
-    return $routeProvider.when("/gallery", {
+    return $routeProvider.when("/admin/gallery", {
       templateUrl: "/content/app/admin/gallery/gallery.tpl.html",
       controller: 'GalleryCtrl'
     });

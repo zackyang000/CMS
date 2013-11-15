@@ -4,7 +4,7 @@
     <ul class="breadcrumb">
         <li>
             <i class="icon-home home-icon"></i>
-            <a href="/admin/#!/">Home</a>
+            <a href="/admin/">Home</a>
         </li>
     <li class="active">Channels</li>
     </ul>
@@ -32,7 +32,7 @@
                 <td>{{item.Name}}</td>
                 <td>{{item.Url}}</td>
                 <td>{{item.Description}}</td>
-                <td><a ng-href="/admin/#!/channel('{{item.Url}}')/group">Groups</a></td>
+                <td><a ng-href="/admin/channel('{{item.Url}}')/group">Groups</a></td>
                 <td>
                     <div class="action-buttons">
                         <a class="green" href="JavaScript:void(0)" ng-click="edit(item)">

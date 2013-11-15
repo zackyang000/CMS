@@ -4,7 +4,7 @@
     <ul class="breadcrumb">
         <li>
             <i class="icon-home home-icon"></i>
-            <a href="/admin/#!/">Home</a>
+            <a href="/admin/">Home</a>
         </li>
         <li class="active">Article</li>
     </ul>
@@ -12,7 +12,7 @@
 
 <div class="page-content">
     <div class="text-right">
-        <a class="btn btn-primary btn-sm" href="/admin/#!/article/new">
+        <a class="btn btn-primary btn-sm" href="/admin/article/new">
             <i class="icon-plus"></i> New
         </a>
     </div>
@@ -35,20 +35,20 @@
         <tbody>
             <tr ng-repeat="item in list.value" style="height: 51px;">
                 <td><img style="width: 24px;height: 15px;" ng-src="{{'/upload/thumbnail/'+item.Thumbnail.Url | image}}" ng-show="item.Thumbnail" /></td>
-                <td><a href="/admin/#!/article('{{item.PostId}}')">{{item.Title}}</a></td>
+                <td><a href="/admin/article('{{item.PostId}}')">{{item.Title}}</a></td>
                 <td>{{item.PubAdmin.UserName}}</td>
                 <td>{{item.Group.Channel.Name}}</td>
                 <td>{{item.Group.Name}}</td>
                 <td>
                     <span ng-repeat="category in item.Categorys">
                         <span ng-hide="$first">,</span>
-                        <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
+                        <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
                     </span>
                 </td>
                 <td>
                     <span ng-repeat="tag in item.Tags">
                         <span ng-hide="$first">,</span>
-                        <a ng-href="/#!/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
+                        <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
                     </span>
                 </td>
                 <td>{{item.ReplyCount}}</td>

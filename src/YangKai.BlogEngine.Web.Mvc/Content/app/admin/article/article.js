@@ -1,7 +1,7 @@
 ﻿
 angular.module('admin-article', ['admin-article-edit']).config([
   "$routeProvider", function($routeProvider) {
-    return $routeProvider.when("/article", {
+    return $routeProvider.when("/admin/article", {
       templateUrl: "/Content/app/admin/article/article.tpl.html",
       controller: 'ArticleListCtrl'
     });
