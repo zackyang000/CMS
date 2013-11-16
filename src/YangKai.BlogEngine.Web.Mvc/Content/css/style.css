@@ -26,6 +26,9 @@ a:hover {
   -o-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
 }
+a:hover {
+  color: #9E0000;
+}
 .dropdown-submenu {
   position: relative;
 }
