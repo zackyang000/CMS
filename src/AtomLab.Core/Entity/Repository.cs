@@ -40,6 +40,8 @@ namespace AtomLab.Core
             if (T is Entity)
             {
                 (T as Entity).LastEditUser = Auth.UserName;
+                (T as Entity).LastEditIp = Auth.Ip;
+                (T as Entity).LastEditAddress = Auth.Address;
                 (T as Entity).LastEditDate = DateTime.Now;
             }
 

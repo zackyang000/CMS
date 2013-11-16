@@ -1,5 +1,4 @@
 ﻿
-
 myDirectives.directive("activeLink", [
   "$location", function(location) {
     return {
@@ -7,7 +6,7 @@ myDirectives.directive("activeLink", [
       link: function(scope, element, attrs, controller) {
         var clazz, match, path;
         clazz = attrs.activeLink;
-        path = $(element).children("a")[0].hash.substring(2);
+        path = $($(element).children("a")[0]).attr('href');
         scope.location = location;
         scope.$watch("location.path()", function(currentPath) {
           if (match(path, currentPath)) {
@@ -17,14 +16,11 @@ myDirectives.directive("activeLink", [
           }
         });
         return match = function(path, currentPath) {
-          if (path === '/') {
-            if (currentPath === '/') {
-              return true;
-            }
-          } else if (currentPath.indexOf(path) === 0) {
-            return true;
+          if (path === '/admin') {
+            return currentPath === '/admin';
+          } else {
+            return currentPath.indexOf(path) === 0;
           }
-          return false;
         };
       }
     };
@@ -38,11 +34,11 @@ myDirectives.directive("activeParentLink", [
       link: function(scope, element, attrs, controller) {
         var clazz, item, links, match, paths, _i, _len;
         clazz = attrs.activeParentLink;
-        links = $(element).children("ul").children("li").children("a");
+        links = $(element).children("a").next().children("li").children("a");
         paths = [];
         for (_i = 0, _len = links.length; _i < _len; _i++) {
           item = links[_i];
-          paths.push(item.hash.substring(2));
+          paths.push($(item).attr('href'));
         }
         scope.location = location;
         scope.$watch("location.path()", function(currentPath) {
@@ -60,14 +56,11 @@ myDirectives.directive("activeParentLink", [
           return _results;
         });
         return match = function(path, currentPath) {
-          if (path === '/') {
-            if (currentPath === '/') {
-              return true;
-            }
-          } else if (currentPath.indexOf(path) === 0) {
-            return true;
+          if (path === '/admin') {
+            return currentPath === '/admin';
+          } else {
+            return currentPath.indexOf(path) === 0;
           }
-          return false;
         };
       }
     };

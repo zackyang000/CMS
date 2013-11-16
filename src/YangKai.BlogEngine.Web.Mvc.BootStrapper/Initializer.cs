@@ -12,6 +12,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
         public static void Initialize()
         {
             Auth.GetName = () => EncryptionCookieHelper.Load("__Username__");
+            Auth.GetIp = () => HttpContext.Current != null ? HttpContext.Current.Request.UserHostAddress : "unknown";
 
             Bootstrap.Bootstrapper.With.StartupTasks()
                 .UsingThisExecutionOrder(s => s

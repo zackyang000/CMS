@@ -23,7 +23,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                     Email = entity.Email,
                 };
             }
-
+            entity.Ip = Request.Headers.From;
             return base.CreateEntity(entity);
         }
     }

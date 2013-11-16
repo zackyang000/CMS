@@ -3,7 +3,7 @@
   restrict: "A"
   link: (scope, element, attrs, controller) ->
     clazz = attrs.activeLink
-    path = $(element).children("a")[0].hash.substring(2)
+    path = $($(element).children("a")[0]).attr('href')
     scope.location = location
     scope.$watch "location.path()", (currentPath) ->
       if match(path,currentPath)
@@ -12,22 +12,20 @@
         element.removeClass clazz
 
     match = (path,currentPath)->
-      if path=='/'
-        if currentPath=='/'
-          return true
-      else if currentPath.indexOf(path) is 0
-        return true
-      return false
+      if path=='/admin'
+        return currentPath=='/admin'
+      else
+        return currentPath.indexOf(path) is 0
 ]
 
 myDirectives.directive "activeParentLink", ["$location", (location) ->
   restrict: "A"
   link: (scope, element, attrs, controller) ->
     clazz = attrs.activeParentLink
-    links = $(element).children("ul").children("li").children("a")
+    links = $(element).children("a").next().children("li").children("a")
     paths=[]
     for item in links
-      paths.push item.hash.substring(2)
+      paths.push $(item).attr('href')
     scope.location = location
     scope.$watch "location.path()", (currentPath) ->
       element.removeClass clazz
@@ -36,10 +34,8 @@ myDirectives.directive "activeParentLink", ["$location", (location) ->
           element.addClass clazz
 
     match = (path,currentPath)->
-      if path=='/'
-        if currentPath=='/'
-          return true
-      else if currentPath.indexOf(path) is 0
-        return true
-      return false
+      if path=='/admin'
+        return currentPath=='/admin'
+      else
+        return currentPath.indexOf(path) is 0
 ]
