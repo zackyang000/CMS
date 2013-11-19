@@ -40,8 +40,8 @@ namespace AtomLab.Utility
                     Content = string.Empty,
                     FileList = new List<string>()
                 };
-            var physicalPath = Path.Combine(physicalRootPath, folder);
-
+            var physicalPath = Path.Combine(physicalRootPath, folder.StartsWith("/") ? folder.Substring(1) : folder);
+            
             var client = new WebClient();
 
             //使用浏览器代理配置
@@ -62,7 +62,7 @@ namespace AtomLab.Utility
             {
                 var remoteUrl = match.Groups[1].Value;
                 if (remoteUrl.Contains("woshinidezhu.com")) continue;
-
+                
                 var extension = Path.GetExtension(remoteUrl);
                 var filename = Guid.NewGuid() + extension;
                 var physicalAddress = Path.Combine(physicalPath, filename);
