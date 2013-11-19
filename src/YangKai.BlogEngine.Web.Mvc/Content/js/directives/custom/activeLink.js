@@ -4,9 +4,10 @@ myDirectives.directive("activeLink", [
     return {
       restrict: "A",
       link: function(scope, element, attrs, controller) {
-        var clazz, match, path;
+        var clazz, link, match, path;
         clazz = attrs.activeLink;
-        path = $($(element).children("a")[0]).attr('href');
+        link = $(element).children("a")[0];
+        path = $(link).attr('href');
         scope.location = location;
         scope.$watch("location.path()", function(currentPath) {
           if (match(path, currentPath)) {

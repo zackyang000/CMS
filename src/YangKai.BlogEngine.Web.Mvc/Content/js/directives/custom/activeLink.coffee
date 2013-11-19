@@ -3,7 +3,8 @@
   restrict: "A"
   link: (scope, element, attrs, controller) ->
     clazz = attrs.activeLink
-    path = $($(element).children("a")[0]).attr('href')
+    link = $(element).children("a")[0]
+    path = $(link).attr('href')
     scope.location = location
     scope.$watch "location.path()", (currentPath) ->
       if match(path,currentPath)
