@@ -552,6 +552,9 @@ table .action {
   #cta-content .wrapped-content {
     padding: 150px 0px 20px 0px;
   }
+  .container {
+    max-width: 970px;
+  }
 }
 .navbar .navbar-nav > li > a:hover,
 .navbar .navbar-nav > li > a:hover .caret {
