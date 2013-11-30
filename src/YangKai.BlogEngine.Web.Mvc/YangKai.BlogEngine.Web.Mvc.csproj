@@ -1179,7 +1179,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\QQWry.Dat" />
+    <None Include="App_Data\QQWry.Dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Content\app\board\board.coffee" />
     <Content Include="Content\app\app.coffee" />
     <Content Include="Content\js\filters\filters.coffee" />
