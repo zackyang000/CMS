@@ -1139,6 +1139,7 @@
     <Content Include="Content\app\about\about-newegg.tpl.html" />
     <Content Include="Content\app\board\board.tpl.html" />
     <Content Include="Content\app\index.tpl.html" />
+    <Content Include="entry.html" />
     <Content Include="robots.txt" />
     <Content Include="Content\js\vendor\messenger.js" />
     <Content Include="Content\js\vendor\modernizr-2.6.2.js" />
