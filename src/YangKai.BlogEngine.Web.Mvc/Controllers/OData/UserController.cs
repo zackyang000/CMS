@@ -1,6 +1,7 @@
 using System;
 using System.Web.Http;
 using System.Web.Http.OData;
+using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
 
@@ -15,16 +16,19 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             var password = (string)parameters["Password"];
             var isRemember = (bool)parameters["IsRemember"];
 
-            var login = Proxy.Repository<User>().Exist(p => p.LoginName == username && p.Password == password);
+            var security = Config.UseDomainAccount ? (IUserSecurity) new NeweggUserSecurity() : new LocalUserSecurity();
+
+            var login = security.Login(username, password);
             if (login)
             {
-                var data = Proxy.Repository<User>().Get(p => p.LoginName == username);
+                var data = security.Get(username, password);
                 Current.User = new WebUser
                 {
                     UserName = data.UserName,
                     LoginName = data.LoginName,
-                    Password = data.Password,
+                    Password = password,
                     Email = data.Email,
+                    Avatar = data.Avatar,
                     IsAdmin = true,
                     IsRemember = isRemember
                 };

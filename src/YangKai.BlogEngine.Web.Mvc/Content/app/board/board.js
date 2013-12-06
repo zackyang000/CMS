@@ -28,10 +28,12 @@ angular.module('board', ['MessageServices']).config([
       _ref = $scope.list.value;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
-        if (item.Email) {
-          item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
-        } else {
-          item.Gravatar = '/Content/img/avatar.png';
+        if (!item.Avatar) {
+          if (item.Email) {
+            item.Avatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
+          } else {
+            item.Avatar = '/Content/img/avatar.png';
+          }
         }
       }
       return $scope.loading = "";

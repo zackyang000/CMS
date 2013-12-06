@@ -49,10 +49,12 @@ angular.module('article-detail', []).config([
       _ref1 = $scope.item.Comments;
       for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
         item = _ref1[_j];
-        if (item.Email) {
-          item.Gravatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
-        } else {
-          item.Gravatar = '/Content/img/avatar.png';
+        if (!item.Avatar) {
+          if (item.Email) {
+            item.Avatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
+          } else {
+            item.Avatar = '/Content/img/avatar.png';
+          }
         }
       }
       return Article.browsed({
@@ -104,6 +106,7 @@ angular.module('article-detail', []).config([
       });
     };
     $scope.remove = function(item) {
+      message.confirm(function() {});
       return Comment.remove({
         id: "(guid'" + item.CommentId + "')"
       }, function() {

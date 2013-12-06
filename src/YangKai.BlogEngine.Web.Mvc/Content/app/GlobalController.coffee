@@ -12,4 +12,7 @@
 
   $scope.search = ->
     $location.path("/search/#{$scope.key}")
+
+  $scope.GoHome = ->
+    $window.location.href='/'
 ]

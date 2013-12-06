@@ -10,8 +10,11 @@ GlobalController = [
     }, function(data) {
       return $scope.Channels = data.value;
     });
-    return $scope.search = function() {
+    $scope.search = function() {
       return $location.path("/search/" + $scope.key);
+    };
+    return $scope.GoHome = function() {
+      return $window.location.href = '/';
     };
   }
 ];

@@ -45,6 +45,8 @@ namespace YangKai.BlogEngine.Domain
         /// </summary>
         public string Address { get; set; }
 
+        public string Avatar { get; set; }
+
         #endregion
     }
 }

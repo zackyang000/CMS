@@ -26,10 +26,11 @@
   $scope.loading=$translate("global.loading")
   $scope.list = Message.query $filter:'IsDeleted eq false',->
     for item in $scope.list.value
-      if item.Email
-        item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
-      else
-        item.Gravatar='/Content/img/avatar.png'
+      if !item.Avatar
+        if item.Email
+          item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
+        else
+          item.Avatar='/Content/img/avatar.png'
     $scope.loading=""
 
   $scope.save = () ->

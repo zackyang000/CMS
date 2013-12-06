@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
+using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
 
@@ -20,6 +21,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                     Email = entity.Email,
                 };
             }
+            var security = Config.UseDomainAccount ? (IUserSecurity)new NeweggUserSecurity() : new LocalUserSecurity();
+            entity.Avatar = security.GetAvater(Current.User);
             entity= base.CreateEntity(entity);
             Task.Factory.StartNew(() => Rss.Current.BuildComment());
             return entity;

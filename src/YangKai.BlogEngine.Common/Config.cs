@@ -8,6 +8,18 @@ namespace YangKai.BlogEngine.Common
 {
     public class Config
     {
+        /// <summary>
+        /// 使用AD账户登录
+        /// </summary>
+        public static bool UseDomainAccount
+        {
+            get
+            {
+                return Convert.ToBoolean(GetConfig("UseDomainAccount"));
+            }
+        }
+        
+
         public class Path
         {
             /// <summary>

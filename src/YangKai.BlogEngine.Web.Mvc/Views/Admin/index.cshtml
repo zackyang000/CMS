@@ -25,7 +25,7 @@
                 <div class="navbar-header pull-right" role="navigation" ng-controller="LoginController">
                     <ul class="nav ace-nav">
                         <li class="grey">
-                            <a href="/" title="Redirect To Website.">
+                            <a href="javascript:void(0)" ng-click="GoHome()" title="Redirect To Website.">
                                 <i class="icon-home"></i>
                             </a>
                         </li>
@@ -36,7 +36,7 @@
 						</li>
                         <li class="light-blue">
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                                <img class="nav-user-photo" ng-src="{{User.Gravatar}}" />
+                                <img class="nav-user-photo" ng-src="{{User.Avatar}}" />
                                 <span class="user-info">
                                     <small>Welcome,</small>
                                     {{User.UserName}}

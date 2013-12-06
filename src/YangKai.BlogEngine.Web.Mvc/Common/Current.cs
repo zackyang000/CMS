@@ -20,15 +20,30 @@ namespace YangKai.BlogEngine.Web.Mvc
         {
             get
             {
-                return new WebUser
+                var user = new WebUser
                 {
                     UserName = EncryptionCookieHelper.Load("__Username__"),
                     LoginName = EncryptionCookieHelper.Load("__LoginName__"),
                     Email = EncryptionCookieHelper.Load("__Email__"),
                     Avatar = EncryptionCookieHelper.Load("__Avatar__"),
                     Password = EncryptionCookieHelper.Load("__Pwd__"),
-                    IsAdmin =EncryptionCookieHelper.Load("__IsAdmin__")=="true",
+                    IsAdmin = EncryptionCookieHelper.Load("__IsAdmin__") == "true",
                 };
+                if (!user.IsAdmin) return user;
+
+                var security = Config.UseDomainAccount
+                    ? (IUserSecurity) new NeweggUserSecurity()
+                    : new LocalUserSecurity();
+                var login = security.Login(user.LoginName, user.Password);
+                if (login)
+                {
+                    return user;
+                }
+                else
+                {
+                    User = null;
+                    return new WebUser();
+                }
             }
             set
             {

@@ -189,8 +189,12 @@
     <Compile Include="Common\EntityController.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\NeweggUserSecurity.cs" />
+    <Compile Include="Security\LocalUserSecurity.cs" />
+    <Compile Include="Security\IUserSecurity.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\app\about\about-newegg-edi.tpl.html" />
     <Content Include="Content\app\admin\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -1130,16 +1134,18 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeMDUltra.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeMidnight.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
+    <Content Include="entry\bg.jpeg" />
+    <Content Include="entry\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\app\about\about.tpl.html" />
     <Content Include="Content\app\article\archives\article-archives.tpl.html" />
     <Content Include="Content\app\article\article-post-header.tpl.html" />
     <Content Include="Content\app\article\detail\article-detail.tpl.html" />
     <Content Include="Content\app\article\list\article-list.tpl.html" />
-    <Content Include="Content\app\about\about-newegg.tpl.html" />
+    <Content Include="Content\app\about\about-newegg-bts.tpl.html" />
     <Content Include="Content\app\board\board.tpl.html" />
     <Content Include="Content\app\index.tpl.html" />
-    <Content Include="entry.html" />
+    <Content Include="entry\index.html" />
     <Content Include="robots.txt" />
     <Content Include="Content\js\vendor\messenger.js" />
     <Content Include="Content\js\vendor\modernizr-2.6.2.js" />

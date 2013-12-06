@@ -72,5 +72,7 @@ namespace YangKai.BlogEngine.Domain
         /// 所属文章.
         /// </summary>
         public virtual Post Post { get; set; }
+
+        public string Avatar { get; set; }
     }
 }

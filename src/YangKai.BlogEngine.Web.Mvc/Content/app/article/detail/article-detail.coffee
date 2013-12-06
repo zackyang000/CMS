@@ -46,10 +46,11 @@
         $orderby:'CreateDate desc' 
     #评论
     for item in $scope.item.Comments
-      if item.Email
-        item.Gravatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
-      else
-        item.Gravatar='/Content/img/avatar.png'
+      if !item.Avatar
+        if item.Email
+          item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
+        else
+          item.Avatar='/Content/img/avatar.png'
     Article.browsed id:"(guid'#{$scope.item.PostId}')"
 
   $scope.entity= {}
@@ -90,9 +91,10 @@
       message.error error.data.ExceptionMessage ? error.status
 
   $scope.remove = (item) ->
+    message.confirm ->
     Comment.remove id:"(guid'#{item.CommentId}')",->
-      item.IsDeleted=true
-      message.success "Comment has been removed."
+        item.IsDeleted=true
+        message.success "Comment has been removed."
 
   $scope.edit = (item) ->
     $window.location.href="/admin/article('#{item.PostId}')"
