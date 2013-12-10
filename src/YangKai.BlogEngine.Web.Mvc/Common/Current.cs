@@ -41,8 +41,8 @@ namespace YangKai.BlogEngine.Web.Mvc
                 }
                 else
                 {
-                    User = null;
-                    return new WebUser();
+                    user.IsAdmin = false;
+                    return user;
                 }
             }
             set
