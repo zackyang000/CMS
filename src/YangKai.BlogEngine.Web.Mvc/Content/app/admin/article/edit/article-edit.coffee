@@ -147,5 +147,4 @@
     s = document.createElement("script")
     s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=A4D660A48A6A97CCA791C34935E4C02BBB1BEC1C&from=zh-cn&to=en&text=" + $scope.entity.Title
     document.getElementsByTagName("head")[0].appendChild(s)
-
 ])
