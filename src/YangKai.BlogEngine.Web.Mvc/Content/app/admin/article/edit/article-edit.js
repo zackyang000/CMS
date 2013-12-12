@@ -81,23 +81,17 @@ angular.module('admin-article-edit', []).config([
     };
     $scope.submit = function() {
       $scope.isSubmit = true;
+      if ($scope.form.$invalid) {
+        return;
+      }
       if (!$scope.channelValid()) {
-        return false;
+        return;
       }
       if (!$scope.groupValid()) {
-        return false;
+        return;
       }
       if (!$scope.categoryValid()) {
-        return false;
-      }
-      if (!$scope.entity.Url) {
-        return false;
-      }
-      if (!$scope.entity.Title) {
-        return false;
-      }
-      if (!$scope.entity.Content) {
-        return false;
+        return;
       }
       $scope.loading = "Saving";
       if ($scope.files.length) {
@@ -171,6 +165,7 @@ angular.module('admin-article-edit', []).config([
       }
       if (entity.Source) {
         entity.Source.SourceId = UUID.generate();
+        entity.Source.Title = entity.Title;
       }
       if (!$routeParams.id) {
         entity.PostId = UUID.generate();

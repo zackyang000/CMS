@@ -49,14 +49,11 @@
     item.checked=if item.checked then true else false
 
   $scope.submit = ->
-    #valid
     $scope.isSubmit=true
-    return false if !$scope.channelValid()
-    return false if !$scope.groupValid()
-    return false if !$scope.categoryValid()
-    return false if !$scope.entity.Url
-    return false if !$scope.entity.Title
-    return false if !$scope.entity.Content
+    return if $scope.form.$invalid
+    return if !$scope.channelValid()
+    return if !$scope.groupValid()
+    return if !$scope.categoryValid()
 
     $scope.loading="Saving"
 
@@ -92,6 +89,7 @@
         entity.Tags.push({TagId:UUID.generate(),Name:item})
     if entity.Source
       entity.Source.SourceId=UUID.generate()
+      entity.Source.Title=entity.Title
     if !$routeParams.id
       entity.PostId=UUID.generate()
       Article.save entity,(data)->

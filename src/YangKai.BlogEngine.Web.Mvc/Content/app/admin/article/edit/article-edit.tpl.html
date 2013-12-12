@@ -13,7 +13,7 @@
 </div>
 
 <div class="page-content">
-    <div class="row article-detail">
+    <form name="form" novalidate ng-submit="submit()" class="row article-detail">
         <div class="col-lg-8">
             <div class="form-group" ng-class="{'has-error': isSubmit && !entity.Title}">
                 <label class="control-label">Title</label>
@@ -30,7 +30,7 @@
             <div class="form-group" ng-class="{'has-error': isSubmit && !entity.Content}">
                 <label class="control-label">Content</label>
                 <div>
-                    <textarea ck-editor ng-model="entity.Content"></textarea>
+                    <textarea ck-editor ng-model="entity.Content" required></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -45,7 +45,7 @@
                 <div>Action</div>
                 <div class="clearfix">
                     <div class="pull-left">
-                        <button class="btn btn-primary btn-sm" ng-disabled="loading" ng-click="submit()">Submit</button>
+                        <button class="btn btn-primary btn-sm" ng-disabled="loading">Submit</button>
                     </div>
                     <div class="pull-right" ng-show="entity.CreateDate">
                         <button class="btn btn-danger btn-sm" ng-disabled="loading" ng-click="remove()">Remove</button>
@@ -104,7 +104,7 @@
             <div class="sider">
                 <div>Tags</div>
                 <input type="text" class="form-control" ng-model="tags"/>
-                <p>多个标签请用英文逗号（,）分开</p>
+                <p>Enter tags, separated by ","</p>
             </div>
             <div class="sider">
                 <div>Source</div>
@@ -113,12 +113,8 @@
                         <label class="control-label">Url</label>
                             <input type="text" class="form-control" ng-model="entity.Source.Url"/>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label">Title</label>
-                            <input type="text" class="form-control" ng-model="entity.Source.Title"/>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
