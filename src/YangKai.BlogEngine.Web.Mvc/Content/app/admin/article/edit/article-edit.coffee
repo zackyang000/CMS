@@ -1,5 +1,12 @@
 ﻿angular.module('admin-article-edit',[])
 
+.factory("TranslateService", ["$http", ($http) ->
+  events: (key) ->
+    $http
+      method: "JSONP"
+      url: "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=JSON_CALLBACK&appId=A4D660A48A6A97CCA791C34935E4C02BBB1BEC1C&from=zh-cn&to=en&text=" + key
+])
+
 .config(["$routeProvider",
 ($routeProvider) ->
   $routeProvider
@@ -11,9 +18,10 @@
     controller: 'ArticleEditCtrl')
 ])
 
+
 .controller('ArticleEditCtrl',
-["$scope","$routeParams","$window","$rootScope","uploadManager","Article","Channel",
-($scope,$routeParams,$window,$rootScope,uploadManager,Article,Channel) ->
+["$scope","$routeParams","$window","$rootScope","uploadManager","Article","Channel","$timeout","TranslateService"
+($scope,$routeParams,$window,$rootScope,uploadManager,Article,Channel,$timeout,TranslateService) ->
   $scope.channels=Channel.query $expand:'Groups,Groups/Categorys',()->
     if $routeParams.id
       $scope.loading="Loading"
@@ -131,18 +139,19 @@
       Url:call.result
     save()
 
-  #翻译Title获取URL
+  #URL根据Title翻译获取.
+  timeout=undefined
   $scope.getUrl = ->
-    $scope.TranslateUrl=true
-    $window.mycallback = (response) ->
-      response = $.trim(response)
-      response = response.toLowerCase()
-      response = response.replace(/[^_a-zA-Z\d\s]/g, '')
-      response = response.replace(/[\s]/g, "-")
-      $scope.entity.Url=response
-      $scope.TranslateUrl=false
-      $scope.$apply()
-    s = document.createElement("script")
-    s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=A4D660A48A6A97CCA791C34935E4C02BBB1BEC1C&from=zh-cn&to=en&text=" + $scope.entity.Title
-    document.getElementsByTagName("head")[0].appendChild(s)
+    if $scope.entity.Title
+      $timeout.cancel timeout if timeout
+      timeout = $timeout(->
+        $scope.TranslatingURL=true
+        TranslateService.events($scope.entity.Title).success (data, status) ->
+          data = $.trim(data)
+          data = data.toLowerCase()
+          data = data.replace(/[^_a-zA-Z\d\s]/g, '')
+          data = data.replace(/[\s]/g, "-")
+          $scope.entity.Url=data
+          $scope.TranslatingURL=false
+      , 500)
 ])

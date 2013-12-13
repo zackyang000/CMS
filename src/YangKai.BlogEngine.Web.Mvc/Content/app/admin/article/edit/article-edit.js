@@ -1,5 +1,16 @@
 ﻿
-angular.module('admin-article-edit', []).config([
+angular.module('admin-article-edit', []).factory("TranslateService", [
+  "$http", function($http) {
+    return {
+      events: function(key) {
+        return $http({
+          method: "JSONP",
+          url: "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=JSON_CALLBACK&appId=A4D660A48A6A97CCA791C34935E4C02BBB1BEC1C&from=zh-cn&to=en&text=" + key
+        });
+      }
+    };
+  }
+]).config([
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/admin/article(':id')", {
       templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html",
@@ -10,8 +21,8 @@ angular.module('admin-article-edit', []).config([
     });
   }
 ]).controller('ArticleEditCtrl', [
-  "$scope", "$routeParams", "$window", "$rootScope", "uploadManager", "Article", "Channel", function($scope, $routeParams, $window, $rootScope, uploadManager, Article, Channel) {
-    var save;
+  "$scope", "$routeParams", "$window", "$rootScope", "uploadManager", "Article", "Channel", "$timeout", "TranslateService", function($scope, $routeParams, $window, $rootScope, uploadManager, Article, Channel, $timeout, TranslateService) {
+    var save, timeout;
     $scope.channels = Channel.query({
       $expand: 'Groups,Groups/Categorys'
     }, function() {
@@ -223,21 +234,24 @@ angular.module('admin-article-edit', []).config([
       };
       return save();
     });
+    timeout = void 0;
     return $scope.getUrl = function() {
-      var s;
-      $scope.TranslateUrl = true;
-      $window.mycallback = function(response) {
-        response = $.trim(response);
-        response = response.toLowerCase();
-        response = response.replace(/[^_a-zA-Z\d\s]/g, '');
-        response = response.replace(/[\s]/g, "-");
-        $scope.entity.Url = response;
-        $scope.TranslateUrl = false;
-        return $scope.$apply();
-      };
-      s = document.createElement("script");
-      s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=A4D660A48A6A97CCA791C34935E4C02BBB1BEC1C&from=zh-cn&to=en&text=" + $scope.entity.Title;
-      return document.getElementsByTagName("head")[0].appendChild(s);
+      if ($scope.entity.Title) {
+        if (timeout) {
+          $timeout.cancel(timeout);
+        }
+        return timeout = $timeout(function() {
+          $scope.TranslatingURL = true;
+          return TranslateService.events($scope.entity.Title).success(function(data, status) {
+            data = $.trim(data);
+            data = data.toLowerCase();
+            data = data.replace(/[^_a-zA-Z\d\s]/g, '');
+            data = data.replace(/[\s]/g, "-");
+            $scope.entity.Url = data;
+            return $scope.TranslatingURL = false;
+          });
+        }, 500);
+      }
     };
   }
 ]);
