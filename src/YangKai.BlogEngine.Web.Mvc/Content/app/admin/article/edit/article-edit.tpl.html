@@ -18,13 +18,13 @@
             <div class="form-group" ng-class="{'has-error': isSubmit && form.Title.$invalid}">
                 <label class="control-label">Title</label>
                 <div>
-                    <input type="text" class="form-control" name="Title" ng-model="entity.Title" ng-change="getUrl()" required />
+                    <input type="text" class="form-control" name="Title" ng-model="entity.Title" ng-change="translateTitle()" required />
                 </div>
             </div>
-            <div class="form-group" ng-class="{'has-error': isSubmit && form.Url.$invalid,'has-warning':TranslatingURL}">
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.Url.$invalid,'has-warning':Translating}">
                 <label class="control-label">
                     Url
-                    <span ng-show="TranslatingURL">
+                    <span ng-show="Translating">
                         <i class="icon-spinner icon-spin"></i>
                     </span>
                 </label>

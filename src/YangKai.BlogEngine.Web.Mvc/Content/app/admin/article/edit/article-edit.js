@@ -235,20 +235,20 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
       return save();
     });
     timeout = void 0;
-    return $scope.getUrl = function() {
+    return $scope.translateTitle = function() {
       if ($scope.entity.Title) {
         if (timeout) {
           $timeout.cancel(timeout);
         }
         return timeout = $timeout(function() {
-          $scope.TranslatingURL = true;
+          $scope.Translating = true;
           return TranslateService.events($scope.entity.Title).success(function(data, status) {
             data = $.trim(data);
             data = data.toLowerCase();
             data = data.replace(/[^_a-zA-Z\d\s]/g, '');
             data = data.replace(/[\s]/g, "-");
             $scope.entity.Url = data;
-            return $scope.TranslatingURL = false;
+            return $scope.Translating = false;
           });
         }, 500);
       }
