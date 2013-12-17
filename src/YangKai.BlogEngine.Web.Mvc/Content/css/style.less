@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 60px;
     padding-bottom: 20px;
-    font-family:  "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+    font-family:  'Open Sans',"Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
     background: url(/Content/img/bg.png);
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -343,7 +343,8 @@ article {
         height: 40px;
     }
 }
-
+/* gmail style */
+/*
 .loadingbox {
     text-align: center;
     height: 24px;
@@ -360,6 +361,25 @@ article {
     border: 1px solid #f0c36d;
     border-radius: 5px;
     z-index: 10000;
+}
+*/
+/* codeplex style */
+.loadingbox {
+    z-index: 1002;
+    outline: 0px;
+    position: absolute;
+    height: 100px;
+    line-height: 100px;
+    width: 300px;
+    margin-top: -50px;
+    margin-left: -150px;
+    left: 50%;
+    top: 40%;
+    background: url('/Content/img/loading_animation.gif') 200px 0 no-repeat #8EBD40;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: lighter;
+    padding-left: 50px;
 }
 
 .container {

@@ -228,6 +228,8 @@
     <Content Include="Content\i18n\TranslateCtrl.min.js">
       <DependentUpon>TranslateCtrl.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\img\loading_animation.gif" />
+    <Content Include="Content\img\up.png" />
     <Content Include="Content\js\directives\customDirectives.js">
       <DependentUpon>customDirectives.coffee</DependentUpon>
     </Content>
@@ -442,6 +444,7 @@
     <Content Include="Content\js\vendor\angular-translate\service\storage-local.js" />
     <Content Include="Content\js\vendor\angular-translate\service\translate.js" />
     <Content Include="Content\js\vendor\angular-translate\translate.js" />
+    <Content Include="Content\js\vendor\scrolltopcontrol.js" />
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
     <Content Include="Content\css\vendor\buttons.css" />

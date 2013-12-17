@@ -1,4 +1,7 @@
-﻿.loadingbox {
+﻿body {
+  font-family: 'Open Sans', "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+.loadingbox {
   text-align: center;
   height: 24px;
   line-height: 12px;

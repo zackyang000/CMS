@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Mvc;
 using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers

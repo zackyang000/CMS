@@ -81,7 +81,11 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             var bundle = new StyleBundle("~/Content/style/css")
                 .IncludeDirectory("~/Content/css/vendor", "*.css", true)
                 .Include(plugin)
-                .IncludeDirectory("~/Content/app", "*.css", true)
+                .IncludeDirectory("~/Content/app/about", "*.css", true)
+                .IncludeDirectory("~/Content/app/article", "*.css", true)
+                .IncludeDirectory("~/Content/app/board", "*.css", true)
+                .IncludeDirectory("~/Content/app/gallery", "*.css", true)
+                .IncludeDirectory("~/Content/app/issue", "*.css", true)
                 .Include("~/Content/css/style.css");
             BundleTable.Bundles.Add(bundle);
 
@@ -90,7 +94,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 .IncludeDirectory("~/Content/css/vendor", "*.css", true)
                 .Include(plugin)
                 .IncludeDirectory("~/Content/plugin/ace_1.2", "*.css", true)
-                .IncludeDirectory("~/Content/app", "*.css", true);
+                .IncludeDirectory("~/Content/app/admin", "*.css", true);
             BundleTable.Bundles.Add(aceBundle);
         }
     }
