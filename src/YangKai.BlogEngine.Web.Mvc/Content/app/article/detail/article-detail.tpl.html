@@ -88,7 +88,7 @@
                     <div class="col-lg-4">
                         <label>{{'article.comment.name' | translate}}*</label>
                         <input class="form-control input-sm" name="Author" type="text" ng-model="entity.Author" placeholder="{{'article.comment.name' | translate}}*" required/>
-                        <div class="label label-danger" ng-show="form.Author.$dirty && form.Author.$invalid">
+                        <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
                             <span ng-show="form.Author.$error.required">{{'article.comment.nameValidTxt' | translate}}</span>
                         </div>
                     </div>
@@ -104,13 +104,13 @@
                 <div class="col-lg-8">
                     <label>{{'article.comment.content' | translate}}</label>
                     <textarea name="Content" class="form-control" rows="4"  ng-model="entity.Content" required></textarea>
-                    <div class="label label-danger" ng-show="form.Content.$dirty && form.Content.$invalid">
+                    <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
                         <span ng-show="form.Content.$error.required">{{'article.comment.contentValidTxt' | translate}}</span>
                     </div>
                 </div>
             </div>
             <div>
-                <button class="btn btn-primary btn-large" ng-disabled="loading || form.$invalid">
+                <button class="btn btn-primary btn-large" ng-disabled="loading">
                     {{'article.comment.submit' | translate}}
                 </button>
             </div>

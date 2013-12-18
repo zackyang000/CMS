@@ -85,6 +85,10 @@ angular.module('article-detail', []).config([
       });
     };
     $scope.save = function() {
+      $scope.submitted = true;
+      if ($scope.form.$invalid) {
+        return;
+      }
       progressbar.start();
       $scope.loading = $translate("global.post");
       $scope.entity.CommentId = UUID.generate();
@@ -94,7 +98,7 @@ angular.module('article-detail', []).config([
         $scope.entity.Content = "";
         $scope.AuthorForDisplay = data.Author;
         $scope.editmode = false;
-        angular.resetForm($scope, 'form');
+        $scope.submitted = false;
         Article.commented({
           id: "(guid'" + $scope.item.PostId + "')"
         });
@@ -102,6 +106,7 @@ angular.module('article-detail', []).config([
         return $scope.loading = "";
       }, function(error) {
         var _ref;
+        $scope.submitting = false;
         return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
       });
     };

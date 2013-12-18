@@ -73,6 +73,10 @@
         message.error error.data.ExceptionMessage ? error.status
 
   $scope.save = () ->
+    $scope.submitted=true
+    if $scope.form.$invalid
+      return
+
     progressbar.start()
     $scope.loading = $translate("global.post")
     $scope.entity.CommentId=UUID.generate()
@@ -83,11 +87,12 @@
       $scope.entity.Content=""
       $scope.AuthorForDisplay=data.Author
       $scope.editmode=false
-      angular.resetForm($scope, 'form')
+      $scope.submitted=false
       Article.commented id:"(guid'#{$scope.item.PostId}')"
       progressbar.complete()
       $scope.loading = ""
     ,(error)->
+      $scope.submitting=false
       message.error error.data.ExceptionMessage ? error.status
 
   $scope.remove = (item) ->
