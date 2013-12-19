@@ -1233,9 +1233,6 @@
     <Content Include="Content\app\article\archives\archives.css" />
     <Content Include="Content\js\services\AccountServices.coffee" />
     <Content Include="Content\js\directives\customDirectives.coffee" />
-    <Content Include="Content\app\article\detail\article-detail.min.js.map">
-      <DependentUpon>article-detail.js</DependentUpon>
-    </Content>
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

@@ -114,10 +114,6 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
           });
         }
       }
-      if (entity.Source) {
-        entity.Source.SourceId = UUID.generate();
-        entity.Source.Title = entity.Title;
-      }
       if (!$routeParams.id) {
         entity.PostId = UUID.generate();
         return Article.save(entity, function(data) {

@@ -71,9 +71,6 @@
     if $scope.tags
       for item in $scope.tags.split(",")
         entity.Tags.push({TagId:UUID.generate(),Name:item})
-    if entity.Source
-      entity.Source.SourceId=UUID.generate()
-      entity.Source.Title=entity.Title
     if !$routeParams.id
       entity.PostId=UUID.generate()
       Article.save entity,

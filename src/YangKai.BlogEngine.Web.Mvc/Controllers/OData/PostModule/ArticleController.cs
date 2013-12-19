@@ -74,12 +74,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
             var entity = Proxy.Repository<Post>().Get(update.PostId);
           
-            if (entity.Source != null)
-            {
-                Proxy.Repository<Source>().Remove(entity.Source);
-            }
-            entity.Source = update.Source;
-            entity.Thumbnail = update.Thumbnail;
             SaveThumbnail(entity);
 
             if (entity.QrCode != null)

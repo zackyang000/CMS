@@ -128,7 +128,7 @@ namespace YangKai.BlogEngine.Domain
         /// <summary>
         /// 文章转载信息,可能不存在.
         /// </summary>
-        public virtual Source Source { get; set; }
+        public string Source { get; set; }
 
         /// <summary>
         /// 文章缩略图,可能不存在.
