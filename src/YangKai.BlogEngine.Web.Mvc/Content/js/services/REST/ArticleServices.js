@@ -9,7 +9,7 @@ angular.module("ArticleServices", ["ngResource"]).factory("Article", [
         method: "GET",
         params: {
           $orderby: 'CreateDate desc',
-          $expand: 'Tags,Group/Channel,PubAdmin',
+          $expand: 'Tags,Group/Channel',
           $inlinecount: 'allpages'
         }
       },
@@ -17,7 +17,7 @@ angular.module("ArticleServices", ["ngResource"]).factory("Article", [
         method: "GET",
         params: {
           $top: 1,
-          $expand: 'Tags,Group/Channel,PubAdmin,Comments'
+          $expand: 'Tags,Group/Channel,Comments'
         }
       },
       update: {

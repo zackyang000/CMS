@@ -14,7 +14,6 @@ namespace YangKai.BlogEngine.Domain
             PostStatus = (int)PostStatusEnum.Publish;
             CommentStatus = (int)CommentStatusEnum.Open;
             GradePoint = 5;
-            PageCount = 1;
         }
 
         /// <summary>
@@ -71,36 +70,6 @@ namespace YangKai.BlogEngine.Domain
         public DateTime PubDate { get; set; }
 
         /// <summary>
-        /// 文章发布者IP地址.
-        /// </summary>
-        public string PubIp { get; set; }
-
-        /// <summary>
-        /// 文章发布者地理位置.
-        /// </summary>
-        public string PubAddress { get; set; }
-
-        /// <summary>
-        /// 文章的最后一次编辑时间.
-        /// </summary>
-        public DateTime? EditDate { get; set; }
-
-        /// <summary>
-        /// 文章最后一次编辑者IP地址.
-        /// </summary>
-        public string EditIp { get; set; }
-
-        /// <summary>
-        /// 文章最后一次编辑者地理位置.
-        /// </summary>
-        public string EditAddress { get; set; }
-
-        /// <summary>
-        /// 文章页数.默认为1,即不分页.
-        /// </summary>
-        public int PageCount { get; set; }
-
-        /// <summary>
         /// 文章的浏览次数.
         /// </summary>
         public int ViewCount { get; set; }
@@ -111,7 +80,7 @@ namespace YangKai.BlogEngine.Domain
         public int ReplyCount { get; set; }
 
         /// <summary>
-        /// 文章所属标签,包含0,1或多个标签.
+        /// 文章的标签.
         /// </summary>
         public virtual List<Tag> Tags { get; set; }
 
@@ -134,16 +103,6 @@ namespace YangKai.BlogEngine.Domain
         /// 文章缩略图路径.
         /// </summary>
         public string Thumbnail { get; set; }
-
-        /// <summary>
-        /// 发布者信息.
-        /// </summary>
-        public virtual User PubAdmin { get; set; }
-
-        /// <summary>
-        /// 最后编辑者信息,可能为空.
-        /// </summary>
-        public virtual User EditAdmin { get; set; }
 
         /// <summary>
         /// 文章分组信息外键.

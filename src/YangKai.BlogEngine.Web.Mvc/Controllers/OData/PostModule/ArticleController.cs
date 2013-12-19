@@ -39,7 +39,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
             entity.Group = Proxy.Repository<Group>().Get(entity.Group.GroupId);
 
-            entity.PubAdmin = Proxy.Repository<User>().Get(p => p.LoginName == Current.User.LoginName);
             entity.PubDate = DateTime.Now;
 
             SaveThumbnail(entity);
@@ -74,9 +73,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 Proxy.Repository<Tag>().Remove(entity.Tags);
             }
             entity.Tags = update.Tags;
-
-            entity.EditAdmin = Proxy.Repository<User>().Get(p => p.LoginName == Current.User.LoginName);
-            entity.EditDate = DateTime.Now;
 
             entity.Group = Proxy.Repository<Group>().Get(update.Group.GroupId);
 

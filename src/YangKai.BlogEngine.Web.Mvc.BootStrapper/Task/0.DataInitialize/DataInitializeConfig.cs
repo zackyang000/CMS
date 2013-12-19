@@ -86,7 +86,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                     Title = "测试文章",
                     Content = "<p>这是文章的正文内容.</p>",
                     Description = "<p>这是文章的描述内容.</p>",
-                    PubAdmin = user,
+                    CreateUser = user.UserName,
                     PubDate = DateTime.Now,
                     Group = group,
                     Tags = new List<Tag> {new Tag {Name = "Test Tag"}},
