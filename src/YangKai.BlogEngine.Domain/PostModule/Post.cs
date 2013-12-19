@@ -126,14 +126,14 @@ namespace YangKai.BlogEngine.Domain
         public virtual QrCode QrCode { get; set; }
 
         /// <summary>
-        /// 文章的转载信息,可能不存在.
+        /// 文章转载信息,可能不存在.
         /// </summary>
         public virtual Source Source { get; set; }
 
         /// <summary>
-        /// 文章的缩略图信息,可能不存在.
+        /// 文章缩略图,可能不存在.
         /// </summary>
-        public virtual Thumbnail Thumbnail { get; set; }
+        public string Thumbnail { get; set; }
 
         /// <summary>
         /// 发布者信息.

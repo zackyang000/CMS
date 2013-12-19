@@ -10,12 +10,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Areas.Admin.Common
     {
         public static string SaveContentPic(string content, string folder)
         {
-            //若无法访问该图片可能会报错.
             try
             {
                 folder = string.Format("{0}.{1}", DateTime.Now.ToString("yyyy.MM.dd"), folder);
-                var root = Config.Path.REMOTE_PICTURE_FOLDER;
-                folder = Path.Combine(root, folder);
+                folder = Path.Combine(Config.Path.REMOTE_PICTURE_FOLDER, folder);
                 var cdata = SaveRemoteFileHelper.SavePic(content, Config.Path.PHYSICAL_ROOT_PATH, folder);
                 return cdata.Content;
             }

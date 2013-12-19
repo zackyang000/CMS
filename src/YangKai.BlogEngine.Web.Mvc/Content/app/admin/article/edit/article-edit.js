@@ -170,11 +170,7 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
       return $scope.$apply();
     });
     $rootScope.$on("fileUploaded", function(e, call) {
-      $scope.entity.Thumbnail = {
-        ThumbnailId: UUID.generate(),
-        Title: $scope.entity.Title,
-        Url: call.result
-      };
+      $scope.entity.Thumbnail = call.result;
       return save();
     });
     timeout = void 0;

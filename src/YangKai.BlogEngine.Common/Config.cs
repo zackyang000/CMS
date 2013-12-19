@@ -57,6 +57,11 @@ namespace YangKai.BlogEngine.Common
             /// 自动下载图片文件夹
             /// </summary>
             public const string REMOTE_PICTURE_FOLDER = "/upload/offsite/";
+
+            /// <summary>
+            /// 缩略图文件夹
+            /// </summary>
+            public const string THUMBNAIL_FOLDER = "/upload/thumbnail/";
         }
 
         public class URL

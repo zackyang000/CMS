@@ -114,10 +114,7 @@
     $scope.$apply()
 
   $rootScope.$on "fileUploaded", (e, call) ->
-    $scope.entity.Thumbnail=
-      ThumbnailId:UUID.generate()
-      Title:$scope.entity.Title
-      Url:call.result
+    $scope.entity.Thumbnail=call.result
     save()
 
   #URL根据Title翻译获取.

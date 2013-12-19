@@ -79,11 +79,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 Proxy.Repository<Source>().Remove(entity.Source);
             }
             entity.Source = update.Source;
-
-            if (entity.Thumbnail != null)
-            {
-                Proxy.Repository<Thumbnail>().Remove(entity.Thumbnail);
-            }
             entity.Thumbnail = update.Thumbnail;
             SaveThumbnail(entity);
 
@@ -135,11 +130,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         {
             if (entity.Thumbnail != null)
             {
-                var filename = entity.PubDate.ToString("yyyy.MM.dd.") + entity.Url +
-                               Path.GetExtension(entity.Thumbnail.Url);
+                entity.Thumbnail = Config.Path.THUMBNAIL_FOLDER + entity.PubDate.ToString("yyyy.MM.dd.") + entity.Url +
+                               Path.GetExtension(entity.Thumbnail);
+               
                 var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"),
-                    entity.Thumbnail.Url);
-                var target = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/thumbnail"), filename);
+                    entity.Thumbnail);
+                var target = string.Format("{0}{1}", HttpContext.Current.Server.MapPath("~"), entity.Thumbnail);
+               
                 if (File.Exists(source))
                 {
                     if (File.Exists(target))
@@ -148,7 +145,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                     }
                     File.Move(source, target);
                     ImageProcessing.CutForCustom(target, 160, 100, 100);
-                    entity.Thumbnail.Url = filename;
                 }
             }
         }

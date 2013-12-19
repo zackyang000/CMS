@@ -119,6 +119,10 @@
     <Compile Include="Migrations\201312180938362_RemoveCategory.Designer.cs">
       <DependentUpon>201312180938362_RemoveCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312190644160_RemoveThumbnailEntity.cs" />
+    <Compile Include="Migrations\201312190644160_RemoveThumbnailEntity.Designer.cs">
+      <DependentUpon>201312190644160_RemoveThumbnailEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.Designer.cs">
@@ -205,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312180938362_RemoveCategory.resx">
       <DependentUpon>201312180938362_RemoveCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312190644160_RemoveThumbnailEntity.resx">
+      <DependentUpon>201312190644160_RemoveThumbnailEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
