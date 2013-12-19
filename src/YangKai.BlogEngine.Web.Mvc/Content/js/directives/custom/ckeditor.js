@@ -1,10 +1,14 @@
 ﻿
-
 myDirectives.directive('ckEditor', function() {
   return {
     require: '?ngModel',
     link: function(scope, elm, attr, ngModel) {
-      var ck;
+      debugger;
+      var ck, editor;
+      editor = CKEDITOR.instances[elm[0].name];
+      if (editor) {
+        editor.destroy(true);
+      }
       ck = CKEDITOR.replace(elm[0], {
         toolbar: 'Main'
       });

@@ -90,18 +90,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                     PubDate = DateTime.Now,
                     Group = group,
                     Tags = new List<Tag> {new Tag {Name = "Test Tag"}},
-                    Categorys = new List<Category>
-                        {
-                            new Category
-                                {
-                                    CategoryId = Guid.NewGuid(),
-                                    Name = "default",
-                                    Url = "default",
-                                    Description = "这是一个默认分类.",
-                                    OrderId = 1,
-                                    Group = group,
-                                }
-                        },
                 };
         }
 

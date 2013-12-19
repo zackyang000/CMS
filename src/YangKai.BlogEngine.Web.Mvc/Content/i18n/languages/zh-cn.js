@@ -31,7 +31,6 @@ translationsZH = {
       view_by_group: '按分组浏览'
     },
     breadcrumb: {
-      category: "'{{category}}' 分类的存档",
       tag: "文章标签 '{{tag}}'",
       key: "关键字: '{{key}}'"
     },

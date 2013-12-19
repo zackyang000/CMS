@@ -111,11 +111,6 @@ namespace YangKai.BlogEngine.Domain
         public int ReplyCount { get; set; }
 
         /// <summary>
-        /// 文章所属分类,至少包含1个分类.
-        /// </summary>
-        public virtual List<Category> Categorys { get; set; }
-
-        /// <summary>
         /// 文章所属标签,包含0,1或多个标签.
         /// </summary>
         public virtual List<Tag> Tags { get; set; }

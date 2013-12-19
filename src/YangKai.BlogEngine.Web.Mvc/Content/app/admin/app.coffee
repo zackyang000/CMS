@@ -11,7 +11,6 @@
 'CommentServices',
 'ChannelServices',
 'GroupServices',
-'CategoryServices',
 'GalleryServices',
 'PhotoServices',
 'UserServices',

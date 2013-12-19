@@ -63,10 +63,11 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Gma.QrCodeNet.Encoding, Version=0.0.1.36452, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -174,11 +175,10 @@
     <Compile Include="Controllers\OData\GalleryModule\PhotoController.cs" />
     <Compile Include="Controllers\OData\GalleryModule\GalleryController.cs" />
     <Compile Include="Controllers\OData\PostModule\ChannelController.cs" />
-    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\FileManageController.cs" />
     <Compile Include="Controllers\OData\PostModule\GroupController.cs" />
     <Compile Include="Common\SaveRemoteFile.cs" />
     <Compile Include="Common\Current.cs" />
-    <Compile Include="Controllers\OData\PostModule\CategoryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\OData\ProjectManageModule\IssueController.cs" />
     <Compile Include="Controllers\OData\UserController.cs" />
@@ -279,12 +279,6 @@
     </Content>
     <Content Include="Content\app\admin\basedata\basedata.min.js">
       <DependentUpon>basedata.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\basedata\category\basedata-category.js">
-      <DependentUpon>basedata-category.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\basedata\category\basedata-category.min.js">
-      <DependentUpon>basedata-category.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\admin\basedata\channel\basedata-channel.js">
       <DependentUpon>basedata-channel.coffee</DependentUpon>
@@ -532,12 +526,6 @@
     <Content Include="Content\js\services\REST\ArticleServices.min.js">
       <DependentUpon>ArticleServices.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\services\REST\CategoryServices.js">
-      <DependentUpon>CategoryServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\CategoryServices.min.js">
-      <DependentUpon>CategoryServices.coffee</DependentUpon>
-    </Content>
     <Content Include="Content\js\services\REST\ChannelServices.js">
       <DependentUpon>ChannelServices.coffee</DependentUpon>
     </Content>
@@ -569,7 +557,6 @@
     <Content Include="Content\app\admin\article\edit\article-edit.tpl.html" />
     <Content Include="Content\app\admin\article\article.tpl.html" />
     <Content Include="Content\app\admin\basedata\channel\basedata-channel.tpl.html" />
-    <Content Include="Content\app\admin\basedata\category\basedata-category.tpl.html" />
     <Content Include="Content\app\admin\board\board.tpl.html" />
     <Content Include="Content\app\admin\dashboard\dashboard.tpl.html" />
     <Content Include="Content\app\admin\basedata\group\basedata-group.tpl.html" />
@@ -1215,8 +1202,6 @@
     <Content Include="Content\js\services\REST\ChannelServices.coffee" />
     <Content Include="Content\app\admin\basedata\group\basedata-group.coffee" />
     <Content Include="Content\js\services\REST\GroupServices.coffee" />
-    <Content Include="Content\app\admin\basedata\category\basedata-category.coffee" />
-    <Content Include="Content\js\services\REST\CategoryServices.coffee" />
     <Content Include="Content\app\admin\article\article.coffee" />
     <Content Include="Content\app\admin\article\edit\article-edit.coffee" />
     <Content Include="Content\app\admin\dashboard\dashboard.coffee" />
@@ -1250,12 +1235,6 @@
     <Content Include="Content\js\directives\customDirectives.coffee" />
     <Content Include="Content\app\article\detail\article-detail.min.js.map">
       <DependentUpon>article-detail.js</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\article\edit\article-edit.min.js.map">
-      <DependentUpon>article-edit.js</DependentUpon>
-    </Content>
-    <Content Include="Content\app\article\list\article-list.min.js.map">
-      <DependentUpon>article-list.js</DependentUpon>
     </Content>
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />

@@ -22,17 +22,13 @@
 .controller('ArticleEditCtrl',
 ["$scope","$routeParams","$window","$rootScope","uploadManager","Article","Channel","$timeout","TranslateService"
 ($scope,$routeParams,$window,$rootScope,uploadManager,Article,Channel,$timeout,TranslateService) ->
-  $scope.channels=Channel.query $expand:'Groups,Groups/Categorys',()->
+  $scope.channels=Channel.query $expand:'Groups',()->
     if $routeParams.id
       $scope.loading="Loading"
       Article.get $filter:"PostId eq (guid'#{$routeParams.id}')",(data)->
         $scope.entity=data.value[0]
         $scope.channelId=$scope.entity.Group.Channel.ChannelId
         $scope.groupId=$scope.entity.Group.GroupId
-        #加载Category
-        for category in $scope.entity.Categorys
-          for item in $scope.getCategories() when item.CategoryId is category.CategoryId
-            item.checked=true
         #加载Tag
         if $scope.entity.Tags
           $scope.tags=''
@@ -48,20 +44,11 @@
     for item in $scope.channels.value
       return item.Groups if item.ChannelId==$scope.channelId
 
-  $scope.getCategories = ->
-    return undefined if $scope.getGroups() is undefined
-    for item in $scope.getGroups()
-      return item.Categorys if item.GroupId==$scope.groupId
-
-  $scope.categorySelect = (item) ->
-    item.checked=if item.checked then true else false
-
   $scope.submit = ->
     $scope.isSubmit=true
     return if $scope.form.$invalid
     return if !$scope.channelValid()
     return if !$scope.groupValid()
-    return if !$scope.categoryValid()
 
     $scope.loading="Saving"
 
@@ -71,26 +58,15 @@
       save()
 
   $scope.channelValid=->
-    return true if $scope.getGroups()
-    return false
+    return $scope.channels.value
 
   $scope.groupValid=->
-    return true if $scope.getCategories()
-    return false
-
-  $scope.categoryValid=->
-    return false if !$scope.getCategories()
-    for item in $scope.getCategories() when item.checked
-      return true
-    return false
+    return $scope.groupId
 
   save = ->
     entity=$scope.entity
     entity.Group={}
     entity.Group.GroupId=(item for item in $scope.getGroups() when item.GroupId is $scope.groupId)[0].GroupId
-    entity.Categorys=[]
-    for item in $scope.getCategories() when item.checked
-      entity.Categorys.push({CategoryId:item.CategoryId})
     entity.Tags=[]
     if $scope.tags
       for item in $scope.tags.split(",")
@@ -100,22 +76,27 @@
       entity.Source.Title=entity.Title
     if !$routeParams.id
       entity.PostId=UUID.generate()
-      Article.save entity,(data)->
+      Article.save entity,
+      (data) ->
         $window.location.href = "/post/#{data.Url}"
+      ,(error) ->
+        $scope.loading=""
     else
-      Article.update {id:"(guid'#{entity.PostId}')"},entity,(data)->
+      Article.update {id:"(guid'#{entity.PostId}')"},entity,
+      (data)->
         $window.location.href = "/post/#{data.Url}"
+      ,(error) ->
+        $scope.loading=""
 
   $scope.remove = ->
     message.confirm ->
       $scope.loading="Deleting"
       entity=$scope.entity
       entity.IsDeleted=true
-      debugger
       Article.update {id:"(guid'#{entity.PostId}')"},entity
       ,(data)->
-          message.success "Delete post successfully."
-          $window.location.href = "/admin/article"
+        message.success "Delete post successfully."
+        $window.location.href = "/admin/article"
 
   #上传图片处理
   $scope.files = []

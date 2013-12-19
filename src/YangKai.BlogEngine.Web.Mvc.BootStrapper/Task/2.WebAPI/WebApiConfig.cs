@@ -74,7 +74,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             modelBuilder.EntitySet<Channel>("Channel");
             modelBuilder.EntitySet<Group>("Group");
-            modelBuilder.EntitySet<Category>("Category");
             modelBuilder.EntitySet<Comment>("Comment");
             modelBuilder.EntitySet<Board>("Board");
             modelBuilder.EntitySet<Post>("Article");

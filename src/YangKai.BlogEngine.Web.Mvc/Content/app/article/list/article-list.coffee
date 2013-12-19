@@ -29,7 +29,6 @@
     channel:$routeParams.channel
     group:$routeParams.group
     key:$routeParams.key
-    category:if $routeParams.type=='category' then $routeParams.query else ''
     tag:if $routeParams.type=='tag' then $routeParams.query else ''
 
   $scope.setPage = (pageNo) ->
@@ -41,7 +40,6 @@
     filter+=" and Group/Channel/Url eq '#{$scope.params.channel}'" if $scope.params.channel
     filter+=" and Group/Url eq '#{$scope.params.group}'" if $scope.params.group
     filter+=" and indexof(Title, '#{$scope.params.key}') gt -1" if $scope.params.key
-    filter+=" and Categorys/any(category:category/Url eq '#{$scope.params.category}')" if $scope.params.category
     filter+=" and Tags/any(tag:tag/Name eq '#{$scope.params.tag}')" if $scope.params.tag
     Article.query
       $filter:filter

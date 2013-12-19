@@ -40,11 +40,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
             entity.Group = Proxy.Repository<Group>().Get(entity.Group.GroupId);
 
-            for (int i = 0; i < entity.Categorys.Count; i++)
-            {
-                entity.Categorys[i] = Proxy.Repository<Category>().Get(entity.Categorys[i].CategoryId);
-            }
-
             entity.PubAdmin = Proxy.Repository<User>().Get(p => p.LoginName == Current.User.LoginName);
             entity.PubDate = DateTime.Now;
 
@@ -78,12 +73,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             update = Proxy.Repository<Post>().Update(update);
 
             var entity = Proxy.Repository<Post>().Get(update.PostId);
-            entity.Categorys.Clear();
-            foreach (var item in update.Categorys.Select(p => p.CategoryId))
-            {
-                entity.Categorys.Add(Proxy.Repository<Category>().Get(item));
-            }
-
+          
             if (entity.Source != null)
             {
                 Proxy.Repository<Source>().Remove(entity.Source);

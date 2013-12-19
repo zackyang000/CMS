@@ -98,14 +98,6 @@
                     &nbsp;
                 </div>
             </div>
-            <div class="sider" ng-class="{'has-error': isSubmit && !categoryValid()}">
-                <div>Categories</div>
-                <div ng-repeat="item in getCategories() | filter:{IsDeleted:false}">
-                    <label>
-                        <input type="checkbox" value="{{item.CategoryId}}" ng-click="categorySelect(item)" ng-model="item.checked"> {{item.Name}}
-                    </label>
-                </div>
-            </div>
             <div class="sider">
                 <div>Tags</div>
                 <input type="text" class="form-control" ng-model="tags"/>

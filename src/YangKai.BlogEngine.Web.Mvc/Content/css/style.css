@@ -125,14 +125,11 @@ article {
   margin: 10px 0;
   min-height: 200px;
 }
-article .categories a:first-child .tags a:first-child {
+article .tags a:first-child {
   padding-left: 2px;
 }
 article section {
   margin-left: 85px;
-}
-article .categories {
-  margin-right: 10px;
 }
 article .thumb {
   margin: 0px 15px 0px 10px;

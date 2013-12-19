@@ -82,10 +82,11 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -113,6 +114,10 @@
     <Compile Include="Migrations\201310180858151_AddGallery.cs" />
     <Compile Include="Migrations\201310180858151_AddGallery.Designer.cs">
       <DependentUpon>201310180858151_AddGallery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312180938362_RemoveCategory.cs" />
+    <Compile Include="Migrations\201312180938362_RemoveCategory.Designer.cs">
+      <DependentUpon>201312180938362_RemoveCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.cs" />
@@ -155,6 +160,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310180858151_AddGallery.resx">
       <DependentUpon>201310180858151_AddGallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312180938362_RemoveCategory.resx">
+      <DependentUpon>201312180938362_RemoveCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

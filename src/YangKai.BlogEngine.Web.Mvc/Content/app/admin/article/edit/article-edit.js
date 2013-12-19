@@ -24,33 +24,22 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
   "$scope", "$routeParams", "$window", "$rootScope", "uploadManager", "Article", "Channel", "$timeout", "TranslateService", function($scope, $routeParams, $window, $rootScope, uploadManager, Article, Channel, $timeout, TranslateService) {
     var save, timeout;
     $scope.channels = Channel.query({
-      $expand: 'Groups,Groups/Categorys'
+      $expand: 'Groups'
     }, function() {
       if ($routeParams.id) {
         $scope.loading = "Loading";
         return Article.get({
           $filter: "PostId eq (guid'" + $routeParams.id + "')"
         }, function(data) {
-          var category, item, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+          var item, _i, _len, _ref;
           $scope.entity = data.value[0];
           $scope.channelId = $scope.entity.Group.Channel.ChannelId;
           $scope.groupId = $scope.entity.Group.GroupId;
-          _ref = $scope.entity.Categorys;
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            category = _ref[_i];
-            _ref1 = $scope.getCategories();
-            for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-              item = _ref1[_j];
-              if (item.CategoryId === category.CategoryId) {
-                item.checked = true;
-              }
-            }
-          }
           if ($scope.entity.Tags) {
             $scope.tags = '';
-            _ref2 = $scope.entity.Tags;
-            for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-              item = _ref2[_k];
+            _ref = $scope.entity.Tags;
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              item = _ref[_i];
               $scope.tags += ',' + item.Name;
             }
             $scope.tags = $scope.tags.substring(1);
@@ -74,22 +63,6 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
         }
       }
     };
-    $scope.getCategories = function() {
-      var item, _i, _len, _ref;
-      if ($scope.getGroups() === void 0) {
-        return void 0;
-      }
-      _ref = $scope.getGroups();
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        item = _ref[_i];
-        if (item.GroupId === $scope.groupId) {
-          return item.Categorys;
-        }
-      }
-    };
-    $scope.categorySelect = function(item) {
-      return item.checked = item.checked ? true : false;
-    };
     $scope.submit = function() {
       $scope.isSubmit = true;
       if ($scope.form.$invalid) {
@@ -101,9 +74,6 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
       if (!$scope.groupValid()) {
         return;
       }
-      if (!$scope.categoryValid()) {
-        return;
-      }
       $scope.loading = "Saving";
       if ($scope.files.length) {
         return uploadManager.upload();
@@ -112,33 +82,13 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
       }
     };
     $scope.channelValid = function() {
-      if ($scope.getGroups()) {
-        return true;
-      }
-      return false;
+      return $scope.channels.value;
     };
     $scope.groupValid = function() {
-      if ($scope.getCategories()) {
-        return true;
-      }
-      return false;
-    };
-    $scope.categoryValid = function() {
-      var item, _i, _len, _ref;
-      if (!$scope.getCategories()) {
-        return false;
-      }
-      _ref = $scope.getCategories();
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        item = _ref[_i];
-        if (item.checked) {
-          return true;
-        }
-      }
-      return false;
+      return $scope.groupId;
     };
     save = function() {
-      var entity, item, _i, _j, _len, _len1, _ref, _ref1;
+      var entity, item, _i, _len, _ref;
       entity = $scope.entity;
       entity.Group = {};
       entity.Group.GroupId = ((function() {
@@ -153,21 +103,11 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
         }
         return _results;
       })())[0].GroupId;
-      entity.Categorys = [];
-      _ref = $scope.getCategories();
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        item = _ref[_i];
-        if (item.checked) {
-          entity.Categorys.push({
-            CategoryId: item.CategoryId
-          });
-        }
-      }
       entity.Tags = [];
       if ($scope.tags) {
-        _ref1 = $scope.tags.split(",");
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          item = _ref1[_j];
+        _ref = $scope.tags.split(",");
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          item = _ref[_i];
           entity.Tags.push({
             TagId: UUID.generate(),
             Name: item
@@ -182,12 +122,16 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
         entity.PostId = UUID.generate();
         return Article.save(entity, function(data) {
           return $window.location.href = "/post/" + data.Url;
+        }, function(error) {
+          return $scope.loading = "";
         });
       } else {
         return Article.update({
           id: "(guid'" + entity.PostId + "')"
         }, entity, function(data) {
           return $window.location.href = "/post/" + data.Url;
+        }, function(error) {
+          return $scope.loading = "";
         });
       }
     };
@@ -197,7 +141,6 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
         $scope.loading = "Deleting";
         entity = $scope.entity;
         entity.IsDeleted = true;
-        debugger;
         return Article.update({
           id: "(guid'" + entity.PostId + "')"
         }, entity, function(data) {

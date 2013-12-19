@@ -48,7 +48,6 @@
     <Compile Include="GalleryModule\Photo.cs" />
     <Compile Include="GalleryModule\Gallery.cs" />
     <Compile Include="GalleryModule\PhotoComment.cs" />
-    <Compile Include="PostModule\Category.cs" />
     <Compile Include="PostModule\Channel.cs" />
     <Compile Include="PostModule\Comment.cs" />
     <Compile Include="PostModule\Group.cs" />

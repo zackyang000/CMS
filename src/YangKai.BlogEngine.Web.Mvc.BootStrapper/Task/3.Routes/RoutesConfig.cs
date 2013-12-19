@@ -45,9 +45,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 );
 
             routes.MapRoute(
-                name: "FileUpload",
-                url: "FileUpload/{action}/{id}",
-                defaults: new { controller = "FileUpload", action = "Index", id = UrlParameter.Optional }
+                name: "FileManage",
+                url: "FileManage/{action}/{id}",
+                defaults: new { controller = "FileManage", action = "Index", id = UrlParameter.Optional }
                 );
 
             routes.MapRoute(

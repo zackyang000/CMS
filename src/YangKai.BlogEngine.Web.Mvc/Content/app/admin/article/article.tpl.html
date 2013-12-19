@@ -25,7 +25,6 @@
                 <th>User</th>
                 <th>Channel</th>
                 <th>Group</th>
-                <th>Categories</th>
                 <th>Tags</th>
                 <th>Comments</th>
                 <th>Date</th>
@@ -39,12 +38,6 @@
                 <td>{{item.PubAdmin.UserName}}</td>
                 <td>{{item.Group.Channel.Name}}</td>
                 <td>{{item.Group.Name}}</td>
-                <td>
-                    <span ng-repeat="category in item.Categorys">
-                        <span ng-hide="$first">,</span>
-                        <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/category/{{category.Url}}" title="查看 {{category.Name}} 的全部文章">{{category.Name}}</a>
-                    </span>
-                </td>
                 <td>
                     <span ng-repeat="tag in item.Tags">
                         <span ng-hide="$first">,</span>

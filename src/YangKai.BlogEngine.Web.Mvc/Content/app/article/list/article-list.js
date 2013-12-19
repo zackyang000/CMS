@@ -25,7 +25,6 @@ angular.module('article-list', []).config([
       channel: $routeParams.channel,
       group: $routeParams.group,
       key: $routeParams.key,
-      category: $routeParams.type === 'category' ? $routeParams.query : '',
       tag: $routeParams.type === 'tag' ? $routeParams.query : ''
     };
     $scope.setPage = function(pageNo) {
@@ -45,9 +44,6 @@ angular.module('article-list', []).config([
       }
       if ($scope.params.key) {
         filter += " and indexof(Title, '" + $scope.params.key + "') gt -1";
-      }
-      if ($scope.params.category) {
-        filter += " and Categorys/any(category:category/Url eq '" + $scope.params.category + "')";
       }
       if ($scope.params.tag) {
         filter += " and Tags/any(tag:tag/Name eq '" + $scope.params.tag + "')";

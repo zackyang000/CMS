@@ -24,7 +24,6 @@
       view_all: 'View All'
       view_by_group: 'View by group'
     breadcrumb:
-      category: "category of '{{category}}'"
       tag: "tag of '{{tag}}'"
       key: "keyword: '{{key}}'"
     comment:

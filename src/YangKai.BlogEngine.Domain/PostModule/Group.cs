@@ -30,11 +30,6 @@ namespace YangKai.BlogEngine.Domain
         public string Description { get; set; }
 
         /// <summary>
-        /// 分组所有分类信息列表.
-        /// </summary>
-        public virtual List<Category> Categorys { get; set; }
-
-        /// <summary>
         /// 分组所有文章信息列表.
         /// </summary>
         public virtual List<Post> Posts { get; set; }
