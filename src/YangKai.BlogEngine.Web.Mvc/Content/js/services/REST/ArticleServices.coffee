@@ -5,13 +5,13 @@
       method: "GET"
       params:
         $orderby:'CreateDate desc' 
-        $expand:'Tags,Group,Group/Channel,PubAdmin,QrCode'
+        $expand:'Tags,Group/Channel,PubAdmin'
         $inlinecount:'allpages'
     get:
       method: "GET"
       params:
         $top:1
-        $expand:'Tags,Group,Group/Channel,PubAdmin,QrCode,Comments'
+        $expand:'Tags,Group/Channel,PubAdmin,Comments'
     update:
       method: "PUT"
     nav:

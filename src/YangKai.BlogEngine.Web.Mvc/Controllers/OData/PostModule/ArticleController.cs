@@ -15,7 +15,6 @@ using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
 using YangKai.BlogEngine.Web.Mvc.Areas.Admin.Common;
-using QrCode = YangKai.BlogEngine.Domain.QrCode;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
@@ -44,13 +43,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             entity.PubDate = DateTime.Now;
 
             SaveThumbnail(entity);
-
-            entity.QrCode = new QrCode
-            {
-                QrCodeId = Guid.NewGuid(),
-                Content = entity.Title,
-                Url = entity.Url + ".png"
-            };
             SaveQrCode(entity);
 
             entity = Proxy.Repository<Post>().Add(entity);
@@ -75,17 +67,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             var entity = Proxy.Repository<Post>().Get(update.PostId);
           
             SaveThumbnail(entity);
-
-            if (entity.QrCode != null)
-            {
-                Proxy.Repository<QrCode>().Remove(entity.QrCode);
-            }
-            entity.QrCode = new QrCode
-            {
-                QrCodeId = Guid.NewGuid(),
-                Content = entity.Title,
-                Url = entity.Url + ".png"
-            };
             SaveQrCode(entity);
 
             if (entity.Tags != null)
@@ -146,9 +127,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         private static void SaveQrCode(Post entity)
         {
             var gRender = new GraphicsRenderer(new FixedModuleSize(30, QuietZoneModules.Four));
-            var fullUrl = Config.URL.Domain + "/post/" + entity.Url;
-            BitMatrix matrix = new QrEncoder().Encode(entity.QrCode.Content + " | " + fullUrl).Matrix;
-            using (var stream = new FileStream(HttpContext.Current.Server.MapPath("/upload/qrcode/" + entity.QrCode.Url), FileMode.Create))
+            var url = Config.URL.Domain + "/post/" + entity.Url;
+            var matrix = new QrEncoder().Encode(entity.Title + " | " + url).Matrix;
+            using (var stream = new FileStream(HttpContext.Current.Server.MapPath(Config.Path.QRCODE_FOLDER + entity.Url+".png"), FileMode.Create))
             {
                 gRender.WriteToStream(matrix, ImageFormat.Png, stream, new Point(1000, 1000));
             }

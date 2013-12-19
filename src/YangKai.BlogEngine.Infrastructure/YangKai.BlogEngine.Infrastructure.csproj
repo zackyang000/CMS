@@ -127,6 +127,10 @@
     <Compile Include="Migrations\201312190735301_RemoveSourceEntity.Designer.cs">
       <DependentUpon>201312190735301_RemoveSourceEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312190754162_RemoveQrCodeEntity.cs" />
+    <Compile Include="Migrations\201312190754162_RemoveQrCodeEntity.Designer.cs">
+      <DependentUpon>201312190754162_RemoveQrCodeEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.cs" />
     <Compile Include="Migrations\201209290145272_InitialCreate.Designer.cs">
@@ -220,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312190735301_RemoveSourceEntity.resx">
       <DependentUpon>201312190735301_RemoveSourceEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312190754162_RemoveQrCodeEntity.resx">
+      <DependentUpon>201312190754162_RemoveQrCodeEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

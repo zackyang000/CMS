@@ -121,17 +121,17 @@ namespace YangKai.BlogEngine.Domain
         public virtual List<Comment> Comments { get; set; }
 
         /// <summary>
-        /// 文章的二维码信息,可能不存在.
+        /// 二维码图片路径.
         /// </summary>
-        public virtual QrCode QrCode { get; set; }
+        public string QrCode { get; set; }
 
         /// <summary>
-        /// 文章转载信息,可能不存在.
+        /// 文章转载信息URL.
         /// </summary>
         public string Source { get; set; }
 
         /// <summary>
-        /// 文章缩略图,可能不存在.
+        /// 文章缩略图路径.
         /// </summary>
         public string Thumbnail { get; set; }
 

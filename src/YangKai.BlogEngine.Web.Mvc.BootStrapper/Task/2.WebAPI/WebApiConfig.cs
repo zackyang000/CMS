@@ -78,7 +78,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             modelBuilder.EntitySet<Board>("Board");
             modelBuilder.EntitySet<Post>("Article");
             modelBuilder.EntitySet<Tag>("Tag");
-            modelBuilder.EntitySet<QrCode>("QrCode");
 
             modelBuilder.EntitySet<Gallery>("Gallery");
             modelBuilder.EntitySet<Photo>("Photo");

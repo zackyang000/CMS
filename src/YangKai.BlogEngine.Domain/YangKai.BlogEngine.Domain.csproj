@@ -52,7 +52,6 @@
     <Compile Include="PostModule\Comment.cs" />
     <Compile Include="PostModule\Group.cs" />
     <Compile Include="PostModule\Post.cs" />
-    <Compile Include="PostModule\QrCode.cs" />
     <Compile Include="PostModule\Tag.cs" />
     <Compile Include="ProjectManageModule\Issue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

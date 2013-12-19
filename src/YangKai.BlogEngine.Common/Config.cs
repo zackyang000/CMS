@@ -62,6 +62,11 @@ namespace YangKai.BlogEngine.Common
             /// 缩略图文件夹
             /// </summary>
             public const string THUMBNAIL_FOLDER = "/upload/thumbnail/";
+
+            /// <summary>
+            /// 二维码文件夹
+            /// </summary>
+            public const string QRCODE_FOLDER = "/upload/qrcode/";
         }
 
         public class URL
