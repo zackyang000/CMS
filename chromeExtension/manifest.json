@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+
+  "name": "One-click Kittens",
+  "description": "This extension demonstrates a browser action with kittens.",
+  "version": "1.0",
+
+  "permissions": [
+    "https://secure.flickr.com/"
+  ],
+  "page_action": {
+      "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "default_icon": "icon.png",
+      "matches": ["http://*/*"],
+      "css" : ["app.css"],
+      "js": ["app.js"]
+    }]
+}
