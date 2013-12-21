@@ -23,7 +23,6 @@ html {
 }
 
 button, input, select, textarea {
-    font-family: sans-serif;
 }
 
 body {
@@ -68,8 +67,6 @@ p, pre {
 }
 
 pre, code, kbd, samp {
-    font-family: monospace,serif;
-    _font-family: 'courier new',monospace;
     font-size: 1em;
 }
 
@@ -314,12 +311,10 @@ table {
 }
 
 .wf-sans-n3, .wf-sans-n4, .wf-sans-n6, .wf-sans-n7 {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
 }
 
 .wf-serif-n4, .wf-serif-i4, .wf-serif-n7, .wf-serif-i7 {
-    font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
     letter-spacing: .01rem;
 }
 
@@ -2234,7 +2229,6 @@ html, body, .container {
 }
 
 body {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -2246,7 +2240,6 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -2265,25 +2258,6 @@ a {
     html {
         -webkit-text-size-adjust: none;
     }
-}
-
-@font-face {
-    font-family: 'medium-icons';
-    src: url("https://s3.amazonaws.com/medium-static/_/fp/fonts/medium-icons.RKi6ejayKSZJh0OTshbkRg.eot");
-    src: url("https://s3.amazonaws.com/medium-static/_/fp/fonts/medium-icons.RKi6ejayKSZJh0OTshbkRg.eot?#iefix") format("embedded-opentype"),url("https://s3.amazonaws.com/medium-static/_/fp/fonts/medium-icons.0qVySHWi3WfG-NkYbdM9ng.woff") format("woff"),url("https://s3.amazonaws.com/medium-static/_/fp/fonts/medium-icons.mLsoGQwSP5s8oeib362mtQ.ttf") format("truetype"),url("https://s3.amazonaws.com/medium-static/_/fp/fonts/medium-icons.YXqW0c1ibQa2SAL9POl_bw.svg?#medium-icons") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-.icons {
-    font-family: 'medium-icons';
-    font-weight: normal;
-    font-style: normal;
-    speak: none;
-    text-decoration: none;
-    text-transform: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
 }
 
 .browser-android .icons {
@@ -3072,7 +3046,6 @@ a {
 }
 
 .hero-title {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -3118,7 +3091,6 @@ a {
     }
 
     .hero-home .hero-description {
-        font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
         letter-spacing: .01rem;
         font-weight: 400;
         font-style: normal;
@@ -3304,7 +3276,6 @@ a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -3799,7 +3770,6 @@ a {
 }
 
 .post-item-title > a {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -3811,7 +3781,6 @@ a {
 }
 
 .post-item-snippet > p {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 300;
     font-style: normal;
@@ -3904,7 +3873,6 @@ a {
         left: 0;
         width: 40px;
         margin-top: -18px;
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 300;
         font-style: normal;
@@ -4023,7 +3991,7 @@ a {
 }
 
 .collection-item-title {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -4712,7 +4680,7 @@ a {
 
 .bucket-label, .bucket-label > a {
     color: #b3b3b1;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -4810,7 +4778,7 @@ a {
 }
 
 .diagnostics {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -4973,7 +4941,7 @@ a {
 }
 
 .variants {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -5230,7 +5198,7 @@ a {
     width: 100%;
     height: 65px;
     font-size: 14px;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -5436,7 +5404,7 @@ a {
     color: #f2f2f0;
     padding: 15px 20px;
     text-transform: uppercase;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -5452,7 +5420,7 @@ a {
 .sidepanel-heading {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -5473,7 +5441,7 @@ a {
 
 .sidepanel-item {
     color: #dededc;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -5572,7 +5540,7 @@ a {
 
 .list-choice-heading {
     margin-bottom: 10px;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -5650,7 +5618,7 @@ a {
 
     .list-choice-item-title > small {
         display: block;
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 400;
         font-style: normal;
@@ -5834,7 +5802,7 @@ a {
 }
 
 .tooltip-inner {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -5854,7 +5822,7 @@ a {
     }
 
     .tooltip-inner strong {
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 700;
         font-style: normal;
@@ -6196,7 +6164,7 @@ line.bargraph-grid-line {
 
 .bargraph-x-axis .bargraph-y-axis, text {
     fill: #b3b3b1;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -6306,7 +6274,7 @@ line.bargraph-grid-line {
 }
 
 .sortable-table-value {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -6331,7 +6299,7 @@ line.bargraph-grid-line {
 }
 
 .sortable-table-wrapper button {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -6583,7 +6551,7 @@ line.bargraph-grid-line {
     }
 
 .nav-tabs-anchor {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -6708,7 +6676,7 @@ line.bargraph-grid-line {
     }
 
 .site-nav-list-item-btn {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 600;
     font-style: normal;
@@ -6802,7 +6770,7 @@ line.bargraph-grid-line {
     margin: 20px 20px 0;
     padding: 8px 0;
     border-top: 1px solid rgba(255,255,255,0.1);
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -6892,7 +6860,7 @@ line.bargraph-grid-line {
 }
 
 .notifications-more {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 600;
     font-style: normal;
@@ -7071,7 +7039,7 @@ line.bargraph-grid-line {
         }
 
 .text-input {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -7334,7 +7302,7 @@ line.bargraph-grid-line {
 
     .typeahead .typeahead-tag {
         margin-left: 5px;
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 400;
         font-style: normal;
@@ -7545,7 +7513,7 @@ line.bargraph-grid-line {
     width: 340px;
     border: 0;
     padding: 0;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -7631,7 +7599,7 @@ line.bargraph-grid-line {
     }
 
     .chart-title h1 {
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 700;
         font-style: normal;
@@ -7640,7 +7608,7 @@ line.bargraph-grid-line {
     }
 
     .chart-title small {
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 400;
         font-style: normal;
@@ -7700,7 +7668,7 @@ line.bargraph-grid-line {
     }
 
     .creator-dashboard .chart-tabs button {
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 700;
         font-style: normal;
@@ -7855,7 +7823,7 @@ line.bargraph-grid-line {
     }
 
     .referrers-table th {
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 700;
         font-style: normal;
@@ -7863,7 +7831,7 @@ line.bargraph-grid-line {
     }
 
     .referrers-table td {
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 400;
         font-style: normal;
@@ -8273,7 +8241,7 @@ line.bargraph-grid-line {
 }
 
 .collection-sort-option .collection-sort-option-title {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -8284,7 +8252,7 @@ line.bargraph-grid-line {
 }
 
 .collection-sort-option-description {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -8365,7 +8333,7 @@ line.bargraph-grid-line {
 }
 
 .contributor-option .contributor-option-title {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -8376,7 +8344,7 @@ line.bargraph-grid-line {
 }
 
 .contributor-option-description {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -8437,7 +8405,7 @@ line.bargraph-grid-line {
 
 .contributor-slug-name {
     line-height: 50px;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -8451,7 +8419,7 @@ line.bargraph-grid-line {
     margin-bottom: 30px;
     text-transform: uppercase;
     font-size: 12px;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -8573,7 +8541,7 @@ line.bargraph-grid-line {
         }
 
 .post-title {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -8584,7 +8552,7 @@ line.bargraph-grid-line {
 }
 
 .post-field.subtitle {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 300;
     font-style: normal;
@@ -8599,7 +8567,7 @@ line.bargraph-grid-line {
 }
 
 .post-article .body h2 {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -8610,7 +8578,7 @@ line.bargraph-grid-line {
 }
 
 .post-article .body h3 {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -9055,7 +9023,7 @@ ul.post-list > li:before {
     }
 
 .post-article .add-image-message {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -9098,7 +9066,7 @@ ul.post-list > li:before {
     .post-article .replace-image-message .message {
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 400;
         font-style: normal;
@@ -9280,7 +9248,7 @@ ul.post-list > li:before {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     color: #666665;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -9305,7 +9273,7 @@ ul.post-list > li:before {
 
 .post-footer-card-heading {
     padding: 12px 0 28px;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -9386,7 +9354,7 @@ ul.post-list > li:before {
 }
 
     .post-collaborators .post-collaborators-heading {
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 600;
         font-style: normal;
@@ -9532,7 +9500,7 @@ ul.post-list > li:before {
         height: 60px;
         outline: 0;
         resize: none;
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 400;
         font-style: normal;
@@ -9572,7 +9540,7 @@ ul.post-list > li:before {
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 100%;
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 700;
         font-style: normal;
@@ -9585,7 +9553,7 @@ ul.post-list > li:before {
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 100%;
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 300;
         font-style: normal;
@@ -9626,7 +9594,7 @@ ul.post-list > li:before {
 
 {
     display: inline;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -9639,7 +9607,7 @@ ul.post-list > li:before {
 }
 
 .share-draft-copy {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -9657,7 +9625,7 @@ ul.post-list > li:before {
 }
 
 .share-draft-request-copyedit {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10106,7 +10074,7 @@ ol.post-list > li:before {
 }
 
 .story-cover-content .post-item-meta {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10177,7 +10145,7 @@ ol.post-list > li:before {
     }
 
 .background-size-full .caption {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10297,7 +10265,7 @@ ol.post-list > li:before {
     font-size: 16px;
     line-height: 1.2;
     color: #b3b3b1;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10308,7 +10276,7 @@ ol.post-list > li:before {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -10400,7 +10368,7 @@ ol.post-list > li:before {
 }
 
 .post-preview-description {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10427,7 +10395,7 @@ ol.post-list > li:before {
 }
 
 .post-preview-subtitle {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 300;
     font-style: normal;
@@ -10441,7 +10409,7 @@ ol.post-list > li:before {
 }
 
 .post-preview-content .post-item-meta, .post-preview-content .post-item-author {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10613,7 +10581,7 @@ ol.post-list > li:before {
 .logged-out-branding-welcome {
     display: block;
     font-size: 14px;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10621,7 +10589,7 @@ ol.post-list > li:before {
 }
 
 .logged-out-branding-name {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -10644,7 +10612,7 @@ ol.post-list > li:before {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     color: #fff;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10807,7 +10775,7 @@ ol.post-list > li:before {
 }
 
 .follow-ups-title {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10905,7 +10873,7 @@ ol.post-list > li:before {
 .follow-up-footer-item {
     display: inline;
     color: #b3b3b1;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -10940,7 +10908,7 @@ ol.post-list > li:before {
 }
 
 .follow-up-visibility-item {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -11075,7 +11043,7 @@ ol.post-list > li:before {
     }
 
 .follow-up-link-prompt {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -11189,7 +11157,7 @@ ol.post-list > li:before {
 }
 
 .site-nav-search-input-desktop {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -11275,7 +11243,7 @@ ol.post-list > li:before {
     color: #b3b3b1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -11329,7 +11297,7 @@ ol.post-list > li:before {
     font-size: 16px;
     line-height: 1.2;
     display: block;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -11363,7 +11331,7 @@ ol.post-list > li:before {
         padding-left: 14px;
         font-size: 24px;
         vertical-align: top;
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 700;
         font-style: normal;
@@ -11462,7 +11430,7 @@ ol.post-list > li:before {
         -webkit-border-radius: 14px;
         -moz-border-radius: 14px;
         border-radius: 14px;
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 400;
         font-style: normal;
@@ -11490,7 +11458,7 @@ ol.post-list > li:before {
 
 .notes-position-container {
     position: relative;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -11646,7 +11614,7 @@ ol.post-list > li:before {
 }
 
 .notes-author {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -12788,7 +12756,7 @@ ol.post-list > li:before {
 
 .word-count {
     color: #b3b3b1;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -12803,7 +12771,7 @@ ol.post-list > li:before {
 }
 
 .section-footer-popover {
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -13129,7 +13097,7 @@ ol.post-list > li:before {
     top: 3px;
     visibility: hidden;
     text-transform: uppercase;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -13216,7 +13184,7 @@ ol.post-list > li:before {
     font-size: 16px;
     color: #fff;
     text-align: center;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -13256,7 +13224,7 @@ ol.post-list > li:before {
 
 .loader-label {
     line-height: 1.4;
-    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -13322,7 +13290,7 @@ ol.post-list > li:before {
     }
 
     .hero-espn .hero-description {
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 300;
         font-style: normal;
@@ -13331,7 +13299,7 @@ ol.post-list > li:before {
     }
 
     .hero-espn .hero-prompt {
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+        font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
         letter-spacing: -0.02em;
         font-weight: 600;
         font-style: normal;
