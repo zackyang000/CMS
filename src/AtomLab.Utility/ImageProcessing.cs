@@ -352,8 +352,10 @@ namespace AtomLab.Utility
                 ImageCodecInfo ici = null;
                 foreach (ImageCodecInfo i in icis)
                 {
-                    if (i.MimeType == "image/jpeg" || i.MimeType == "image/bmp" || i.MimeType == "image/png" ||
-                        i.MimeType == "image/gif")
+                    if (i.MimeType == "image/jpeg"
+                        || i.MimeType == "image/bmp"
+                        || i.MimeType == "image/png"
+                        || i.MimeType == "image/gif")
                     {
                         ici = i;
                     }
