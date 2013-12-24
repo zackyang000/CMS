@@ -9,13 +9,22 @@
     "https://secure.flickr.com/"
   ],
   "page_action": {
-      "default_icon": "icon.png"
+    "default_icon": "icon.png",
+    "default_title": "Do action",
+    "default_popup": "app.html"
   },
-  "content_scripts": [
-    {
-      "default_icon": "icon.png",
-      "matches": ["http://*/*"],
-      "css" : ["app.css"],
-      "js": ["app.js"]
-    }]
+  "content_scripts" : [
+	    {
+	      "matches" : [
+	        "http://*/*",
+	        "https://*/*"
+	      ],
+	      "js" : ["1.js"],
+	      "run_at" : "document_idle",
+	      "all_frames" : false
+	    }
+	  ],
+  "background" : {
+       "scripts": ["app.js"]
+  }
 }

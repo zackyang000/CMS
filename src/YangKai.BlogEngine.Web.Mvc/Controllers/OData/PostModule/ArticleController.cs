@@ -101,11 +101,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         {
             if (entity.Thumbnail != null)
             {
+                var sourceName = entity.Thumbnail;
                 entity.Thumbnail = Config.Path.THUMBNAIL_FOLDER + entity.PubDate.ToString("yyyy.MM.dd.") + entity.Url +
                                Path.GetExtension(entity.Thumbnail);
-               
-                var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"),
-                    entity.Thumbnail);
+
+                var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"), sourceName);
                 var target = string.Format("{0}{1}", HttpContext.Current.Server.MapPath("~"), entity.Thumbnail);
                
                 if (File.Exists(source))

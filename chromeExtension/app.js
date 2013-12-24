@@ -2,10 +2,17 @@
 var kittenGenerator = {
 
   requestKittens: function() {
-    alert(1);
+    chrome.extension.onRequest.addListener(onRequest);
+    chrome.pageAction.show();
   }
 };
 
-document.addEventListener('DOMContentLoaded', function () {
+chrome.pageAction.onClicked.addListener(function () {
+  debugger
   kittenGenerator.requestKittens();
 });
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse){
+  debugger
+  chrome.pageAction.show(sender.tab.id);
+  sendResponse({});
+})
