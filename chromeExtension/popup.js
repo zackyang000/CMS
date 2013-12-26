@@ -5,4 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
   $("#content-title").text(data.title);
   $("#content-content").text(data.content);
   $("#content-url").text(data.url);
+
+
 });

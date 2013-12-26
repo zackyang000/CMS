@@ -75,7 +75,7 @@
       entity.PostId=UUID.generate()
       Article.save entity,
       (data) ->
-        $window.location.href = "/post/#{data.Url}"
+        1
       ,(error) ->
         $scope.loading=""
     else

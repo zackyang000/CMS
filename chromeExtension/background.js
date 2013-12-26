@@ -7,3 +7,11 @@ var data = undefined;
 chrome.runtime.onMessage.addListener(function(request, sender, sendRequest){
 	data = request;
 });
+
+
+
+chrome.pageAction.onClicked.addListener(function(tab) {
+  chrome.tabs.executeScript(null, {file: "jquery-2.0.0.min.js"});
+  chrome.tabs.executeScript(null, {file: "readability.js"});
+  chrome.tabs.executeScript(null, {file: "content_script.js"});
+});

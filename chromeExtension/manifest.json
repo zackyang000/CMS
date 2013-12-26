@@ -1,19 +1,18 @@
 ﻿{
 	"manifest_version": 2,
-	"name": "cnblogs.com article information",
+	"name": "Blog",
 	"version": "0.0.1",
-	"background": { "scripts": ["jquery-2.0.0.min.js", "background.js"] },
+	"background": {
+    "scripts": ["jquery-2.0.0.min.js", "background.js"],
+    "persistent": false
+  },
 	"page_action": {
 		"default_icon": {
 			"19": "icon.png",
 			"38": "icon.png"
 		},
-		"default_title": "cnblogs.com article information", // shown in tooltip
-		"default_popup": "popup.html"
+    //"default_popup": "popup.html",
+    "default_title": "Blog"
 	},
-	"permissions" : ["tabs","http://*/*","https://*/*"],
-	"content_scripts":[{
-		"matches":["http://*/*","https://*/*"],
-		"js":["jquery-2.0.0.min.js", "content_script.js"]
-	}]
+	"permissions" : ["tabs","http://*/*","https://*/*"]
 }

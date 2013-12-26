@@ -117,7 +117,7 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
       if (!$routeParams.id) {
         entity.PostId = UUID.generate();
         return Article.save(entity, function(data) {
-          return $window.location.href = "/post/" + data.Url;
+          return 1;
         }, function(error) {
           return $scope.loading = "";
         });
