@@ -107,7 +107,7 @@ namespace YangKai.BlogEngine.Domain
         /// <summary>
         /// 文章分组信息外键.
         /// </summary>
-        public Guid GroupId { get; set; }
+        public Guid? GroupId { get; set; }
 
         /// <summary>
         /// 文章分组信息.

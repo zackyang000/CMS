@@ -37,7 +37,20 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
             SaveRemoteImg(entity);
 
-            entity.Group = Proxy.Repository<Group>().Get(entity.Group.GroupId);
+            //如果没有Group,则自动保存为草稿(用于ChromeExtension)
+            if (entity.Group != null)
+            {
+                entity.Group = Proxy.Repository<Group>().Get(entity.Group.GroupId);
+            }
+            else
+            {
+                entity.PostStatus = (int) PostStatusEnum.Draft;
+            }
+
+            if (entity.PostId == default(Guid))
+            {
+                entity.PostId=Guid.NewGuid();
+            }
 
             entity.PubDate = DateTime.Now;
 
@@ -47,6 +60,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             entity = Proxy.Repository<Post>().Add(entity);
 
             Rss.Current.BuildPost();
+
             return entity;
         }
 
@@ -85,7 +99,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         private Post PreHandle(Post entity)
         {
             entity.Title = entity.Title.Trim();
-            entity.Url = entity.Url.Trim().ToLower().Replace(" ", "-");
+            entity.Url = entity.Url != null ? entity.Url.Trim().ToLower().Replace(" ", "-") : string.Empty;
             entity.Description = entity.Description ?? string.Empty;
 
             return entity;

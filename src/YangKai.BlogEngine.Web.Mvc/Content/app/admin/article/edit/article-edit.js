@@ -33,8 +33,13 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
         }, function(data) {
           var item, _i, _len, _ref;
           $scope.entity = data.value[0];
-          $scope.channelId = $scope.entity.Group.Channel.ChannelId;
-          $scope.groupId = $scope.entity.Group.GroupId;
+          if ($scope.entity.Group) {
+            $scope.channelId = $scope.entity.Group.Channel.ChannelId;
+            $scope.groupId = $scope.entity.Group.GroupId;
+          }
+          if (!$scope.entity.Url) {
+            $scope.translateTitle();
+          }
           if ($scope.entity.Tags) {
             $scope.tags = '';
             _ref = $scope.entity.Tags;
@@ -117,7 +122,7 @@ angular.module('admin-article-edit', []).factory("TranslateService", [
       if (!$routeParams.id) {
         entity.PostId = UUID.generate();
         return Article.save(entity, function(data) {
-          return 1;
+          return $window.location.href = "/post/" + data.Url;
         }, function(error) {
           return $scope.loading = "";
         });

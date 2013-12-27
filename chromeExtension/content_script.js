@@ -1,19 +1,20 @@
 ﻿
 
-document.body.style.backgroundColor="red"
-debugger
-var a=readability.init()
+var data=readability.get()
+
+if (data.description.length>200)
+  data.description=data.description.substring(0,200)+"...";
+
 $.post("http://localhost:33333/odata/Article",
   {
-    Content: "AAA",
-    Description: "BBB",
-    PostId: "1c01377d-394b-4274-9fcc-385c8a1cf122",
-    Title: "ASFDAFSASSFD",
-    Url: "AASDFSAFDAS"
+    Content: data.content,
+    Description: data.description.substring(0,200),
+    Title: data.title,
+    Source: document.URL
   },
   function(data){
     debugger
-    window.open("http://www.woshinidezhu.com")
-  })
+    window.location.href="http://127.0.0.1:33333/admin/article('"+data.PostId+"')";
+  });
 
 

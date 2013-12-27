@@ -73,10 +73,9 @@ var readability = {
      *
      * @return void
      **/
-    init: function() {
+    get: function() {
         /* Before we do anything, remove all scripts that are not readability. */
         window.onload = window.onunload = function() {};
-
         readability.removeScripts(document);
 
         if(document.body && !readability.bodyCache) {
@@ -88,129 +87,18 @@ var readability = {
 
         /* Pull out any possible next page link first */
         var nextPageLink = readability.findNextPageLink(document.body);
-        
+
         readability.prepDocument();
 
         /* Build readability's DOM tree */
-        var overlay        = document.createElement("DIV");
-        var innerDiv       = document.createElement("DIV");
         var articleTools   = readability.getArticleTools();
         var articleTitle   = readability.getArticleTitle();
         var articleContent = readability.grabArticle();
         var articleFooter  = readability.getArticleFooter();
-
-        if(!articleContent) {
-            articleContent    = document.createElement("DIV");
-            articleContent.id = "readability-content";
-            articleContent.innerHTML = [
-                "<p>Sorry, readability was unable to parse this page for content. If you feel like it should have been able to, please <a href='http://code.google.com/p/arc90labs-readability/issues/entry'>let us know by submitting an issue.</a></p>",
-                (readability.frameHack ? "<p><strong>It appears this page uses frames.</strong> Unfortunately, browser security properties often cause Readability to fail on pages that include frames. You may want to try running readability itself on this source page: <a href='" + readability.biggestFrame.src + "'>" + readability.biggestFrame.src + "</a></p>" : ""),
-                "<p>Also, please note that Readability does not play very nicely with front pages. Readability is intended to work on articles with a sizable chunk of text that you'd like to read comfortably. If you're using Readability on a landing page (like nytimes.com for example), please click into an article first before using Readability.</p>"
-            ].join('');
-
-            nextPageLink = null;
-        }
-
-        overlay.id              = "readOverlay";
-        innerDiv.id             = "readInner";
-
-        /* Apply user-selected styling */
-        document.body.className = readStyle;
-        document.dir            = readability.getSuggestedDirection(articleTitle.innerHTML);
-
-        if (readStyle === "style-athelas" || readStyle === "style-apertura"){
-            overlay.className = readStyle + " rdbTypekit";
-        }
-        else {
-            overlay.className = readStyle;
-        }
-        innerDiv.className    = readMargin + " " + readSize;
-
-        if(typeof(readConvertLinksToFootnotes) !== 'undefined' && readConvertLinksToFootnotes === true) {
-            readability.convertLinksToFootnotes = true;
-        }
-
-        /* Glue the structure of our document together. */
-        innerDiv.appendChild( articleTitle   );
-        innerDiv.appendChild( articleContent );
-        innerDiv.appendChild( articleFooter  );
-         overlay.appendChild( articleTools   );
-         overlay.appendChild( innerDiv       );
-
-        /* Clear the old HTML, insert the new content. */
-        document.body.innerHTML = "";
-        document.body.insertBefore(overlay, document.body.firstChild);
-        document.body.removeAttribute('style');
-
-        if(readability.frameHack)
-        {
-            var readOverlay = document.getElementById('readOverlay');
-            readOverlay.style.height = '100%';
-            readOverlay.style.overflow = 'auto';
-        }
-
-        /**
-         * If someone tries to use Readability on a site's root page, give them a warning about usage.
-        **/
-        if((window.location.protocol + "//" + window.location.host + "/") === window.location.href)
-        {
-            articleContent.style.display = "none";
-            var rootWarning = document.createElement('p');
-                rootWarning.id = "readability-warning";
-                rootWarning.innerHTML = "<em>Readability</em> was intended for use on individual articles and not home pages. " +
-                    "If you'd like to try rendering this page anyway, <a onClick='javascript:document.getElementById(\"readability-warning\").style.display=\"none\";document.getElementById(\"readability-content\").style.display=\"block\";'>click here</a> to continue.";
-
-            innerDiv.insertBefore( rootWarning, articleContent );
-        }
-
-        readability.postProcessContent(articleContent);
-
-        window.scrollTo(0, 0);
-
-        /* If we're using the Typekit library, select the font */
-        if (readStyle === "style-athelas" || readStyle === "style-apertura") {
-            readability.useRdbTypekit();
-        }
-
-        if (nextPageLink) {
-            /** 
-             * Append any additional pages after a small timeout so that people
-             * can start reading without having to wait for this to finish processing.
-            **/
-            window.setTimeout(function() {
-                readability.appendNextPage(nextPageLink);
-            }, 500);
-        }
-
-        /** Smooth scrolling **/
-        document.onkeydown = function(e) {
-            var code = (window.event) ? event.keyCode : e.keyCode;
-            if (code === 16) {
-                readability.reversePageScroll = true;
-                return;
-            }
-
-            if (code === 32) {
-                readability.curScrollStep = 0;
-                var windowHeight = window.innerHeight ? window.innerHeight : (document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight);
-
-                if(readability.reversePageScroll) {
-                    readability.scrollTo(readability.scrollTop(), readability.scrollTop() - (windowHeight - 50), 20, 10);                   
-                }
-                else {
-                    readability.scrollTo(readability.scrollTop(), readability.scrollTop() + (windowHeight - 50), 20, 10);                   
-                }
-                
-                return false;
-            }
-        };
-        
-        document.onkeyup = function(e) {
-            var code = (window.event) ? event.keyCode : e.keyCode;
-            if (code === 16) {
-                readability.reversePageScroll = false;
-                return;
-            }
+        return {
+          title:articleTitle.innerText,
+          content:articleContent.innerHTML,
+          description:articleContent.innerText
         };
     },
 
@@ -1821,5 +1709,3 @@ var readability = {
     }
     
 };
-
-readability.init();

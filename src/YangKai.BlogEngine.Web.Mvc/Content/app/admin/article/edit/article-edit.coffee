@@ -27,9 +27,11 @@
       $scope.loading="Loading"
       Article.get $filter:"PostId eq (guid'#{$routeParams.id}')",(data)->
         $scope.entity=data.value[0]
-        $scope.channelId=$scope.entity.Group.Channel.ChannelId
-        $scope.groupId=$scope.entity.Group.GroupId
-        #加载Tag
+        if $scope.entity.Group
+          $scope.channelId=$scope.entity.Group.Channel.ChannelId
+          $scope.groupId=$scope.entity.Group.GroupId
+        if !$scope.entity.Url
+          $scope.translateTitle()
         if $scope.entity.Tags
           $scope.tags=''
           for item in $scope.entity.Tags 
@@ -75,7 +77,7 @@
       entity.PostId=UUID.generate()
       Article.save entity,
       (data) ->
-        1
+        $window.location.href = "/post/#{data.Url}"
       ,(error) ->
         $scope.loading=""
     else

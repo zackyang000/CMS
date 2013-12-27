@@ -9,7 +9,7 @@ namespace YangKai.BlogEngine.Infrastructure.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = false;
         }
 
