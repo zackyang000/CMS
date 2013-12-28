@@ -30,12 +30,11 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         {
             entity = PreHandle(entity);
 
-            if (Proxy.Repository<Post>().Exist(p => p.Url == entity.Url))
+            if (Proxy.Repository<Post>().Exist(p => p.Url == entity.Url && p.PostStatus==(int)PostStatusEnum.Publish))
             {
                 throw new Exception("URL already exists.");
             }
 
-            SaveRemoteImg(entity);
 
             //如果没有Group,则自动保存为草稿(用于ChromeExtension)
             if (entity.Group != null)
@@ -54,6 +53,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
             entity.PubDate = DateTime.Now;
 
+            SaveRemoteImg(entity);
             SaveThumbnail(entity);
             SaveQrCode(entity);
 
@@ -74,14 +74,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             }
 
             SaveRemoteImg(update);
+            SaveThumbnail(update);
+            SaveQrCode(update);
 
             update = Proxy.Repository<Post>().Update(update);
 
             var entity = Proxy.Repository<Post>().Get(update.PostId);
-          
-            SaveThumbnail(entity);
-            SaveQrCode(entity);
-
             if (entity.Tags != null)
             {
                 Proxy.Repository<Tag>().Remove(entity.Tags);
@@ -107,8 +105,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
         private void SaveRemoteImg(Post entity)
         {
-            entity.Content = SaveRemoteFile.SaveContentPic(entity.Content, entity.Url);
-            entity.Description = SaveRemoteFile.SaveContentPic(entity.Description, entity.Url);
+            entity.Content = SaveRemoteFile.SaveContentPic(entity.Content, entity.PostId.ToString());
+            entity.Description = SaveRemoteFile.SaveContentPic(entity.Description, entity.PostId.ToString());
         }
 
         private static void SaveThumbnail(Post entity)
