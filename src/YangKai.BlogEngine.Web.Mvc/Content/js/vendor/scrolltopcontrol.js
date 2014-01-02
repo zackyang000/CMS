@@ -9,7 +9,7 @@ var scrolltotop={
 	//startline: Integer. Number of pixels from top of doc scrollbar is scrolled before showing control
 	//scrollto: Keyword (Integer, or "Scroll_to_Element_ID"). How far to scroll document up when control is clicked on (0=top).
 	setting: {startline:500, scrollto: 0, scrollduration:1000, fadeduration:[500, 300]},
-	controlHTML: '<img src="/Content/img/up.png" style="width:64px; height:64px" />', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
+	controlHTML: '<img src="/Content/images/up.png" style="width:32px; height:32px" />', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
 	controlattrs: {offsetx:5, offsety:5}, //offset of control relative to right/ bottom of window corner
 	anchorkeyword: '#top', //Enter href value of HTML anchors on the page that should also act as "Scroll Up" links
 
@@ -57,7 +57,7 @@ var scrolltotop={
 			mainobj.cssfixedsupport=!iebrws || iebrws && document.compatMode=="CSS1Compat" && window.XMLHttpRequest //not IE or IE7+ browsers in standards mode
 			mainobj.$body=(window.opera)? (document.compatMode=="CSS1Compat"? $('html') : $('body')) : $('html,body')
 			mainobj.$control = $('<div id="backtotop">' + mainobj.controlHTML + '</div>')
-				.css({ position: mainobj.cssfixedsupport ? 'fixed' : 'absolute', bottom: mainobj.controlattrs.offsety + 30, right: mainobj.controlattrs.offsetx, opacity: 0, cursor: 'pointer',display:"none" })
+				.css({ position: mainobj.cssfixedsupport ? 'fixed' : 'absolute', bottom: mainobj.controlattrs.offsety + 5, right: mainobj.controlattrs.offsetx, opacity: 0, cursor: 'pointer',display:"none" })
 	            .mouseenter(function () {
 	                if ($(this).css("opacity") == 1) {
 	                    $(this).css("opacity", "0.8");
