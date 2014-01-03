@@ -1,7 +1,9 @@
 ﻿GlobalController=
 ["$scope","$http","$location",'$window',"Channel" ,"account"
 ($scope,$http,$location,$window,Channel,account) ->
-  
+  account.get().then (data) ->
+    $scope.User=data
+
   Channel.query 
     $orderby:'OrderId' 
     $filter:'IsDeleted eq false'

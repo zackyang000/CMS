@@ -1,0 +1,33 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li class="active">History</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="dialogs" style="overflow: hidden; width: auto; height: 300px;">
+        <div class="itemdiv dialogdiv" ng-repeat="item in versions">
+            <div class="user">
+                <img src="/content/img/upgrade.png">
+            </div>
+            <div class="body">
+                <div class="time">
+                    <i class="icon-time"></i>
+                    <span class="green">{{ item.date | date:'yyyy-MM-dd' }}</span>
+                </div>
+                <div class="name blue">
+                    {{ item.ver }}
+                </div>
+                <div class="text">
+                    <div ng-repeat="detail in item.content">{{ detail }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

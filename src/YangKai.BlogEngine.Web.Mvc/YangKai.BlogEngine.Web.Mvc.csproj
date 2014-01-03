@@ -201,6 +201,19 @@
     <Content Include="Content\app\admin\style.min.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
+    <Content Include="Content\app\admin\system\history\history.js">
+      <DependentUpon>history.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\system\history\history.min.js">
+      <DependentUpon>history.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\system\history\history.tpl.html" />
+    <Content Include="Content\app\admin\system\system.js">
+      <DependentUpon>system.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\system\system.min.js">
+      <DependentUpon>system.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\app\article\article.css" />
     <Content Include="Content\app\gallery\detail\gallery-detail.css" />
     <Content Include="Content\app\gallery\gallery.css" />
@@ -230,6 +243,7 @@
     </Content>
     <Content Include="Content\img\loading_animation.gif" />
     <Content Include="Content\img\up.png" />
+    <Content Include="Content\img\upgrade.png" />
     <Content Include="Content\js\directives\customDirectives.js">
       <DependentUpon>customDirectives.coffee</DependentUpon>
     </Content>
@@ -247,6 +261,12 @@
     </Content>
     <Content Include="Content\js\services\AccountServices.min.js">
       <DependentUpon>AccountServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\VersionService.js">
+      <DependentUpon>VersionService.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\js\services\VersionService.min.js">
+      <DependentUpon>VersionService.coffee</DependentUpon>
     </Content>
     <Content Include="Content\js\vendor\angular-cookies.js" />
     <Content Include="Content\js\vendor\angular-resource.js" />
@@ -561,11 +581,6 @@
     <Content Include="Content\app\admin\dashboard\dashboard.tpl.html" />
     <Content Include="Content\app\admin\basedata\group\basedata-group.tpl.html" />
     <Content Include="Content\css\vendor\bootstrap.css" />
-    <Content Include="Content\img\ajax-loader.gif" />
-    <Content Include="Content\img\ajax-loader2.gif" />
-    <Content Include="Content\img\ajax-loader3.gif" />
-    <Content Include="Content\img\ajax-loader4.gif" />
-    <Content Include="Content\img\ajax-loader5.gif" />
     <Content Include="Content\img\avatar.png" />
     <Content Include="Content\img\bg.png" />
     <Content Include="Content\img\lab\refstat_pre.jpg" />
@@ -1124,6 +1139,7 @@
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeMDUltra.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeMidnight.css" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\styles\shThemeRDark.css" />
+    <Content Include="version.txt" />
     <Content Include="entry\bg.jpeg" />
     <Content Include="entry\style.css" />
     <Content Include="favicon.ico" />
@@ -1233,6 +1249,9 @@
     <Content Include="Content\app\article\archives\archives.css" />
     <Content Include="Content\js\services\AccountServices.coffee" />
     <Content Include="Content\js\directives\customDirectives.coffee" />
+    <Content Include="Content\app\admin\system\history\history.coffee" />
+    <Content Include="Content\app\admin\system\system.coffee" />
+    <Content Include="Content\js\services\VersionService.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

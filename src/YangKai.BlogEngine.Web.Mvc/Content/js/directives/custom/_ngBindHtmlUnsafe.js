@@ -1,5 +1,4 @@
 ﻿
-
 myDirectives.directive("ngBindHtmlUnsafe", [
   function() {
     return function(scope, element, attr) {

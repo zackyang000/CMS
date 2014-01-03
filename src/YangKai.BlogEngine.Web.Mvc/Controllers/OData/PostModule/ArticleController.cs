@@ -88,6 +88,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 
             entity.Group = Proxy.Repository<Group>().Get(update.Group.GroupId);
 
+            entity.PostStatus = (int)PostStatusEnum.Publish;
+
             Proxy.Repository<Post>().Commit();
 
             Rss.Current.BuildPost();
