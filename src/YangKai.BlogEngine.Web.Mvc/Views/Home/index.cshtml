@@ -42,8 +42,8 @@
                         <li><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li ng-controller="LoginController">
-                            <a href="JavaScript:void(0)" ng-click="open()">{{'global.menu.admin' | translate}}</a>
+                        <li>
+                            <a href="JavaScript:void(0)" ng-click="login()">{{'global.menu.admin' | translate}}</a>
                         </li>
                         <li>
                             <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="form-control search" placeholder="{{'global.menu.search' | translate}}" />

@@ -1,5 +1,5 @@
 ﻿
-angular.module("app", ['ngRoute', 'ngSanitize', 'ngAnimate', 'ngCookies', 'l18n', 'formatFilters', 'index', 'article', 'board', 'about', 'issue', 'gallery', 'ctrl.main', 'AccountServices', 'customDirectives', 'pasvaz.bindonce', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'pascalprecht.translate', 'angulartics', 'angulartics.google.analytics']).config([
+angular.module("app", ['ngRoute', 'ngSanitize', 'ngAnimate', 'ngCookies', 'l18n', 'formatFilters', 'index', 'article', 'board', 'about', 'issue', 'gallery', 'main.controllers', 'AccountServices', 'customDirectives', 'pasvaz.bindonce', 'ngProgress', 'ui.utils', 'ui.bootstrap', 'pascalprecht.translate', 'angulartics', 'angulartics.google.analytics']).config([
   "$locationProvider", function($locationProvider) {
     return $locationProvider.html5Mode(true);
   }

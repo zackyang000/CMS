@@ -1,5 +1,5 @@
 ﻿
-angular.module("VersionServices", []).factory("VersionService", [
+angular.module("VersionServices", []).factory("version", [
   '$http', '$q', function($http, $q) {
     return {
       get: function() {

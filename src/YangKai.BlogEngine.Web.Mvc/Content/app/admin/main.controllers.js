@@ -1,10 +1,12 @@
-﻿var LoginController;
-
-LoginController = [
+﻿
+angular.module('admin.main.controllers', ['resource.users']).controller('GlobalController', [
+  "$scope", "$location", "account", "$localStorage", function($scope, $location, account, $localStorage) {
+    return account.get().then(function(data) {
+      return $scope.User = data;
+    });
+  }
+]).controller('LoginController', [
   "$scope", "$window", "User", function($scope, $window, User) {
-    $scope.open = function() {
-      return $window.location.href = '/admin/';
-    };
     $scope.signin = function() {
       $scope.submitting = true;
       return User.signin({
@@ -27,11 +29,8 @@ LoginController = [
         return $window.location.href = '/';
       });
     };
-    $scope.manage = function() {
-      return $window.location.href = '/admin/';
-    };
-    return $scope.view = function() {
+    return $scope.backHome = function() {
       return $window.location.href = '/';
     };
   }
-];
+]);

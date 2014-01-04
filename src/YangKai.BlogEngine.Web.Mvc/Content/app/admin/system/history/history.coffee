@@ -9,8 +9,8 @@
 ])
 
 .controller('SystemHistoryCtrl',
-["$scope","$http",'VersionService'
-($scope,$http,VersionService) ->
-  VersionService.get().then (data)->
+["$scope","$http",'version'
+($scope,$http,version) ->
+  version.get().then (data)->
     $scope.versions=data
 ])

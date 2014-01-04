@@ -7,8 +7,8 @@ angular.module('admin-system-history', []).config([
     });
   }
 ]).controller('SystemHistoryCtrl', [
-  "$scope", "$http", 'VersionService', function($scope, $http, VersionService) {
-    return VersionService.get().then(function(data) {
+  "$scope", "$http", 'version', function($scope, $http, version) {
+    return version.get().then(function(data) {
       return $scope.versions = data;
     });
   }

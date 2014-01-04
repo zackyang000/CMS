@@ -1,5 +1,5 @@
 ﻿angular.module("VersionServices", [])
-.factory "VersionService", ['$http','$q',($http, $q) ->
+.factory "version", ['$http','$q',($http, $q) ->
   get: ->
     deferred = $q.defer()
     if @data

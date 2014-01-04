@@ -219,6 +219,12 @@
     <Content Include="Content\app\admin\gallery\list\gallery-list.min.js">
       <DependentUpon>gallery-list.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\app\admin\main.controllers.js">
+      <DependentUpon>main.controllers.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\main.controllers.min.js">
+      <DependentUpon>main.controllers.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\app\admin\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -241,6 +247,12 @@
     <Content Include="Content\app\article\article.css" />
     <Content Include="Content\app\gallery\detail\gallery-detail.css" />
     <Content Include="Content\app\gallery\gallery.css" />
+    <Content Include="Content\app\main.controllers.js">
+      <DependentUpon>main.controllers.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\main.controllers.min.js">
+      <DependentUpon>main.controllers.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\i18n\i18n.js">
       <DependentUpon>i18n.coffee</DependentUpon>
     </Content>
@@ -492,6 +504,7 @@
     <Content Include="Content\vendor\angular\angular-sanitize.js" />
     <Content Include="Content\vendor\angular\angular.js" />
     <Content Include="Content\vendor\moment\moment-range.js" />
+    <Content Include="Content\common\directives\ngStorage.js" />
     <Content Include="Content\vendor\photobox\photobox.css" />
     <Content Include="Content\vendor\photobox\photobox.js" />
     <Content Include="Content\vendor\angular-translate\directive\translate.js" />
@@ -555,12 +568,6 @@
     </Content>
     <Content Include="Content\vendor\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Content\test\angular-scenario.js" />
-    <Content Include="Content\app\LoginController.js">
-      <DependentUpon>LoginController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\LoginController.min.js">
-      <DependentUpon>LoginController.coffee</DependentUpon>
-    </Content>
     <Content Include="Content\common\directives\custom\ckeditor.js">
       <DependentUpon>ckeditor.coffee</DependentUpon>
     </Content>
@@ -610,12 +617,6 @@
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
     <Content Include="Content\vendor\bootstrap\bootstrap.js" />
-    <Content Include="Content\app\GlobalController.js">
-      <DependentUpon>GlobalController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\GlobalController.min.js">
-      <DependentUpon>GlobalController.coffee</DependentUpon>
-    </Content>
     <Content Include="Content\common\filters.js">
       <DependentUpon>filters.coffee</DependentUpon>
     </Content>
@@ -1207,7 +1208,7 @@
     <Content Include="Content\app\board\board.coffee" />
     <Content Include="Content\app\app.coffee" />
     <Content Include="Content\common\filters.coffee" />
-    <Content Include="Content\app\GlobalController.coffee" />
+    <Content Include="Content\app\main.controllers.coffee" />
     <Content Include="Content\common\resources\messages.coffee" />
     <Content Include="Content\app\index.coffee" />
     <Content Include="Content\app\about\about.coffee" />
@@ -1222,7 +1223,6 @@
     <Content Include="Content\vendor\font-awesome\fontawesome-webfont.woff" />
     <Content Include="Content\vendor\font-awesome\FontAwesome.otf" />
     <Content Include="Content\common\resources\users.coffee" />
-    <Content Include="Content\app\LoginController.coffee" />
     <Content Include="Content\app\admin\basedata\channel\basedata-channel.coffee" />
     <Content Include="Content\common\resources\channels.coffee" />
     <Content Include="Content\app\admin\basedata\group\basedata-group.coffee" />
@@ -1263,6 +1263,7 @@
     <Content Include="Content\common\VersionService.coffee" />
     <Content Include="Content\app\admin\gallery\gallery.coffee" />
     <Content Include="Content\app\admin\article\article.coffee" />
+    <Content Include="Content\app\admin\main.controllers.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

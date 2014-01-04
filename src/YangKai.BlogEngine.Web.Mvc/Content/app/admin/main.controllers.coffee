@@ -1,32 +1,15 @@
-﻿angular.module('ctrl.main',['resource.channels','resource.users'])
+﻿angular.module('admin.main.controllers',['resource.users'])
 
 .controller('GlobalController',
-["$scope","$http","$location",'$window',"Channel" ,"account"
-($scope,$http,$location,$window,Channel,account) ->
+["$scope","$location","account","$localStorage"
+($scope,$location,account,$localStorage) ->
   account.get().then (data) ->
     $scope.User=data
-
-  Channel.query 
-    $orderby:'OrderId' 
-    $filter:'IsDeleted eq false'
-    $expand:'Groups'
-    $select:'Name,Url,Groups/Name,Groups/Url,Groups/IsDeleted,Groups/OrderId'
-  ,(data)->
-    $scope.Channels=data.value
-
-  $scope.search = ->
-    $location.path("/search/#{$scope.key}")
-
-  $scope.GoHome = ->
-    $window.location.href='/'
 ])
 
 .controller('LoginController',
 ["$scope","$window","User",
 ($scope,$window,User) ->
-  $scope.open = ->
-    $window.location.href='/admin/'
-
   $scope.signin = ->
     $scope.submitting=true
     User.signin {id:'(1)'},$scope.user
@@ -45,9 +28,6 @@
         $scope.submitting=false
         $window.location.href='/'
 
-  $scope.manage = ->
-    $window.location.href='/admin/'
-
-  $scope.view = ->
+  $scope.backHome = ->
     $window.location.href='/'
 ])
