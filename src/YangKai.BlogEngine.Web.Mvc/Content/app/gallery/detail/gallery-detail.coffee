@@ -1,4 +1,4 @@
-﻿angular.module('gallery-detail',[])
+﻿angular.module('gallery-detail',['resource.galleries'])
 
 .config(["$routeProvider",
 ($routeProvider) ->

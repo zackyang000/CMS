@@ -1,4 +1,4 @@
-﻿angular.module('article-detail',[])
+﻿angular.module('article-detail',['resource.articles','resource.comments'])
 
 .config(["$routeProvider",
 ($routeProvider) ->
@@ -97,7 +97,7 @@
 
   $scope.remove = (item) ->
     message.confirm ->
-    Comment.remove id:"(guid'#{item.CommentId}')",->
+      Comment.remove id:"(guid'#{item.CommentId}')",->
         item.IsDeleted=true
         message.success "Comment has been removed."
 

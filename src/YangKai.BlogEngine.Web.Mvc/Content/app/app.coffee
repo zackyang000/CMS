@@ -8,7 +8,7 @@
 'about',
 'issue',
 'gallery',
-'UserServices',
+'ctrl.main',
 'AccountServices',
 'customDirectives',
 'pasvaz.bindonce',

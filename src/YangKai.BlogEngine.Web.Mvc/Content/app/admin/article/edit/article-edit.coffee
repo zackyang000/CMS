@@ -1,4 +1,4 @@
-﻿angular.module('admin-article-edit',[])
+﻿angular.module('admin-article-edit',['resource.articles','resource.channels'])
 
 .factory("TranslateService", ["$http", ($http) ->
   events: (key) ->

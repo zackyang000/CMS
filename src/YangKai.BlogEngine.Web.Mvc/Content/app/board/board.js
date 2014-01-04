@@ -1,5 +1,5 @@
 ﻿
-angular.module('board', ['MessageServices']).config([
+angular.module('board', ['resource.messages']).config([
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/board", {
       templateUrl: "/Content/app/board/board.tpl.html",

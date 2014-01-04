@@ -1,4 +1,5 @@
-﻿using System.Web.Optimization;
+﻿using System.Collections.Generic;
+using System.Web.Optimization;
 using Bootstrap.Extensions.StartupTasks;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
@@ -7,6 +8,8 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
     {
         public void Run()
         {
+            SetOrder();
+
             BundleJs(
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
                 "~/Content/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js",
@@ -24,78 +27,77 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             //BundleTable.EnableOptimizations = true;
         }
 
+
         public void Reset()
         {
         }
 
+        private void SetOrder()
+        {
+            BundleTable.Bundles.FileSetOrderList.AddRange("angular", "messenger", "moment");
+        }
+
         private void BundleJs(params string[] plugin)
         {
-            var angularFiles = new BundleFileSetOrdering("Angular");
-            angularFiles.Files.Add("angular.js");
-            angularFiles.Files.Add("angular-{version}.js");
-            angularFiles.Files.Add("angular-*.js");
-            angularFiles.Files.Add("angular-*-{version}.js");
-            BundleTable.Bundles.FileSetOrderList.Add(angularFiles);
-
-            var messengerFiles = new BundleFileSetOrdering("Messenger");
-            messengerFiles.Files.Add("messenger.js");
-            messengerFiles.Files.Add("messenger-*.js");
-            BundleTable.Bundles.FileSetOrderList.Add(messengerFiles);
-
             //js
             var bundle = new ScriptBundle("~/js")
-                .Include("~/Content/js/init.js")
-                .IncludeDirectory("~/Content/js/vendor", "*.js", true)
-                .Include("~/Content/js/common.js")
-                .IncludeDirectory("~/Content/js/directives", "*.js", true)
-                .IncludeDirectory("~/Content/js/services", "*.js", true)
-                .IncludeDirectory("~/Content/js/filters", "*.js", true)
+                .IncludeDirectory("~/Content/vendor", "*.js", true)
+                .IncludeDirectory("~/Content/common", "*.js", true)
                 .IncludeDirectory("~/Content/i18n", "*.js", true)
                 .IncludeDirectory("~/Content/app", "*.js", true)
                 .Include(plugin);
             BundleTable.Bundles.Add(bundle);
 
             //admin-js
-            var aceBundle = new ScriptBundle("~/admin-js")
-                .Include("~/Content/js/init.js")
-                .IncludeDirectory("~/Content/js/vendor", "*.js", true)
-                .Include("~/Content/js/common.js")
-                .IncludeDirectory("~/Content/js/directives", "*.js", true)
-                .IncludeDirectory("~/Content/js/services", "*.js", true)
-                .IncludeDirectory("~/Content/js/filters", "*.js", true)
-                .IncludeDirectory("~/Content/i18n", "*.js", true)
+            var adminBundle = new ScriptBundle("~/admin-js")
+                .IncludeDirectory("~/Content/vendor", "*.js", true)
+                .IncludeDirectory("~/Content/common", "*.js", true)
                 .IncludeDirectory("~/Content/app", "*.js", true)
                 .IncludeDirectory("~/Content/plugin/ace_1.2", "*.js", true)
                 .Include(plugin);
-            BundleTable.Bundles.Add(aceBundle);
+            BundleTable.Bundles.Add(adminBundle);
         }
 
         private void BundleCss(params string[] plugin)
         {
-            var messengerFiles = new BundleFileSetOrdering("messenger");
-            messengerFiles.Files.Add("messenger.css");
-            messengerFiles.Files.Add("messenger-*.css");
-            BundleTable.Bundles.FileSetOrderList.Add(messengerFiles);
-
             //css
             var bundle = new StyleBundle("~/Content/style/css")
-                .IncludeDirectory("~/Content/css/vendor", "*.css", true)
+                .IncludeDirectory("~/Content/vendor", "*.css", true)
                 .Include(plugin)
                 .IncludeDirectory("~/Content/app/about", "*.css", true)
                 .IncludeDirectory("~/Content/app/article", "*.css", true)
                 .IncludeDirectory("~/Content/app/board", "*.css", true)
                 .IncludeDirectory("~/Content/app/gallery", "*.css", true)
                 .IncludeDirectory("~/Content/app/issue", "*.css", true)
-                .Include("~/Content/css/style.css");
+                .Include("~/Content/common/style.css");
             BundleTable.Bundles.Add(bundle);
 
             //admin-css
-            var aceBundle = new StyleBundle("~/Content/style/admin-css")
-                .IncludeDirectory("~/Content/css/vendor", "*.css", true)
+            var adminBundle = new StyleBundle("~/Content/style/admin-css")
+                .IncludeDirectory("~/Content/vendor", "*.css", true)
                 .Include(plugin)
                 .IncludeDirectory("~/Content/plugin/ace_1.2", "*.css", true)
                 .IncludeDirectory("~/Content/app/admin", "*.css", true);
-            BundleTable.Bundles.Add(aceBundle);
+            BundleTable.Bundles.Add(adminBundle);
+        }
+    }
+
+    internal static class MehtondExtension
+    {
+        public static void Add(this ICollection<BundleFileSetOrdering> list, string item)
+        {
+            list.Add(new BundleFileSetOrdering(item)
+            {
+                Files = { item + ".*", item + "*" }
+            });
+        }
+
+        public static void AddRange(this ICollection<BundleFileSetOrdering> list, params string[] items)
+        {
+            foreach (var item in items)
+            {
+                list.Add(item);
+            }
         }
     }
 }

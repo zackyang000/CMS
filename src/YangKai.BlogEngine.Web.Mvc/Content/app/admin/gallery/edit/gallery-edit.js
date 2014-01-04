@@ -1,5 +1,5 @@
 ﻿
-angular.module('admin-gallery-edit', []).config([
+angular.module('admin-gallery-edit', ['resource.galleries', 'resource.photos']).config([
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/admin/gallery(':id')", {
       templateUrl: "/content/app/admin/gallery/edit/gallery-edit.tpl.html",
@@ -28,7 +28,9 @@ angular.module('admin-gallery-edit', []).config([
     };
     $scope.submit = function() {
       $scope.isSubmit = true;
-      if (!$scope.entity.Name) return false;
+      if (!$scope.entity.Name) {
+        return false;
+      }
       if ($scope.files.length) {
         return uploadManager.upload();
       } else {
@@ -38,7 +40,9 @@ angular.module('admin-gallery-edit', []).config([
     save = function() {
       var entity;
       entity = $scope.entity;
-      if (!$routeParams.id) entity.GalleryId = UUID.generate();
+      if (!$routeParams.id) {
+        entity.GalleryId = UUID.generate();
+      }
       return Gallery.update({
         id: "(guid'" + entity.GalleryId + "')"
       }, entity, function(data) {
@@ -57,7 +61,9 @@ angular.module('admin-gallery-edit', []).config([
       _ref = $scope.files;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         f = _ref[_i];
-        if (f.name === file.name) deleteFile = f;
+        if (f.name === file.name) {
+          deleteFile = f;
+        }
       }
       $scope.files.splice($scope.files.indexOf(deleteFile), 1);
       return uploadManager.cancel(file);

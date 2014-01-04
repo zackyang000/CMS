@@ -1,4 +1,4 @@
-﻿angular.module('article-archives',[])
+﻿angular.module('article-archives',['resource.articles'])
 
 .config(["$routeProvider",
 ($routeProvider) ->

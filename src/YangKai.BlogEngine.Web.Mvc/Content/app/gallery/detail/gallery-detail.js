@@ -1,5 +1,5 @@
 ﻿
-angular.module('gallery-detail', []).config([
+angular.module('gallery-detail', ['resource.galleries']).config([
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/gallery/:name", {
       templateUrl: "/Content/app/gallery/detail/gallery-detail.tpl.html",

@@ -1,5 +1,5 @@
 ﻿
-angular.module('article-list', []).config([
+angular.module('article-list', ['resource.articles']).config([
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/list/:channel/:group/:type/:query", {
       templateUrl: "/Content/app/article/list/article-list.tpl.html",

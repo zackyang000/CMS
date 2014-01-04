@@ -9,7 +9,8 @@
 ])
 
 .controller('AboutCtrl',
-["$scope","$translate","$http", ($scope,$translate,$http) ->
+["$scope","$translate","$http", 
+($scope,$translate,$http) ->
   $scope.$parent.title='About'
   $scope.$parent.showBanner=false
 ])

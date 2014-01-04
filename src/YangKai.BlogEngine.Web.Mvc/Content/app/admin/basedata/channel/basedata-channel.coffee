@@ -1,4 +1,4 @@
-﻿angular.module('admin-basedata-channel',[])
+﻿angular.module('admin-basedata-channel',['resource.channels'])
 
 .config(["$routeProvider",
 ($routeProvider) ->

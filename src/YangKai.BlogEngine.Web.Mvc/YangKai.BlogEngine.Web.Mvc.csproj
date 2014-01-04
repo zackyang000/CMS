@@ -195,6 +195,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app\about\about-newegg-edi.tpl.html" />
+    <Content Include="Content\app\admin\article\gallery.js">
+      <DependentUpon>article.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\article\gallery.min.js">
+      <DependentUpon>article.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\article\list\article-list.js">
+      <DependentUpon>article-list.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\article\list\article-list.min.js">
+      <DependentUpon>article-list.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\gallery\gallery.js">
+      <DependentUpon>gallery.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\gallery\gallery.min.js">
+      <DependentUpon>gallery.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\gallery\list\gallery-list.js">
+      <DependentUpon>gallery-list.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\app\admin\gallery\list\gallery-list.min.js">
+      <DependentUpon>gallery-list.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\app\admin\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -244,43 +268,91 @@
     <Content Include="Content\img\loading_animation.gif" />
     <Content Include="Content\img\up.png" />
     <Content Include="Content\img\upgrade.png" />
-    <Content Include="Content\js\directives\customDirectives.js">
+    <Content Include="Content\common\directives\customDirectives.js">
       <DependentUpon>customDirectives.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\customDirectives.min.js">
+    <Content Include="Content\common\directives\customDirectives.min.js">
       <DependentUpon>customDirectives.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\_ngBindHtmlUnsafe.js">
+    <Content Include="Content\common\directives\custom\_ngBindHtmlUnsafe.js">
       <DependentUpon>_ngBindHtmlUnsafe.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\_ngBindHtmlUnsafe.min.js">
+    <Content Include="Content\common\directives\custom\_ngBindHtmlUnsafe.min.js">
       <DependentUpon>_ngBindHtmlUnsafe.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\services\AccountServices.js">
+    <Content Include="Content\common\AccountServices.js">
       <DependentUpon>AccountServices.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\services\AccountServices.min.js">
+    <Content Include="Content\common\AccountServices.min.js">
       <DependentUpon>AccountServices.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\services\VersionService.js">
+    <Content Include="Content\common\resources\articles.js">
+      <DependentUpon>articles.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\articles.min.js">
+      <DependentUpon>articles.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\channels.js">
+      <DependentUpon>channels.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\channels.min.js">
+      <DependentUpon>channels.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\comments.js">
+      <DependentUpon>comments.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\comments.min.js">
+      <DependentUpon>comments.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\galleries.js">
+      <DependentUpon>galleries.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\galleries.min.js">
+      <DependentUpon>galleries.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\groups.js">
+      <DependentUpon>groups.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\groups.min.js">
+      <DependentUpon>groups.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\issues.js">
+      <DependentUpon>issues.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\issues.min.js">
+      <DependentUpon>issues.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\messages.js">
+      <DependentUpon>messages.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\messages.min.js">
+      <DependentUpon>messages.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\photos.js">
+      <DependentUpon>photos.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\photos.min.js">
+      <DependentUpon>photos.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\users.js">
+      <DependentUpon>users.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\resources\users.min.js">
+      <DependentUpon>users.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\VersionService.js">
       <DependentUpon>VersionService.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\services\VersionService.min.js">
+    <Content Include="Content\common\VersionService.min.js">
       <DependentUpon>VersionService.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\vendor\angular-cookies.js" />
-    <Content Include="Content\js\vendor\angular-resource.js" />
+    <Content Include="Content\vendor\angular\angular-cookies.js" />
+    <Content Include="Content\vendor\angular\angular-resource.js" />
     <Content Include="Content\app\about\about.js">
       <DependentUpon>about.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\about\about.min.js">
       <DependentUpon>about.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\article\article.js">
-      <DependentUpon>article.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\article\article.min.js">
-      <DependentUpon>article.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\admin\article\edit\article-edit.css">
       <DependentUpon>article-edit.less</DependentUpon>
@@ -331,13 +403,7 @@
     <Content Include="Content\app\admin\gallery\edit\gallery-edit.min.js">
       <DependentUpon>gallery-edit.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\app\admin\gallery\gallery.js">
-      <DependentUpon>gallery.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\gallery\gallery.min.js">
-      <DependentUpon>gallery.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app\admin\gallery\gallery.tpl.html" />
+    <Content Include="Content\app\admin\gallery\list\gallery-list.tpl.html" />
     <Content Include="Content\app\admin\app.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
@@ -402,111 +468,92 @@
     </Content>
     <Content Include="Content\app\issue\issue.tpl.html" />
     <Content Include="Content\app\issue\issue.css" />
-    <Content Include="Content\js\directives\bindonce.js" />
-    <Content Include="Content\js\directives\custom\activeLink.js">
+    <Content Include="Content\common\directives\bindonce.js" />
+    <Content Include="Content\common\directives\custom\activeLink.js">
       <DependentUpon>activeLink.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\activeLink.min.js">
+    <Content Include="Content\common\directives\custom\activeLink.min.js">
       <DependentUpon>activeLink.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\myDatepicker.js">
+    <Content Include="Content\common\directives\custom\myDatepicker.js">
       <DependentUpon>myDatepicker.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\myDatepicker.min.js">
+    <Content Include="Content\common\directives\custom\myDatepicker.min.js">
       <DependentUpon>myDatepicker.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\init.js">
+    <Content Include="Content\common\init.js">
       <DependentUpon>init.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\init.min.js">
+    <Content Include="Content\common\init.min.js">
       <DependentUpon>init.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\services\REST\GalleryServices.js">
-      <DependentUpon>GalleryServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\GalleryServices.min.js">
-      <DependentUpon>GalleryServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\IssueServices.js">
-      <DependentUpon>IssueServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\IssueServices.min.js">
-      <DependentUpon>IssueServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\PhotoServices.js">
-      <DependentUpon>PhotoServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\PhotoServices.min.js">
-      <DependentUpon>PhotoServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\vendor\angular-animate.js" />
-    <Content Include="Content\js\vendor\angular-route.js" />
-    <Content Include="Content\js\vendor\angular-sanitize.js" />
-    <Content Include="Content\js\vendor\angular.js" />
-    <Content Include="Content\css\vendor\photobox.css" />
-    <Content Include="Content\js\vendor\photobox.js" />
-    <Content Include="Content\js\vendor\angular-translate\directive\translate.js" />
-    <Content Include="Content\js\vendor\angular-translate\filter\translate.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\default-interpolation.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\handler-log.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\loader-partial.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\loader-static-files.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\loader-url.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\messageformat-interpolation.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\storage-cookie.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\storage-key.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\storage-local.js" />
-    <Content Include="Content\js\vendor\angular-translate\service\translate.js" />
-    <Content Include="Content\js\vendor\angular-translate\translate.js" />
-    <Content Include="Content\js\vendor\scrolltopcontrol.js" />
+    <Content Include="Content\vendor\angular\angular-animate.js" />
+    <Content Include="Content\vendor\angular\angular-route.js" />
+    <Content Include="Content\vendor\angular\angular-sanitize.js" />
+    <Content Include="Content\vendor\angular\angular.js" />
+    <Content Include="Content\vendor\moment\moment-range.js" />
+    <Content Include="Content\vendor\photobox\photobox.css" />
+    <Content Include="Content\vendor\photobox\photobox.js" />
+    <Content Include="Content\vendor\angular-translate\directive\translate.js" />
+    <Content Include="Content\vendor\angular-translate\filter\translate.js" />
+    <Content Include="Content\vendor\angular-translate\service\default-interpolation.js" />
+    <Content Include="Content\vendor\angular-translate\service\handler-log.js" />
+    <Content Include="Content\vendor\angular-translate\service\loader-partial.js" />
+    <Content Include="Content\vendor\angular-translate\service\loader-static-files.js" />
+    <Content Include="Content\vendor\angular-translate\service\loader-url.js" />
+    <Content Include="Content\vendor\angular-translate\service\messageformat-interpolation.js" />
+    <Content Include="Content\vendor\angular-translate\service\storage-cookie.js" />
+    <Content Include="Content\vendor\angular-translate\service\storage-key.js" />
+    <Content Include="Content\vendor\angular-translate\service\storage-local.js" />
+    <Content Include="Content\vendor\angular-translate\service\translate.js" />
+    <Content Include="Content\vendor\angular-translate\translate.js" />
+    <Content Include="Content\vendor\scrolltotop.js" />
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
-    <Content Include="Content\css\vendor\buttons.css" />
-    <Content Include="Content\css\vendor\colorbox.css" />
-    <Content Include="Content\css\vendor\dropzone.css" />
-    <Content Include="Content\css\vendor\jquery-ui-1.10.3.full.css" />
-    <Content Include="Content\css\vendor\jquery.fileupload-ui.css" />
-    <Content Include="Content\css\vendor\jquery.gritter.css" />
-    <Content Include="Content\css\vendor\messenger-theme-flat.css" />
+    <Content Include="Content\vendor\colorbox.css" />
+    <Content Include="Content\vendor\dropzone\dropzone.css" />
+    <Content Include="Content\vendor\jquery-ui\jquery-ui-1.10.3.full.css" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.fileupload-ui.css" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.gritter.css" />
+    <Content Include="Content\vendor\messenger\messenger-theme-flat.css" />
     <Content Include="Content\plugin\ace_1.2\ace-elements.js" />
     <Content Include="Content\plugin\ace_1.2\ace-extra.js" />
     <Content Include="Content\plugin\ace_1.2\ace.js" />
-    <Content Include="Content\js\vendor\angular-angulartics\angulartics-chartbeat.js" />
-    <Content Include="Content\js\vendor\angular-angulartics\angulartics-google-analytics.js" />
-    <Content Include="Content\js\vendor\angular-angulartics\angulartics-kissmetrics.js" />
-    <Content Include="Content\js\vendor\angular-angulartics\angulartics-mixpanel.js" />
-    <Content Include="Content\js\vendor\angular-angulartics\angulartics-scroll.js" />
-    <Content Include="Content\js\vendor\angular-angulartics\angulartics-segmentio.js" />
-    <Content Include="Content\js\vendor\angular-angulartics\angulartics.js" />
-    <Content Include="Content\js\vendor\bootbox.js" />
-    <Content Include="Content\js\vendor\bootstrap-colorpicker.js" />
-    <Content Include="Content\js\vendor\bootstrap-tag.js" />
-    <Content Include="Content\js\vendor\dropzone.js" />
-    <Content Include="Content\js\vendor\fuelux.spinner.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.autosize.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.colorbox.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.easy-pie-chart.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.flot.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.flot.pie.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.flot.resize.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.gritter.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.inputlimiter.1.3.1.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.knob.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.maskedinput.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.slimscroll.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.sparkline.js" />
-    <Content Include="Content\js\vendor\jquery\jquery.ui.touch-punch.js" />
-    <Content Include="Content\js\vendor\spin.js" />
-    <Content Include="Content\js\vendor\typeahead-bs2.js" />
-    <Content Include="Content\js\vendor\buttons.js" />
-    <Content Include="Content\css\vendor\font-awesome.css" />
-    <Content Include="Content\css\style.css">
+    <Content Include="Content\vendor\angular-angulartics\angulartics-chartbeat.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-google-analytics.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-kissmetrics.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-mixpanel.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-scroll.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-segmentio.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics.js" />
+    <Content Include="Content\vendor\bootbox.js" />
+    <Content Include="Content\vendor\bootstrap-plugin\bootstrap-colorpicker.js" />
+    <Content Include="Content\vendor\bootstrap-plugin\bootstrap-tag.js" />
+    <Content Include="Content\vendor\dropzone\dropzone.js" />
+    <Content Include="Content\vendor\fuelux.spinner.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.autosize.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.colorbox.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.easy-pie-chart.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.flot.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.flot.pie.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.flot.resize.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.gritter.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.inputlimiter.1.3.1.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.knob.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.maskedinput.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.slimscroll.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.sparkline.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.ui.touch-punch.js" />
+    <Content Include="Content\vendor\spin.js" />
+    <Content Include="Content\vendor\bootstrap-plugin\typeahead-bs2.js" />
+    <Content Include="Content\vendor\font-awesome\font-awesome.css" />
+    <Content Include="Content\common\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\style.min.css">
+    <Content Include="Content\common\style.min.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
-    <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="Content\vendor\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Content\test\angular-scenario.js" />
     <Content Include="Content\app\LoginController.js">
       <DependentUpon>LoginController.coffee</DependentUpon>
@@ -514,73 +561,43 @@
     <Content Include="Content\app\LoginController.min.js">
       <DependentUpon>LoginController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\ckeditor.js">
+    <Content Include="Content\common\directives\custom\ckeditor.js">
       <DependentUpon>ckeditor.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\ckeditor.min.js">
+    <Content Include="Content\common\directives\custom\ckeditor.min.js">
       <DependentUpon>ckeditor.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\oDataPager.js">
+    <Content Include="Content\common\directives\custom\oDataPager.js">
       <DependentUpon>oDataPager.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\oDataPager.min.js">
+    <Content Include="Content\common\directives\custom\oDataPager.min.js">
       <DependentUpon>oDataPager.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\upload.js">
+    <Content Include="Content\common\directives\custom\upload.js">
       <DependentUpon>upload.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\custom\upload.min.js">
+    <Content Include="Content\common\directives\custom\upload.min.js">
       <DependentUpon>upload.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\directives\ngProgress.js" />
-    <Content Include="Content\js\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
-    <Content Include="Content\js\directives\ui-utils.js" />
-    <Content Include="Content\js\vendor\jquery\jquery-2.0.3.js" />
-    <Content Include="Content\js\vendor\jquery\jquery-ui-1.10.3.js" />
-    <Content Include="Content\js\vendor\jquery\jquery-ui-zh-CN.js" />
-    <Content Include="Content\js\vendor\jquery.fileupload.js" />
-    <Content Include="Content\js\vendor\md5.js" />
-    <Content Include="Content\js\services\REST\ArticleServices.js">
-      <DependentUpon>ArticleServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\ArticleServices.min.js">
-      <DependentUpon>ArticleServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\ChannelServices.js">
-      <DependentUpon>ChannelServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\ChannelServices.min.js">
-      <DependentUpon>ChannelServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\CommentServices.js">
-      <DependentUpon>CommentServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\CommentServices.min.js">
-      <DependentUpon>CommentServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\GroupServices.js">
-      <DependentUpon>GroupServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\GroupServices.min.js">
-      <DependentUpon>GroupServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\UserServices.js">
-      <DependentUpon>UserServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\UserServices.min.js">
-      <DependentUpon>UserServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\vendor\messenger-theme-flat.js" />
-    <Content Include="Content\js\vendor\moment.js" />
-    <Content Include="Content\js\vendor\uuid.js" />
+    <Content Include="Content\common\directives\ngProgress.js" />
+    <Content Include="Content\common\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
+    <Content Include="Content\common\directives\ui-utils.js" />
+    <Content Include="Content\vendor\jquery\jquery-2.0.3.js" />
+    <Content Include="Content\vendor\jquery-ui\jquery-ui-1.10.3.js" />
+    <Content Include="Content\vendor\jquery-ui\jquery-ui-zh-CN.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.fileupload.js" />
+    <Content Include="Content\vendor\md5.js" />
+    <Content Include="Content\vendor\messenger\messenger-theme-flat.js" />
+    <Content Include="Content\vendor\moment\moment.js" />
+    <Content Include="Content\vendor\uuid.js" />
     <Content Include="Content\data\words.js" />
     <Content Include="Content\app\admin\article\edit\article-edit.tpl.html" />
-    <Content Include="Content\app\admin\article\article.tpl.html" />
+    <Content Include="Content\app\admin\article\list\article-list.tpl.html" />
     <Content Include="Content\app\admin\basedata\channel\basedata-channel.tpl.html" />
     <Content Include="Content\app\admin\board\board.tpl.html" />
     <Content Include="Content\app\admin\dashboard\dashboard.tpl.html" />
     <Content Include="Content\app\admin\basedata\group\basedata-group.tpl.html" />
-    <Content Include="Content\css\vendor\bootstrap.css" />
+    <Content Include="Content\vendor\bootstrap\bootstrap.css" />
     <Content Include="Content\img\avatar.png" />
     <Content Include="Content\img\bg.png" />
     <Content Include="Content\img\lab\refstat_pre.jpg" />
@@ -592,24 +609,18 @@
     <Content Include="Content\app\app.min.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\vendor\bootstrap.js" />
+    <Content Include="Content\vendor\bootstrap\bootstrap.js" />
     <Content Include="Content\app\GlobalController.js">
       <DependentUpon>GlobalController.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\GlobalController.min.js">
       <DependentUpon>GlobalController.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\filters\filters.js">
+    <Content Include="Content\common\filters.js">
       <DependentUpon>filters.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\js\filters\filters.min.js">
+    <Content Include="Content\common\filters.min.js">
       <DependentUpon>filters.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\MessageServices.js">
-      <DependentUpon>MessageServices.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\js\services\REST\MessageServices.min.js">
-      <DependentUpon>MessageServices.coffee</DependentUpon>
     </Content>
     <Content Include="Content\img\main_bg_grid_tile.png" />
     <Content Include="Content\img\main_bg_image.jpg" />
@@ -1087,9 +1098,8 @@
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\richcombo.css" />
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\skin.js" />
     <Content Include="Content\plugin\ckfinder_aspnet_2.0.1\skins\v1\uipanel.css" />
-    <Content Include="Content\css\vendor\messenger.css" />
-    <Content Include="Content\js\common.js" />
-    <Content Include="Content\js\vendor\jquery.lazyload.js" />
+    <Content Include="Content\vendor\messenger\messenger.css" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.lazyload.js" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\index.html" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\scripts\shAutoloader.js" />
     <Content Include="Content\plugin\syntaxhighlighter_3.0.83\scripts\shBrushAppleScript.js" />
@@ -1153,8 +1163,8 @@
     <Content Include="Content\app\index.tpl.html" />
     <Content Include="entry\index.html" />
     <Content Include="robots.txt" />
-    <Content Include="Content\js\vendor\messenger.js" />
-    <Content Include="Content\js\vendor\modernizr-2.6.2.js" />
+    <Content Include="Content\vendor\messenger\messenger.js" />
+    <Content Include="Content\vendor\modernizr-2.6.2.js" />
     <Content Include="sitemap.xml" />
     <Content Include="sitemap.xsl" />
     <Content Include="Content\test\e2e\runner.html" />
@@ -1178,7 +1188,6 @@
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Release\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Debug\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\imageresize\bin\Release\" />
-    <Folder Include="Content\plugin\photobox\" />
     <Folder Include="UpLoad\gallery\" />
     <Folder Include="UpLoad\images\" />
     <Folder Include="UpLoad\offsite\" />
@@ -1197,61 +1206,63 @@
     </None>
     <Content Include="Content\app\board\board.coffee" />
     <Content Include="Content\app\app.coffee" />
-    <Content Include="Content\js\filters\filters.coffee" />
+    <Content Include="Content\common\filters.coffee" />
     <Content Include="Content\app\GlobalController.coffee" />
-    <Content Include="Content\js\services\REST\MessageServices.coffee" />
+    <Content Include="Content\common\resources\messages.coffee" />
     <Content Include="Content\app\index.coffee" />
     <Content Include="Content\app\about\about.coffee" />
     <Content Include="Content\app\article\list\article-list.coffee" />
-    <Content Include="Content\js\services\REST\ArticleServices.coffee" />
+    <Content Include="Content\common\resources\articles.coffee" />
     <Content Include="Content\app\article\detail\article-detail.coffee" />
-    <Content Include="Content\js\services\REST\CommentServices.coffee" />
-    <Content Include="Content\css\style.less" />
-    <Content Include="Content\js\directives\custom\oDataPager.coffee" />
-    <Content Include="Content\font\fontawesome-webfont.eot" />
-    <Content Include="Content\font\fontawesome-webfont.ttf" />
-    <Content Include="Content\font\fontawesome-webfont.woff" />
-    <Content Include="Content\font\FontAwesome.otf" />
-    <Content Include="Content\js\services\REST\UserServices.coffee" />
+    <Content Include="Content\common\resources\comments.coffee" />
+    <Content Include="Content\common\style.less" />
+    <Content Include="Content\common\directives\custom\oDataPager.coffee" />
+    <Content Include="Content\vendor\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="Content\vendor\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\vendor\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="Content\vendor\font-awesome\FontAwesome.otf" />
+    <Content Include="Content\common\resources\users.coffee" />
     <Content Include="Content\app\LoginController.coffee" />
     <Content Include="Content\app\admin\basedata\channel\basedata-channel.coffee" />
-    <Content Include="Content\js\services\REST\ChannelServices.coffee" />
+    <Content Include="Content\common\resources\channels.coffee" />
     <Content Include="Content\app\admin\basedata\group\basedata-group.coffee" />
-    <Content Include="Content\js\services\REST\GroupServices.coffee" />
-    <Content Include="Content\app\admin\article\article.coffee" />
+    <Content Include="Content\common\resources\groups.coffee" />
+    <None Include="Content\app\admin\article\list\article-list.coffee" />
     <Content Include="Content\app\admin\article\edit\article-edit.coffee" />
     <Content Include="Content\app\admin\dashboard\dashboard.coffee" />
     <Content Include="Content\app\admin\board\board.coffee" />
-    <Content Include="Content\js\directives\custom\ckeditor.coffee" />
-    <Content Include="Content\js\directives\custom\upload.coffee" />
+    <Content Include="Content\common\directives\custom\ckeditor.coffee" />
+    <Content Include="Content\common\directives\custom\upload.coffee" />
     <Content Include="Content\app\article\archives\article-archives.coffee" />
-    <Content Include="Content\js\init.coffee" />
-    <Content Include="Content\js\directives\custom\activeLink.coffee" />
-    <Content Include="Content\js\directives\custom\myDatepicker.coffee" />
+    <Content Include="Content\common\init.coffee" />
+    <Content Include="Content\common\directives\custom\activeLink.coffee" />
+    <Content Include="Content\common\directives\custom\myDatepicker.coffee" />
     <Content Include="Content\app\admin\article\edit\article-edit.less" />
     <Content Include="Content\app\admin\basedata\basedata.coffee" />
-    <Content Include="Content\app\admin\gallery\gallery.coffee" />
+    <Content Include="Content\app\admin\gallery\list\gallery-list.coffee" />
     <Content Include="Content\app\admin\gallery\edit\gallery-edit.coffee" />
-    <Content Include="Content\js\services\REST\GalleryServices.coffee" />
-    <Content Include="Content\js\services\REST\PhotoServices.coffee" />
+    <Content Include="Content\common\resources\galleries.coffee" />
+    <Content Include="Content\common\resources\photos.coffee" />
     <Content Include="Content\app\admin\app.coffee" />
     <Content Include="Content\app\issue\issue.coffee" />
-    <Content Include="Content\js\services\REST\IssueServices.coffee" />
+    <Content Include="Content\common\resources\issues.coffee" />
     <Content Include="Content\app\article\article.coffee" />
     <Content Include="Content\app\gallery\gallery.coffee" />
     <Content Include="Content\app\gallery\detail\gallery-detail.coffee" />
-    <Content Include="Content\js\directives\custom\_ngBindHtmlUnsafe.coffee" />
+    <Content Include="Content\common\directives\custom\_ngBindHtmlUnsafe.coffee" />
     <Content Include="Content\app\admin\style.less" />
     <Content Include="Content\i18n\TranslateCtrl.coffee" />
     <Content Include="Content\i18n\languages\zh-cn.coffee" />
     <Content Include="Content\i18n\languages\en-us.coffee" />
     <Content Include="Content\i18n\i18n.coffee" />
     <Content Include="Content\app\article\archives\archives.css" />
-    <Content Include="Content\js\services\AccountServices.coffee" />
-    <Content Include="Content\js\directives\customDirectives.coffee" />
+    <Content Include="Content\common\AccountServices.coffee" />
+    <Content Include="Content\common\directives\customDirectives.coffee" />
     <Content Include="Content\app\admin\system\history\history.coffee" />
     <Content Include="Content\app\admin\system\system.coffee" />
-    <Content Include="Content\js\services\VersionService.coffee" />
+    <Content Include="Content\common\VersionService.coffee" />
+    <Content Include="Content\app\admin\gallery\gallery.coffee" />
+    <Content Include="Content\app\admin\article\article.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

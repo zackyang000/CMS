@@ -1,3 +1,4 @@
-﻿angular.module('admin-basedata', 
-['admin-basedata-channel', 
-'admin-basedata-group']);
+﻿angular.module('admin-basedata'
+['admin-basedata-channel'
+'admin-basedata-group'
+])

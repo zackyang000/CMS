@@ -1,5 +1,5 @@
 ﻿
-angular.module('admin-article-edit', []).factory("TranslateService", [
+angular.module('admin-article-edit', ['resource.articles', 'resource.channels']).factory("TranslateService", [
   "$http", function($http) {
     return {
       events: function(key) {

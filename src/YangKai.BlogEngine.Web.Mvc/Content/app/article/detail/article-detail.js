@@ -1,5 +1,5 @@
 ﻿
-angular.module('article-detail', []).config([
+angular.module('article-detail', ['resource.articles', 'resource.comments']).config([
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/post/:url", {
       templateUrl: "/Content/app/article/detail/article-detail.tpl.html",
@@ -111,12 +111,13 @@ angular.module('article-detail', []).config([
       });
     };
     $scope.remove = function(item) {
-      message.confirm(function() {});
-      return Comment.remove({
-        id: "(guid'" + item.CommentId + "')"
-      }, function() {
-        item.IsDeleted = true;
-        return message.success("Comment has been removed.");
+      return message.confirm(function() {
+        return Comment.remove({
+          id: "(guid'" + item.CommentId + "')"
+        }, function() {
+          item.IsDeleted = true;
+          return message.success("Comment has been removed.");
+        });
       });
     };
     return $scope.edit = function(item) {

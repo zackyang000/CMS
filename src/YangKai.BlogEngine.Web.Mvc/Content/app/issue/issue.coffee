@@ -1,4 +1,4 @@
-﻿angular.module('issue',['IssueServices'])
+﻿angular.module('issue',['resource.issues'])
 
 .filter 'filterByDate', ->
   (input,filterDate) ->

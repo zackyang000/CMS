@@ -1,4 +1,4 @@
-﻿angular.module('admin-board',[])
+﻿angular.module('admin-board',['resource.messages'])
 
 .config(["$routeProvider",
 ($routeProvider) ->
@@ -9,7 +9,7 @@
 ])
 
 .controller('BoardCtrl',
-["$scope","$routeParams","$location","Article", 
-($scope,$routeParams,$location,Article) ->
+["$scope","$routeParams","$location","Message", 
+($scope,$routeParams,$location,Message) ->
 
 ])

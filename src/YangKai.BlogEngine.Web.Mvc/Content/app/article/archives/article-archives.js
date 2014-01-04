@@ -1,5 +1,5 @@
 ﻿
-angular.module('article-archives', []).config([
+angular.module('article-archives', ['resource.articles']).config([
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/archives", {
       templateUrl: "/Content/app/article/archives/article-archives.tpl.html",
@@ -26,9 +26,13 @@ angular.module('article-archives', []).config([
                 _ref2 = group.Posts;
                 for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
                   post = _ref2[_k];
-                  if (!(!post.IsDeleted)) continue;
+                  if (!(!post.IsDeleted)) {
+                    continue;
+                  }
                   date = moment(post.PubDate).format('YYYY-MM');
-                  if (!obj[date]) obj[date] = [];
+                  if (!obj[date]) {
+                    obj[date] = [];
+                  }
                   post.group = group.Name;
                   post.channel = channel.Name;
                   obj[date].push(post);

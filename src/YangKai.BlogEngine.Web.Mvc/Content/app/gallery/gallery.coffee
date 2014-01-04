@@ -1,5 +1,4 @@
-﻿angular.module('gallery',
-['gallery-detail','GalleryServices','PhotoServices'])
+﻿angular.module('gallery',['gallery-detail','resource.galleries'])
 
 .config(["$routeProvider",
 ($routeProvider) ->
@@ -10,8 +9,8 @@
 ])
 
 .controller('GalleryCtrl',
-["$scope","$translate","$routeParams","$location","Gallery","Photo"
-($scope,$translate,$routeParams,$location,Gallery,Photo) ->
+["$scope","$translate","$routeParams","$location","Gallery"
+($scope,$translate,$routeParams,$location,Gallery) ->
   $scope.$parent.title='Galleries'
   $scope.$parent.showBanner=false
 

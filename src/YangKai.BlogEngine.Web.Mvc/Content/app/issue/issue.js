@@ -1,12 +1,16 @@
 ﻿
-angular.module('issue', ['IssueServices']).filter('filterByDate', function() {
+angular.module('issue', ['resource.issues']).filter('filterByDate', function() {
   return function(input, filterDate) {
     var item, list, _i, _len;
-    if (!input) return input;
+    if (!input) {
+      return input;
+    }
     list = [];
     for (_i = 0, _len = input.length; _i < _len; _i++) {
       item = input[_i];
-      if (filterDate === '') list.push(item);
+      if (filterDate === '') {
+        list.push(item);
+      }
       if (filterDate === 'day' && moment(new Date()).format('YYYY-MM-DD') === moment(item.CreateDate).format('YYYY-MM-DD')) {
         list.push(item);
       }
@@ -57,22 +61,30 @@ angular.module('issue', ['IssueServices']).filter('filterByDate', function() {
         item = _ref[_i];
         if ($scope.filter.Project === '' || item.Project === $scope.filter.Project) {
           if ($scope.filterDate === '') {
-            if (!statu[item.Statu]) statu[item.Statu] = 0;
+            if (!statu[item.Statu]) {
+              statu[item.Statu] = 0;
+            }
             statu[item.Statu]++;
             $scope.count.statu++;
           }
           if ($scope.filterDate === 'day' && moment(new Date()).format('YYYY-MM-DD') === moment(item.CreateDate).format('YYYY-MM-DD')) {
-            if (!statu[item.Statu]) statu[item.Statu] = 0;
+            if (!statu[item.Statu]) {
+              statu[item.Statu] = 0;
+            }
             statu[item.Statu]++;
             $scope.count.statu++;
           }
           if ($scope.filterDate === 'week' && moment(new Date()).diff(item.CreateDate, 'days') <= 7) {
-            if (!statu[item.Statu]) statu[item.Statu] = 0;
+            if (!statu[item.Statu]) {
+              statu[item.Statu] = 0;
+            }
             statu[item.Statu]++;
             $scope.count.statu++;
           }
           if ($scope.filterDate === 'month' && moment(new Date()).diff(item.CreateDate, 'days') <= 30) {
-            if (!statu[item.Statu]) statu[item.Statu] = 0;
+            if (!statu[item.Statu]) {
+              statu[item.Statu] = 0;
+            }
             statu[item.Statu]++;
             $scope.count.statu++;
           }
@@ -83,22 +95,30 @@ angular.module('issue', ['IssueServices']).filter('filterByDate', function() {
         item = _ref1[_j];
         if ($scope.filter.Statu === '' || item.Statu === $scope.filter.Statu) {
           if ($scope.filterDate === '') {
-            if (!project[item.Project]) project[item.Project] = 0;
+            if (!project[item.Project]) {
+              project[item.Project] = 0;
+            }
             project[item.Project]++;
             $scope.count.project++;
           }
           if ($scope.filterDate === 'day' && moment(new Date()).format('YYYY-MM-DD') === moment(item.CreateDate).format('YYYY-MM-DD')) {
-            if (!project[item.Project]) project[item.Project] = 0;
+            if (!project[item.Project]) {
+              project[item.Project] = 0;
+            }
             project[item.Project]++;
             $scope.count.project++;
           }
           if ($scope.filterDate === 'week' && moment(new Date()).diff(item.CreateDate, 'days') <= 7) {
-            if (!project[item.Project]) project[item.Project] = 0;
+            if (!project[item.Project]) {
+              project[item.Project] = 0;
+            }
             project[item.Project]++;
             $scope.count.project++;
           }
           if ($scope.filterDate === 'month' && moment(new Date()).diff(item.CreateDate, 'days') <= 30) {
-            if (!project[item.Project]) project[item.Project] = 0;
+            if (!project[item.Project]) {
+              project[item.Project] = 0;
+            }
             project[item.Project]++;
             $scope.count.project++;
           }
