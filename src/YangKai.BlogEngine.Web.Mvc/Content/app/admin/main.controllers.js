@@ -1,9 +1,23 @@
 ﻿
+
 angular.module('admin.main.controllers', ['resource.users']).controller('GlobalController', [
-  "$scope", "$location", "account", "$localStorage", function($scope, $location, account, $localStorage) {
-    return account.get().then(function(data) {
+  "$scope", "$location", "account", "version", "$localStorage", function($scope, $location, account, version, $localStorage) {
+    account.get().then(function(data) {
       return $scope.User = data;
     });
+    version.get().then(function(data) {
+      if (!data.length) {
+        return;
+      }
+      $scope.newVersion = data[0];
+      if ($scope.newVersion.ver !== $localStorage.ver) {
+        return $scope.newVersion.showDialog = true;
+      }
+    });
+    return $scope.versionClick = function() {
+      $localStorage.ver = $scope.newVersion.ver;
+      return $scope.newVersion.showDialog = false;
+    };
   }
 ]).controller('LoginController', [
   "$scope", "$window", "User", function($scope, $window, User) {

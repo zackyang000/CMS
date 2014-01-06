@@ -18,11 +18,11 @@
             </div>
             <div class="body">
                 <div class="time">
-                    <i class="icon-time"></i>
-                    <span class="green">{{ item.date | date:'yyyy-MM-dd' }}</span>
                 </div>
-                <div class="name blue">
-                    {{ item.ver }}
+                <div class="name">
+                    <span class="blue">{{ item.ver }}</span>
+                    <i style="margin-left: 20px;" class="icon-time"></i>
+                    <span>{{ item.date | date:'yyyy-MM-dd' }}</span>
                 </div>
                 <div class="text">
                     <div ng-repeat="detail in item.content">{{ detail }}</div>

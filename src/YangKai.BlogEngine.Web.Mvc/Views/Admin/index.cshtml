@@ -20,6 +20,7 @@
                         <small>
                             <i class="icon-bug"></i>
                             @Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME) Management
+                            <small class="white"> - {{newVersion.ver}}</small>
                         </small>
                     </a>
                 </div>
@@ -105,12 +106,12 @@
                                 </li>
                             </ul>
                         </li>
-@*                        <li active-link="active">*@
-@*                            <a href="/admin/board">*@
-@*                                <i class="icon-comments"></i>*@
-@*                                <span class="menu-text">Board</span>*@
-@*                            </a>*@
-@*                        </li>*@
+                        @*                        <li active-link="active">*@
+                        @*                            <a href="/admin/board">*@
+                        @*                                <i class="icon-comments"></i>*@
+                        @*                                <span class="menu-text">Board</span>*@
+                        @*                            </a>*@
+                        @*                        </li>*@
                         <li active-link="active">
                             <a href="/admin/gallery">
                                 <i class="icon-picture"></i>
@@ -136,6 +137,41 @@
             <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
                 <i class="icon-double-angle-up icon-only bigger-110"></i>
             </a>
+        </div>
+
+        <div modal="newVersion.showDialog" options="{backdrop: false,dialogFade:true}">
+            <div class="modal-dialog">
+                <form name="form" class="modal-content">
+                    <div class="modal-header">
+                        <i class="icon-bullhorn"></i>
+                        New Version Has Been Release.
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <div>
+                                <h3 class="blue">
+                                    {{newVersion.ver}}
+                                    <small>{{newVersion.date | date:'yyyy-MM-dd'}}</small>
+                                </h3>
+                            </div>
+                            <ul>
+                                <li ng-repeat="item in newVersion.content">
+                                    {{item}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/admin/system/history" class="btn btn-link" ng-click="versionClick()">
+                            More
+                        </a>
+                        <button type="button" class="btn btn-default btn-success btn-sm" ng-click="versionClick()">
+                            <i class="icon-ok"></i>
+                            Ok
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </body>
 </html>
