@@ -3,63 +3,72 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/post/:url", {
       templateUrl: "/Content/app/article/detail/article-detail.tpl.html",
-      controller: 'ArticleDetailCtrl'
+      controller: 'ArticleDetailCtrl',
+      resolve: {
+        article: [
+          '$route', '$q', 'Article', function($route, $q, Article) {
+            var deferred;
+            deferred = $q.defer();
+            Article.get({
+              $filter: "Url eq '" + $route.current.params.url + "' and IsDeleted eq false"
+            }, function(data) {
+              return deferred.resolve(data.value[0]);
+            });
+            return deferred.promise;
+          }
+        ]
+      }
     });
   }
 ]).controller('ArticleDetailCtrl', [
-  "$scope", "$window", "$translate", "$routeParams", "progressbar", "Article", "Comment", function($scope, $window, $translate, $routeParams, progressbar, Article, Comment) {
+  "$scope", "$window", "$translate", "$routeParams", "progressbar", "Article", "Comment", "article", function($scope, $window, $translate, $routeParams, progressbar, Article, Comment, article) {
+    var i, item, relatedFilter, tag, _i, _j, _len, _len1, _ref, _ref1;
     $scope.$parent.showBanner = false;
     $scope.loading = $translate("global.loading");
     $scope.url = $routeParams.url;
-    Article.get({
-      $filter: "Url eq '" + $scope.url + "' and IsDeleted eq false"
-    }, function(data) {
-      var i, item, relatedFilter, tag, _i, _j, _len, _len1, _ref, _ref1;
-      $scope.item = data.value[0];
-      $scope.loading = "";
-      if (!$scope.item) {
-        $scope.$parent.title = '404';
-        return;
+    $scope.item = article;
+    $scope.loading = "";
+    if (!$scope.item) {
+      $scope.$parent.title = '404';
+      return;
+    }
+    $scope.$parent.title = $scope.item.Title;
+    codeformat();
+    $scope.prevPost = Article.nav({
+      $filter: "IsDeleted eq false and CreateDate lt datetime'" + $scope.item.CreateDate + "' and Group/Url eq '" + $scope.item.Group.Url + "'",
+      $orderby: 'CreateDate desc'
+    });
+    $scope.nextPost = Article.nav({
+      $filter: "IsDeleted eq false and CreateDate gt datetime'" + $scope.item.CreateDate + "' and Group/Url eq '" + $scope.item.Group.Url + "'",
+      $orderby: 'CreateDate'
+    });
+    if ($scope.item.Tags.length) {
+      relatedFilter = '';
+      _ref = $scope.item.Tags;
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        tag = _ref[i];
+        relatedFilter += " or Tags/any(tag" + i + ":tag" + i + "/Name eq '" + tag.Name + "')";
       }
-      $scope.$parent.title = $scope.item.Title;
-      codeformat();
-      $scope.entity.PostId = $scope.item.PostId;
-      $scope.prevPost = Article.nav({
-        $filter: "IsDeleted eq false and CreateDate lt datetime'" + $scope.item.CreateDate + "' and Group/Url eq '" + $scope.item.Group.Url + "'",
+      relatedFilter = relatedFilter.substring(4);
+      relatedFilter = "IsDeleted eq false and PostId ne (guid'" + $scope.item.PostId + "') and (" + relatedFilter + ")";
+      $scope.relatedPost = Article.related({
+        $filter: relatedFilter,
         $orderby: 'CreateDate desc'
       });
-      $scope.nextPost = Article.nav({
-        $filter: "IsDeleted eq false and CreateDate gt datetime'" + $scope.item.CreateDate + "' and Group/Url eq '" + $scope.item.Group.Url + "'",
-        $orderby: 'CreateDate'
-      });
-      if ($scope.item.Tags.length) {
-        relatedFilter = '';
-        _ref = $scope.item.Tags;
-        for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-          tag = _ref[i];
-          relatedFilter += " or Tags/any(tag" + i + ":tag" + i + "/Name eq '" + tag.Name + "')";
-        }
-        relatedFilter = relatedFilter.substring(4);
-        relatedFilter = "IsDeleted eq false and PostId ne (guid'" + $scope.item.PostId + "') and (" + relatedFilter + ")";
-        $scope.relatedPost = Article.related({
-          $filter: relatedFilter,
-          $orderby: 'CreateDate desc'
-        });
-      }
-      _ref1 = $scope.item.Comments;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        item = _ref1[_j];
-        if (!item.Avatar) {
-          if (item.Email) {
-            item.Avatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
-          } else {
-            item.Avatar = '/Content/img/avatar.png';
-          }
+    }
+    _ref1 = $scope.item.Comments;
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      item = _ref1[_j];
+      if (!item.Avatar) {
+        if (item.Email) {
+          item.Avatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
+        } else {
+          item.Avatar = '/Content/img/avatar.png';
         }
       }
-      return Article.browsed({
-        id: "(guid'" + $scope.item.PostId + "')"
-      });
+    }
+    Article.browsed({
+      id: "(guid'" + $scope.item.PostId + "')"
     });
     $scope.entity = {};
     $scope.$watch('User', function() {
@@ -79,8 +88,8 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
           message.success("“#" + item.Content + "”  be moved to trash.");
           return item.IsDeleted = true;
         }, function(error) {
-          var _ref;
-          return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
+          var _ref2;
+          return message.error((_ref2 = error.data.ExceptionMessage) != null ? _ref2 : error.status);
         });
       });
     };
@@ -105,9 +114,9 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
         progressbar.complete();
         return $scope.loading = "";
       }, function(error) {
-        var _ref;
+        var _ref2;
         $scope.submitting = false;
-        return message.error((_ref = error.data.ExceptionMessage) != null ? _ref : error.status);
+        return message.error((_ref2 = error.data.ExceptionMessage) != null ? _ref2 : error.status);
       });
     };
     $scope.remove = function(item) {

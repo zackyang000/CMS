@@ -161,10 +161,6 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Webdiyer.WebControls.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\AtomLab.Utility\Lib\Webdiyer.WebControls.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -252,6 +248,12 @@
     </Content>
     <Content Include="Content\app\main.controllers.min.js">
       <DependentUpon>main.controllers.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\directives\custom\whenRouteChange.js">
+      <DependentUpon>whenRouteChange.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\directives\custom\whenRouteChange.min.js">
+      <DependentUpon>whenRouteChange.coffee</DependentUpon>
     </Content>
     <Content Include="Content\i18n\i18n.js">
       <DependentUpon>i18n.coffee</DependentUpon>
@@ -1264,6 +1266,7 @@
     <Content Include="Content\app\admin\gallery\gallery.coffee" />
     <Content Include="Content\app\admin\article\article.coffee" />
     <Content Include="Content\app\admin\main.controllers.coffee" />
+    <Content Include="Content\common\directives\custom\whenRouteChange.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />
