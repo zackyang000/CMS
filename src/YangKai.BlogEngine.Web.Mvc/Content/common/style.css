@@ -592,10 +592,6 @@ table .action {
   background-color: #7BBAD7;
 }
 .navbar .dropdown-menu {
-  border: none;
-  border-radius: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   background-clip: content-box;
 }
 .navbar .dropdown-menu:before {
@@ -609,6 +605,10 @@ table .action {
   border-left: 10px solid rgba(0, 0, 0, 0);
   border-right: 10px solid rgba(0, 0, 0, 0);
   border-bottom: 10px solid #FFF;
+}
+.navbar .dropdown-menu.dropdown-menu-right:before {
+  right: 12px;
+  left: inherit;
 }
 .navbar .search {
   margin: 12px 15px 0 15px;
