@@ -3,27 +3,27 @@ Blog System
 
 ####<a href="http://www.woshinidezhu.com">Live Demo</a>
 
-## Why?
-For research.
-
-## What?
+## What is this?
 It's a Blog System use the following techniques build:
 
-Front-end: AngularJS(CoffeeScript)+Bootstrap
+Front-end: AngularJS(CoffeeScript) + Bootstrap
 
-Back-end: ASP.NET WEB API 2(OData 5.0)+Entity Framework 6
+Back-end: ASP.NET WEB API 2(OData) + Entity Framework 6
 
-## How?
+## Why do I do this?
+For technology research.
 
-1.Open the solution using Visual Studio 2012.2+
+## Getting started
 
-2.Use nuget get lost packages (Web Api & OData library need use <a href='http://aspnetwebstack.codeplex.com/wikipage?title=Use%20Nightly%20Builds'>Nightly Builds</a>)
+1.Open the solution using Visual Studio 2013
 
-2.Modify the `ConnectionString` at `web.config` under Mvc project (SQL2005+)
+2.Use nuget get lost packages
 
-3.Compile and run, it will automatically create the database and insert test data.
+2.Modify the `ConnectionString` at `web.config` under Mvc project (Required above `MSSQL2005` or above)
+
+3.Compile and run, it will automatically create the database and insert test data
 
 ## License
 
-base MIT.
+MIT.
 
