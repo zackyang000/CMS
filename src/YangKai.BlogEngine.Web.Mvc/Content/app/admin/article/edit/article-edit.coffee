@@ -25,19 +25,22 @@
   $scope.channels=Channel.query $expand:'Groups',()->
     if $routeParams.id
       $scope.loading="Loading"
-      Article.get $filter:"PostId eq (guid'#{$routeParams.id}')",(data)->
-        $scope.entity=data.value[0]
-        if $scope.entity.Group
-          $scope.channelId=$scope.entity.Group.Channel.ChannelId
-          $scope.groupId=$scope.entity.Group.GroupId
-        if !$scope.entity.Url
-          $scope.translateTitle()
-        if $scope.entity.Tags
-          $scope.tags=''
-          for item in $scope.entity.Tags 
-            $scope.tags+=','+item.Name
-          $scope.tags=$scope.tags.substring(1)
-        $scope.loading=""
+      Article.get 
+        $filter:"PostId eq (guid'#{$routeParams.id}')"
+        $expand:'Tags,Group/Channel,Comments'
+      , (data)->
+          $scope.entity=data.value[0]
+          if $scope.entity.Group
+            $scope.channelId=$scope.entity.Group.Channel.ChannelId
+            $scope.groupId=$scope.entity.Group.GroupId
+          if !$scope.entity.Url
+            $scope.translateTitle()
+          if $scope.entity.Tags
+            $scope.tags=''
+            for item in $scope.entity.Tags 
+              $scope.tags+=','+item.Name
+            $scope.tags=$scope.tags.substring(1)
+          $scope.loading=""
     else
       $scope.entity={}
 

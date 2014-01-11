@@ -3,11 +3,36 @@ angular.module('board', ['resource.messages']).config([
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/board", {
       templateUrl: "/Content/app/board/board.tpl.html",
-      controller: 'BoardCtrl'
+      controller: 'BoardCtrl',
+      resolve: {
+        messages: [
+          '$q', 'Message', function($q, Message) {
+            var deferred;
+            deferred = $q.defer();
+            Message.queryOnce({
+              $filter: 'IsDeleted eq false'
+            }, function(data) {
+              var item, _i, _len;
+              for (_i = 0, _len = data.length; _i < _len; _i++) {
+                item = data[_i];
+                if (!item.Avatar) {
+                  if (item.Email) {
+                    item.Avatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
+                  } else {
+                    item.Avatar = '/Content/img/avatar.png';
+                  }
+                }
+              }
+              return deferred.resolve(data.value);
+            });
+            return deferred.promise;
+          }
+        ]
+      }
     });
   }
 ]).controller('BoardCtrl', [
-  "$scope", "$translate", "progressbar", "Message", "account", function($scope, $translate, progressbar, Message, account) {
+  "$scope", "$translate", "progressbar", "Message", "messages", "account", function($scope, $translate, progressbar, Message, messages, account) {
     $scope.$parent.title = 'Message Boards';
     $scope.$parent.showBanner = false;
     account.get().then(function(data) {
@@ -18,24 +43,7 @@ angular.module('board', ['resource.messages']).config([
       };
       return $scope.editmode = !data.UserName;
     });
-    $scope.loading = $translate("global.loading");
-    $scope.list = Message.query({
-      $filter: 'IsDeleted eq false'
-    }, function() {
-      var item, _i, _len, _ref;
-      _ref = $scope.list.value;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        item = _ref[_i];
-        if (!item.Avatar) {
-          if (item.Email) {
-            item.Avatar = 'http://www.gravatar.com/avatar/' + md5(item.Email);
-          } else {
-            item.Avatar = '/Content/img/avatar.png';
-          }
-        }
-      }
-      return $scope.loading = "";
-    });
+    $scope.list = messages;
     $scope.save = function() {
       $scope.submitted = true;
       if ($scope.form.$invalid) {
@@ -46,7 +54,7 @@ angular.module('board', ['resource.messages']).config([
       $scope.entity.BoardId = UUID.generate();
       return Message.save($scope.entity, function(data) {
         message.success($translate("board.complete"));
-        $scope.list.value.unshift(data);
+        $scope.list.unshift(data);
         $scope.entity.Content = "";
         progressbar.complete();
         $scope.submitted = false;

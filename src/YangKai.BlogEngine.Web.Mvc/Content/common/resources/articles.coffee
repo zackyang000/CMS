@@ -7,23 +7,23 @@
         $orderby:'CreateDate desc' 
         $expand:'Tags,Group/Channel'
         $inlinecount:'allpages'
+    queryOnce:
+      cache:true
+      method: "GET"
+      params:
+        $orderby:'CreateDate desc' 
+        $inlinecount:'allpages'
     get:
       method: "GET"
       params:
         $top:1
-        $expand:'Tags,Group/Channel,Comments'
-    update:
-      method: "PUT"
-    nav:
+    getOnce:
+      cache:true
       method: "GET"
       params:
         $top:1
-        $select:'Url,Title'
-    related:
-      method: "GET"
-      params:
-        $top:8
-        $select:'Url,Title,PubDate'
+    update:
+      method: "PUT"
     browsed:
       method: "POST"
       params:

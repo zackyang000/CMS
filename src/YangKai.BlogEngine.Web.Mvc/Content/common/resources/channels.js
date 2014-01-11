@@ -13,16 +13,17 @@ angular.module("resource.channels", ["ngResource"]).factory("Channel", [
           $filter: 'IsDeleted eq false'
         }
       },
-      edit: {
-        method: "PUT"
-      },
-      archives: {
+      queryOnce: {
+        cache: true,
         method: "GET",
         params: {
-          $expand: 'Groups/Posts',
-          $filter: 'IsDeleted eq false',
-          $select: 'Name,Url,Groups/Name,Groups/Url,Groups/IsDeleted,Groups/Posts/Title,Groups/Posts/Url,Groups/Posts/PubDate,Groups/Posts/IsDeleted'
+          $orderby: 'Url',
+          $inlinecount: 'allpages',
+          $filter: 'IsDeleted eq false'
         }
+      },
+      edit: {
+        method: "PUT"
       }
     });
   }

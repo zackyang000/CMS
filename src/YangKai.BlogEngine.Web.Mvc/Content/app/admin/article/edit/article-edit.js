@@ -29,7 +29,8 @@ angular.module('admin-article-edit', ['resource.articles', 'resource.channels'])
       if ($routeParams.id) {
         $scope.loading = "Loading";
         return Article.get({
-          $filter: "PostId eq (guid'" + $routeParams.id + "')"
+          $filter: "PostId eq (guid'" + $routeParams.id + "')",
+          $expand: 'Tags,Group/Channel,Comments'
         }, function(data) {
           var item, _i, _len, _ref;
           $scope.entity = data.value[0];

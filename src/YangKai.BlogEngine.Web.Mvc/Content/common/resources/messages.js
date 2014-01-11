@@ -11,6 +11,13 @@ angular.module("resource.messages", ["ngResource"]).factory("Message", [
           $orderby: "CreateDate desc"
         }
       },
+      queryOnce: {
+        cache: true,
+        method: "GET",
+        params: {
+          $orderby: "CreateDate desc"
+        }
+      },
       remove: {
         method: "POST",
         params: {

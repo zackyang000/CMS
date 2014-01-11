@@ -9,8 +9,9 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
           '$route', '$q', 'Article', function($route, $q, Article) {
             var deferred;
             deferred = $q.defer();
-            Article.get({
-              $filter: "Url eq '" + $route.current.params.url + "' and IsDeleted eq false"
+            Article.getOnce({
+              $filter: "Url eq '" + $route.current.params.url + "' and IsDeleted eq false",
+              $expand: 'Tags,Group/Channel,Comments'
             }, function(data) {
               return deferred.resolve(data.value[0]);
             });
@@ -24,20 +25,20 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
   "$scope", "$window", "$translate", "$routeParams", "progressbar", "Article", "Comment", "article", "account", function($scope, $window, $translate, $routeParams, progressbar, Article, Comment, article, account) {
     var i, item, relatedFilter, tag, _i, _j, _len, _len1, _ref, _ref1;
     $scope.$parent.showBanner = false;
-    $scope.loading = $translate("global.loading");
     $scope.item = article;
-    $scope.loading = "";
     if (!$scope.item) {
       $scope.$parent.title = '404';
       return;
     }
     $scope.$parent.title = $scope.item.Title;
     codeformat();
-    $scope.prevPost = Article.nav({
+    $scope.prevPost = Article.getOnce({
+      $select: 'Url,Title',
       $filter: "IsDeleted eq false and CreateDate lt datetime'" + $scope.item.CreateDate + "' and Group/Url eq '" + $scope.item.Group.Url + "'",
       $orderby: 'CreateDate desc'
     });
-    $scope.nextPost = Article.nav({
+    $scope.nextPost = Article.getOnce({
+      $select: 'Url,Title',
       $filter: "IsDeleted eq false and CreateDate gt datetime'" + $scope.item.CreateDate + "' and Group/Url eq '" + $scope.item.Group.Url + "'",
       $orderby: 'CreateDate'
     });
@@ -50,7 +51,9 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
       }
       relatedFilter = relatedFilter.substring(4);
       relatedFilter = "IsDeleted eq false and PostId ne (guid'" + $scope.item.PostId + "') and (" + relatedFilter + ")";
-      $scope.relatedPost = Article.related({
+      $scope.relatedPost = Article.getOnce({
+        $top: 8,
+        $select: 'Url,Title,PubDate',
         $filter: relatedFilter,
         $orderby: 'CreateDate desc'
       });

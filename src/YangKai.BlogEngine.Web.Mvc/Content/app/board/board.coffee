@@ -5,12 +5,28 @@
   $routeProvider
   .when("/board",
     templateUrl: "/Content/app/board/board.tpl.html"
-    controller: 'BoardCtrl')
+    controller: 'BoardCtrl'
+    resolve:
+      messages: ['$q','Message',($q,Message)->
+        deferred = $q.defer()
+        Message.queryOnce 
+          $filter:'IsDeleted eq false'
+        , (data) -> 
+          for item in data
+            if !item.Avatar
+              if item.Email
+                item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
+              else
+                item.Avatar='/Content/img/avatar.png'
+          deferred.resolve data.value
+        deferred.promise
+      ]
+  )
 ])
 
 .controller('BoardCtrl',
-["$scope","$translate","progressbar","Message","account" 
-($scope,$translate,progressbar,Message,account) ->
+["$scope","$translate","progressbar","Message","messages","account" 
+($scope,$translate,progressbar,Message,messages,account) ->
   $scope.$parent.title='Message Boards'
   $scope.$parent.showBanner=false
 
@@ -21,15 +37,7 @@
       Url:data.Url
     $scope.editmode=!data.UserName
 
-  $scope.loading=$translate("global.loading")
-  $scope.list = Message.query $filter:'IsDeleted eq false',->
-    for item in $scope.list.value
-      if !item.Avatar
-        if item.Email
-          item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
-        else
-          item.Avatar='/Content/img/avatar.png'
-    $scope.loading=""
+  $scope.list = messages
 
   $scope.save = () ->
     $scope.submitted=true
@@ -42,7 +50,7 @@
     Message.save $scope.entity
     ,(data)->
       message.success $translate("board.complete")
-      $scope.list.value.unshift(data)
+      $scope.list.unshift(data)
       $scope.entity.Content=""
       progressbar.complete()
       $scope.submitted=false

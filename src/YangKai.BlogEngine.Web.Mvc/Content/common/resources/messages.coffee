@@ -5,6 +5,11 @@
       method:"GET"
       params:
         $orderby:"CreateDate desc"
+    queryOnce:
+      cache:true
+      method:"GET"
+      params:
+        $orderby:"CreateDate desc"
     remove:
       method: "POST"
       params:

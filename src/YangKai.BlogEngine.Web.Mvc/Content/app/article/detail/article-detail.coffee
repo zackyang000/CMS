@@ -9,9 +9,10 @@
     resolve:
       article: ['$route','$q','Article',($route,$q,Article)->
         deferred = $q.defer()
-        Article.get
+        Article.getOnce
           $filter:"Url eq '#{$route.current.params.url}' and IsDeleted eq false"
-          (data) -> deferred.resolve data.value[0]
+          $expand:'Tags,Group/Channel,Comments'
+        , (data) -> deferred.resolve data.value[0]
         deferred.promise
       ]
   )
@@ -21,20 +22,20 @@
 ["$scope","$window","$translate","$routeParams","progressbar","Article","Comment","article","account"
 ($scope,$window,$translate,$routeParams,progressbar,Article,Comment,article,account) ->
   $scope.$parent.showBanner=false
-  $scope.loading=$translate("global.loading")
   $scope.item=article
-  $scope.loading=""
   if !$scope.item
     $scope.$parent.title='404'
     return
   $scope.$parent.title=$scope.item.Title
   codeformat()#格式化代码
   #上一篇
-  $scope.prevPost = Article.nav
+  $scope.prevPost = Article.getOnce
+    $select:'Url,Title'
     $filter:"IsDeleted eq false and CreateDate lt datetime'#{$scope.item.CreateDate}' and Group/Url eq '#{$scope.item.Group.Url}'"
     $orderby:'CreateDate desc' 
   #下一篇
-  $scope.nextPost = Article.nav
+  $scope.nextPost = Article.getOnce
+    $select:'Url,Title'
     $filter:"IsDeleted eq false and CreateDate gt datetime'#{$scope.item.CreateDate}' and Group/Url eq '#{$scope.item.Group.Url}'"
     $orderby:'CreateDate'
   #相关文章
@@ -44,7 +45,9 @@
       relatedFilter+=" or Tags/any(tag#{i}:tag#{i}/Name eq '#{tag.Name}')"
     relatedFilter=relatedFilter.substring(4)
     relatedFilter="IsDeleted eq false and PostId ne (guid'#{$scope.item.PostId}') and (#{relatedFilter})"
-    $scope.relatedPost = Article.related
+    $scope.relatedPost = Article.getOnce
+      $top:8
+      $select:'Url,Title,PubDate'
       $filter:relatedFilter
       $orderby:'CreateDate desc' 
   #评论

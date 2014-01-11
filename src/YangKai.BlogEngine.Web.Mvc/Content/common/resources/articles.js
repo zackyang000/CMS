@@ -13,29 +13,29 @@ angular.module("resource.articles", ["ngResource"]).factory("Article", [
           $inlinecount: 'allpages'
         }
       },
+      queryOnce: {
+        cache: true,
+        method: "GET",
+        params: {
+          $orderby: 'CreateDate desc',
+          $inlinecount: 'allpages'
+        }
+      },
       get: {
         method: "GET",
         params: {
-          $top: 1,
-          $expand: 'Tags,Group/Channel,Comments'
+          $top: 1
+        }
+      },
+      getOnce: {
+        cache: true,
+        method: "GET",
+        params: {
+          $top: 1
         }
       },
       update: {
         method: "PUT"
-      },
-      nav: {
-        method: "GET",
-        params: {
-          $top: 1,
-          $select: 'Url,Title'
-        }
-      },
-      related: {
-        method: "GET",
-        params: {
-          $top: 8,
-          $select: 'Url,Title,PubDate'
-        }
       },
       browsed: {
         method: "POST",

@@ -52,13 +52,13 @@
 <!-- list START -->
 <div class="comment">
     <ul>
-        <li ng-repeat="item in list.value" ng-hide="item.IsDeleted">
+        <li ng-repeat="item in list" ng-hide="item.IsDeleted">
             <div class="gravatar">
                 <img ng-src="{{item.Avatar}}" />
             </div>
             <div class="text">
                 <span>
-                    <span>#{{list.value.length-$index}}</span>
+                    <span>#{{list.length-$index}}</span>
                 </span>
                 <div>
                     <span class="commentid">{{item.Author}}</span> : 
