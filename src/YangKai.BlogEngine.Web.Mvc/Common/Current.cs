@@ -31,9 +31,7 @@ namespace YangKai.BlogEngine.Web.Mvc
                 };
                 if (!user.IsAdmin) return user;
 
-                var security = Config.UseDomainAccount
-                    ? (IUserSecurity) new NeweggUserSecurity()
-                    : new LocalUserSecurity();
+                var security = Proxy.Security();
                 var login = security.Login(user.LoginName, user.Password);
                 if (login)
                 {

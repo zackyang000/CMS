@@ -9,20 +9,18 @@
 ])
 
 .controller('BoardCtrl',
-["$scope","$translate","progressbar","Message", 
-($scope,$translate,progressbar,Message) ->
+["$scope","$translate","progressbar","Message","account" 
+($scope,$translate,progressbar,Message,account) ->
   $scope.$parent.title='Message Boards'
   $scope.$parent.showBanner=false
-  $scope.entity= {}
 
-  $scope.$watch 'User',->
-    if $scope.User
-      $scope.entity.Author = $scope.User.UserName
-      $scope.entity.Email = $scope.User.Email
-      $scope.entity.Url = $scope.User.Url
-      $scope.AuthorForDisplay=$scope.User.UserName
-      $scope.editmode=$scope.User.UserName=='' or not $scope.User.UserName?
-  
+  account.get().then (data) ->
+    $scope.entity=
+      Author:data.UserName
+      Email:data.Email
+      Url:data.Url
+    $scope.editmode=!data.UserName
+
   $scope.loading=$translate("global.loading")
   $scope.list = Message.query $filter:'IsDeleted eq false',->
     for item in $scope.list.value
@@ -34,6 +32,10 @@
     $scope.loading=""
 
   $scope.save = () ->
+    $scope.submitted=true
+    if $scope.form.$invalid
+      return
+
     progressbar.start()
     $scope.loading = $translate("global.post")
     $scope.entity.BoardId=UUID.generate()
@@ -42,10 +44,11 @@
       message.success $translate("board.complete")
       $scope.list.value.unshift(data)
       $scope.entity.Content=""
-      $scope.AuthorForDisplay=data.Author
-      $scope.editmode=false
-      angular.resetForm($scope, 'form')
       progressbar.complete()
+      $scope.submitted=false
+      $scope.loading = ""
+    ,(error)->
+      $scope.submitted=false
       $scope.loading = ""
 
   $scope.remove = (item) ->

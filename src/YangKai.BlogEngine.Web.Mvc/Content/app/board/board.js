@@ -7,18 +7,16 @@ angular.module('board', ['resource.messages']).config([
     });
   }
 ]).controller('BoardCtrl', [
-  "$scope", "$translate", "progressbar", "Message", function($scope, $translate, progressbar, Message) {
+  "$scope", "$translate", "progressbar", "Message", "account", function($scope, $translate, progressbar, Message, account) {
     $scope.$parent.title = 'Message Boards';
     $scope.$parent.showBanner = false;
-    $scope.entity = {};
-    $scope.$watch('User', function() {
-      if ($scope.User) {
-        $scope.entity.Author = $scope.User.UserName;
-        $scope.entity.Email = $scope.User.Email;
-        $scope.entity.Url = $scope.User.Url;
-        $scope.AuthorForDisplay = $scope.User.UserName;
-        return $scope.editmode = $scope.User.UserName === '' || !($scope.User.UserName != null);
-      }
+    account.get().then(function(data) {
+      $scope.entity = {
+        Author: data.UserName,
+        Email: data.Email,
+        Url: data.Url
+      };
+      return $scope.editmode = !data.UserName;
     });
     $scope.loading = $translate("global.loading");
     $scope.list = Message.query({
@@ -39,6 +37,10 @@ angular.module('board', ['resource.messages']).config([
       return $scope.loading = "";
     });
     $scope.save = function() {
+      $scope.submitted = true;
+      if ($scope.form.$invalid) {
+        return;
+      }
       progressbar.start();
       $scope.loading = $translate("global.post");
       $scope.entity.BoardId = UUID.generate();
@@ -46,10 +48,11 @@ angular.module('board', ['resource.messages']).config([
         message.success($translate("board.complete"));
         $scope.list.value.unshift(data);
         $scope.entity.Content = "";
-        $scope.AuthorForDisplay = data.Author;
-        $scope.editmode = false;
-        angular.resetForm($scope, 'form');
         progressbar.complete();
+        $scope.submitted = false;
+        return $scope.loading = "";
+      }, function(error) {
+        $scope.submitted = false;
         return $scope.loading = "";
       });
     };

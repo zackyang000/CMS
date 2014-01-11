@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Http.OData.Query;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
+using YangKai.BlogEngine.Service;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
@@ -25,8 +26,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 };
             }
             entity.Ip = Request.Headers.From;
-            var security = Config.UseDomainAccount ? (IUserSecurity)new NeweggUserSecurity() : new LocalUserSecurity();
-            entity.Avatar = security.GetAvater(Current.User);
+            entity.Avatar = Proxy.Security().GetAvater(Current.User);
             return base.CreateEntity(entity);
         }
     }

@@ -76,8 +76,8 @@
     <!-- respond START -->
     <div>
         <form name="form" novalidate ng-submit="save()">
-            <p ng-show="AuthorForDisplay.length > 0">
-                {{'article.comment.welcome' | translate}}, <strong>{{AuthorForDisplay}}</strong>
+            <p bindonce="entity" bo-show="entity.Author">
+                {{'article.comment.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
                 <span>
                     <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'article.comment.hide' | translate}} »</a>
                     <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'article.comment.change' | translate}} »</a>

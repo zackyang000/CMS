@@ -21,9 +21,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                     Email = entity.Email,
                 };
             }
-            var security = Config.UseDomainAccount ? (IUserSecurity)new NeweggUserSecurity() : new LocalUserSecurity();
-            entity.Avatar = security.GetAvater(Current.User);
-            entity= base.CreateEntity(entity);
+            entity.Ip = Request.Headers.From;
+            entity.Avatar = Proxy.Security().GetAvater(Current.User);
+            entity.Post = Proxy.Repository<Post>().Get(entity.Post.PostId);
+            base.CreateEntity(entity);
             Task.Factory.StartNew(() => Rss.Current.BuildComment());
             return entity;
         }

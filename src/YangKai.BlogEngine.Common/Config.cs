@@ -11,11 +11,11 @@ namespace YangKai.BlogEngine.Common
         /// <summary>
         /// 使用AD账户登录
         /// </summary>
-        public static bool UseDomainAccount
+        public static bool UseNeweggAccount
         {
             get
             {
-                return Convert.ToBoolean(GetConfig("UseDomainAccount"));
+                return Convert.ToBoolean(GetConfig("UseNeweggAccount"));
             }
         }
         

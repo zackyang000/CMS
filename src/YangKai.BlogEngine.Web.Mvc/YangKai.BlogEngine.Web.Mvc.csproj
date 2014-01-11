@@ -185,9 +185,6 @@
     <Compile Include="Common\EntityController.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\NeweggUserSecurity.cs" />
-    <Compile Include="Security\LocalUserSecurity.cs" />
-    <Compile Include="Security\IUserSecurity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app\about\about-newegg-edi.tpl.html" />

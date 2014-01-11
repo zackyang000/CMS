@@ -16,7 +16,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             var password = (string)parameters["Password"];
             var isRemember = (bool)parameters["IsRemember"];
 
-            var security = Config.UseDomainAccount ? (IUserSecurity) new NeweggUserSecurity() : new LocalUserSecurity();
+            var security = Proxy.Security();
 
             var login = security.Login(username, password);
             if (login)

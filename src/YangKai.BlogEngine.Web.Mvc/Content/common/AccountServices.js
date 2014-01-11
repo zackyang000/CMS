@@ -8,8 +8,7 @@ angular.module("AccountServices", []).factory("account", [
         $http.get("/admin/getuser", {
           cache: true
         }).success(function(data) {
-          self.data = data;
-          return deferred.resolve(self.data);
+          return deferred.resolve(data);
         }).error(function(data) {
           return deferred.reject(data);
         });

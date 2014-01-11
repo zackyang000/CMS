@@ -21,11 +21,10 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
     });
   }
 ]).controller('ArticleDetailCtrl', [
-  "$scope", "$window", "$translate", "$routeParams", "progressbar", "Article", "Comment", "article", function($scope, $window, $translate, $routeParams, progressbar, Article, Comment, article) {
+  "$scope", "$window", "$translate", "$routeParams", "progressbar", "Article", "Comment", "article", "account", function($scope, $window, $translate, $routeParams, progressbar, Article, Comment, article, account) {
     var i, item, relatedFilter, tag, _i, _j, _len, _len1, _ref, _ref1;
     $scope.$parent.showBanner = false;
     $scope.loading = $translate("global.loading");
-    $scope.url = $routeParams.url;
     $scope.item = article;
     $scope.loading = "";
     if (!$scope.item) {
@@ -70,15 +69,13 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
     Article.browsed({
       id: "(guid'" + $scope.item.PostId + "')"
     });
-    $scope.entity = {};
-    $scope.$watch('User', function() {
-      if ($scope.User) {
-        $scope.entity.Author = $scope.User.UserName;
-        $scope.entity.Email = $scope.User.Email;
-        $scope.entity.Url = $scope.User.Url;
-        $scope.AuthorForDisplay = $scope.User.UserName;
-        return $scope.editmode = $scope.User.UserName === '' || !($scope.User.UserName != null);
-      }
+    account.get().then(function(data) {
+      $scope.entity = {
+        Author: data.UserName,
+        Email: data.Email,
+        Url: data.Url
+      };
+      return $scope.editmode = !data.UserName;
     });
     $scope.del = function(item) {
       return message.confirm(function() {
@@ -101,22 +98,22 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
       progressbar.start();
       $scope.loading = $translate("global.post");
       $scope.entity.CommentId = UUID.generate();
+      $scope.entity.Post = {
+        PostId: $scope.item.PostId
+      };
       return Comment.save($scope.entity, function(data) {
         message.success($translate("article.comment.complete"));
         $scope.item.Comments.push(data);
         $scope.entity.Content = "";
-        $scope.AuthorForDisplay = data.Author;
-        $scope.editmode = false;
-        $scope.submitted = false;
         Article.commented({
           id: "(guid'" + $scope.item.PostId + "')"
         });
         progressbar.complete();
+        $scope.submitted = false;
         return $scope.loading = "";
       }, function(error) {
-        var _ref2;
-        $scope.submitting = false;
-        return message.error((_ref2 = error.data.ExceptionMessage) != null ? _ref2 : error.status);
+        $scope.submitted = false;
+        return $scope.loading = "";
       });
     };
     $scope.remove = function(item) {

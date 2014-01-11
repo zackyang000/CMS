@@ -4,8 +4,7 @@
     deferred = $q.defer()
     $http.get("/admin/getuser",cache:true)
       .success (data) ->
-        self.data=data
-        deferred.resolve self.data
+        deferred.resolve data
       .error (data) ->
         deferred.reject data
     deferred.promise

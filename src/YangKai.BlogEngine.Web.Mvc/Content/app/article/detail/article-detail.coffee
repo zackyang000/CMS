@@ -18,13 +18,10 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$window","$translate","$routeParams","progressbar","Article","Comment","article"
-($scope,$window,$translate,$routeParams,progressbar,Article,Comment,article) ->
+["$scope","$window","$translate","$routeParams","progressbar","Article","Comment","article","account"
+($scope,$window,$translate,$routeParams,progressbar,Article,Comment,article,account) ->
   $scope.$parent.showBanner=false
-
   $scope.loading=$translate("global.loading")
-  $scope.url =$routeParams.url
-
   $scope.item=article
   $scope.loading=""
   if !$scope.item
@@ -59,16 +56,13 @@
         item.Avatar='/Content/img/avatar.png'
   Article.browsed id:"(guid'#{$scope.item.PostId}')"
 
-  $scope.entity= {}
+  account.get().then (data) ->
+    $scope.entity=
+      Author:data.UserName
+      Email:data.Email
+      Url:data.Url
+    $scope.editmode=!data.UserName
 
-  $scope.$watch 'User',->
-    if $scope.User
-      $scope.entity.Author = $scope.User.UserName
-      $scope.entity.Email = $scope.User.Email
-      $scope.entity.Url = $scope.User.Url
-      $scope.AuthorForDisplay=$scope.User.UserName
-      $scope.editmode=$scope.User.UserName=='' or not $scope.User.UserName?
-      
   $scope.del = (item) ->
     message.confirm ->
       Comment.del {id:item.CommentId}
@@ -86,20 +80,19 @@
     progressbar.start()
     $scope.loading = $translate("global.post")
     $scope.entity.CommentId=UUID.generate()
+    $scope.entity.Post=PostId:$scope.item.PostId
     Comment.save $scope.entity
     ,(data)->
       message.success $translate("article.comment.complete")
       $scope.item.Comments.push(data)
       $scope.entity.Content=""
-      $scope.AuthorForDisplay=data.Author
-      $scope.editmode=false
-      $scope.submitted=false
       Article.commented id:"(guid'#{$scope.item.PostId}')"
       progressbar.complete()
+      $scope.submitted=false
       $scope.loading = ""
     ,(error)->
-      $scope.submitting=false
-      message.error error.data.ExceptionMessage ? error.status
+      $scope.submitted=false
+      $scope.loading = ""
 
   $scope.remove = (item) ->
     message.confirm ->

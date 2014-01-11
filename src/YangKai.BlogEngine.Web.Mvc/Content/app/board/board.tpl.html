@@ -8,8 +8,8 @@
 <!-- respond START -->
     <div>
         <form name="form" novalidate ng-submit="save()">
-            <p ng-show="AuthorForDisplay.length > 0">
-                {{'board.welcome' | translate}}, <strong>{{AuthorForDisplay}}</strong>
+            <p bindonce="entity" bo-show="entity.Author">
+                {{'board.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
                 <span>
                     <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'board.hide' | translate}} »</a>
                     <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'board.change' | translate}} »</a>
@@ -20,7 +20,7 @@
                     <div class="col-lg-4">
                         <label>{{'board.name' | translate}}*</label>
                         <input class="form-control input-sm" name="Author" type="text" ng-model="entity.Author" placeholder="{{'board.name' | translate}}*" required/>
-                        <div class="label label-danger" ng-show="form.Author.$dirty && form.Author.$invalid">
+                        <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
                             <span ng-show="form.Author.$error.required">{{'board.nameValidTxt' | translate}}</span>
                         </div>
                     </div>
@@ -36,13 +36,13 @@
                 <div class="col-lg-8">
                     <label>{{'board.content' | translate}}</label>
                     <textarea name="Content" class="form-control" rows="4"  ng-model="entity.Content" required></textarea>
-                    <div class="label label-danger" ng-show="form.Content.$dirty && form.Content.$invalid">
+                    <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
                         <span ng-show="form.Content.$error.required">{{'board.contentValidTxt' | translate}}</span>
                     </div>
                 </div>
             </div>
             <div>
-                <button class="btn btn-primary btn-large" ng-disabled="loading || form.$invalid">
+                <button class="btn btn-primary btn-large" ng-disabled="loading">
                     {{'board.submit' | translate}}
                 </button>
             </div>
