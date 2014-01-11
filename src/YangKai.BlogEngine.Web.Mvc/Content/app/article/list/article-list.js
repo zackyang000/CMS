@@ -9,14 +9,30 @@ angular.module('article-list', ['resource.articles']).config([
       controller: 'ArticleListCtrl'
     }).when("/list/:channel", {
       templateUrl: "/Content/app/article/list/article-list.tpl.html",
-      controller: 'ArticleListCtrl'
+      controller: 'ArticleListCtrl',
+      resolve: {
+        articles: [
+          '$route', '$q', 'Article', function($route, $q, Article) {
+            var deferred, filter, _ref;
+            deferred = $q.defer();
+            filter = 'IsDeleted eq false';
+            Article.queryOnce({
+              $filter: "IsDeleted eq false and Group/Channel/Url eq '" + $route.current.params.channel + "'",
+              $skip: ((_ref = $route.current.params.p) != null ? _ref : 1) * 10 - 10
+            }, function(data) {
+              return deferred.resolve(data);
+            });
+            return deferred.promise;
+          }
+        ]
+      }
     }).when("/search/:key", {
       templateUrl: "/Content/app/article/list/article-list.tpl.html",
       controller: 'ArticleListCtrl'
     });
   }
 ]).controller('ArticleListCtrl', [
-  "$scope", "$window", "$translate", "$routeParams", "$location", "Article", function($scope, $window, $translate, $routeParams, $location, Article) {
+  "$scope", "$window", "$translate", "$routeParams", "$location", "Article", "articles", function($scope, $window, $translate, $routeParams, $location, Article, articles) {
     var _ref, _ref1, _ref2;
     $scope.$parent.showBanner = false;
     $scope.$parent.title = (_ref = (_ref1 = $routeParams.group) != null ? _ref1 : $routeParams.channel) != null ? _ref : "Search Result '" + $scope.key + "'";
@@ -32,34 +48,10 @@ angular.module('article-list', ['resource.articles']).config([
         p: pageNo
       });
     };
-    $scope.load = function() {
-      var filter;
-      $scope.loading = $translate("global.loading");
-      filter = 'IsDeleted eq false';
-      if ($scope.params.channel) {
-        filter += " and Group/Channel/Url eq '" + $scope.params.channel + "'";
-      }
-      if ($scope.params.group) {
-        filter += " and Group/Url eq '" + $scope.params.group + "'";
-      }
-      if ($scope.params.key) {
-        filter += " and indexof(Title, '" + $scope.params.key + "') gt -1";
-      }
-      if ($scope.params.tag) {
-        filter += " and Tags/any(tag:tag/Name eq '" + $scope.params.tag + "')";
-      }
-      return Article.query({
-        $filter: filter,
-        $skip: ($scope.currentPage - 1) * 10
-      }, function(data) {
-        scroll(0, 0);
-        $scope.list = data;
-        return $scope.loading = "";
-      });
-    };
-    $scope.edit = function(item) {
+    scroll(0, 0);
+    $scope.list = articles;
+    return $scope.edit = function(item) {
       return $window.location.href = "/admin/article('" + item.PostId + "')";
     };
-    return $scope.load($scope.currentPage);
   }
 ]);
