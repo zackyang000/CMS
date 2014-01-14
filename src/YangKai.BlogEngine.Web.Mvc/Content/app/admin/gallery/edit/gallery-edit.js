@@ -51,7 +51,6 @@ angular.module('admin-gallery-edit', ['resource.galleries', 'resource.photos']).
           $scope.get();
           return $scope.files = [];
         } else {
-          debugger;
           return $location.path("/admin/gallery('" + entity.GalleryId + "')");
         }
       });
