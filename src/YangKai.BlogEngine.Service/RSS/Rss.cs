@@ -23,7 +23,7 @@ namespace YangKai.BlogEngine.Service
                 Proxy.Repository<Post>()
                     .GetAll(p => p.PostStatus == (int) PostStatusEnum.Publish)
                     .OrderByDescending(p => p.CreateDate)
-                    .Take(50);
+                    .Take(10);
             var channel = new RssChannel
             {
                 Title = string.Format("{0} - 文章", Config.Literal.SITE_NAME),
