@@ -15,18 +15,17 @@
         list.push item
     return list
 
-.config(["$routeProvider",
-($routeProvider) ->
+.config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-  .when("/issue",
-    templateUrl: "/content/app/issue/issue.tpl.html"
-    controller: 'IssueCtrl')
+    .when "/issue",
+      templateUrl: "/content/app/issue/issue.tpl.html"
+      controller: 'IssueCtrl'
+      title: 'Issues'
 ])
 
 .controller('IssueCtrl',
 ["$scope","$translate","$routeParams","$location","Issue"
 ($scope,$translate,$routeParams,$location,Issue) ->
-  $scope.$parent.title='Issues'
   $scope.$parent.showBanner=false
 
   $scope.projects=['API Portal'

@@ -31,3 +31,7 @@
   $translateProvider.preferredLanguage('zh')
   $translateProvider.useLocalStorage()
 ])
+.run(["$location", "$rootScope", ($location, $rootScope) ->
+  $rootScope.$on "$routeChangeSuccess", (event, current, previous) ->
+    $rootScope.title = current.$$route.title ? ''
+])

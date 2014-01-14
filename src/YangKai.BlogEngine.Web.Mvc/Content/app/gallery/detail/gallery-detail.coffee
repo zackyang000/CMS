@@ -8,9 +8,9 @@
 ])
 
 .controller('GalleryDetailCtrl',
-["$scope","$translate","$routeParams","$timeout","progressbar","Gallery",
-($scope,$translate,$routeParams,$timeout,progressbar,Gallery) ->
-  $scope.$parent.title='Gallery '+$routeParams.name
+["$scope","$rootScope","$translate","$routeParams","$timeout","progressbar","Gallery",
+($scope,$rootScope,$translate,$routeParams,$timeout,progressbar,Gallery) ->
+  $rootScope.title='Gallery '+$routeParams.name
   $scope.$parent.showBanner=false
 
   $scope.loading=$translate("global.loading")

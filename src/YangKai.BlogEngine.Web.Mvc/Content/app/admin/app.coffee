@@ -26,4 +26,5 @@
 .config(["$routeProvider",($routeProvider) ->
   $routeProvider.otherwise redirectTo: "/"
 ])
+
 angular.module("app-login", ['admin.main.controllers','AccountServices'])

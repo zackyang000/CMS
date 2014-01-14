@@ -18,4 +18,11 @@ angular.module("app", ['ngRoute', 'ngSanitize', 'ngAnimate', 'ngCookies', 'l18n'
     $translateProvider.preferredLanguage('zh');
     return $translateProvider.useLocalStorage();
   }
+]).run([
+  "$location", "$rootScope", function($location, $rootScope) {
+    return $rootScope.$on("$routeChangeSuccess", function(event, current, previous) {
+      var _ref;
+      return $rootScope.title = (_ref = current.$$route.title) != null ? _ref : '';
+    });
+  }
 ]);

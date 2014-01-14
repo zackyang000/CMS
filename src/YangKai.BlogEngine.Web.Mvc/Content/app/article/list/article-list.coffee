@@ -71,11 +71,11 @@
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$window","$routeParams","$location","articles"
-($scope,$window,$routeParams,$location,articles) ->
+["$scope","$rootScope","$window","$routeParams","$location","articles"
+($scope,$rootScope,$window,$routeParams,$location,articles) ->
   scroll(0,0)
   $scope.$parent.showBanner=false
-  $scope.$parent.title=$routeParams.tag ? $routeParams.group ? $routeParams.channel ? "Search Result '#{$scope.key}'"
+  $rootScope.title=$routeParams.tag ? $routeParams.group ? $routeParams.channel ? "Search Result '#{$scope.key}'"
   $scope.list = articles
   $scope.params=$routeParams
 

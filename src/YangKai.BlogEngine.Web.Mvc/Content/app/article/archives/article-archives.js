@@ -4,6 +4,7 @@ angular.module('article-archives', ['resource.articles']).config([
     return $routeProvider.when("/archives", {
       templateUrl: "/Content/app/article/archives/article-archives.tpl.html",
       controller: 'ArticleArchivesCtrl',
+      title: 'Archives',
       resolve: {
         archives: [
           '$q', 'Channel', function($q, Channel) {
@@ -62,7 +63,6 @@ angular.module('article-archives', ['resource.articles']).config([
   }
 ]).controller('ArticleArchivesCtrl', [
   "$scope", "$translate", "archives", function($scope, $translate, archives) {
-    $scope.$parent.title = 'Archives';
     $scope.$parent.showBanner = false;
     return $scope.list = archives;
   }

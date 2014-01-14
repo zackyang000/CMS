@@ -5,12 +5,12 @@
     .when "/gallery",
       templateUrl: "/content/app/gallery/gallery.tpl.html"
       controller: 'GalleryCtrl'
+      title: 'Galleries'
 ])
 
 .controller('GalleryCtrl',
 ["$scope","$translate","$routeParams","$location","Gallery"
 ($scope,$translate,$routeParams,$location,Gallery) ->
-  $scope.$parent.title='Galleries'
   $scope.$parent.showBanner=false
 
   $scope.loading=$translate("global.loading")

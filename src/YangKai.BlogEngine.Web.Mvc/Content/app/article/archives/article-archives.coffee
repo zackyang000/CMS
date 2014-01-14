@@ -5,6 +5,7 @@
     .when "/archives",
       templateUrl: "/Content/app/article/archives/article-archives.tpl.html"
       controller: 'ArticleArchivesCtrl'
+      title: 'Archives'
       resolve:
         archives: ['$q','Channel',($q,Channel)->
           deferred = $q.defer()
@@ -37,7 +38,6 @@
 .controller('ArticleArchivesCtrl',
 ["$scope","$translate","archives", 
 ($scope,$translate,archives) ->
-  $scope.$parent.title='Archives'
   $scope.$parent.showBanner=false
   $scope.list=archives
 ])

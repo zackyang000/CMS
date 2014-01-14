@@ -17,14 +17,14 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$window","$translate","$routeParams","progressbar","Article","Comment","article","account"
-($scope,$window,$translate,$routeParams,progressbar,Article,Comment,article,account) ->
+["$scope","$rootScope","$window","$translate","$routeParams","progressbar","Article","Comment","article","account"
+($scope,$rootScope,$window,$translate,$routeParams,progressbar,Article,Comment,article,account) ->
   $scope.$parent.showBanner=false
   $scope.item=article
   if !$scope.item
-    $scope.$parent.title='404'
+    $rootScope.title='404'
     return
-  $scope.$parent.title=$scope.item.Title
+  $rootScope.title=$scope.item.Title
   codeformat()#格式化代码
   #上一篇
   $scope.prevPost = Article.getOnce

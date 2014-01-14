@@ -5,6 +5,7 @@
     .when "/board",
       templateUrl: "/Content/app/board/board.tpl.html"
       controller: 'BoardCtrl'
+      title: 'Message Boards'
       resolve:
         messages: ['$q','Message',($q,Message)->
           deferred = $q.defer()
@@ -25,7 +26,6 @@
 .controller('BoardCtrl',
 ["$scope","$translate","progressbar","Message","messages","account" 
 ($scope,$translate,progressbar,Message,messages,account) ->
-  $scope.$parent.title='Message Boards'
   $scope.$parent.showBanner=false
 
   account.get().then (data) ->

@@ -4,6 +4,7 @@ angular.module('board', ['resource.messages']).config([
     return $routeProvider.when("/board", {
       templateUrl: "/Content/app/board/board.tpl.html",
       controller: 'BoardCtrl',
+      title: 'Message Boards',
       resolve: {
         messages: [
           '$q', 'Message', function($q, Message) {
@@ -33,7 +34,6 @@ angular.module('board', ['resource.messages']).config([
   }
 ]).controller('BoardCtrl', [
   "$scope", "$translate", "progressbar", "Message", "messages", "account", function($scope, $translate, progressbar, Message, messages, account) {
-    $scope.$parent.title = 'Message Boards';
     $scope.$parent.showBanner = false;
     account.get().then(function(data) {
       $scope.entity = {

@@ -27,12 +27,12 @@ angular.module('issue', ['resource.issues']).filter('filterByDate', function() {
   "$routeProvider", function($routeProvider) {
     return $routeProvider.when("/issue", {
       templateUrl: "/content/app/issue/issue.tpl.html",
-      controller: 'IssueCtrl'
+      controller: 'IssueCtrl',
+      title: 'Issues'
     });
   }
 ]).controller('IssueCtrl', [
   "$scope", "$translate", "$routeParams", "$location", "Issue", function($scope, $translate, $routeParams, $location, Issue) {
-    $scope.$parent.title = 'Issues';
     $scope.$parent.showBanner = false;
     $scope.projects = ['API Portal', 'API Framework', 'ServiceStack.Text', 'Framework API/ API SDK', 'Oversea WCF Framework', 'Framework Tools', 'Auth Service', 'Gateway', 'Oversea Data Access', 'Cassandra Adapter', 'Document Tool', 'Common API', 'API Notify', 'Newegg Central Framework', 'HR Tools'].sort();
     $scope.get = function() {
