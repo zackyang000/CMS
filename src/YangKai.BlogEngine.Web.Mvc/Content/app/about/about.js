@@ -7,8 +7,4 @@ angular.module('about', []).config([
       title: 'About'
     });
   }
-]).controller('AboutCtrl', [
-  "$scope", "$translate", "$http", function($scope, $translate, $http) {
-    return $scope.$parent.showBanner = false;
-  }
-]);
+]).controller('AboutCtrl', ["$scope", "$translate", "$http", function($scope, $translate, $http) {}]);

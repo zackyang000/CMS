@@ -11,8 +11,6 @@
 ["$scope","$rootScope","$translate","$routeParams","$timeout","progressbar","Gallery",
 ($scope,$rootScope,$translate,$routeParams,$timeout,progressbar,Gallery) ->
   $rootScope.title='Gallery '+$routeParams.name
-  $scope.$parent.showBanner=false
-
   $scope.loading=$translate("global.loading")
   $scope.name = $routeParams.name
   Gallery.get

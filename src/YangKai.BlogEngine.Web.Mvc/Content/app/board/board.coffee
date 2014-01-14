@@ -26,8 +26,6 @@
 .controller('BoardCtrl',
 ["$scope","$translate","progressbar","Message","messages","account" 
 ($scope,$translate,progressbar,Message,messages,account) ->
-  $scope.$parent.showBanner=false
-
   account.get().then (data) ->
     $scope.entity=
       Author:data.UserName

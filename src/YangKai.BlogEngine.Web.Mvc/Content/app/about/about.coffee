@@ -11,5 +11,4 @@
 .controller('AboutCtrl',
 ["$scope","$translate","$http", 
 ($scope,$translate,$http) ->
-  $scope.$parent.showBanner=false
 ])

@@ -33,7 +33,6 @@ angular.module('issue', ['resource.issues']).filter('filterByDate', function() {
   }
 ]).controller('IssueCtrl', [
   "$scope", "$translate", "$routeParams", "$location", "Issue", function($scope, $translate, $routeParams, $location, Issue) {
-    $scope.$parent.showBanner = false;
     $scope.projects = ['API Portal', 'API Framework', 'ServiceStack.Text', 'Framework API/ API SDK', 'Oversea WCF Framework', 'Framework Tools', 'Auth Service', 'Gateway', 'Oversea Data Access', 'Cassandra Adapter', 'Document Tool', 'Common API', 'API Notify', 'Newegg Central Framework', 'HR Tools'].sort();
     $scope.get = function() {
       $scope.loading = $translate("global.loading");

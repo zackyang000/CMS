@@ -79,7 +79,6 @@ angular.module('article-list', ['resource.articles']).config([
   "$scope", "$rootScope", "$window", "$routeParams", "$location", "articles", function($scope, $rootScope, $window, $routeParams, $location, articles) {
     var _ref, _ref1, _ref2;
     scroll(0, 0);
-    $scope.$parent.showBanner = false;
     $rootScope.title = (_ref = (_ref1 = (_ref2 = $routeParams.tag) != null ? _ref2 : $routeParams.group) != null ? _ref1 : $routeParams.channel) != null ? _ref : "Search Result '" + $scope.key + "'";
     $scope.list = articles;
     $scope.params = $routeParams;

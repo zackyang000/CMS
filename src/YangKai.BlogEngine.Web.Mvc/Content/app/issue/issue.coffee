@@ -26,8 +26,6 @@
 .controller('IssueCtrl',
 ["$scope","$translate","$routeParams","$location","Issue"
 ($scope,$translate,$routeParams,$location,Issue) ->
-  $scope.$parent.showBanner=false
-
   $scope.projects=['API Portal'
     'API Framework'
     'ServiceStack.Text'

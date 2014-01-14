@@ -38,6 +38,5 @@
 .controller('ArticleArchivesCtrl',
 ["$scope","$translate","archives", 
 ($scope,$translate,archives) ->
-  $scope.$parent.showBanner=false
   $scope.list=archives
 ])

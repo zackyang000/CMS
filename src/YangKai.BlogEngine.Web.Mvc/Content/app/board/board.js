@@ -34,7 +34,6 @@ angular.module('board', ['resource.messages']).config([
   }
 ]).controller('BoardCtrl', [
   "$scope", "$translate", "progressbar", "Message", "messages", "account", function($scope, $translate, progressbar, Message, messages, account) {
-    $scope.$parent.showBanner = false;
     account.get().then(function(data) {
       $scope.entity = {
         Author: data.UserName,

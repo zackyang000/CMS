@@ -22,7 +22,8 @@ angular.module("app", ['ngRoute', 'ngSanitize', 'ngAnimate', 'ngCookies', 'l18n'
   "$location", "$rootScope", function($location, $rootScope) {
     return $rootScope.$on("$routeChangeSuccess", function(event, current, previous) {
       var _ref;
-      return $rootScope.title = (_ref = current.$$route.title) != null ? _ref : '';
+      $rootScope.title = (_ref = current.$$route.title) != null ? _ref : '';
+      return $rootScope.showBanner = current.$$route.showBanner;
     });
   }
 ]);

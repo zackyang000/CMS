@@ -9,7 +9,6 @@ angular.module('gallery-detail', ['resource.galleries']).config([
 ]).controller('GalleryDetailCtrl', [
   "$scope", "$rootScope", "$translate", "$routeParams", "$timeout", "progressbar", "Gallery", function($scope, $rootScope, $translate, $routeParams, $timeout, progressbar, Gallery) {
     $rootScope.title = 'Gallery ' + $routeParams.name;
-    $scope.$parent.showBanner = false;
     $scope.loading = $translate("global.loading");
     $scope.name = $routeParams.name;
     return Gallery.get({

@@ -19,7 +19,6 @@
 .controller('ArticleDetailCtrl',
 ["$scope","$rootScope","$window","$translate","$routeParams","progressbar","Article","Comment","article","account"
 ($scope,$rootScope,$window,$translate,$routeParams,progressbar,Article,Comment,article,account) ->
-  $scope.$parent.showBanner=false
   $scope.item=article
   if !$scope.item
     $rootScope.title='404'
