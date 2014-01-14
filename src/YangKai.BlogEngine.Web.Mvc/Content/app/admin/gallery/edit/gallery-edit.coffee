@@ -46,7 +46,8 @@
         $scope.get()
         $scope.files = []
       else
-        $location.path("/gallery('#{entity.GalleryId}')")
+        debugger
+        $location.path("/admin/gallery('#{entity.GalleryId}')")
 
   #上传封面处理
   $scope.files = []

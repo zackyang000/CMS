@@ -51,10 +51,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
             var oName = Path.GetFileName(file.FileName);
             var name = fileNo + Path.GetExtension(oName);
             var dir = Server.MapPath("~/upload/gallery/" + id);
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
             var path = string.Format("{0}/photo/{1}", dir, name);
             file.SaveAs(path);
             var thumbnail = string.Format("{0}/thumbnail/{1}", dir, name);

@@ -25,6 +25,16 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             return Proxy.Repository<Gallery>().GetAll();
         }
 
+        protected override Gallery CreateEntity(Gallery entity)
+        {
+            var dir = HttpContext.Current.Server.MapPath("~/upload/gallery/" + entity.GalleryId);
+            Directory.CreateDirectory(dir);
+            Directory.CreateDirectory(dir + "/photo");
+            Directory.CreateDirectory(dir + "/thumbnail");
+
+            return base.CreateEntity(entity);
+        }
+
         protected override Gallery UpdateEntity(Guid key, Gallery update)
         {
             if (!string.IsNullOrEmpty(update.Cover))
@@ -33,13 +43,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                 var target = string.Format("{0}/{1}/cover{2}", HttpContext.Current.Server.MapPath("~/upload/gallery"),update.GalleryId, Path.GetExtension(update.Cover));
                 if (File.Exists(source))
                 {
-                    var dir = HttpContext.Current.Server.MapPath("~/upload/gallery/" + update.GalleryId);
-                    if (!Directory.Exists(dir))
-                    {
-                        Directory.CreateDirectory(dir);
-                        Directory.CreateDirectory(dir+"/photo");
-                        Directory.CreateDirectory(dir+"/thumbnail");
-                    }
                     if (File.Exists(target))
                     {
                         File.Delete(target);
