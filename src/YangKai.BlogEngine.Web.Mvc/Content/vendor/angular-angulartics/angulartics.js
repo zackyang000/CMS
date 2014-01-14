@@ -8,7 +8,7 @@
 
 var angulartics = window.angulartics || (window.angulartics = {});
 angulartics.waitForVendorApi = function (objectName, delay, registerFn) {
-  if (!window.hasOwnProperty(objectName)) {
+  if (!Object.prototype.hasOwnProperty.call(window, objectName)) {
     setTimeout(function () { angulartics.waitForVendorApi(objectName, delay, registerFn); }, delay);
   }
   else {
@@ -81,7 +81,7 @@ angular.module('angulartics', [])
     $analytics.pageTrack($location.absUrl());
   }
   if ($analytics.settings.pageTracking.autoTrackVirtualPages) {
-    $rootScope.$on('$routeChangeSuccess', function (event, current) {
+    $rootScope.$on('$locationChangeSuccess', function (event, current) {
       if (current && (current.$$route||current).redirectTo) return;
       var url = $analytics.settings.pageTracking.basePath + $location.url();
       $analytics.pageTrack(url);

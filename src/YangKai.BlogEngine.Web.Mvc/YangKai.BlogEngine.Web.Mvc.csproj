@@ -357,6 +357,14 @@
     <Content Include="Content\common\VersionService.min.js">
       <DependentUpon>VersionService.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\vendor\angular-angulartics\angulartics-chartbeat.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-ga-cordova.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-ga.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-kissmetrics.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-mixpanel.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-scroll.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics-segmentio.js" />
+    <Content Include="Content\vendor\angular-angulartics\angulartics.js" />
     <Content Include="Content\vendor\angular\angular-cookies.js" />
     <Content Include="Content\vendor\angular\angular-resource.js" />
     <Content Include="Content\app\about\about.js">
@@ -531,13 +539,6 @@
     <Content Include="Content\plugin\ace_1.2\ace-elements.js" />
     <Content Include="Content\plugin\ace_1.2\ace-extra.js" />
     <Content Include="Content\plugin\ace_1.2\ace.js" />
-    <Content Include="Content\vendor\angular-angulartics\angulartics-chartbeat.js" />
-    <Content Include="Content\vendor\angular-angulartics\angulartics-google-analytics.js" />
-    <Content Include="Content\vendor\angular-angulartics\angulartics-kissmetrics.js" />
-    <Content Include="Content\vendor\angular-angulartics\angulartics-mixpanel.js" />
-    <Content Include="Content\vendor\angular-angulartics\angulartics-scroll.js" />
-    <Content Include="Content\vendor\angular-angulartics\angulartics-segmentio.js" />
-    <Content Include="Content\vendor\angular-angulartics\angulartics.js" />
     <Content Include="Content\vendor\bootbox.js" />
     <Content Include="Content\vendor\bootstrap-plugin\bootstrap-colorpicker.js" />
     <Content Include="Content\vendor\bootstrap-plugin\bootstrap-tag.js" />
