@@ -1,11 +1,10 @@
 ﻿angular.module('admin-basedata-channel',['resource.channels'])
 
-.config(["$routeProvider",
-($routeProvider) ->
+.config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-  .when("/admin/channel",
-    templateUrl: "/content/app/admin/basedata/channel/basedata-channel.tpl.html"
-    controller: 'ChannelCtrl')
+    .when "/admin/channel",
+      templateUrl: "/content/app/admin/basedata/channel/basedata-channel.tpl.html"
+      controller: 'ChannelCtrl'
 ])
 
 .controller('ChannelCtrl',

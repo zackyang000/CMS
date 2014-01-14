@@ -1,27 +1,25 @@
 ﻿angular.module('board',['resource.messages'])
 
-.config(["$routeProvider",
-($routeProvider) ->
+.config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-  .when("/board",
-    templateUrl: "/Content/app/board/board.tpl.html"
-    controller: 'BoardCtrl'
-    resolve:
-      messages: ['$q','Message',($q,Message)->
-        deferred = $q.defer()
-        Message.queryOnce 
-          $filter:'IsDeleted eq false'
-        , (data) -> 
-          for item in data
-            if !item.Avatar
-              if item.Email
-                item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
-              else
-                item.Avatar='/Content/img/avatar.png'
-          deferred.resolve data.value
-        deferred.promise
-      ]
-  )
+    .when "/board",
+      templateUrl: "/Content/app/board/board.tpl.html"
+      controller: 'BoardCtrl'
+      resolve:
+        messages: ['$q','Message',($q,Message)->
+          deferred = $q.defer()
+          Message.queryOnce 
+            $filter:'IsDeleted eq false'
+          , (data) -> 
+            for item in data
+              if !item.Avatar
+                if item.Email
+                  item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
+                else
+                  item.Avatar='/Content/img/avatar.png'
+            deferred.resolve data.value
+          deferred.promise
+        ]
 ])
 
 .controller('BoardCtrl',

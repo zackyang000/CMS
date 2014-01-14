@@ -1,21 +1,19 @@
 ﻿angular.module('article-detail',['resource.articles','resource.comments'])
 
-.config(["$routeProvider",
-($routeProvider) ->
+.config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-  .when("/post/:url",
-    templateUrl: "/Content/app/article/detail/article-detail.tpl.html"
-    controller: 'ArticleDetailCtrl'
-    resolve:
-      article: ['$route','$q','Article',($route,$q,Article)->
-        deferred = $q.defer()
-        Article.getOnce
-          $filter:"Url eq '#{$route.current.params.url}' and IsDeleted eq false"
-          $expand:'Tags,Group/Channel,Comments'
-        , (data) -> deferred.resolve data.value[0]
-        deferred.promise
-      ]
-  )
+    .when "/post/:url",
+      templateUrl: "/Content/app/article/detail/article-detail.tpl.html"
+      controller: 'ArticleDetailCtrl'
+      resolve:
+        article: ['$route','$q','Article',($route,$q,Article)->
+          deferred = $q.defer()
+          Article.getOnce
+            $filter:"Url eq '#{$route.current.params.url}' and IsDeleted eq false"
+            $expand:'Tags,Group/Channel,Comments'
+          , (data) -> deferred.resolve data.value[0]
+          deferred.promise
+        ]
 ])
 
 .controller('ArticleDetailCtrl',

@@ -1,11 +1,10 @@
 ﻿angular.module('admin-article-list',['resource.articles'])
 
-.config(["$routeProvider",
-($routeProvider) ->
+.config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-  .when("/admin/article",
-    templateUrl: "/Content/app/admin/article/list/article-list.tpl.html"
-    controller: 'ArticleListCtrl')
+    .when "/admin/article",
+      templateUrl: "/Content/app/admin/article/list/article-list.tpl.html"
+      controller: 'ArticleListCtrl'
 ])
 
 .controller('ArticleListCtrl',

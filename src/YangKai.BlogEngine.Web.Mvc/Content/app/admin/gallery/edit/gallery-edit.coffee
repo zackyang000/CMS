@@ -1,14 +1,13 @@
 ﻿angular.module('admin-gallery-edit',['resource.galleries','resource.photos'])
 
-.config(["$routeProvider",
-($routeProvider) ->
+.config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-  .when("/admin/gallery(':id')",
-    templateUrl: "/content/app/admin/gallery/edit/gallery-edit.tpl.html"
-    controller: 'GalleryEditCtrl')
-  .when("/admin/gallery/new",
-    templateUrl: "/content/app/admin/gallery/edit/gallery-edit.tpl.html"
-    controller: 'GalleryEditCtrl')
+    .when "/admin/gallery(':id')",
+      templateUrl: "/content/app/admin/gallery/edit/gallery-edit.tpl.html"
+      controller: 'GalleryEditCtrl'
+    .when "/admin/gallery/new",
+      templateUrl: "/content/app/admin/gallery/edit/gallery-edit.tpl.html"
+      controller: 'GalleryEditCtrl'
 ])
 
 .controller('GalleryEditCtrl',

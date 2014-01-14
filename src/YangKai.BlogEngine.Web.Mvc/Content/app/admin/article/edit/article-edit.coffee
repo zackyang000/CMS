@@ -7,15 +7,14 @@
       url: "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=JSON_CALLBACK&appId=A4D660A48A6A97CCA791C34935E4C02BBB1BEC1C&from=zh-cn&to=en&text=" + key
 ])
 
-.config(["$routeProvider",
-($routeProvider) ->
+.config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-  .when("/admin/article(':id')",
-    templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
-    controller: 'ArticleEditCtrl')
-  .when("/admin/article/new",
-    templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
-    controller: 'ArticleEditCtrl')
+    .when "/admin/article(':id')",
+      templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
+      controller: 'ArticleEditCtrl'
+    .when "/admin/article/new",
+      templateUrl: "/content/app/admin/article/edit/article-edit.tpl.html"
+      controller: 'ArticleEditCtrl'
 ])
 
 

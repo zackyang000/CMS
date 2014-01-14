@@ -1,11 +1,10 @@
 ﻿angular.module('gallery',['gallery-detail','resource.galleries'])
 
-.config(["$routeProvider",
-($routeProvider) ->
+.config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-  .when("/gallery",
-    templateUrl: "/content/app/gallery/gallery.tpl.html"
-    controller: 'GalleryCtrl')
+    .when "/gallery",
+      templateUrl: "/content/app/gallery/gallery.tpl.html"
+      controller: 'GalleryCtrl'
 ])
 
 .controller('GalleryCtrl',

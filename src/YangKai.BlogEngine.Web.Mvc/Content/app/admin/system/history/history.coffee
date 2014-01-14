@@ -1,11 +1,10 @@
 ﻿angular.module('admin-system-history',[])
 
-.config(["$routeProvider",
-($routeProvider) ->
+.config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-  .when("/admin/system/history",
-    templateUrl: "/content/app/admin/system/history/history.tpl.html"
-    controller: 'SystemHistoryCtrl')
+    .when "/admin/system/history",
+      templateUrl: "/content/app/admin/system/history/history.tpl.html"
+      controller: 'SystemHistoryCtrl'
 ])
 
 .controller('SystemHistoryCtrl',
