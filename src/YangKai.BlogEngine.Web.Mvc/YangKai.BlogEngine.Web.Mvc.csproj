@@ -238,6 +238,7 @@
       <DependentUpon>system.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\article\article.css" />
+    <Content Include="Content\app\article\list\article-list.css" />
     <Content Include="Content\app\gallery\detail\gallery-detail.css" />
     <Content Include="Content\app\gallery\gallery.css" />
     <Content Include="Content\app\main.controllers.js">

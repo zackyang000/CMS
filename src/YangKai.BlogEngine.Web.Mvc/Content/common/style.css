@@ -109,9 +109,6 @@ a:hover {
 ::-webkit-selection {
   background: #d9edf7;
 }
-.ui-match {
-  background: #FF9632;
-}
 a:hover {
   text-decoration: none;
 }
