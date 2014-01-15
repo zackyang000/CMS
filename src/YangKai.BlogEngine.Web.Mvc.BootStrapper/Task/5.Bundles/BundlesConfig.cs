@@ -45,6 +45,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 .IncludeDirectory("~/Content/common", "*.js", true)
                 .IncludeDirectory("~/Content/i18n", "*.js", true)
                 .IncludeDirectory("~/Content/app", "*.js", true)
+                .IncludeDirectory("~/Content/plugin/unify_1.3", "*.js", true)
                 .Include(plugin);
             BundleTable.Bundles.Add(bundle);
 
@@ -64,6 +65,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             var bundle = new StyleBundle("~/Content/style/css")
                 .IncludeDirectory("~/Content/vendor", "*.css", true)
                 .Include(plugin)
+                .IncludeDirectory("~/Content/plugin/unify_1.3", "*.css", true)
                 .IncludeDirectory("~/Content/app/about", "*.css", true)
                 .IncludeDirectory("~/Content/app/article", "*.css", true)
                 .IncludeDirectory("~/Content/app/board", "*.css", true)

@@ -359,6 +359,7 @@
       <DependentUpon>VersionService.coffee</DependentUpon>
     </Content>
     <Content Include="Content\plugin\unify_1.3\app.css" />
+    <Content Include="Content\plugin\unify_1.3\app.js" />
     <Content Include="Content\plugin\unify_1.3\header.css" />
     <Content Include="Content\plugin\unify_1.3\responsive.css" />
     <Content Include="Content\plugin\unify_1.3\style.css" />
