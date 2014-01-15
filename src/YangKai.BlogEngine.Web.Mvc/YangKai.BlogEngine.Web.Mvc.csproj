@@ -358,6 +358,11 @@
     <Content Include="Content\common\VersionService.min.js">
       <DependentUpon>VersionService.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\plugin\unify_1.3\app.css" />
+    <Content Include="Content\plugin\unify_1.3\header.css" />
+    <Content Include="Content\plugin\unify_1.3\responsive.css" />
+    <Content Include="Content\plugin\unify_1.3\style.css" />
+    <Content Include="Content\plugin\unify_1.3\theme\default.css" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-chartbeat.js" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-ga-cordova.js" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-ga.js" />

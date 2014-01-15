@@ -1,0 +1,309 @@
+/*Top Bar (login, search etc.)
+------------------------------------*/
+.top {
+	padding-top: 8px;
+}
+
+.top ul.loginbar {
+	margin: 0;
+	padding: 0;
+	z-index: 9999;
+	position: relative;
+}
+
+.top ul.loginbar > li {
+	display: inline;
+	list-style: none;
+	padding-bottom: 15px;
+}
+
+.top ul.loginbar > li > a, 
+.top ul.loginbar > li > a:hover {
+	color: #7c8082;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.top ul.loginbar li.devider { 
+	top: -1px;
+	padding: 0;
+	font-size: 8px;
+	position: relative;
+	margin: 0 9px 0 5px;
+	font-family: Tahoma;
+	border-right: solid 1px #bbb;
+}
+
+.top ul.loginbar li i.icon-globe { 
+	color: #bbb;
+}
+
+/*Lenguages*/
+.top ul.lenguages {
+	top: 25px;
+	left: -5px;
+	display: none;
+	padding: 4px 0;
+	padding-left: 0; 
+	list-style: none;
+	min-width: 100px;
+	position: absolute;
+	background: #f0f0f0;
+}
+
+.top li:hover ul.lenguages {
+	display: block;
+}
+
+.top ul.lenguages:after {
+	top: -4px;
+	width: 0; 
+	height: 0;
+	left: 8px;
+	content: " "; 
+	display: block; 
+	position: absolute;
+	border-bottom: 6px solid #f0f0f0;	
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-left-style: inset; /*FF fixes*/
+	border-right-style: inset; /*FF fixes*/
+}
+
+.top ul.lenguages li a {
+	color: #555;
+	display: block;
+	font-size: 10px;
+	padding: 2px 12px;
+	margin-bottom: 1px;
+	text-transform: uppercase; 
+	font-family:'Open Sans', sans-serif;	
+}
+
+.top ul.lenguages li.active a i {
+	color: #999;
+	float: right;
+	margin-top: 2px;
+}
+
+.top ul.lenguages li a:hover, 
+.top ul.lenguages li.active a {
+	background: #fafafa;
+}
+
+.top ul.lenguages li a:hover {
+	text-decoration: none; 
+}
+
+/*Header Default
+------------------------------------*/
+.header {
+	z-index:999;
+	position:relative;
+	border-bottom:solid 2px #eee;
+}
+
+.header .navbar {
+	margin: 0;
+	min-height: inherit;
+}
+
+.header .navbar-default {
+	border: none;
+	background: none;
+}
+
+.header .navbar-collapse {
+	position: relative;
+	/*max-height: inherit;*/
+}
+
+/*Brand*/
+.header .navbar-brand { 
+	z-index: 2;
+	position: relative;
+	padding: 0 10px 10px;
+}
+
+/*Navbar*/
+.header .navbar-default .navbar-nav > li > a {
+	color: #687074;
+	font-size: 15px;
+	font-weight:400;
+	padding: 9px 20px;
+	text-transform: uppercase;
+}
+
+.header .navbar-default .navbar-nav > .active > a {
+	color: #72c02c;
+}
+
+/*Dropdown*/
+.header .navbar-right .dropdown-menu {
+	right: inherit;
+}
+
+.header .navbar .nav > li > a i.icon-angle-down {
+	top: -1px;
+	left: 1px;
+	font-size: 12px;
+	position: relative;
+	margin: 0 !important;
+}
+
+/*Navber Toggle*/
+.navbar-toggle,
+.navbar-default .navbar-toggle:hover, 
+.navbar-default .navbar-toggle:focus {
+	background: #72c02c;
+}
+
+.navbar-toggle:hover {
+	background: #5fb611 !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: #5fb611;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background: #fff;
+}
+
+/*Serach Box*/
+.header .navbar .search-open {
+	right: 0; 
+	top: 50px; 
+	display: none;
+	padding: 14px; 
+	position: absolute;
+	background: #fcfcfc; 
+	border-top: solid 2px #eee;
+	box-shadow: 0 1px 3px #ddd; 
+}
+
+.header .navbar .nav > li > a.search {
+	color: #aaa;
+	cursor: pointer;
+	padding: 8px 8px 10px;
+	border-bottom-color: #aaa;
+	background: #f7f7f7 !important;
+}
+
+.header .navbar .nav > li > a.search:hover {
+	color: #72c02c;
+	border-bottom-color: #72c02c;
+}
+
+.header .navbar .search-open form {
+	margin: 0;	
+}
+
+.header .navbar a.search [class^="icon-"],
+.header .navbar a.search [class*=" icon-"] {
+  width: 1.25em;
+  text-align: center;
+  display: inline-block;
+}
+
+.header .navbar a.search [class^="icon-"].icon-large,
+.header .navbar a.search [class*=" icon-"].icon-large {
+  /* increased font size for icon-large */
+  width: 1.5625em;
+}
+
+/*Responsive @Media 
+------------------------------------*/
+@media (min-width: 767px) {
+	/*Navbar Collapse*/
+	.header .navbar-collapse {
+		padding: 0;
+	}
+
+	/*Navbar*/
+	.header .navbar-nav {
+		top: 2px;
+		margin-top: 10px;
+		position: relative;
+	}
+
+	.header .navbar-default .navbar-nav > li > a,
+	.header .navbar-default .navbar-nav > li > a:focus {	
+		border-bottom: solid 2px transparent;
+	}
+
+	.header .navbar-default .navbar-nav > li > a:hover,
+	.header .navbar-default .navbar-nav > .active > a {
+		border-bottom: solid 2px #72c02c;
+	}
+
+	.header .navbar-default .navbar-nav > li > a,
+	.header .navbar-default .navbar-nav > li > a:hover,
+	.header .navbar-default .navbar-nav > li > a:focus,	
+	.header .navbar-default .navbar-nav > .active > a, 
+	.header .navbar-default .navbar-nav > .active > a:hover, 
+	.header .navbar-default .navbar-nav > .active > a:focus {
+		background: none;
+	}
+
+	.header .navbar-default .navbar-nav > .open > a,
+	.header .navbar-default .navbar-nav > .open > a:hover,
+	.header .navbar-default .navbar-nav > .open > a:focus {
+		color: #72c02c;
+	}
+
+	/*Dropdown Menu*/
+	.header .dropdown-menu { 
+		padding: 0;
+		border: none;
+		min-width: 200px;
+		border-radius: 0; 
+		z-index: 9999 !important;
+		margin-top: -2px !important; 
+		border-top: solid 2px #72c02c; 
+		border-bottom: solid 2px #687074; 
+	}
+
+	.header .dropdown-menu li a { 
+		color: #687074; 
+		font-size: 13px; 
+		font-weight: 400; 
+		padding: 6px 15px; 
+		border-bottom: solid 1px #eee;
+	}
+
+	.header .dropdown-menu .active > a,
+	.header .dropdown-menu li > a:hover {
+		color: #fff;
+		filter: none !important;
+		background: #687074 !important;
+		-webkit-transition: all 0.1s ease-in-out;
+		-moz-transition: all 0.1s ease-in-out;
+		-o-transition: all 0.1s ease-in-out;
+		transition: all 0.1s ease-in-out;
+	}
+
+	.header .dropdown-menu li > a:focus {
+		background: none;
+		filter: none !important;
+	}
+
+	/*Search Box*/
+	.header .navbar .search-open {
+		width: 330px;
+	}	
+}
+
+@media (max-width: 767px) {
+	/*Search Box*/
+	.header .navbar .search-open {
+		left: 20px; 
+		top: inherit;
+		bottom: -5px; 
+		padding: 15px;
+		border-top: none;
+		box-shadow: none;
+		background: none; 
+	}	
+}
