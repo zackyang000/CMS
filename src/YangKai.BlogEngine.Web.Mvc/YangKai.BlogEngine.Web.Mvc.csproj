@@ -360,7 +360,9 @@
     </Content>
     <Content Include="Content\plugin\unify_1.3\app.css" />
     <Content Include="Content\plugin\unify_1.3\app.js" />
+    <Content Include="Content\plugin\unify_1.3\blog.css" />
     <Content Include="Content\plugin\unify_1.3\header.css" />
+    <Content Include="Content\plugin\unify_1.3\page_magazine.css" />
     <Content Include="Content\plugin\unify_1.3\responsive.css" />
     <Content Include="Content\plugin\unify_1.3\style.css" />
     <Content Include="Content\plugin\unify_1.3\theme\default.css" />
