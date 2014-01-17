@@ -239,6 +239,7 @@
     </Content>
     <Content Include="Content\app\article\article.css" />
     <Content Include="Content\app\article\list\article-list.css" />
+    <Content Include="Content\app\index\index.css" />
     <Content Include="Content\app\gallery\detail\gallery-detail.css" />
     <Content Include="Content\app\gallery\gallery.css" />
     <Content Include="Content\app\main.controllers.js">
@@ -482,10 +483,10 @@
       <DependentUpon>gallery.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\gallery\gallery.tpl.html" />
-    <Content Include="Content\app\index.js">
+    <Content Include="Content\app\index\index.js">
       <DependentUpon>index.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\app\index.min.js">
+    <Content Include="Content\app\index\index.min.js">
       <DependentUpon>index.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\issue\issue.js">
@@ -519,6 +520,7 @@
     <Content Include="Content\vendor\angular\angular-route.js" />
     <Content Include="Content\vendor\angular\angular-sanitize.js" />
     <Content Include="Content\vendor\angular\angular.js" />
+    <Content Include="Content\vendor\jquery\jquery-2.0.3.js" />
     <Content Include="Content\vendor\moment\moment-range.js" />
     <Content Include="Content\common\directives\ngStorage.js" />
     <Content Include="Content\vendor\photobox\photobox.css" />
@@ -598,7 +600,6 @@
     <Content Include="Content\common\directives\ngProgress.js" />
     <Content Include="Content\common\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
     <Content Include="Content\common\directives\ui-utils.js" />
-    <Content Include="Content\vendor\jquery\jquery-2.0.3.js" />
     <Content Include="Content\vendor\jquery-ui\jquery-ui-1.10.3.js" />
     <Content Include="Content\vendor\jquery-ui\jquery-ui-zh-CN.js" />
     <Content Include="Content\vendor\jquery-plugin\jquery.fileupload.js" />
@@ -1170,7 +1171,7 @@
     <Content Include="Content\app\article\list\article-list.tpl.html" />
     <Content Include="Content\app\about\about-newegg-bts.tpl.html" />
     <Content Include="Content\app\board\board.tpl.html" />
-    <Content Include="Content\app\index.tpl.html" />
+    <Content Include="Content\app\index\index.tpl.html" />
     <Content Include="entry\index.html" />
     <Content Include="robots.txt" />
     <Content Include="Content\vendor\messenger\messenger.js" />
@@ -1219,7 +1220,7 @@
     <Content Include="Content\common\filters.coffee" />
     <Content Include="Content\app\main.controllers.coffee" />
     <Content Include="Content\common\resources\messages.coffee" />
-    <Content Include="Content\app\index.coffee" />
+    <Content Include="Content\app\index\index.coffee" />
     <Content Include="Content\app\about\about.coffee" />
     <Content Include="Content\app\article\list\article-list.coffee" />
     <Content Include="Content\common\resources\articles.coffee" />

@@ -3,6 +3,7 @@
 translationsEN = {
   global: {
     menu: {
+      home: 'Home',
       archive: 'Archives',
       board: 'Boards',
       issue: 'Issues',

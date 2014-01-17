@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/",
-      templateUrl: "/Content/app/index.tpl.html"
+      templateUrl: "/Content/app/index/index.tpl.html"
       controller: 'IndexCtrl'
       title: 'Home'
       showBanner: true
