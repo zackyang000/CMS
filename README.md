@@ -25,5 +25,5 @@ For technology research.
 
 ## License
 
-MIT.
+MIT License.
 
