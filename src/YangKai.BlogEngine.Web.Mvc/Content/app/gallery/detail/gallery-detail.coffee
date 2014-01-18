@@ -23,6 +23,7 @@
     $('.gallery').photobox('a',{history:false})
     i=0
     j=0
+    #TODO:改为指令加载相册
     $timeout(->
       for item in $(".gallery li")
         $timeout(->
