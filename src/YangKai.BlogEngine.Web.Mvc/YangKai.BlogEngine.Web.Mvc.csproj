@@ -254,6 +254,7 @@
     <Content Include="Content\common\directives\custom\whenRouteChange.min.js">
       <DependentUpon>whenRouteChange.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\common\style.css" />
     <Content Include="Content\i18n\i18n.js">
       <DependentUpon>i18n.coffee</DependentUpon>
     </Content>
@@ -279,7 +280,6 @@
       <DependentUpon>TranslateCtrl.coffee</DependentUpon>
     </Content>
     <Content Include="Content\img\loading_animation.gif" />
-    <Content Include="Content\img\up.png" />
     <Content Include="Content\img\upgrade.png" />
     <Content Include="Content\common\directives\customDirectives.js">
       <DependentUpon>customDirectives.coffee</DependentUpon>
@@ -362,11 +362,14 @@
     <Content Include="Content\plugin\unify_1.3\app.css" />
     <Content Include="Content\plugin\unify_1.3\app.js" />
     <Content Include="Content\plugin\unify_1.3\blog.css" />
-    <Content Include="Content\plugin\unify_1.3\header.css" />
+    <Content Include="Content\plugin\unify_1.3\theme\default\header1.css" />
     <Content Include="Content\plugin\unify_1.3\page_magazine.css" />
     <Content Include="Content\plugin\unify_1.3\responsive.css" />
     <Content Include="Content\plugin\unify_1.3\style.css" />
-    <Content Include="Content\plugin\unify_1.3\theme\default.css" />
+    <Content Include="Content\plugin\unify_1.3\theme\default\default.css" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\controls-light.png" />
+    <Content Include="Content\plugin\unify_1.3\theme\light\header1-light.css" />
+    <Content Include="Content\plugin\unify_1.3\theme\light\light.css" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-chartbeat.js" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-ga-cordova.js" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-ga.js" />
@@ -520,9 +523,15 @@
     <Content Include="Content\vendor\angular\angular-route.js" />
     <Content Include="Content\vendor\angular\angular-sanitize.js" />
     <Content Include="Content\vendor\angular\angular.js" />
+    <Content Include="Content\vendor\bootstrap-plugin\bootstrap-hover-dropdown.js" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\bx_loader.gif" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\jquery.bxslider.css" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\jquery.bxslider.js" />
+    <Content Include="Content\vendor\jquery-plugin\scroll-to-top\up.png" />
     <Content Include="Content\vendor\jquery\jquery-2.0.3.js" />
     <Content Include="Content\vendor\moment\moment-range.js" />
     <Content Include="Content\common\directives\ngStorage.js" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\controls.png" />
     <Content Include="Content\vendor\photobox\photobox.css" />
     <Content Include="Content\vendor\photobox\photobox.js" />
     <Content Include="Content\vendor\angular-translate\directive\translate.js" />
@@ -538,7 +547,7 @@
     <Content Include="Content\vendor\angular-translate\service\storage-local.js" />
     <Content Include="Content\vendor\angular-translate\service\translate.js" />
     <Content Include="Content\vendor\angular-translate\translate.js" />
-    <Content Include="Content\vendor\scrolltotop.js" />
+    <Content Include="Content\vendor\jquery-plugin\scroll-to-top\scroll-to-top.js" />
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
     <Content Include="Content\vendor\colorbox.css" />
@@ -571,12 +580,6 @@
     <Content Include="Content\vendor\spin.js" />
     <Content Include="Content\vendor\bootstrap-plugin\typeahead-bs2.js" />
     <Content Include="Content\vendor\font-awesome\font-awesome.css" />
-    <Content Include="Content\common\style.css">
-      <DependentUpon>style.less</DependentUpon>
-    </Content>
-    <Content Include="Content\common\style.min.css">
-      <DependentUpon>style.less</DependentUpon>
-    </Content>
     <Content Include="Content\vendor\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Content\test\angular-scenario.js" />
     <Content Include="Content\common\directives\custom\ckeditor.js">
@@ -1226,7 +1229,6 @@
     <Content Include="Content\common\resources\articles.coffee" />
     <Content Include="Content\app\article\detail\article-detail.coffee" />
     <Content Include="Content\common\resources\comments.coffee" />
-    <Content Include="Content\common\style.less" />
     <Content Include="Content\common\directives\custom\oDataPager.coffee" />
     <Content Include="Content\vendor\font-awesome\fontawesome-webfont.eot" />
     <Content Include="Content\vendor\font-awesome\fontawesome-webfont.ttf" />

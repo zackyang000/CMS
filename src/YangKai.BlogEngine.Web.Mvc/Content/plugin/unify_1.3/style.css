@@ -847,7 +847,7 @@ a.thumbnail {
    margin-bottom: 0;
 }
 
-.carousel-v1 .carousel-arrow a.carousel-control {
+.carousel-v1 .carousel-arrow .carousel-control {
    opacity: 1;
    font-size:30px;
    height:inherit;
@@ -857,7 +857,7 @@ a.thumbnail {
    position: inherit;
 }
 
-.carousel-v1 .carousel-arrow a i {
+.carousel-v1 .carousel-arrow i {
    top: 50%;
    opacity: 0.6;
    background: #000;
@@ -865,14 +865,14 @@ a.thumbnail {
    padding: 2px 12px; 
    position: absolute;
 }
-.carousel-v1 .carousel-arrow a i:hover {
+.carousel-v1 .carousel-arrow i:hover {
    opacity: 0.8;
 }
 
-.carousel-v1 .carousel-arrow a.left i {
+.carousel-v1 .carousel-arrow .left i {
    left: 0;
 }
-.carousel-v1 .carousel-arrow a.right i {
+.carousel-v1 .carousel-arrow .right i {
    right: 0;
 }
 

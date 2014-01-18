@@ -42,14 +42,13 @@
                     <li><a href="/admin">Admin</a></li>   
                 </ul>
             </div>      
-        </div><!--/top-->
+        </div>
         <!--=== End Top ===-->    
 
         <!--=== Header ===-->    
         <div class="header">
             <div class="navbar navbar-default" role="navigation">
                 <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                             <span class="sr-only">Toggle navigation</span>
@@ -57,12 +56,14 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html">
-                            <img id="logo-header" src="assets/img/logo1-default.png" alt="Logo">
-                        </a>
+                        <h1>
+                            <a class="navbar-brand" href="/">
+                                <img id="logo-header" src="/Content/img/logo.gif" alt="Logo">
+                                @Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME)
+                            </a>
+                        </h1>
                     </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a ng-href="/">{{'global.menu.home' | translate}}</a></li>
@@ -97,12 +98,12 @@
                                 <span class="input-group-btn">
                                     <button class="btn-u" type="button">Go</button>
                                 </span>
-                            </div><!-- /input-group -->
+                            </div>
                         </div>                
-                    </div><!-- /navbar-collapse -->
+                    </div>
                 </div>    
             </div>    
-        </div><!--/header-->
+        </div>
         <!--=== End Header ===-->    
 
         <!--=== Header ===-->    
@@ -128,7 +129,7 @@
                     <li class="active">Blog Item 1</li>
                 </ul>
             </div>
-        </div><!--/breadcrumbs-->
+        </div>
         <!--=== End Breadcrumbs ===-->
 
         <!--=== Content Part ===-->
@@ -155,27 +156,27 @@
                                 <span class="input-group-btn">
                                     <button class="btn-u" type="button">Subscribe</button>
                                 </span>
-                            </div><!-- /input-group -->                    
+                            </div>
                         </form>                         
-                    </div><!--/col-md-4-->  
+                    </div>
             
                     <div class="col-md-4 md-margin-bottom-40">
                         <div class="posts">
                             <div class="headline"><h2>Recent Blog Entries</h2></div>
                             <dl class="dl-horizontal">
-                                <dt><a href="#"><img src="assets/img/sliders/elastislide/6.jpg" alt="" /></a></dt>
+                                <dt><a href="#"><img src="/Content/img/avatar.png" alt="" /></a></dt>
                                 <dd>
                                     <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
                                 </dd>
                             </dl>
                             <dl class="dl-horizontal">
-                                <dt><a href="#"><img src="assets/img/sliders/elastislide/10.jpg" alt="" /></a></dt>
+                                <dt><a href="#"><img src="/Content/img/avatar.png" alt="" /></a></dt>
                                 <dd>
                                     <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
                                 </dd>
                             </dl>
                             <dl class="dl-horizontal">
-                                <dt><a href="#"><img src="assets/img/sliders/elastislide/11.jpg" alt="" /></a></dt>
+                                <dt><a href="#"><img src="/Content/img/avatar.png" alt="" /></a></dt>
                                 <dd>
                                     <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
                                 </dd>
