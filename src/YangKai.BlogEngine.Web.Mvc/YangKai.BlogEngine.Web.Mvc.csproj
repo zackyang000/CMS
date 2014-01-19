@@ -368,8 +368,6 @@
     <Content Include="Content\plugin\unify_1.3\style.css" />
     <Content Include="Content\plugin\unify_1.3\theme\default\default.css" />
     <Content Include="Content\vendor\jquery-plugin\bxslider\controls-light.png" />
-    <Content Include="Content\plugin\unify_1.3\theme\light\header1-light.css" />
-    <Content Include="Content\plugin\unify_1.3\theme\light\light.css" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-chartbeat.js" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-ga-cordova.js" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-ga.js" />
