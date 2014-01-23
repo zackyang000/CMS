@@ -362,6 +362,7 @@
     <Content Include="Content\plugin\unify_1.3\app.css" />
     <Content Include="Content\plugin\unify_1.3\app.js" />
     <Content Include="Content\plugin\unify_1.3\blog.css" />
+    <Content Include="Content\plugin\unify_1.3\index.js" />
     <Content Include="Content\plugin\unify_1.3\theme\default\header1.css" />
     <Content Include="Content\plugin\unify_1.3\page_magazine.css" />
     <Content Include="Content\plugin\unify_1.3\responsive.css" />
@@ -525,6 +526,12 @@
     <Content Include="Content\vendor\jquery-plugin\bxslider\bx_loader.gif" />
     <Content Include="Content\vendor\jquery-plugin\bxslider\jquery.bxslider.css" />
     <Content Include="Content\vendor\jquery-plugin\bxslider\jquery.bxslider.js" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\jquery-easing-1.3.js" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\jquery-transit-modified.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.flexslider.js" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\layerslider.css" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\layerslider.kreaturamedia.jquery.js" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\layerslider.transitions.js" />
     <Content Include="Content\vendor\jquery-plugin\scroll-to-top\up.png" />
     <Content Include="Content\vendor\jquery\jquery-2.0.3.js" />
     <Content Include="Content\vendor\moment\moment-range.js" />
