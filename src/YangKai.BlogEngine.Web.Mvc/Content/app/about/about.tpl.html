@@ -1,69 +1,80 @@
 ﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
-<ul class="breadcrumb">
-    <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
-    <li class="active">{{'global.menu.about' | translate}}</li>
-</ul>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">About</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.about' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
 
-<div class="row">
-    <div class="pull-left" style="width: 300px;">
-        <div style="background: #EBC85E; padding-top: 40px;" class="text-center">
-            <p style="font-size: 18px;font-weight: 700;color: #56462A;">
-                Zack Yang
-            </p>
-            <p style="margin-bottom: 23px;font-size: 12px;font-weight: 400;color: #836D48;">
-                Developer
-            </p>
-            <p style="border: 2px solid #A1875C;border-radius: 50%;margin: 0 auto 22px;height: 100px;width: 100px;">
-                <img style="padding: 3px;" class="img-circle" src="https://1.gravatar.com/avatar/1a763a475ec7c93f519671d16ca536f3?s=90"/>
-            </p>
-            <p style="font-size: 12px;font-weight: 400;color: #836D48; padding-bottom: 80px;">
-                <i class="icon-map-marker"></i>
-                Chengdu, China
-            </p>
-        </div>
-        <div style="margin-top: 20px" class="text-center">
-            <div class="row clearfix">
-                <div class="col-xs-6">
-                    <a href="https://github.com/TossShinHwa" target="_blank" style="padding: 30px 0 5px 0; display: block;background: #D74980; margin-right: -10px; color: #FFF">
-                        <i class="icon-github icon-4x"></i>
-                        <p class="text-left" style="padding: 15px 0 0 10px;">GitHub</p>
-                    </a>
-                </div>
-                <div class="col-xs-6">
-                    <a href="Mailto:zackyang@outlook.com" style="padding: 36px 0 5px 0; display: block;background: #60CD9B;margin-left: -10px; color: #FFF">
-                        <i class="icon-envelope icon-3x"></i>
-                        <p class="text-left" style="padding: 23px 0 0 10px;">Contact</p>
-                    </a>
+<!--=== Content Part ===-->
+<div class="container">	
+    <div class="row">
+        <div class="pull-left" style="width: 300px;">
+            <div style="background: #EBC85E; padding-top: 40px;" class="text-center">
+                <p style="font-size: 18px;font-weight: 700;color: #56462A;">
+                    Zack Yang
+                </p>
+                <p style="margin-bottom: 23px;font-size: 12px;font-weight: 400;color: #836D48;">
+                    Developer
+                </p>
+                <p style="border: 2px solid #A1875C;border-radius: 50%;margin: 0 auto 22px;height: 100px;width: 100px;">
+                    <img style="padding: 3px;" class="img-circle" src="https://1.gravatar.com/avatar/1a763a475ec7c93f519671d16ca536f3?s=90"/>
+                </p>
+                <p style="font-size: 12px;font-weight: 400;color: #836D48; padding-bottom: 80px;">
+                    <i class="icon-map-marker"></i>
+                    Chengdu, China
+                </p>
+            </div>
+            <div style="margin-top: 20px" class="text-center">
+                <div class="row clearfix">
+                    <div class="col-xs-6">
+                        <a href="https://github.com/TossShinHwa" target="_blank" style="padding: 30px 0 5px 0; display: block;background: #D74980; margin-right: -10px; color: #FFF">
+                            <i class="icon-github icon-4x"></i>
+                            <p class="text-left" style="padding: 15px 0 0 10px;">GitHub</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="Mailto:zackyang@outlook.com" style="padding: 36px 0 5px 0; display: block;background: #60CD9B;margin-left: -10px; color: #FFF">
+                            <i class="icon-envelope icon-3x"></i>
+                            <p class="text-left" style="padding: 23px 0 0 10px;">Contact</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div style="background: #67B0D1; margin-left: 320px; height: 334px;">
-        <p style="background: rgba(0, 0, 0, 0.05); font-size: 18px; font-weight: bold;padding:5px 20px 5px 20px;">关于本站</p>
-        <p style="padding:0 20px;">
-            这是一个纯手工自制的个人站点，展示着不断更新的私家收藏。<br />
-            我希望它能够带给大家欢乐与思考，也能够方便我们及时沟通。<br />
-            随时恭候各种指教，任何互动，无任欢迎。
-        </p>
-        <p style="padding:0 20px;">
-            当我不能控制的收藏着一切欢乐与技术的时候。<br />
-            当这些不能控制的好料，在收藏夹中越来越多、难以整理的时候。<br />
-            当一次次发现我的私家珍藏，因为种种原因被删除，而怒发冲冠屏幕前的时候。<br />
-            当第三方博客越来越缺乏大爱精神，越来越多相关人士关怀照顾，不便使用的时候。<br />
-            爱收藏爱分享的人，既然谁都伤不起，就让我在做爱做的事情之余，发挥点专业余热。<br />
-            就像SHELDON所说，Because I can…于是就有了这个网站…
-        </p>
-        <p style="padding:0 20px;">It's began in 12/06/2008</p>
-    </div>
+        <div style="background: #67B0D1; margin-left: 320px; height: 334px;">
+            <p style="background: rgba(0, 0, 0, 0.05); font-size: 18px; font-weight: bold;padding:5px 20px 5px 20px;">关于本站</p>
+            <p style="padding:0 20px;">
+                这是一个纯手工自制的个人站点，展示着不断更新的私家收藏。<br />
+                我希望它能够带给大家欢乐与思考，也能够方便我们及时沟通。<br />
+                随时恭候各种指教，任何互动，无任欢迎。
+            </p>
+            <p style="padding:0 20px;">
+                当我不能控制的收藏着一切欢乐与技术的时候。<br />
+                当这些不能控制的好料，在收藏夹中越来越多、难以整理的时候。<br />
+                当一次次发现我的私家珍藏，因为种种原因被删除，而怒发冲冠屏幕前的时候。<br />
+                当第三方博客越来越缺乏大爱精神，越来越多相关人士关怀照顾，不便使用的时候。<br />
+                爱收藏爱分享的人，既然谁都伤不起，就让我在做爱做的事情之余，发挥点专业余热。<br />
+                就像SHELDON所说，Because I can…于是就有了这个网站…
+            </p>
+            <p style="padding:0 20px;">It's began in 12/06/2008</p>
+        </div>
 
-    <div style="background: #E87352; margin-left: 320px; margin-top: 20px; height: 137px; ">
-        <p style="background: rgba(0, 0, 0, 0.05); font-size: 18px; font-weight: bold;padding:5px 20px 5px 20px;">关于站长</p>
-        <p style="padding:0 20px;">
-            我是Zack Yang，一名程序员。<br />
-            一直致力写出优雅的代码，执着高用户体验。<br />
-            左侧是我的邮箱，如果你对我感兴趣，欢迎交流。<br />
-            也可以通过QQ(83448327)联系我。
-        </p>
+        <div style="background: #E87352; margin-left: 320px; margin-top: 20px; height: 137px; ">
+            <p style="background: rgba(0, 0, 0, 0.05); font-size: 18px; font-weight: bold;padding:5px 20px 5px 20px;">关于站长</p>
+            <p style="padding:0 20px;">
+                我是Zack Yang，一名程序员。<br />
+                一直致力写出优雅的代码，执着高用户体验。<br />
+                左侧是我的邮箱，如果你对我感兴趣，欢迎交流。<br />
+                也可以通过QQ(83448327)联系我。
+            </p>
+        </div>
     </div>
 </div>
+<!--=== End Content Part ===-->

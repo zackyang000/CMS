@@ -63,7 +63,6 @@
                             </a>
                         </h1>
                     </div>
-
                     <div class="collapse navbar-collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a ng-href="/">{{'global.menu.home' | translate}}</a></li>
@@ -104,73 +103,11 @@
                 </div>    
             </div>    
         </div>
-        <!--=== End Header ===-->    
+        <!--=== End Header ===-->  
 
-<div class="layer_slider">
-    <div id="layerslider-container-fw">        
-        <div id="layerslider" style="width: 100%; height: 500px; margin: 0px auto; ">
-            <div class="ls-layer" style="slidedirection: top; ">
-                <img src="http://htmlstream.com/preview/unify/assets/img/bg/5.jpg" class="ls-bg" alt="Slide background">
-
-                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:70px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 1500; durationout : 500; "></i> 
-
-                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:70px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 1500; durationout : 500; ">
-                    Fully Responsive and Easy to Customize
-                </span>
-
-                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:120px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 2500; durationout : 1500; "></i> 
-
-                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:120px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 2500; durationout : 1500; ">
-                    Revolution and Layer Slider Included 
-                </span>
-
-                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:170px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 3500; durationout : 3500; "></i> 
-
-                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:170px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 3500; durationout : 2500; ">
-                    1000+ Glyphicons Pro and Font Awesome Icons 
-                </span>
-
-                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:220px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 4500; durationout : 3500; "></i> 
-
-                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:220px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 4500; durationout : 3500; ">
-                    Revolution and Layer Slider Included 
-                </span>
-
-                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:270px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 5500; durationout : 4500; "></i> 
-
-                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:270px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 5500; durationout : 4500; ">
-                    60+ Template Pages and 20+ Plugins Included
-                </span>
-
-                <a class="btn-u btn-u-blue ls-s1" href="#" style="display:inline-block !important; padding: 9px 20px; font-size:25px; top:340px; left: 40px; slidedirection : bottom; slideoutdirection : bottom; durationin : 6500; durationout : 3500; ">
-                    Twitter Bootstrap 3
-                </a>
-
-                <img src="http://htmlstream.com/preview/unify/assets/img/mockup/iphone1.png" alt="Slider Image" class="ls-s-1" style=" top:30px; left: 650px; slidedirection : right; slideoutdirection : bottom; durationin : 1500; durationout : 1500; ">
-            </div>
-        </div>         
-    </div>
-</div><!--/layer_slider-->
-<!--=== End Slider ===-->  
-
-        <!--=== Breadcrumbs ===-->
-        <div class="breadcrumbs margin-bottom-40">
-            <div class="container">
-                <h1 class="pull-left">Blog Item 1</h1>
-                <ul class="pull-right breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="">Blog</a></li>
-                    <li class="active">Blog Item 1</li>
-                </ul>
-            </div>
-        </div>
-        <!--=== End Breadcrumbs ===-->
-
-        <!--=== Content Part ===-->
-        <div class="container">		
-            <div ng-view></div>
-        </div>
-        <!--=== End Content Part ===-->
+        <!--=== Main ===-->  
+        <!--=== End Main ===-->  
+        <div ng-view></div>
 
         <!--=== Footer ===-->
         <div class="footer">
@@ -193,8 +130,9 @@
                             </div>
                         </form>                         
                     </div>
-            
+
                     <div class="col-md-4 md-margin-bottom-40">
+                        <!-- Recent Blog Entries -->
                         <div class="posts">
                             <div class="headline"><h2>Recent Blog Entries</h2></div>
                             <dl class="dl-horizontal">
@@ -216,10 +154,10 @@
                                 </dd>
                             </dl>
                         </div>
-                    </div><!--/col-md-4-->
+                    </div>
 
                     <div class="col-md-4">
-                        <!-- Monthly Newsletter -->
+                        <!-- Contact Us -->
                         <div class="headline"><h2>Contact Us</h2></div> 
                         <address class="md-margin-bottom-40">
                             25, Lorem Lis Street, Orange <br />
@@ -240,10 +178,10 @@
                             <li><a href="#" data-original-title="Linkedin" class="social_linkedin"></a></li>
                             <li><a href="#" data-original-title="Vimeo" class="social_vimeo"></a></li>
                         </ul>
-                    </div><!--/col-md-4-->
-                </div><!--/row-->   
-            </div><!--/container--> 
-        </div><!--/footer-->    
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--=== End Footer ===-->
 
         <!--=== Copyright ===-->
@@ -259,13 +197,11 @@
         <script type="text/javascript">
             jQuery(document).ready(function () {
                 App.init();
-                Index.initLayerSlider();
             });
         </script>
         <!--[if lt IE 9]>
             <script src="assets/plugins/respond.js"></script>
         <![endif]-->
-
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
