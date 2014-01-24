@@ -1,196 +1,207 @@
 ﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
-<ul class="breadcrumb">
-    <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
-    <li class="active">{{'global.menu.about' | translate}}</li>
-</ul>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">About</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.about' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
 
-<div>
-    <h2>
-        <i class="icon-group"></i>
-        About us
-    </h2>
-    <h4>
-        我们是技术男，但是我们对生活充满激情，对技术充满热情。努力提升团队效率是我们持之以恒的目标。
-    </h4>
-    <div class="row intro">
-        <div class="col-lg-4">
-            <h3 class="clearfix" style="border-color: #0072BC;color: #0072BC;">
-                <span class="pull-right">
-                    <small><a href="MailTo:James.Y.Yang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
-                </span>
-                <span>James Yang</span>
-                <small>杨云昆</small>
-            </h3>
-            <div class="clearfix">
-                <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/jy25/avatar"/>
-                <p>
-                    2007年加入Newegg，从事Newegg后端系统的开发和维护。主要负责系统开发，程序架构设计，技术培训等。
-                    关注前沿技术，对并行编程，REST Service有浓厚兴趣。并致力于追求代码之美提高程序员能力和综合素质。
-                </p>
-            </div> 
-            <p>
-                擅长领域：<br />
-                Silverlight, Rest API, Node.js, javascript, SOA
-            </p>
-            <div>负责系统：</div>
-            <ul>
-                <li>API Framework</li>
-                <li>ServiceStack.Text</li>
-                <li>Framework API/ API SDK</li>
-                <li>Oversea WCF Framework</li>
-                <li>Framework Tools</li>
-                <li>Auth Service</li>
-                <li>Gateway</li>
-            </ul>
-        </div>
-        <div class="col-lg-4">
-            <h3 class="clearfix" style="border-color: #c3325f;color: #c3325f;">
-                <span class="pull-right">
-                    <small><a href="MailTo:Zeeman.Z.Huang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
-                </span>
-                <span>Zeeman Huang</span>
-                <small>黄泽东</small>
-            </h3>
-            <div class="clearfix">
-                <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/zh61/avatar"/>
-                <p>
-                    2012年秉持虔诚的学习心态加入Newegg，企图继企业级开发和网络游戏之后，虚荣的为自己贴上电子商务的标签。
-                    非心静无以言学，非宁静无以致远，希望自己可以在这个浮躁的风气中聆听内心的那份务实和执着。
-                </p>
-            </div>  
-            <p>
-                擅长领域：<br />
-                MSSQL, Cassandra, Solr, ActiveMQ, Nginx
-            </p>
-            <div>负责系统：</div>
-            <ul>
-                <li>Oversea Data Access</li>
-                <li>Cassandra Adapter</li>
-                <li>Document Tool</li>
-                <li>Common API</li>
-                <li>API Notify</li>
-            </ul>
-        </div>
-        <div class="col-lg-4">
-            <h3 class="clearfix" style="border-color: #603cba;color: #603cba;">
-                <span class="pull-right">
-                    <small><a href="MailTo:Carlos.L.Jiang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
-                </span>
-                <span>Carlos Jiang</span>
-                <small>蒋磊</small>
-            </h3>
-            <div class="clearfix">
-                <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/cj25/avatar"/>
-                <p>
-                    2012年下半年加入Newegg，最先从事Silverlight相关support工作，目前主要参与MVC相关项目开发。
-                    受项目影响，目前对前端技术有浓厚兴趣，同时也关注业界动向。力求成为全面发展的开发人员。
-                </p>
-            </div>  
-            <p>
-                擅长领域：<br />
-                Silverlight, Javascript, KnockoutJS, CoffeeScript, ASP.NET MVC
-            </p>
-            <div>负责系统：</div>
-            <ul>
-                <li>API Portal</li>
-                <li>Newegg Platform</li>
-            </ul>
-        </div>
-    </div>
-    <div class="row intro">
-        <div class="col-lg-4">
-            <h3 class="clearfix" style="border-color: #008641;color: #008641;">
-                <span class="pull-right">
-                    <small><a href="MailTo:Zack.K.Yang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
-                </span>
-                <span>Zack Yang</span>
-                <small>杨凯</small>
-            </h3>
-            <div class="clearfix">
-                <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/zy55/avatar"/>
-                <p>
-                    致力于优雅的代码，执着于高用户体验。
-                </p>
-            </div>  
-            <p>
-                擅长领域：<br />
-                JavaScript, CSS, HTML
-            </p>
-            <div>负责系统：</div>
-            <ul>
-                <li>API Portal</li>
-                <li>Document Tool Web Viewer</li>
-                <li>Newegg Platform</li>
-            </ul>
-        </div>
-        <div class="col-lg-4">
-            <h3 class="clearfix" style="border-color: #CD4900;color: #CD4900;">
-                <span class="pull-right">
-                    <small><a href="MailTo:Vincent.W.Wu@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
-                </span>
-                <span>Vincent Wu</span>
-                <small>吴维佳</small>
-            </h3>
-            <div class="clearfix">
-                <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/vw25/avatar"/>
-                <p>
-                    2012年加入Newegg，主要负责Newegg Central系统的开发和维护。
-                </p>
-            </div>  
-            <p>
-                擅长领域：<br />
-                Silverlight, WPF
-            </p>
-            <div>负责系统：</div>
-            <ul>
-                <li>Newegg Central Framework</li>
-                <li>HR Tools</li>
-            </ul>
-        </div>
-        <div class="col-lg-4">
-            <h3 class="clearfix" style="border-color: #67B0D1;color: #67B0D1;">
-                <span class="pull-right">
-                    <small><a href="MailTo:Tracy.H.Zhang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
-                </span>
-                <span>Tracy.H.Zhang</span>
-                <small>张哈</small>
-            </h3>
-            <div class="clearfix">
-                <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/tz13/avatar"/>
-                <p>
-                    2006年加入Newegg，先后担任EIMS, PO, SO, OVS, TechSupport等多个team的tester和test leader，从事测试工作多年，致力于配合开发人员，打造更为完美的程序。“世界没有完美，但努力可以接近完美”
-                </p>
-            </div>   
-            <p>
-                擅长领域：<br />
-                各种类型的功能测试和性能测试
-            </p>
-        </div>
-    </div>
+<!--=== Content Part ===-->
+<div class="container">	
+    <div>
+        <h2>
+            <i class="icon-group"></i>
+            About us
+        </h2>
+        <h4>
+            我们是技术男，但是我们对生活充满激情，对技术充满热情。努力提升团队效率是我们持之以恒的目标。
+        </h4>
         <div class="row intro">
-        <div class="col-lg-4">
-            <h3 class="clearfix" style="border-color: #ffc40d;color: #ffc40d;">
-                <span class="pull-right">
-                    <small><a href="MailTo:Barry.W.Sun@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
-                </span>
-                <span>Barry.W.Sun</span>
-                <small>孙武斌</small>
-            </h3>
-            <div class="clearfix">
-                <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/bs23/avatar"/>
+            <div class="col-lg-4">
+                <h3 class="clearfix" style="border-color: #0072BC;color: #0072BC;">
+                    <span class="pull-right">
+                        <small><a href="MailTo:James.Y.Yang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
+                    </span>
+                    <span>James Yang</span>
+                    <small>杨云昆</small>
+                </h3>
+                <div class="clearfix">
+                    <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/jy25/avatar"/>
+                    <p>
+                        2007年加入Newegg，从事Newegg后端系统的开发和维护。主要负责系统开发，程序架构设计，技术培训等。
+                        关注前沿技术，对并行编程，REST Service有浓厚兴趣。并致力于追求代码之美提高程序员能力和综合素质。
+                    </p>
+                </div> 
                 <p>
-                    2013年加入Newegg，这只是一个在行业学习、工作的开始。我热爱这个行业，更热爱使用更少的资源实现更大价值的思想。
-                    个人认为行业的学习不只是语言和代码的学习，更重要的是思想的领悟，实战的经验和不断的努力。
+                    擅长领域：<br />
+                    Silverlight, Rest API, Node.js, javascript, SOA
                 </p>
-            </div>   
-            <p>
-                擅长领域：<br />
-                java、sphinx、mysql
-            </p>
+                <div>负责系统：</div>
+                <ul>
+                    <li>API Framework</li>
+                    <li>ServiceStack.Text</li>
+                    <li>Framework API/ API SDK</li>
+                    <li>Oversea WCF Framework</li>
+                    <li>Framework Tools</li>
+                    <li>Auth Service</li>
+                    <li>Gateway</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h3 class="clearfix" style="border-color: #c3325f;color: #c3325f;">
+                    <span class="pull-right">
+                        <small><a href="MailTo:Zeeman.Z.Huang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
+                    </span>
+                    <span>Zeeman Huang</span>
+                    <small>黄泽东</small>
+                </h3>
+                <div class="clearfix">
+                    <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/zh61/avatar"/>
+                    <p>
+                        2012年秉持虔诚的学习心态加入Newegg，企图继企业级开发和网络游戏之后，虚荣的为自己贴上电子商务的标签。
+                        非心静无以言学，非宁静无以致远，希望自己可以在这个浮躁的风气中聆听内心的那份务实和执着。
+                    </p>
+                </div>  
+                <p>
+                    擅长领域：<br />
+                    MSSQL, Cassandra, Solr, ActiveMQ, Nginx
+                </p>
+                <div>负责系统：</div>
+                <ul>
+                    <li>Oversea Data Access</li>
+                    <li>Cassandra Adapter</li>
+                    <li>Document Tool</li>
+                    <li>Common API</li>
+                    <li>API Notify</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h3 class="clearfix" style="border-color: #603cba;color: #603cba;">
+                    <span class="pull-right">
+                        <small><a href="MailTo:Carlos.L.Jiang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
+                    </span>
+                    <span>Carlos Jiang</span>
+                    <small>蒋磊</small>
+                </h3>
+                <div class="clearfix">
+                    <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/cj25/avatar"/>
+                    <p>
+                        2012年下半年加入Newegg，最先从事Silverlight相关support工作，目前主要参与MVC相关项目开发。
+                        受项目影响，目前对前端技术有浓厚兴趣，同时也关注业界动向。力求成为全面发展的开发人员。
+                    </p>
+                </div>  
+                <p>
+                    擅长领域：<br />
+                    Silverlight, Javascript, KnockoutJS, CoffeeScript, ASP.NET MVC
+                </p>
+                <div>负责系统：</div>
+                <ul>
+                    <li>API Portal</li>
+                    <li>Newegg Platform</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row intro">
+            <div class="col-lg-4">
+                <h3 class="clearfix" style="border-color: #008641;color: #008641;">
+                    <span class="pull-right">
+                        <small><a href="MailTo:Zack.K.Yang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
+                    </span>
+                    <span>Zack Yang</span>
+                    <small>杨凯</small>
+                </h3>
+                <div class="clearfix">
+                    <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/zy55/avatar"/>
+                    <p>
+                        致力于优雅的代码，执着于高用户体验。
+                    </p>
+                </div>  
+                <p>
+                    擅长领域：<br />
+                    JavaScript, CSS, HTML
+                </p>
+                <div>负责系统：</div>
+                <ul>
+                    <li>API Portal</li>
+                    <li>Document Tool Web Viewer</li>
+                    <li>Newegg Platform</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h3 class="clearfix" style="border-color: #CD4900;color: #CD4900;">
+                    <span class="pull-right">
+                        <small><a href="MailTo:Vincent.W.Wu@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
+                    </span>
+                    <span>Vincent Wu</span>
+                    <small>吴维佳</small>
+                </h3>
+                <div class="clearfix">
+                    <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/vw25/avatar"/>
+                    <p>
+                        2012年加入Newegg，主要负责Newegg Central系统的开发和维护。
+                    </p>
+                </div>  
+                <p>
+                    擅长领域：<br />
+                    Silverlight, WPF
+                </p>
+                <div>负责系统：</div>
+                <ul>
+                    <li>Newegg Central Framework</li>
+                    <li>HR Tools</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h3 class="clearfix" style="border-color: #67B0D1;color: #67B0D1;">
+                    <span class="pull-right">
+                        <small><a href="MailTo:Tracy.H.Zhang@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
+                    </span>
+                    <span>Tracy.H.Zhang</span>
+                    <small>张哈</small>
+                </h3>
+                <div class="clearfix">
+                    <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/tz13/avatar"/>
+                    <p>
+                        2006年加入Newegg，先后担任EIMS, PO, SO, OVS, TechSupport等多个team的tester和test leader，从事测试工作多年，致力于配合开发人员，打造更为完美的程序。“世界没有完美，但努力可以接近完美”
+                    </p>
+                </div>   
+                <p>
+                    擅长领域：<br />
+                    各种类型的功能测试和性能测试
+                </p>
+            </div>
+        </div>
+        <div class="row intro">
+            <div class="col-lg-4">
+                <h3 class="clearfix" style="border-color: #ffc40d;color: #ffc40d;">
+                    <span class="pull-right">
+                        <small><a href="MailTo:Barry.W.Sun@newegg.com;"><i class="icon-envelope-alt"></i></a></small>
+                    </span>
+                    <span>Barry.W.Sun</span>
+                    <small>孙武斌</small>
+                </h3>
+                <div class="clearfix">
+                    <img class="img-rounded pull-left" src="http://apis.newegg.org/common/v1/domain/user/bs23/avatar"/>
+                    <p>
+                        2013年加入Newegg，这只是一个在行业学习、工作的开始。我热爱这个行业，更热爱使用更少的资源实现更大价值的思想。
+                        个人认为行业的学习不只是语言和代码的学习，更重要的是思想的领悟，实战的经验和不断的努力。
+                    </p>
+                </div>   
+                <p>
+                    擅长领域：<br />
+                    java、sphinx、mysql
+                </p>
+            </div>
         </div>
     </div>
 </div>
+<!--=== End Content Part ===-->
 
 <style>
     .intro h3 {

@@ -8,10 +8,6 @@
 
 /*Reset Styles
 ------------------------------------*/
-* {
-   border-radius: 0 !important;
-}
-
 body { 
    color: #333; 
    font-size: 13px;
