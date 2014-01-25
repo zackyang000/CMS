@@ -1,48 +1,60 @@
 ﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
-<div id="posts">
-    <ul class="breadcrumb">
-        <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
-        <li ng-show="params.channel && params.group"><a href="/list/{{params.channel}}">{{params.channel}}</a></li>
-        <li ng-show="params.channel && !params.group">{{params.channel}}</li>
-        <li ng-show="params.group && !(!params.tag && !params.key)"><a href="/list/{{params.channel}}/{{params.group}}">{{params.group}}</a></li>
-        <li class="active" ng-show="params.group && (!params.tag && !params.key)">{{params.group}}</li>
-        <li class="active" ng-show="params.tag">{{'article.breadcrumb.tag' | translate:params}}</li>
-        <li class="active" ng-show="params.key">{{'article.breadcrumb.key' | translate:params}}</li>
-    </ul>
-    <ul class="list-unstyled">
-        <li ng-repeat="item in list.value">
-            <article>
-                <div class="date">
-                    <div>{{item.PubDate | date:"dd"}}</div>
-                    <div>{{item.PubDate | date:"yyyy.MM"}}</div>
-                </div>
-                <header>
-                    <h2>
-                        <a ng-href="/post/{{item.Url}}">
-                            <strong ng-bind-html="item.Title | highlight:params.key"></strong>
-                        </a>
-                    </h2>
-                    <div ng-include="'/Content/app/article/article-post-header.tpl.html'"></div>
-                </header>
-                <section>
-                    <div ng-hide="item.isShowDetail">
-                        <div class="thumb" ng-show="item.Thumbnail">
-                            <a href="JavaScript:void(0);" ng-click="expand(item)">
-                                <img class="img-thumbnail img-article-thumbnail" ng-src="{{item.Thumbnail}}" alt="{{item.Title}}" title="{{item.Title}}" />
-                            </a>
-                        </div>
-                        <div ng-bind-html-unsafe="item.Description"></div>
-                    </div>
-                    <div ng-show="item.isShowDetail" ng-bind-html="item.Content"></div>
-                    <div class="clearfix"></div>
-                </section>
-                <footer></footer>
-            </article>
-        </li>
-        <li ng-show="list.value.length==0">
-            {{'article.not_found' | translate}}
-        </li>
-    </ul>
-    <div odata-pager="list" class="text-center"></div>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{params.channel}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li ng-show="params.channel && params.group"><a href="/list/{{params.channel}}">{{params.channel}}</a></li>
+            <li ng-show="params.channel && !params.group">{{params.channel}}</li>
+            <li ng-show="params.group && !(!params.tag && !params.key)"><a href="/list/{{params.channel}}/{{params.group}}">{{params.group}}</a></li>
+            <li class="active" ng-show="params.group && (!params.tag && !params.key)">{{params.group}}</li>
+            <li class="active" ng-show="params.tag">{{'article.breadcrumb.tag' | translate:params}}</li>
+            <li class="active" ng-show="params.key">{{'article.breadcrumb.key' | translate:params}}</li>
+        </ul>
+    </div>
 </div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div id="posts">
+        <ul class="list-unstyled">
+            <li ng-repeat="item in list.value">
+                <article>
+                    <div class="date">
+                        <div>{{item.PubDate | date:"dd"}}</div>
+                        <div>{{item.PubDate | date:"yyyy.MM"}}</div>
+                    </div>
+                    <header>
+                        <h2>
+                            <a ng-href="/post/{{item.Url}}">
+                                <strong ng-bind-html="item.Title | highlight:params.key"></strong>
+                            </a>
+                        </h2>
+                        <div ng-include="'/Content/app/article/article-post-header.tpl.html'"></div>
+                    </header>
+                    <section>
+                        <div ng-hide="item.isShowDetail">
+                            <div class="thumb" ng-show="item.Thumbnail">
+                                <a href="JavaScript:void(0);" ng-click="expand(item)">
+                                    <img class="img-thumbnail img-article-thumbnail" ng-src="{{item.Thumbnail}}" alt="{{item.Title}}" title="{{item.Title}}" />
+                                </a>
+                            </div>
+                            <div ng-bind-html-unsafe="item.Description"></div>
+                        </div>
+                        <div ng-show="item.isShowDetail" ng-bind-html="item.Content"></div>
+                        <div class="clearfix"></div>
+                    </section>
+                    <footer></footer>
+                </article>
+            </li>
+            <li ng-show="list.value.length==0">
+                {{'article.not_found' | translate}}
+            </li>
+        </ul>
+        <div odata-pager="list" class="text-center"></div>
+    </div>
+</div>
+<!--=== End Content Part ===-->

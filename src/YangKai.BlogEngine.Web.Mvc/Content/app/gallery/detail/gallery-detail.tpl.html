@@ -1,17 +1,28 @@
 ﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
-<ul class="breadcrumb">
-    <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
-    <li><a href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
-    <li class="active">{{item.Name}} <small>{{item.Description}}</small></li>
-</ul>
-
-<div class='gallery'>
-    <ul>
-        <li ng-repeat="photo in item.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
-            <a href="{{photo.Path}}">
-                <img src="{{photo.Thumbnail}}" alt="{{photo.Name}}">
-            </a>
-        </li>
-    </ul>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.gallery' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li><a href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
+            <li class="active">{{item.Name}} <small>{{item.Description}}</small></li>
+        </ul>
+    </div>
 </div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div class='gallery'>
+        <ul>
+            <li ng-repeat="photo in item.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
+                <a href="{{photo.Path}}">
+                    <img src="{{photo.Thumbnail}}" alt="{{photo.Name}}">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--=== End Content Part ===-->
