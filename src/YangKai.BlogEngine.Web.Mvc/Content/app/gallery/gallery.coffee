@@ -6,13 +6,18 @@
       templateUrl: "/content/app/gallery/gallery.tpl.html"
       controller: 'GalleryCtrl'
       title: 'Galleries'
+      resolve:
+        galleries: ['$q','Gallery',($q,Gallery)->
+          deferred = $q.defer()
+          Gallery.queryOnce 
+            $filter:'IsDeleted eq false'
+          , (data) -> 
+            deferred.resolve data.value
+          deferred.promise
+        ]
 ])
 
 .controller('GalleryCtrl',
-["$scope","$translate","$routeParams","$location","Gallery"
-($scope,$translate,$routeParams,$location,Gallery) ->
-  $scope.loading=$translate("global.loading")
-  Gallery.query (data) ->
-    $scope.list=data
-    $scope.loading=""
+["$scope","galleries", ($scope,galleries) ->
+  $scope.list=galleries
 ])

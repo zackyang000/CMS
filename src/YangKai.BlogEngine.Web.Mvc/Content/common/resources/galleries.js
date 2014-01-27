@@ -11,6 +11,13 @@ angular.module("resource.galleries", ["ngResource"]).factory("Gallery", [
           $orderby: 'CreateDate desc'
         }
       },
+      queryOnce: {
+        cache: true,
+        method: "GET",
+        params: {
+          $orderby: 'CreateDate desc'
+        }
+      },
       update: {
         method: "PUT"
       }
