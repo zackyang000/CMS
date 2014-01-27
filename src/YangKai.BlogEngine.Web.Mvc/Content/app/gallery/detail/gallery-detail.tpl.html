@@ -15,9 +15,9 @@
 
 <!--=== Content Part ===-->
 <div class="container">
-    <div class="tag-box tag-box-v2" ng-show="item.Description">
+    <blockquote class="hero" ng-show="item.Description">
         <p>{{item.Description}}</p>
-    </div>
+    </blockquote>
     <div class='gallery'>
         <ul>
             <li ng-repeat="photo in item.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
