@@ -364,6 +364,7 @@
     <Content Include="Content\plugin\unify_1.3\app.js" />
     <Content Include="Content\plugin\unify_1.3\blog.css" />
     <Content Include="Content\plugin\unify_1.3\index.js" />
+    <Content Include="Content\plugin\unify_1.3\portfolio-v1.css" />
     <Content Include="Content\plugin\unify_1.3\theme\default\header1.css" />
     <Content Include="Content\plugin\unify_1.3\page_magazine.css" />
     <Content Include="Content\plugin\unify_1.3\responsive.css" />
