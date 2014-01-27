@@ -48,7 +48,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                         File.Delete(target);
                     }
                     File.Move(source, target);
-                    ImageProcessing.CutForCustom(target, 300, 300, 100);
+                    ImageProcessing.CutForCustom(target, 973, 615, 100);
                     update.Cover = "/upload/gallery/"+update.GalleryId+"/cover"+ Path.GetExtension(update.Cover);
                 }
             }
