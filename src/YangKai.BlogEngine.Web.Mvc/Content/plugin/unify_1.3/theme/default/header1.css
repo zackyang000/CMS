@@ -19,6 +19,7 @@
 
 .top ul.loginbar > li > a, 
 .top ul.loginbar > li > a:hover {
+    cursor: pointer;
 	color: #7c8082;
 	font-size: 11px;
 	text-transform: uppercase;
