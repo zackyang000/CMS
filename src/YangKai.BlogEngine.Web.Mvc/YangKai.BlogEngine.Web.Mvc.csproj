@@ -188,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app\about\about-newegg-edi.tpl.html" />
+    <Content Include="Content\data\about-newegg-bts.js" />
     <Content Include="Content\app\admin\article\gallery.js">
       <DependentUpon>article.coffee</DependentUpon>
     </Content>
@@ -239,6 +240,7 @@
     </Content>
     <Content Include="Content\app\article\article.css" />
     <Content Include="Content\app\article\list\article-list.css" />
+    <Content Include="Content\app\index\index.css" />
     <Content Include="Content\app\gallery\detail\gallery-detail.css" />
     <Content Include="Content\app\gallery\gallery.css" />
     <Content Include="Content\app\main.controllers.js">
@@ -253,6 +255,8 @@
     <Content Include="Content\common\directives\custom\whenRouteChange.min.js">
       <DependentUpon>whenRouteChange.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\common\style.css" />
+    <Content Include="Content\data\about-newegg-edi.js" />
     <Content Include="Content\i18n\i18n.js">
       <DependentUpon>i18n.coffee</DependentUpon>
     </Content>
@@ -277,8 +281,10 @@
     <Content Include="Content\i18n\TranslateCtrl.min.js">
       <DependentUpon>TranslateCtrl.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\img\bg_sky.jpg" />
     <Content Include="Content\img\loading_animation.gif" />
-    <Content Include="Content\img\up.png" />
+    <Content Include="Content\img\social\github.png" />
+    <Content Include="Content\img\social\rss.png" />
     <Content Include="Content\img\upgrade.png" />
     <Content Include="Content\common\directives\customDirectives.js">
       <DependentUpon>customDirectives.coffee</DependentUpon>
@@ -358,6 +364,17 @@
     <Content Include="Content\common\VersionService.min.js">
       <DependentUpon>VersionService.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\plugin\unify_1.3\app.css" />
+    <Content Include="Content\plugin\unify_1.3\app.js" />
+    <Content Include="Content\plugin\unify_1.3\blog.css" />
+    <Content Include="Content\plugin\unify_1.3\index.js" />
+    <Content Include="Content\plugin\unify_1.3\portfolio-v1.css" />
+    <Content Include="Content\plugin\unify_1.3\theme\default\header1.css" />
+    <Content Include="Content\plugin\unify_1.3\page_magazine.css" />
+    <Content Include="Content\plugin\unify_1.3\responsive.css" />
+    <Content Include="Content\plugin\unify_1.3\style.css" />
+    <Content Include="Content\plugin\unify_1.3\theme\default\default.css" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\controls-light.png" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-chartbeat.js" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-ga-cordova.js" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-ga.js" />
@@ -474,10 +491,10 @@
       <DependentUpon>gallery.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\gallery\gallery.tpl.html" />
-    <Content Include="Content\app\index.js">
+    <Content Include="Content\app\index\index.js">
       <DependentUpon>index.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\app\index.min.js">
+    <Content Include="Content\app\index\index.min.js">
       <DependentUpon>index.coffee</DependentUpon>
     </Content>
     <Content Include="Content\app\issue\issue.js">
@@ -511,8 +528,21 @@
     <Content Include="Content\vendor\angular\angular-route.js" />
     <Content Include="Content\vendor\angular\angular-sanitize.js" />
     <Content Include="Content\vendor\angular\angular.js" />
+    <Content Include="Content\vendor\bootstrap-plugin\bootstrap-hover-dropdown.js" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\bx_loader.gif" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\jquery.bxslider.css" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\jquery.bxslider.js" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\jquery-easing-1.3.js" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\jquery-transit-modified.js" />
+    <Content Include="Content\vendor\jquery-plugin\jquery.flexslider.js" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\layerslider.css" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\layerslider.kreaturamedia.jquery.js" />
+    <Content Include="Content\vendor\jquery-plugin\layer-slider\layerslider.transitions.js" />
+    <Content Include="Content\vendor\jquery-plugin\scroll-to-top\up.png" />
+    <Content Include="Content\vendor\jquery\jquery-2.0.3.js" />
     <Content Include="Content\vendor\moment\moment-range.js" />
     <Content Include="Content\common\directives\ngStorage.js" />
+    <Content Include="Content\vendor\jquery-plugin\bxslider\controls.png" />
     <Content Include="Content\vendor\photobox\photobox.css" />
     <Content Include="Content\vendor\photobox\photobox.js" />
     <Content Include="Content\vendor\angular-translate\directive\translate.js" />
@@ -528,7 +558,7 @@
     <Content Include="Content\vendor\angular-translate\service\storage-local.js" />
     <Content Include="Content\vendor\angular-translate\service\translate.js" />
     <Content Include="Content\vendor\angular-translate\translate.js" />
-    <Content Include="Content\vendor\scrolltotop.js" />
+    <Content Include="Content\vendor\jquery-plugin\scroll-to-top\scroll-to-top.js" />
     <Content Include="Content\plugin\ace_1.2\ace-skins.css" />
     <Content Include="Content\plugin\ace_1.2\ace.css" />
     <Content Include="Content\vendor\colorbox.css" />
@@ -561,12 +591,6 @@
     <Content Include="Content\vendor\spin.js" />
     <Content Include="Content\vendor\bootstrap-plugin\typeahead-bs2.js" />
     <Content Include="Content\vendor\font-awesome\font-awesome.css" />
-    <Content Include="Content\common\style.css">
-      <DependentUpon>style.less</DependentUpon>
-    </Content>
-    <Content Include="Content\common\style.min.css">
-      <DependentUpon>style.less</DependentUpon>
-    </Content>
     <Content Include="Content\vendor\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Content\test\angular-scenario.js" />
     <Content Include="Content\common\directives\custom\ckeditor.js">
@@ -590,7 +614,6 @@
     <Content Include="Content\common\directives\ngProgress.js" />
     <Content Include="Content\common\directives\ui-bootstrap-tpls-0.5.0-SNAPSHOT.js" />
     <Content Include="Content\common\directives\ui-utils.js" />
-    <Content Include="Content\vendor\jquery\jquery-2.0.3.js" />
     <Content Include="Content\vendor\jquery-ui\jquery-ui-1.10.3.js" />
     <Content Include="Content\vendor\jquery-ui\jquery-ui-zh-CN.js" />
     <Content Include="Content\vendor\jquery-plugin\jquery.fileupload.js" />
@@ -1162,7 +1185,7 @@
     <Content Include="Content\app\article\list\article-list.tpl.html" />
     <Content Include="Content\app\about\about-newegg-bts.tpl.html" />
     <Content Include="Content\app\board\board.tpl.html" />
-    <Content Include="Content\app\index.tpl.html" />
+    <Content Include="Content\app\index\index.tpl.html" />
     <Content Include="entry\index.html" />
     <Content Include="robots.txt" />
     <Content Include="Content\vendor\messenger\messenger.js" />
@@ -1211,13 +1234,12 @@
     <Content Include="Content\common\filters.coffee" />
     <Content Include="Content\app\main.controllers.coffee" />
     <Content Include="Content\common\resources\messages.coffee" />
-    <Content Include="Content\app\index.coffee" />
+    <Content Include="Content\app\index\index.coffee" />
     <Content Include="Content\app\about\about.coffee" />
     <Content Include="Content\app\article\list\article-list.coffee" />
     <Content Include="Content\common\resources\articles.coffee" />
     <Content Include="Content\app\article\detail\article-detail.coffee" />
     <Content Include="Content\common\resources\comments.coffee" />
-    <Content Include="Content\common\style.less" />
     <Content Include="Content\common\directives\custom\oDataPager.coffee" />
     <Content Include="Content\vendor\font-awesome\fontawesome-webfont.eot" />
     <Content Include="Content\vendor\font-awesome\fontawesome-webfont.ttf" />

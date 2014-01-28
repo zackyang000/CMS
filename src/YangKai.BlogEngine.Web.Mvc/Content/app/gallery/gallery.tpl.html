@@ -1,17 +1,30 @@
 ﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
-<ul class="breadcrumb">
-    <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
-    <li class="active">{{'global.menu.gallery' | translate}}</li>
-</ul>
-
-<div class="gallery-list">
-    <ul class="list-unstyled clearfix">
-        <li ng-repeat="item in list.value" class="pull-left text-center" title="{{item.Name}}" style="margin: 10px;">
-            <a href="/gallery/{{item.Name}}">
-                <img style="width: 100px;height: 100px;border: 2px #666 solid;" ng-src="{{item.Cover}}"/>
-                <div>{{item.Name}}</div>
-            </a>
-        </li>
-    </ul>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.gallery' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.gallery' | translate}}</li>
+        </ul>
+    </div>
 </div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">   
+    <div class="row">
+    <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="item in list">
+        <div class="view view-tenth">
+            <img class="img-responsive" ng-src="{{item.Cover}}" alt="" />
+            <div class="mask">
+                <h2>{{item.Name}}</h2>
+                <p>{{item.Description}}</p>
+                <a href="/gallery/{{item.Name}}" class="info">Read More</a>
+            </div>                
+        </div>
+    </div>
+        </div>
+</div>
+<!--=== End Content Part ===-->

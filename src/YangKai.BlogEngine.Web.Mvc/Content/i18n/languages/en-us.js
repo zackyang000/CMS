@@ -3,6 +3,7 @@
 translationsEN = {
   global: {
     menu: {
+      home: 'Home',
       archive: 'Archives',
       board: 'Boards',
       issue: 'Issues',
@@ -39,7 +40,7 @@ translationsEN = {
       change: "Change",
       name: "Name",
       email: "Email",
-      content: "Comment",
+      content: "Leave a Comment",
       submit: "Submit comment",
       complete: "Comment has been submitted.",
       nameValidTxt: "Please input your name.",
@@ -52,7 +53,7 @@ translationsEN = {
     change: "Change",
     name: "Name",
     email: "Email",
-    content: "Message",
+    content: "Leave a Message",
     submit: "Submit message",
     complete: "Comment has been submitted.",
     nameValidTxt: "Please input your name.",

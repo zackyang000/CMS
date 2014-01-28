@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace YangKai.BlogEngine.Common
 {
     public class Config
     {
+        private static Hashtable _cache= new Hashtable();
+
         /// <summary>
         /// 使用AD账户登录
         /// </summary>
@@ -110,12 +113,13 @@ namespace YangKai.BlogEngine.Common
 
         private static string GetConfig(string key)
         {
-            //TODO:需要缓存结果以减少I/O
-            var value = ConfigurationManager.AppSettings[key];
-            if (string.IsNullOrWhiteSpace(value))
+            if (_cache.Contains(key))
             {
-                throw new ConfigurationErrorsException(string.Format("the '{0}' must not be null or empty.", key));
+                return _cache[key].ToString();
             }
+
+            var value = ConfigurationManager.AppSettings[key];
+            _cache.Add(key, value);
             return value;
         }
     }

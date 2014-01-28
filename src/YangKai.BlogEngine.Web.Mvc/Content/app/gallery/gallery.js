@@ -4,15 +4,25 @@ angular.module('gallery', ['gallery-detail', 'resource.galleries']).config([
     return $routeProvider.when("/gallery", {
       templateUrl: "/content/app/gallery/gallery.tpl.html",
       controller: 'GalleryCtrl',
-      title: 'Galleries'
+      title: 'Galleries',
+      resolve: {
+        galleries: [
+          '$q', 'Gallery', function($q, Gallery) {
+            var deferred;
+            deferred = $q.defer();
+            Gallery.queryOnce({
+              $filter: 'IsDeleted eq false'
+            }, function(data) {
+              return deferred.resolve(data.value);
+            });
+            return deferred.promise;
+          }
+        ]
+      }
     });
   }
 ]).controller('GalleryCtrl', [
-  "$scope", "$translate", "$routeParams", "$location", "Gallery", function($scope, $translate, $routeParams, $location, Gallery) {
-    $scope.loading = $translate("global.loading");
-    return Gallery.query(function(data) {
-      $scope.list = data;
-      return $scope.loading = "";
-    });
+  "$scope", "galleries", function($scope, galleries) {
+    return $scope.list = galleries;
   }
 ]);

@@ -1,127 +1,248 @@
 ﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
 
-<div ng-hide="item.Title==null">
-    <ul class="breadcrumb">
-        <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
-        <li><a href="/list/{{item.Group.Channel.Url}}">{{item.Group.Channel.Name}}</a></li>
-        <li><a href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}">{{item.Group.Name}}</a></li>
-        <li class="active">{{item.Title}}</li>
-    </ul>
-    <article>
-        <div class="date">
-            <div>{{item.PubDate | date:"dd"}}</div>
-            <div>{{item.PubDate | date:"yyyy.MM"}}</div>
-        </div>
-        <header>
-            <h2><strong>{{item.Title}}</strong></h2>
-            <div ng-include="'/Content/app/article/article-post-header.tpl.html'"></div>
-        </header>
-        <section>
-            <div ng-bind-html-unsafe="item.Content"></div>
-        </section>
-        <footer>
-        </footer>
-    </article>
-    <div class="post-nav">
-        <ul>
-            <li>
-                <a ng-show="prevPost.value" ng-href="/post/{{prevPost.value[0].Url}}" rel="prev">
-                    &larr; · {{'article.preview' | translate}}
-                </a>
-            </li>
-            <li>
-                <a ng-show="nextPost.value" ng-href="/post/{{nextPost.value[0].Url}}" rel="next">
-                    {{'article.next' | translate}} · &rarr;
-                </a>
-            </li>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{item.Group.Channel.Name}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li><a href="/list/{{item.Group.Channel.Url}}">{{item.Group.Channel.Name}}</a></li>
+            <li><a href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}">{{item.Group.Name}}</a></li>
+            <li class="active">{{item.Title}}</li>
         </ul>
     </div>
-    <div class="post-related" ng-show="relatedPost.value">
-        <div class="title"><span>{{'article.related_posts' | translate}}</span></div>
-        <ul>
-            <li ng-repeat="item in relatedPost.value">
-                {{item.PubDate | date:"yyyy.MM.dd"}} -- <a ng-href="/post/{{item.Url}}">{{item.Title}}</a>
-            </li>
-        </ul>
-    </div>
-    <!-- list START -->
-    <div class="comment">
-        <div class="title"><span>{{'article.comments' | translate}}</span></div>
-        <ul>
-            <li ng-repeat="item in item.Comments | orderBy:'CreateDate'" ng-hide="item.IsDeleted">
-                <div class="gravatar">
-                    <img ng-src="{{item.Avatar}}" />
-                </div>
-                <div class="text">
-                    <span>
-                        <span>#{{$index+1}}</span>
-                    </span>
-                    <div>
-                        <span class="commentid">{{item.Author}}</span> : 
-                        <p ng-bind-html="item.Content | line"></p>
-                    </div>
-                    <div class="comment-meta">
-                        <span>{{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}</span> 
-                        <span ng-show="User.IsAdmin">
-                            <a href="JavaScript:void(0)" ng-click="remove(item)">
-                                <i class="icon-remove"></i>
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <!-- list END -->
-    <!-- respond START -->
-    <div>
-        <form name="form" novalidate ng-submit="save()">
-            <p bindonce="entity" bo-show="entity.Author">
-                {{'article.comment.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
-                <span>
-                    <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'article.comment.hide' | translate}} »</a>
-                    <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'article.comment.change' | translate}} »</a>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">		
+	<div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+	    <div class="col-md-9 md-margin-bottom-60">
+	        <!--Blog Post-->        
+	        <div class="blog margin-bottom-40">
+	            <h2><a ng-href="/post/{{item.Url}}" ng-bind-html="item.Title | highlight:params.key"></a></h2>
+	            <div ng-include="'/Content/app/article/article-post-header.tpl.html'"></div>
+	            <p ng-bind-html-unsafe="item.Content"></p>
+	        </div>
+	        <!--End Blog Post-->        
+
+	        <hr>
+
+	        <!-- Recent Comments -->
+	        <div class="media">
+	            <h3>{{'article.comments' | translate}}</h3>
+	        </div>
+	        <div class="media" ng-repeat="item in item.Comments | orderBy:'CreateDate'" ng-hide="item.IsDeleted">
+	            <span class="pull-left">
+	                <img class="media-object" ng-src="{{item.Avatar}}" alt="" />
+	            </span>
+	            <div class="media-body">
+	                <h4 class="media-heading">
+	                    {{item.Author}} 
+	                    <span>
+	                        {{item.CreateDate | date:"yyyy.MM.dd HH:mm" }} / <a href="#">Reply</a>
+	                        <a href="JavaScript:void(0)" ng-click="remove(item)" ng-show="User.IsAdmin">
+	                            <i class="icon-remove"></i>
+	                        </a>
+	                    </span>
+	                </h4>
+	                <p ng-bind-html="item.Content | line"></p>
+	            </div>
+	            <hr/>
+	        </div>
+	        <!-- End Recent Comments -->
+
+	        <hr>
+
+	        <!-- Comment Form -->
+	        <div class="post-comment">
+	            <h3>{{'article.comment.content' | translate}}</h3>
+	            <form name="form" novalidate ng-submit="save()">
+	                <p bindonce="entity" bo-show="entity.Author">
+	                    {{'article.comment.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
+	                    <span>
+	                        <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'article.comment.hide' | translate}} »</a>
+	                        <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'article.comment.change' | translate}} »</a>
+	                    </span>
+	                </p>
+	                <div ng-show="editmode">
+	                    <div class="row form-group">
+	                        <div class="col-md-7 col-md-offset-0">
+	                            <label>{{'article.comment.name' | translate}} <span class="color-red">*</span></label>
+	                            <input class="form-control" name="Author" type="text" ng-model="entity.Author" placeholder="{{'article.comment.name' | translate}}*" required/>
+	                            <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
+	                                <span ng-show="form.Author.$error.required">{{'article.comment.nameValidTxt' | translate}}</span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="row form-group">
+	                        <div class="col-md-7 col-md-offset-0">
+	                            <label>{{'article.comment.email' | translate}}</label>
+	                            <input class="form-control" name="Email" type="text" ng-model="entity.Email" placeholder="{{'article.comment.email' | translate}}" />
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row form-group">
+	                    <div class="col-md-11 col-md-offset-0">
+	                        <label>{{'article.comment.content' | translate}}</label>
+	                        <textarea name="Content" class="form-control" rows="8"  ng-model="entity.Content" required></textarea>
+	                        <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
+	                            <span ng-show="form.Content.$error.required">{{'article.comment.contentValidTxt' | translate}}</span>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div>
+	                    <button class="btn-u" type="submit" ng-disabled="loading">
+	                        {{'article.comment.submit' | translate}}
+	                    </button>
+	                </div>
+	            </form>
+	        </div>
+	        <!-- End Comment Form -->
+	    </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+        <div class="col-md-3 magazine-page">
+            <!-- Search Bar -->
+            <div class="headline headline-md"><h2>Search</h2></div>            
+            <div class="input-group margin-bottom-40">
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-btn">
+                    <button class="btn-u" type="button">Go</button>
                 </span>
-            </p>
-            <div ng-show="editmode">
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <label>{{'article.comment.name' | translate}}*</label>
-                        <input class="form-control input-sm" name="Author" type="text" ng-model="entity.Author" placeholder="{{'article.comment.name' | translate}}*" required/>
-                        <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
-                            <span ng-show="form.Author.$error.required">{{'article.comment.nameValidTxt' | translate}}</span>
+            </div>
+            <!-- End Search Bar -->
+
+            <!-- Posts -->
+            <div class="posts margin-bottom-40">
+                <div class="headline headline-md"><h2>Recent Posts</h2></div>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="assets/img/sliders/elastislide/6.jpg" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">Responsive Bootstrap 3 Template placerat idelo alac eratamet.</a></p> 
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="assets/img/sliders/elastislide/10.jpg" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">100+ Amazing Features Layer Slider, Layer Slider, Icons, 60+ Pages etc.</a></p> 
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="assets/img/sliders/elastislide/11.jpg" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p> 
+                    </dd>
+                </dl>
+            </div><!--/posts-->
+            <!-- End Posts -->
+
+            <!-- Tabs Widget -->
+            <div class="headline headline-md"><h2>Tabs Widget</h2></div>
+            <div class="tab-v2 margin-bottom-40">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home-1">About Us</a></li>
+                    <li><a data-toggle="tab" href="#home-2">Quick Links</a></li>
+                </ul>                
+                <div class="tab-content">
+                    <div id="home-1" class="tab-pane active">
+                        <p>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac ac adipiscing nunc.</p> <p>Pellentesque fermentum, ante ac felis consectetur id. Donec eget orci metusvivamus imperdiet.</p>                        
+                    </div>
+                    <div id="home-2" class="tab-pane magazine-sb-categories">
+                        <div class="row">
+                            <ul class="list-unstyled col-xs-6">
+                                <li><a href="#">Best Sliders</a></li>
+                                <li><a href="#">Parralax Page</a></li>
+                                <li><a href="#">Backgrounds</a></li>
+                                <li><a href="#">Parralax Slider</a></li>
+                                <li><a href="#">Responsive</a></li>
+                                <li><a href="#">800+ Icons</a></li>
+                            </ul>                        
+                            <ul class="list-unstyled col-xs-6">
+                                <li><a href="#">60+ Pages</a></li>
+                                <li><a href="#">Layer Slider</a></li>
+                                <li><a href="#">Bootstrap 3</a></li>
+                                <li><a href="#">Fixed Header</a></li>
+                                <li><a href="#">Best Template</a></li>
+                                <li><a href="#">And Many More</a></li>
+                            </ul>                        
                         </div>
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <label>{{'article.comment.email' | translate}}</label>
-                        <input class="form-control input-sm" name="Email" type="text" ng-model="entity.Email" placeholder="{{'article.comment.email' | translate}}" />
-                    </div>
+            </div>            
+            <!-- End Tabs Widget -->
+
+            <!-- Photo Stream -->
+            <div class="headline headline-md"><h2>Photo Stream</h2></div>
+            <ul class="list-unstyled blog-photos margin-bottom-30">
+                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/5.jpg"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/6.jpg"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/8.jpg"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/10.jpg"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/11.jpg"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/1.jpg"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/2.jpg"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/7.jpg"></a></li>
+            </ul>
+            <!-- End Photo Stream -->
+
+            <!-- Blog Tags -->
+            <div class="headline headline-md"><h2>Blog Tags</h2></div>
+            <ul class="list-unstyled blog-tags margin-bottom-30">
+                <li><a href="#"><i class="icon-tags"></i> Business</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Music</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Internet</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Money</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Google</a></li>
+                <li><a href="#"><i class="icon-tags"></i> TV Shows</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Education</a></li>
+                <li><a href="#"><i class="icon-tags"></i> People</a></li>
+                <li><a href="#"><i class="icon-tags"></i> People</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Math</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Photos</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Electronics</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Apple</a></li>
+                <li><a href="#"><i class="icon-tags"></i> Canada</a></li>
+            </ul>
+            <!-- End Blog Tags -->
+
+            <!-- Blog Latest Tweets -->
+            <div class="blog-twitter margin-bottom-30">
+                <div class="headline headline-md"><h2>Latest Tweets</h2></div>
+                <div class="blog-twitter-inner">
+                    <i class="icon-twitter"></i>
+                    <a href="#">@htmlstream</a> 
+                    At vero eos et accusamus et iusto odio dignissimos. 
+                    <a href="#">http://t.co/sBav7dm</a> 
+                    <span>5 hours ago</span>
+                </div>
+                <div class="blog-twitter-inner">
+                    <i class="icon-twitter"></i>
+                    <a href="#">@htmlstream</a> 
+                    At vero eos et accusamus et iusto odio dignissimos. 
+                    <a href="#">http://t.co/sBav7dm</a> 
+                    <span>5 hours ago</span>
+                </div>
+                <div class="blog-twitter-inner">
+                    <i class="icon-twitter"></i>
+                    <a href="#">@htmlstream</a> 
+                    At vero eos et accusamus et iusto odio dignissimos. 
+                    <a href="#">http://t.co/sBav7dm</a> 
+                    <span>5 hours ago</span>
+                </div>
+                <div class="blog-twitter-inner">
+                    <i class="icon-twitter"></i>
+                    <a href="#">@htmlstream</a> 
+                    At vero eos et accusamus et iusto odio dignissimos. 
+                    <a href="#">http://t.co/sBav7dm</a> 
+                    <span>5 hours ago</span>
                 </div>
             </div>
-            <div class="row form-group">
-                <div class="col-lg-8">
-                    <label>{{'article.comment.content' | translate}}</label>
-                    <textarea name="Content" class="form-control" rows="4"  ng-model="entity.Content" required></textarea>
-                    <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
-                        <span ng-show="form.Content.$error.required">{{'article.comment.contentValidTxt' | translate}}</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-primary btn-large" ng-disabled="loading">
-                    {{'article.comment.submit' | translate}}
-                </button>
-            </div>
-        </form>
-    </div>
-    <!-- respond END -->
+            <!-- End Blog Latest Tweets -->
+        </div>
+        <!-- End Right Sidebar -->
+    </div> 
 </div>
-<div ng-show="!loading && item.Title==null">
-    <ul class="breadcrumb">
-        <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
-        <li class="active">404</li>
-    </ul>
-    <p>{{'article.not_found' | translate}}</p>
-</div>
+<!--=== End Content Part ===-->

@@ -1,36 +1,34 @@
-﻿<span class="icon-tags tags" ng-show="item.Tags.length>0">
-    <span ng-repeat="tag in item.Tags">
-        <span ng-hide="$first">,</span>
-        <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="{{tag.Name}}">{{tag.Name}}</a>
-    </span>
-</span>
-<span>
-    <i class="icon-user"></i>
-    {{item.CreateUser}}
-</span>
-<span>
-    <i class="icon-eye-open"></i>
-    {{'article.views_count' | translate:item}}
-</span>
-<span>
-    <i class="icon-comments"></i>
-    {{'article.comments_count' | translate:item}}
-</span>
-<span ng-show="item.Source">
-    <i class="icon-external-link"></i>
-    <a ng-href="{{item.Source}}" title="{{item.Source}}">
-        {{'article.source' | translate}}
-    </a>
-</span>
-<span class="dropdown" ng-show="item.QrCode">
-    <a data-toggle="dropdown" href="JavaScript:void(0)"><i class="icon-qrcode"></i></a>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        <li>
-            <img src="{{item.QrCode}}" width="200" height="200" alt="qrcode" />
+﻿<div class="blog-post-tags">
+    <ul class="list-unstyled list-inline blog-info">
+        <li><i class="icon-calendar"></i> {{item.PubDate | date:"yyyy/MM/dd"}}</li>
+        <li><i class="icon-pencil"></i> {{item.CreateUser}}</li>
+        <li><i class="icon-comments"></i> {{'article.comments_count' | translate:item}}</li>
+        <li><i class="icon-eye-open"></i> {{'article.views_count' | translate:item}}</li>
+        <li ng-show="item.Source">
+            <i class="icon-external-link"></i> 
+            <a  ng-href="{{item.Source}}" title="{{item.Source}}">{{'article.source' | translate}}</a>
+        </li>
+        <li ng-show="item.QrCode" class="dropdown">
+            <i class="icon-qrcode"></i> 
+            {{'article.views_count' | translate:item}}
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li>
+                    <img src="{{item.QrCode}}" width="200" height="200" alt="qrcode" />
+                </li>
+            </ul>
+        </li>
+        <li ng-show="User.IsAdmin">
+            <i class="icon-edit"></i>
+            <a href="JavaScript:void(0)" ng-click="edit(item)">Edit</a>
         </li>
     </ul>
-</span>
-<span ng-show="User.IsAdmin">
-    <i class="icon-edit"></i>
-    <a href="JavaScript:void(0)" ng-click="edit(item)">Edit</a>
-</span>
+    <ul class="list-unstyled list-inline blog-tags" ng-show="item.Tags.length>0">
+        <li>
+            <i class="icon-tags"></i> 
+            <a ng-repeat="tag in item.Tags" ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}">{{tag.Name}}</a> 
+        </li>
+    </ul>   
+</div>
+<div class="blog-img" ng-if="item.Thumbnail">
+    <img class="img-responsive" ng-src="{{item.Thumbnail}}" alt="" />
+</div>

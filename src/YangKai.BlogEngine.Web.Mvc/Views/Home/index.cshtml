@@ -2,79 +2,201 @@
 <html ng-cloak ng-app="app" class="no-js" ng-controller="GlobalController">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title ng-bind="'@YangKai.BlogEngine.Common.Config.Literal.SITE_NAME - '+title">@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME)</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 文章" href="@YangKai.BlogEngine.Common.Config.Path.ARTICLES_RSS_PATH" />
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 评论" href="@YangKai.BlogEngine.Common.Config.Path.COMMENTS_RSS_PATH" />
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
         @Styles.Render("~/Content/style/css")
         @Scripts.Render("~/js")
     </head>
     <body>
         <div class="loadingbox" when-route-change>{{'global.loading' | translate}}</div>
-        <header class="navbar navbar-inverse navbar-fixed-top">
+        
+        <!--=== Top ===-->    
+        <div class="top">
+            <div class="container">         
+                <ul class="loginbar pull-right">
+                    <li>
+                        <i class="icon-globe"></i>
+                        <a>Languages</a>
+                        <ul class="lenguages" ng-controller="TranslateCtrl">
+                            <li ng-class="{active:uses=='en'}">
+                                <a href="#" ng-click="changeLanguage('en')">
+                                    English 
+                                    <i class="icon-ok" ng-show="uses=='en'"></i>
+                                </a> 
+                            </li>
+                            <li ng-class="{active:uses=='zh'}">
+                                <a href="#" ng-click="changeLanguage('zh')">
+                                    简体中文
+                                    <i class="icon-ok" ng-show="uses=='zh'"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="devider"></li>   
+                    <li><a href="/admin">Admin</a></li>   
+                </ul>
+            </div>      
+        </div>
+        <!--=== End Top ===-->    
+
+        <!--=== Header ===-->    
+        <div class="header">
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1>
+                            <a class="navbar-brand" href="/">
+                                <img id="logo-header" src="/Content/img/logo.gif" alt="Logo">
+                                @Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME)
+                            </a>
+                        </h1>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-responsive-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a ng-href="/">{{'global.menu.home' | translate}}</a></li>
+                            <li class="dropdown" ng-repeat="channel in Channels">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
+                                    {{channel.Name}}
+                                    <i class="icon-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a ng-href="/list/{{channel.Url}}">
+                                            {{'article.menu.view_all' | translate}}
+                                        </a>
+                                    </li>
+                                    <li ng-repeat="group in channel.Groups | filter:{IsDeleted:false} | orderBy:'OrderId'">
+                                        <a ng-href="/list/{{channel.Url}}/{{group.Url}}">
+                                            {{group.Name}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
+                            <li><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
+                            @*<li><a ng-href="/issue">{{'global.menu.issue' | translate}}</a></li>*@
+                            <li><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
+                            <li><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
+                            <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
+                        </ul>
+                        <div class="search-open">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>                
+                    </div>
+                </div>    
+            </div>    
+        </div>
+        <!--=== End Header ===-->  
+
+        <!--=== Main ===-->  
+        <div ng-view></div>
+        <!--=== End Main ===-->  
+
+        <!--=== Footer ===-->
+        <div class="footer">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/"><img src="/Content/img/logo.gif" />@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME)</a>
-                </div>
-                <nav class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav" ng-show="Channels">
-                        <li class="dropdown" ng-repeat="channel in Channels">
-                            <a href="JavaScript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{{channel.Name}} <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="/list/{{channel.Url}}">{{'article.menu.view_all' | translate}}</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">{{'article.menu.view_by_group' | translate}}</li>
-                                <li ng-repeat="group in channel.Groups | filter:{IsDeleted:false} | orderBy:'OrderId'">
-                                    <a href="/list/{{channel.Url}}/{{group.Url}}">{{group.Name}}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
-                        <li><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
-                        <li><a ng-href="/issue">{{'global.menu.issue' | translate}}</a></li>
-                        <li><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
-                        <li><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="JavaScript:void(0)" ng-click="login()">{{'global.menu.admin' | translate}}</a>
-                        </li>
-                        <li>
-                            <input ui-keypress="{13:'search()'}" type="text" ng-model="key" class="form-control search" placeholder="{{'global.menu.search' | translate}}" />
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <div id="cta-content" ng-show="showBanner">
-            <div class="lights">
-                <div class="grid-image">
-                    <div class="wrapped-content">
-                        <h1>BECAUSE WE CAN</h1>
-                        <h2><p class="bottom clearfix">{{word}}</p></h2>
+                <div class="row">
+                    <div class="col-md-4 md-margin-bottom-40">
+                        <!-- About -->
+                        <div class="headline"><h2>About</h2></div>  
+                        <p class="margin-bottom-25 md-margin-bottom-40">Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.</p>    
+
+                        <!-- Monthly Newsletter -->
+                        <div class="headline"><h2>Monthly Newsletter</h2></div> 
+                        <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
+                        <form class="footer-subsribe">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Email Address">                            
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Subscribe</button>
+                                </span>
+                            </div>
+                        </form>                         
+                    </div>
+
+                    <div class="col-md-4 md-margin-bottom-40">
+                        <!-- Recent Blog Entries -->
+                        <div class="posts">
+                            <div class="headline"><h2>Recent Blog Entries</h2></div>
+                            <dl class="dl-horizontal">
+                                <dt><a href="#"><img src="/Content/img/avatar.png" alt="" /></a></dt>
+                                <dd>
+                                    <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt><a href="#"><img src="/Content/img/avatar.png" alt="" /></a></dt>
+                                <dd>
+                                    <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt><a href="#"><img src="/Content/img/avatar.png" alt="" /></a></dt>
+                                <dd>
+                                    <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <!-- Contact Us -->
+                        <div class="headline"><h2>Contact Us</h2></div> 
+                        <address class="md-margin-bottom-40">
+                            25, Lorem Lis Street, Orange <br />
+                            California, US <br />
+                            Phone: 800 123 3456 <br />
+                            Fax: 800 123 3456 <br />
+                            Email: <a href="mailto:zackyang@outlook.com" class="">zackyang@outlook.com</a>
+                        </address>
+
+                        <!-- Stay Connected -->
+                        <div class="headline"><h2>Stay Connected</h2></div> 
+                        <ul class="social-icons">
+                            <li><a href="/feed_articles.xml" data-original-title="Feed" class="social_rss"></a></li>
+                            <li><a href="https://github.com/TossShinHwa/CMS" data-original-title="Github" class="social_github"></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="content" ng-view></div>
-            <hr>
-            <footer>
-                <p>@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT)</p>
-                <ul class="footer-links" ng-controller="TranslateCtrl">
-                    <li><a ng-click="changeLanguage('en')" href="JavaScript:void(0)">English</a></li>
-                    <li>|</li>
-                    <li><a ng-click="changeLanguage('zh')" href="JavaScript:void(0)">简体中文</a></li>
-                </ul>
-            </footer>
+        <!--=== End Footer ===-->
+
+        <!--=== Copyright ===-->
+        <div class="copyright">
+            <div class="container">
+                <p class="copyright-space">
+                    @Html.Raw(YangKai.BlogEngine.Common.Config.Literal.COPYRIGHT)
+                </p>
+            </div>
         </div>
+        <!--=== End Copyright ===-->
+
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                App.init();
+            });
+        </script>
+        <!--[if lt IE 9]>
+            <script src="assets/plugins/respond.js"></script>
+        <![endif]-->
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {

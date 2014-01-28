@@ -1,6 +1,7 @@
 ﻿translationsZH=
   global:
     menu:
+      home: '首页'
       archive: '归档'
       board: '留言板'
       issue: '问题'
