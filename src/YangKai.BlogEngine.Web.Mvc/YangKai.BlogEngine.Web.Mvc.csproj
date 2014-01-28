@@ -188,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app\about\about-newegg-edi.tpl.html" />
+    <Content Include="Content\data\about-newegg-bts.js" />
     <Content Include="Content\app\admin\article\gallery.js">
       <DependentUpon>article.coffee</DependentUpon>
     </Content>
@@ -255,6 +256,7 @@
       <DependentUpon>whenRouteChange.coffee</DependentUpon>
     </Content>
     <Content Include="Content\common\style.css" />
+    <Content Include="Content\data\about-newegg-edi.js" />
     <Content Include="Content\i18n\i18n.js">
       <DependentUpon>i18n.coffee</DependentUpon>
     </Content>
@@ -281,6 +283,8 @@
     </Content>
     <Content Include="Content\img\bg_sky.jpg" />
     <Content Include="Content\img\loading_animation.gif" />
+    <Content Include="Content\img\social\github.png" />
+    <Content Include="Content\img\social\rss.png" />
     <Content Include="Content\img\upgrade.png" />
     <Content Include="Content\common\directives\customDirectives.js">
       <DependentUpon>customDirectives.coffee</DependentUpon>
