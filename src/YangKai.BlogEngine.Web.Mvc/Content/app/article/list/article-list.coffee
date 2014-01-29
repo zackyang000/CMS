@@ -73,11 +73,14 @@
 .controller('ArticleListCtrl',
 ["$scope","$rootScope","$window","$routeParams","$location","articles"
 ($scope,$rootScope,$window,$routeParams,$location,articles) ->
-  scroll(0,0)
+  $window.scroll(0,0)
+
   $rootScope.title=$routeParams.tag ? $routeParams.group ? $routeParams.channel ? "Search Result '#{$scope.key}'"
   $scope.list = articles
   $scope.params=$routeParams
+  $scope.currentPage =$routeParams.p ? 1
 
+  #Turn page
   $scope.setPage = (pageNo) ->
     $location.search({p: pageNo})
 

@@ -24,6 +24,7 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
 ]).controller('ArticleDetailCtrl', [
   "$scope", "$rootScope", "$window", "$translate", "$routeParams", "progressbar", "Article", "Comment", "article", "account", function($scope, $rootScope, $window, $translate, $routeParams, progressbar, Article, Comment, article, account) {
     var i, item, relatedFilter, tag, _i, _j, _len, _len1, _ref, _ref1;
+    $window.scroll(0, 0);
     $scope.item = article;
     if (!$scope.item) {
       $rootScope.title = '404';

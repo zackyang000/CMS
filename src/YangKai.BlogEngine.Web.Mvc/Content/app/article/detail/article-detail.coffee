@@ -19,6 +19,8 @@
 .controller('ArticleDetailCtrl',
 ["$scope","$rootScope","$window","$translate","$routeParams","progressbar","Article","Comment","article","account"
 ($scope,$rootScope,$window,$translate,$routeParams,progressbar,Article,Comment,article,account) ->
+  $window.scroll(0,0)
+
   $scope.item=article
   if !$scope.item
     $rootScope.title='404'

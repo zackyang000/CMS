@@ -39,7 +39,7 @@
                         </ul>
                     </li>
                     <li class="devider"></li>   
-                    <li><a href="/admin">Admin</a></li>   
+                    <li><a href="#" ng-click="login()">Admin</a></li>   
                 </ul>
             </div>      
         </div>
@@ -66,28 +66,13 @@
                     <div class="collapse navbar-collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a ng-href="/">{{'global.menu.home' | translate}}</a></li>
-                            <li class="dropdown" ng-repeat="channel in Channels">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
-                                    {{channel.Name}}
-                                    <i class="icon-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a ng-href="/list/{{channel.Url}}">
-                                            {{'article.menu.view_all' | translate}}
-                                        </a>
-                                    </li>
-                                    <li ng-repeat="group in channel.Groups | filter:{IsDeleted:false} | orderBy:'OrderId'">
-                                        <a ng-href="/list/{{channel.Url}}/{{group.Url}}">
-                                            {{group.Name}}
-                                        </a>
-                                    </li>
-                                </ul>
+                            <li ng-repeat="channel in Channels">
+                                <a ng-href="/list/{{channel.Url}}">{{channel.Name}}</a>
                             </li>
                             <li><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
-                            <li><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
                             @*<li><a ng-href="/issue">{{'global.menu.issue' | translate}}</a></li>*@
                             <li><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
+                            <li><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
                             <li><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
                             <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
                         </ul>

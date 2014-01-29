@@ -77,11 +77,12 @@ angular.module('article-list', ['resource.articles']).config([
   }
 ]).controller('ArticleListCtrl', [
   "$scope", "$rootScope", "$window", "$routeParams", "$location", "articles", function($scope, $rootScope, $window, $routeParams, $location, articles) {
-    var _ref, _ref1, _ref2;
-    scroll(0, 0);
+    var _ref, _ref1, _ref2, _ref3;
+    $window.scroll(0, 0);
     $rootScope.title = (_ref = (_ref1 = (_ref2 = $routeParams.tag) != null ? _ref2 : $routeParams.group) != null ? _ref1 : $routeParams.channel) != null ? _ref : "Search Result '" + $scope.key + "'";
     $scope.list = articles;
     $scope.params = $routeParams;
+    $scope.currentPage = (_ref3 = $routeParams.p) != null ? _ref3 : 1;
     $scope.setPage = function(pageNo) {
       return $location.search({
         p: pageNo
