@@ -28,6 +28,11 @@ namespace YangKai.BlogEngine.Domain
         /// 频道描述.
         /// </summary>
         public string Description { get; set; }
+        
+        /// <summary>
+        /// 是否默认频道.
+        /// </summary>
+        public bool IsDefault { get; set; }
 
         /// <summary>
         /// 频道所有分组信息.

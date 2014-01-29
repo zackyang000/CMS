@@ -204,6 +204,12 @@
     <Content Include="Content\app\article\list\article-list-right-sidebar.min.js">
       <DependentUpon>article-list-right-sidebar.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\common\ChannelServices.js">
+      <DependentUpon>ChannelServices.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\common\ChannelServices.min.js">
+      <DependentUpon>ChannelServices.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\data\about-newegg-bts.js" />
     <Content Include="Content\app\admin\article\gallery.js">
       <DependentUpon>article.coffee</DependentUpon>
@@ -1224,6 +1230,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\app-admin\" />
     <Folder Include="Content\app\admin\article\comment\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Debug\" />
     <Folder Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\bin\Release\" />
@@ -1306,6 +1313,7 @@
     <Content Include="Content\common\directives\custom\whenRouteChange.coffee" />
     <Content Include="Content\app\article\detail\article-detail-right-sidebar.coffee" />
     <Content Include="Content\app\article\list\article-list-right-sidebar.coffee" />
+    <Content Include="Content\common\ChannelServices.coffee" />
     <None Include="Content\plugin\ckeditor_3.6.1\.htaccess" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="Content\plugin\ckfinder_aspnet_2.0.1\userfiles\.htaccess" />

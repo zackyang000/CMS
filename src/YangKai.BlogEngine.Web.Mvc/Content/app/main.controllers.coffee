@@ -1,20 +1,16 @@
-﻿angular.module('main.controllers',['resource.channels','resource.users'])
+﻿angular.module('main.controllers',['resource.channels','resource.users',"ChannelServices"])
 
 .controller('GlobalController',
-["$scope","$http","$location",'$window',"Channel" ,"account","$timeout" 
-($scope,$http,$location,$window,Channel,account,$timeout) ->
+["$scope","$http","$location",'$window',"Channel" ,"account","$timeout","channel"
+($scope,$http,$location,$window,Channel,account,$timeout,channel) ->
   account.get().then (data) ->
     $scope.User=data
 
-  Channel.query 
-    $orderby:'OrderId' 
-    $filter:'IsDeleted eq false'
-    $expand:'Groups'
-    $select:'Name,Url,Groups/Name,Groups/Url,Groups/IsDeleted,Groups/OrderId'
-  ,(data)->
-    $scope.Channels=data.value
+  channel.get().then (data) ->
+    $scope.Channels=data
+
     #TODO: 改为指令初始化nav dropdown
-    $timeout((->$('[data-hover="dropdown"]').dropdownHover()),100)
+    #$timeout((->$('[data-hover="dropdown"]').dropdownHover()),100)
 
   $scope.search = ->
     $location.path("/search/#{$scope.key}")

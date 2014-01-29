@@ -1,13 +1,13 @@
 ﻿angular.module('index',[])
 
-.config(["$routeProvider", ($routeProvider) ->
-  $routeProvider
-    .when "/",
-      templateUrl: "/Content/app/index/index.tpl.html"
-      controller: 'IndexCtrl'
-      title: 'Home'
-      showBanner: true
-])
+#.config(["$routeProvider", ($routeProvider) ->
+#  $routeProvider
+#    .when "/",
+#      templateUrl: "/Content/app/index/index.tpl.html"
+#      controller: 'IndexCtrl'
+#      title: 'Home'
+#      showBanner: true
+#])
 
 .controller('IndexCtrl',
 ["$scope","$http", ($scope,$http) ->

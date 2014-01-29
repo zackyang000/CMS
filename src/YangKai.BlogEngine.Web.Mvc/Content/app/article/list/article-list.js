@@ -1,7 +1,35 @@
 ﻿
-angular.module('article-list', ['resource.articles']).config([
+angular.module('article-list', ['resource.articles', "ChannelServices"]).config([
   "$routeProvider", function($routeProvider) {
-    return $routeProvider.when("/list/:channel/:group/tag/:tag", {
+    return $routeProvider.when("/", {
+      templateUrl: "/Content/app/article/list/article-list.tpl.html",
+      controller: 'ArticleListCtrl',
+      resolve: {
+        articles: [
+          '$rootScope', '$route', '$q', 'Article', 'channel', function($rootScope, $route, $q, Article, channel) {
+            var deferred;
+            deferred = $q.defer();
+            channel.get().then(function(channels) {
+              var item, _i, _len, _ref;
+              for (_i = 0, _len = channels.length; _i < _len; _i++) {
+                item = channels[_i];
+                if (item.IsDefault) {
+                  channel = item;
+                  break;
+                }
+              }
+              return Article.queryOnce({
+                $filter: "IsDeleted eq false \nand Group/Channel/Url eq '" + channel.Name + "' ",
+                $skip: ((_ref = $route.current.params.p) != null ? _ref : 1) * 10 - 10
+              }, function(data) {
+                return deferred.resolve(data);
+              });
+            });
+            return deferred.promise;
+          }
+        ]
+      }
+    }).when("/list/:channel/:group/tag/:tag", {
       templateUrl: "/Content/app/article/list/article-list.tpl.html",
       controller: 'ArticleListCtrl',
       resolve: {

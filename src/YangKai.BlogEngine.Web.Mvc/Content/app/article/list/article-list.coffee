@@ -1,7 +1,33 @@
-﻿angular.module('article-list',['resource.articles'])
+﻿angular.module('article-list',['resource.articles',"ChannelServices"])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
+    .when "/",
+      templateUrl: "/Content/app/article/list/article-list.tpl.html"
+      controller: 'ArticleListCtrl'
+      resolve:
+        articles: ['$rootScope','$route','$q','Article','channel',($rootScope,$route,$q,Article,channel)->
+          deferred = $q.defer()
+          channel.get().then (channels) ->
+            #todo 判断default
+            #todo 判断default
+            #todo 判断default
+            #todo 判断default
+            #todo 判断default
+            for item in channels
+              if item.IsDefault
+                channel=item
+                break
+            Article.queryOnce
+              $filter:"""
+              IsDeleted eq false 
+              and Group/Channel/Url eq '#{channel.Name}' 
+              """
+              $skip:($route.current.params.p ? 1)*10 - 10
+            , (data)->
+              deferred.resolve data
+          deferred.promise
+        ]
     .when "/list/:channel/:group/tag/:tag",
       templateUrl: "/Content/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
