@@ -11,6 +11,7 @@
       cache:true
       method: "GET"
       params:
+        $expand:'Tags,Group'
         $orderby:'CreateDate desc' 
         $inlinecount:'allpages'
     get:

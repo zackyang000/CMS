@@ -1,6 +1,7 @@
 ﻿<div class="blog-post-tags">
     <ul class="list-unstyled list-inline blog-info">
         <li><i class="icon-calendar"></i> {{item.PubDate | date:"yyyy/MM/dd"}}</li>
+        <li><i class="icon-bookmark"></i> {{item.Group.Name}}</li>
         <li><i class="icon-pencil"></i> {{item.CreateUser}}</li>
         <li><i class="icon-comments"></i> {{'article.comments_count' | translate:item}}</li>
         <li><i class="icon-eye-open"></i> {{'article.views_count' | translate:item}}</li>

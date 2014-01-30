@@ -17,6 +17,7 @@ angular.module("resource.articles", ["ngResource"]).factory("Article", [
         cache: true,
         method: "GET",
         params: {
+          $expand: 'Tags,Group',
           $orderby: 'CreateDate desc',
           $inlinecount: 'allpages'
         }
