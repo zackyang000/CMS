@@ -4,24 +4,22 @@
 ["$scope","$routeParams","channel"
 ($scope,$routeParams,channel) ->
   #Categories list
-  channel.get().then (channels) ->
-    if $routeParams.channel
+  if $routeParams.channel
+    channel.get().then (channels) ->
       for item in channels
         if item.Name.toLowerCase()==$routeParams.channel.toLowerCase()
           $scope.channel=item
           break
-    else
-      debugger 
-      #todo 判断default
-      #todo 判断default
-      #todo 判断default
-      #todo 判断default
-      #todo 判断default
-      $scope.channel=channels[0]
+      setGroup()
+  else
+    channel.getdefault().then (channel) ->
+      $scope.channel=channel
+      setGroup()
 
-  if $routeParams.group
-    for item in $scope.channel.Groups
-      if item.Name.toLowerCase()==$routeParams.group.toLowerCase()
-        $scope.group=item
-        break
+  setGroup = ->
+    if $routeParams.group
+      for item in $scope.channel.Groups
+        if item.Name.toLowerCase()==$routeParams.group.toLowerCase()
+          $scope.group=item
+          break
 ])

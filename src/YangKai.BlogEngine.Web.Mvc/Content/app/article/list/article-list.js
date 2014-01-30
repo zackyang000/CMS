@@ -9,17 +9,10 @@ angular.module('article-list', ['resource.articles', "ChannelServices"]).config(
           '$rootScope', '$route', '$q', 'Article', 'channel', function($rootScope, $route, $q, Article, channel) {
             var deferred;
             deferred = $q.defer();
-            channel.get().then(function(channels) {
-              var item, _i, _len, _ref;
-              for (_i = 0, _len = channels.length; _i < _len; _i++) {
-                item = channels[_i];
-                if (item.IsDefault) {
-                  channel = item;
-                  break;
-                }
-              }
+            channel.getdefault().then(function(channel) {
+              var _ref;
               return Article.queryOnce({
-                $filter: "IsDeleted eq false \nand Group/Channel/Url eq '" + channel.Name + "' ",
+                $filter: "IsDeleted eq false \nand Group/Channel/Url eq '" + channel.Url + "' ",
                 $skip: ((_ref = $route.current.params.p) != null ? _ref : 1) * 10 - 10
               }, function(data) {
                 return deferred.resolve(data);
@@ -105,12 +98,19 @@ angular.module('article-list', ['resource.articles', "ChannelServices"]).config(
   }
 ]).controller('ArticleListCtrl', [
   "$scope", "$rootScope", "$window", "$routeParams", "$location", "articles", function($scope, $rootScope, $window, $routeParams, $location, articles) {
-    var _ref, _ref1, _ref2, _ref3;
+    var _ref, _ref1, _ref2;
     $window.scroll(0, 0);
-    $rootScope.title = (_ref = (_ref1 = (_ref2 = $routeParams.tag) != null ? _ref2 : $routeParams.group) != null ? _ref1 : $routeParams.channel) != null ? _ref : "Search Result '" + $scope.key + "'";
+    $rootScope.title = (_ref = (_ref1 = $routeParams.tag) != null ? _ref1 : $routeParams.group) != null ? _ref : $routeParams.channel;
+    if (!$rootScope.title) {
+      if ($scope.key) {
+        $rootScope.title = "Search Result: '" + $scope.key + "'";
+      } else {
+        $rootScope.title = "Home";
+      }
+    }
     $scope.list = articles;
+    $scope.currentPage = (_ref2 = $routeParams.p) != null ? _ref2 : 1;
     $scope.params = $routeParams;
-    $scope.currentPage = (_ref3 = $routeParams.p) != null ? _ref3 : 1;
     $scope.setPage = function(pageNo) {
       return $location.search({
         p: pageNo

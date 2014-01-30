@@ -8,20 +8,11 @@
       resolve:
         articles: ['$rootScope','$route','$q','Article','channel',($rootScope,$route,$q,Article,channel)->
           deferred = $q.defer()
-          channel.get().then (channels) ->
-            #todo 判断default
-            #todo 判断default
-            #todo 判断default
-            #todo 判断default
-            #todo 判断default
-            for item in channels
-              if item.IsDefault
-                channel=item
-                break
+          channel.getdefault().then (channel) ->
             Article.queryOnce
               $filter:"""
               IsDeleted eq false 
-              and Group/Channel/Url eq '#{channel.Name}' 
+              and Group/Channel/Url eq '#{channel.Url}' 
               """
               $skip:($route.current.params.p ? 1)*10 - 10
             , (data)->
@@ -101,10 +92,17 @@
 ($scope,$rootScope,$window,$routeParams,$location,articles) ->
   $window.scroll(0,0)
 
-  $rootScope.title=$routeParams.tag ? $routeParams.group ? $routeParams.channel ? "Search Result '#{$scope.key}'"
+  $rootScope.title=$routeParams.tag ? $routeParams.group ? $routeParams.channel
+  if !$rootScope.title
+    if $scope.key
+      $rootScope.title="Search Result: '#{$scope.key}'"
+    else
+      $rootScope.title="Home"
+       
   $scope.list = articles
-  $scope.params=$routeParams
   $scope.currentPage =$routeParams.p ? 1
+
+  $scope.params=$routeParams
 
   #Turn page
   $scope.setPage = (pageNo) ->
