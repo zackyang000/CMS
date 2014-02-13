@@ -45,7 +45,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             return new User()
                 {
                     UserId = Guid.NewGuid(),
-                    UserName = "管理员",
+                    UserName = "Administrator",
                     LoginName = "admin",
                     Password = "123",
                     Email="test@test.com",
@@ -59,8 +59,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                     ChannelId = Guid.NewGuid(),
                     Name = "channel",
                     Url = "channel",
-                    Description = "这是一个默认频道.",
+                    Description = "This is default Channel.",
                     OrderId = 1,
+                    IsDefault = true,
                 };
         }
 
@@ -71,7 +72,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                     GroupId = Guid.NewGuid(),
                     Name = "group",
                     Url = "group",
-                    Description = "这是一个默认分组.",
+                    Description = "This is default Category.",
                     OrderId = 1,
                     Channel = channel,
                 };
@@ -83,9 +84,9 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 {
                     PostId = Guid.NewGuid(),
                     Url = "test",
-                    Title = "测试文章",
-                    Content = "<p>这是文章的正文内容.</p>",
-                    Description = "<p>这是文章的描述内容.</p>",
+                    Title = "Test article",
+                    Content = "<p>This is content.</p>",
+                    Description = "<p>This is description.</p>",
                     CreateUser = user.UserName,
                     PubDate = DateTime.Now,
                     Group = group,
@@ -98,7 +99,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             return new Comment
                 {
                     CommentId = Guid.NewGuid(),
-                    Content = "这是评论的内容.",
+                    Content = "This is commit.",
                     Author="guest",
                     Post = post,
                 };
@@ -109,7 +110,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             return new Board
             {
                 BoardId = Guid.NewGuid(),
-                Content = "这是留言的内容.",
+                Content = "This is message.",
                 Author = "guest",
             };
         }
