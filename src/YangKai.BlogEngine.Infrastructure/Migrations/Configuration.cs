@@ -10,7 +10,7 @@ namespace YangKai.BlogEngine.Infrastructure.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(BlogEngineContext context)
