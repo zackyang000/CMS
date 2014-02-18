@@ -1,3 +1,7 @@
 TODO:
 统一使用PUT来新增和保存数据
 自定义指令增加前缀
+
+blog主题颜色在config中配置
+use newegg时不使用google analytics
+自动生成关于页面
