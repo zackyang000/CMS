@@ -43,7 +43,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             var bundle = new ScriptBundle("~/js")
                 .IncludeDirectory("~/Content/vendor", "*.js", true)
                 .IncludeDirectory("~/Content/common", "*.js", true)
-                .IncludeDirectory("~/Content/i18n", "*.js", true)
+                .IncludeDirectory("~/Content/l18n", "*.js", true)
                 .IncludeDirectory("~/Content/app", "*.js", true)
                 .IncludeDirectory("~/Content/plugin/unify_1.3", "*.js", true)
                 .Include(plugin);

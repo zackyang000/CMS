@@ -1,13 +1,14 @@
 ﻿
 angular.module('article-list-right-sidebar', ['resource.articles', 'resource.comments', 'ChannelServices']).controller('ArticleListRightSidebarCtrl', [
   "$scope", "$routeParams", "channel", function($scope, $routeParams, channel) {
+    debugger;
     var setGroup;
     if ($routeParams.channel) {
       channel.get().then(function(channels) {
         var item, _i, _len;
         for (_i = 0, _len = channels.length; _i < _len; _i++) {
           item = channels[_i];
-          if (item.Name.toLowerCase() === $routeParams.channel.toLowerCase()) {
+          if (item.Url.toLowerCase() === $routeParams.channel.toLowerCase()) {
             $scope.channel = item;
             break;
           }
@@ -27,7 +28,7 @@ angular.module('article-list-right-sidebar', ['resource.articles', 'resource.com
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           item = _ref[_i];
-          if (item.Name.toLowerCase() === $routeParams.group.toLowerCase()) {
+          if (item.Url.toLowerCase() === $routeParams.group.toLowerCase()) {
             $scope.group = item;
             break;
           } else {

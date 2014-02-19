@@ -279,28 +279,28 @@
     </Content>
     <Content Include="Content\common\style.css" />
     <Content Include="Content\data\about-newegg-edi.js" />
-    <Content Include="Content\i18n\i18n.js">
-      <DependentUpon>i18n.coffee</DependentUpon>
+    <Content Include="Content\l18n\l18n.js">
+      <DependentUpon>l18n.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\i18n\i18n.min.js">
-      <DependentUpon>i18n.coffee</DependentUpon>
+    <Content Include="Content\l18n\l18n.min.js">
+      <DependentUpon>l18n.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\i18n\languages\en-us.js">
+    <Content Include="Content\l18n\languages\en-us.js">
       <DependentUpon>en-us.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\i18n\languages\en-us.min.js">
+    <Content Include="Content\l18n\languages\en-us.min.js">
       <DependentUpon>en-us.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\i18n\languages\zh-cn.js">
+    <Content Include="Content\l18n\languages\zh-cn.js">
       <DependentUpon>zh-cn.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\i18n\languages\zh-cn.min.js">
+    <Content Include="Content\l18n\languages\zh-cn.min.js">
       <DependentUpon>zh-cn.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\i18n\TranslateCtrl.js">
+    <Content Include="Content\l18n\TranslateCtrl.js">
       <DependentUpon>TranslateCtrl.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\i18n\TranslateCtrl.min.js">
+    <Content Include="Content\l18n\TranslateCtrl.min.js">
       <DependentUpon>TranslateCtrl.coffee</DependentUpon>
     </Content>
     <Content Include="Content\img\bg_sky.jpg" />
@@ -396,6 +396,8 @@
     <Content Include="Content\plugin\unify_1.3\responsive.css" />
     <Content Include="Content\plugin\unify_1.3\style.css" />
     <Content Include="Content\plugin\unify_1.3\theme\default\default.css" />
+    <Content Include="Content\plugin\unify_1.3\theme\red\header1-red.css" />
+    <Content Include="Content\plugin\unify_1.3\theme\red\red.css" />
     <Content Include="Content\vendor\jquery-plugin\bxslider\controls-light.png" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-chartbeat.js" />
     <Content Include="Content\vendor\angular-angulartics\angulartics-ga-cordova.js" />
@@ -1297,10 +1299,10 @@
     <Content Include="Content\app\gallery\detail\gallery-detail.coffee" />
     <Content Include="Content\common\directives\custom\_ngBindHtmlUnsafe.coffee" />
     <Content Include="Content\app\admin\style.less" />
-    <Content Include="Content\i18n\TranslateCtrl.coffee" />
-    <Content Include="Content\i18n\languages\zh-cn.coffee" />
-    <Content Include="Content\i18n\languages\en-us.coffee" />
-    <Content Include="Content\i18n\i18n.coffee" />
+    <Content Include="Content\l18n\TranslateCtrl.coffee" />
+    <Content Include="Content\l18n\languages\zh-cn.coffee" />
+    <Content Include="Content\l18n\languages\en-us.coffee" />
+    <Content Include="Content\l18n\l18n.coffee" />
     <Content Include="Content\app\article\archives\archives.css" />
     <Content Include="Content\common\AccountServices.coffee" />
     <Content Include="Content\common\directives\customDirectives.coffee" />

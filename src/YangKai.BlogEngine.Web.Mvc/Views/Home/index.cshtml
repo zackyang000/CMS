@@ -65,12 +65,11 @@
                     </div>
                     <div class="collapse navbar-collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a ng-href="/">{{'global.menu.home' | translate}}</a></li>
-                            <li ng-repeat="channel in Channels" ng-hide="channel.IsDefault">
-                                <a ng-href="/list/{{channel.Url}}">{{channel.Name}}</a>
+                            <li ng-repeat="channel in Channels | orderBy:'IsDefault':true">
+                                <a ng-href="/list" ng-show="channel.IsDefault">{{channel.Name}}</a>
+                                <a ng-href="/list/{{channel.Url}}" ng-hide="channel.IsDefault">{{channel.Name}}</a>
                             </li>
                             <li><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
-                            @*<li><a ng-href="/issue">{{'global.menu.issue' | translate}}</a></li>*@
                             <li><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
                             <li><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
                             <li><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>

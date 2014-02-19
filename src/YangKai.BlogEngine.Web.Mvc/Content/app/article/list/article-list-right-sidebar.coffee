@@ -4,10 +4,11 @@
 ["$scope","$routeParams","channel"
 ($scope,$routeParams,channel) ->
   #Categories list
+  debugger
   if $routeParams.channel
     channel.get().then (channels) ->
       for item in channels
-        if item.Name.toLowerCase()==$routeParams.channel.toLowerCase()
+        if item.Url.toLowerCase()==$routeParams.channel.toLowerCase()
           $scope.channel=item
           break
       setGroup()
@@ -19,7 +20,7 @@
   setGroup = ->
     if $routeParams.group
       for item in $scope.channel.Groups
-        if item.Name.toLowerCase()==$routeParams.group.toLowerCase()
+        if item.Url.toLowerCase()==$routeParams.group.toLowerCase()
           $scope.group=item
           break
 ])
