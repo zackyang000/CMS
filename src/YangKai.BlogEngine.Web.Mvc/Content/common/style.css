@@ -1,5 +1,9 @@
 ﻿#logo-header{ width: 30px;height: 30px;position: relative;top: -3px;}
 
+.body {
+    margin-bottom: 55px;   
+}
+
 .navbar-brand { font-size: 30px;}
 
 .loadingbox {
