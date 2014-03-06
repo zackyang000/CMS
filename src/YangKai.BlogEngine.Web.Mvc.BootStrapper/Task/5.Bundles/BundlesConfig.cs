@@ -53,7 +53,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             var adminBundle = new ScriptBundle("~/admin-js")
                 .IncludeDirectory("~/Content/vendor", "*.js", true)
                 .IncludeDirectory("~/Content/common", "*.js", true)
-                .IncludeDirectory("~/Content/app", "*.js", true)
+                .IncludeDirectory("~/Content/app-admin", "*.js", true)
                 .IncludeDirectory("~/Content/plugin/ace_1.2", "*.js", true)
                 .Include(plugin);
             BundleTable.Bundles.Add(adminBundle);
@@ -66,13 +66,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 .IncludeDirectory("~/Content/vendor", "*.css", true)
                 .Include(plugin)
                 .IncludeDirectory("~/Content/plugin/unify_1.3", "*.css", true)
-                .IncludeDirectory("~/Content/app/index", "*.css", true)
-                .IncludeDirectory("~/Content/app/about", "*.css", true)
-                .IncludeDirectory("~/Content/app/article", "*.css", true)
-                .IncludeDirectory("~/Content/app/board", "*.css", true)
-                .IncludeDirectory("~/Content/app/gallery", "*.css", true)
-                .IncludeDirectory("~/Content/app/issue", "*.css", true)
-                .Include("~/Content/common/style.css");
+                .IncludeDirectory("~/Content/app", "*.css", true);
             BundleTable.Bundles.Add(bundle);
 
             //admin-css
@@ -80,7 +74,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 .IncludeDirectory("~/Content/vendor", "*.css", true)
                 .Include(plugin)
                 .IncludeDirectory("~/Content/plugin/ace_1.2", "*.css", true)
-                .IncludeDirectory("~/Content/app/admin", "*.css", true);
+                .IncludeDirectory("~/Content/app-admin", "*.css", true);
             BundleTable.Bundles.Add(adminBundle);
         }
     }
