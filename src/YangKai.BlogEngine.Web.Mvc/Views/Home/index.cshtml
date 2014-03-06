@@ -65,14 +65,14 @@
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li ng-repeat="channel in Channels | orderBy:'IsDefault':true">
+                            <li ng-class="{active:isActiveChannel(channel)}" ng-repeat="channel in Channels | orderBy:'IsDefault':true">
                                 <a ng-href="/list" ng-show="channel.IsDefault">{{channel.Name}}</a>
                                 <a ng-href="/list/{{channel.Url}}" ng-hide="channel.IsDefault">{{channel.Name}}</a>
                             </li>
-                            <li><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
-                            <li><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
-                            <li><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
-                            <li><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
+                            <li ng-class="{active:isActive('/archives')}"><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
+                            <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
+                            <li ng-class="{active:isActive('/board')}"><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
+                            <li ng-class="{active:isActive('/about')}"><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
                             <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
                         </ul>
                         <div class="search-open">

@@ -17,4 +17,19 @@
 
   $scope.login = ->
     $window.location.href='/admin/'
+    
+  $scope.isActive = (route) ->  
+    route == $location.path()
+    
+  $scope.isActiveChannel = (channel) ->
+    #首页
+    return true if channel.IsDefault && ($location.path() == "/" || $location.path() == "/list")
+    #article list
+    return true if $location.path().indexOf(channel.Url) > -1
+    #article detail
+    return $location.path().indexOf("/post") > -1 && channel.Url.indexOf($scope.channelUrl) > -1
+    
+  $scope.$on("ChannelChange",(event, channel) ->
+    $scope.channelUrl = channel.Url
+  )
 ])

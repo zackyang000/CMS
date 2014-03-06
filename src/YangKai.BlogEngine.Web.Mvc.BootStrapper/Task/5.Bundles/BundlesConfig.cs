@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Optimization;
 using Bootstrap.Extensions.StartupTasks;
+using YangKai.BlogEngine.Common;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
@@ -65,9 +66,13 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             var bundle = new StyleBundle("~/Content/style/css")
                 .IncludeDirectory("~/Content/vendor", "*.css", true)
                 .Include(plugin)
-                .IncludeDirectory("~/Content/plugin/unify_1.3", "*.css", true)
+                .IncludeDirectory("~/Content/plugin/unify_1.3", "*.css", false)
+                .IncludeDirectory("~/Content/plugin/unify_1.3/theme/default", "*.css", false)
+                .IncludeDirectory("~/Content/plugin/unify_1.3/theme/" + Config.ThemeColor, "*.css", false)
                 .IncludeDirectory("~/Content/app", "*.css", true);
             BundleTable.Bundles.Add(bundle);
+
+            
 
             //admin-css
             var adminBundle = new StyleBundle("~/Content/style/admin-css")

@@ -190,6 +190,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\app-admin\style.css" />
     <Content Include="Content\app\about\about-newegg-edi.tpl.html" />
     <Content Include="Content\app\article\common\article-right-sidebar.tpl.html" />
     <Content Include="Content\app\article\detail\article-detail-right-sidebar.js">
@@ -240,12 +241,6 @@
     </Content>
     <Content Include="Content\app-admin\main.controllers.min.js">
       <DependentUpon>main.controllers.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\app-admin\style.css">
-      <DependentUpon>style.less</DependentUpon>
-    </Content>
-    <Content Include="Content\app-admin\style.min.css">
-      <DependentUpon>style.less</DependentUpon>
     </Content>
     <Content Include="Content\app-admin\system\history\history.js">
       <DependentUpon>history.coffee</DependentUpon>
@@ -1304,7 +1299,6 @@
     <Content Include="Content\app\gallery\gallery.coffee" />
     <Content Include="Content\app\gallery\detail\gallery-detail.coffee" />
     <Content Include="Content\common\directives\custom\_ngBindHtmlUnsafe.coffee" />
-    <Content Include="Content\app-admin\style.less" />
     <Content Include="Content\l18n\TranslateCtrl.coffee" />
     <Content Include="Content\l18n\languages\zh-cn.coffee" />
     <Content Include="Content\l18n\languages\en-us.coffee" />

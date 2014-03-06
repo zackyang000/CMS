@@ -26,6 +26,7 @@
     $rootScope.title='404'
     return
   $rootScope.title=$scope.item.Title
+  $scope.$emit("ChannelChange",$scope.item.Group.Channel)
   codeformat()#格式化代码
   #上一篇
   $scope.prevPost = Article.getOnce
