@@ -6,9 +6,9 @@ Blog System
 ## What is this?
 It's a Blog System use the following techniques build:
 
-Front-end: AngularJS(CoffeeScript) + Bootstrap
+Front-end: AngularJS
 
-Back-end: ASP.NET WEB API 2(OData) + Entity Framework 6
+Back-end: ASP.NET WEB API + Entity Framework
 
 ## Why do I do this?
 Because I can.
