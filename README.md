@@ -11,7 +11,7 @@ Front-end: AngularJS(CoffeeScript) + Bootstrap
 Back-end: ASP.NET WEB API 2(OData) + Entity Framework 6
 
 ## Why do I do this?
-For technology research.
+Because I can.
 
 ## Getting started
 
