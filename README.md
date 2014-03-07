@@ -4,7 +4,7 @@ Blog System
 ####<a href="http://www.woshinidezhu.com">Live Demo</a>
 
 ## What is this?
-It's a Blog System use the following techniques build:
+It's a Blog System use the following techniques build
 
 Front-end: AngularJS
 
