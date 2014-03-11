@@ -21,9 +21,8 @@ angular.module("app", ['ngRoute', 'ngSanitize', 'ngAnimate', 'ngCookies', 'l18n'
 ]).run([
   "$location", "$rootScope", function($location, $rootScope) {
     return $rootScope.$on("$routeChangeSuccess", function(event, current, previous) {
-      var _ref, _ref1, _ref2;
-      $rootScope.title = (_ref = (_ref1 = current.$$route) != null ? _ref1.title : void 0) != null ? _ref : '';
-      return $rootScope.showBanner = (_ref2 = current.$$route) != null ? _ref2.showBanner : void 0;
+      var _ref, _ref1;
+      return $rootScope.title = (_ref = (_ref1 = current.$$route) != null ? _ref1.title : void 0) != null ? _ref : '';
     });
   }
 ]);

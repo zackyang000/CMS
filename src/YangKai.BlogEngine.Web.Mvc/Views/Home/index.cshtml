@@ -17,8 +17,8 @@
         <div class="loadingbox" when-route-change>{{'global.loading' | translate}}</div>
         
         <!--=== Top ===-->    
-        <div class="top">
-            <div class="container">         
+        <div class="top" ng-controller="TopController">
+            <div class="container">
                 <ul class="loginbar pull-right">
                     <li>
                         <i class="icon-globe"></i>
@@ -26,9 +26,9 @@
                         <ul class="lenguages" ng-controller="TranslateCtrl">
                             <li ng-class="{active:uses=='en'}">
                                 <a href="#" ng-click="changeLanguage('en')">
-                                    English 
+                                    English
                                     <i class="icon-ok" ng-show="uses=='en'"></i>
-                                </a> 
+                                </a>
                             </li>
                             <li ng-class="{active:uses=='zh'}">
                                 <a href="#" ng-click="changeLanguage('zh')">
@@ -38,15 +38,15 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="devider"></li>   
-                    <li><a href="#" ng-click="login()">Admin</a></li>   
+                    <li class="devider"></li>
+                    <li><a href="#" ng-click="login()">Admin</a></li>
                 </ul>
-            </div>      
+            </div>
         </div>
         <!--=== End Top ===-->    
 
         <!--=== Header ===-->    
-        <div class="header">
+        <div class="header" ng-controller="HeaderController">
             <div class="navbar navbar-default" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
@@ -77,9 +77,9 @@
                         </ul>
                         <div class="search-open">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" class="form-control" placeholder="Search" ng-model="key" ui-keyup="{13:'search()'}">
                                 <span class="input-group-btn">
-                                    <button class="btn-u" type="button">Go</button>
+                                    <button class="btn-u" type="button" ng-click="search()">Go</button>
                                 </span>
                             </div>
                         </div>                

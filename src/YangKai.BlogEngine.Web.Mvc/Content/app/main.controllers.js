@@ -4,18 +4,21 @@ angular.module('main.controllers', ['resource.channels', 'resource.users', "Chan
     account.get().then(function(data) {
       return $scope.User = data;
     });
+    return $scope.$on("ChannelChange", function(event, channel) {
+      return $scope.channelUrl = channel.Url;
+    });
+  }
+]).controller('TopController', [
+  "$scope", "$http", "$location", '$window', "Channel", "account", "$timeout", "channel", function($scope, $http, $location, $window, Channel, account, $timeout, channel) {
+    return $scope.login = function() {
+      return $window.location.href = '/admin/';
+    };
+  }
+]).controller('HeaderController', [
+  "$scope", "$http", "$location", '$window', "Channel", "account", "$timeout", "channel", function($scope, $http, $location, $window, Channel, account, $timeout, channel) {
     channel.get().then(function(data) {
       return $scope.Channels = data;
     });
-    $scope.search = function() {
-      return $location.path("/search/" + $scope.key);
-    };
-    $scope.login = function() {
-      return $window.location.href = '/admin/';
-    };
-    $scope.isActive = function(route) {
-      return route === $location.path();
-    };
     $scope.isActiveChannel = function(channel) {
       if (channel.IsDefault && ($location.path() === "/" || $location.path() === "/list")) {
         return true;
@@ -25,8 +28,11 @@ angular.module('main.controllers', ['resource.channels', 'resource.users', "Chan
       }
       return $location.path().indexOf("/post") > -1 && channel.Url.indexOf($scope.channelUrl) > -1;
     };
-    return $scope.$on("ChannelChange", function(event, channel) {
-      return $scope.channelUrl = channel.Url;
-    });
+    $scope.isActive = function(route) {
+      return route === $location.path();
+    };
+    return $scope.search = function() {
+      return $location.path("/search/" + $scope.key);
+    };
   }
 ]);

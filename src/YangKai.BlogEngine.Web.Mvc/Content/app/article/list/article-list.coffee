@@ -88,8 +88,8 @@
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$rootScope","$window","$routeParams","$location","articles"
-($scope,$rootScope,$window,$routeParams,$location,articles) ->
+["$scope","$rootScope","$window","$routeParams","$location","articles","channel"
+($scope,$rootScope,$window,$routeParams,$location,articles,channel) ->
   $window.scroll(0,0)
 
   $rootScope.title=$routeParams.tag ? $routeParams.group ? $routeParams.channel
@@ -97,7 +97,8 @@
     if $scope.key
       $rootScope.title="Search Result: '#{$scope.key}'"
     else
-      $rootScope.title="Home"
+      channel.getdefault().then (data)->
+        $rootScope.title=data.Name
        
   $scope.list = articles
   $scope.currentPage =$routeParams.p ? 1
