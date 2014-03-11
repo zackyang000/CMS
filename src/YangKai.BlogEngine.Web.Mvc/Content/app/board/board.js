@@ -54,7 +54,6 @@ angular.module('board', ['resource.messages']).config([
       $scope.loading = $translate("global.post");
       $scope.entity.BoardId = UUID.generate();
       return Message.save($scope.entity, function(data) {
-        message.success($translate("board.complete"));
         $scope.list.unshift(data);
         $scope.entity.Content = "";
         progressbar.complete();

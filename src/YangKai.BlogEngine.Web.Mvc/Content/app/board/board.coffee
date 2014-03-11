@@ -46,7 +46,6 @@
     $scope.entity.BoardId=UUID.generate()
     Message.save $scope.entity
     ,(data)->
-      message.success $translate("board.complete")
       $scope.list.unshift(data)
       $scope.entity.Content=""
       progressbar.complete()

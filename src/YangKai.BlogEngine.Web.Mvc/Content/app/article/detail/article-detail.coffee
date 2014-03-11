@@ -86,7 +86,6 @@
     $scope.entity.Post=PostId:$scope.item.PostId
     Comment.save $scope.entity
     ,(data)->
-      message.success $translate("article.comment.complete")
       $scope.item.Comments.push(data)
       $scope.entity.Content=""
       Article.commented id:"(guid'#{$scope.item.PostId}')"

@@ -106,7 +106,6 @@ angular.module('article-detail', ['resource.articles', 'resource.comments']).con
         PostId: $scope.item.PostId
       };
       return Comment.save($scope.entity, function(data) {
-        message.success($translate("article.comment.complete"));
         $scope.item.Comments.push(data);
         $scope.entity.Content = "";
         Article.commented({
