@@ -16,9 +16,57 @@
 <div class="container">
     <div class="row blog-page blog-item">
         <!-- Left Sidebar -->
-        <div class="col-md-9 md-margin-bottom-60">
+        <div class="col-md-offset-2 col-md-8 md-margin-bottom-60">
+            <!-- Comment Form -->
+            <div class="post-comment">
+                <h3>{{'board.content' | translate}}</h3>
+                <form name="form" novalidate ng-submit="save()">
+                    <p bindonce="entity" bo-show="entity.Author">
+                        {{'board.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
+                        <span>
+                            <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'board.hide' | translate}} »</a>
+                            <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'board.change' | translate}} »</a>
+                        </span>
+                    </p>
+                    <div ng-show="editmode">
+                        <div class="row form-group">
+                            <div class="col-md-7 col-md-offset-0">
+                                <label>{{'board.name' | translate}} <span class="color-red">*</span></label>
+                                <input class="form-control" name="Author" type="text" ng-model="entity.Author" placeholder="{{'board.name' | translate}}*" required />
+                                <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
+                                    <span ng-show="form.Author.$error.required">{{'board.nameValidTxt' | translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-7 col-md-offset-0">
+                                <label>{{'board.email' | translate}}</label>
+                                <input class="form-control" name="Email" type="text" ng-model="entity.Email" placeholder="{{'board.email' | translate}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-11 col-md-offset-0">
+                            <label>{{'board.content' | translate}}</label>
+                            <textarea name="Content" class="form-control" rows="8" ng-model="entity.Content" required></textarea>
+                            <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
+                                <span ng-show="form.Content.$error.required">{{'board.contentValidTxt' | translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn-u" type="submit" ng-disabled="loading">
+                            {{'board.submit' | translate}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- End Comment Form -->
+
+            <hr>
+
             <!-- Recent Comments -->
-            <div class="media" ng-repeat="item in list | orderBy:'CreateDate'" ng-hide="item.IsDeleted">
+            <div class="media" ng-repeat="item in list | orderBy:'-CreateDate'" ng-hide="item.IsDeleted">
                 <span class="pull-left">
                     <img class="media-object" ng-src="{{item.Avatar}}" alt="" />
                 </span>
@@ -37,54 +85,6 @@
                 <hr/>
             </div>
             <!-- End Recent Comments -->
-            
-            <hr>
-
-            <!-- Comment Form -->
-            <div class="post-comment">
-                <h3>{{'board.content' | translate}}</h3>
-                <form name="form" novalidate ng-submit="save()">
-                    <p bindonce="entity" bo-show="entity.Author">
-                        {{'board.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
-                        <span>
-                            <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'board.hide' | translate}} »</a>
-                            <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'board.change' | translate}} »</a>
-                        </span>
-                    </p>
-                    <div ng-show="editmode">
-                        <div class="row form-group">
-                            <div class="col-md-7 col-md-offset-0">
-                                <label>{{'board.name' | translate}} <span class="color-red">*</span></label>
-                                <input class="form-control" name="Author" type="text" ng-model="entity.Author" placeholder="{{'board.name' | translate}}*" required/>
-                                <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
-                                    <span ng-show="form.Author.$error.required">{{'board.nameValidTxt' | translate}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-7 col-md-offset-0">
-                                <label>{{'board.email' | translate}}</label>
-                                <input class="form-control" name="Email" type="text" ng-model="entity.Email" placeholder="{{'board.email' | translate}}" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-md-11 col-md-offset-0">
-                            <label>{{'board.content' | translate}}</label>
-                            <textarea name="Content" class="form-control" rows="8"  ng-model="entity.Content" required></textarea>
-                            <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
-                                <span ng-show="form.Content.$error.required">{{'board.contentValidTxt' | translate}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn-u" type="submit" ng-disabled="loading">
-                            {{'board.submit' | translate}}
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <!-- End Comment Form -->
         </div>
         <!-- End Left Sidebar -->
 
