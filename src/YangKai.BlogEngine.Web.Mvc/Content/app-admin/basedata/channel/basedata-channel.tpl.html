@@ -20,6 +20,7 @@
     <table class="table table-hover table-striped table-bordered">
         <thead>
             <tr>
+                <th>Default</th>
                 <th>Name</th>
                 <th>Url</th>
                 <th>Description</th>
@@ -29,6 +30,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="item in list.value">
+                <td><span ng-show="item.IsDefault"><i class="icon-ok"></i></span></td>
                 <td>{{item.Name}}</td>
                 <td>{{item.Url}}</td>
                 <td>{{item.Description}}</td>
@@ -71,6 +73,15 @@
                             <label class="col-lg-3 control-label">Description</label>
                             <div class="col-lg-9">
                                 <textarea class="form-control" ng-model="entity.Description" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"></label>
+                            <div class="col-lg-9">
+                                <label>
+                                    <input type="checkbox" class="ace" ng-model="entity.IsDefault" />
+                                    <span class="lbl">Default</span>
+                                </label>
                             </div>
                         </div>
                     </div>

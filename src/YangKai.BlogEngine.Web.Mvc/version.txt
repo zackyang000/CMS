@@ -1,4 +1,13 @@
-﻿v1.30.0004 2014-01-30
+﻿v1.30.0000
+前台页面支持多种主题.
+导航添加active效果.
+移除footer和copyright.
+调整文章内容H1~H6字体大小,超链接增加颜色.
+调整留言板顺序.
+修复搜索功能.
+[admin]channel增加IsDefault设置.
+
+v1.30.0008 2014-01-30
 增加版本更新提醒及历史更新查看功能.
 前台页面基于Unify - Bootstrap 3 Template重制所有页面.
 [admin]Channel增加IsDefault字段, 用于设置该Channel是否默认在首页显示.
