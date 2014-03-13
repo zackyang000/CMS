@@ -6,23 +6,23 @@
   launchdir = if isdebug then "debug" else "dist"
 
   jsfiles = [
-    "#{launchdir}/src/vendor/**/*.js"
-    "#{launchdir}/src/common/**/*.js"
-    "#{launchdir}/src/app/**/*.js"
+    "#{launchdir}/vendor/**/*.js"
+    "#{launchdir}/common/**/*.js"
+    "#{launchdir}/app/**/*.js"
 
-    "#{launchdir}/src/plugin/unify*/**/*.js"
-    "#{launchdir}/src/plugin/select2/select2.js"
+    "#{launchdir}/plugin/unify*/**/*.js"
+    "#{launchdir}/plugin/select2/select2.js"
 
-    "#{launchdir}/src/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
-    "#{launchdir}/src/plugin/syntaxhighlighter_3.0.83/scripts/*.js",
+    "#{launchdir}/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
+    "#{launchdir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js",
   ]
 
   cssfiles = [
-    "#{launchdir}/src/vendor/**/*.css"
-    "#{launchdir}/src/common/**/*.css"
-    "#{launchdir}/src/app/**/*.css"
-    "#{launchdir}/src/plugin/select2/select2.css"
-    "#{launchdir}/src/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
+    "#{launchdir}/vendor/**/*.css"
+    "#{launchdir}/common/**/*.css"
+    "#{launchdir}/app/**/*.css"
+    "#{launchdir}/plugin/select2/select2.css"
+    "#{launchdir}/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
   ]
 
   #压缩后的js
@@ -83,7 +83,7 @@
         ]
         tasks: [
           'newer:copy:normalFile'
-          'scriptlinker'
+          'sails-linker'
         ]
         options:
           event: ['all']
@@ -93,7 +93,7 @@
         ]
         tasks: [
           'newer:coffee'
-          'scriptlinker'
+          'sails-linker'
         ]
         options:
           event: ['all']
@@ -103,7 +103,7 @@
         ]
         tasks: [
           'newer:less'
-          'scriptlinker'
+          'sails-linker'
         ]
         options:
           event: ['all']
@@ -149,12 +149,12 @@
         dest: mincss
 
     #替换标签
-    scriptlinker:
+    'sails-linker':
       js:
         options:
           startTag: "<!--SCRIPTS-->"
           endTag: "<!--SCRIPTS END-->"
-          fileTmpl: "<script src='/%s\'></" + "script>\r\n"
+          fileTmpl: "<script src='/%s\'></" + "script>"
           appRoot: "#{launchdir}/"
         files:
           "<%= dir %>/index.html": if isdebug then jsfiles else '<%= config.dist %>/min/app.min.js'
@@ -162,7 +162,7 @@
         options:
           startTag: "<!--STYLES-->"
           endTag: "<!--STYLES END-->"
-          fileTmpl: "<link href='/%s' rel='stylesheet' />\r\n"
+          fileTmpl: "<link href='/%s' rel='stylesheet' />"
           appRoot: "#{launchdir}/"
         files:
           "<%= dir %>/index.html": if isdebug then cssfiles else '<%= config.dist %>/min/*.css'
@@ -249,7 +249,7 @@
         "copy:all"
         "coffee"
         "less"
-          "scriptlinker"
+        "sails-linker"
       ]
     else
       grunt.task.run [
@@ -261,7 +261,7 @@
         "cssmin"
         "rev"
         #"replace:dist"                   #去掉严格模式（uglify没有提供此option）
-        "scriptlinker"
+        "sails-linker"
         "replace:initscript"
         "replace:loadscript"
         "inline_angular_templates"  #打包html到index.html
