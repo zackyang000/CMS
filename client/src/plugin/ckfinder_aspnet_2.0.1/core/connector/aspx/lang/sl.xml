@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the Slovenian language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>Prišlo je do napake. (Napaka %1)</errorUnknown>
+	<errors>
+		<error number="10">Napačen ukaz.</error>
+		<error number="11">V poizvedbi ni bil jasen tip (resource type).</error>
+		<error number="12">Tip datoteke ni primeren.</error>
+		<error number="102">Napačno ime mape ali datoteke.</error>
+		<error number="103">Vašega ukaza se ne da izvesti zaradi težav z avtorizacijo.</error>
+		<error number="104">Vašega ukaza se ne da izvesti zaradi težav z nastavitvami pravic v datotečnem sistemu.</error>
+		<error number="105">Napačna končnica datoteke.</error>
+		<error number="109">Napačna zahteva.</error>
+		<error number="110">Neznana napaka.</error>
+		<error number="115">Datoteka ali mapa s tem imenom že obstaja.</error>
+		<error number="116">Mapa ni najdena. Prosimo osvežite okno in poskusite znova.</error>
+		<error number="117">Datoteka ni najdena. Prosimo osvežite seznam datotek in poskusite znova.</error>
+		<error number="118">Začetna in končna pot je ista.</error>
+		<error number="201">Datoteka z istim imenom že obstaja. Naložena datoteka je bila preimenovana v "%1"</error>
+		<error number="202">Neprimerna datoteka.</error>
+		<error number="203">Datoteka je prevelika in zasede preveč prostora.</error>
+		<error number="204">Naložena datoteka je okvarjena.</error>
+		<error number="205">Na strežniku ni na voljo začasna mapa za prenos datotek.</error>
+		<error number="206">Nalaganje je bilo prekinjeno zaradi varnostnih razlogov. Datoteka vsebuje podatke, ki spominjajo na HTML kodo.</error>
+		<error number="207">Naložena datoteka je bila preimenovana v "%1"</error>
+		<error number="300">Premikanje datotek(e) ni uspelo.</error>
+		<error number="301">Kopiranje datotek(e) ni uspelo.</error>
+		<error number="500">Brskalnik je onemogočen zaradi varnostnih razlogov. Prosimo kontaktirajte upravljalca spletnih strani.</error>
+		<error number="501">Ni podpore za majhne sličice (predogled).</error>
+	</errors>
+</messages>

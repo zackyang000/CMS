@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the Russian language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>Невозможно завершить запрос. (Ошибка %1)</errorUnknown>
+	<errors>
+		<error number="10">Неверная команда.</error>
+		<error number="11">Тип ресурса не указан в запросе.</error>
+		<error number="12">Неверный запрошенный тип ресурса.</error>
+		<error number="102">Неверное имя файла или папки.</error>
+		<error number="103">Невозможно завершить запрос из-за ограничений авторизации.</error>
+		<error number="104">Невозможно завершить запрос из-за ограничения разрешений файловой системы.</error>
+		<error number="105">Неверное расширение файла.</error>
+		<error number="109">Неверный запрос.</error>
+		<error number="110">Неизвестная ошибка.</error>
+		<error number="115">Файл или папка с таким именем уже существует.</error>
+		<error number="116">Папка не найдена. Пожалуйста, обновите вид папок и попробуйте еще раз.</error>
+		<error number="117">Файл не найден. Пожалуйста, обновите список файлов и попробуйте еще раз.</error>
+		<error number="118">Исходное расположение файла совпадает с указанным.</error>
+		<error number="201">Файл с таким именем уже существует. Загруженный файл был переименован в "%1"</error>
+		<error number="202">Неверный файл</error>
+		<error number="203">Неверный файл. Размер файла слишком большой.</error>
+		<error number="204">Загруженный файл поврежден.</error>
+		<error number="205">Недоступна временная папка для загрузки файлов на сервер.</error>
+		<error number="206">Загрузка отменена из-за соображений безопасности. Файл содержит похожие на HTML данные.</error>
+		<error number="207">Загруженный файл был переименован в "%1"</error>
+		<error number="300">Произошла ошибка при перемещении файла(ов).</error>
+		<error number="301">Произошла ошибка при копировании файла(ов).</error>
+		<error number="500">Браузер файлов отключен из-за соображений безопасности. Пожалуйста, сообщите вашему системному администратру и проверьте конфигурационный файл CKFinder.</error>
+		<error number="501">Поддержка миниатюр отключена.</error>
+	</errors>
+</messages>

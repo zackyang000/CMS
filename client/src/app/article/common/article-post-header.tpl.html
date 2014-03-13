@@ -1,0 +1,37 @@
+﻿<div class="blog-post-tags">
+    <ul class="list-unstyled list-inline blog-info">
+        <li><i class="icon-calendar"></i> {{item.PubDate | date:"yyyy/MM/dd"}}</li>
+        <li>
+            <i class="icon-bookmark"></i> 
+            <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}">{{item.Group.Name}}</a>
+        </li>
+        <li><i class="icon-pencil"></i> {{item.CreateUser}}</li>
+        <li><i class="icon-comments"></i> {{'article.comments_count' | translate:item}}</li>
+        <li><i class="icon-eye-open"></i> {{'article.views_count' | translate:item}}</li>
+        <li ng-show="item.Source">
+            <i class="icon-external-link"></i> 
+            <a  ng-href="{{item.Source}}" title="{{item.Source}}">{{'article.source' | translate}}</a>
+        </li>
+        <li ng-show="item.QrCode" class="dropdown">
+            <i data-toggle="dropdown" class="icon-qrcode"></i>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li>
+                    <img src="{{item.QrCode}}" width="200" height="200" alt="qrcode" />
+                </li>
+            </ul>
+        </li>
+        <li ng-show="User.IsAdmin">
+            <i class="icon-edit"></i>
+            <a href="JavaScript:void(0)" ng-click="edit(item)">Edit</a>
+        </li>
+    </ul>
+    <ul class="list-unstyled list-inline blog-tags" ng-show="item.Tags.length>0">
+        <li>
+            <i class="icon-tags"></i> 
+            <a ng-repeat="tag in item.Tags" ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}">{{tag.Name}}</a> 
+        </li>
+    </ul>   
+</div>
+<div class="blog-img" ng-if="item.Thumbnail">
+    <img class="img-responsive" ng-src="{{item.Thumbnail}}" alt="" />
+</div>

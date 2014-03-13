@@ -1,0 +1,25 @@
+﻿{
+  "name": "neweggplatform",
+  "version": "0.2.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-scriptlinker": "~0.1.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "connect-livereload": "~0.3.1",
+    "matchdep": "~0.3.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-newer": "~0.6.0",
+    "grunt-open": "~0.2.2",
+    "grunt-contrib-less": "~0.8.3",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-rev": "~0.1.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-text-replace": "~0.3.10",
+    "connect-modrewrite": "~0.5.11",
+    "grunt-inline-angular-templates": "~0.1.5"
+  }
+}

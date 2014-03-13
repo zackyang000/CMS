@@ -1,0 +1,46 @@
+﻿.issue .issue-statu .nav-pills > li.active > a, 
+.issue .issue-statu .nav-pills > li.active > a:hover, 
+.issue .issue-statu .nav-pills > li.active > a:focus {
+    background-color: #0072BC;
+}
+
+.issue .issue-user .nav-pills > li.active > a, 
+.issue .issue-user .nav-pills > li.active > a:hover, 
+.issue .issue-user .nav-pills > li.active > a:focus {
+    background-color: #bc1c48;
+}
+
+.issue .issue-project .nav-pills > li.active > a, 
+.issue .issue-project .nav-pills > li.active > a:hover, 
+.issue .issue-project .nav-pills > li.active > a:focus {
+    background-color: #01a31c;
+}
+
+.issue .nav > li > a {
+    padding: 3px 15px;
+}
+.issue .nav-pills > li > a {
+    border-radius: 0;
+}
+
+.issue .badge {
+    margin-top: 1px;
+    margin-right: -10px;
+}
+
+.issue-side {
+    float: left;
+    width: 250px;
+}
+
+.issue-main {
+    margin-left: 270px;
+}
+
+.issue-footer {
+    color: #999;
+}
+
+.issue-footer span{
+    margin-right: 10px;
+}

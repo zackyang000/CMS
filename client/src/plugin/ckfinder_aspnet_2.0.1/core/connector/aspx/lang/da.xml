@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckfinder.com/license
+
+ Defines the object, for the Danish language. This is the base file for all translations.
+-->
+<messages>
+	<errorUnknown>Det var ikke muligt at fuldføre handlingen. (Fejl: %1)</errorUnknown>
+	<errors>
+		<error number="10">Ugyldig handling.</error>
+		<error number="11">Ressourcetypen blev ikke angivet i anmodningen.</error>
+		<error number="12">Ressourcetypen er ikke gyldig.</error>
+		<error number="102">Ugyldig fil eller mappenavn.</error>
+		<error number="103">Det var ikke muligt at fuldføre handlingen på grund af en begrænsning i rettigheder.</error>
+		<error number="104">Det var ikke muligt at fuldføre handlingen på grund af en begrænsning i filsystem rettigheder.</error>
+		<error number="105">Ugyldig filtype.</error>
+		<error number="109">Ugyldig anmodning.</error>
+		<error number="110">Ukendt fejl.</error>
+		<error number="115">En fil eller mappe med det samme navn eksisterer allerede.</error>
+		<error number="116">Mappen blev ikke fundet. Opdatér listen eller prøv igen.</error>
+		<error number="117">Filen blev ikke fundet. Opdatér listen eller prøv igen.</error>
+		<error number="118">Originalplacering og destination er ens</error>
+		<error number="201">En fil med det samme filnavn eksisterer allerede. Den uploadede fil er blevet omdøbt til "%1"</error>
+		<error number="202">Ugyldig fil.</error>
+		<error number="203">Ugyldig fil. Filstørrelsen er for stor.</error>
+		<error number="204">Den uploadede fil er korrupt.</error>
+		<error number="205">Der er ikke en midlertidig mappe til upload til rådighed på serveren.</error>
+		<error number="206">Upload annulleret af sikkerhedsmæssige årsager. Filen indeholder HTML-lignende data.</error>
+		<error number="207">Den uploadede fil er blevet omdøbt til "%1"</error>
+		<error number="300">Flytning af fil(er) fejlede.</error>
+		<error number="301">Kopiering af fil(er) fejlede.</error>
+		<error number="500">Filbrowseren er deaktiveret af sikkerhedsmæssige årsager. Kontakt systemadministratoren eller kontrollér CKFinders konfigurationsfil.</error>
+		<error number="501">Understøttelse af thumbnails er deaktiveret.</error>
+	</errors>
+</messages>

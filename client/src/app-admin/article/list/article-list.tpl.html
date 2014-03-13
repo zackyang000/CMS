@@ -1,0 +1,53 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li class="active">Article</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="text-right">
+        <a class="btn btn-primary btn-sm" href="/admin/article/new">
+            <i class="icon-plus"></i> New
+        </a>
+    </div>
+    <div class="hr hr-10 dotted hr-double"></div>
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Thumbnail</th>
+                <th>Name</th>
+                <th>User</th>
+                <th>Channel</th>
+                <th>Group</th>
+                <th>Tags</th>
+                <th>Comments</th>
+                <th>Date</th>
+                <th class="action"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in list.value" style="height: 51px;">
+                <td><img style="width: 24px;height: 15px;" ng-src="{{item.Thumbnail}}" ng-show="item.Thumbnail" /></td>
+                <td><a href="/admin/article('{{item.PostId}}')">{{item.Title}}</a></td>
+                <td>{{item.CreateUser}}</td>
+                <td>{{item.Group.Channel.Name}}</td>
+                <td>{{item.Group.Name}}</td>
+                <td>
+                    <span ng-repeat="tag in item.Tags">
+                        <span ng-hide="$first">,</span>
+                        <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
+                    </span>
+                </td>
+                <td>{{item.ReplyCount}}</td>
+                <td>{{item.PubDate | date:"yyyy.MM.dd"}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div odata-pager="list" class="text-center"></div>
+</div>

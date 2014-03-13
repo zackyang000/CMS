@@ -1,0 +1,35 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.archive' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.archive' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div id="archives">
+        <ul class="list-unstyled">
+            <li ng-repeat="item in list | orderBy:'-date'">
+                <h3 style="border-bottom: 1px solid #999">
+                    {{item.date}}
+                    <small>({{item.posts.length}})</small>
+                </h3>
+                <ul class="list-unstyled">
+                    <li ng-repeat="post in item.posts | orderBy:'-PubDate'">
+                        {{post.PubDate | date:"yyyy-MM-dd"}}
+                        »  
+                        <a href="/post/{{post.Url}}" title="{{post.channel}} - {{post.group}}">{{post.Title}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--=== End Content Part ===-->

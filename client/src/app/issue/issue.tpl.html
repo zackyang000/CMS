@@ -1,0 +1,208 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.issue' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.issue' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="issue">
+        <div class="clearfix">
+            <div class="issue-side">
+                <div class="issue-statu">
+                    <h4>Status</h4>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li ng-class="{active:filter.Statu==''}">
+                            <a href="JavaScript:void(0)" ng-init="filter.Statu='Open'" ng-click="filter.Statu='';setGroup()">
+                                <span class="pull-right">{{count.statu}}</span>
+                                All
+                            </a>
+                        </li>
+                        <li ng-class="{active:filter.Statu=='Open'}">
+                            <a href="JavaScript:void(0)" ng-click="filter.Statu='Open';setGroup()">
+                                Open
+                                <span class="pull-right">{{statu['Open']}}</span>
+                            </a>
+                        </li>
+                        <li ng-class="{active:filter.Statu=='Closed'}">
+                            <a href="JavaScript:void(0)" ng-click="filter.Statu='Closed';setGroup()">
+                                Closed
+                                <span class="pull-right">{{statu['Closed']}}</span>
+                            </a>
+                        </li>
+                        <li ng-class="{active:filter.Statu=='Cancel'}">
+                            <a href="JavaScript:void(0)" ng-click="filter.Statu='Cancel';setGroup()">
+                                Cancel
+                                <span class="pull-right">{{statu['Cancel']}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <hr/>
+                <div class="issue-user">
+                    <h4>Date</h4>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li ng-class="{active:filterDate==''}">
+                            <a href="JavaScript:void(0)" ng-init="filterDate=''" ng-click="filterDate='';setGroup()">
+                                <span class="pull-right">{{count.date}}</span>
+                                All
+                            </a>
+                        </li>
+                        <li ng-class="{active:filterDate=='day'}">
+                            <a href="JavaScript:void(0)" ng-click="filterDate='day';setGroup()">
+                                <span class="pull-right">{{date['day']}}</span>
+                                Day
+                            </a>
+                        </li>
+                        <li ng-class="{active:filterDate=='week'}">
+                            <a href="JavaScript:void(0)" ng-click="filterDate='week';setGroup()">
+                                <span class="pull-right">{{date['week']}}</span>
+                                Week
+                            </a>
+                        </li>
+                        <li ng-class="{active:filterDate=='month'}">
+                            <a href="JavaScript:void(0)" ng-click="filterDate='month';setGroup()">
+                                <span class="pull-right">{{date['month']}}</span>
+                                Month
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <hr/>
+                <div class="issue-project">
+                    <h4>Projects</h4>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li ng-class="{active:filter.Project==''}">
+                            <a href="JavaScript:void(0)" ng-init="filter.Project=''" ng-click="filter.Project='';setGroup()">
+                                <span class="pull-right">{{count.project}}</span>
+                                All
+                            </a>
+                        </li>
+                        <li ng-repeat="item in project" ng-class="{active:filter.Project==item.key}">
+                            <a href="JavaScript:void(0)" ng-click="filter.Project=item.key;setGroup()">
+                                {{item.key}}
+                                <span class="pull-right">{{item.value}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="issue-main">
+                <p class="text-right">
+                    <button type="button" class="btn btn-primary" ng-click="add()">
+                        New issue
+                    </button>
+                </p>
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="item in list | filter:filter | filterByDate:filterDate">
+                            <h5>
+                                <span ng-show="item.Statu=='Open'" class="label label-success">Open</span>
+                                <span ng-show="item.Statu=='Closed'" class="label label-warning">Closed</span>
+                                <span ng-show="item.Statu=='Cancel'" class="label label-danger">Cancel</span>
+                                <a href="JavaScript:void(0)" ng-click="item.show=!item.show">{{item.Title}}</a>
+                                <small class="pull-right" ng-show="User.IsAdmin && item.show" ng-click="edit(item)">
+                                    <a href="JavaScript:void(0)">
+                                        <i class="icon-edit"></i>
+                                        Edit
+                                    </a>
+                                </small>
+                            </h5>
+                            <div ng-show="item.show">
+                                <p ng-bind-html-unsafe="item.Content | line"></p>
+                                <div ng-show="item.Result" class="text-success">
+                                    <div><strong>{{item.LastEditUser}}:</strong></div>
+                                    <p ng-bind-html-unsafe="item.Result | line"></p>
+                                </div>
+                                <div ng-show="User.IsAdmin && item.edit" class="alert alert-success">
+                                    <p>Title</p>
+                                    <p><input type="text" class="form-control" ng-model="item.title" /></p>
+                                    <p>Content</p>
+                                    <p><textarea class="form-control" ng-model="item.content" rows="3"></textarea></p>
+                                    <p>Result</p>
+                                    <p><textarea class="form-control" ng-model="item.result" rows="3"></textarea></p>
+                                    <p>Statu</p>
+                                    <p>
+                                        <select ng-model="item.statu" class="form-control">
+                                            <option value="Open">Open</option>
+                                            <option value="Closed">Closed</option>
+                                            <option value="Cancel">Cancel</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <button class="btn btn-success btn-sm" type="button" ng-click="handle(item)">Submit Comment</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <small class="issue-footer">
+                                <span>
+                                    Create by {{item.Author}} {{item.CreateDate | fromNow}}
+                                </span>
+                                <span>
+                                    <i class="icon-flag"></i>
+                                    {{item.Project}}
+                                </span>
+                            </small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div modal="editDialog" close="editDialog = false" options="{backdrop: true,dialogFade:true}">
+            <div class="modal-dialog">
+                <form name="form" class="modal-content" ng-submit="save()">
+                    <div class="modal-header">
+                        New issue
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Author</label>
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control" ng-model="entity.Author" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Project</label>
+                                <div class="col-lg-9">
+                                    <select class="form-control" ng-model="entity.Project" required>
+                                        <option ng-repeat="item in projects" value="{{item}}">{{item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Title</label>
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control" ng-model="entity.Title" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Content</label>
+                                <div class="col-lg-9">
+                                    <textarea class="form-control" ng-model="entity.Content" required rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-disabled="form.$invalid || loading">
+                            Submit new issue
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--=== End Content Part ===-->
+
+
