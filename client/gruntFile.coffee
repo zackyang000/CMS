@@ -1,6 +1,4 @@
 ﻿module.exports = (grunt) ->
-  config = config || {}
-  config.SiteName='iShare'
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
 
@@ -250,9 +248,10 @@
         src: "<%= dir %>/index.html"
         overwrite: true
         replacements: [
-          from: '<%CONFIG_SITE_NAME%>'
-          to: config.SiteName
+          from: ''
+          to: ''
         ]
+
     #打包html
     inline_angular_templates:
       dist:
@@ -281,7 +280,6 @@
         "coffee"
         "less"
         "sails-linker"
-        "replace"
       ]
     else
       grunt.task.run [
@@ -293,7 +291,6 @@
         "cssmin"
         "rev"
         "sails-linker"
-        "replace"
         "inline_angular_templates"  #打包html到index.html
         "clean:redundant"           #清空release目录多余的文件
       ]

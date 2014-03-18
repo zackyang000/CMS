@@ -1,6 +1,6 @@
 ﻿angular.module("resource.channels", ["ngResource"])
 .factory "Channel", ['$resource',($resource) ->
-  $resource "/odata/Channel:id/:action", {id:'@id',action:'@action'},
+  $resource "#{config.baseAddress}/odata/Channel:id/:action", {id:'@id',action:'@action'},
     query:
       method: "GET"
       params:

@@ -6,9 +6,10 @@
   account.get().then (data) ->
     $scope.User=data
 
-  $scope.$on("ChannelChange",(event, channel) ->
+  $scope.$on "ChannelChange",(event, channel) ->
     $scope.channelUrl = channel.Url
-  )
+
+  $scope.config = config
 ])
 
 .controller('TopController',

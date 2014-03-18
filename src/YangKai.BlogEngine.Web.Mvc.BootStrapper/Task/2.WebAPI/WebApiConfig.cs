@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Formatting;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.OData.Builder;
 using Bootstrap.Extensions.StartupTasks;
 using Microsoft.Data.Edm;
@@ -35,9 +36,11 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new {id = RouteParameter.Optional}
                 );
+
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
         }
 
         private void SetAction(ODataConventionModelBuilder modelBuilder)

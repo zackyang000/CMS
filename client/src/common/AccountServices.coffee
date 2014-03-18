@@ -2,7 +2,7 @@
 .factory "account", ['$http','$q',($http,$q) ->
   get: ->
     deferred = $q.defer()
-    $http.get("/admin/getuser",cache:true)
+    $http.get("#{config.baseAddress}/api/admin/get",cache:true)
       .success (data) ->
         deferred.resolve data
       .error (data) ->

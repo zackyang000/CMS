@@ -1,6 +1,6 @@
 ﻿angular.module("resource.messages", ["ngResource"])
 .factory "Message", ['$resource',($resource) ->
-  $resource "/odata/Board:id/:action", {id:'@id',action:'@action'},
+  $resource "#{config.baseAddress}/odata/Board:id/:action", {id:'@id',action:'@action'},
     query:
       method:"GET"
       params:

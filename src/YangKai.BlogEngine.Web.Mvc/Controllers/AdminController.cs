@@ -1,25 +1,15 @@
 ﻿using System.Web.Http;
 using System.Web.Mvc;
+using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : ApiController
     {
-        [UserAuthorizeForPage]
-        public ActionResult Index()
+        public User Get()
         {
-            return View();
-        }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        public JsonResult GetUser()
-        {
-            return Json(Current.User,JsonRequestBehavior.AllowGet);
+            return Current.User;
         }
     }
 }

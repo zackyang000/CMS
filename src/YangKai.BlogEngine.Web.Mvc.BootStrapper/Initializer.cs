@@ -23,7 +23,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                     .Then<WebApiConfig>()
                     .Then<RoutesConfig>()
                     .Then<FiltersConfig>()
-                    .Then<BundlesConfig>()
                 ).Start();
         }
     }
