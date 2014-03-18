@@ -8,21 +8,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string _escaped_fragment_)
+        public ActionResult Index()
         {
-            var channels = Proxy.Repository<Channel>().GetAll(p => !p.IsDeleted).ToList();
-            return View(channels);
-        }
-
-        public ActionResult SEO()
-        {
-            var data = Proxy.Repository<Post>().GetAll(p => !p.IsDeleted).OrderByDescending(p => p.CreateDate).ToList();
-            return View("google-list",data);
-        }
-
-        public ActionResult Config()
-        {
-            return Json(new {a = "1"});
+            return View();
         }
     }
 }

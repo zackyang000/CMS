@@ -6,15 +6,35 @@
   account.get().then (data) ->
     $scope.User=data
 
-  channel.get().then (data) ->
-    $scope.Channels=data
+  $scope.$on("ChannelChange",(event, channel) ->
+    $scope.channelUrl = channel.Url
+  )
+])
 
-    #TODO: 改为指令初始化nav dropdown
-    #$timeout((->$('[data-hover="dropdown"]').dropdownHover()),100)
-
-  $scope.search = ->
-    $location.path("/search/#{$scope.key}")
-
+.controller('TopController',
+["$scope","$http","$location",'$window',"Channel" ,"account","$timeout","channel"
+($scope,$http,$location,$window,Channel,account,$timeout,channel) ->
   $scope.login = ->
     $window.location.href='/admin/'
+])
+
+.controller('HeaderController',
+["$scope","$http","$location",'$window',"Channel" ,"account","$timeout","channel"
+($scope,$http,$location,$window,Channel,account,$timeout,channel) ->
+  channel.get().then (data) ->
+    $scope.Channels=data
+    
+  $scope.isActiveChannel = (channel) ->
+    #home page
+    return true if channel.IsDefault && ($location.path() == "/" || $location.path() == "/list")
+    #article list
+    return true if $location.path().indexOf(channel.Url) > -1
+    #article detail
+    return $location.path().indexOf("/post") > -1 && channel.Url.indexOf($scope.channelUrl) > -1
+  
+  $scope.isActive = (route) ->  
+    route == $location.path()
+    
+  $scope.search = ->
+    $location.path("/search/#{$scope.key}")
 ])

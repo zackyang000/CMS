@@ -61,7 +61,6 @@
 /*Blog Item Page
 ------------------------------------*/
 .blog-item .media img {
-	top: 3px;
 	width: 54px;
 	height: 54px;
 	position: relative;
@@ -78,6 +77,10 @@
 	color: #555;
 	font-size: 17px;
 	position: relative;
+}
+
+.blog-item .media a {
+    text-decoration: initial;
 }
 
 .blog-item .media h4.media-heading span {

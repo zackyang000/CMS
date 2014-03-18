@@ -9,10 +9,11 @@
       resolve:
         messages: ['$q','Message',($q,Message)->
           deferred = $q.defer()
+          debugger
           Message.queryOnce 
             $filter:'IsDeleted eq false'
           , (data) -> 
-            for item in data
+            for item in data.value
               if !item.Avatar
                 if item.Email
                   item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
@@ -45,7 +46,6 @@
     $scope.entity.BoardId=UUID.generate()
     Message.save $scope.entity
     ,(data)->
-      message.success $translate("board.complete")
       $scope.list.unshift(data)
       $scope.entity.Content=""
       progressbar.complete()

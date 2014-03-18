@@ -1,0 +1,35 @@
+﻿.article-detail .sider {
+  position: relative;
+  padding: 45px 15px 15px;
+  margin: 0 -15px 15px;
+  background-color: #fafafa;
+  border-color: #e5e5e5 #eee #eee;
+  border-style: solid;
+  border-width: 1px 0;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #fff;
+  border-width: 1px;
+  border-color: #ddd;
+  border-radius: 4px 4px 0 0;
+  box-shadow: none;
+}
+.article-detail .sider > div:first-child {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.article-detail .sider.has-error {
+  border-color: #b94a48;
+}
+.article-detail .sider.has-error > div:first-child {
+  color: #b94a48;
+}
+.article-detail .form-group.has-error span[class*="cke_editor_"] {
+  border-color: #b94a48;
+}

@@ -21,7 +21,17 @@ namespace YangKai.BlogEngine.Common
                 return Convert.ToBoolean(GetConfig("UseNeweggAccount"));
             }
         }
-        
+
+        /// <summary>
+        /// 主题颜色 (可选:default, blue, light, orange, red)
+        /// </summary>
+        public static string ThemeColor
+        {
+            get
+            {
+                return GetConfig("ThemeColor");
+            }
+        }
 
         public class Path
         {

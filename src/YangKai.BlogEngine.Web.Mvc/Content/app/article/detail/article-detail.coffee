@@ -26,6 +26,7 @@
     $rootScope.title='404'
     return
   $rootScope.title=$scope.item.Title
+  $scope.$emit("ChannelChange",$scope.item.Group.Channel)
   codeformat()#格式化代码
   #上一篇
   $scope.prevPost = Article.getOnce
@@ -85,7 +86,6 @@
     $scope.entity.Post=PostId:$scope.item.PostId
     Comment.save $scope.entity
     ,(data)->
-      message.success $translate("article.comment.complete")
       $scope.item.Comments.push(data)
       $scope.entity.Content=""
       Article.commented id:"(guid'#{$scope.item.PostId}')"

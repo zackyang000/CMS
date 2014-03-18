@@ -33,6 +33,12 @@
 ])
 .run(["$location", "$rootScope", ($location, $rootScope) ->
   $rootScope.$on "$routeChangeSuccess", (event, current, previous) ->
-    $rootScope.title = current.$$route.title ? ''
-    $rootScope.showBanner = current.$$route.showBanner
+    $rootScope.title = current.$$route?.title ? ''
+    #todo
+    #todo
+    #todo
+    #todo
+    #todo
+    #todo
+    
 ])

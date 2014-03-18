@@ -1,0 +1,461 @@
+a:focus, 
+a:hover, 
+a:active {
+	color: #3498db;
+}
+
+.color-green {
+	color: #3498db;
+}
+
+a.read-more:hover { 
+	color:#3498db; 
+}
+
+.linked:hover {
+	color:#3498db;
+}
+
+/*Sliders
+------------------------------------*/
+/*Main Parallax Sldier*/
+.da-slide h2 i {
+	background:url(../../plugins/parallax-slider/img/bg-heading-blue.png) repeat;
+}
+
+/*Sequence Parallax Sldier*/
+.sequence-inner {
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#deeffc));
+  background: -webkit-linear-gradient(#fff, #deeffc);
+  background: -moz-linear-gradient(#fff, #deeffc);
+  background: -ms-linear-gradient(#fff, #deeffc);
+  background: -o-linear-gradient(#fff, #deeffc);
+  background: linear-gradient(#fff, #deeffc)
+}
+
+#sequence-theme h2 {
+	background:rgba(52, 152, 219, 0.8);
+}
+
+#sequence-theme .info p {
+	background:rgba(52, 152, 219, 0.8);
+}
+
+/*Purchase
+------------------------------------*/
+.purchase a.btn-buy {
+	background:#3498db;
+	text-shadow:0 1px 0 #2980b9;
+}
+.purchase a.btn-buy:hover {
+	background:#2980b9;
+} 
+
+/*Buttons
+------------------------------------*/
+.btn-u {
+	background: #3498db;
+}
+
+.btn-u:hover {
+	background: #2980b9;
+}
+
+/*Service
+------------------------------------*/
+.service .service-icon {
+	color:#3498db;	
+}
+
+/*Service Blocks*/
+.service-alternative .service:hover { 
+	background:#3498db;
+} 
+
+/*Thumbnail (Recent Work)
+------------------------------------*/
+.thumbnail-style h3 a:hover {
+	color:#3498db;
+}
+
+.thumbnail-style a.btn-more {
+	background:#3498db;
+}
+.thumbnail-style a.btn-more:hover {
+	box-shadow:0 0 0 2px #2980b9;
+}
+
+/*Carousel (Recent Work)*/
+.recent-work a:hover span {
+	border-bottom:solid 2px #3498db;
+}
+
+.bx-wrapper .bx-prev {
+	background-image: url(../../plugins/bxslider/images/controls-blue.png);
+}
+.bx-wrapper .bx-next {
+	background-image: url(../../plugins/bxslider/images/controls-blue.png);
+}
+
+/*Typography
+------------------------------------*/
+/*Heading*/
+.headline h2, 
+.headline h3, 
+.headline h4 {
+	border-bottom:2px solid #3498db;
+}
+
+/*Blockquote*/
+blockquote:hover {
+	border-left-color:#3498db; 
+}
+
+.hero {
+	border-left-color: #3498db;
+}
+
+/*Carousel
+------------------------------------*/
+.carousel-arrow a.carousel-control:hover {
+	color: #3498db;
+}
+
+/*Footer
+------------------------------------*/
+.footer a,
+.copyright a,
+.footer a:hover,
+.copyright a:hover {
+	color: #3498db;
+}
+
+/*Footer Blog*/
+.footer .dl-horizontal a:hover {
+	color:#3498db !important;
+}
+
+/*Blog Posts
+------------------------------------*/
+.posts .dl-horizontal a:hover { 
+	color:#3498db; 
+}
+
+.posts .dl-horizontal:hover dt img,
+.posts .dl-horizontal:hover dd a { 
+	color: #3498db;
+	border-color: #3498db !important;
+}
+
+/*Post Comment*/
+.post-comment h3, 
+.blog-item .media h3,
+.blog-item .media h4.media-heading span a {
+	color: #3498db;
+}
+
+/*Tabs
+------------------------------------*/
+/*Tabs v1*/
+.tab-v1 .nav-tabs { 
+	border-bottom: solid 2px #3498db; 	
+}
+
+.tab-v1 .nav-tabs > .active > a, 
+.tab-v1 .nav-tabs > .active > a:hover, 
+.tab-v1 .nav-tabs > .active > a:focus { 
+	background: #3498db; 
+}
+
+.tab-v1 .nav-tabs > li > a:hover { 
+	background: #3498db; 
+}
+
+/*Tabs v2*/
+.tab-v2 .nav-tabs li.active a {
+	border-top: solid 2px #3498db;
+}
+
+/*Tabs v3*/
+.tab-v3 .nav-pills li a:hover,
+.tab-v3 .nav-pills li.active a {
+	background: #3498db;
+	border: solid 1px #2980b9;
+}
+
+/*Accardion
+------------------------------------*/
+.acc-home a.active,
+.acc-home a.accordion-toggle:hover { 
+	color:#3498db; 
+}
+.acc-home .collapse.in { 
+	border-bottom:solid 1px #3498db; 
+}
+
+/*Testimonials
+------------------------------------*/
+.testimonials .testimonial-info {
+	color: #3498db;
+}
+
+.testimonials .carousel-arrow i:hover {
+	background: #3498db;
+}
+
+/*Info Blocks
+------------------------------------*/
+.info-blocks:hover i.icon-info-blocks {
+	color: #3498db;
+}
+
+/*Breadcrumb
+------------------------------------*/
+.breadcrumb li.active,
+.breadcrumb li a:hover {
+	color:#3498db;
+}
+
+/*About Page
+------------------------------------*/
+.team .thumbnail-style:hover h3 a {
+	color:#3498db !important;
+}
+
+/*Social Icons*/
+.team ul.team-socail li i:hover {
+	background: #3498db;
+}
+
+/*Pricing Page
+------------------------------------*/
+/*Pricing Head*/
+.pricing:hover h4 {
+	color:#3498db;
+}
+
+.pricing-head h3 {
+	background:#3498db;
+	text-shadow:0 1px 0 #2980b9;
+	border-bottom:solid 1px #2980b9;
+}
+.pricing-head h4 {
+	color:#999;
+	background:#fcfcfc;
+	border-bottom:solid 1px #daf0ff;
+}
+	
+/*Pricing Content*/
+.pricing-content li {
+	border-bottom:solid 1px #daf0ff;
+}
+.pricing-content li i {
+	color:#3498db;
+}
+
+/*Pricing Footer*/
+.pricing-footer a,
+.pricing-footer button {
+	background:#3498db;
+	text-shadow:0 1px 0 #2980b9;
+	border-bottom:solid 2px #2980b9;
+}
+.pricing-footer a:hover,
+.pricing-footer button:hover {
+	background:#2980b9;
+}
+
+/*Priceing Active*/
+.price-active h4 {
+	color:#3498db;
+}
+
+.no-space-pricing .price-active .pricing-head h4,
+.no-space-pricing .pricing:hover .pricing-head h4 {
+	color:#3498db;
+}
+
+/*Right Sidebar
+------------------------------------*/
+/*Right Sidebar*/
+.who li i,
+.who li:hover i, 
+.who li:hover a { 
+	color:#3498db; 
+}
+
+/*Privacy Page
+------------------------------------*/
+.privacy a:hover {
+	color:#3498db; 
+}
+
+/*Portfolio Page
+------------------------------------*/
+/*Portfolio v1*/
+.view a.info:hover {
+	background: #3498db;
+}
+
+/*Portfolio v2*/
+.sorting-block .sorting-nav li.active {
+	color: #3498db;
+	border-bottom: solid 1px #3498db;
+}
+
+.sorting-block .sorting-grid li a:hover span.sorting-cover {
+	background: #3498db;
+}
+
+/*Blog Page
+------------------------------------*/
+.blog h3 {
+	color:#3498db;
+}
+.blog li a:hover {
+	color:#3498db;
+}
+
+/*Blog Tags*/
+ul.blog-tags a:hover {
+	background: #3498db;
+}
+
+.blog-post-tags ul.blog-tags a:hover {
+    background: none repeat scroll 0 0 #3498db;
+}
+
+/*Blog Photos*/
+.blog-photos li img:hover {
+	box-shadow: 0 0 0 2px #3498db;
+}
+
+/*Blog Latest Tweets*/
+.blog-twitter .blog-twitter-inner:hover {
+	border-color: #3498db;
+	border-top-color: #3498db;	
+}
+.blog-twitter .blog-twitter-inner:hover:after {
+	border-top-color: #3498db;	
+}
+
+.blog-twitter .blog-twitter-inner a {
+	color: #3498db;
+}
+
+/*Blog Item Page
+------------------------------------*/
+.blog-item h4.media-heading span a {
+	color:#3498db;
+}
+
+/*Coming Soon Page
+------------------------------------*/
+.coming-soon-border {
+	border-top: solid 3px #3498db;
+}
+
+/*Search Page
+------------------------------------*/
+.booking-blocks p a {
+	color: #3498db;
+}
+
+/*Icons Page
+------------------------------------*/
+.icon-page li:hover { 
+	color:#3498db;
+}
+
+/*Glyphicons*/
+.glyphicons-demo a:hover {
+	color: #3498db;
+	text-decoration: none;
+}
+
+/*Magazine Page
+------------------------------------*/
+/*Magazine News*/
+.magazine-news .by-author strong {
+	color: #3498db;
+}
+
+.magazine-news a.read-more {
+	color: #3498db;
+}
+
+/*Magazine Mini News*/
+.magazine-mini-news .post-author strong {
+	color: #3498db;
+}
+
+.news-read-more i {
+	background: #3498db;
+}
+
+/*Sidebar Features*/
+.magazine-page h3 a:hover {
+	color: #3498db;
+}
+
+/*Page Features
+------------------------------------*/
+/*Tag Boxes v1*/
+.tag-box-v1 {
+	border-top: solid 2px #3498db;
+}
+
+/*Tag Boxes v2*/
+.tag-box-v2 {
+	border-left: solid 2px #3498db;
+}
+
+/*Tag Boxes v7*/
+.tag-box-v7 {
+	border-bottom: solid 2px #3498db;
+}
+
+/*Font Awesome Icon Page Style*/
+.fa-icons li:hover { 
+   color: #3498db;
+}
+
+.fa-icons li:hover i {
+   background: #3498db; 
+}
+
+/*GLYPHICONS Icons Page Style*/
+.bs-glyphicons li:hover {
+   color: #3498db;
+}
+
+/*Navigation
+------------------------------------*/
+/*Pagination*/
+.pagination > .active > a, 
+.pagination > .active > span, 
+.pagination > .active > a:hover, 
+.pagination > .active > span:hover, 
+.pagination > .active > a:focus, 
+.pagination > .active > span:focus {
+   background-color: #3498db;
+   border-color: #3498db;
+}
+
+.pagination li a:hover {
+   background: #2980b9;
+   border-color: #2980b9;   
+}
+
+/*Pager*/
+.pager li > a:hover, 
+.pager li > a:focus {
+   background: #2980b9;
+   border-color: #2980b9;   
+}
+
+/*Registration and Login Page v2
+------------------------------------*/
+.reg-block {
+	border-top: solid 2px #3498db;
+}
