@@ -1,18 +1,39 @@
 ﻿module.exports = (grunt) ->
-  
+  config = config || {}
+  config.SiteName='iShare'
+
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
 
   isdebug = grunt.option("release") isnt true
   launchdir = if isdebug then "debug" else "dist"
 
   jsfiles = [
+    "#{launchdir}/vendor/jquery/*.js"
+    "#{launchdir}/vendor/jquery-ui/*.js"
+    "#{launchdir}/vendor/bootstrap/*.js"
+    "#{launchdir}/vendor/bootstrap-plugin/*.js"
+    "#{launchdir}/vendor/angular/angular.js"
+    "#{launchdir}/vendor/angular/*.js"
+    "#{launchdir}/vendor/moment/moment.js"
+    "#{launchdir}/vendor/moment/*.js"
+    "#{launchdir}/vendor/messenger/messenger.js"
+    "#{launchdir}/vendor/messenger/*.js"
+
+    "#{launchdir}/vendor/angular-translate/*.js"
+    "#{launchdir}/vendor/angular-translate/**/*.js"
+
+    #todo need to remove
+    "#{launchdir}/common/directives/*.js"
+
     "#{launchdir}/vendor/**/*.js"
+    "#{launchdir}/config/**/*.js"
     "#{launchdir}/common/**/*.js"
+    "#{launchdir}/i18n/**/*.js"
     "#{launchdir}/app/**/*.js"
 
     "#{launchdir}/plugin/unify*/**/*.js"
-    "#{launchdir}/plugin/select2/select2.js"
 
+    "#{launchdir}/plugin/select2/select2.js"
     "#{launchdir}/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
     "#{launchdir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js",
   ]
@@ -21,6 +42,10 @@
     "#{launchdir}/vendor/**/*.css"
     "#{launchdir}/common/**/*.css"
     "#{launchdir}/app/**/*.css"
+
+    "#{launchdir}/plugin/unify*/*.css"
+    "#{launchdir}/plugin/unify*/theme/default/*.css"
+
     "#{launchdir}/plugin/select2/select2.css"
     "#{launchdir}/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
   ]
@@ -166,6 +191,14 @@
           appRoot: "#{launchdir}/"
         files:
           "<%= dir %>/index.html": if isdebug then cssfiles else '<%= config.dist %>/min/*.css'
+      title:
+        options:
+          startTag: "<!--TITLE-->"
+          endTag: "<!--TITLE END-->"
+          fileTmpl: "<title ng-bind=\"title + '|%s'\">%s</title>"
+          appRoot: "#{launchdir}/"
+        files:
+          "<%= dir %>/index.html": 'AAA'
 
     #静态文件防缓存
     rev:
@@ -184,17 +217,6 @@
           "<%= config.dist %>/**/*"
         ]
 
-    #替换字符
-    replace:
-      dist:
-        src: [
-          "<%= config.dist %>/min/*.app.min.js"
-        ]
-        overwrite: true
-        replacements: [
-          from: '"use strict";'
-          to: ''
-        ]
 
     copy:
       all:
@@ -222,6 +244,15 @@
           dest: launchdir
         ]
 
+    #替换字符
+    replace:
+      title:
+        src: "<%= dir %>/index.html"
+        overwrite: true
+        replacements: [
+          from: '<%CONFIG_SITE_NAME%>'
+          to: config.SiteName
+        ]
     #打包html
     inline_angular_templates:
       dist:
@@ -250,6 +281,7 @@
         "coffee"
         "less"
         "sails-linker"
+        "replace"
       ]
     else
       grunt.task.run [
@@ -260,20 +292,17 @@
         "uglify"
         "cssmin"
         "rev"
-        #"replace:dist"                   #去掉严格模式（uglify没有提供此option）
         "sails-linker"
-        "replace:initscript"
-        "replace:loadscript"
+        "replace"
         "inline_angular_templates"  #打包html到index.html
         "clean:redundant"           #清空release目录多余的文件
       ]
 
-  grunt.registerTask "server", ->
-    grunt.task.run [
+  grunt.registerTask "start-web-server", [
       "connect"
       "open"
       "watch"
-    ]
+  ]
 
   grunt.registerTask "test", [
     
@@ -281,5 +310,5 @@
 
   grunt.registerTask "default", [
     'build'
-    #'server'
+    'start-web-server'
   ]

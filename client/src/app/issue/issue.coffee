@@ -18,7 +18,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/issue",
-      templateUrl: "/content/app/issue/issue.tpl.html"
+      templateUrl: "/app/issue/issue.tpl.html"
       controller: 'IssueCtrl'
       title: 'Issues'
 ])

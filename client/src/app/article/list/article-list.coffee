@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/",
-      templateUrl: "/Content/app/article/list/article-list.tpl.html"
+      templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
         articles: ['$rootScope','$route','$q','Article','channel',($rootScope,$route,$q,Article,channel)->
@@ -20,7 +20,7 @@
           deferred.promise
         ]
     .when "/list/:channel/:group/tag/:tag",
-      templateUrl: "/Content/app/article/list/article-list.tpl.html"
+      templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
         articles: ['$route','$q','Article',($route,$q,Article)->
@@ -37,7 +37,7 @@
           deferred.promise
         ]
     .when "/list/:channel/:group",
-      templateUrl: "/Content/app/article/list/article-list.tpl.html"
+      templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
         articles: ['$route','$q','Article',($route,$q,Article)->
@@ -54,7 +54,7 @@
           deferred.promise
         ]
     .when "/list/:channel",
-      templateUrl: "/Content/app/article/list/article-list.tpl.html"
+      templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
         articles: ['$route','$q','Article',($route,$q,Article)->
@@ -70,7 +70,7 @@
           deferred.promise
         ]
     .when "/search/:key",
-      templateUrl: "/Content/app/article/list/article-list.tpl.html"
+      templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
         articles: ['$route','$q','Article',($route,$q,Article)->

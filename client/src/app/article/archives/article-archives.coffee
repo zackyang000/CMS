@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/archives",
-      templateUrl: "/Content/app/article/archives/article-archives.tpl.html"
+      templateUrl: "/app/article/archives/article-archives.tpl.html"
       controller: 'ArticleArchivesCtrl'
       title: 'Archives'
       resolve:

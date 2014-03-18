@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/post/:url",
-      templateUrl: "/Content/app/article/detail/article-detail.tpl.html"
+      templateUrl: "/app/article/detail/article-detail.tpl.html"
       controller: 'ArticleDetailCtrl'
       resolve:
         article: ['$route','$q','Article',($route,$q,Article)->
@@ -56,7 +56,7 @@
       if item.Email
         item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
       else
-        item.Avatar='/Content/img/avatar.png'
+        item.Avatar='/img/avatar.png'
   Article.browsed id:"(guid'#{$scope.item.PostId}')"
 
   account.get().then (data) ->

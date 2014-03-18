@@ -2,7 +2,7 @@
 .factory "version", ['$http','$q',($http, $q) ->
   get: ->
     deferred = $q.defer()
-    $http.get("/version.txt",cache:true)
+    $http.get("/data/version.txt",cache:true)
       .success (data) ->
         list=data.match(/([^\r\n])+/g)
         versions=[]

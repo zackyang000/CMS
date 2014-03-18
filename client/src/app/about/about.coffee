@@ -3,13 +3,13 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/about",
-      templateUrl: "/Content/app/about/about-newegg-bts.tpl.html"
+      templateUrl: "/app/about/about-newegg-bts.tpl.html"
       controller: 'AboutCtrl'
       title: 'About'
       resolve:
         members: ['$q','$http',($q,$http)->
           deferred = $q.defer()
-          $http.get('/Content/data/about-newegg-bts.js').success (data)->
+          $http.get('/data/about-newegg-bts.js').success (data)->
             deferred.resolve data
           deferred.promise
         ]

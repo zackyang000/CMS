@@ -14,7 +14,7 @@ var scrolltotop = {
         scrollduration: 1000,
         fadeduration: [500, 100]
     },
-    controlHTML: '<img src="/content/vendor/jquery-plugin/scroll-to-top/up.png" style="width:51px; height:42px" />', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
+    controlHTML: '<img src="/vendor/jquery-plugin/scroll-to-top/up.png" style="width:51px; height:42px" />', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
     controlattrs: {
         offsetx: 5,
         offsety: 5

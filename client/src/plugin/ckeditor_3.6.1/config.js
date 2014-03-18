@@ -28,7 +28,7 @@ CKEDITOR.editorConfig = function (config) {
     config.ShiftEnterMode = 'br'; // p | div | br 表示shifit + 回车换行用<br>标签
 
     //在 CKEditor 中集成 CKFinder，注意 ckfinder 的路径选择要正确。
-    var ckfinderPath = "/Content/plugin/ckfinder_aspnet_2.0.1"; //ckfinder路径
+    var ckfinderPath = "/plugin/ckfinder_aspnet_2.0.1"; //ckfinder路径
     config.filebrowserBrowseUrl = ckfinderPath + '/ckfinder.html';
     config.filebrowserImageBrowseUrl = ckfinderPath + '/ckfinder.html?type=Images';
     config.filebrowserFlashBrowseUrl = ckfinderPath + '/ckfinder.html?type=Flash';

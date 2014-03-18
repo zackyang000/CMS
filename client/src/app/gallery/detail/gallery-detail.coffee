@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/gallery/:name",
-      templateUrl: "/Content/app/gallery/detail/gallery-detail.tpl.html"
+      templateUrl: "/app/gallery/detail/gallery-detail.tpl.html"
       controller: 'GalleryDetailCtrl'
       resolve:
         gallery: ['$route','$q','Gallery',($route,$q,Gallery)->

@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/board",
-      templateUrl: "/Content/app/board/board.tpl.html"
+      templateUrl: "/app/board/board.tpl.html"
       controller: 'BoardCtrl'
       title: 'Message Boards'
       resolve:
@@ -18,7 +18,7 @@
                 if item.Email
                   item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
                 else
-                  item.Avatar='/Content/img/avatar.png'
+                  item.Avatar='/img/avatar.png'
             deferred.resolve data.value
           deferred.promise
         ]

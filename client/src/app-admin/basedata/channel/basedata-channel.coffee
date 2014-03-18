@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/admin/channel",
-      templateUrl: "/content/app-admin/basedata/channel/basedata-channel.tpl.html"
+      templateUrl: "/app-admin/basedata/channel/basedata-channel.tpl.html"
       controller: 'ChannelCtrl'
 ])
 

@@ -91,10 +91,10 @@ a.read-more:hover {
 }
 
 .bx-wrapper .bx-prev {
-	background-image: url(/content/vendor/jquery-plugin/bxslider/controls.png);
+	background-image: url(/vendor/jquery-plugin/bxslider/controls.png);
 }
 .bx-wrapper .bx-next {
-	background-image: url(/content/vendor/jquery-plugin/bxslider/controls.png);
+	background-image: url(/vendor/jquery-plugin/bxslider/controls.png);
 }
 
 /*Typography

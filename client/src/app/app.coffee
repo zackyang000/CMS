@@ -1,6 +1,6 @@
 ﻿angular.module("app",
 ['ngRoute','ngSanitize','ngAnimate','ngCookies',
-'l18n'
+'i18n'
 'formatFilters',
 'index',
 'article',

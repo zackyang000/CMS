@@ -44,7 +44,7 @@
 
 .bx-wrapper .bx-loading {
 	min-height: 50px;
-	background: url(/content/vendor/jquery-plugin/bxslider/bx_loader.gif) center center no-repeat #fff;
+	background: url(/vendor/jquery-plugin/bxslider/bx_loader.gif) center center no-repeat #fff;
 	height: 100%;
 	width: 100%;
 	position: absolute;
@@ -93,11 +93,11 @@
 
 .bx-wrapper .bx-prev {
 	right: 24px;
-	background: url(/content/vendor/jquery-plugin/bxslider/controls.png) no-repeat 0 -25px;
+	background: url(/vendor/jquery-plugin/bxslider/controls.png) no-repeat 0 -25px;
 }
 .bx-wrapper .bx-next {
 	right: 0;
-	background: url(/content/vendor/jquery-plugin/bxslider/controls.png) no-repeat -24px -25px;
+	background: url(/vendor/jquery-plugin/bxslider/controls.png) no-repeat -24px -25px;
 }
 
 .bx-wrapper .bx-prev:hover {
@@ -162,7 +162,7 @@
 	width: 10px;
 	height: 11px;
 	outline: 0;
-	background: url(/content/vendor/jquery-plugin/bxslider/controls.png) -86px -11px no-repeat;
+	background: url(/vendor/jquery-plugin/bxslider/controls.png) -86px -11px no-repeat;
 	margin: 0 3px;
 }
 
@@ -177,7 +177,7 @@
 	width: 9px;
 	height: 11px;
 	outline: 0;
-	background: url(/content/vendor/jquery-plugin/bxslider/controls.png) -86px -44px no-repeat;
+	background: url(/vendor/jquery-plugin/bxslider/controls.png) -86px -44px no-repeat;
 	margin: 0 3px;
 }
 

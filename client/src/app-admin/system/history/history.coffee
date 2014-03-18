@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/admin/system/history",
-      templateUrl: "/content/app-admin/system/history/history.tpl.html"
+      templateUrl: "/app-admin/system/history/history.tpl.html"
       controller: 'SystemHistoryCtrl'
 ])
 
