@@ -117,3 +117,4 @@ src/YangKai.BlogEngine.Web.Mvc/UpLoad/thumbnail/
 src/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/
 
 chromeExtension/.idea/*
+*.orig
