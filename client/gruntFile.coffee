@@ -6,7 +6,7 @@
 
   dir = if debug then "debug" else "dist"
 
-  jsfiles = [
+  jsFiles = [
     "#{dir}/vendor/jquery/*.js"
     "#{dir}/vendor/jquery-ui/*.js"
     "#{dir}/vendor/bootstrap/*.js"
@@ -37,7 +37,7 @@
     "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js",
   ]
 
-  cssfiles = [
+  cssFiles = [
     "#{dir}/vendor/**/*.css"
     "#{dir}/common/**/*.css"
     "#{dir}/app/**/*.css"
@@ -51,11 +51,51 @@
     "#{dir}/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
   ]
 
-  #压缩后的js
-  minjs = 'dist/index.js'
+  adminJsFiles =[
+    "#{dir}/vendor/jquery/*.js"
+    "#{dir}/vendor/jquery-ui/*.js"
+    "#{dir}/vendor/bootstrap/*.js"
+    "#{dir}/vendor/bootstrap-plugin/*.js"
+    "#{dir}/vendor/angular/angular.js"
+    "#{dir}/vendor/angular/*.js"
+    "#{dir}/vendor/moment/moment.js"
+    "#{dir}/vendor/moment/*.js"
+    "#{dir}/vendor/messenger/messenger.js"
+    "#{dir}/vendor/messenger/*.js"
 
-  #压缩后的css
+    "#{dir}/vendor/angular-translate/*.js"
+    "#{dir}/vendor/angular-translate/**/*.js"
+
+    #todo need to remove
+    "#{dir}/common/directives/*.js"
+
+    "#{dir}/vendor/**/*.js"
+    "#{dir}/config/**/*.js"
+    "#{dir}/common/**/*.js"
+    "#{dir}/i18n/**/*.js"
+    "#{dir}/app-admin/**/*.js"
+
+    "#{dir}/plugin/ace*/**/*.js"
+
+    "#{dir}/plugin/select2/select2.js"
+  ]
+
+  adminCssFiles = [
+    "#{dir}/vendor/**/*.css"
+    "#{dir}/common/**/*.css"
+    "#{dir}/app-admin/**/*.css"
+
+    "#{dir}/plugin/font-awesome/*.css"
+
+    "#{dir}/plugin/ace*/*.css"
+
+    "#{dir}/plugin/select2/select2.css"
+  ]
+
+  minjs = 'dist/index.js'
   mincss = 'dist/index.css'
+  adminminjs = 'dist/admin/index.js'
+  adminmincss = 'dist/admin/index.css'
 
   LIVERELOAD_PORT = 35729
 
@@ -153,52 +193,35 @@
         ]
 
     uglify:
-      options:
-        mangle: true #不改变变量和方法名
-        beautify: true #不压缩
+      #options:
+        #mangle: true #不改变变量名和方法名
+        #beautify: true #不压缩
       dist:
-        src: jsfiles
+        src: jsFiles
         dest: minjs
 
     cssmin:
       dist:
-        src: cssfiles
+        src: cssFiles
         dest: mincss
 
-    #替换标签
     'sails-linker':
       js:
         options:
           startTag: "<!--SCRIPTS-->"
           endTag: "<!--SCRIPTS END-->"
-          fileTmpl: "<script src='/%s\'></" + "script>"
+          fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
           appRoot: "#{dir}/"
         files:
-          "<%= dir %>/index.html": if debug then jsfiles else 'dist/index.js'
+          "<%= dir %>/index.html": if debug then jsFiles else "dist/index.js"
       css:
         options:
           startTag: "<!--STYLES-->"
           endTag: "<!--STYLES END-->"
-          fileTmpl: "<link href='/%s' rel='stylesheet' />"
+          fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
           appRoot: "#{dir}/"
         files:
-          "<%= dir %>/index.html": if debug then cssfiles else 'dist/index.css'
-      title:
-        options:
-          startTag: "<!--TITLE-->"
-          endTag: "<!--TITLE END-->"
-          fileTmpl: "<title ng-bind=\"title + '|%s'\">%s</title>"
-          appRoot: "#{dir}/"
-        files:
-          "<%= dir %>/index.html": 'AAA'
-
-    #静态文件防缓存
-    rev:
-      files:
-        src: [
-          minjs
-          mincss
-        ]
+          "<%= dir %>/index.html": if debug then cssFiles else "dist/index.css"
 
     clean:
       all:
@@ -240,7 +263,7 @@
           dest: dir
         ]
 
-    #替换字符
+    #todo remove tag STYLES/SCRIPT etc.
     replace:
       title:
         src: "<%= dir %>/index.html"
@@ -250,14 +273,13 @@
           to: ''
         ]
 
-    #打包html
     inline_angular_templates:
       dist:
         options:
           base: 'dist'
           prefix: '/'
           selector: 'body'
-          method: 'prepend'
+          method: 'append'
           unescape:
             '&lt;': '<'
             '&gt;': '>'
@@ -285,11 +307,11 @@
         "copy:all"
         "coffee"
         "less"
+        "sails-linker"
         "uglify"
         "cssmin"
-        "sails-linker"
-        "inline_angular_templates"  #打包html到index.html
-        "clean:redundant"           #清空release目录多余的文件
+        "inline_angular_templates"
+        "clean:redundant"
       ]
 
   grunt.registerTask "start-web-server", [
@@ -299,7 +321,7 @@
   ]
 
   grunt.registerTask "test", [
-    
+
   ]
 
   grunt.registerTask "default", [
