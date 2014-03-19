@@ -4,51 +4,51 @@
 
   debug = grunt.option("release") isnt true
 
-  launchdir = if debug then "debug" else "dist"
+  dir = if debug then "debug" else "dist"
 
   jsfiles = [
-    "#{launchdir}/vendor/jquery/*.js"
-    "#{launchdir}/vendor/jquery-ui/*.js"
-    "#{launchdir}/vendor/bootstrap/*.js"
-    "#{launchdir}/vendor/bootstrap-plugin/*.js"
-    "#{launchdir}/vendor/angular/angular.js"
-    "#{launchdir}/vendor/angular/*.js"
-    "#{launchdir}/vendor/moment/moment.js"
-    "#{launchdir}/vendor/moment/*.js"
-    "#{launchdir}/vendor/messenger/messenger.js"
-    "#{launchdir}/vendor/messenger/*.js"
+    "#{dir}/vendor/jquery/*.js"
+    "#{dir}/vendor/jquery-ui/*.js"
+    "#{dir}/vendor/bootstrap/*.js"
+    "#{dir}/vendor/bootstrap-plugin/*.js"
+    "#{dir}/vendor/angular/angular.js"
+    "#{dir}/vendor/angular/*.js"
+    "#{dir}/vendor/moment/moment.js"
+    "#{dir}/vendor/moment/*.js"
+    "#{dir}/vendor/messenger/messenger.js"
+    "#{dir}/vendor/messenger/*.js"
 
-    "#{launchdir}/vendor/angular-translate/*.js"
-    "#{launchdir}/vendor/angular-translate/**/*.js"
+    "#{dir}/vendor/angular-translate/*.js"
+    "#{dir}/vendor/angular-translate/**/*.js"
 
     #todo need to remove
-    "#{launchdir}/common/directives/*.js"
+    "#{dir}/common/directives/*.js"
 
-    "#{launchdir}/vendor/**/*.js"
-    "#{launchdir}/config/**/*.js"
-    "#{launchdir}/common/**/*.js"
-    "#{launchdir}/i18n/**/*.js"
-    "#{launchdir}/app/**/*.js"
+    "#{dir}/vendor/**/*.js"
+    "#{dir}/config/**/*.js"
+    "#{dir}/common/**/*.js"
+    "#{dir}/i18n/**/*.js"
+    "#{dir}/app/**/*.js"
 
-    "#{launchdir}/plugin/unify*/**/*.js"
+    "#{dir}/plugin/unify*/**/*.js"
 
-    "#{launchdir}/plugin/select2/select2.js"
-    "#{launchdir}/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
-    "#{launchdir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js",
+    "#{dir}/plugin/select2/select2.js"
+    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
+    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js",
   ]
 
   cssfiles = [
-    "#{launchdir}/vendor/**/*.css"
-    "#{launchdir}/common/**/*.css"
-    "#{launchdir}/app/**/*.css"
+    "#{dir}/vendor/**/*.css"
+    "#{dir}/common/**/*.css"
+    "#{dir}/app/**/*.css"
 
-    "#{launchdir}/plugin/font-awesome/*.css"
+    "#{dir}/plugin/font-awesome/*.css"
 
-    "#{launchdir}/plugin/unify*/*.css"
-    "#{launchdir}/plugin/unify*/theme/default/*.css"
+    "#{dir}/plugin/unify*/*.css"
+    "#{dir}/plugin/unify*/theme/default/*.css"
 
-    "#{launchdir}/plugin/select2/select2.css"
-    "#{launchdir}/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
+    "#{dir}/plugin/select2/select2.css"
+    "#{dir}/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
   ]
 
   #压缩后的js
@@ -59,16 +59,12 @@
 
   LIVERELOAD_PORT = 35729
 
-  mountFolder = (connect, dir) ->
-    connect.static(require('path').resolve(dir))
-
   #-----------------------------------------------------------------
 
   grunt.initConfig
 
-    dir: launchdir
+    dir: dir
 
-    #web server
     connect:
       options:
         port: 30000
@@ -78,12 +74,14 @@
           middleware: (connect, options) ->
             return [
               require('connect-modrewrite')([
+                '^/admin$ /admin-index.html'
+                '^/admin[/](.*)$ /admin-index.html'
                 '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
               ])
 
               require('connect-livereload')
                 port:LIVERELOAD_PORT
-              mountFolder(connect, launchdir)
+              connect.static(require('path').resolve(dir))
               ]
 
     open:
@@ -129,7 +127,7 @@
         options:
           livereload:LIVERELOAD_PORT
         files: [
-          "#{launchdir}/**/*"
+          "#{dir}/**/*"
         ]
 
     coffee:
@@ -140,7 +138,7 @@
           expand: true
           cwd: 'src/'
           src: ['**/*.coffee']
-          dest: launchdir
+          dest: dir
           ext: '.js'
         ]
 
@@ -150,7 +148,7 @@
           expand: true
           cwd: 'src/'
           src: ['**/*.less']
-          dest: launchdir
+          dest: dir
           ext: '.css'
         ]
 
@@ -174,7 +172,7 @@
           startTag: "<!--SCRIPTS-->"
           endTag: "<!--SCRIPTS END-->"
           fileTmpl: "<script src='/%s\'></" + "script>"
-          appRoot: "#{launchdir}/"
+          appRoot: "#{dir}/"
         files:
           "<%= dir %>/index.html": if debug then jsfiles else 'dist/index.js'
       css:
@@ -182,7 +180,7 @@
           startTag: "<!--STYLES-->"
           endTag: "<!--STYLES END-->"
           fileTmpl: "<link href='/%s' rel='stylesheet' />"
-          appRoot: "#{launchdir}/"
+          appRoot: "#{dir}/"
         files:
           "<%= dir %>/index.html": if debug then cssfiles else 'dist/index.css'
       title:
@@ -190,7 +188,7 @@
           startTag: "<!--TITLE-->"
           endTag: "<!--TITLE END-->"
           fileTmpl: "<title ng-bind=\"title + '|%s'\">%s</title>"
-          appRoot: "#{launchdir}/"
+          appRoot: "#{dir}/"
         files:
           "<%= dir %>/index.html": 'AAA'
 
@@ -204,7 +202,7 @@
 
     clean:
       all:
-        src: "#{launchdir}/**/*"
+        src: "#{dir}/**/*"
 
       redundant:
         src: [
@@ -228,7 +226,7 @@
             '!**/*.min.js'
             '!**/*.min.css'
           ]
-          dest: launchdir
+          dest: dir
         ]
       normalFile:
         files: [
@@ -239,7 +237,7 @@
             '!**/*.coffee'
             '!**/*.less'
           ]
-          dest: launchdir
+          dest: dir
         ]
 
     #替换字符
@@ -256,11 +254,11 @@
     inline_angular_templates:
       dist:
         options:
-          base: 'dist'  #(Optional) ID of the <script> tag will be relative to this folder. Default is project dir.
-          prefix: '/'                 #(Optional) Prefix path to the ID. Default is empty string.
-          selector: 'body'            #(Optional) CSS selector of the element to use to insert the templates. Default is `body`.
-          method: 'prepend'           #(Optional) DOM insert method. Default is `prepend`.
-          unescape:                   #(Optional) List of escaped characters to unescape
+          base: 'dist'
+          prefix: '/'
+          selector: 'body'
+          method: 'prepend'
+          unescape:
             '&lt;': '<'
             '&gt;': '>'
             '&apos;': '\''
