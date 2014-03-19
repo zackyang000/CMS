@@ -2,8 +2,9 @@
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
 
-  isdebug = grunt.option("release") isnt true
-  launchdir = if isdebug then "debug" else "dist"
+  debug = grunt.option("release") isnt true
+
+  launchdir = if debug then "debug" else "dist"
 
   jsfiles = [
     "#{launchdir}/vendor/jquery/*.js"
@@ -41,6 +42,8 @@
     "#{launchdir}/common/**/*.css"
     "#{launchdir}/app/**/*.css"
 
+    "#{launchdir}/plugin/font-awesome/*.css"
+
     "#{launchdir}/plugin/unify*/*.css"
     "#{launchdir}/plugin/unify*/theme/default/*.css"
 
@@ -49,33 +52,23 @@
   ]
 
   #压缩后的js
-  minjs = '<%= config.dist %>/min/app.min.js'
+  minjs = 'dist/index.js'
 
   #压缩后的css
-  mincss = '<%= config.dist %>/min/app.min.css'
+  mincss = 'dist/index.css'
 
   LIVERELOAD_PORT = 35729
 
   mountFolder = (connect, dir) ->
     connect.static(require('path').resolve(dir))
 
-  modRewrite = require('connect-modrewrite')
-
-  appconfig = {
-    src: 'src'
-    debug: 'debug'
-    dist: 'dist'
-  }
-
   #-----------------------------------------------------------------
 
   grunt.initConfig
 
-    config: appconfig
-
     dir: launchdir
 
-    #设置web server
+    #web server
     connect:
       options:
         port: 30000
@@ -84,7 +77,7 @@
         options:
           middleware: (connect, options) ->
             return [
-              modRewrite([
+              require('connect-modrewrite')([
                 '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
               ])
 
@@ -162,6 +155,9 @@
         ]
 
     uglify:
+      options:
+        mangle: true #不改变变量和方法名
+        beautify: true #不压缩
       dist:
         src: jsfiles
         dest: minjs
@@ -180,7 +176,7 @@
           fileTmpl: "<script src='/%s\'></" + "script>"
           appRoot: "#{launchdir}/"
         files:
-          "<%= dir %>/index.html": if isdebug then jsfiles else '<%= config.dist %>/min/app.min.js'
+          "<%= dir %>/index.html": if debug then jsfiles else 'dist/index.js'
       css:
         options:
           startTag: "<!--STYLES-->"
@@ -188,7 +184,7 @@
           fileTmpl: "<link href='/%s' rel='stylesheet' />"
           appRoot: "#{launchdir}/"
         files:
-          "<%= dir %>/index.html": if isdebug then cssfiles else '<%= config.dist %>/min/*.css'
+          "<%= dir %>/index.html": if debug then cssfiles else 'dist/index.css'
       title:
         options:
           startTag: "<!--TITLE-->"
@@ -212,7 +208,11 @@
 
       redundant:
         src: [
-          "<%= config.dist %>/**/*"
+          "dist/*"
+          "!dist/data"
+          "!dist/img"
+          "!dist/plugin"
+          "!dist/*.*"
         ]
 
 
@@ -256,7 +256,7 @@
     inline_angular_templates:
       dist:
         options:
-          base: '<%= config.dist %>'  #(Optional) ID of the <script> tag will be relative to this folder. Default is project dir.
+          base: 'dist'  #(Optional) ID of the <script> tag will be relative to this folder. Default is project dir.
           prefix: '/'                 #(Optional) Prefix path to the ID. Default is empty string.
           selector: 'body'            #(Optional) CSS selector of the element to use to insert the templates. Default is `body`.
           method: 'prepend'           #(Optional) DOM insert method. Default is `prepend`.
@@ -266,14 +266,14 @@
             '&apos;': '\''
             '&amp;': '&'
         files:
-          '<%= config.dist %>/index.html': [
-            '<%= config.dist %>/**/*.html'
-            '!<%= config.dist %>/index.html'
+          'dist/index.html': [
+            'dist/app/**/*.html'
+            '!dist/index.html'
           ]
 
 
   grunt.registerTask "build", ->
-    if isdebug
+    if debug
       grunt.task.run [
         "clean:all"
         "copy:all"
@@ -289,7 +289,6 @@
         "less"
         "uglify"
         "cssmin"
-        "rev"
         "sails-linker"
         "inline_angular_templates"  #打包html到index.html
         "clean:redundant"           #清空release目录多余的文件

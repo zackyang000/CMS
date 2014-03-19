@@ -1,4 +1,3 @@
-'use strict';
 /**
  * Bindonce - Zero watches binding for AngularJs
  * @version v0.2.1 - 2013-05-07
