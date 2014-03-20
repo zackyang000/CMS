@@ -26,7 +26,7 @@
       $scope.loading="Loading"
       Article.get 
         $filter:"PostId eq (guid'#{$routeParams.id}')"
-        $expand:'Tags,Group/Channel,Comments'
+        $expand:'Tags,Group/Channel'
       , (data)->
           $scope.entity=data.value[0]
           if $scope.entity.Group
