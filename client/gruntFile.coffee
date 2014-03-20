@@ -92,11 +92,6 @@
     "#{dir}/plugin/select2/select2.css"
   ]
 
-  minjs = 'dist/index.js'
-  mincss = 'dist/index.css'
-  adminminjs = 'dist/admin/index.js'
-  adminmincss = 'dist/admin/index.css'
-
   LIVERELOAD_PORT = 35729
 
   #-----------------------------------------------------------------
@@ -190,19 +185,20 @@
           ext: '.css'
         ]
         
-    #todo: update uglify version
     uglify:
       #options:
         #mangle: true #不改变变量名和方法名
         #beautify: true #不压缩
-      dist:
-        src: jsFiles
-        dest: minjs
+      my_target:
+        files:
+          'dist/index.js': jsFiles
+          'dist/admin-index.js': adminJsFiles
 
     cssmin:
-      dist:
-        src: cssFiles
-        dest: mincss
+      combine:
+        files:
+          'dist/index.css': cssFiles
+          'dist/admin-index.css': adminCssFiles
 
     'sails-linker':
       js:
@@ -314,9 +310,9 @@
         "copy:all"
         "coffee"
         "less"
-        "sails-linker"
         "uglify"
         "cssmin"
+        "sails-linker"
         "inline_angular_templates"
         "clean:redundant"
       ]
