@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
+using System.Web.Http.OData.Query;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
@@ -11,6 +12,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
     public class CommentController : EntityController<Comment>
     {
+        [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, PageSize = 100, MaxExpansionDepth = 5)]
+        public override IQueryable<Comment> Get()
+        {
+            return base.Get();
+        }
+
         protected override Comment CreateEntity(Comment entity)
         {
             if (!Current.IsAdmin)

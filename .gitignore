@@ -118,3 +118,5 @@ src/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/
 
 chromeExtension/.idea/*
 *.orig
+client/node_modules
+.idea
