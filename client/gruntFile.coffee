@@ -136,7 +136,7 @@
           '!src/**/*.less'
         ]
         tasks: [
-          'newer:copy:normalFile'
+          'newer:copy:all'
           'sails-linker'
         ]
         options:
@@ -166,9 +166,7 @@
       livereload:
         options:
           livereload:LIVERELOAD_PORT
-        files: [
-          "#{dir}/**/*"
-        ]
+        files: ["#{dir}/**/*"]
 
     coffee:
       options:
@@ -191,7 +189,8 @@
           dest: dir
           ext: '.css'
         ]
-
+        
+    #todo: update uglify version
     uglify:
       #options:
         #mangle: true #不改变变量名和方法名
@@ -222,6 +221,22 @@
           appRoot: "#{dir}/"
         files:
           "<%= dir %>/index.html": if debug then cssFiles else "dist/index.css"
+      'admin-js':
+        options:
+          startTag: "<!--SCRIPTS-->"
+          endTag: "<!--SCRIPTS END-->"
+          fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
+          appRoot: "#{dir}/"
+        files:
+          "<%= dir %>/admin-index.html": if debug then adminJsFiles else "dist/admin-index.js"
+      'admin-css':
+        options:
+          startTag: "<!--STYLES-->"
+          endTag: "<!--STYLES END-->"
+          fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
+          appRoot: "#{dir}/"
+        files:
+          "<%= dir %>/admin-index.html": if debug then adminCssFiles else "dist/admin-index.css"
 
     clean:
       all:
@@ -248,17 +263,6 @@
             '!**/*.less'
             '!**/*.min.js'
             '!**/*.min.css'
-          ]
-          dest: dir
-        ]
-      normalFile:
-        files: [
-          expand: true
-          cwd: 'src/'
-          src: [
-            '**/*'
-            '!**/*.coffee'
-            '!**/*.less'
           ]
           dest: dir
         ]
@@ -290,7 +294,10 @@
             'dist/app/**/*.html'
             '!dist/index.html'
           ]
-
+          'dist/admin-index.html': [
+            'dist/app-admin/**/*.html'
+            '!dist/admin-index.html'
+          ]
 
   grunt.registerTask "build", ->
     if debug
