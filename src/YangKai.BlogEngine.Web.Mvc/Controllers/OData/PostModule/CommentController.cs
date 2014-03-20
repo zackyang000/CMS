@@ -11,6 +11,12 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
     public class CommentController : EntityController<Comment>
     {
+		[Queryable(AllowedQueryOptions = AllowedQueryOptions.All, PageSize = 100, MaxExpansionDepth = 5)]
+        public override IQueryable<Comment> Get()
+        {
+            return base.Get();
+        }
+		
         protected override Comment CreateEntity(Comment entity)
         {
             if (!Current.IsAdmin)
