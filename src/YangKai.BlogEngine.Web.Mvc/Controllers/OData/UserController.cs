@@ -1,4 +1,6 @@
 using System;
+using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData;
 using YangKai.BlogEngine.Common;
@@ -14,23 +16,42 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         {
             var username = (string)parameters["Username"];
             var password = (string)parameters["Password"];
-            var isRemember = (bool)parameters["IsRemember"];
 
             var security = Proxy.Security();
 
-            var login = security.Login(username, password);
-            if (login)
+            var data = security.Login(username, password);
+            if (data!=null)
             {
-                var data = security.Get(username, password);
-                return new WebUser
+                return new User
                 {
                     UserName = data.UserName,
                     LoginName = data.LoginName,
-                    Password = password,
                     Email = data.Email,
                     Avatar = data.Avatar,
-                    IsAdmin = true,
-                    IsRemember = isRemember
+                };
+            }
+            else
+            {
+                throw new Exception("Username or password error.");
+            }
+        }
+
+        [HttpPost]
+        public object AutoSignin([FromODataUri] int key, ODataActionParameters parameters)
+        {
+            var token = HttpContext.Current.Request.Headers.Get("x-security-token");
+            if (token == null) return null;
+
+            var security = Proxy.Security();
+            var data = security.AutoLogin();
+            if (data!=null)
+            {
+                return new User
+                {
+                    UserName = data.UserName,
+                    LoginName = data.LoginName,
+                    Email = data.Email,
+                    Avatar = data.Avatar,
                 };
             }
             else
@@ -42,7 +63,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         [HttpPost]
         public void Signout([FromODataUri] int key, ODataActionParameters parameters)
         {
-            Current.User = null;
+            Proxy.Security().Logoff();
         }
     }
 }

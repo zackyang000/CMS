@@ -11,9 +11,9 @@ namespace YangKai.BlogEngine.Service
             return InstanceLocator.Current.GetInstance<Repository<T>>();
         }
 
-        public static IUserSecurity Security()
+        public static UserSecurity Security()
         {
-            return Config.UseNeweggAccount ? (IUserSecurity)new NeweggUserSecurity() : new LocalUserSecurity();
+            return Config.UseNeweggAccount ? (UserSecurity)new NeweggUserSecurity() : new LocalUserSecurity();
         }
     }
 }

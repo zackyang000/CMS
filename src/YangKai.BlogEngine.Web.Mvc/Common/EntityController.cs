@@ -8,6 +8,7 @@ using System.Linq;
 using AtomLab.Core;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
+using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc
 {
@@ -52,7 +53,7 @@ namespace YangKai.BlogEngine.Web.Mvc
         [HttpPost]
         public virtual void Remove([FromODataUri] Guid key, ODataActionParameters parameters)
         {
-            if (!Current.IsAdmin)
+            if (!Current.IsLogin)
             {
                 throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
@@ -65,7 +66,7 @@ namespace YangKai.BlogEngine.Web.Mvc
         [HttpPost]
         public virtual void Recover([FromODataUri] Guid key, ODataActionParameters parameters)
         {
-            if (!Current.IsAdmin)
+            if (!Current.IsLogin)
             {
                 throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }

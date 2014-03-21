@@ -13,23 +13,18 @@ using YangKai.BlogEngine.Service;
 
 namespace YangKai.BlogEngine.Service
 {
-    public class LocalUserSecurity : IUserSecurity
+    public class LocalUserSecurity : UserSecurity
     {
-        public bool Login(string loginName, string password)
+        public override User Login(string loginName, string password)
         {
-            return Proxy.Repository<User>().Exist(p => p.LoginName == loginName && p.Password == password);
-        }
-
-        public User Get(string loginName, string password)
-        {
-            var user = Proxy.Repository<User>().Get(p => p.LoginName == loginName);
-            user.Avatar = GetAvater(user);
-            return user;
-        }
-
-        public string GetAvater(User user)
-        {
-            return GravatarHelper.GetImage(user.Email);
+            var login = Proxy.Repository<User>().Exist(p => p.LoginName == loginName && p.Password == password);
+            if (login)
+            {
+                var user = Proxy.Repository<User>().Get(p => p.LoginName == loginName);
+                user.Avatar = GravatarHelper.GetImage(user.Email);
+                return user;
+            }
+            return null;
         }
     }
 }

@@ -16,64 +16,20 @@ namespace YangKai.BlogEngine.Web.Mvc
 {
     public class Current
     {
-        public static WebUser User
+        public static User User
         {
             get
             {
-                var user = new WebUser
-                {
-                    UserName = EncryptionCookieHelper.Load("__Username__"),
-                    LoginName = EncryptionCookieHelper.Load("__LoginName__"),
-                    Email = EncryptionCookieHelper.Load("__Email__"),
-                    Avatar = EncryptionCookieHelper.Load("__Avatar__"),
-                    Password = EncryptionCookieHelper.Load("__Pwd__"),
-                    IsAdmin = EncryptionCookieHelper.Load("__IsAdmin__") == "true",
-                };
-                if (!user.IsAdmin) return user;
-
+               
                 var security = Proxy.Security();
-                var login = security.Login(user.LoginName, user.Password);
-                if (login)
+                var user = security.AutoLogin();
+                if (user != null)
                 {
                     return user;
                 }
                 else
                 {
-                    user.IsAdmin = false;
-                    return user;
-                }
-            }
-            set
-            {
-                if (value != null)
-                {
-                    if (value.IsRemember)
-                    {
-                        EncryptionCookieHelper.Add("__Pwd__", value.Password, 180);
-                        EncryptionCookieHelper.Add("__Username__", value.UserName, 180);
-                        EncryptionCookieHelper.Add("__LoginName__", value.LoginName, 180);
-                        EncryptionCookieHelper.Add("__Email__", value.Email, 180);
-                        EncryptionCookieHelper.Add("__Avatar__", value.Avatar, 180);
-                        EncryptionCookieHelper.Add("__IsAdmin__", value.IsAdmin.ToString().ToLower(), 180);
-                    }
-                    else
-                    {
-                        EncryptionCookieHelper.Add("__Pwd__", value.Password);
-                        EncryptionCookieHelper.Add("__Username__", value.UserName);
-                        EncryptionCookieHelper.Add("__LoginName__", value.LoginName);
-                        EncryptionCookieHelper.Add("__Email__", value.Email);
-                        EncryptionCookieHelper.Add("__Avatar__", value.Avatar);
-                        EncryptionCookieHelper.Add("__IsAdmin__", value.IsAdmin.ToString().ToLower());
-                    }
-                }
-                else
-                {
-                    EncryptionCookieHelper.Remove("__Username__");
-                    EncryptionCookieHelper.Remove("__LoginName__");
-                    EncryptionCookieHelper.Remove("__Email__");
-                    EncryptionCookieHelper.Remove("__Avatar__");
-                    EncryptionCookieHelper.Remove("__Pwd__");
-                    EncryptionCookieHelper.Remove("__IsAdmin__");
+                    return null;
                 }
             }
         }
@@ -85,32 +41,8 @@ namespace YangKai.BlogEngine.Web.Mvc
         {
             get
             {
-                return !string.IsNullOrEmpty(User.UserName);
+                return User!=null;
             }
         }
-
-        /// <summary>
-        /// 是否为管理员
-        /// </summary>
-        public static bool IsAdmin
-        {
-            get
-            {
-                return User.IsAdmin;
-            }
-        }
-    }
-
-    public class WebUser : User
-    {
-        /// <summary>
-        /// 是否为管理员.
-        /// </summary>
-        public bool IsAdmin { get; set; }
-
-        /// <summary>
-        /// 记住密码.
-        /// </summary>
-        public bool IsRemember { get; set; }
     }
 }

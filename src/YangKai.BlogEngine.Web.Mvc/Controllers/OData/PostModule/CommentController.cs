@@ -1,8 +1,11 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData;
+using System.Web.Http.OData.Query;
+using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
@@ -19,16 +22,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 		
         protected override Comment CreateEntity(Comment entity)
         {
-            if (!Current.IsAdmin)
-            {
-                Current.User = new WebUser
-                {
-                    UserName = entity.Author,
-                    Email = entity.Email,
-                };
-            }
-            entity.Ip = Request.Headers.From;
-            entity.Avatar = Proxy.Security().GetAvater(Current.User);
+            entity.Ip = HttpContext.Current.Request.UserHostAddress;
+            entity.Avatar = GravatarHelper.GetImage(entity.Email);
             entity.Post = Proxy.Repository<Post>().Get(entity.Post.PostId);
             base.CreateEntity(entity);
             Task.Factory.StartNew(() => Rss.Current.BuildComment());
