@@ -81,6 +81,8 @@
   ]
 
   adminCssFiles = [
+    "#{dir}/vendor/messenger/messenger.css"
+    "#{dir}/vendor/messenger/*.css"
     "#{dir}/vendor/**/*.css"
     "#{dir}/common/**/*.css"
     "#{dir}/app-admin/**/*.css"

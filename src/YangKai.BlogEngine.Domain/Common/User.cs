@@ -37,5 +37,10 @@ namespace YangKai.BlogEngine.Domain
         /// 头像URL.
         /// </summary>
         public string Avatar { get; set; }
+
+        /// <summary>
+        /// Token.
+        /// </summary>
+        public string Token { get; set; }
     }
 }

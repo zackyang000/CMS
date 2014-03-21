@@ -10,7 +10,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
     public class UserController : EntityController<User>
     {
         [HttpPost]
-        public void Signin([FromODataUri] int key, ODataActionParameters parameters)
+        public object Signin([FromODataUri] int key, ODataActionParameters parameters)
         {
             var username = (string)parameters["Username"];
             var password = (string)parameters["Password"];
@@ -22,7 +22,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             if (login)
             {
                 var data = security.Get(username, password);
-                Current.User = new WebUser
+                return new WebUser
                 {
                     UserName = data.UserName,
                     LoginName = data.LoginName,

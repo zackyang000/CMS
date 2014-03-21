@@ -1,6 +1,6 @@
 ﻿angular.module('admin.main.controllers',['resource.users'])
 
-.controller('GlobalController',
+.controller('MainCtrl',
 ["$scope","$location","account","version","$localStorage"
 ($scope,$location,account,version,$localStorage) ->
   account.get().then (data) ->
@@ -16,7 +16,7 @@
     $scope.newVersion.showDialog=false
 ])
 
-.controller('LoginController',
+.controller('LoginCtrl',
 ["$scope","$window","User",
 ($scope,$window,User) ->
   $scope.signin = ->
@@ -39,4 +39,14 @@
 
   $scope.backHome = ->
     $window.location.href='/'
+])
+
+.controller('SidebarCtrl', ["$scope","$window","User",
+($scope,$window,User) ->
+
+])
+
+.controller('HeaderCtrl', ["$scope","$window","User",
+($scope,$window,User) ->
+
 ])
