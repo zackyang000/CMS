@@ -19,7 +19,16 @@ namespace YangKai.BlogEngine.Service
 
         public User AutoLogin()
         {
-            throw new NotImplementedException();
+            var token = HttpContext.Current.Request.Headers.Get("x-security-token");
+            if (token == null) return null;
+
+            var data=Proxy.Repository<User>().GetAll(p => p.Token == token);
+            if (data.Count() == 1)
+            {
+                return data.First();
+            }
+
+            return null;
         }
 
         public  void Logoff()

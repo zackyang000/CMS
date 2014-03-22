@@ -21,8 +21,21 @@ namespace YangKai.BlogEngine.Service
             if (login)
             {
                 var user = Proxy.Repository<User>().Get(p => p.LoginName == loginName);
-                user.Avatar = GravatarHelper.GetImage(user.Email);
-                return user;
+
+                //更新token
+                var randomBytes = new byte[16];
+                new RNGCryptoServiceProvider().GetBytes(randomBytes);
+                user.Token = BitConverter.ToString(randomBytes, 0).Replace("-", "");
+                Proxy.Repository<User>().Update(user);
+
+                return new User
+                {
+                    LoginName = user.LoginName,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    Avatar = GravatarHelper.GetImage(user.Email),
+                    Token = user.Token
+                };
             }
             return null;
         }

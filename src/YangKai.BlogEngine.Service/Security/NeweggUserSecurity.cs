@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using AtomLab.Utility;
 using Newtonsoft.Json;
 using YangKai.BlogEngine.Domain;
@@ -22,16 +23,22 @@ namespace YangKai.BlogEngine.Service
                 && WebRequestHelper.Request<Authentication>(URL_AUTHENTICATION, "PUT", postData).Result;
             if (login)
             {
+                //更新token
+                var user = Proxy.Repository<User>().Get(p => p.LoginName == loginName);
+                var randomBytes = new byte[16];
+                new RNGCryptoServiceProvider().GetBytes(randomBytes);
+                user.Token = BitConverter.ToString(randomBytes, 0).Replace("-", "");
+                Proxy.Repository<User>().Update(user);
+
                 var neweggUser = WebRequestHelper.Request<NeweggUser>(string.Format(URL_GET_USER, loginName));
-                var user = new User
+                return new User
                 {
                     LoginName = loginName,
-                    Password = password,
                     UserName = neweggUser.FullName,
                     Email = neweggUser.Email,
+                    Avatar = string.Format(URL_GET_USER_AVATAR, loginName),
+                    Token = user.Token,
                 };
-                user.Avatar = string.Format(URL_GET_USER_AVATAR, user.LoginName ?? user.UserName);
-                return user;
             }
             return null;
         }

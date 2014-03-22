@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData;
@@ -22,6 +23,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             var data = security.Login(username, password);
             if (data!=null)
             {
+                HttpContext.Current.Response.Headers.Set("x-security-token", data.Token);
                 return new User
                 {
                     UserName = data.UserName,
@@ -39,11 +41,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         [HttpPost]
         public object AutoSignin([FromODataUri] int key, ODataActionParameters parameters)
         {
-            var token = HttpContext.Current.Request.Headers.Get("x-security-token");
-            if (token == null) return null;
-
-            var security = Proxy.Security();
-            var data = security.AutoLogin();
+            var data = Proxy.Security().AutoLogin();
             if (data!=null)
             {
                 return new User
