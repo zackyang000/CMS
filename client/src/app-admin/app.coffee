@@ -1,5 +1,6 @@
 ﻿angular.module("app-admin",
 ['ngRoute','ngSanitize','ngAnimate',
+'framework.controller',
 'formatFilters',
 'admin-dashboard',
 'admin-basedata',
@@ -17,12 +18,15 @@
 'FileUpload',
 'ui.utils',
 'ui.bootstrap'])
+
 .config(["$locationProvider",($locationProvider) ->
   $locationProvider.html5Mode(true)
 ])
+
 .config(["$httpProvider",($httpProvider) ->
   $httpProvider.responseInterceptors.push(interceptor)  
 ])
+
 .config(["$routeProvider",($routeProvider) ->
   $routeProvider.otherwise redirectTo: "/"
 ])

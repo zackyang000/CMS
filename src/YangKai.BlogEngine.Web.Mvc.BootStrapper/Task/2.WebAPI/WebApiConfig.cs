@@ -51,6 +51,8 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             signin.Parameter<string>("Password");
             signin.Parameter<bool>("IsRemember");
 
+            var autoSignin = modelBuilder.Entity<User>().Action("AutoSignin");
+
             //管理员注销
             var signout = modelBuilder.Entity<User>().Action("Signout");
 
