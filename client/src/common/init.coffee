@@ -1,31 +1,4 @@
-﻿#统一异常Handler
-interceptor = ["$rootScope", "$q", (scope, $q) ->
-  success = (response) ->
-    response
-  error = (response) ->
-    debugger
-    status = response.status
-    if status is 401
-      message.error '401 Unauthorized'
-    else if status is 400
-      message.error response.data['odata.error'].innererror.message
-    else if status is 500
-      message.error response.data['odata.error'].innererror.message
-    $q.reject(response)
-  (promise) ->
-    promise.then success, error
-]
-
-angular.resetForm = (scope, formName) ->
-  $("form[name=" + formName + "], form[name=" + formName + "] .ng-dirty").removeClass("ng-dirty").addClass "ng-pristine"
-  form = scope[formName]
-  form.$dirty = false
-  form.$pristine = true
-  for field of form
-    form[field].$pristine = true  if form[field].$pristine is false
-    form[field].$dirty = false  if form[field].$dirty is true
-
-uploadInit = (url) ->
+﻿uploadInit = (url) ->
   try
     $(".dropzone").dropzone
       paramName: "file"

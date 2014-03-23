@@ -1,18 +1,15 @@
 ﻿angular.module("zy.services.security", ['resource.users'])
-.factory "security", ['User','$q', "$httpProvider",(User, $q, $httpProvider) ->
+.factory "security", ['User','$q', "$http", (User, $q, $http) ->
   autoLogin: ->
     self = this
     deferred = $q.defer()
-    token=$.cookie('x-security-token')
+    token=$.cookie('authorization')
     if token
-      $httpProvider.defaults.headers.common['x-security-token']=token
+      $http.defaults.headers.common['authorization']=token
       User.autoSignin {id:'(1)'}, null
       ,(data)->
-        if data
-          self.account = data
-          deferred.resolve "OK"
-        else
-          deferred.reject "Failed."
+        self.account = data
+        deferred.resolve "OK"
       ,(error)->
         deferred.reject "Failed."
     else
@@ -22,24 +19,26 @@
   login: (user) ->
     self = this
     deferred = $q.defer()
+    $http.defaults.headers.common['authorization']=''
     User.signin {id:'(1)'}, user
-    ,(data, status, headers, config)->
-      if user.IsRememberMe
-        $.cookie('x-security-token', headers('x-security-token'), {expires: 180, path: '/'})
+    ,(data, headers)->
+      if user.IsRemember
+        $.cookie('authorization', headers('authorization'), {expires: 180, path: '/'})
       else
-        $.cookie('x-security-token', headers('x-security-token'), { path: '/'})
+        $.cookie('authorization', headers('authorization'), { path: '/'})
       self.account = data
       deferred.resolve "OK"
     ,(error)->
-      deferred.reject "Failed."
-
+      deferred.reject "Username or password wrong."
+    deferred.promise
   logoff: ->
     self = this
     deferred = $q.defer()
     User.signout {id:'(1)'}
     ,(data)->
-      $.removeCookie('x-security-token')
-      delete $http.defaults.headers.common['x-security-token']
+      $.removeCookie('authorization')
+      delete $http.defaults.headers.common['authorization']
       self.account = undefined
       deferred.resolve "OK"
+    deferred.promise
 ]

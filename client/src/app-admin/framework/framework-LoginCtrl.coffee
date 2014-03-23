@@ -1,4 +1,4 @@
-angular.module("framework.controller.login",['ngRoute'])
+angular.module("framework.controllers.login",['ngRoute'])
 
 .config(["$routeProvider",
     ($routeProvider) ->
@@ -8,12 +8,12 @@ angular.module("framework.controller.login",['ngRoute'])
           controller: ->)
   ])
 
-.controller('LoginCtrl',["$scope","$rootScope","authorize","userProfile","$q"
-($scope,$rootScope,authorize, userProfile, $q) ->
-  $scope.signin = ->
+.controller('LoginCtrl',["$scope", "$rootScope", "security"
+($scope,$rootScope,security) ->
+  $scope.login = ->
     $scope.submitting=true
     $scope.error=''
-    authorize.login($scope.user)
+    security.login($scope.user)
     .then (data)->
       $rootScope.$broadcast "loginSuccessed"
     , (error) ->
@@ -21,8 +21,8 @@ angular.module("framework.controller.login",['ngRoute'])
       $scope.user.Password=''
       $scope.error=error
 
-  $scope.signout = ->
+  $scope.logout = ->
     $scope.submitting=true
-    authorize.logoff().then (data) ->
+    security.logoff().then (data) ->
       $rootScope.$broadcast "logoutSuccessed"
 ])

@@ -1,7 +1,7 @@
-angular.module("framework.controller.main",[])
+angular.module("framework.controllers.main",[])
 
-.controller('MainCtrl',["$scope","$rootScope","$http","$location","authorize","version", "$localStorage"
-($scope,$rootScope,$http,$location,authorize, version, $localStorage) ->
+.controller('MainCtrl',["$scope","$rootScope","$http","$location","version", "$localStorage"
+($scope,$rootScope,$http,$location, version, $localStorage) ->
   $scope.$on "loginSuccessed", ->
     version.get().then (data)->
       return if !data.length
@@ -24,12 +24,8 @@ angular.module("framework.controller.main",[])
     else if $location.path()=='/login'
       $location.path('/').replace()
 
-    $scope.__themePath = '/framework/themes/'+$scope.__systemSetting.theme+'/index.html'
-
   $scope.$on "logoutSuccessed", ->
     $rootScope.__login=false
     $rootScope.__logoff=true
-
-
 ])
 

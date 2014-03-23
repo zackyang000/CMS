@@ -2,6 +2,7 @@
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.OData.Builder;
+using System.Web.Http.OData.Formatter;
 using Bootstrap.Extensions.StartupTasks;
 using Microsoft.Data.Edm;
 using Newtonsoft.Json;
@@ -40,14 +41,16 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 defaults: new {id = RouteParameter.Optional}
                 );
 
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*", "authorization"));
+
+            config.Formatters.InsertRange(0, ODataMediaTypeFormatters.Create());
         }
 
         private void SetAction(ODataConventionModelBuilder modelBuilder)
         {
             //管理员登陆
             var signin = modelBuilder.Entity<User>().Action("Signin");
-            signin.Parameter<string>("Username");
+            signin.Parameter<string>("UserName");
             signin.Parameter<string>("Password");
             signin.Parameter<bool>("IsRemember");
 

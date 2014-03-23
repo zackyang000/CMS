@@ -33,8 +33,8 @@
     "#{dir}/plugin/unify*/**/*.js"
 
     "#{dir}/plugin/select2/select2.js"
-    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
-    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js",
+    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"
+    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
   ]
 
   cssFiles = [
@@ -78,6 +78,8 @@
     "#{dir}/plugin/ace*/**/*.js"
 
     "#{dir}/plugin/select2/select2.js"
+    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"
+    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
   ]
 
   adminCssFiles = [

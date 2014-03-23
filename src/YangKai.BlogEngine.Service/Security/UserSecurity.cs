@@ -19,7 +19,7 @@ namespace YangKai.BlogEngine.Service
 
         public User AutoLogin()
         {
-            var token = HttpContext.Current.Request.Headers.Get("x-security-token");
+            var token = HttpContext.Current.Request.Headers.Get("authorization");
             if (token == null) return null;
 
             var data=Proxy.Repository<User>().GetAll(p => p.Token == token);

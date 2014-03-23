@@ -1,19 +1,20 @@
 <!doctype html>
-<html ng-cloak ng-app="app-admin" class="no-js" ng-controller="GlobalController">
+<html ng-cloak ng-app="app-admin" class="no-js">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>@Html.Raw(YangKai.BlogEngine.Common.Config.Literal.SITE_NAME) Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="/plugin/ckeditor_3.6.1/ckeditor.js"></script>
+    <base href="/admin/" />
     <!--STYLES--><!--STYLES END-->
     <!--SCRIPTS--><!--SCRIPTS END-->
 </head>
-<body class="navbar-fixed breadcrumbs-fixed">
+<body ng-class="{'login-layout':__logoff, 'navbar-fixed breadcrumbs-fixed':__login}">
 
     <div ng-show="__login" ng-controller="MainCtrl">
         <div class="loadingbox" when-route-change>Loading</div>
-        <div class="navbar navbar-default navbar-fixed-top" id="navbar" ng-controller="HeaderCtrl">
+        <div class="navbar navbar-default navbar-fixed-top" id="navbar">
             <div class="navbar-container" id="navbar-container">
                 <div class="navbar-header pull-left">
                     <a href="/" class="navbar-brand">
@@ -61,7 +62,7 @@
                 <a class="menu-toggler" id="menu-toggler" href="#">
                     <span class="menu-text"></span>
                 </a>
-                <div class="sidebar sidebar-fixed" id="sidebar" ng-controller="SidebarCtrl">
+                <div class="sidebar sidebar-fixed" id="sidebar">
                     <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                         <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
                             <button class="btn btn-success"></button>
@@ -139,7 +140,7 @@
                     <div class="login-container">
                         <div class="center">
                             <h1>
-                                <img src="/framework/img/logo.png" alt="" width="36px" height="36px" style="margin-top: -6px;" />
+                                <img src="/img/logo.gif" alt="" width="36px" height="36px" style="margin-top: -6px;" />
                                 <span class="red">Newkit</span><span class="white">.js</span>
                             </h1>
                             <h4 class="blue">&copy; Newegg Inc.</h4>
@@ -178,7 +179,7 @@
 
                                                 <div class="clearfix">
                                                     <label class="inline">
-                                                        <input type="checkbox" class="ace" ng-init="user.IsRememberMe=false" ng-model="user.IsRememberMe" />
+                                                        <input type="checkbox" class="ace" ng-init="user.IsRemember=false" ng-model="user.IsRemember" />
                                                         <span class="lbl"> Remember Me</span>
                                                     </label>
 

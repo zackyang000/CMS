@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Web;
@@ -15,7 +16,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         [HttpPost]
         public object Signin([FromODataUri] int key, ODataActionParameters parameters)
         {
-            var username = (string)parameters["Username"];
+            var username = (string)parameters["UserName"];
             var password = (string)parameters["Password"];
 
             var security = Proxy.Security();
@@ -23,18 +24,18 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             var data = security.Login(username, password);
             if (data!=null)
             {
-                HttpContext.Current.Response.Headers.Set("x-security-token", data.Token);
+                HttpContext.Current.Response.Headers.Set("authorization", data.Token);
                 return new User
                 {
                     UserName = data.UserName,
                     LoginName = data.LoginName,
                     Email = data.Email,
-                    Avatar = data.Avatar,
+                    Avatar = data.Avatar
                 };
             }
             else
             {
-                throw new Exception("Username or password error.");
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
         }
 
@@ -54,7 +55,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             }
             else
             {
-                throw new Exception("Username or password error.");
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
         }
 
