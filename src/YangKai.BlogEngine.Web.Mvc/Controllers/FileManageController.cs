@@ -1,26 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
+using YangKai.BlogEngine.Web.Mvc.BootStrapper;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers
 {
     public class FileManageController : ApiController
     {
-        public string Upload(HttpPostedFileBase file)
+        public HttpResponseMessage Upload()
         {
-            var filename = Path.GetFileName(file.FileName);
-            var id = Guid.NewGuid();
-            if (!string.IsNullOrEmpty(filename))
+            var id = new Guid();
+            var filename = "";
+
+            var sp = new MultipartMemoryStreamProvider();
+            Task.Run(async () => await Request.Content.ReadAsMultipartAsync(sp)).Wait();
+
+            foreach (var item in sp.Contents)
             {
-                var path = string.Format("{0}/{1}",HttpContext.Current.Server.MapPath("~/upload/temp"), id + Path.GetExtension(filename));
-                file.SaveAs(path);
+                if (item.Headers.ContentDisposition.FileName != null)
+                {
+                    filename = item.Headers.ContentDisposition.FileName.Replace("\"", "");
+                    id = Guid.NewGuid();
+                    var path = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"),
+                        id + Path.GetExtension(filename));
+
+                    var ms = item.ReadAsStreamAsync().Result;
+                    using (var br = new BinaryReader(ms))
+                    {
+                        var data = br.ReadBytes((int) ms.Length);
+                        File.WriteAllBytes(path, data);
+                    }
+                }
             }
-            return id+ Path.GetExtension(filename);
+
+            var resp = Request.CreateResponse(HttpStatusCode.OK, new {result=id + Path.GetExtension(filename)});
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("text/plain");
+            return resp;
         }
 
         public object Delete(string id)

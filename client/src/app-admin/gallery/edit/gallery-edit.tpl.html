@@ -6,7 +6,7 @@
             <i class="icon-home home-icon"></i>
             <a href="/admin/">Home</a>
         </li>
-        <li><a href="/admin/gallery">Gallery</a></li>
+        <li><a href="gallery">Gallery</a></li>
         <li class="active" ng-hide="entity.CreateDate">New</li>
         <li class="active" ng-show="entity.CreateDate">Edit (<span bindonce="entity" bo-html="entity.Name"></span>)</li>
     </ul>
@@ -40,7 +40,7 @@
                                 <span class="button button-flat-action fileinput-button">
                                     <i class="icon-plus icon-white"></i>
                                     <span>Add image</span>
-                                    <input type='file' name='file' data-url='/FileManage/upload' upload />
+                                    <input type='file' name='file' data-url='http://localhost:33333/api/FileManage/upload' upload />
                                 </span>
                             </p>
                             <span ng-show="!files.length && !entity.Cover">No Cover.</span>
@@ -52,7 +52,7 @@
                                 </li>
                             </ul>
                             <p ng-show="entity.Cover">
-                                <img class="img-thumbnail img-article-thumbnail" ng-src="{{entity.Cover}}" />
+                                <img class="img-thumbnail img-article-thumbnail" ng-src="{{imgHost}}/{{entity.Cover}}" />
                                 <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeServerImg(file)"></a>
                             </p>
                         </div>

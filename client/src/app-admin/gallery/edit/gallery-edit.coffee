@@ -2,10 +2,10 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/admin/gallery(':id')",
+    .when "/gallery(':id')",
       templateUrl: "/app-admin/gallery/edit/gallery-edit.tpl.html"
       controller: 'GalleryEditCtrl'
-    .when "/admin/gallery/new",
+    .when "/gallery/new",
       templateUrl: "/app-admin/gallery/edit/gallery-edit.tpl.html"
       controller: 'GalleryEditCtrl'
 ])
@@ -13,7 +13,10 @@
 .controller('GalleryEditCtrl',
 ["$scope","$routeParams","$location","$rootScope","uploadManager","Gallery","Photo"
 ($scope,$routeParams,$location,$rootScope,uploadManager,Gallery,Photo) ->
-  $scope.get = ->
+ $scope.imgHost = config.imgHost
+ $scope.uploadUrl = "#{config.baseAddress}/FileManage"
+
+ $scope.get = ->
     if $routeParams.id
       Gallery.get 
         $filter:"GalleryId eq (guid'#{$routeParams.id}')"
@@ -23,7 +26,7 @@
         uploadInit("/FileManage/Photo/#{$scope.entity.GalleryId}")
         galleryInit()
     else
-      $scope.entity={}
+      $scope.entity = {}
 
   $scope.submit = ->
     #valid
@@ -45,7 +48,7 @@
         $scope.get()
         $scope.files = []
       else
-        $location.path("/admin/gallery('#{entity.GalleryId}')")
+        $location.path("gallery('#{entity.GalleryId}')")
 
   #上传封面处理
   $scope.files = []
@@ -64,7 +67,8 @@
 
   $rootScope.$on "fileUploaded", (e, call) ->
     if !$scope.entity.Cover
-      $scope.entity.Cover=call.result
+      debugger
+      $scope.entity.Cover=JSON.parse(call.result).result
       save()
 
   #上传照片处理
@@ -78,4 +82,5 @@
         $scope.get()
 
   $scope.get()
+
 ])

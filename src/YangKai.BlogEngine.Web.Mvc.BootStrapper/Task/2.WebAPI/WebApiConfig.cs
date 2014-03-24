@@ -7,6 +7,7 @@ using Bootstrap.Extensions.StartupTasks;
 using Microsoft.Data.Edm;
 using Newtonsoft.Json;
 using YangKai.BlogEngine.Domain;
+using System.Net.Http.Formatting;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
@@ -43,6 +44,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 
             config.EnableCors(new EnableCorsAttribute("*", "*", "*", "authorization"));
 
+            //使OData Action支持CORS
             config.Formatters.InsertRange(0, ODataMediaTypeFormatters.Create());
         }
 

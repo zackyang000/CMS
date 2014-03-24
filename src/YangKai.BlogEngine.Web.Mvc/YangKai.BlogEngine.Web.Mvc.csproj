@@ -176,11 +176,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FileManageController.cs" />
     <Compile Include="Controllers\OData\GalleryModule\PhotoCommentController.cs" />
     <Compile Include="Controllers\OData\GalleryModule\PhotoController.cs" />
     <Compile Include="Controllers\OData\GalleryModule\GalleryController.cs" />
     <Compile Include="Controllers\OData\PostModule\ChannelController.cs" />
-    <Compile Include="Controllers\FileManageController.cs" />
     <Compile Include="Controllers\OData\PostModule\GroupController.cs" />
     <Compile Include="Common\SaveRemoteFile.cs" />
     <Compile Include="Common\Current.cs" />

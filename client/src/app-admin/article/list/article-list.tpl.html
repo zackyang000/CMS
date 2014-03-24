@@ -12,7 +12,7 @@
 
 <div class="page-content">
     <div class="text-right">
-        <a class="btn btn-primary btn-sm" href="/admin/article/new">
+        <a class="btn btn-primary btn-sm" href="article/new">
             <i class="icon-plus"></i> New
         </a>
     </div>
@@ -34,7 +34,7 @@
         <tbody>
             <tr ng-repeat="item in list.value" style="height: 51px;">
                 <td><img style="width: 24px;height: 15px;" ng-src="{{item.Thumbnail}}" ng-show="item.Thumbnail" /></td>
-                <td><a href="/admin/article('{{item.PostId}}')">{{item.Title}}</a></td>
+                <td><a href="article('{{item.PostId}}')">{{item.Title}}</a></td>
                 <td>{{item.CreateUser}}</td>
                 <td>{{item.Group.Channel.Name}}</td>
                 <td>{{item.Group.Name}}</td>

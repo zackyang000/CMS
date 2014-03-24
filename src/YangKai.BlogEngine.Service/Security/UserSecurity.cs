@@ -23,6 +23,7 @@ namespace YangKai.BlogEngine.Service
             if (token == null) return null;
 
             var data=Proxy.Repository<User>().GetAll(p => p.Token == token);
+
             if (data.Count() == 1)
             {
                 return data.First();

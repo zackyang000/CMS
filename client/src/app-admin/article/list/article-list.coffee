@@ -2,7 +2,7 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/admin/article",
+    .when "/article",
       templateUrl: "/app-admin/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
 ])

@@ -19,7 +19,6 @@
   login: (user) ->
     self = this
     deferred = $q.defer()
-    $http.defaults.headers.common['authorization']=''
     User.signin {id:'(1)'}, user
     ,(data, headers)->
       if user.IsRemember

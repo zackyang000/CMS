@@ -9,10 +9,10 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/admin/article(':id')",
+    .when "/article(':id')",
       templateUrl: "/app-admin/article/edit/article-edit.tpl.html"
       controller: 'ArticleEditCtrl'
-    .when "/admin/article/new",
+    .when "/article/new",
       templateUrl: "/app-admin/article/edit/article-edit.tpl.html"
       controller: 'ArticleEditCtrl'
 ])
@@ -21,6 +21,8 @@
 .controller('ArticleEditCtrl',
 ["$scope","$routeParams","$window","$rootScope","uploadManager","Article","Channel","$timeout","TranslateService"
 ($scope,$routeParams,$window,$rootScope,uploadManager,Article,Channel,$timeout,TranslateService) ->
+  $scope.uploadUrl = "#{config.baseAddress}/FileManage"
+
   $scope.channels=Channel.query $expand:'Groups',()->
     if $routeParams.id
       $scope.loading="Loading"
@@ -97,7 +99,7 @@
       Article.update {id:"(guid'#{entity.PostId}')"},entity
       ,(data)->
         message.success "Delete post successfully."
-        $window.location.href = "/admin/article"
+        $window.location.href = "article"
 
   #上传图片处理
   $scope.files = []

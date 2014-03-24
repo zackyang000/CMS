@@ -2,7 +2,7 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/admin/board",
+    .when "/board",
       templateUrl: "/app-admin/board/board.tpl.html"
       controller: 'BoardCtrl'
 ])

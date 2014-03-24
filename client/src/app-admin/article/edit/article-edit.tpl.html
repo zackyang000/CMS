@@ -4,9 +4,9 @@
     <ul class="breadcrumb">
         <li>
             <i class="icon-home home-icon"></i>
-            <a href="/admin/">Home</a>
+            <a href="/admin">Home</a>
         </li>
-        <li><a href="/admin/article">Article</a></li>
+        <li><a href="article">Article</a></li>
         <li class="active" ng-hide="entity.CreateDate">New</li>
         <li class="active" ng-show="entity.CreateDate">Edit (<span bindonce="entity" bo-html="entity.Title"></span>)</li>
     </ul>
@@ -64,7 +64,7 @@
                         <span class="btn btn-success btn-sm fileinput-button">
                             <i class="icon-cloud-upload icon-white"></i>
                             <span>Add image</span>
-                            <input type='file' name='file' data-url='/FileManage/upload' upload />
+                            <input type='file' name='file' data-url='{{uploadUrl}}' upload />
                         </span>
                     </p>
                     <span ng-show="!files.length && !entity.Thumbnail">No Attachments.</span>
