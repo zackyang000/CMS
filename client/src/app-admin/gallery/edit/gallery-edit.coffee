@@ -13,7 +13,6 @@
 .controller('GalleryEditCtrl',
 ["$scope","$routeParams","$location","$rootScope","uploadManager","Gallery","Photo"
 ($scope,$routeParams,$location,$rootScope,uploadManager,Gallery,Photo) ->
- $scope.imgHost = config.imgHost
  $scope.uploadUrl = "#{config.baseAddress}/FileManage"
 
  $scope.get = ->

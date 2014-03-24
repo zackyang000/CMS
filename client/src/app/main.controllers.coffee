@@ -1,15 +1,15 @@
 ﻿angular.module('main.controllers',['resource.channels','resource.users',"ChannelServices"])
 
 .controller('GlobalController',
-["$scope","$http","$location",'$window',"Channel" ,"account","$timeout","channel"
-($scope,$http,$location,$window,Channel,account,$timeout,channel) ->
+["$scope", "$rootScope","$http","$location",'$window',"Channel" ,"account","$timeout","channel"
+($scope, $rootScope,$http,$location,$window,Channel,account,$timeout,channel) ->
   account.get().then (data) ->
     $scope.User=data
 
   $scope.$on "ChannelChange",(event, channel) ->
     $scope.channelUrl = channel.Url
 
-  $scope.config = config
+  $rootScope.config = config
 ])
 
 .controller('TopController',
