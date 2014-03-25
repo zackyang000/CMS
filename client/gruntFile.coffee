@@ -96,7 +96,7 @@
     "#{dir}/plugin/select2/select2.css"
   ]
 
-  LIVERELOAD_PORT = 35729
+  LIVERELOAD_PORT = 35730
 
   #-----------------------------------------------------------------
 
@@ -128,44 +128,22 @@
         url:'http://localhost:30000'
 
     watch:
+      options:
+        livereload:LIVERELOAD_PORT
       normalFile:
-        files: [
-          'src/**/*'
-          '!src/**/*.coffee'
-          '!src/**/*.less'
-        ]
-        tasks: [
-          'newer:copy:all'
-          'sails-linker'
-        ]
-        options:
-          event: ['all']
+        files: ['src/**/*','!src/**/*.coffee','!src/**/*.less']
+        tasks: ['newer:copy:all']
       coffee:
-        files: [
-          'src/**/*.coffee'
-        ]
-        tasks: [
-          'newer:coffee'
-          'sails-linker'
-        ]
-        options:
-          event: ['all']
+        files: ['src/**/*.coffee']
+        tasks: ['newer:coffee']
       less:
-        files: [
-          'src/**/*.less'
-        ]
-        tasks: [
-          'newer:less'
-          'sails-linker'
-        ]
+        files: ['src/**/*.less']
+        tasks: ['newer:less']
+      linker:
+        files: ['src/**/*.js','src/**/*.css','src/**/*.coffee','src/**/*.less']
+        tasks: ['sails-linker']
         options:
-          event: ['all']
-
-      #Auto refresh browser
-      livereload:
-        options:
-          livereload:LIVERELOAD_PORT
-        files: ["#{dir}/**/*"]
+          event: ['added', 'deleted']
 
     coffee:
       options:
