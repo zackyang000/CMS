@@ -25,6 +25,7 @@
   $locationProvider.html5Mode(true)
 ])
 
+#ajax error handle.
 .config(["$httpProvider", ($httpProvider) ->
     $httpProvider.responseInterceptors.push ["$rootScope", "$q", ($rootScope, $q) ->
       success = (response) ->
@@ -37,17 +38,18 @@
     ]
 ])
 
+#when route missing then goto 404 page.
 .config(["$routeProvider",($routeProvider) ->
   $routeProvider.otherwise redirectTo: "/404"
 ])
 
-#hide current neg-progress when route start to change
+#hide current neg-progress when route start to change.
 .run(["$rootScope","progress", ($rootScope,progress) ->
   $rootScope.$on '$routeChangeStart', ->
     progress.complete()
 ])
 
-#auto login
+#try to auto login.
 .run(["$rootScope","security","$location","$http", "$q",
 ($rootScope,security,$location) ->
   current = $location.path()
