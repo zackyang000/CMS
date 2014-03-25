@@ -17,7 +17,7 @@
 'pasvaz.bindonce',
 'ngProgress',
 'ngStorage',
-'FileUpload',
+'angularFileUpload',
 'ui.utils',
 'ui.bootstrap'])
 
@@ -43,9 +43,9 @@
 
 #hide current neg-progress when route start to change
 .run(["$rootScope","progress", ($rootScope,progress) ->
-    $rootScope.$on '$routeChangeStart', ->
-      progress.complete()
-  ])
+  $rootScope.$on '$routeChangeStart', ->
+    progress.complete()
+])
 
 #auto login
 .run(["$rootScope","security","$location","$http", "$q",

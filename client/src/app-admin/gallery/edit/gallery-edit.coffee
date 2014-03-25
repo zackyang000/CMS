@@ -11,11 +11,9 @@
 ])
 
 .controller('GalleryEditCtrl',
-["$scope","$routeParams","$location","$rootScope","uploadManager","Gallery","Photo"
-($scope,$routeParams,$location,$rootScope,uploadManager,Gallery,Photo) ->
- $scope.uploadUrl = "#{config.baseAddress}/FileManage"
-
- $scope.get = ->
+["$scope","$routeParams","$location","$rootScope","$fileUploader","Gallery","Photo"
+($scope,$routeParams,$location,$rootScope,$fileUploader,Gallery,Photo) ->
+  $scope.get = ->
     if $routeParams.id
       Gallery.get 
         $filter:"GalleryId eq (guid'#{$routeParams.id}')"
@@ -27,13 +25,17 @@
     else
       $scope.entity = {}
 
+  $scope.uploader = $fileUploader.create
+    scope: $scope
+    url: "#{config.baseAddress}/api/FileManage/upload"
+
   $scope.submit = ->
-    #valid
     $scope.isSubmit=true
+
     return false if !$scope.entity.Name
 
-    if $scope.files.length
-      uploadManager.upload()
+    if $scope.uploader.getNotUploadedItems().length
+      $scope.uploader.uploadAll()
     else
       save()
 
@@ -45,30 +47,14 @@
       message.success "Save category successfully."
       if entity.CreateDate
         $scope.get()
-        $scope.files = []
       else
         $location.path("gallery('#{entity.GalleryId}')")
 
   #上传封面处理
-  $scope.files = []
-
-  $scope.removeImg = (file)->
-    deleteFile=f for f in $scope.files when f.name is file.name
-    $scope.files.splice($scope.files.indexOf(deleteFile),1)
-    uploadManager.cancel file
-  
-  $scope.removeServerImg = ()->
-    $scope.entity.Cover=undefined
-
-  $rootScope.$on "fileAdded", (e, call) ->
-    $scope.files.push call
-    $scope.$apply()
-
-  $rootScope.$on "fileUploaded", (e, call) ->
-    if !$scope.entity.Cover
-      debugger
-      $scope.entity.Cover=JSON.parse(call.result).result
-      save()
+  $scope.uploader.bind('success', (event, xhr, item, res) ->
+    $scope.entity.Cover = res.result
+    save()
+  )
 
   #上传照片处理
   $scope.removePhoto = (item)->
@@ -81,5 +67,8 @@
         $scope.get()
 
   $scope.get()
+
+
+
 
 ])

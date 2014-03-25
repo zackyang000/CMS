@@ -32,15 +32,24 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             Directory.CreateDirectory(dir + "/photo");
             Directory.CreateDirectory(dir + "/thumbnail");
 
+            SaveCover(entity);
+
             return base.CreateEntity(entity);
         }
 
         protected override Gallery UpdateEntity(Guid key, Gallery update)
         {
+            SaveCover(update);
+            return base.UpdateEntity(key, update);
+        }
+
+        private void SaveCover(Gallery update)
+        {
             if (!string.IsNullOrEmpty(update.Cover))
             {
-                var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"),update.Cover);
-                var target = string.Format("{0}/{1}/cover{2}", HttpContext.Current.Server.MapPath("~/upload/gallery"),update.GalleryId, Path.GetExtension(update.Cover));
+                var source = string.Format("{0}/{1}", HttpContext.Current.Server.MapPath("~/upload/temp"), update.Cover);
+                var target = string.Format("{0}/{1}/cover{2}", HttpContext.Current.Server.MapPath("~/upload/gallery"),
+                    update.GalleryId, Path.GetExtension(update.Cover));
                 if (File.Exists(source))
                 {
                     if (File.Exists(target))
@@ -49,11 +58,9 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
                     }
                     File.Move(source, target);
                     ImageProcessing.CutForCustom(target, 973, 615, 100);
-                    update.Cover = "/upload/gallery/"+update.GalleryId+"/cover"+ Path.GetExtension(update.Cover);
+                    update.Cover = "/upload/gallery/" + update.GalleryId + "/cover" + Path.GetExtension(update.Cover);
                 }
             }
-            return base.UpdateEntity(key, update);
         }
-
     }
 }
