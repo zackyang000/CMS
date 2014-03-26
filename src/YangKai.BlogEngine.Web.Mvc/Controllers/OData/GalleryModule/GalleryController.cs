@@ -25,20 +25,13 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             return Proxy.Repository<Gallery>().GetAll();
         }
 
-        protected override Gallery CreateEntity(Gallery entity)
+        protected override Gallery UpdateEntity(Guid key, Gallery update)
         {
-            var dir = HttpContext.Current.Server.MapPath("~/upload/gallery/" + entity.GalleryId);
+            var dir = HttpContext.Current.Server.MapPath("~/upload/gallery/" + update.GalleryId);
             Directory.CreateDirectory(dir);
             Directory.CreateDirectory(dir + "/photo");
             Directory.CreateDirectory(dir + "/thumbnail");
 
-            SaveCover(entity);
-
-            return base.CreateEntity(entity);
-        }
-
-        protected override Gallery UpdateEntity(Guid key, Gallery update)
-        {
             SaveCover(update);
             return base.UpdateEntity(key, update);
         }
