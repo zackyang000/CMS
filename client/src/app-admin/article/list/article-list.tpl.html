@@ -33,7 +33,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="item in list.value" style="height: 51px;">
-                <td><img style="width: 24px;height: 15px;" ng-src="{{item.Thumbnail}}" ng-show="item.Thumbnail" /></td>
+                <td><img style="width: 24px;height: 15px;" ng-src="{{item.Thumbnail | remoteImage}}" ng-show="item.Thumbnail" /></td>
                 <td><a href="article('{{item.PostId}}')">{{item.Title}}</a></td>
                 <td>{{item.CreateUser}}</td>
                 <td>{{item.Group.Channel.Name}}</td>

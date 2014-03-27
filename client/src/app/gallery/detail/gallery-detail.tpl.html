@@ -22,7 +22,7 @@
         <ul>
             <li ng-repeat="photo in item.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
                 <a href="{{photo.Path}}">
-                    <img src="{{photo.Thumbnail}}" alt="{{photo.Name}}">
+                    <img src="{{photo.Thumbnail | remoteImage}}" alt="{{photo.Name}}">
                 </a>
             </li>
         </ul>

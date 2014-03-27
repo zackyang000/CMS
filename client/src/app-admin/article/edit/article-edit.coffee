@@ -19,10 +19,8 @@
 
 
 .controller('ArticleEditCtrl',
-["$scope","$routeParams","$window","$rootScope","uploadManager","Article","Channel","$timeout","TranslateService"
-($scope,$routeParams,$window,$rootScope,uploadManager,Article,Channel,$timeout,TranslateService) ->
-  $scope.uploadUrl = "#{config.baseAddress}/FileManage"
-
+["$scope","$routeParams","$window","$rootScope","$fileUploader","Article","Channel","$timeout","TranslateService"
+($scope,$routeParams,$window,$rootScope,$fileUploader,Article,Channel,$timeout,TranslateService) ->
   $scope.channels=Channel.query $expand:'Groups',()->
     if $routeParams.id
       $scope.loading="Loading"
@@ -58,8 +56,8 @@
 
     $scope.loading="Saving"
 
-    if $scope.files.length
-      uploadManager.upload()
+    if $scope.uploader.getNotUploadedItems().length
+      $scope.uploader.uploadAll()
     else
       save()
 
@@ -101,24 +99,18 @@
         message.success "Delete post successfully."
         $window.location.href = "article"
 
-  #上传图片处理
-  $scope.files = []
+  #上传图片
+  $scope.uploader = $fileUploader.create
+    scope: $scope
+    url: "#{config.baseAddress}/api/FileManage/upload"
 
-  $scope.removeImg = (file)->
-    deleteFile=f for f in $scope.files when f.name is file.name
-    $scope.files.splice($scope.files.indexOf(deleteFile),1)
-    uploadManager.cancel file
-  
-  $scope.removeServerImg = ()->
-    $scope.entity.Thumbnail=null
-
-  $rootScope.$on "fileAdded", (e, call) ->
-    $scope.files.push call
-    $scope.$apply()
-
-  $rootScope.$on "fileUploaded", (e, call) ->
-    $scope.entity.Thumbnail=call.result
+  $scope.uploader.bind('success', (event, xhr, item, res) ->
+    $scope.entity.Thumbnail = res.result
     save()
+  )
+
+  $scope.removeThumbnail = ()->
+    $scope.entity.Thumbnail=undefined
 
   #URL根据Title翻译获取.
   timeout=undefined

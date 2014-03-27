@@ -60,25 +60,13 @@
             <div class="sider">
                 <div>Thumbnail</div>
                 <div>
-                    <p ng-show="files.length<1 && !entity.Thumbnail">
-                        <span class="btn btn-success btn-sm fileinput-button">
-                            <i class="icon-cloud-upload icon-white"></i>
-                            <span>Add image</span>
-                            <input type='file' name='file' data-url='{{uploadUrl}}' upload />
-                        </span>
-                    </p>
-                    <span ng-show="!files.length && !entity.Thumbnail">No Attachments.</span>
-                    <ul class="list-unstyled">
-                        <li ng-repeat="file in files">
-                            <span>{{file.name}}</span>
-                            <span class="label label-info">{{file.size | formatFileSize}}</span>
-                            <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeImg(file)"></a>
-                        </li>
-                    </ul>
-                    <p ng-show="entity.Thumbnail">
-                        <img class="img-thumbnail img-article-thumbnail" ng-src="{{entity.Thumbnail}}" alt="{{item.Title}}" title="{{item.Title}}" />
-                        <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeServerImg(file)"></a>
-                    </p>
+                    <div ng-hide="entity.Thumbnail">
+                        <input type="file" ng-file-select />
+                    </div>
+                    <div ng-show="entity.Thumbnail">
+                        <img class="img-thumbnail img-article-thumbnail" style="width: 160px;height: 120px;" ng-src="{{entity.Thumbnail | remoteImage}}" />
+                        <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeThumbnail()"></a>
+                    </div>
                 </div>
             </div>
             <div class="sider" ng-class="{'has-error': isSubmit && !channelValid()}">

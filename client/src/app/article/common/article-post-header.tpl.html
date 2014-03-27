@@ -33,5 +33,5 @@
     </ul>   
 </div>
 <div class="blog-img" ng-if="item.Thumbnail">
-    <img class="img-responsive" ng-src="{{item.Thumbnail}}" alt="" />
+    <img class="img-responsive" ng-src="{{item.Thumbnail | remoteImage}}" alt="" />
 </div>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Query;
+using AtomLab.Core;
 using AtomLab.Utility;
 using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Render;
@@ -52,6 +53,7 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
             }
 
             entity.PubDate = DateTime.Now;
+            entity.CreateUser = Auth.UserName;
 
             SaveRemoteImg(entity);
             SaveThumbnail(entity);

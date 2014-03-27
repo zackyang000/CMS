@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="item in list">
             <div class="view view-tenth">
-                <img class="img-responsive" ng-src="{{item.Cover}}" alt="" />
+                <img class="img-responsive" ng-src="{{item.Cover | remoteImage}}" alt="" />
                 <div class="mask">
                     <h2>{{item.Name}}</h2>
                     <p>{{item.Description}}</p>

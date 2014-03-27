@@ -27,7 +27,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="item in list.value">
-                <td><img style="width: 30px;height: 30px;" ng-src="{{item.Cover}}"/></td>
+                <td><img style="width: 30px;height: 30px;" ng-src="{{item.Cover | remoteImage}}"/></td>
                 <td><a href="gallery('{{item.GalleryId}}')">{{item.Name}}</a></td>
                 <td>{{item.Description}}</td>
             </tr>

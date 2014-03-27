@@ -10,7 +10,6 @@ namespace AtomLab.Core
     {
         public Entity()
         {
-            CreateUser = Auth.UserName;
             CreateIp = Auth.Ip;
             CreateAddress = Auth.Address;
             CreateDate = DateTime.Now;

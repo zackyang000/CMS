@@ -29,15 +29,13 @@
     else
       $scope.entity = {}
 
-  $scope.uploader = $fileUploader.create
-    scope: $scope
-    url: "#{config.baseAddress}/api/FileManage/upload"
+
 
   $scope.submit = ->
     $scope.isSubmit=true
 
     return false if !$scope.entity.Name
-
+    $scope.loading="Saving"
     if $scope.uploader.getNotUploadedItems().length
       $scope.uploader.uploadAll()
     else
@@ -53,19 +51,23 @@
         $scope.get()
       else
         $location.path("gallery('#{entity.GalleryId}')")
+      $scope.loading=""
 
-  $scope.removeImg = ->
-    $scope.entity.Cover = undefined
 
-  #上传封面处理
+  #上传封面
+  $scope.uploader = $fileUploader.create
+    scope: $scope
+    url: "#{config.baseAddress}/api/FileManage/upload"
+
   $scope.uploader.bind('success', (event, xhr, item, res) ->
     $scope.entity.Cover = res.result
     save()
   )
 
-  #上传照片处理
+  $scope.removeCover = ->
+    $scope.entity.Cover = undefined
 
-
+  #上传照片
   $scope.removePhoto = (item)->
     message.confirm ->
       $scope.loading="Delete"
@@ -76,8 +78,4 @@
         $scope.get()
 
   $scope.get()
-
-
-
-
 ])
