@@ -20,7 +20,11 @@
         $expand:"Photos"
       ,(data)->
         $scope.entity=data.value[0]
-        uploadInit("/FileManage/Photo/#{$scope.entity.GalleryId}")
+        $scope.options =
+          url: "#{config.baseAddress}/api/FileManage/Photo/#{$routeParams.id}"
+          maxFilesize: 100
+          addRemoveLinks: false
+          acceptedFiles: "image/*"
         galleryInit()
     else
       $scope.entity = {}
@@ -50,6 +54,9 @@
       else
         $location.path("gallery('#{entity.GalleryId}')")
 
+  $scope.removeImg = ->
+    $scope.entity.Cover = undefined
+
   #上传封面处理
   $scope.uploader.bind('success', (event, xhr, item, res) ->
     $scope.entity.Cover = res.result
@@ -57,6 +64,8 @@
   )
 
   #上传照片处理
+
+
   $scope.removePhoto = (item)->
     message.confirm ->
       $scope.loading="Delete"

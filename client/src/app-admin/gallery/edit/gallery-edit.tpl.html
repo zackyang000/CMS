@@ -13,48 +13,45 @@
 </div>
 
 <div class="page-content">
-    <div class="tabbable">
-        <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a data-toggle="tab" href="#1">Base</a></li>
-            <li><a data-toggle="tab" href="#2">Photos</a></li>
-        </ul>
-        <div class="tab-content">
-            <div id="1" class="tab-pane in active">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-1 control-label">Name</label>
-                        <div class="col-lg-11">
-                            <input type="text" class="form-control" ng-model="entity.Name" required />
-                        </div>
+    <tabset>
+        <tab heading="Base">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">Name</label>
+                    <div class="col-lg-11">
+                        <input type="text" class="form-control" ng-model="entity.Name" required />
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-1 control-label">Description</label>
-                        <div class="col-lg-11">
-                            <textarea class="form-control" ng-model="entity.Description" rows="3"></textarea>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">Description</label>
+                    <div class="col-lg-11">
+                        <textarea class="form-control" ng-model="entity.Description" rows="3"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-1 control-label">Cover</label>
-                        <div class="col-lg-11">
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">Cover</label>
+                    <div class="col-lg-11">
+                        <div ng-hide="entity.Cover">
                             <input type="file" ng-file-select />
-                            <p ng-show="entity.Cover">
-                                <img class="img-thumbnail img-article-thumbnail" style="width: 160px;height: 120px;" ng-src="{{config.imgHost}}/{{entity.Cover}}" />
-                                <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeServerImg(file)"></a>
-                            </p>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-1 control-label"></label>
-                        <div class="col-lg-11">
-                            <button type="button" class="btn btn-primary" ng-click="submit()">
-                                <i class="icon-save"></i>
-                                Save
-                            </button>
+                        <div ng-show="entity.Cover">
+                            <img class="img-thumbnail img-article-thumbnail" style="width: 160px;height: 120px;" ng-src="{{entity.Cover | remoteImage}}" />
+                            <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeImg()"></a>
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label"></label>
+                    <div class="col-lg-11">
+                        <button type="button" class="btn btn-primary" ng-click="submit()">
+                            <i class="icon-save"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div id="2" class="tab-pane">
+        </tab>
+        <tab heading="Photos" ng-if="entity.GalleryId">
             <div ng-hide="uploadPhoto">
                 <div class="clearfix form-group">
                     <button type="button" class="btn btn-primary pull-right" ng-click="uploadPhoto=true">
@@ -64,8 +61,8 @@
                 </div>
                 <ul class="ace-thumbnails clearfix">
                     <li ng-repeat="item in entity.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
-                        <a ng-href="{{item.Path}}" data-rel="colorbox">
-                            <img alt="150x150" ng-src="{{item.Path}}" style="width: 150px;height: 150px;" />
+                        <a ng-href="{{item.Path | remoteImage}}" data-rel="colorbox">
+                            <img alt=""" ng-src="{{item.Thumbnail | remoteImage}}" style="width: 100px;height: 100px;" />
                             <div class="tags">
                                 <span class="label-holder">
                                     <span class="label label-info arrowed">{{item.Name}}</span>
@@ -73,7 +70,7 @@
                             </div>
                         </a>
                         <div class="tools tools-top">
-                            <a ng-href="{{item.Path}}" target="_blank">
+                            <a ng-href="{{item.Path | remoteImage}}" target="_blank">
                                 <i class="icon-link white"></i>
                             </a>
                             <a href="JavaScript:void(0)" ng-click="removePhoto(item)">
@@ -83,20 +80,16 @@
                     </li>
                 </ul>
             </div>
-                <div ng-show="uploadPhoto">
-                    <div class="clearfix form-group">
-                        <button type="button" class="btn btn-default pull-right" ng-click="get();uploadPhoto=false">
-                            <i class="icon-reply"></i>
-                            Back
-                        </button>
-                    </div>
-                    <form class="dropzone">
-                        <div class="fallback">
-                            <input name="file" type="file" multiple="" />
-                        </div>
-                    </form>
+            <div ng-show="uploadPhoto">
+                <div class="clearfix form-group">
+                    <button type="button" class="btn btn-default pull-right" ng-click="get();uploadPhoto=false">
+                        <i class="icon-reply"></i>
+                        Back
+                    </button>
                 </div>
+                <form  zy-dropzone options="options"></form>
+
             </div>
-        </div>
-    </div>
+        </tab>
+    </tabset>
 </div>

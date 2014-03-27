@@ -5,13 +5,12 @@
 
 .filter 'fromNow', ->
   (input) ->
-    return if input==null 
-    return if input==undefined 
+    return unless input?
     moment(input).fromNow()
     
 .filter "line", ->
   (input) ->
-    return input if !input
+    return unless input?
     return input.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br />')
 
 #转换文件size单位
@@ -23,3 +22,7 @@
     return (bytes / 1000000).toFixed(2) + ' MB' if bytes >= 1000000
     (bytes / 1000).toFixed(2) + ' KB'
 
+.filter 'remoteImage', ->
+    (input) ->
+      return unless input?
+      return config.imgHost + input
