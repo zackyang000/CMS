@@ -26,13 +26,20 @@ namespace YangKai.BlogEngine.Service
 
             if (data.Count() == 1)
             {
-                return data.First();
+                var user = data.First();
+                user.Avatar = GetAvatar(user);
+                return user;
             }
 
             return null;
         }
 
-        public  void Logoff()
+        public virtual void Logoff()
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual string GetAvatar(User user)
         {
             throw new NotImplementedException();
         }

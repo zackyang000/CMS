@@ -39,7 +39,12 @@
                 </ul>
             </li>
             <li class="devider"></li>
-            <li><a href="#" ng-click="login()">Admin</a></li>
+            <li>
+                <a href="#" ng-click="login()">
+                    <span ng-show="account">{{account.name}}</span>
+                    <span ng-hide="account">Admin</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

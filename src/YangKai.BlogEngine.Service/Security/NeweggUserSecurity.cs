@@ -43,6 +43,11 @@ namespace YangKai.BlogEngine.Service
             return null;
         }
 
+        public override string GetAvatar(User user)
+        {
+            return string.Format(URL_GET_USER_AVATAR, user.LoginName);
+        }
+
         private class Authentication
         {
             public string UserName { get; set; }

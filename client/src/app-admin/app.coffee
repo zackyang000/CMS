@@ -8,10 +8,7 @@
 'admin-gallery',
 'admin-system',
 'framework.controllers',
-'zy.services.security',
-'zy.services.progress',
-'zy.services.messager',
-'AccountServices',
+'zy.services',
 'VersionServices',
 'customDirectives',
 'pasvaz.bindonce',
@@ -50,14 +47,18 @@
 ])
 
 #try to auto login.
-.run(["$rootScope","security","$location","$http", "$q",
-($rootScope,security,$location) ->
+.run(["$rootScope","security","$location","context",
+($rootScope,security,$location, context) ->
   current = $location.path()
   if current != '/login'
     $rootScope.__returnUrl = current
   $location.path('/login').replace()
-  security.autoLogin().then (data)->
+  security.autoLogin().then (data) ->
+    context.account.name = data.UserName
+    context.account.email = data.Email
+    context.account.avatar = data.Avatar
     $rootScope.$broadcast "loginSuccessed"
   , ->
+    context.account = undefined
     $rootScope.$broadcast "logoutSuccessed"
 ])

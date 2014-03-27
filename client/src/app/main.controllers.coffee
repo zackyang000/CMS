@@ -1,10 +1,9 @@
 ﻿angular.module('main.controllers',['resource.channels','resource.users',"ChannelServices"])
 
 .controller('GlobalController',
-["$scope", "$rootScope","$http","$location",'$window',"Channel" ,"account","$timeout","channel"
-($scope, $rootScope,$http,$location,$window,Channel,account,$timeout,channel) ->
-  account.get().then (data) ->
-    $scope.User=data
+["$scope", "$rootScope","$http","$location",'$window',"Channel" ,"context","security","channel"
+($scope, $rootScope,$http,$location,$window,Channel,context,security,channel) ->
+  $scope.account=context.account
 
   $scope.$on "ChannelChange",(event, channel) ->
     $scope.channelUrl = channel.Url
@@ -13,15 +12,15 @@
 ])
 
 .controller('TopController',
-["$scope","$http","$location",'$window',"Channel" ,"account","$timeout","channel"
-($scope,$http,$location,$window,Channel,account,$timeout,channel) ->
+["$scope","$http","$location",'$window',"Channel" ,"$timeout","channel"
+($scope,$http,$location,$window,Channel,$timeout,channel) ->
   $scope.login = ->
     $window.location.href='/admin/'
 ])
 
 .controller('HeaderController',
-["$scope","$http","$location",'$window',"Channel" ,"account","$timeout","channel"
-($scope,$http,$location,$window,Channel,account,$timeout,channel) ->
+["$scope","$http","$location",'$window',"Channel" ,"$timeout","channel"
+($scope,$http,$location,$window,Channel,$timeout,channel) ->
   channel.get().then (data) ->
     $scope.Channels=data
     

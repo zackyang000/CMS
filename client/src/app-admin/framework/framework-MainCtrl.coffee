@@ -1,7 +1,7 @@
 angular.module("framework.controllers.main",[])
 
-.controller('MainCtrl',["$scope","$rootScope","$http","$location","version", "$localStorage"
-($scope,$rootScope,$http,$location, version, $localStorage) ->
+.controller('MainCtrl',["$scope","$rootScope","$http","$location","version", "context", "$localStorage"
+($scope,$rootScope,$http,$location, version, context, $localStorage) ->
   $scope.$on "loginSuccessed", ->
     version.get().then (data)->
       return if !data.length
@@ -13,6 +13,8 @@ angular.module("framework.controllers.main",[])
       $localStorage.ver=$scope.newVersion.ver
       $scope.newVersion.showDialog=false
 
+    $rootScope.account=context.account
+    debugger
     $rootScope.__login=true
     $rootScope.__logoff=false
 

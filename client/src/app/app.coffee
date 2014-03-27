@@ -8,13 +8,14 @@
 'issue',
 'gallery',
 'main.controllers',
-'AccountServices',
+'zy.services',
 'customDirectives',
 'pasvaz.bindonce',
 'ngProgress',
 'ui.utils',
 'ui.bootstrap',
 'pascalprecht.translate',
+'ngStorage',
 'angulartics',
 'angulartics.google.analytics'])
 .config(["$locationProvider",($locationProvider) ->
@@ -36,8 +37,9 @@
 .config(["$routeProvider",($routeProvider) ->
   $routeProvider.otherwise redirectTo: "/"
 ])
+
 .config(["$translateProvider",($translateProvider) ->
-    $translateProvider.preferredLanguage('en-us')
+    $translateProvider.preferredLanguage('en')
     $translateProvider.useLocalStorage()
     $translateProvider
     .translations('en',translationsEN)
@@ -47,11 +49,14 @@
 .run(["$location", "$rootScope", ($location, $rootScope) ->
   $rootScope.$on "$routeChangeSuccess", (event, current, previous) ->
     $rootScope.title = current.$$route?.title ? ''
-    #todo
-    #todo
-    #todo
-    #todo
-    #todo
-    #todo
-    
+])
+
+#get account info.
+.run(["$rootScope","security","context", "$localStorage"
+  ($rootScope,security, context, $localStorage) ->
+    security.autoLogin().then (data) ->
+      debugger
+      context.account.name = data.UserName
+      context.account.email = data.Email
+      context.account.avatar = data.Avatar
 ])

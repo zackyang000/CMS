@@ -17,8 +17,8 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$rootScope","$window","$translate","$routeParams","progressbar","Article","Comment","article","account"
-($scope,$rootScope,$window,$translate,$routeParams,progressbar,Article,Comment,article,account) ->
+["$scope","$rootScope","$window","$translate","$routeParams","progressbar","Article","Comment","article","context"
+($scope,$rootScope,$window,$translate,$routeParams,progressbar,Article,Comment,article,context) ->
   $window.scroll(0,0)
 
   $scope.item=article
@@ -64,12 +64,12 @@
   #浏览量+1
   Article.browsed id:"(guid'#{$scope.item.PostId}')"
 
-  account.get().then (data) ->
-    $scope.entity=
-      Author:data.UserName
-      Email:data.Email
-      Url:data.Url
-    $scope.editmode=!data.UserName
+
+  $scope.entity=
+    Author:context.account.name
+    Email:context.account.email
+    Url:context.account.url
+  $scope.editmode=!context.account.user
 
   $scope.del = (item) ->
     message.confirm ->

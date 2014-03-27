@@ -1,5 +1,5 @@
-﻿angular.module("zy.services.security", ['resource.users'])
-.factory "security", ['User','$q', "$http", (User, $q, $http) ->
+﻿angular.module("zy.services.security", ['resource.users', 'zy.services.context'])
+.factory "security", ['User','context','$q', "$http", (User, context, $q, $http) ->
   autoLogin: ->
     self = this
     deferred = $q.defer()
@@ -8,12 +8,11 @@
       $http.defaults.headers.common['authorization']=token
       User.autoSignin {id:'(1)'}, null
       ,(data)->
-        self.account = data
-        deferred.resolve "OK"
+        deferred.resolve data
       ,(error)->
-        deferred.reject "Failed."
+        deferred.reject undefined
     else
-      deferred.reject "Failed."
+      deferred.reject undefined
     deferred.promise
 
   login: (user) ->
@@ -25,10 +24,9 @@
         $.cookie('authorization', headers('authorization'), {expires: 180, path: '/'})
       else
         $.cookie('authorization', headers('authorization'), { path: '/'})
-      self.account = data
-      deferred.resolve "OK"
+      deferred.resolve data
     ,(error)->
-      deferred.reject "Username or password wrong."
+      deferred.reject undefined
     deferred.promise
   logoff: ->
     self = this
@@ -37,7 +35,6 @@
     ,(data)->
       $.removeCookie('authorization')
       delete $http.defaults.headers.common['authorization']
-      self.account = undefined
       deferred.resolve "OK"
     deferred.promise
 ]
