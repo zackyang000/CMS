@@ -4,7 +4,6 @@
 ["$scope","$routeParams","channel"
 ($scope,$routeParams,channel) ->
   #Categories list
-  debugger
   if $routeParams.channel
     channel.get().then (channels) ->
       for item in channels
