@@ -15,7 +15,7 @@
 <!--=== Content Part ===-->
 <div class="container">   
     <div class="row">
-        <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="item in list">
+        <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="item in list | filter:{IsHidden:false}">
             <div class="view view-tenth">
                 <img class="img-responsive" ng-src="{{item.Cover | remoteImage}}" alt="" />
                 <div class="mask">

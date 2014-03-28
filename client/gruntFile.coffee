@@ -169,7 +169,7 @@
         
     uglify:
       #options:
-        #mangle: true #不改变变量名和方法名
+        #mangle: false #改变变量名和方法名
         #beautify: true #不压缩
       my_target:
         files:

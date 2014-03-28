@@ -10,7 +10,7 @@ CKEDITOR.editorConfig = function (config) {
     ['Bold', 'Italic'],
     ['NumberedList', 'BulletedList'],
     ['JustifyLeft', 'JustifyCenter', 'JustifyRight','Link', 'Unlink'],
-    ['Code', 'HorizontalRule'],
+    ['Code', 'Image',  'HorizontalRule'],
     ['Format'],
     ['TextColor', 'BGColor'],
     ['Maximize']
