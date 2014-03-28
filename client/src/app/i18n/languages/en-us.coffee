@@ -12,7 +12,7 @@
     breadcrumb:
       home: 'Home'
     loading: 'Loading'
-    post: 'submitting'
+    post: 'Submitting'
   article:
     preview: 'Prev'
     next: 'Next'

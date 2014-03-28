@@ -47,11 +47,11 @@ namespace YangKai.BlogEngine.Service
         {
             return new RssItem
             {
-                Title = item.Title,
-                Link = new Uri(string.Format("{0}/post/{1}", Config.URL.Domain, item.Url)),
-                Description = item.Content,
+                Title = item.Title ?? string.Empty,
+                Link = new Uri(string.Format("{0}/post/{1}", Config.URL.Domain, item.Url ?? string.Empty)),
+                Description = item.Content ?? string.Empty,
                 PubDate = item.PubDate,
-                Author = item.CreateUser,
+                Author = item.CreateUser ?? string.Empty,
                 Guid = new RssGuid {Name = item.PostId.ToString()}
             };
         }
@@ -94,11 +94,11 @@ namespace YangKai.BlogEngine.Service
                 Link = new Uri(string.Format("{0}/post/{1}", Config.URL.Domain, item.Post.Url)),
                 Description = Razor.Parse(template, new
                 {
-                    Author = item.Author,
-                    Content = item.Content,
+                    Author = item.Author ?? string.Empty,
+                    Content = item.Content ?? string.Empty,
                     CreateDate = item.CreateDate,
-                    Title = item.Post.Title,
-                    User = item.Post.CreateUser,
+                    Title = item.Post.Title ?? string.Empty,
+                    User = item.Post.CreateUser ?? string.Empty,
                 }),
                 PubDate = item.CreateDate,
                 Author = item.Author,

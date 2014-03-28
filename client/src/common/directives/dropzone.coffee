@@ -1,4 +1,6 @@
-myDirectives.directive  "zyDropzone", ->
+angular.module("zy.directives.dropzone",[])
+
+.directive "zyDropzone", ->
   link: (scope, elm, attrs, ngModel) ->
 
     options = scope.$eval(attrs.options)

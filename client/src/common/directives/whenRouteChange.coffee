@@ -1,4 +1,6 @@
-﻿myDirectives.directive "whenRouteChange", 
+﻿angular.module("zy.directives.whenRouteChange",[])
+
+.directive "zyWhenRouteChange",
 ["$rootScope",($rootScope)->
   link:(scope, element, attr) ->
     element.addClass('hide')

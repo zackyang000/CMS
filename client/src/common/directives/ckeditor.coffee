@@ -1,4 +1,6 @@
-﻿myDirectives.directive 'ckEditor', ->
+﻿angular.module("zy.directives.ckEditor",[])
+
+.directive 'ckEditor', ->
   require: '?ngModel'
   link: (scope, elm, attr, ngModel)->
     editor = CKEDITOR.instances[elm[0].name];

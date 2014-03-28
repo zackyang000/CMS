@@ -1,4 +1,4 @@
-﻿angular.module("VersionServices", [])
+﻿angular.module("zy.services.version", [])
 .factory "version", ['$http','$q',($http, $q) ->
   get: ->
     deferred = $q.defer()

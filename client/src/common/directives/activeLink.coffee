@@ -1,4 +1,6 @@
-﻿myDirectives.directive "activeLink", 
+﻿angular.module("zy.directives.activeLink",[])
+
+.directive("activeLink",
 ["$location", (location) ->
   restrict: "A"
   link: (scope, element, attrs, controller) ->
@@ -18,9 +20,9 @@
         return currentPath==''
       else
         return currentPath.indexOf(path) is 0
-]
+])
 
-myDirectives.directive "activeParentLink", ["$location", (location) ->
+.directive("activeParentLink", ["$location", (location) ->
   restrict: "A"
   link: (scope, element, attrs, controller) ->
     clazz = attrs.activeParentLink
@@ -40,4 +42,4 @@ myDirectives.directive "activeParentLink", ["$location", (location) ->
         return currentPath==''
       else
         return currentPath.indexOf(path) is 0
-]
+])

@@ -1,23 +1,28 @@
 ﻿angular.module("app",
-['ngRoute','ngSanitize','ngAnimate','ngCookies',
-'formatFilters',
-'index',
-'article',
-'board',
-'about',
-'issue',
-'gallery',
-'main.controllers',
-'zy.services',
-'customDirectives',
-'pasvaz.bindonce',
-'ngProgress',
-'ui.utils',
-'ui.bootstrap',
-'pascalprecht.translate',
-'ngStorage',
-'angulartics',
-'angulartics.google.analytics'])
+['ngRoute'
+'ngSanitize'
+'ngAnimate'
+'ngCookies'
+'index'
+'article'
+'board'
+'about'
+'issue'
+'gallery'
+'main.controllers'
+'zy.services'
+'zy.directives'
+'zy.filters'
+'pasvaz.bindonce'
+'ngProgress'
+'ui.utils'
+'ui.bootstrap'
+'pascalprecht.translate'
+'ngStorage'
+'angulartics'
+'angulartics.google.analytics'
+])
+
 .config(["$locationProvider",($locationProvider) ->
   $locationProvider.html5Mode(true)
 ])
@@ -55,7 +60,6 @@
 .run(["$rootScope","security","context", "$localStorage"
   ($rootScope,security, context, $localStorage) ->
     security.autoLogin().then (data) ->
-      debugger
       context.account.name = data.UserName
       context.account.email = data.Email
       context.account.avatar = data.Avatar
