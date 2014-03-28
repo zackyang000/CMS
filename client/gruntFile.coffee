@@ -18,13 +18,16 @@
     "#{dir}/vendor/messenger/messenger.js"
     "#{dir}/vendor/messenger/*.js"
 
-    "#{dir}/vendor/angular-translate/*.js"
-    "#{dir}/vendor/angular-translate/**/*.js"
+    #order by folder level.
+    "#{dir}/vendor/*.js"
+    "#{dir}/vendor/*/*.js"
+    "#{dir}/vendor/*/*/*.js"
+    "#{dir}/vendor/*/*/*/*.js"
+    "#{dir}/vendor/**/*.js"
 
     #todo need to remove
     "#{dir}/common/directives/*.js"
 
-    "#{dir}/vendor/**/*.js"
     "#{dir}/config/**/*.js"
     "#{dir}/common/**/*.js"
     "#{dir}/i18n/**/*.js"
@@ -63,13 +66,16 @@
     "#{dir}/vendor/messenger/messenger.js"
     "#{dir}/vendor/messenger/*.js"
 
-    "#{dir}/vendor/angular-translate/*.js"
-    "#{dir}/vendor/angular-translate/**/*.js"
+    #order by folder level.
+    "#{dir}/vendor/*.js"
+    "#{dir}/vendor/*/*.js"
+    "#{dir}/vendor/*/*/*.js"
+    "#{dir}/vendor/*/*/*/*.js"
+    "#{dir}/vendor/**/*.js"
 
     #todo need to remove
     "#{dir}/common/directives/*.js"
 
-    "#{dir}/vendor/**/*.js"
     "#{dir}/config/**/*.js"
     "#{dir}/common/**/*.js"
     "#{dir}/i18n/**/*.js"

@@ -1,1 +1,1 @@
-﻿myDirectives=angular.module("customDirectives", [])
+﻿myDirectives=angular.module("customDirectives", ['zy.directives.Modal'])

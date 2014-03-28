@@ -25,14 +25,13 @@
 ])
 
 .controller('BoardCtrl',
-["$scope","$translate","progressbar","Message","messages","account" 
-($scope,$translate,progressbar,Message,messages,account) ->
-  account.get().then (data) ->
-    $scope.entity=
-      Author:data.UserName
-      Email:data.Email
-      Url:data.Url
-    $scope.editmode=!data.UserName
+["$scope","$translate","progressbar","Message","messages" , "context"
+($scope,$translate,progressbar,Message,messages, context) ->
+  $scope.entity=
+    Author:context.account.name
+    Email:context.account.email
+    Url:context.account.url
+  $scope.editmode=!context.account.user
 
   $scope.list = messages
 

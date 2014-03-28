@@ -1,7 +1,6 @@
 ﻿angular.module("zy.services.security", ['resource.users', 'zy.services.context'])
 .factory "security", ['User','context','$q', "$http", (User, context, $q, $http) ->
   autoLogin: ->
-    self = this
     deferred = $q.defer()
     token=$.cookie('authorization')
     if token
@@ -16,7 +15,6 @@
     deferred.promise
 
   login: (user) ->
-    self = this
     deferred = $q.defer()
     User.signin {id:'(1)'}, user
     ,(data, headers)->
@@ -28,8 +26,8 @@
     ,(error)->
       deferred.reject undefined
     deferred.promise
+
   logoff: ->
-    self = this
     deferred = $q.defer()
     User.signout {id:'(1)'}
     ,(data)->

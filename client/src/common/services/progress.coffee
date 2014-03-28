@@ -1,9 +1,5 @@
 angular.module("zy.services.progress", ['resource.users']).provider "progress", ->
-  @$get = [
-    "$document"
-    "$window"
-    "$compile"
-    "$rootScope"
+  @$get = ["$document", "$window", "$compile", "$rootScope"
     ($document, $window, $compile, $rootScope) ->
       $scope = $rootScope
       $body = $document.find("body")
