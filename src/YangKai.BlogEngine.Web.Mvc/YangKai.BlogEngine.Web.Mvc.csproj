@@ -194,33 +194,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\config.ascx" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\connector.aspx" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\cs.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\da.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\de.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\el.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\en.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\es-mx.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\es.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\fr.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\he.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\hu.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\it.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\ja.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\lv.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\nb.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\nl.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\nn.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\no.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\pl.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\pt-br.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\ru.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\sk.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\sl.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\sv.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\zh-cn.xml" />
-    <Content Include="plugin\ckfinder_aspnet_2.0.1\core\connector\aspx\lang\zh-tw.xml" />
     <Content Include="version.txt" />
     <Content Include="entry\bg.jpeg" />
     <Content Include="entry\style.css" />
