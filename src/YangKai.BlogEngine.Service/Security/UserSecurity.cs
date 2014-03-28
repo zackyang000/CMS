@@ -34,9 +34,19 @@ namespace YangKai.BlogEngine.Service
             return null;
         }
 
-        public virtual void Logoff()
+        public void Logoff()
         {
-            throw new NotImplementedException();
+            var token = HttpContext.Current.Request.Headers.Get("authorization");
+            if (token == null) return ;
+
+            var data = Proxy.Repository<User>().GetAll(p => p.Token == token);
+
+            if (data.Count() == 1)
+            {
+                var user = data.First();
+                user.Token = null;
+                Proxy.Repository<User>().Update(user);
+            }
         }
 
         public virtual string GetAvatar(User user)

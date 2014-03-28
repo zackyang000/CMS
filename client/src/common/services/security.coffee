@@ -3,6 +3,7 @@
   autoLogin: ->
     deferred = $q.defer()
     token=$.cookie('authorization')
+    debugger
     if token
       $http.defaults.headers.common['authorization']=token
       User.autoSignin {id:'(1)'}, null
@@ -31,7 +32,7 @@
     deferred = $q.defer()
     User.signout {id:'(1)'}
     ,(data)->
-      $.removeCookie('authorization')
+      $.removeCookie('authorization', { path: '/' })
       delete $http.defaults.headers.common['authorization']
       deferred.resolve "OK"
     deferred.promise

@@ -8,8 +8,8 @@ angular.module("framework.controllers.login",['ngRoute'])
           controller: ->)
   ])
 
-.controller('LoginCtrl',["$scope", "$rootScope", "security"
-($scope,$rootScope,security) ->
+.controller('LoginCtrl',["$scope", "$rootScope", "security", "context"
+($scope,$rootScope,security, context) ->
   $scope.login = ->
     $scope.submitting=true
     $scope.error=''
@@ -26,7 +26,7 @@ angular.module("framework.controllers.login",['ngRoute'])
       $scope.error="Username or password wrong."
 
   $scope.logout = ->
-    context.auth.set false
+    context.auth.admin = false
     security.logoff().then (data) ->
       $rootScope.$broadcast "logoutSuccessed"
 ])
