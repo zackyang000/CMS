@@ -97,6 +97,10 @@
       progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""
+      context.account =
+        name: $scope.entity.Author
+        email: $scope.entity.Email
+        url: $scope.entity.Url
     ,(error)->
       $scope.submitted=false
       $scope.loading = ""
