@@ -2,7 +2,6 @@
 
 .directive("zyOdataPager", ['$compile',($compile)->
   link:(scope, element, attrs) ->
-    debugger
     data=undefined
     update = ->
       scope.currentPage=1 if scope.currentPage is undefined

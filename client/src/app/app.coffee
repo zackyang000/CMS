@@ -60,8 +60,12 @@
 .run(["$rootScope","security","context", "$localStorage"
   ($rootScope,security, context, $localStorage) ->
     security.autoLogin().then (data) ->
-      context.account.name = data.UserName
-      context.account.email = data.Email
-      context.account.avatar = data.Avatar
-      context.account.admin = true
+      if data
+        context.account =
+          name:data.UserName
+          email:data.Email
+          avatar:data.Avatar
+        context.auth.admin = true
+
+      $rootScope.account=context.account
 ])

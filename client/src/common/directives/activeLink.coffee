@@ -9,7 +9,6 @@
     path = $(link).attr('href')
     scope.location = location
     scope.$watch "location.path()", (currentPath) ->
-      debugger
       if match(path,currentPath.substr(1))
         element.addClass clazz
       else

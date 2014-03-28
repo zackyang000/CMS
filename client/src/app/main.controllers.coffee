@@ -3,7 +3,6 @@
 .controller('GlobalController',
 ["$scope", "$rootScope","$http","$location",'$window',"Channel" ,"context","security","channel"
 ($scope, $rootScope,$http,$location,$window,Channel,context,security,channel) ->
-  $scope.account=context.account
 
   $scope.$on "ChannelChange",(event, channel) ->
     $scope.channelUrl = channel.Url

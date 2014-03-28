@@ -1,5 +1,5 @@
-﻿angular.module("zy.services.security", ['resource.users', 'zy.services.context'])
-.factory "security", ['User','context','$q', "$http", (User, context, $q, $http) ->
+﻿angular.module("zy.services.security", ['resource.users'])
+.factory "security", ['User','$q', "$http", (User, $q, $http) ->
   autoLogin: ->
     deferred = $q.defer()
     token=$.cookie('authorization')

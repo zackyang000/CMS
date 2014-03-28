@@ -13,8 +13,8 @@ angular.module("framework.controllers.main",[])
       $localStorage.ver=$scope.newVersion.ver
       $scope.newVersion.showDialog=false
 
-    $rootScope.account=context.account
-    debugger
+    $rootScope.account = context.account
+
     $rootScope.__login=true
     $rootScope.__logoff=false
 

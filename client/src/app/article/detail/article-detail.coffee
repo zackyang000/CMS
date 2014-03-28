@@ -69,7 +69,7 @@
     Email:context.account.email
     Url:context.account.url
   $scope.editmode=!context.account.name
-  $scope.isAdmin = context.account.admin
+  $scope.isAdmin = context.auth.admin
 
   $scope.del = (item) ->
     message.confirm ->
