@@ -7,14 +7,15 @@
     path = $(link).attr('href')
     scope.location = location
     scope.$watch "location.path()", (currentPath) ->
-      if match(path,currentPath)
+      debugger
+      if match(path,currentPath.substr(1))
         element.addClass clazz
       else
         element.removeClass clazz
 
     match = (path,currentPath)->
-      if path=='/admin'
-        return currentPath=='/admin'
+      if path=='#'
+        return currentPath==''
       else
         return currentPath.indexOf(path) is 0
 ]
@@ -31,12 +32,12 @@ myDirectives.directive "activeParentLink", ["$location", (location) ->
     scope.$watch "location.path()", (currentPath) ->
       element.removeClass clazz
       for path in paths
-        if match(path,currentPath)
+        if match(path,currentPath.substr(1))
           element.addClass clazz
 
     match = (path,currentPath)->
-      if path=='/admin'
-        return currentPath=='/admin'
+      if path=='#'
+        return currentPath==''
       else
         return currentPath.indexOf(path) is 0
 ]
