@@ -31,7 +31,8 @@
     Author:context.account.name
     Email:context.account.email
     Url:context.account.url
-  $scope.editmode=!context.account.user
+  $scope.editmode=!context.account.name
+  $scope.isAdmin = context.account.admin
 
   $scope.list = messages
 

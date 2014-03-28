@@ -64,12 +64,12 @@
   #浏览量+1
   Article.browsed id:"(guid'#{$scope.item.PostId}')"
 
-
   $scope.entity=
     Author:context.account.name
     Email:context.account.email
     Url:context.account.url
-  $scope.editmode=!context.account.user
+  $scope.editmode=!context.account.name
+  $scope.isAdmin = context.account.admin
 
   $scope.del = (item) ->
     message.confirm ->

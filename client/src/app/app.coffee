@@ -63,4 +63,5 @@
       context.account.name = data.UserName
       context.account.email = data.Email
       context.account.avatar = data.Avatar
+      context.account.admin = true
 ])
