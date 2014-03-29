@@ -16,6 +16,7 @@
   article:
     preview: '上一篇'
     next: '下一篇'
+    edit: '编辑'
     comments: '评论'
     source: '来源'
     views_count: '{{ViewCount}} 人浏览'

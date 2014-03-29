@@ -16,6 +16,7 @@
   article:
     preview: 'Prev'
     next: 'Next'
+    edit: 'Edit'
     comments: 'Comments'
     source: 'Source'
     views_count: '{{ViewCount}} Views'

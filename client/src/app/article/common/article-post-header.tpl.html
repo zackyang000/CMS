@@ -13,8 +13,7 @@
             <a  ng-href="{{item.Source}}" title="{{item.Source}}">{{'article.source' | translate}}</a>
         </li>
         <li ng-show="isAdmin">
-            <i class="icon-edit"></i>
-            <a href="JavaScript:void(0)" ng-click="edit(item)">Edit</a>
+            <a href="JavaScript:void(0)" ng-click="edit(item)">{{'article.edit' | translate:item}}</a>
         </li>
     </ul>
     <ul class="list-unstyled list-inline blog-tags" ng-show="item.Tags.length>0">
