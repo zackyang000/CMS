@@ -1,0 +1,105 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin">Home</a>
+        </li>
+        <li><a href="article">Article</a></li>
+        <li class="active" ng-hide="entity.CreateDate">New</li>
+        <li class="active" ng-show="entity.CreateDate">Edit (<span bindonce="entity" bo-html="entity.Title"></span>)</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <form name="form" novalidate ng-submit="submit()" class="row article-detail">
+        <div class="col-lg-8">
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.Title.$invalid}">
+                <label class="control-label">Title</label>
+                <div>
+                    <input type="text" class="form-control" name="Title" ng-model="entity.Title" ng-change="translateTitle()" required />
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.Url.$invalid,'has-warning':Translating}">
+                <label class="control-label">
+                    Url
+                    <span ng-show="Translating">
+                        <i class="icon-spinner icon-spin"></i>
+                    </span>
+                </label>
+                <div>
+                    <input type="text" class="form-control" name="Url" ng-model="entity.Url" required />
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.Content.$invalid}">
+                <label class="control-label">Content</label>
+                <div>
+                    <textarea ck-editor name="Content" ng-model="entity.Content" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <div>
+                    <textarea ck-editor name="Description" ng-model="entity.Description"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="sider">
+                <div>Action</div>
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <button class="btn btn-primary btn-sm" ng-disabled="loading">Submit</button>
+                    </div>
+                    <div class="pull-right" ng-show="entity.CreateDate">
+                        <button type="button" class="btn btn-danger btn-sm" ng-disabled="loading" ng-click="remove()">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sider">
+                <div>Thumbnail</div>
+                <div>
+                    <div ng-hide="entity.Thumbnail">
+                        <input type="file" ng-file-select />
+                    </div>
+                    <div ng-show="entity.Thumbnail">
+                        <img class="img-thumbnail img-article-thumbnail" style="width: 160px;height: 120px;" ng-src="{{entity.Thumbnail | remoteImage}}" />
+                        <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeThumbnail()"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="sider" ng-class="{'has-error': isSubmit && !channelValid()}">
+                <div>Channel</div>
+                <div>
+                    <label class="radio-inline" ng-repeat="item in channels.value">
+                        <input type="radio" value="{{item.ChannelId}}" ng-model="$parent.channelId"> {{item.Name}}
+                    </label>
+                </div>
+            </div>
+            <div class="sider" ng-class="{'has-error': isSubmit && !groupValid()}">
+                <div>Group</div>
+                <div>
+                    <label class="radio-inline" ng-repeat="item in getGroups() | filter:{IsDeleted:false}">
+                        <input type="radio" value="{{item.GroupId}}" ng-model="$parent.groupId"> {{item.Name}}
+                    </label>
+                    &nbsp;
+                </div>
+            </div>
+            <div class="sider">
+                <div>Tags</div>
+                <input type="text" class="form-control" ng-model="tags"/>
+                <p>Enter tags, separated by ","</p>
+            </div>
+            <div class="sider">
+                <div>Source</div>
+                <div>
+                    <div class="form-group">
+                        <label class="control-label">Url</label>
+                            <input type="text" class="form-control" ng-model="entity.Source"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

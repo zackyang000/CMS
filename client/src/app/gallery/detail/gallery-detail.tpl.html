@@ -1,0 +1,31 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{item.Name}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li><a href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
+            <li class="active">{{item.Name}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <blockquote class="hero" ng-show="item.Description">
+        <p>{{item.Description}}</p>
+    </blockquote>
+    <div class='gallery'>
+        <ul>
+            <li ng-repeat="photo in item.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
+                <a href="{{photo.Path}}">
+                    <img src="{{photo.Thumbnail | remoteImage}}" alt="{{photo.Name}}">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--=== End Content Part ===-->

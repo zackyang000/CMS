@@ -1,0 +1,234 @@
+﻿<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.board' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.board' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+        <div class="col-md-offset-2 col-md-8 md-margin-bottom-60">
+            <!-- Comment Form -->
+            <div class="post-comment">
+                <h3>{{'board.content' | translate}}</h3>
+                <form name="form" novalidate ng-submit="save()">
+                    <p bindonce="entity" bo-show="entity.Author">
+                        {{'board.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
+                        <span>
+                            <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'board.hide' | translate}} »</a>
+                            <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'board.change' | translate}} »</a>
+                        </span>
+                    </p>
+                    <div ng-show="editmode">
+                        <div class="row form-group">
+                            <div class="col-md-7 col-md-offset-0">
+                                <label>{{'board.name' | translate}} <span class="color-red">*</span></label>
+                                <input class="form-control" name="Author" type="text" ng-model="entity.Author" placeholder="{{'board.name' | translate}}*" required />
+                                <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
+                                    <span ng-show="form.Author.$error.required">{{'board.nameValidTxt' | translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-7 col-md-offset-0">
+                                <label>{{'board.email' | translate}}</label>
+                                <input class="form-control" name="Email" type="text" ng-model="entity.Email" placeholder="{{'board.email' | translate}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-11 col-md-offset-0">
+                            <label>{{'board.content' | translate}}</label>
+                            <textarea name="Content" class="form-control" rows="8" ng-model="entity.Content" required></textarea>
+                            <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
+                                <span ng-show="form.Content.$error.required">{{'board.contentValidTxt' | translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn-u" type="submit" ng-disabled="loading">
+                            {{'board.submit' | translate}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- End Comment Form -->
+
+            <hr>
+
+            <!-- Recent Comments -->
+            <div class="media" ng-repeat="item in list | orderBy:'-CreateDate'" ng-hide="item.IsDeleted">
+                <span class="pull-left">
+                    <img class="media-object" ng-src="{{item.Avatar}}" alt="" />
+                </span>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        {{item.Author}} 
+                        <span>
+                            {{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}
+                            <a href="JavaScript:void(0)" ng-click="remove(item)" ng-show="isAdmin">
+                                <i class="icon-remove"></i>
+                            </a>
+                        </span>
+                    </h4>
+                    <p ng-bind-html="item.Content | line"></p>
+                </div>
+                <hr/>
+            </div>
+            <!-- End Recent Comments -->
+        </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+<!--        <div class="col-md-3 magazine-page">-->
+<!--            $1$ Search Bar #1#-->
+<!--            <div class="headline headline-md"><h2>Search</h2></div>            -->
+<!--            <div class="input-group margin-bottom-40">-->
+<!--                <input type="text" class="form-control" placeholder="Search">-->
+<!--                <span class="input-group-btn">-->
+<!--                    <button class="btn-u" type="button">Go</button>-->
+<!--                </span>-->
+<!--            </div>-->
+<!--            $1$ End Search Bar #1#-->
+<!---->
+<!--            $1$ Posts #1#-->
+<!--            <div class="posts margin-bottom-40">-->
+<!--                <div class="headline headline-md"><h2>Recent Posts</h2></div>-->
+<!--                <dl class="dl-horizontal">-->
+<!--                    <dt><a href="#"><img src="assets/img/sliders/elastislide/6.jpg" alt="" /></a></dt>-->
+<!--                    <dd>-->
+<!--                        <p><a href="#">Responsive Bootstrap 3 Template placerat idelo alac eratamet.</a></p> -->
+<!--                    </dd>-->
+<!--                </dl>-->
+<!--                <dl class="dl-horizontal">-->
+<!--                    <dt><a href="#"><img src="assets/img/sliders/elastislide/10.jpg" alt="" /></a></dt>-->
+<!--                    <dd>-->
+<!--                        <p><a href="#">100+ Amazing Features Layer Slider, Layer Slider, Icons, 60+ Pages etc.</a></p> -->
+<!--                    </dd>-->
+<!--                </dl>-->
+<!--                <dl class="dl-horizontal">-->
+<!--                    <dt><a href="#"><img src="assets/img/sliders/elastislide/11.jpg" alt="" /></a></dt>-->
+<!--                    <dd>-->
+<!--                        <p><a href="#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p> -->
+<!--                    </dd>-->
+<!--                </dl>-->
+<!--            </div>$1$/posts#1#-->
+<!--            $1$ End Posts #1#-->
+<!---->
+<!--            $1$ Tabs Widget #1#-->
+<!--            <div class="headline headline-md"><h2>Tabs Widget</h2></div>-->
+<!--            <div class="tab-v2 margin-bottom-40">-->
+<!--                <ul class="nav nav-tabs">-->
+<!--                    <li class="active"><a data-toggle="tab" href="#home-1">About Us</a></li>-->
+<!--                    <li><a data-toggle="tab" href="#home-2">Quick Links</a></li>-->
+<!--                </ul>                -->
+<!--                <div class="tab-content">-->
+<!--                    <div id="home-1" class="tab-pane active">-->
+<!--                        <p>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac ac adipiscing nunc.</p> <p>Pellentesque fermentum, ante ac felis consectetur id. Donec eget orci metusvivamus imperdiet.</p>                        -->
+<!--                    </div>-->
+<!--                    <div id="home-2" class="tab-pane magazine-sb-categories">-->
+<!--                        <div class="row">-->
+<!--                            <ul class="list-unstyled col-xs-6">-->
+<!--                                <li><a href="#">Best Sliders</a></li>-->
+<!--                                <li><a href="#">Parralax Page</a></li>-->
+<!--                                <li><a href="#">Backgrounds</a></li>-->
+<!--                                <li><a href="#">Parralax Slider</a></li>-->
+<!--                                <li><a href="#">Responsive</a></li>-->
+<!--                                <li><a href="#">800+ Icons</a></li>-->
+<!--                            </ul>                        -->
+<!--                            <ul class="list-unstyled col-xs-6">-->
+<!--                                <li><a href="#">60+ Pages</a></li>-->
+<!--                                <li><a href="#">Layer Slider</a></li>-->
+<!--                                <li><a href="#">Bootstrap 3</a></li>-->
+<!--                                <li><a href="#">Fixed Header</a></li>-->
+<!--                                <li><a href="#">Best Template</a></li>-->
+<!--                                <li><a href="#">And Many More</a></li>-->
+<!--                            </ul>                        -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>            -->
+<!--            $1$ End Tabs Widget #1#-->
+<!---->
+<!--            $1$ Photo Stream #1#-->
+<!--            <div class="headline headline-md"><h2>Photo Stream</h2></div>-->
+<!--            <ul class="list-unstyled blog-photos margin-bottom-30">-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/5.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/6.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/8.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/10.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/11.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/1.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/2.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/7.jpg"></a></li>-->
+<!--            </ul>-->
+<!--            $1$ End Photo Stream #1#-->
+<!---->
+<!--            $1$ Blog Tags #1#-->
+<!--            <div class="headline headline-md"><h2>Blog Tags</h2></div>-->
+<!--            <ul class="list-unstyled blog-tags margin-bottom-30">-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Business</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Music</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Internet</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Money</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Google</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> TV Shows</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Education</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> People</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> People</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Math</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Photos</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Electronics</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Apple</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Canada</a></li>-->
+<!--            </ul>-->
+<!--            $1$ End Blog Tags #1#-->
+<!---->
+<!--            $1$ Blog Latest Tweets #1#-->
+<!--            <div class="blog-twitter margin-bottom-30">-->
+<!--                <div class="headline headline-md"><h2>Latest Tweets</h2></div>-->
+<!--                <div class="blog-twitter-inner">-->
+<!--                    <i class="icon-twitter"></i>-->
+<!--                    <a href="#">@htmlstream</a> -->
+<!--                    At vero eos et accusamus et iusto odio dignissimos. -->
+<!--                    <a href="#">http://t.co/sBav7dm</a> -->
+<!--                    <span>5 hours ago</span>-->
+<!--                </div>-->
+<!--                <div class="blog-twitter-inner">-->
+<!--                    <i class="icon-twitter"></i>-->
+<!--                    <a href="#">@htmlstream</a> -->
+<!--                    At vero eos et accusamus et iusto odio dignissimos. -->
+<!--                    <a href="#">http://t.co/sBav7dm</a> -->
+<!--                    <span>5 hours ago</span>-->
+<!--                </div>-->
+<!--                <div class="blog-twitter-inner">-->
+<!--                    <i class="icon-twitter"></i>-->
+<!--                    <a href="#">@htmlstream</a> -->
+<!--                    At vero eos et accusamus et iusto odio dignissimos. -->
+<!--                    <a href="#">http://t.co/sBav7dm</a> -->
+<!--                    <span>5 hours ago</span>-->
+<!--                </div>-->
+<!--                <div class="blog-twitter-inner">-->
+<!--                    <i class="icon-twitter"></i>-->
+<!--                    <a href="#">@htmlstream</a> -->
+<!--                    At vero eos et accusamus et iusto odio dignissimos. -->
+<!--                    <a href="#">http://t.co/sBav7dm</a> -->
+<!--                    <span>5 hours ago</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            $1$ End Blog Latest Tweets #1#-->
+<!--        </div>-->
+        <!-- End Right Sidebar -->
+    </div> 
+</div>
+<!--=== End Content Part ===-->
+
