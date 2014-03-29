@@ -11,7 +11,7 @@ Front-end: AngularJS
 Back-end: ASP.NET WEB API + Entity Framework
 
 ## Why do I do this?
-Because I can.
+Because We can.
 
 ## Getting started
 
