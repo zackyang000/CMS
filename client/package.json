@@ -1,6 +1,6 @@
 ﻿{
-  "name": "neweggplatform",
-  "version": "0.2.0",
+  "name": "CMS",
+  "version": "0.0.1",
   "devDependencies": {
     "grunt": "~0.4.2",
     "matchdep": "~0.3.0",

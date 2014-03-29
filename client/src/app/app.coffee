@@ -7,7 +7,6 @@
 'article'
 'board'
 'about'
-'issue'
 'gallery'
 'main.controllers'
 'zy.services'

@@ -31,7 +31,7 @@
     Author:context.account.name
     Email:context.account.email
     Url:context.account.url
-  $scope.editmode=!context.account.name
+  $scope.editmode = !context.account.name
   $scope.isAdmin = context.auth.admin
 
   $scope.list = messages
@@ -51,6 +51,10 @@
       progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""
+      context.account =
+        name: $scope.entity.Author
+        email: $scope.entity.Email
+        url: $scope.entity.Url
     ,(error)->
       $scope.submitted=false
       $scope.loading = ""
