@@ -1,4 +1,7 @@
-angular.module("zy.services.messager", ['resource.users']).factory "messager", ->
+angular.module("zy.services.messager", ['resource.users'])
+
+.factory "messager", ->
+
   success : (msg) ->
     Messenger().post({ message : msg, type : 'success', showCloseButton : true })
 

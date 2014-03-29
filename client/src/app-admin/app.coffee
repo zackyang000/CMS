@@ -25,17 +25,18 @@
 ])
 
 #ajax error handle.
-.config(["$httpProvider", ($httpProvider) ->
-    $httpProvider.responseInterceptors.push ["$rootScope", "$q", ($rootScope, $q) ->
+.config(["$httpProvider", ($httpProvider ) ->
+    $httpProvider.responseInterceptors.push ["$rootScope", "$q", "messager", ($rootScope, $q, messager) ->
       success = (response) ->
         response
       error = (response) ->
-        debugger
+        if response.data['odata.error']? and response.data['odata.error'].innererror? and response.data['odata.error'].innererror.message?
+          messager.error response.data['odata.error'].innererror.message
         $q.reject(response)
       (promise) ->
         promise.then success, error
     ]
-])
+  ])
 
 #when route missing then goto 404 page.
 .config(["$routeProvider",($routeProvider) ->
