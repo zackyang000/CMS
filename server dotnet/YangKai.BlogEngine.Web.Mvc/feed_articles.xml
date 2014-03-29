@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>iShare - 文章</title>
+    <description>iShare - 文章</description>
+    <link>http://www.woshinidezhu.com/</link>
+    <language>zh-cn</language>
+    <copyright>&amp;copy; Powered by Zack Yang, 2008-2013, All Rights Reserved.</copyright>
+    <pubDate>Sat, 29 Mar 2014 10:51:46 GMT</pubDate>
+    <lastBuildDate>Sat, 29 Mar 2014 10:51:46 GMT</lastBuildDate>
+    <docs>http://backend.userland.com/rss</docs>
+    <generator>RSS.NET: http://www.rssdotnet.com/</generator>
+    <item>
+      <title>876587</title>
+      <description>&lt;p&gt;
+	87568756&lt;/p&gt;
+&lt;h2 style="box-sizing: border-box; font-family: 'Open Sans', sans-serif; line-height: 32px; margin-top: 5px; margin-bottom: 10px; font-size: 21px; text-shadow: none; color: rgb(85, 85, 85); font-weight: 400 !important;"&gt;
+	&lt;a class="ng-binding" href="/post/8787" ng-="" ng-bind-html="item.Title | highlight:params.key" style="box-sizing: border-box; color: rgb(85, 85, 85); text-decoration: none; outline: 0px !important;"&gt;787&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="ng-scope" ng-include="'/app/article/common/article-post-header.tpl.html'" style="box-sizing: border-box; color: rgb(51, 51, 51); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 20.799999237060547px;"&gt;
+	&lt;div class="blog-post-tags ng-scope" style="box-sizing: border-box; padding: 5px 0px 8px; margin-bottom: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: rgb(238, 238, 238); border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: rgb(238, 238, 238);"&gt;
+		&lt;ul class="list-unstyled list-inline blog-info" style="box-sizing: border-box; margin-top: 0px; margin-bottom: 3px; padding-left: 0px; list-style: none; color: rgb(238, 238, 238);"&gt;
+			&lt;li class="ng-binding" style="box-sizing: border-box; color: rgb(85, 85, 85); line-height: 1.6; display: inline-block; padding-right: 5px; padding-left: 5px; font-size: 12px;"&gt;
+				&amp;nbsp;2014/03/27&lt;/li&gt;
+			&amp;nbsp;
+			&lt;li style="box-sizing: border-box; color: rgb(85, 85, 85); line-height: 1.6; display: inline-block; padding-right: 5px; padding-left: 5px; font-size: 12px;"&gt;
+				&amp;nbsp;&lt;a class="ng-binding" href="/list/funs/videos" ng-="" style="box-sizing: border-box; color: rgb(85, 85, 85); text-decoration: none; line-height: 1.6; outline: 0px !important;"&gt;视频&lt;/a&gt;&lt;/li&gt;
+			&amp;nbsp;
+			&lt;li class="ng-binding" style="box-sizing: border-box; color: rgb(85, 85, 85); line-height: 1.6; display: inline-block; padding-right: 5px; padding-left: 5px; font-size: 12px;"&gt;
+				&amp;nbsp;&lt;/li&gt;
+			&amp;nbsp;
+			&lt;li class="ng-binding" style="box-sizing: border-box; color: rgb(85, 85, 85); line-height: 1.6; display: inline-block; padding-right: 5px; padding-left: 5px; font-size: 12px;"&gt;
+				&amp;nbsp;0 Comments&lt;/li&gt;
+			&amp;nbsp;
+			&lt;li class="ng-binding" style="box-sizing: border-box; color: rgb(85, 85, 85); line-height: 1.6; display: inline-block; padding-right: 5px; padding-left: 5px; font-size: 12px;"&gt;
+				&amp;nbsp;4 Views&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;div class="blog-img ng-scope" ng-if="item.Thumbnail" style="box-sizing: border-box; margin: 20px 0px;"&gt;
+		&lt;img alt="" class="img-responsive" ng-="" src="http://localhost:33333/upload/thumbnail/2014.03.27.8787.jpg" style="box-sizing: border-box; border: 0px; vertical-align: middle; display: block; height: auto; max-width: 100%;" /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+	&amp;nbsp;&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/post/the-876587</link>
+      <author>我是你的猪</author>
+      <guid>464a97ae-d972-41cb-bf1f-6ea445bfa577</guid>
+      <pubDate>Thu, 27 Mar 2014 17:03:19 GMT</pubDate>
+    </item>
+    <item>
+      <title>6587</title>
+      <description>&lt;p&gt;
+	875687&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/post/6587</link>
+      <guid>d1968cbb-5566-4e2d-a3b0-548e893017ae</guid>
+      <pubDate>Thu, 27 Mar 2014 16:55:54 GMT</pubDate>
+    </item>
+    <item>
+      <title>8787</title>
+      <description>&lt;p&gt;
+	787887&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/post/8787</link>
+      <guid>cff20cbc-f1c8-4533-9c49-d7476026d00d</guid>
+      <pubDate>Thu, 27 Mar 2014 16:19:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>为什么我要用 Node.js? 案例逐一介绍 - 博客</title>
+      <description>&lt;div id="readability-page-1" class="page"&gt;&lt;div class=""&gt;&lt;b&gt;本文由 &lt;a href="http://blog.jobbole.com"&gt;伯乐在线&lt;/a&gt; - &lt;a href="http://blog.jobbole.com/author/lellansin/"&gt;Lellansin&lt;/a&gt; 翻译自 &lt;a target="_blank" href="http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js"&gt;toptal&lt;/a&gt;。欢迎加入&lt;a target="_blank" href="http://www.jobbole.com/groups/6/"&gt;技术翻译小组&lt;/a&gt;。转载请参见文章末尾处的要求。&lt;/b&gt;&lt;p&gt;&lt;span&gt;介绍&lt;/span&gt;&lt;/p&gt;&lt;p&gt;JavaScript 高涨的人气带来了很多变化，以至于如今使用其进行网络开发的形式也变得截然不同了。就如同在浏览器中一样，现在我们也可以在服务器上运行 JavaScript ，从前端跨越到后端，这样巨大的反差让人难以想象，因为仅仅在几年前 Javascript 还如同 Flash 或者 Java applet 那样嵌入网页在沙箱环境中运行。&lt;/p&gt;&lt;p&gt;在深入Node.js之前，你可能需要阅读和了解使用&lt;a href="http://www.toptal.com/javascript/guide-to-full-stack-javascript-initjs"&gt;跨栈式JavaScript（JavaScript across the stack）&lt;/a&gt;带来的好处，它统一了编程语言和数据格式（JSON），让你能最佳地重用开发人员资源。由于这更多的是关于 JavaScript 的特点，这里就不过多讨论它。但它确实是一个让人在开发环节中使用 Node 的关键的优点。&lt;/p&gt;&lt;p&gt;正如&lt;a href="http://en.wikipedia.org/wiki/Nodejs" target="_blank"&gt;维基百科&lt;/a&gt; 所说：“Node.js 是谷歌 V8 引擎、libuv平台抽象层 以及主体使用 Javscript 编写的核心库三者集合的一个包装外壳。” 除此之外，值得注意的是，Node.js 的作者瑞恩·达尔 (Ryan Dahl) 的目标是创建具有实时推送能力的网站。在 Node.js 中，他给了开发者一个使用事件驱动来实现异步开发的优秀解决方案。&lt;span&gt;（注：V8是谷歌开发的，目前公认最快的 Javascript 解析引擎，libuv 是一个开源的、为 Node 定制而生的跨平台的异步 IO 库。）&lt;/span&gt;&lt;/p&gt;&lt;p&gt;简而言之：Node.js 在实时的 Web应用上采用了基于 WebSocket 的推送技术。这意味着什么样的革命性？Well，在经过了20多年的基于无状态的请求-返机制的无状态交互之后，我们终于有了实时的，双向连接的web应用，客户端和服务器端都可以发起通信，能够自由地交换数据。与此形成鲜明对比的是传统的 web响应模式，客户端总是主动发起通信而服务端被动返回。此外，这些都是基于运行在标准80端口上的开放Web组件（HTML、CSS和JS）。&lt;/p&gt;&lt;p&gt;可能有人会说，我们已经使用 Flash 和 Java Applet 的形式很多年了——但实际上，这些方式只是使用网络将数据传递到客户端上的沙箱环境。他们都是隔离运行的，而且经常操作到需要额外的权限之类的非标准端口。&lt;/p&gt;&lt;p&gt;凭借其独特的优势，Node.js的现在已经在&lt;a href="http://nodejs.org/industry/" target="_blank"&gt;许多著名公司&lt;/a&gt;的产品中起到了关键作用。&lt;/p&gt;&lt;p&gt;在这篇文章中，我们不仅将讨论这些优势是如何实现的，而且也会讨论为什么你使用 Node.js 来替代一些经典的Web应用程序模型。&lt;/p&gt;&lt;p&gt;Node.js 的主要思路是：使用非阻塞的，事件驱动的 I/O 操作来保持在处理跨平台 (across distributed devices) 数据密集型实时应用时的轻巧高效。这听起来有点绕口。&lt;/p&gt;&lt;p&gt;它的真正含义是，Node.js 不是一个即将主导Web开发的世界的银弹级的平台。相反，它是一个满足特别需求的平台。你肯定不会希望使用 Node.js 去做 CPU密集型操作。事实上，使用它进行繁重的计算等于摒弃 Node 几乎所有的优点。Node 真正的亮点在于建设高性能，高扩展性的互联网应用——因为它能够处理庞大的并且高吞吐量的并发连接。&lt;/p&gt;&lt;p&gt;它的工作原理是相当有趣的。传统的网络服务技术，是每个新增一个连接（请求）便生成一个新的线程，这个新的线程会占用系统内存，最终会占掉所有的可用内存。而 Node.js 仅仅只运行在一个单线程中，使用非阻塞的异步 I/O 调用，所有连接都由该线程处理，在 libuv 的加分下，可以允许其支持数万并发连接（全部挂在该线程的&lt;a href="http://en.wikipedia.org/wiki/Nodejs" target="_blank"&gt;事件循环&lt;/a&gt;中）。&lt;/p&gt;&lt;p&gt;&lt;a href="/upload/offsite/2014.01.03.f698b397-3dcd-4e00-9c66-1604ba58cbb1\e7c48990-777f-46c0-ad74-504fb7548cce.png" target="_blank" rel="lightbox[53736]" title="为什么我要用 Node.js? 案例逐一介绍" class="cboxElement"&gt;&lt;img class="alignnone size-full wp-image-53737" alt="toptal-blog-1_B" src="/upload/offsite/2014.01.03.f698b397-3dcd-4e00-9c66-1604ba58cbb1\e7c48990-777f-46c0-ad74-504fb7548cce.png"&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;做一个简单的计算: 假设是普通的Web程序，新接入一个连接会占用 &lt;a href="http://nodejs.org/about/" target="_blank"&gt;2M 的内存&lt;/a&gt;，在有 8GB RAM的系统上运行时, 算上&lt;a href="http://www.slideshare.net/marcusf/nonblocking-io-event-loops-and-nodejs" target="_blank"&gt;线程之间上下文切换的成本&lt;/a&gt;，并发连接的最大理论值则为 4000 个。这是在传统 Web服务端技术下的处理情况。而 Node.js 则达到了约 1M 一个并发连接的拓展级别 (&lt;a href="http://blog.caustik.com/2012/08/19/node-js-w1m-concurrent-connections/" target="_blank"&gt;相关证明&lt;/a&gt;).&lt;/p&gt;&lt;p&gt;当然，在所有客户端的请求共享单一线程时也会有问题, 这也是一个编写 Node.js 应用的潜在缺陷. 首先, 大量的计算可能会使得 Node 的单线程暂时失去反应, 并导致所有的其他客户端的请求一直阻塞, 直到计算结束才恢复正常。 其次，开发人员需要非常小心，不要让一个 Exception 阻塞核心的事件循环，因为这将导致 Node.js 实例的终止（实际上就是程序崩溃）。（ 笔者注：如 PHP 中某个页面挂掉是不会影响网站运行的，但是 Nodejs 是一个线程一个线程来处理所有的链接，所以不论是计算卡了或者是被异常阻塞了都可能会影响到其他所有的链接。解决方案在稍后讨论。）&lt;/p&gt;&lt;p&gt;用来避免异常抛出时中断进程的方法是将异常使用回调传递出去（而不是抛出他们，就像在其他环境中一样）。即使一些未处理的异常阻塞了程序，依旧有多种应对的解决方案，而且也有很多可用于监视 Node 进程来执行必要的崩溃后恢复工作的策略和工具（虽然你将无法恢复用户的 Session ），最常见的是使用 Forever 模块，或者采用其他的外部系统工具如 &lt;a href="http://jacobmumm.com/2011/08/29/node-as-a-service-in-ubuntu-11-04-with-upstart-monit-and-forever-js/" target="_blank"&gt;upstart and monit&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;当我们讨论 Node.js 的时候，一个绝对不应该忽略地方就是默认内置的模块管理工具 —— &lt;a href="http://docs.nodejitsu.com/articles/getting-started/npm/what-is-npm" target="_blank"&gt;NPM&lt;/a&gt;。 其灵感来源与 Ruby Gems（具有版本和依赖管理功能，可以通过在线资料库便捷安装可重用的组件的管理工具）。&lt;/p&gt;&lt;p&gt;一个完整的公用模块列表可以在 NPM 的网站上找到（&lt;a href="https:://npmjs.org/" target="_blank"&gt;https:://npmjs.org/&lt;/a&gt;），或者通过使用与 Node.js 一同安装的 NPM CLI 工具放问到。该模块的生态系统向所有人开放，任何人都可以发布自己的模块，所有的模块都可以在 NPM 资料库中找到。你可以在 &lt;a href="http://howtonode.org/introduction-to-npm" target="_blank"&gt;http://howtonode.org/introduction-to-npm&lt;/a&gt; 页面找到 NPM 的一个简要介绍（有点旧，但依旧能看）。&lt;/p&gt;&lt;p&gt;目前非常流行的一些 NPM 模块有：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://expressjs.com/" target="_blank"&gt;express&lt;/a&gt; – Express.js,是一个简洁而灵活的 node.js Web应用框架, 并且已经是现在大多数 Node.js 应用的标准框架，你已经可以在很多 Node.js 的书籍中看到它了。&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.senchalabs.org/connect/" target="_blank"&gt;connect&lt;/a&gt; – Connect 是一个 Node.js 的 HTTP 服务拓展框架，提供一个高性能的“插件”集合，以中间件闻名，是 Express 的基础部分之一。&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://socket.io/" target="_blank"&gt;socket.io&lt;/a&gt; 和 &lt;a href="https://github.com/sockjs" target="_blank"&gt;sockjs&lt;/a&gt; – 目前服务端最流行的两个 websocket 组件。&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://jade-lang.com/" target="_blank"&gt;Jade&lt;/a&gt; – 流行的模板引擎之一，并且是 Express.js 的默认模板引擎。其灵感来源于 HAML。&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://npmjs.org/package/mongodb" target="_blank"&gt;mongo&lt;/a&gt; 和 &lt;a href="https://github.com/gett/mongojs" target="_blank"&gt;mongojs&lt;/a&gt; – 封装了 MongoDB 的的各种 API，不过笔者平常工作用的是 &lt;a href="http://mongoosejs.com/" target="_blank"&gt;mongoose&lt;/a&gt; 也很推荐。&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mranney/node_redis" target="_blank"&gt;redis&lt;/a&gt; – Redis 的客户端函数库.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://npmjs.org/package/coffee-script" target="_blank"&gt;coffee-script&lt;/a&gt; – CoffeeScript 编译器，允许开发者使用 Coffee 来编写他们的 Node.js 程序。&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://npmjs.org/package/underscore" target="_blank"&gt;underscore&lt;/a&gt; (&lt;a href="http://lodash.com/" target="_blank"&gt;lodash&lt;/a&gt;, &lt;a href="https://npmjs.org/package/lazy" target="_blank"&gt;lazy&lt;/a&gt;) – 最流行的 JavaScript 工具库 , 用于 Node.js 的封装包，以及两个采取略有不同的实现方法来获得&lt;a href="http://philosopherdeveloper.com/posts/introducing-lazy-js.html" target="_blank"&gt;更好性能&lt;/a&gt;的同行。&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://npmjs.org/package/forever" target="_blank"&gt;forever&lt;/a&gt; – 可能是用来确保 node 脚本持续运行的最流行的工具。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;还有很多好的模块，这里就不一一列举了（希望没有冒犯到没列举的）。&lt;/p&gt;&lt;h2&gt;聊天&lt;/h2&gt;&lt;p&gt;聊天是最典型的多用户实时交互的应用。从 &lt;a href="http://zh.wikipedia.org/wiki/IRC" target="_blank"&gt;IRC&lt;/a&gt; 开始，有许多开源或者不开源的协议都运行在非标准端口上，而现在，使用 Node.js 则可以解决这些问题——在标准的80端口运行 WebSockets。&lt;/p&gt;&lt;p&gt;聊天应用程序是最能体现 Node.js 优点的例子：轻量级、高流量并且能良好的应对跨平台设备上运行密集型数据（虽然计算能力低）。同时，聊天也是一个非常值得学习的用例，因为它很简单，并且涵盖了目前为止一个典型的 Node.js 会用到的大部分解决方案。&lt;/p&gt;&lt;p&gt;让我们试着来描绘它如何工作。&lt;/p&gt;&lt;p&gt;在最简单的情况下，我们布置了一个聊天室在我们的网站上，用户可以在上面发消息，当然是一对多的形式。例如，假设总共有三个人连接到我们的网站上。&lt;/p&gt;&lt;p&gt;在服务端这边， 我们有一个使用 Express.js 搭建的简单站点，该站点实现了两件事 1) 处理路径为 ‘/’ 的GET请求时，下发包括一个留言板以及一个发送信息的 ‘发送’ 按钮的页面 2) 一个监听客户端发送新消息的 websockets 服务。&lt;/p&gt;&lt;p&gt;在客户端这边，我们有一个 HTML 页面，上面有个两个 js 方法，一个是用于触发事件的 “发送” 按钮，这会把把输入的消息通过 webscoket 发送，另一个方法是用 webscoket 在客户端上监听服务端来的推送（例如，其他用户发送的消息）。&lt;/p&gt;&lt;p&gt;当有一个客户端发送消息的时候，发生的事情是：&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;浏览器上，点击发送按钮触发了 js 函数，将输入框中的文字通过 websocket 消息发送到服务器的 websocket 客户端（页面初始化加载的时候连接的）。&lt;/li&gt;
+&lt;li&gt;服务端的 websocket 组件收到 消息，然后通过广播方法转发到其他所有连接的客户端。&lt;/li&gt;
+&lt;li&gt;通过页面上运行的 websocket 客户端组件，所有的客户端都能收到这条推送的新消息。接着 js 处理函数可以把这个消息添加到文字框内。&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;&lt;a href="/upload/offsite/2014.01.03.f698b397-3dcd-4e00-9c66-1604ba58cbb1\70e3d6de-feec-49f7-b9c9-46d9a74e3fa5.png" target="_blank" rel="lightbox[53736]" title="为什么我要用 Node.js? 案例逐一介绍" class="cboxElement"&gt;&lt;img class="alignnone size-full wp-image-53738" alt="toptal-blog-2_B" src="/upload/offsite/2014.01.03.f698b397-3dcd-4e00-9c66-1604ba58cbb1\70e3d6de-feec-49f7-b9c9-46d9a74e3fa5.png"&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;这是一个最简单的例子。如果要更好的解决方案，你可以使用 Redis 数据库做一个简单的缓存。在一个更高级的解决方案中，你可能需要一个消息路由来专门处理消息队列，并且需要一个更强健的发送机制，比如发送的时候覆盖上暂时离线的用户或者为离线的注册用户存储尚未接收的消息等等。但是不论你做了怎么样的改进，Node.js 都将遵循一个基本原则：响应事件，处理多个并发连接，并保持流动性的用户体验。&lt;/p&gt;&lt;h2&gt;对象数据库接口（API ON TOP OF AN OBJECT DB）&lt;/h2&gt;&lt;p&gt;尽管，Node.js 确实非常擅长实时交互的应用，同时它也十分适合通过对象数据库（object DB）来查询数据（如 MongoDB）。以 JSON 格式存储的数据允许 Node.js 直接处理，不需要纠结数据转换和匹配的问题。&lt;/p&gt;&lt;p&gt;举个例子，如果你正在使用 Rails，你会将 JSON 数据转成 二进制的 model，当数据再被 Backbone.js, Angular.js 或者 jQuery AJAX 之类的调用又要转回 JSON。如果是 Nodejs 的话，你可以通过一个 REST API 简单的导出 JSON 对象以供客户端使用。另外，从数据库读写时候如果使用的是 MongoDB 的话，你也不用担心的 JSON 与任何数据之间的格式问题。总之，你可以避免多元的数据转换问题，不论是在客户端、服务端还是数据库。&lt;/p&gt;&lt;h2&gt;队列输入&lt;/h2&gt;&lt;p&gt;如果你正在接收一个高量并发的数据，你的数据库可能会成为你处理的瓶颈。正如上面的描述，Node.js 可以轻松的处理并发连接。 但是，由于数据库操作是一个阻塞的操作（在这种情况下），这就是麻烦的地方。Node.js的解决方案是，在数据真正的写入之前就承认客户端的数据是真实的。&lt;/p&gt;&lt;p&gt;用这种方法，在高负载的时候系统继续维持它的响应，这在当客户端不需要严格确认一个数据是否成功的被写入时特别有用。典型的例子包括：日志记录或者用户跟踪数据（user-tracking data）的记录，这会被分批处理并且在稍后才使用；同时也包括&lt;a href="http://www.allthingsdistributed.com/2007/12/eventually_consistent.html" target="_blank"&gt;最终一致性&lt;/a&gt;（so, 常用于 NoSQL）可以接受，不需要立即反应的操作（例如 Facebook 上更新点赞的数目）。&lt;/p&gt;&lt;p&gt;数据通过某些缓存或者消息队列的基础组件（例如 RabbitMQ, ZeroMQ）进入队列，并且通过一个独立的数据库批量写入进程来一一消化，或者通过一个更高性能的计算密集型后端服务来进行处理。其他的语言/框架也可以实现相似的操作，但在相同的配置下是达不到 nodejs 的高吞吐量与高并发。&lt;/p&gt;&lt;p&gt;&lt;a href="/upload/offsite/2014.01.03.f698b397-3dcd-4e00-9c66-1604ba58cbb1\a456c6dd-07ac-4508-9d35-12f6b2b47261.png" target="_blank" rel="lightbox[53736]" title="为什么我要用 Node.js? 案例逐一介绍" class="cboxElement"&gt;&lt;img class="alignnone size-full wp-image-53739" alt="toptal-blog-3_B" src="/upload/offsite/2014.01.03.f698b397-3dcd-4e00-9c66-1604ba58cbb1\a456c6dd-07ac-4508-9d35-12f6b2b47261.png"&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;简单的说：使用 Node，你可以把数据库操作扔到一边并在稍后处理它们，假设他们成功了一样继续执行下去。（笔者注：在开发中通常的情况通常是，种耗时的操作通过回调函数来异步处理，主线程继续往下执行）&lt;/p&gt;&lt;h2&gt;数据流&lt;/h2&gt;&lt;p&gt;在较为传统的网络平台上，HTTP 的请求和响应更像是孤立的事件；然而事实上，他们都是数据流。这一观察结果在 Nodejs 上可以用来建立一些很酷的功能。因为数据通以流的形式接收，而我们可以在网站上在线处理正在上传中的文件。这样的话，就可以实现&lt;a href="https://transloadit.com/blog/2010/12/realtime-encoding-over-150x-faster" target="_blank"&gt;实时的音频和视频编码&lt;/a&gt;，以及在不同数据源之间进行代码（代理见下一段）。&lt;/p&gt;&lt;p&gt;&lt;span&gt;（笔者注：Node 有代替如 apache 这样的 webserver 处理数据，所以开发者可以直接收到客户端一份一份上传的数据，并实时处理。上面这段话听起来有点抽象，不过各位可以简单的想象一下不需要开 YY 或者 QQ，打开网页就能进行语音视频的功能。）&lt;/span&gt;&lt;/p&gt;&lt;h2&gt;代理&lt;/h2&gt;&lt;p&gt;Node.js 可以通过异步的方式处理大量的并发连接，所以很容易作为服务端的代理来使用。这在与不同响应时间的不同服务之间进行代理，或者是收集来自多个来源的数据时尤其有用。&lt;/p&gt;&lt;p&gt;举个例子：考虑一个服务器端的应用程序和第三方资源进行通信以更新自不同来源的数据，或者将服务端上的一些图像和视频资源存储到第三方云服务。&lt;/p&gt;&lt;p&gt;虽然专用代理服务器确实存在，但是如果你还没有专用的代理服务器，或者你需要一个本地开发的解决方案，那么使用 Node 来做代理可能是更好的选择。关于这个解决方案，我的意思是指当你在开发的时候，你可以使用Node.js的开发环境搭建一个服务来处理对资源和代理的请求，而在生产环境下，你可以使用专用的代理服务（比如nginx，HAProxy等）来处理这些交互。&lt;/p&gt;&lt;h2&gt;股票操盘手的仪表盘&lt;/h2&gt;&lt;p&gt;让我们继续讨论应用程序这块。实时网络的解决方案可以很轻松的实现证券交易软件——用于跟踪股票的价格，执行计算、做技术分析，同时生成报表。&lt;/p&gt;&lt;p&gt;使用一个实时的的基于网页的解决方案，将会允许操盘手轻松的切换工作软件以及工作地点。相信不久，我们或许会在 佛罗里达州、伊维萨岛又或者是巴厘岛的海滩上看到他们。&lt;/p&gt;&lt;h2&gt;应用监听仪盘表&lt;/h2&gt;&lt;p&gt;另一种常见的用例中，使用 Node+Web+Socket 非常适合：跟踪网站访问者并且可视化实时它们之间的实时交互。 （如果你有兴趣，可以去看看 &lt;a href="http://projects.nuttnet.net/hummingbird/" target="_blank"&gt;Hummingbird&lt;/a&gt;）&lt;/p&gt;&lt;p&gt;你可能需要采集用户的实时状态, 或者甚至当他们到达渠道中某个特定的点时, 打开一个交流频道， 通过有针对性的互动介绍移动到下一个阶段. （如果你感兴趣的话，推荐你看看 &lt;a href="http://canddi.com/" target="_blank"&gt;CANDDi&lt;/a&gt;）&lt;/p&gt;&lt;p&gt;想象一下，如果你知道你的访客的实时操作，并能够形象化地看到他们的交互，这将对你的业务带来多大的提升。随着实时的、双向 socket 通信的 Node.js ，现在你可以做到了。&lt;/p&gt;&lt;h2&gt;系统监控仪表&lt;/h2&gt;&lt;p&gt;现在，让我们看看事情的基础设施方面。想象一下，比如，希望为其用户提供服务监控页面（例如，GitHub上的状态页）的 SaaS 运营商 。通过 Node.js 的事件循环，我们可以创建一个基于 Web 的功能强大的仪表板，以异步方式检查服务状态并且使用的 WebSockets 将数据推送到客户端。&lt;/p&gt;&lt;p&gt;内部（公司内部）和公共服务的状态都可以使用该项技术实现实时的上报。让我们把这一想法延伸的远一点，试着想象一个电信运营商中&lt;a href="http://en.wikipedia.org/wiki/Network_operations_center" target="_blank"&gt;网络运营中心（NOC&lt;/a&gt;）的监控应用，云/网络/服务器运营商，或者一些金融机构，全都运行在这个由 Node.js 和 WebSocket 组成的应用上，而不是 Java 和/或 Java Applet。&lt;/p&gt;&lt;p&gt;&lt;span&gt;注意：不要尝试使用 Node 打造硬实时系统（即，响应时间要求一致的系统）。 &lt;a href="http://nodeguide.com/convincing_the_boss.html" target="_blank"&gt;Erlang是可能是该类应用程序的更好的选择&lt;/a&gt;。&lt;/span&gt;&lt;/p&gt;&lt;h2&gt;服务端 WEB 应用&lt;/h2&gt;&lt;p&gt;通过 Node.js 使用 Express.js 也可以用来创建服务端上的典型的网页应用。然而，虽然有可能，使用 Node.js 来进行请求+响应的形式来呈现 HTML 并不是最典型的用例。有人赞成也有人反对这一做法。这里有一些看法以供参考:&lt;/p&gt;&lt;p&gt;优点：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;如果你不需要进行 CPU密集型计算，你可以从头到尾甚至是数据库（比如 MongoDB）都使用 Javascript 来开发。这显著地减轻了开发工序（包括成本）。&lt;/li&gt;
+&lt;li&gt;对于一个使用 Node.js 作为服务端的单页应用或者 websocket 应用，爬虫可以收到一个完全 HTML 呈现的响应，这是更为SEO友好的。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;缺点：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;任何CPU密集型的计算都将阻碍 Node.js 的反应，所以使用多线程的平台是一个更好的方法。或者，您也可以尝试向外扩展的计算[*]。&lt;/li&gt;
+&lt;li&gt;Node.js 使用关系型数据库依旧十分痛苦（详细见下方）。拜托了，如果你想执行关系型数据操作，请考虑别的环境：Rails， Django 甚至 ASP.NET MVC 。。。。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;span&gt;【*】另一种解决方案是，为这些CPU密集型的计算建立一个高度可扩展的MQ支持的环境与后端处理，以保持 Node 作为一个前台专员来异步处理客户端请求。&lt;/span&gt;&lt;/p&gt;&lt;h2&gt;使用关系型数据库的服务端 WEB 应用&lt;/h2&gt;&lt;p&gt;对比 Node.js 上的 Express.js 和 Ruby on Rails，当你使用关系型数据库的时候请毫不犹豫的选择后者。&lt;/p&gt;&lt;p&gt;Node.js 的关系数据库工具仍处于早期阶段，目前还没有成熟到让人能够愉快地使用它。而与此同时，Rails天生自带了数据访问组件，连同DB schema迁移的支持工具和一些Gems（一语双关，一指这些如同珍宝的工具，二指ruby的gems程序包）。Rails和它的搭档框架们拥有非常成熟且被证明了的活动记录（Active Record）或数据映射（Data Mapper）的数据访问层的实现，而这些是当你在使用纯JavaScript来复制这些应用的时候会非常想要使用的东西。&lt;/p&gt;&lt;p&gt;不过，如果你真的倾向于全部使用 JS（并且做好可能抓狂的准备），那么请继续关注 Sequelize 和 Node ORM2 ，虽然这两者仍然不成熟的，但他们最终会迎头赶上。&lt;/p&gt;&lt;p&gt;&lt;span&gt;[*] 使用 Node 光是作为前端而 Rails 做后端来连接关系型数据库，这是完全有可能也并不少见的。（笔者注：国外有种说法，PHP这一类程序员也可以算作是前端）&lt;/span&gt;&lt;/p&gt;&lt;h2&gt;繁重的服务端的计算和处理&lt;/h2&gt;&lt;p&gt;当涉及到大量的计算，Node.js 就不是最佳的解决方案。你肯定不希望&lt;a href="http://zef.me/4561/node-js-and-the-case-of-the-blocked-event-loop" target="_blank"&gt;使用 Node.js 建立一个斐波那契数的计算服务&lt;/a&gt;。一般情况下，任何 CPU密集型操作 会削弱掉 Node通过事件驱动， 异步 I/O 模型等等带来的在吞吐量上的优势，因为当线程被非异步的高计算量占用时任何传入的请求将被阻塞。&lt;/p&gt;&lt;p&gt;正如前面所说，Node.js 是单线程的，只使用一个单一的CPU核心。至于，涉及到服务器上多核并发处理，Node 的核心团队已经使用 cluster 模块的形式在这一方面做了一些工作 (参考：&lt;a href="http://nodejs.org/api/cluster.html"&gt;http://nodejs.org/api/cluster.html&lt;/a&gt;)。当然，您也可以很容易的通过&lt;a href="http://blog.argteam.com/coding/hardening-node-js-for-production-part-2-using-nginx-to-avoid-node-js-load/" target="_blank"&gt; nginx 的反向代理&lt;/a&gt;运行多个 Node.js 的服务器实例来避免单一线程阻塞的问题。&lt;/p&gt;&lt;p&gt;关于集群(clustering) ，你应该将所有繁重的计算转移到更合适的语言写的后台进程来处理，同时让他们通过像 RabbitMQ 那样通过消息队列服务器来进行通信。&lt;/p&gt;&lt;p&gt;即使你的后台处理可能最初运行在同一台服务器上时看不出什么优点，但是这样的做法具有非常高的可扩展性的潜力。这些后台处理服务可以容易地分割出去，作为单独的 worker 服务器，而不需要配置入口 web服务器的负载。&lt;/p&gt;&lt;p&gt;当然，你也可以在其他语言平台上用同样的方法，但使用 Node.js 你可以得到很高的吞吐量，每个请求都作为一个小任务非常迅速和高效地处理，这一点我们已经讨论过了。&lt;/p&gt;&lt;h2&gt;结论&lt;/h2&gt;&lt;p&gt;我们已经从理论到实践讨论过 Node.js 了，从它的目标和野心，到其优点和缺点。在 Node.js 的开发中99%的问题是由误用阻塞操作而造成的。&lt;/p&gt;&lt;p&gt;请记住：Node.js 从来不是用于解决大规模计算问题而创建的。它的出现是为了解决大规模I/O 的问题，并且在这一点上&lt;a href="http://www.srirangan.net/2012-05-node-js-critics-which-part-of-event-driven-non-blocking-io-model-you-dont-understand" target="_blank"&gt;做的非常好&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;综上，如果你项目需求中不包含CPU密集型操作，也不需要访问任何阻塞的资源，那么你就可以利用的 Node.js 的优点，尽情的享受快速、可扩展的网络应用。&lt;/p&gt;&lt;br&gt;&lt;!-- p&gt;&lt;a target="_blank" rel="nofollow" href="http://www.hi-vps.com/?utm_source=jobbole.com"&gt;&lt;img src="/upload/offsite/2014.01.03.f698b397-3dcd-4e00-9c66-1604ba58cbb1\183c3cd8-3ab8-4428-8d02-4c97041cac1e.jpg"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p --&gt;&lt;p&gt;原文链接： &lt;a target="_blank" ref="nofollow" href="http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js"&gt;toptal&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;翻译： &lt;a href="http://blog.jobbole.com"&gt; 伯乐在线 &lt;/a&gt; - &lt;a href="http://blog.jobbole.com/author/lellansin/"&gt;Lellansin&lt;/a&gt;&lt;br&gt;译文链接： &lt;a href="http://blog.jobbole.com/53736/"&gt;http://blog.jobbole.com/53736/&lt;/a&gt;&lt;br&gt;[ &lt;span&gt;&lt;b&gt;转载必须在正文中标注并保留原文链接、译文链接和译者等信息。&lt;/b&gt;&lt;/span&gt;]&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description>
+      <link>http://www.woshinidezhu.com/post/why-im-using-nodejs-case-detailsblogs</link>
+      <author>Zack.K.Yang</author>
+      <guid>f698b397-3dcd-4e00-9c66-1604ba58cbb1</guid>
+      <pubDate>Fri, 03 Jan 2014 09:31:19 GMT</pubDate>
+    </item>
+    <item>
+      <title>Chrome插件（Extensions）开发攻略 - guogangj - 博客园</title>
+      <description>&lt;div id="readability-page-1" class="page"&gt;&lt;div id="cnblogs_post_body" class=""&gt;&lt;p&gt;本文将从个人经验出发，讲述为什么需要Chrome插件，如何开发，如何调试，到哪里找资料，会遇到怎样的问题以及如何解决等，同时给出一个个人认为的比较典型的例子——获取网页内容，和服务器交互，再把信息反馈给用户。OK，准备开始吧，我尽量把文章写得好看点，以免读者打瞌睡。&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href="#t1"&gt;为什么需要&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#t2"&gt;为什么是Chrome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#t3"&gt;需要准备什么&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#t4"&gt;如何开始&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#t5"&gt;Page Action&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#t6"&gt;Chrome插件结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#t7"&gt;学习资料&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#t8"&gt;我的例子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#t9"&gt;调试&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#t10"&gt;总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;简单地说，浏览器插件，可以大大的扩展你的浏览器的功能。包括但不仅限于这些功能：捕捉特定网页的内容，捕捉HTTP报文，捕捉用户浏览动作，改变浏览器地址栏/起始页/书签/Tab等界面元素的行为，与别的站点通信，修改网页内容……给你增加许多想象空间，试想想看，你可以用它来识别一些网站上的广告代码，并直接把这些代码删掉，这样你就不会受到广告的困扰了，没错，如你所愿，这样的插件别人已经开发好了，你可以直接用。不过，也要说浏览器插件的弊端，那就是：会带来一些安全隐患，也可能让你的浏览器变得缓慢甚至不稳定。&lt;/p&gt;&lt;p&gt;因为Chrome的插件开发起来最简单，总体上看没什么新的技术，开发语言就是javascript，web前端工程师能很快上手；而Firefox的插件开发则复杂许多，涉及到环境的搭建和一些WEB以外的技术；IE的插件开发就更复杂了，需要熟悉C++和COM技术，当然还要装微软的Visual Studio。&lt;/p&gt;&lt;p&gt;这里有篇老外写的文章，对比Chrome、Opera和Firefox的插件开发的：&lt;a href="http://blog.nparashuram.com/2011/10/writing-browser-extensions-comparing.html" target="_blank"&gt;http://blog.nparashuram.com/2011/10/writing-browser-extensions-comparing.html&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;应该说Chrome和Opera的插件的开发都不难，但Firefox的则比较棘手，也许你要问，那为什么Firefox的插件是最丰富的？我想这有些历史原因，Chrome出来毕竟比较晚，另外几种浏览器提供的插件的功能也是不尽相同的，OK，我们还是言归正传吧。&lt;/p&gt;&lt;p&gt;几乎是零需求。Chrome浏览器和一个文本编辑器即可，文本编辑器最好是带语法高亮的那种。谷歌对我们做技术的人来说真是太大度了。&lt;/p&gt;&lt;p&gt;强烈建议看看官方的说明：&lt;a href="https://developer.chrome.com/extensions/getstarted.html" target="_blank"&gt;https://developer.chrome.com/extensions/getstarted.html&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;文章不长，照着文章去做，完成后，你就成功开发了第一个Chrome插件，这个插件会弹出一个小窗口，上面显示些阿猫阿狗的小图片。如图：&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/03231707-438355177e8940849c93a76bcff24ece.png" alt=""&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;这个插件一共有4个文件：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;manifest.json - 所有插件都要有这个文件，这是插件的配置文件，可看作插件的“入口”。&lt;/li&gt;
+&lt;li&gt;icon.png - 小图标，推荐使用19*19的半透明png图片，更好的做法是同时提供一张38*38的半透明的png图片作为大图标，在我后面提供的例子中，我就是那么干的。&lt;/li&gt;
+&lt;li&gt;popup.html - 就是你所看到的那个阿猫阿狗的弹出页面。&lt;/li&gt;
+&lt;li&gt;popup.js - 阿猫阿狗页面所引用的javascript文件。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;这里千万千万注意了，我当初没仔细看popup.html里有一小段注释，这一小段注释说：&lt;span&gt;&lt;strong&gt;出于安全考虑，javascript必须与html分开存放&lt;/strong&gt;&lt;/span&gt;。而我想嘛，一个小测试程序，没必要分开吧，直接写一起不就行了吗？结果javascript死活执行不了，我翻来覆去找不到原因，还以为弹出的小窗口不支持javascript，在网上搜索了半天又没有结果，最后才发现是这个原因，浪费了许多时间，这个事情也一定程度上说明了：细节决定成败。&lt;/p&gt;&lt;p&gt;manifest.json中的内容也非常显而易见，我选择其中几个属性讲一下：&lt;/p&gt;&lt;div class="cnblogs_code"&gt;&lt;pre&gt;&lt;span&gt;{
+  &lt;/span&gt;"manifest_version": 2&lt;span&gt;,
+
+  &lt;/span&gt;"name": "One-click Kittens"&lt;span&gt;,
+  &lt;/span&gt;"description": "This extension demonstrates a browser action with kittens."&lt;span&gt;,
+  &lt;/span&gt;"version": "1.0"&lt;span&gt;,
+
+  &lt;/span&gt;"permissions"&lt;span&gt;: [
+    &lt;/span&gt;"https://secure.flickr.com/"&lt;span&gt;
+  ],
+  &lt;/span&gt;"browser_action"&lt;span&gt;: {
+    &lt;/span&gt;"default_icon": "icon.png"&lt;span&gt;,
+    &lt;/span&gt;"default_popup": "popup.html"&lt;span&gt;
+  }
+}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;"manifest_version"：现在应该总是2。&lt;/p&gt;&lt;p&gt;"permissions"：很重要的东西，即允许插件做哪些事情，访问哪些站点，假如一个插件的"permissions"里写有“http://*.hacker.com/”，那么这个插件就被允许访hacker.com上的所有内容，包括可能会把你的一些个人信息提交给hacker.com，危险性不言而喻，查看一个插件能访问那些站点的方法是：在chrome的地址栏里输入“chrome://extensions/”（注意：这个页面我们之后要频繁用到，请收藏一下），然后点对应插件的旁边的那个“权限”，如：&lt;/p&gt;&lt;p&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/03232104-bdc9f9093f8f4db9a05cf205c5ff9055.png" alt=""&gt;&lt;/p&gt;&lt;div&gt;&lt;p&gt;"default_popup"：用来指定点击小图标后弹出的小窗口中默认显示的是哪个html，这个弹出的小窗口就叫做“popup”。&lt;/p&gt;&lt;p&gt;"browser_action"：这是一个浏览器级的动作，也就是说，不管你现在在访问哪个页面，那个小按钮总是显示出来，而我们的插件如果仅仅是针对某些页面的话，就不适合用这个"browser_action"了。下面我们来弄一个只有访问博客园（www.cnblogs.com）才会出现的小按钮。&lt;/p&gt;&lt;p&gt;&lt;a href="http://files.cnblogs.com/guogangj/chrome-plugin-page-action-demo.7z"&gt;chrome-plugin-page-action-demo.7z&lt;/a&gt;&lt;/p&gt;&lt;p&gt;这个插件只有4个文件，其中两个还是图标，那就只剩下一个必须的manifest.json和一个background.js了。&lt;/p&gt;&lt;p&gt;mainifest.json：&lt;/p&gt;&lt;div class="cnblogs_code"&gt;&lt;pre&gt;&lt;span&gt;{
+     &lt;/span&gt;"manifest_version": 2&lt;span&gt;,
+     &lt;/span&gt;"name": "cnblogs.com viewer"&lt;span&gt;,
+     &lt;/span&gt;"version": "0.0.1"&lt;span&gt;,
+     &lt;/span&gt;"background": { "scripts": ["background.js"&lt;span&gt;] },
+     &lt;/span&gt;"permissions": ["tabs"&lt;span&gt;],
+     &lt;/span&gt;"page_action"&lt;span&gt;: {
+          &lt;/span&gt;"default_icon"&lt;span&gt;: {
+               &lt;/span&gt;"19": "cnblogs_19.png"&lt;span&gt;,
+               &lt;/span&gt;"38": "cnblogs_38.png"&lt;span&gt;
+          },
+          &lt;/span&gt;"default_title": "cnblogs.com article information"&lt;span&gt;
+     }
+}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意：这里是“page_action”而不是“browser_action”属性了。&lt;/p&gt;&lt;p&gt;“permissions”属性里的“tabs”是必须的，否则下面的js不能获取到tab里的url，而这个url是我们判断是否要把小图标show出来的依据。background是什么概念？这是一个很重要的东西，可以把它认为是chrome插件的主程序，理解这个很关键，一旦插件被启用（有些插件对所有页面都启用，有些则只对某些页面启用），chrome就给插件开辟了一个独立的javascript运行环境（又称作运行上下文），用来跑你指定的background script，在这个例子中，也就是background.js。&lt;/p&gt;&lt;p&gt;background.js&lt;/p&gt;&lt;div class="cnblogs_code"&gt;&lt;pre&gt;&lt;span&gt;function&lt;/span&gt;&lt;span&gt; getDomainFromUrl(url){
+     &lt;/span&gt;&lt;span&gt;var&lt;/span&gt; host = "null"&lt;span&gt;;
+     &lt;/span&gt;&lt;span&gt;if&lt;/span&gt;(&lt;span&gt;typeof&lt;/span&gt; url == "undefined" || &lt;span&gt;null&lt;/span&gt; ==&lt;span&gt; url)
+          url &lt;/span&gt;=&lt;span&gt; window.location.href;
+     &lt;/span&gt;&lt;span&gt;var&lt;/span&gt; regex = /.*\:\/\/([^\/]*).*/&lt;span&gt;;
+     &lt;/span&gt;&lt;span&gt;var&lt;/span&gt; match =&lt;span&gt; url.match(regex);
+     &lt;/span&gt;&lt;span&gt;if&lt;/span&gt;(&lt;span&gt;typeof&lt;/span&gt; match != "undefined" &amp;amp;&amp;amp; &lt;span&gt;null&lt;/span&gt; !=&lt;span&gt; match)
+          host &lt;/span&gt;= match[1&lt;span&gt;];
+     &lt;/span&gt;&lt;span&gt;return&lt;/span&gt;&lt;span&gt; host;
+}
+
+&lt;/span&gt;&lt;span&gt;function&lt;/span&gt;&lt;span&gt; checkForValidUrl(tabId, changeInfo, tab) {
+     &lt;/span&gt;&lt;span&gt;if&lt;/span&gt;(getDomainFromUrl(tab.url).toLowerCase()=="www.cnblogs.com"&lt;span&gt;){
+          chrome.pageAction.show(tabId);
+     }
+};&lt;p&gt;chrome.tabs.onUpdated.addListener(checkForValidUrl);&lt;br&gt;&lt;/p&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;代码中，我们使用了一个正则表达式去匹配url，获取出其中的domain部分，如果domain部分是“www.cnblogs.com”的话，就把小图标show出来，效果如下：&lt;/p&gt;&lt;p&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/03232842-475d66f55db34758982970de4437555e.png" alt=""&gt;&lt;/p&gt;&lt;p&gt;当然了，你现在点那个小图标的话，是没有任何反应的，我没有像官方提供的那个例子那样提供了popup。OK，现在是时候描述下chrome插件的结构了。&lt;/p&gt;&lt;p&gt;需要声明的是，这个结构图是我自己画的，代表我对Chrome插件的理解，可能并不全面，甚至还不是十分准确，但找来找去找不到现成的，只好自己动手，如有谬误，请不吝指出。&lt;/p&gt;&lt;p&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/03235750-8bd754ea4a9c4b69b3c2d1565a8e5567.png" alt=""&gt;&lt;/p&gt;&lt;p&gt;如图，manifest.json作为插件的配置文件，同时可以看作程序的“入口”，因为它指定了显示什么图标，background script有哪些文件，content script又有哪些文件，pop up的页面是什么，等等。&lt;/p&gt;&lt;p&gt;什么是popup，什么是background script，相信大家都清楚了，那什么是content script呢？content script就是我们要注入到页面中的脚本，插件允许我们往网页中注入脚本，这是一个多么让人有想象力的功能，其功能之强大无需多解释，总的来说，就是让我们全面干预页面的内容！也许你马上会想到，这可能带来很大的安全隐患，没错，有些恶意插件会窃取你的页面信息，而有些有漏洞的插件则可能让你遭受跨站脚本注入（XSS）的攻击；另一个可能你会想到的问题是：往页面中注入自己的脚本，难道不会跟页面原本的脚本发生冲突吗？能想到这点说明你真的很厉害，如果我们的注入脚本和页面原本的脚本处于同一个运行环境中，确实会发生冲突，所以，Chrome是另外开辟了一个独立的运行空间，供我们的Content Script使用的，Content Script能访问DOM的内容，但却不能访问页面原本的脚本（我是说直接访问不行），反之，页面原本的脚本也不能直接访问Content Script。在图中，浅红色的背景块代表Content Script的运行环境，而浅蓝色的背景块代表页面运行环境，另外插件的运行环境我用浅绿色表示，注意，这是三个不同的运行环境，调试的时候你会充分体会到它们的不同。&lt;/p&gt;&lt;p&gt;那么，Content Script会在什么时候运行呢？默认情况下，是在网页加载完了和页面脚本执行完了，页面转入空闲的情况下（Document Idle），但这个是可以改变的，详情可参考https://developer.chrome.com/extensions/content_scripts.html，查看其中的“run_at”。&lt;/p&gt;&lt;p&gt;由于处于不同的运行环境中，Content Script和Background Script不能直接互相访问，那它们之间如何通信？通过Message！这个之后的代码中会有。&lt;/p&gt;&lt;p&gt;理解了Chrome插件结构之后，我相信你完全有能力开发一款自己的插件了，当然了，你得自己去google一些资料，这里我就分享下我的方法。&lt;/p&gt;&lt;p&gt;首先，官方的资料一定得看看，&lt;a href="https://developer.chrome.com/extensions/index.html" target="_blank"&gt;https://developer.chrome.com/extensions/index.html&lt;/a&gt;，这个上面的资料得大致浏览一下（不需要全部仔细看），这样你能够明白一些术语，知道如何去寻找你的解决方案。&lt;/p&gt;&lt;p&gt;再则，官方提供的例子，可以看看，&lt;a href="https://developer.chrome.com/extensions/samples.html" target="_blank"&gt;https://developer.chrome.com/extensions/samples.html&lt;/a&gt;，我发现上面的例子有些已经不能用于新版的Chrome了，但没关系，你只要找你想要的就行了，也不用一个个尝试，就根据你的需要，挑选几个你感兴趣的看看即可。&lt;/p&gt;&lt;p&gt;遇到问题，怎么办？当然是用google去查找问题，但这里我最最最强烈推荐&lt;a href="http://stackoverflow.com/" target="_blank"&gt;stackoverflow.com&lt;/a&gt;，这简直是解决问题的神器！不多解释了，用过便知。&lt;/p&gt;&lt;p&gt;学习过程基本上就是：看个大概，写点代码，调试调试。就可以了。哦，大前提当然是你得有javascript的基础。（你：呵呵，你在逗我吧！）&lt;/p&gt;&lt;p&gt;&lt;a href="http://files.cnblogs.com/guogangj/chrome-plugin-cnblogs-article-information.zip"&gt;chrome-plugin-cnblogs-article-information.zip&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="http://files.cnblogs.com/guogangj/chrome-plugin-cnblogs-article-info-server.zip"&gt;chrome-plugin-cnblogs-article-info-server.zip&lt;/a&gt;&amp;nbsp;（服务器端，PHP代码）&lt;/p&gt;&lt;p&gt;好，轮到我的例子登场了。它的功能是这样的：当你浏览博客园的时候，它会启动并尝试获取你浏览的文章的信息（标题、作者和日期），再通过往另一个服务器发送请求的方式，记录和获取你第一次访问这篇文章的时间，把这个时间连带文章的信息，显示在popup上。听起来挺无聊的功能，但关键是为了演示嘛，如图：&lt;/p&gt;&lt;p&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/04000801-953ae77cb2854ed0ae3ff4aa00d3e928.png" alt=""&gt;&lt;/p&gt;&lt;p&gt;这个插件一共有9个文件，新出现的文件有两个（其它相信大家都很熟悉了），一个是“content_script.js”，这就是前面提到的Content Script，获取和修改页面的内容就靠它了；另一个是“jquery-2.0.0.min.js”，大名鼎鼎的jQuery，我很喜欢用的js库，其理念是“write less，do more”，能帮我减少很多代码，这是目前最新的2.0.0版，这个版本跟以前的1.x.x的最大差别就是不再支持IE6、7和8，我个人是十分赞同这种做法的，微软的旧版浏览器都成了Web技术发展的绊脚石了，而且这次我们用的是Chrome浏览器，果断选择最新版了。&lt;/p&gt;&lt;p&gt;另外还有一个服务器端，为了让问题简化，这次我用了php代码，一个php文件就是整个处理了，没有太多繁杂的配置，简洁，这是php最大的优势。系统结构如图：&lt;/p&gt;&lt;p&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/04000922-1c88516ac22d44eba0835986c9e664fd.png" alt=""&gt;&lt;/p&gt;&lt;p&gt;抓取网页的内容得依靠content_script.js，然后通过sendMessage/onMessage和background.js交换数据，background.js将url信息通过ajax（XMLHttpRequest）发送给localhost，获取此页面的第一次访问的时间，最后，用户点小图标，popup.html出现，popup.html会读取（代码在popup.js中）background.js中的articleData的数据，把它显示出来。这就是整个过程。&lt;/p&gt;&lt;p&gt;我抓取网页数据的方式并不能确保所有的博客园的文章都能被正常获取，这跟用户使用的博客模板有关系，但我尝试下来大多数文章还是可以抓取的，我不去适应所有的模板了，毕竟这只是个演示的demo。&lt;/p&gt;&lt;p&gt;另外还需说明的一点是我使用了jQuery做XMLHttpRequest，post的内容不是传统的html表单形式，而是json数据，所以在服务器端这边，就不能直接用$_REQUEST获取，而是通过读取“php://input”的内容获取。顺便谈谈个人对web api的一个看法：“统一”大于“灵活”，这是我的观点，我确定我的接口的格式是json，使用utf-8编码，于是就一直用下去，调用者不用考虑用XML还是html表单还是别的，开发者也不必多考虑，让这成为一种统一的约定，在团队协助和以后的开发中会很省事。&lt;/p&gt;&lt;p&gt;程序开发，必定要涉及到调试，记得我刚开始做WEB开发前，问一些做了好久WEB开发的朋友，你们是怎样做javascript调试的，我发觉大多数人竟然回答：用alert一点点试吧——不是不行，是太原始，太低效了，对吧？其实Chrome直接支持javascript的调试，拥有了Chrome，就相当于拥有了一个强大的javascript调试器了。&lt;/p&gt;&lt;p&gt;Chrome打开开发者工具的方法是&amp;lt;Ctrl&amp;gt;+&amp;lt;Shift&amp;gt;+&amp;lt;I&amp;gt;（Windows版），大致如下：&lt;/p&gt;&lt;p&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/04001032-524afebf1fcd42fa9acd3a8602eec68f.png" alt=""&gt;&lt;/p&gt;&lt;div&gt;&lt;p&gt;我们这次需要关心的有“Elements”、“Sources”和“Console”这三个标签。Elements是用来做DOM分析的，功能有点类似Firebug，帮助我们分析页面的内容；而Sources，是我们用来调试javascript的；Console则是我们的Log的输出窗口，也是一个调试利器。&lt;/p&gt;&lt;h2&gt;调试Content Script&lt;a name="t9-1"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如我提供的这个例子，可在Sources的“Copntent Scripts”下看到“content_script.js”然后设断点，执行到断点处时，Chrome会挺住，你可以观察到上面的值，如图：&lt;/p&gt;&lt;p&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/04001229-4898821e48824dd69eff8628a6752b92.png" alt=""&gt;&lt;/p&gt;&lt;p&gt;太cool了，请问你还要一点点alert吗？&lt;/p&gt;&lt;h2&gt;调试Background&lt;a name="t9-2"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;由于background和content script并不在同一个运行环境中，因此上面的方法是看不到Background的javascript的。要调试Background，还需要打开插件页，也就是“chrome://extensions”。点对应的插件的“generated background page.html”，就出现了调试窗口，接下来的操作就跟前面的类似了。如图：&lt;/p&gt;&lt;p&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/04001330-5340f1c9dc654da0a421d04784b22d16.png" alt=""&gt;&lt;/p&gt;&lt;p&gt;至于你看到ID，“aajnhhjiia……”这一长串东西，这是chrome自动安排的一个ID。&lt;/p&gt;&lt;h2&gt;调试Popup&lt;a name="t9-3"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;虽然Popup和Background是处于同一运行环境中，但在刚才的Background的调试窗口中是看不到Popup的代码的。调试Popup还需要这样：&lt;/p&gt;&lt;p&gt;&lt;img src="http://images.cnitblog.com/blog/379997/201308/04001443-d22086b6291849d88870aa764c917c9c.png" alt=""&gt;&lt;/p&gt;&lt;p&gt;然后……就跟前面差不多了。&lt;/p&gt;&lt;h2&gt;一些问题&lt;a name="t9-4"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;也许有时候你会发觉调试器不是很灵，至少我用下来感觉如此，比如你可能发现断点设不了，或者断点不起作用，或者看不到你自己的javascript文件。我的方法是在插件页中，把对应的插件的“已启用”这个复选框去掉，再重新勾上，然后再点一下“重新加载(Ctrl+R)”，通常能解决问题。当然了，还有些很古怪的问题，还不好重现，总体的解决思路就是重新载入一下，实在不行的话重启浏览器，或者清除浏览器缓存什么的，再试试看。&lt;/p&gt;&lt;p&gt;在做插件调试的时候我还遇到一个十分郁闷的问题，那就是我的Chrome使用了“Go Agent”，关于Go Agent是用来干嘛的，这个嘛，可以去google一下，我相信绝大多数程序员都会喜欢上它……可由于使用了这个东西，很可能会导致插件的XMLHttpRequest工作不正常，而且可能你会思索半天也找不到原因，好吧，暂时把Go Agent停用掉，甚至可能你需要重启下Chrome——我的经验。&lt;/p&gt;&lt;p&gt;我还是想说，我觉得Google对我们程序员来说是个很大度的公司，在Chrome这个产品上面就可见一斑。利用Chrome插件技术，我们可以做许多有用的东西，通过本文，相信你已经知道如何去开发一款Chrome插件了，当然了，Chrome插件的功能是很强大的，我用到的仅是冰山一小角。要深入，当然还需要更加充分地利用google和stackoverflow.com了。&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+      <link>http://www.woshinidezhu.com/post/chrome-plugins-extensions-development-strategyguogangjblog</link>
+      <author>Zack.K.Yang</author>
+      <guid>912ba7ba-b9b2-4faa-833d-b00f7363b89d</guid>
+      <pubDate>Sat, 28 Dec 2013 09:34:18 GMT</pubDate>
+    </item>
+    <item>
+      <title>智能手机将取代游戏机？掌机成头号牺牲品-智能手机,取代,游戏机,掌机,牺牲品-驱动之家1</title>
+      <description>&lt;div id="readability-page-1" class="page"&gt;&lt;div class=""&gt;&lt;p&gt;根据最新的市场调研报告显示，目前仅在美国市场便拥有约1.26亿的手机游戏玩家，这个数字在2016年还会上升到1.44亿，也就意味着每10个智能手机用户中，就会有8个手机游戏玩家。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;为什么手机游戏变得如此受欢迎？其中一个重要原因是价格低&lt;/strong&gt;。相比PS、Xbox游戏机或是PC游戏300元人民币以上的均价，最流行的手机游戏往往不超过10元人民币，另外也不需要购买光盘，从苹果AppStore或是Google Play上就可以轻松下载。&lt;/p&gt;&lt;p&gt;不过，即使智能手机进入了“PC时代”，手机游戏在图形效果、内容和操作上仍存在不足，那么智能手机是否有可能取代游戏机呢？一起来探讨一下。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;图形效果：不断提升缩短差距&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;显然，显卡所能提供的图形效果，对于游戏来说是至关重要的，即便是游戏性再高的作品，我们也希望它拥有出色的画面，尤其是对于赛车、冒险类等写实的游戏类型来说。目前，&lt;strong&gt;顶级智能手机的图形性能，已经超越了PS2或是Xbox&lt;/strong&gt;，当然这并非意味着手机游戏的画面要更好，因为游戏机毕竟是专业游戏设备，硬件优化以及游戏开发商巨大的投入，仍是手机游戏无法相比的。另外，智能手机较小的屏幕尺寸，也让它不需要在画面细节上精雕细琢。&lt;/p&gt;&lt;p&gt;举一个简单的例子，从iPhone 5s的参数和性能来看，图形性能已经超过PS2，但是其最出色的赛车游戏《Asphalt 8》，不论是光影效果还是赛道细节都无法与PS2的《GT赛车3》相比，毕竟前者是一款免费游戏，后者则是花费数年上千万美元开发的超大作。&lt;/p&gt;&lt;p&gt;尽管如此，&lt;strong&gt;智能手机的一大优势在于更新速度极快的硬件标准，周期几乎缩短至一年，而游戏机的寿命往往长达7年&lt;/strong&gt;。以2013年为例，三星Galaxy S4相当于中上水平的硬件配置，完全可以流畅运行PS2时期的大作《GTA：圣安德列斯》。而在明年，64位处理器将成为智能手机的新趋势，更强大的图形显卡也将有效提升手机的游戏性能。事实上，采用64位处理器并支持OpenGL ES3的苹果iPhone 5s，部分游戏如《无尽之剑3》，画面效果已经接近PS3。&lt;/p&gt;&lt;p&gt;可以肯定的是，智能手机高速的硬件升级周期，能够缩短与游戏机的性能差距，虽然游戏软件方面可能仍然缺乏大制作，但移植作品会越来越多。或许在明年末，我们就能在手机和平板上玩到《GTA 4》了。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;游戏内容：缺乏高投入大作但具有自己的优势&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;除了硬件性能，另一个重要问题就是游戏资源了。显然，类似《愤怒的小鸟》这样的低成本游戏，是面向所有用户的，即使不是核心玩家也能轻松获得乐趣。而一些大作移植版，则是厂商榨取游戏剩余价值的行为，会获得一些怀旧玩家的青睐。那么智能手机平台是否拥有原创的大作呢？答案是肯定的，只是数量不多，比如《掠夺之剑：暗影大陆》，它拥有一个巨大的游戏场景、丰富的任务和武器系统，整个游戏形态已经接近游戏主机级别。&lt;/p&gt;&lt;p&gt;另外，类似《行尸走肉》、《无尽之剑》这样的作品，充分针对触摸屏优化，更适合在手持设备上游戏，同样拥有不俗的游戏性。免费下载、内购的模式也越来越流行，从某种程度上来说都是吸引玩家的一种优势。也就是说，目前智能手机上拥有移植大作、原创大作以及众多小品级的创意类游戏，游戏资源组成已经相当丰富。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;控制和输出：仍不完美&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;除了那些针对触摸屏优化的游戏，如果你想在智能手机上更好地进行动作、射击类的游戏，可能还是需要借助手柄。目前iOS 7和Android平台都拥有不少游戏手柄的周边，能够在一定程度上缓解专业游戏的操作，但仍不完美。&lt;/p&gt;&lt;p&gt;另一个问题是输出。如果你想在大尺寸液晶电视上玩手机游戏，可以通过支持MHL的HDMI线缆实现。而在32英寸屏幕上，《Asphalt 8》赛车已经显得有些模糊，《死亡扳机》则表现更好，几乎可以媲美游戏机中的低成本FPS游戏。但总得来说，大部分手机游戏在输出至大屏幕后，视觉效果都会存在一定的下降，这也是为什么OUYA这样的Android游戏机相比PS4或是Xbox 360，仍然像是儿童玩具一样。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;智能手机能取代游戏机吗？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;显然，答案不是简单的“是”或者“不是”，至少在目前来看，智能手机影响最大的是类似NDS和PSV这样的掌上游戏机；而OUYA游戏机对PS或是Xbox系列电视游戏机的影响几乎可以忽略不计。&lt;/p&gt;&lt;p&gt;从性能方面来说，智能手机近年来的进步的确很大，也有能力移植老款游戏主机的大作，但是在自身游戏资源方面，除了《无尽之剑》这样的超大作，很少有作品获得媒体及用户的大量关注。所以在短期内，游戏主机仍是核心玩家在客厅进行游戏的首选，毕竟它们拥有投资千万级美元制作的超大作；而随着智能手机性能的不断提升，它将成为客厅以外的主流游戏设备。&lt;/p&gt;&lt;p align="center"&gt;&lt;img alt="智能手机将取代游戏机？掌机成头号牺牲品" src="/img/20131227/32bd1717891d4ef28fc08895db0dc4df.jpg"&gt;&lt;/p&gt;&lt;p class="news_bq"&gt;新闻标签：&lt;a href="http://news.mydrivers.com/tags/182.htm"&gt;任天堂&lt;/a&gt; &lt;a href="http://news.mydrivers.com/tags/183.htm"&gt;Play Station&lt;/a&gt; &lt;a href="http://news.mydrivers.com/tags/194.htm"&gt;Xbox&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description>
+      <link>http://www.woshinidezhu.com/post/smart-phones-will-replace-video-games-psp-become-victim-number-one-smart-phone-replace-game-consoles-game-boy-a-victimdriven-house-1</link>
+      <author>Zack.K.Yang</author>
+      <guid>3c01377d-394b-4274-9fcc-385c8a1cf122</guid>
+      <pubDate>Fri, 27 Dec 2013 17:59:40 GMT</pubDate>
+    </item>
+    <item>
+      <title>123123</title>
+      <description>&lt;p&gt;
+	123123&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/post/123123888</link>
+      <author>Zack.K.Yang</author>
+      <guid>cc01377d-394b-4274-9fcc-385c8a1cf122</guid>
+      <pubDate>Wed, 25 Dec 2013 15:47:39 GMT</pubDate>
+    </item>
+    <item>
+      <title>77576</title>
+      <description>&lt;p&gt;
+	56745764&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/post/77576</link>
+      <author>Zack.K.Yang</author>
+      <guid>e743f13d-08e3-45c5-86de-7adb4466fd5b</guid>
+      <pubDate>Thu, 19 Dec 2013 16:39:47 GMT</pubDate>
+    </item>
+    <item>
+      <title>322323</title>
+      <description>&lt;p&gt;
+	32&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/post/322323</link>
+      <author>Zack</author>
+      <guid>1cb35493-0918-4613-8ca6-f37aa0232354</guid>
+      <pubDate>Thu, 19 Dec 2013 10:32:39 GMT</pubDate>
+    </item>
+    <item>
+      <title>啊啊啊啊啊啊</title>
+      <description>&lt;p&gt;
+	123123&lt;/p&gt;
+</description>
+      <link>http://www.woshinidezhu.com/post/ah-ah-ah-ah-ah-ah</link>
+      <author>Zack</author>
+      <guid>4eca8a2e-a9a0-4394-9ac1-eaa147d069af</guid>
+      <pubDate>Thu, 19 Dec 2013 10:22:31 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

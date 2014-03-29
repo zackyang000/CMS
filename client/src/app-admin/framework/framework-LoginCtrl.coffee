@@ -8,8 +8,8 @@ angular.module("framework.controllers.login",['ngRoute'])
           controller: ->)
   ])
 
-.controller('LoginCtrl',["$scope", "$rootScope", "security"
-($scope,$rootScope,security) ->
+.controller('LoginCtrl',["$scope", "$rootScope", "security","context"
+($scope,$rootScope,security, context) ->
   $scope.login = ->
     $scope.submitting=true
     $scope.error=''

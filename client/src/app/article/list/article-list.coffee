@@ -88,9 +88,11 @@
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$rootScope","$window","$routeParams","$location","articles","channel"
-($scope,$rootScope,$window,$routeParams,$location,articles,channel) ->
+["$scope","$rootScope","$window","$routeParams","$location","articles","channel", "context"
+($scope,$rootScope,$window,$routeParams,$location,articles,channel,context) ->
   $window.scroll(0,0)
+
+  $scope.isAdmin = context.auth.admin
 
   $rootScope.title=$routeParams.tag ? $routeParams.group ? $routeParams.channel
   if !$rootScope.title

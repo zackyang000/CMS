@@ -1,6 +1,6 @@
 ﻿angular.module("zy.directives.ckEditor",[])
 
-.directive 'ckEditor', ->
+.directive('ckEditor', ->
   require: '?ngModel'
   link: (scope, elm, attr, ngModel)->
     editor = CKEDITOR.instances[elm[0].name];
@@ -11,3 +11,4 @@
       scope.$apply ->
         ngModel.$setViewValue ck.getData()
     ngModel.$render = (value)-> ck.setData ngModel.$viewValue
+)

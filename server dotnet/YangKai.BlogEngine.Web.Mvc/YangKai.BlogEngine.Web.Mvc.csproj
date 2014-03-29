@@ -194,14 +194,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="version.txt" />
     <Content Include="entry\bg.jpeg" />
     <Content Include="entry\style.css" />
-    <Content Include="favicon.ico" />
     <Content Include="entry\index.html" />
-    <Content Include="robots.txt" />
-    <Content Include="sitemap.xml" />
-    <Content Include="sitemap.xsl" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

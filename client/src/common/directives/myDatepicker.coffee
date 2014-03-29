@@ -1,6 +1,6 @@
 ﻿angular.module("zy.directives.datepicker",[])
 
-.directive "zyDatepicker", ->
+.directive("zyDatepicker", ->
   restrict: "A"
   require: "ngModel"
   link: (scope, element, attrs, ngModelCtrl) ->
@@ -19,3 +19,4 @@
       onSelect: (date) ->
         ngModelCtrl.$setViewValue date
         scope.$apply()
+)

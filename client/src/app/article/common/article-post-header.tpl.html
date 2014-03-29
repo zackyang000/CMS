@@ -12,15 +12,7 @@
             <i class="icon-external-link"></i> 
             <a  ng-href="{{item.Source}}" title="{{item.Source}}">{{'article.source' | translate}}</a>
         </li>
-        <li ng-show="item.QrCode" class="dropdown">
-            <i data-toggle="dropdown" class="icon-qrcode"></i>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li>
-                    <img src="{{item.QrCode}}" width="200" height="200" alt="qrcode" />
-                </li>
-            </ul>
-        </li>
-        <li ng-show="User.IsAdmin">
+        <li ng-show="isAdmin">
             <i class="icon-edit"></i>
             <a href="JavaScript:void(0)" ng-click="edit(item)">Edit</a>
         </li>
