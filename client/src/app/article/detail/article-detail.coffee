@@ -17,8 +17,8 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$rootScope","$window","$translate","$routeParams","progressbar","Article","Comment","article","context"
-($scope,$rootScope,$window,$translate,$routeParams,progressbar,Article,Comment,article,context) ->
+["$scope","$rootScope","$window","$translate","$routeParams","progressbar","Article","Comment","article","context", "messager"
+($scope,$rootScope,$window,$translate,$routeParams,progressbar,Article,Comment,article,context, messager) ->
   $window.scroll(0,0)
 
   $scope.item=article
@@ -72,13 +72,13 @@
   $scope.isAdmin = context.auth.admin
 
   $scope.del = (item) ->
-    message.confirm ->
+    messager.confirm ->
       Comment.del {id:item.CommentId}
       ,(data)->
-        message.success "“##{item.Content}”  be moved to trash."
+        messager.success "“##{item.Content}”  be moved to trash."
         item.IsDeleted = true
       ,(error)->
-        message.error error.data.ExceptionMessage ? error.status
+        messager.error error.data.ExceptionMessage ? error.status
 
   $scope.save = () ->
     $scope.submitted=true
@@ -106,10 +106,10 @@
       $scope.loading = ""
 
   $scope.remove = (item) ->
-    message.confirm ->
+    messager.confirm ->
       Comment.remove id:"(guid'#{item.CommentId}')",->
         item.IsDeleted=true
-        message.success "Comment has been removed."
+        messager.success "Comment has been removed."
 
   $scope.edit = (item) ->
     $window.location.href="/admin/article('#{item.PostId}')"

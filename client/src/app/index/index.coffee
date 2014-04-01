@@ -6,7 +6,6 @@
       templateUrl: "/app/index/index.tpl.html"
       controller: 'IndexCtrl'
       title: 'Home'
-      showBanner: true
 ])
 
 .controller('IndexCtrl',

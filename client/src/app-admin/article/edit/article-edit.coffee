@@ -19,8 +19,8 @@
 
 
 .controller('ArticleEditCtrl',
-["$scope","$routeParams","$window","$rootScope","$fileUploader","Article","Channel","$timeout","TranslateService"
-($scope,$routeParams,$window,$rootScope,$fileUploader,Article,Channel,$timeout,TranslateService) ->
+["$scope","$routeParams","$window","$rootScope","$fileUploader","Article","Channel","$timeout","TranslateService", "messager"
+($scope,$routeParams,$window,$rootScope,$fileUploader,Article,Channel,$timeout,TranslateService, messager) ->
   $scope.channels=Channel.query $expand:'Groups',()->
     if $routeParams.id
       $scope.loading="Loading"
@@ -90,19 +90,19 @@
         $scope.loading=""
 
   $scope.remove = ->
-    message.confirm ->
+    messager.confirm ->
       $scope.loading="Deleting"
       entity=$scope.entity
       entity.IsDeleted=true
       Article.update {id:"(guid'#{entity.PostId}')"},entity
       ,(data)->
-        message.success "Delete post successfully."
+        messager.success "Delete post successfully."
         $window.location.href = "article"
 
   #上传图片
   $scope.uploader = $fileUploader.create
     scope: $scope
-    url: "#{config.baseAddress}/api/FileManage/upload"
+    url: "#{config.apiHost}/api/FileManage/upload"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
     $scope.entity.Thumbnail = res.result

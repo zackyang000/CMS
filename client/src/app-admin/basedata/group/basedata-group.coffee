@@ -8,8 +8,8 @@
 ])
 
 .controller('GroupCtrl',
-["$scope","$dialog","$routeParams","Group","Channel", 
-($scope,$dialog,$routeParams,Group,Channel) ->
+["$scope","$dialog","$routeParams","Group","Channel", "messager"
+($scope,$dialog,$routeParams,Group,Channel, messager) ->
   Channel.query
     $filter:"Url eq '#{$routeParams.channel}'"
     ,(data)->
@@ -38,26 +38,26 @@
     if $scope.entity.GroupId
       Group.edit {id:"(guid'#{$scope.entity.GroupId}')"},$scope.entity
       ,(data)->
-        message.success "Edit group successfully."
+        messager.success "Edit group successfully."
         $scope.close()
         load()
     else
       $scope.entity.GroupId=UUID.generate()
       Group.save $scope.entity
       ,(data)->
-        message.success "Add group successfully."
+        messager.success "Add group successfully."
         $scope.close()
         load()
 
   $scope.remove = (item)->
     item.Channel=$scope.channel
-    message.confirm ->
+    messager.confirm ->
       $scope.loading="Deleting"
       item.IsDeleted=true
       Group.edit {id:"(guid'#{item.GroupId}')"},item
       ,(data)->
-          message.success "Delete group successfully."
-          load()
+        messager.success "Delete group successfully."
+        load()
 
   $scope.close = ->
     $scope.editDialog = false

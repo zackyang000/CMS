@@ -37,40 +37,13 @@ x64/
 *.vssscc
 .builds
 
-# Visual C++ cache files
-ipch/
-*.aps
-*.ncb
-*.opensdf
-*.sdf
-
 # Visual Studio profiler
 *.psess
 *.vsp
 *.vspx
 
-# Guidance Automation Toolkit
-*.gpState
-
 # ReSharper is a .NET coding add-in
 _ReSharper*
-
-# NCrunch
-*.ncrunch*
-.*crunch*.local.xml
-
-# Installshield output folder 
-[Ee]xpress
-
-# DocProject is a documentation generator add-in
-DocProject/buildhelp/
-DocProject/Help/*.HxT
-DocProject/Help/*.HxC
-DocProject/Help/*.hhc
-DocProject/Help/*.hhk
-DocProject/Help/*.hhp
-DocProject/Help/Html2
-DocProject/Help/html
 
 # Click-Once directory
 publish
@@ -80,13 +53,6 @@ publish
 
 # NuGet Packages Directory
 packages
-
-# Windows Azure Build Output
-csx
-*.build.csdef
-
-# Windows Store app package directory
-AppPackages/
 
 # Others
 [Bb]in
@@ -106,16 +72,15 @@ Generated_Code #added for RIA/Silverlight projects
 _UpgradeReport_Files/
 Backup*/
 UpgradeLog*.XML
-scr/YangKai.BlogEngine.Web.Mvc/Content/Image/refstat.jpg
-src/YangKai.BlogEngine.Web.Mvc/feed_*
-src/YangKai.BlogEngine.Web.Mvc/error/error-*
-src/YangKai.BlogEngine.Web.Mvc/UpLoad/gallery/
-src/YangKai.BlogEngine.Web.Mvc/UpLoad/images/
-src/YangKai.BlogEngine.Web.Mvc/UpLoad/offsite/
-src/YangKai.BlogEngine.Web.Mvc/UpLoad/temp/
-src/YangKai.BlogEngine.Web.Mvc/UpLoad/thumbnail/
-src/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/
+server dotnet/YangKai.BlogEngine.Web.Mvc/feed_*
+server dotnet/YangKai.BlogEngine.Web.Mvc/error/error-*
+server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/gallery/
+server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/images/
+server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/offsite/
+server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/temp/
+server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/thumbnail/
+server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/
 
 chromeExtension/.idea/*
-*.orig
 .idea/*
+*.orig

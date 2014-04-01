@@ -40,7 +40,11 @@
 ])
 
 .config(["$routeProvider",($routeProvider) ->
-  $routeProvider.otherwise redirectTo: "/"
+  $routeProvider
+  .when "/admin",
+    template:" "
+    controller: -> window.location.href = "/admin"
+  .otherwise redirectTo: "/"
 ])
 
 .config(["$translateProvider",($translateProvider) ->

@@ -8,8 +8,8 @@
 ])
 
 .controller('ChannelCtrl',
-["$scope","$dialog","Channel", 
-($scope,$dialog,Channel) ->
+["$scope","$dialog","Channel", "messager"
+($scope,$dialog,Channel, messager) ->
   $scope.entity = {}
 
   load = ->
@@ -31,24 +31,24 @@
     if $scope.entity.ChannelId
       Channel.edit {id:"(guid'#{$scope.entity.ChannelId}')"},$scope.entity
       ,(data)->
-        message.success "Edit channel successfully."
+        messager.success "Edit channel successfully."
         $scope.close()
         load()
     else
       $scope.entity.ChannelId=UUID.generate()
       Channel.save $scope.entity
       ,(data)->
-        message.success "Add channel successfully."
+        messager.success "Add channel successfully."
         $scope.close()
         load()
 
   $scope.remove = (item)->
-    message.confirm ->
+    messager.confirm ->
       $scope.loading="Deleting"
       item.IsDeleted = true
       Channel.edit {id:"(guid'#{item.ChannelId}')"},item
       ,(data)->
-        message.success "Delete channel successfully."
+        messager.success "Delete channel successfully."
         load()
 
   $scope.close = ->

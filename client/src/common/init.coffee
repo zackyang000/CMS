@@ -1,16 +1,4 @@
-﻿uploadInit = (url) ->
-  try
-    $(".dropzone").dropzone
-      paramName: "file"
-      maxFilesize: 100 # MB
-      url: url
-      addRemoveLinks: false
-      dictDefaultMessage: "<span class=\"bigger-150 bolder\"><i class=\"icon-caret-right red\"></i>  Drop files</span> to upload 				\t\t\t<span class=\"smaller-80 grey\">(or click)</span> <br /> \t\t\t\t<i class=\"upload-icon icon-cloud-upload blue icon-3x\"></i>"
-      dictResponseError: "Upload Faild!"
-      acceptedFiles: "image/*"
-      previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n  <div class=\"dz-success-mark\"><span></span></div>\n  <div class=\"dz-error-mark\"><span></span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
-
-galleryInit = ->
+﻿galleryInit = ->
   setTimeout (->
     $("[data-rel=\"colorbox\"]").colorbox
       reposition: true
@@ -33,49 +21,10 @@ galleryInit = ->
 
   ), 1000
 
-#json日期转换为Date对象
-ConvertJsonDate = (jsondate) ->
-  jsondate = jsondate.replace("/Date(", "").replace(")/", "")
-  if jsondate.indexOf("+") > 0
-    jsondate = jsondate.substring(0, jsondate.indexOf("+"))
-  else jsondate = jsondate.substring(0, jsondate.indexOf("-"))  if jsondate.indexOf("-") > 0
-  new Date(parseInt(jsondate, 10))
-
 #代码高亮
 codeformat = ->
   jQuery ->
     SyntaxHighlighter.highlight()
-
-#alert方法
-message =
-  success: (msg) ->
-    Messenger().post
-      message: msg
-      type: "success"
-      showCloseButton: true
-  error: (msg) ->
-    Messenger().post
-      message: msg
-      type: "error"
-      showCloseButton: true
-      delay: 60
-  confirm: (callback) ->
-    msg = Messenger().post(
-      message: "Do you want to continue?"
-      id: "Only-one-message"
-      showCloseButton: true
-      actions:
-        OK:
-          label: "OK"
-          phrase: "Confirm"
-          delay: 60
-          action: ->
-            callback()
-            msg.cancel()
-        cancel:
-          action: ->
-            msg.cancel()
-    )
 
 #fix Array indexOf() in JavaScript for IE browsers
 unless Array::indexOf

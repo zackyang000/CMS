@@ -11,8 +11,8 @@
 ])
 
 .controller('GalleryEditCtrl',
-["$scope","$routeParams","$location","$rootScope","$fileUploader","Gallery","Photo"
-($scope,$routeParams,$location,$rootScope,$fileUploader,Gallery,Photo) ->
+["$scope","$routeParams","$location","$rootScope","$fileUploader","Gallery","Photo", "messager"
+($scope,$routeParams,$location,$rootScope,$fileUploader,Gallery,Photo, messager) ->
   $scope.get = ->
     if $routeParams.id
       Gallery.get 
@@ -21,7 +21,7 @@
       ,(data)->
         $scope.entity=data.value[0]
         $scope.options =
-          url: "#{config.baseAddress}/api/FileManage/Photo/#{$routeParams.id}"
+          url: "#{config.apiHost}/api/FileManage/Photo/#{$routeParams.id}"
           maxFilesize: 100
           addRemoveLinks: false
           acceptedFiles: "image/*"
@@ -46,7 +46,7 @@
     if !$routeParams.id
       entity.GalleryId=UUID.generate()
     Gallery.update {id:"(guid'#{entity.GalleryId}')"},entity,(data)->
-      message.success "Save category successfully."
+      messager.success "Save category successfully."
       if entity.CreateDate
         $scope.get()
       else
@@ -57,7 +57,7 @@
   #上传封面
   $scope.uploader = $fileUploader.create
     scope: $scope
-    url: "#{config.baseAddress}/api/FileManage/upload"
+    url: "#{config.apiHost}/api/FileManage/upload"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
     $scope.entity.Cover = res.result
@@ -69,11 +69,11 @@
 
   #上传照片
   $scope.removePhoto = (item)->
-    message.confirm ->
+    messager.confirm ->
       $scope.loading="Delete"
       item.IsDeleted=true
       Photo.update {id:"(guid'#{item.PhotoId}')"},item,(data)->
-        message.success "Delete successfully."
+        messager.success "Delete successfully."
         $scope.loading=""
         $scope.get()
 

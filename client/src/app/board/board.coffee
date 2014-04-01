@@ -25,8 +25,8 @@
 ])
 
 .controller('BoardCtrl',
-["$scope","$translate","progressbar","Message","messages" , "context"
-($scope,$translate,progressbar,Message,messages, context) ->
+["$scope","$translate","progressbar","Message","messages" ,"messager", "context"
+($scope, $translate, progressbar, Message, messages, messager, context) ->
   $scope.entity=
     Author:context.account.name
     Email:context.account.email
@@ -63,5 +63,5 @@
     message.confirm ->
       Message.remove id:"(guid'#{item.BoardId}')",->
         item.IsDeleted=true
-        message.success "Message has been removed."
+        messager.success "Message has been removed."
 ])
