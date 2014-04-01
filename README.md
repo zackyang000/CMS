@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/TossShinHwa/CMS.png)](https://api.travis-ci.org/TossShinHwa/CMS)
+
 BlogEngine base AngularJS
 ===========
 ####<a href="http://www.woshinidezhu.com">Live Demo</a>
