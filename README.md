@@ -22,11 +22,7 @@ To showcase AngularJS how to write a real project based on communicating with a 
 You need to install Visual Studio and Node.js.
 * [Install Visual Studio](http://www.visualstudio.com/)
 * [Install node.js](http://nodejs.org/download/)
-* Install Grunt-CLI as global npm modules:
-
-    ```
-    npm install -g grunt-cli
-    ```
+* Install Grunt-CLI as global npm modules ```npm install -g grunt-cli```
 
 ### Get the Code
 
@@ -37,7 +33,7 @@ git clone https://github.com/TossShinHwa/CMS.git
 cd CMS
 ```
 
-### App Server
+### Run App Server
 
 Backend application server is a ASP.NET application that relies upon some 3rd Party nuget packages.
 
@@ -46,7 +42,7 @@ Backend application server is a ASP.NET application that relies upon some 3rd Pa
 * Modify the `ConnectionString` at `web.config` under Mvc project (Required above `MSSQL2005` or above)
 * Compile and run, it will automatically create the database and insert test data
 
-### Client App
+### Run Client App
 
 Client application is a straight HTML/Javascript application but our development process uses a Node.js build tool
 [Grunt.js](gruntjs.com). Grunt relies upon some 3rd party libraries that we need to install as local dependencies using npm.
