@@ -15,7 +15,7 @@ To showcase AngularJS how to write a real project based on communicating with a 
 * Awesome [AngularJS](http://www.angularjs.org/)
 * CSS based on [Bootstrap](http://getbootstrap.com/)
 * REST API based on [ASP.NET WEB API](http://www.asp.net/web-api/)
-* Persistence store used [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx) visit MSSQL
+* Persistence store used [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx) to visit MSSQL
 
 
 ## Installation
