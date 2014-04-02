@@ -1,6 +1,8 @@
-﻿//var targetSite="http://10.16.75.10:8002"
-//var targetSite="http://www.woshinidezhu.com"
-var targetSite="http://localhost:33333"
+﻿//var targetSite="http://www.woshinidezhu.com"
+//var targetSite="http://localhost:33333"
+
+var server="http://10.16.75.10:18002"
+var client="http://10.16.75.10:8002"
 
 try
 {
@@ -9,7 +11,7 @@ try
   if (data.description.length>200)
     data.description=data.description.substring(0,200)+"...";
 
-  $.post(targetSite+"/odata/Article",
+  $.post(server+"/odata/Article",
     {
       Content: data.content,
       Description: data.description.substring(0,200),
@@ -17,7 +19,7 @@ try
       Source: document.URL
     },
     function(data){
-      window.location.href=targetSite+"/admin/article('"+data.PostId+"')";
+      window.location.href=client+"/admin/article('"+data.PostId+"')";
     });
 
 }

@@ -1,11 +1,10 @@
 BlogEngine base AngularJS
 ===========
-##Demo
-Do you want to see live demo? Visit http://woshinidezhu.com
-***
-
 [![Build Status](https://api.travis-ci.org/TossShinHwa/CMS.png)](https://api.travis-ci.org/TossShinHwa/CMS)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/TossShinHwa/cms/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+Do you want to see live demo? Visit http://woshinidezhu.com
+***
 
 ## Purpose
 
@@ -13,10 +12,11 @@ To showcase AngularJS how to write a real project based on communicating with a 
 
 ## Technology stack
 
-* [ASP.NET WEB API](http://www.asp.net/web-api/)
-* [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx)
-* [AngularJS](http://www.angularjs.org/)
-* [Bootstrap](http://getbootstrap.com/)
+* Awesome [AngularJS](http://www.angularjs.org/)
+* CSS based on [Bootstrap](http://getbootstrap.com/)
+* REST API based on [ASP.NET WEB API](http://www.asp.net/web-api/)
+* Persistence store used [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx) to visit MSSQL
+
 
 ## Installation
 
