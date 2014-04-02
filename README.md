@@ -12,10 +12,11 @@ To showcase AngularJS how to write a real project based on communicating with a 
 
 ## Technology stack
 
-* [ASP.NET WEB API](http://www.asp.net/web-api/)
-* [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx)
-* [AngularJS](http://www.angularjs.org/)
-* [Bootstrap](http://getbootstrap.com/)
+* Awesome [AngularJS](http://www.angularjs.org/)
+* CSS based on [Bootstrap](http://getbootstrap.com/)
+* REST API based on [ASP.NET WEB API](http://www.asp.net/web-api/)
+* Persistence store used [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx) to visit MSSQL
+
 
 ## Installation
 

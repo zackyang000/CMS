@@ -2,8 +2,7 @@
 .factory "security", ['User','$q', "$http", (User, $q, $http) ->
   autoLogin: ->
     deferred = $q.defer()
-    token=$.cookie('authorization')
-    debugger
+    token = $.cookie('authorization')
     if token
       $http.defaults.headers.common['authorization']=token
       User.autoSignin {id:'(1)'}, null

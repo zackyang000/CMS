@@ -43,6 +43,11 @@ namespace AtomLab.Core
                 (T as Entity).LastEditIp = Auth.Ip;
                 (T as Entity).LastEditAddress = Auth.Address;
                 (T as Entity).LastEditDate = DateTime.Now;
+
+                if ((T as Entity).CreateUser == "unknown")
+                {
+                    (T as Entity).CreateUser = Auth.UserName;
+                }
             }
 
             var key = GetPrimaryKey(T);

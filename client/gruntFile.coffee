@@ -4,102 +4,88 @@
 
   debug = grunt.option("release") isnt true
 
-  dir = if debug then "debug" else "dist"
-
   jsFiles = [
-    "#{dir}/vendor/jquery/*.js"
-    "#{dir}/vendor/jquery-ui/*.js"
-    "#{dir}/vendor/bootstrap/*.js"
-    "#{dir}/vendor/bootstrap-plugin/*.js"
-    "#{dir}/vendor/angular/angular.js"
-    "#{dir}/vendor/angular/*.js"
-    "#{dir}/vendor/moment/moment.js"
-    "#{dir}/vendor/moment/*.js"
-    "#{dir}/vendor/messenger/messenger.js"
-    "#{dir}/vendor/messenger/*.js"
+    "dist/vendor/jquery/*.js"
+    "dist/vendor/jquery-ui/*.js"
+    "dist/vendor/bootstrap/*.js"
+    "dist/vendor/bootstrap-plugin/*.js"
+    "dist/vendor/angular/angular.js"
+    "dist/vendor/angular/*.js"
+    "dist/vendor/moment/moment.js"
+    "dist/vendor/moment/*.js"
+    "dist/vendor/messenger/messenger.js"
+    "dist/vendor/messenger/*.js"
 
     #order by folder level.
-    "#{dir}/vendor/*.js"
-    "#{dir}/vendor/*/*.js"
-    "#{dir}/vendor/*/*/*.js"
-    "#{dir}/vendor/*/*/*/*.js"
-    "#{dir}/vendor/**/*.js"
+    "dist/vendor/*.js"
+    "dist/vendor/*/*.js"
+    "dist/vendor/*/*/*.js"
+    "dist/vendor/*/*/*/*.js"
+    "dist/vendor/**/*.js"
 
-    #todo need to remove
-    "#{dir}/common/directives/*.js"
+    "dist/config/**/*.js"
+    "dist/common/**/*.js"
+    "dist/i18n/**/*.js"
+    "dist/app/**/*.js"
 
-    "#{dir}/config/**/*.js"
-    "#{dir}/common/**/*.js"
-    "#{dir}/i18n/**/*.js"
-    "#{dir}/app/**/*.js"
+    "dist/plugin/unify*/**/*.js"
 
-    "#{dir}/plugin/unify*/**/*.js"
-
-    "#{dir}/plugin/select2/select2.js"
-    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"
-    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
+    "dist/plugin/select2/select2.js"
+    "dist/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"
+    "dist/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
   ]
 
   cssFiles = [
-    "#{dir}/vendor/**/*.css"
-    "#{dir}/common/**/*.css"
-    "#{dir}/app/**/*.css"
-
-    "#{dir}/plugin/font-awesome/*.css"
-
-    "#{dir}/plugin/unify*/*.css"
-    "#{dir}/plugin/unify*/theme/default/*.css"
-
-    "#{dir}/plugin/select2/select2.css"
-    "#{dir}/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
+    "dist/vendor/**/*.css"
+    "dist/common/**/*.css"
+    "dist/app/**/*.css"
+    "dist/plugin/font-awesome/*.css"
+    "dist/plugin/unify*/*.css"
+    "dist/plugin/unify*/theme/default/*.css"
+    "dist/plugin/select2/select2.css"
+    "dist/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
   ]
 
   adminJsFiles =[
-    "#{dir}/vendor/jquery/*.js"
-    "#{dir}/vendor/jquery-ui/*.js"
-    "#{dir}/vendor/bootstrap/*.js"
-    "#{dir}/vendor/bootstrap-plugin/*.js"
-    "#{dir}/vendor/angular/angular.js"
-    "#{dir}/vendor/angular/*.js"
-    "#{dir}/vendor/moment/moment.js"
-    "#{dir}/vendor/moment/*.js"
-    "#{dir}/vendor/messenger/messenger.js"
-    "#{dir}/vendor/messenger/*.js"
+    "dist/vendor/jquery/*.js"
+    "dist/vendor/jquery-ui/*.js"
+    "dist/vendor/bootstrap/*.js"
+    "dist/vendor/bootstrap-plugin/*.js"
+    "dist/vendor/angular/angular.js"
+    "dist/vendor/angular/*.js"
+    "dist/vendor/moment/moment.js"
+    "dist/vendor/moment/*.js"
+    "dist/vendor/messenger/messenger.js"
+    "dist/vendor/messenger/*.js"
 
     #order by folder level.
-    "#{dir}/vendor/*.js"
-    "#{dir}/vendor/*/*.js"
-    "#{dir}/vendor/*/*/*.js"
-    "#{dir}/vendor/*/*/*/*.js"
-    "#{dir}/vendor/**/*.js"
+    "dist/vendor/*.js"
+    "dist/vendor/*/*.js"
+    "dist/vendor/*/*/*.js"
+    "dist/vendor/*/*/*/*.js"
+    "dist/vendor/**/*.js"
 
-    #todo need to remove
-    "#{dir}/common/directives/*.js"
+    "dist/config/**/*.js"
+    "dist/common/**/*.js"
+    "dist/i18n/**/*.js"
+    "dist/app-admin/**/*.js"
 
-    "#{dir}/config/**/*.js"
-    "#{dir}/common/**/*.js"
-    "#{dir}/i18n/**/*.js"
-    "#{dir}/app-admin/**/*.js"
+    "dist/plugin/ace*/**/*.js"
 
-    "#{dir}/plugin/ace*/**/*.js"
-
-    "#{dir}/plugin/select2/select2.js"
-    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"
-    "#{dir}/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
+    "dist/plugin/select2/select2.js"
+    "dist/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"
+    "dist/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
   ]
 
   adminCssFiles = [
-    "#{dir}/vendor/messenger/messenger.css"
-    "#{dir}/vendor/messenger/*.css"
-    "#{dir}/vendor/**/*.css"
-    "#{dir}/common/**/*.css"
-    "#{dir}/app-admin/**/*.css"
-
-    "#{dir}/plugin/font-awesome/*.css"
-
-    "#{dir}/plugin/ace*/*.css"
-
-    "#{dir}/plugin/select2/select2.css"
+    "dist/vendor/messenger/messenger.css"
+    "dist/vendor/messenger/*.css"
+    "dist/vendor/**/*.css"
+    "dist/common/**/*.css"
+    "dist/app-admin/**/*.css"
+    "dist/plugin/font-awesome/*.css"
+    "dist/plugin/ace*/*.css"
+    "dist/plugin/select2/select2.css"
   ]
 
   LIVERELOAD_PORT = 35730
@@ -107,9 +93,6 @@
   #-----------------------------------------------------------------
 
   grunt.initConfig
-
-    dir: dir
-
     connect:
       options:
         port: 30000
@@ -126,7 +109,7 @@
 
               require('connect-livereload')
                 port:LIVERELOAD_PORT
-              connect.static(require('path').resolve(dir))
+              connect.static(require('path').resolve('dist'))
               ]
 
     open:
@@ -159,7 +142,7 @@
           expand: true
           cwd: 'src/'
           src: ['**/*.coffee']
-          dest: dir
+          dest: 'dist'
           ext: '.js'
         ]
 
@@ -169,7 +152,7 @@
           expand: true
           cwd: 'src/'
           src: ['**/*.less']
-          dest: dir
+          dest: 'dist'
           ext: '.css'
         ]
         
@@ -194,37 +177,37 @@
           startTag: "<!--SCRIPTS-->"
           endTag: "<!--SCRIPTS END-->"
           fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
-          appRoot: "#{dir}/"
+          appRoot: "dist/"
         files:
-          "<%= dir %>/index.html": if debug then jsFiles else "dist/index.js"
+          "dist/index.html": if debug then jsFiles else "dist/index.js"
       css:
         options:
           startTag: "<!--STYLES-->"
           endTag: "<!--STYLES END-->"
           fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
-          appRoot: "#{dir}/"
+          appRoot: "dist/"
         files:
-          "<%= dir %>/index.html": if debug then cssFiles else "dist/index.css"
+          "dist/index.html": if debug then cssFiles else "dist/index.css"
       'admin-js':
         options:
           startTag: "<!--SCRIPTS-->"
           endTag: "<!--SCRIPTS END-->"
           fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
-          appRoot: "#{dir}/"
+          appRoot: "dist/"
         files:
-          "<%= dir %>/admin-index.html": if debug then adminJsFiles else "dist/admin-index.js"
+          "dist/admin-index.html": if debug then adminJsFiles else "dist/admin-index.js"
       'admin-css':
         options:
           startTag: "<!--STYLES-->"
           endTag: "<!--STYLES END-->"
           fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
-          appRoot: "#{dir}/"
+          appRoot: "dist/"
         files:
-          "<%= dir %>/admin-index.html": if debug then adminCssFiles else "dist/admin-index.css"
+          "dist/admin-index.html": if debug then adminCssFiles else "dist/admin-index.css"
 
     clean:
       all:
-        src: "#{dir}/**/*"
+        src: "dist/**/*"
 
       redundant:
         src: [
@@ -248,13 +231,13 @@
             '!**/*.min.js'
             '!**/*.min.css'
           ]
-          dest: dir
+          dest: 'dist'
         ]
 
     #todo remove tag STYLES/SCRIPT etc.
     replace:
       title:
-        src: "<%= dir %>/index.html"
+        src: "dist/index.html"
         overwrite: true
         replacements: [
           from: ''
