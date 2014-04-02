@@ -1,0 +1,17 @@
+﻿{
+  "name": "CMS",
+  "version": "0.0.1",
+  "private": false,
+  "author": "Zack <zackyang@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TossShinHwa/CMS.git"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.4.x"
+  },
+  "scripts": {
+    "start": "grunt"
+  }
+}

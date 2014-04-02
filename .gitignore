@@ -84,3 +84,4 @@ server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/
 chromeExtension/.idea/*
 .idea/*
 *.orig
+node_modules/

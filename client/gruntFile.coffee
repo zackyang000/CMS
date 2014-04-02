@@ -110,7 +110,7 @@
               require('connect-livereload')
                 port:LIVERELOAD_PORT
               connect.static(require('path').resolve('dist'))
-              ]
+            ]
 
     open:
       server:
@@ -155,11 +155,11 @@
           dest: 'dist'
           ext: '.css'
         ]
-        
+
     uglify:
-      #options:
-        #mangle: false #改变变量名和方法名
-        #beautify: true #不压缩
+    #options:
+    #mangle: false #改变变量名和方法名
+    #beautify: true #不压缩
       my_target:
         files:
           'dist/index.js': jsFiles
@@ -234,7 +234,7 @@
           dest: 'dist'
         ]
 
-    #todo remove tag STYLES/SCRIPT etc.
+  #todo remove tag STYLES/SCRIPT etc.
     replace:
       title:
         src: "dist/index.html"
@@ -289,9 +289,9 @@
       ]
 
   grunt.registerTask "start-web-server", [
-      "connect"
-      "open"
-      "watch"
+    "connect"
+    "open"
+    "watch"
   ]
 
   grunt.registerTask "test", [
