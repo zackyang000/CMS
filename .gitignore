@@ -81,7 +81,10 @@ server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/temp/
 server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/thumbnail/
 server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/
 
-chromeExtension/.idea/*
-.idea/*
-*.orig
+
+
+
+.idea/
 node_modules/
+dist/
+*.orig
