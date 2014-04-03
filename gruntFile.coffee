@@ -276,13 +276,13 @@
             '&apos;': '\''
             '&amp;': '&'
         files:
-          'dist/index.html': [
-            'dist/app/**/*.html'
-            '!dist/index.html'
+          'dist/public/index.html': [
+            'dist/public/app/**/*.html'
+            '!dist/public/index.html'
           ]
-          'dist/admin-index.html': [
-            'dist/app-admin/**/*.html'
-            '!dist/admin-index.html'
+          'dist/public/admin-index.html': [
+            'dist/public/app-admin/**/*.html'
+            '!dist/public/admin-index.html'
           ]
 
   grunt.registerTask "build", ->
@@ -297,7 +297,7 @@
     else
       grunt.task.run [
         "clean:all"
-        "copy:all"
+        "copy"
         "coffee"
         "less"
         "uglify"
