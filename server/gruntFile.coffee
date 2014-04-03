@@ -17,7 +17,6 @@
         tasks: ["jshint"]
         options:
           livereload: true
-
       html:
         files: [
           "public/views/**"
@@ -25,12 +24,12 @@
         ]
         options:
           livereload: true
-
       css:
         files: ["public/css/**"]
         tasks: ["csslint"]
         options:
           livereload: true
+
     nodemon:
       dev:
         script: "server.js"
@@ -44,12 +43,4 @@
             PORT: 3000
           cwd: __dirname
 
-    concurrent:
-      tasks: [
-        "nodemon"
-        "watch"
-      ]
-      options:
-        logConcurrentOutput: true
-
-  grunt.registerTask('default', ['concurrent']);
+  grunt.registerTask('default', ['nodemon','watch']);
