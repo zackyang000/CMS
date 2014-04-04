@@ -88,8 +88,6 @@
     "dist/public/plugin/select2/select2.css"
   ]
 
-  LIVERELOAD_PORT = 35730
-
   #-----------------------------------------------------------------
 
   grunt.initConfig
@@ -106,46 +104,28 @@
             PORT: 30000
           cwd: 'dist'
 
-    connect:
-      options:
-        port: 30000
-        hostname: 'localhost'
-      livereload:
-        options:
-          middleware: (connect, options) ->
-            return [
-              require('connect-modrewrite')([
-                '^/admin$ /admin-index.html'
-                '^/admin[/](.*)$ /admin-index.html'
-                '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
-              ])
-
-              require('connect-livereload')
-                port:LIVERELOAD_PORT
-              connect.static(require('path').resolve('dist'))
-            ]
-
     open:
       server:
         url:'http://localhost:30000'
 
     watch:
-      options:
-        livereload:LIVERELOAD_PORT
-      normalFile:
+      clientFile:
         files: ['client/**/*','!client/**/*.coffee','!client/**/*.less']
-        tasks: ['newer:copy:all']
+        tasks: ['newer:copy:client']
+        options: [livereload: 30001]
+      serverFile:
+        files: ['server/**/*','!server/**/*.coffee','!server/**/*.less']
+        tasks: ['newer:copy:server']
+        options: [livereload: 30001]
       coffee:
         files: ['client/**/*.coffee']
         tasks: ['newer:coffee']
+        options: [livereload: 30001]
+
       less:
         files: ['client/**/*.less']
         tasks: ['newer:less']
-      linker:
-        files: ['client/**/*.js','client/**/*.css','client/**/*.coffee','client/**/*.less']
-        tasks: ['sails-linker']
-        options:
-          event: ['added', 'deleted']
+        options: [livereload: 30001]
 
     coffee:
       options:
@@ -178,10 +158,10 @@
         ]
 
     uglify:
-    #options:
-    #mangle: false #改变变量名和方法名
-    #beautify: true #不压缩
-      my_target:
+      #options:
+        #mangle: false #改变变量名和方法名
+        #beautify: true #不压缩
+      combine:
         files:
           'dist/public/index.js': jsFiles
           'dist/public/admin-index.js': adminJsFiles
@@ -239,7 +219,6 @@
           "!dist/public/*.*"
         ]
 
-
     copy:
       client:
         files: [
@@ -285,6 +264,21 @@
             '!dist/public/admin-index.html'
           ]
 
+    replace:
+      livereload:
+        src: "dist/public/index.html"
+        overwrite: true
+        replacements: [
+          from: '<!--LIVERELOAD-->'
+          to: '<script src="//localhost:30001/livereload.js"></script>'
+        ]
+
+    concurrent:
+      tasks: ['nodemon', 'watch', 'open']
+      options:
+        logConcurrentOutput: true
+
+
   grunt.registerTask "build", ->
     if debug
       grunt.task.run [
@@ -293,6 +287,7 @@
         "coffee"
         "less"
         "sails-linker"
+        "replace:livereload"
       ]
     else
       grunt.task.run [
@@ -309,8 +304,6 @@
 
   grunt.registerTask "default", [
     'build'
-    'nodemon'
-    'watch'
-    #'start-web-server'
+    'concurrent'
   ]
 

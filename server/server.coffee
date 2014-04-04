@@ -6,8 +6,8 @@ path = require("path")
 app = express()
 
 #All environments
-app.set "port", process.env.PORT or 3000
-app.use express.favicon()
+app.set "port", process.env.PORT or 30000
+app.use express.favicon(path.join(__dirname, 'public/img/favicon.ico'))
 app.use express.logger("dev")
 app.use express.bodyParser()
 app.use express.methodOverride()
