@@ -88,9 +88,12 @@
     "dist/public/plugin/select2/select2.css"
   ]
 
+
   #-----------------------------------------------------------------
 
   grunt.initConfig
+    assets: grunt.file.readJSON('server/config/assets.json')
+
     nodemon:
       dev:
         script: "server.js"
@@ -109,23 +112,20 @@
         url:'http://localhost:30000'
 
     watch:
+      options:
+        livereload: 30001
       clientFile:
         files: ['client/**/*','!client/**/*.coffee','!client/**/*.less']
-        tasks: ['newer:copy:client']
-        options: [livereload: 30001]
+        tasks: ['newer:copy:client','sails-linker']
       serverFile:
         files: ['server/**/*','!server/**/*.coffee','!server/**/*.less']
-        tasks: ['newer:copy:server']
-        options: [livereload: 30001]
+        tasks: ['newer:copy:server','sails-linker']
       coffee:
-        files: ['client/**/*.coffee']
+        files: ['client/**/*.coffee','sails-linker']
         tasks: ['newer:coffee']
-        options: [livereload: 30001]
-
       less:
-        files: ['client/**/*.less']
+        files: ['client/**/*.less','sails-linker']
         tasks: ['newer:less']
-        options: [livereload: 30001]
 
     coffee:
       options:
@@ -158,19 +158,19 @@
         ]
 
     uglify:
-      #options:
-        #mangle: false #改变变量名和方法名
-        #beautify: true #不压缩
-      combine:
+      options:
+        mangle: false #改变变量名和方法名
+        beautify: true #不压缩
+      production:
         files:
-          'dist/public/index.js': jsFiles
-          'dist/public/admin-index.js': adminJsFiles
+          'dist/public/index.js': ["<%= assets.js %>", "<%= assets.commonJs %>"]
+          'dist/public/admin-index.js': ["<%= assets.adminJs %>", "<%= assets.commonJs %>"]
 
     cssmin:
-      combine:
+      production:
         files:
-          'dist/public/index.css': cssFiles
-          'dist/public/admin-index.css': adminCssFiles
+          'dist/public/index.css': ["<%= assets.css %>", "<%= assets.commonCss %>"]
+          'dist/public/admin-index.css': ["<%= assets.adminCss %>", "<%= assets.commonCss %>"]
 
     'sails-linker':
       js:
@@ -180,7 +180,8 @@
           fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
           appRoot: "dist/public/"
         files:
-          "dist/public/index.html": if debug then jsFiles else "dist/public/index.js"
+          'dist/public/index.html': if debug then ["<%= assets.js %>", "<%= assets.commonJs %>"] else "dist/public/index.js"
+          'dist/public/admin-index.html': if debug then ["<%= assets.adminJs %>", "<%= assets.commonJs %>"] else "dist/public/admin-index.js"
       css:
         options:
           startTag: "<!--STYLES-->"
@@ -188,23 +189,8 @@
           fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
           appRoot: "dist/public/"
         files:
-          "dist/public/index.html": if debug then cssFiles else "dist/public/index.css"
-      'admin-js':
-        options:
-          startTag: "<!--SCRIPTS-->"
-          endTag: "<!--SCRIPTS END-->"
-          fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
-          appRoot: "dist/public/"
-        files:
-          "dist/public/admin-index.html": if debug then adminJsFiles else "dist/public/admin-index.js"
-      'admin-css':
-        options:
-          startTag: "<!--STYLES-->"
-          endTag: "<!--STYLES END-->"
-          fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
-          appRoot: "dist/public/"
-        files:
-          "dist/public/admin-index.html": if debug then adminCssFiles else "dist/public/admin-index.css"
+          'dist/public/index.html': if debug then ["<%= assets.css %>", "<%= assets.commonCss %>"] else "dist/public/index.css"
+          'dist/public/admin-index.html': if debug then ["<%= assets.adminCss %>", "<%= assets.commonCss %>"] else "dist/public/admin-index.css"
 
     clean:
       all:
@@ -257,16 +243,21 @@
         files:
           'dist/public/index.html': [
             'dist/public/app/**/*.html'
-            '!dist/public/index.html'
           ]
           'dist/public/admin-index.html': [
             'dist/public/app-admin/**/*.html'
-            '!dist/public/admin-index.html'
           ]
 
     replace:
       livereload:
         src: "dist/public/index.html"
+        overwrite: true
+        replacements: [
+          from: '<!--LIVERELOAD-->'
+          to: '<script src="//localhost:30001/livereload.js"></script>'
+        ]
+      livereload2:
+        src: "dist/public/admin-index.html"
         overwrite: true
         replacements: [
           from: '<!--LIVERELOAD-->'
@@ -298,7 +289,7 @@
         "uglify"
         "cssmin"
         "sails-linker"
-        "inline_angular_templates"
+        #"inline_angular_templates"
         "clean:redundant"
       ]
 
