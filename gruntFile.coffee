@@ -161,14 +161,7 @@
 
     replace:
       livereload:
-        src: "dist/public/index.html"
-        overwrite: true
-        replacements: [
-          from: '<!--LIVERELOAD-->'
-          to: '<script src="//localhost:30001/livereload.js"></script>'
-        ]
-      livereload2:
-        src: "dist/public/admin-index.html"
+        src: ["dist/public/index.html","dist/public/admin-index.html"]
         overwrite: true
         replacements: [
           from: '<!--LIVERELOAD-->'
