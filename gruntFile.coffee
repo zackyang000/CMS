@@ -1,95 +1,6 @@
 ﻿module.exports = (grunt) ->
-
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
-
   debug = grunt.option("release") isnt true
-
-  jsFiles = [
-    "dist/public/vendor/jquery/*.js"
-    "dist/public/vendor/jquery-ui/*.js"
-    "dist/public/vendor/bootstrap/*.js"
-    "dist/public/vendor/bootstrap-plugin/*.js"
-    "dist/public/vendor/angular/angular.js"
-    "dist/public/vendor/angular/*.js"
-    "dist/public/vendor/moment/moment.js"
-    "dist/public/vendor/moment/*.js"
-    "dist/public/vendor/messenger/messenger.js"
-    "dist/public/vendor/messenger/*.js"
-
-    #order by folder level.
-    "dist/public/vendor/*.js"
-    "dist/public/vendor/*/*.js"
-    "dist/public/vendor/*/*/*.js"
-    "dist/public/vendor/*/*/*/*.js"
-    "dist/public/vendor/**/*.js"
-
-    "dist/public/config/**/*.js"
-    "dist/public/common/**/*.js"
-    "dist/public/i18n/**/*.js"
-    "dist/public/app/**/*.js"
-
-    "dist/public/plugin/unify*/**/*.js"
-
-    "dist/public/plugin/select2/select2.js"
-    "dist/public/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"
-    "dist/public/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
-  ]
-
-  cssFiles = [
-    "dist/public/vendor/**/*.css"
-    "dist/public/common/**/*.css"
-    "dist/public/app/**/*.css"
-    "dist/public/plugin/font-awesome/*.css"
-    "dist/public/plugin/unify*/*.css"
-    "dist/public/plugin/unify*/theme/default/*.css"
-    "dist/public/plugin/select2/select2.css"
-    "dist/public/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
-  ]
-
-  adminJsFiles =[
-    "dist/public/vendor/jquery/*.js"
-    "dist/public/vendor/jquery-ui/*.js"
-    "dist/public/vendor/bootstrap/*.js"
-    "dist/public/vendor/bootstrap-plugin/*.js"
-    "dist/public/vendor/angular/angular.js"
-    "dist/public/vendor/angular/*.js"
-    "dist/public/vendor/moment/moment.js"
-    "dist/public/vendor/moment/*.js"
-    "dist/public/vendor/messenger/messenger.js"
-    "dist/public/vendor/messenger/*.js"
-
-    #order by folder level.
-    "dist/public/vendor/*.js"
-    "dist/public/vendor/*/*.js"
-    "dist/public/vendor/*/*/*.js"
-    "dist/public/vendor/*/*/*/*.js"
-    "dist/public/vendor/**/*.js"
-
-    "dist/public/config/**/*.js"
-    "dist/public/common/**/*.js"
-    "dist/public/i18n/**/*.js"
-    "dist/public/app-admin/**/*.js"
-
-    "dist/public/plugin/ace*/**/*.js"
-
-    "dist/public/plugin/select2/select2.js"
-    "dist/public/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"
-    "dist/public/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
-  ]
-
-  adminCssFiles = [
-    "dist/public/vendor/messenger/messenger.css"
-    "dist/public/vendor/messenger/*.css"
-    "dist/public/vendor/**/*.css"
-    "dist/public/common/**/*.css"
-    "dist/public/app-admin/**/*.css"
-    "dist/public/plugin/font-awesome/*.css"
-    "dist/public/plugin/ace*/*.css"
-    "dist/public/plugin/select2/select2.css"
-  ]
-
-
-  #-----------------------------------------------------------------
 
   grunt.initConfig
     assets: grunt.file.readJSON('server/config/assets.json')
@@ -158,9 +69,9 @@
         ]
 
     uglify:
-      options:
-        mangle: false #改变变量名和方法名
-        beautify: true #不压缩
+      #options:
+        #mangle: false
+        #beautify: true
       production:
         files:
           'dist/public/index.js': ["<%= assets.js %>", "<%= assets.commonJs %>"]
@@ -231,7 +142,7 @@
     inline_angular_templates:
       dist:
         options:
-          base: 'dist'
+          base: 'dist/public'
           prefix: '/'
           selector: 'body'
           method: 'append'
@@ -289,7 +200,7 @@
         "uglify"
         "cssmin"
         "sails-linker"
-        #"inline_angular_templates"
+        "inline_angular_templates"
         "clean:redundant"
       ]
 

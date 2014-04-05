@@ -1,7 +1,6 @@
 ﻿angular.module("app-admin",
 ['ngRoute'
-'ngSanitize'
-'ngAnimate'
+'ngCookies'
 'admin-dashboard'
 'admin-basedata'
 'admin-article'
