@@ -28,15 +28,18 @@
       clientFile:
         files: ['client/**/*','!client/**/*.coffee','!client/**/*.less']
         tasks: ['newer:copy:client','sails-linker']
+      clientCoffee:
+        files: ['client/**/*.coffee']
+        tasks: ['newer:coffee:client','sails-linker']
+      clientLess:
+        files: ['client/**/*.less']
+        tasks: ['newer:less','sails-linker']
       serverFile:
-        files: ['server/**/*','!server/**/*.coffee','!server/**/*.less']
-        tasks: ['newer:copy:server','sails-linker']
-      coffee:
-        files: ['client/**/*.coffee','sails-linker']
-        tasks: ['newer:coffee']
-      less:
-        files: ['client/**/*.less','sails-linker']
-        tasks: ['newer:less']
+        files: ['server/**/*','!server/**/*.coffee']
+        tasks: ['newer:copy:server']
+      serverCoffee:
+        files: ['server/**/*.coffee']
+        tasks: ['newer:coffee:server']
 
     coffee:
       options:
