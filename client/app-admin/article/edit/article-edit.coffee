@@ -102,7 +102,7 @@
   #上传图片
   $scope.uploader = $fileUploader.create
     scope: $scope
-    url: "#{config.apiHost}/api/FileManage/upload"
+    url: "#{config.apiHostTemp}/api/FileManage/upload"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
     $scope.entity.Thumbnail = res.result
