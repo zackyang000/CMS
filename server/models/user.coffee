@@ -20,4 +20,4 @@ UserSchema = new Schema
   isDeleted : Boolean
   remark : String
 
-mongoose.model "User", User
+mongoose.model "User", UserSchema
