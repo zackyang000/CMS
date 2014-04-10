@@ -1,4 +1,4 @@
-﻿angular.module('admin-dashboard',[])
+﻿angular.module('dashboard',[])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider

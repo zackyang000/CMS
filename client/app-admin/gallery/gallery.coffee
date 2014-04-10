@@ -1,4 +1,4 @@
-﻿angular.module('admin-gallery'
-['admin-gallery-edit'
-'admin-gallery-list'
+﻿angular.module('gallery'
+['gallery-edit'
+'gallery-list'
 ])

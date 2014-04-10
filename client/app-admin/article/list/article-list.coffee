@@ -1,4 +1,4 @@
-﻿angular.module('admin-article-list',['resource.articles'])
+﻿angular.module('article-list',['resource.articles'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider

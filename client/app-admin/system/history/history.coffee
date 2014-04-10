@@ -1,4 +1,4 @@
-﻿angular.module('admin-system-history',[])
+﻿angular.module('system-history',[])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider

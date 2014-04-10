@@ -1,4 +1,4 @@
-angular.module('admin-system-404',['ngRoute'])
+angular.module('system-404',['ngRoute'])
 
 .config(["$routeProvider",
     ($routeProvider) ->
