@@ -76,14 +76,14 @@
         #beautify: true
       production:
         files:
-          '_dist/client/index.js': ["<%= assets.js %>", "<%= assets.commonJs %>"]
-          '_dist/client/admin-index.js': ["<%= assets.adminJs %>", "<%= assets.commonJs %>"]
+          '_dist/client/index.js': ["<%= assets.commonJs %>", "<%= assets.js %>"]
+          '_dist/client/admin-index.js': ["<%= assets.commonJs %>", "<%= assets.adminJs %>"]
 
     cssmin:
       production:
         files:
-          '_dist/client/index.css': ["<%= assets.css %>", "<%= assets.commonCss %>"]
-          '_dist/client/admin-index.css': ["<%= assets.adminCss %>", "<%= assets.commonCss %>"]
+          '_dist/client/index.css': ["<%= assets.commonCss %>", "<%= assets.css %>"]
+          '_dist/client/admin-index.css': ["<%= assets.commonCss %>", "<%= assets.adminCss %>"]
 
     'sails-linker':
       js:
@@ -102,8 +102,8 @@
           fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
           appRoot: "_dist/client/"
         files:
-          '_dist/client/index.html': if debug then ["<%= assets.css %>", "<%= assets.commonCss %>"] else "_dist/client/index.css"
-          '_dist/client/admin-index.html': if debug then ["<%= assets.adminCss %>", "<%= assets.commonCss %>"] else "_dist/client/admin-index.css"
+          '_dist/client/index.html': if debug then ["<%= assets.commonCss %>", "<%= assets.css %>"] else "_dist/client/index.css"
+          '_dist/client/admin-index.html': if debug then ["<%= assets.commonCss %>", "<%= assets.adminCss %>"] else "_dist/client/admin-index.css"
 
     clean:
       all:
