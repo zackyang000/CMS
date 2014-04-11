@@ -27,13 +27,13 @@
         livereload: 30001
       clientFile:
         files: ['client/**/*','!client/**/*.coffee','!client/**/*.less']
-        tasks: ['newer:copy:client','sails-linker']
+        tasks: ['newer:copy:client','sails-linker','replace:livereload']
       clientCoffee:
         files: ['client/**/*.coffee']
-        tasks: ['newer:coffee:client','sails-linker']
+        tasks: ['newer:coffee:client','sails-linker','replace:livereload']
       clientLess:
         files: ['client/**/*.less']
-        tasks: ['newer:less','sails-linker']
+        tasks: ['newer:less','sails-linker','replace:livereload']
       serverFile:
         files: ['server/**/*','!server/**/*.coffee']
         tasks: ['newer:copy:server']
@@ -204,4 +204,3 @@
     'build'
     'concurrent'
   ]
-
