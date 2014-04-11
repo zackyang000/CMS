@@ -17,7 +17,7 @@ app.use express.methodOverride()
 app.use express.static(path.join(__dirname, "public"))
 app.use app.router
 
-require("./models/user")
+require('./bootstrap/requireModels')()
 require("./routes/users")(app)
 
 app.get('/admin*', (req, res) ->
