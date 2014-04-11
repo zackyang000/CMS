@@ -10,22 +10,21 @@ mongoose = require('mongoose')
 #All environments
 mongoose.connect(config.db)
 app.set "port", process.env.PORT or config.port or 33000
-app.use express.favicon(path.join(__dirname, 'public/img/favicon.ico'))
+app.use express.favicon(path.join(__dirname, '../client/img/favicon.ico'))
 app.use express.logger('dev')  #'default', 'short', 'tiny', 'dev'
 app.use express.bodyParser()
 app.use express.methodOverride()
-app.use express.static(path.join(__dirname, "public"))
-app.use app.router
+app.use express.static(path.join(__dirname, "../client"))
 
 require('./bootstrap/requireModels')()
 require("./routes/users")(app)
 
 app.get('/admin*', (req, res) ->
-  res.sendfile('public/admin-index.html');
+  res.sendfile('../client/admin-index.html');
 )
 
 app.get('*', (req, res) ->
-  res.sendfile('public/index.html');
+  res.sendfile('../client/index.html');
 )
 
 http.createServer(app).listen app.get("port"), ->

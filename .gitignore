@@ -88,3 +88,4 @@ server dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/qrcode/
 node_modules/
 dist/
 *.orig
+_dist/

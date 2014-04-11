@@ -10,13 +10,12 @@
         script: "server.js"
         options:
           args: []
-          ignore: ["public/**"]
           ext: "js,html"
           nodeArgs: ["--debug"]
           delayTime: 1
           env:
             PORT: 30000
-          cwd: 'dist'
+          cwd: '_dist/server'
 
     open:
       server:
@@ -49,7 +48,7 @@
           expand: true
           cwd: 'client/'
           src: ['**/*.coffee']
-          dest: 'dist/public/'
+          dest: '_dist/client/'
           ext: '.js'
         ]
       server:
@@ -57,7 +56,7 @@
           expand: true
           cwd: 'server/'
           src: ['**/*.coffee']
-          dest: 'dist/'
+          dest: '_dist/server/'
           ext: '.js'
         ]
 
@@ -67,7 +66,7 @@
           expand: true
           cwd: 'client/'
           src: ['**/*.less']
-          dest: 'dist/public'
+          dest: '_dist/client'
           ext: '.css'
         ]
 
@@ -77,14 +76,14 @@
         #beautify: true
       production:
         files:
-          'dist/public/index.js': ["<%= assets.js %>", "<%= assets.commonJs %>"]
-          'dist/public/admin-index.js': ["<%= assets.adminJs %>", "<%= assets.commonJs %>"]
+          '_dist/client/index.js': ["<%= assets.js %>", "<%= assets.commonJs %>"]
+          '_dist/client/admin-index.js': ["<%= assets.adminJs %>", "<%= assets.commonJs %>"]
 
     cssmin:
       production:
         files:
-          'dist/public/index.css': ["<%= assets.css %>", "<%= assets.commonCss %>"]
-          'dist/public/admin-index.css': ["<%= assets.adminCss %>", "<%= assets.commonCss %>"]
+          '_dist/client/index.css': ["<%= assets.css %>", "<%= assets.commonCss %>"]
+          '_dist/client/admin-index.css': ["<%= assets.adminCss %>", "<%= assets.commonCss %>"]
 
     'sails-linker':
       js:
@@ -92,31 +91,31 @@
           startTag: "<!--SCRIPTS-->"
           endTag: "<!--SCRIPTS END-->"
           fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
-          appRoot: "dist/public/"
+          appRoot: "_dist/client/"
         files:
-          'dist/public/index.html': if debug then ["<%= assets.js %>", "<%= assets.commonJs %>"] else "dist/public/index.js"
-          'dist/public/admin-index.html': if debug then ["<%= assets.adminJs %>", "<%= assets.commonJs %>"] else "dist/public/admin-index.js"
+          '_dist/client/index.html': if debug then ["<%= assets.js %>", "<%= assets.commonJs %>"] else "_dist/client/index.js"
+          '_dist/client/admin-index.html': if debug then ["<%= assets.adminJs %>", "<%= assets.commonJs %>"] else "_dist/client/admin-index.js"
       css:
         options:
           startTag: "<!--STYLES-->"
           endTag: "<!--STYLES END-->"
           fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
-          appRoot: "dist/public/"
+          appRoot: "_dist/client/"
         files:
-          'dist/public/index.html': if debug then ["<%= assets.css %>", "<%= assets.commonCss %>"] else "dist/public/index.css"
-          'dist/public/admin-index.html': if debug then ["<%= assets.adminCss %>", "<%= assets.commonCss %>"] else "dist/public/admin-index.css"
+          '_dist/client/index.html': if debug then ["<%= assets.css %>", "<%= assets.commonCss %>"] else "_dist/client/index.css"
+          '_dist/client/admin-index.html': if debug then ["<%= assets.adminCss %>", "<%= assets.commonCss %>"] else "_dist/client/admin-index.css"
 
     clean:
       all:
-        src: "dist/**/*"
+        src: "_dist/**/*"
 
       redundant:
         src: [
-          "dist/public/*"
-          "!dist/public/data"
-          "!dist/public/img"
-          "!dist/public/plugin"
-          "!dist/public/*.*"
+          "_dist/client/*"
+          "!_dist/client/data"
+          "!_dist/client/img"
+          "!_dist/client/plugin"
+          "!_dist/client/*.*"
         ]
 
     copy:
@@ -129,7 +128,7 @@
             '!**/*.coffee'
             '!**/*.less'
           ]
-          dest: 'dist/public'
+          dest: '_dist/client'
         ]
       server:
         files: [
@@ -139,13 +138,13 @@
             '**/*'
             '!**/*.coffee'
           ]
-          dest: 'dist'
+          dest: '_dist/server'
         ]
 
     inline_angular_templates:
-      dist:
+      _dist:
         options:
-          base: 'dist/public'
+          base: '_dist/client'
           prefix: '/'
           selector: 'body'
           method: 'append'
@@ -155,16 +154,16 @@
             '&apos;': '\''
             '&amp;': '&'
         files:
-          'dist/public/index.html': [
-            'dist/public/app/**/*.html'
+          '_dist/client/index.html': [
+            '_dist/client/app/**/*.html'
           ]
-          'dist/public/admin-index.html': [
-            'dist/public/app-admin/**/*.html'
+          '_dist/client/admin-index.html': [
+            '_dist/client/app-admin/**/*.html'
           ]
 
     replace:
       livereload:
-        src: ["dist/public/index.html","dist/public/admin-index.html"]
+        src: ["_dist/client/index.html","_dist/client/admin-index.html"]
         overwrite: true
         replacements: [
           from: '<!--LIVERELOAD-->'
