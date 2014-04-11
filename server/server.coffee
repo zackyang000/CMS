@@ -16,8 +16,9 @@ app.use express.bodyParser()
 app.use express.methodOverride()
 app.use express.static(path.join(__dirname, "../client"))
 
-require('./bootstrap/requireModels')()
-require("./routes/users")(app)
+require('./bootstrap/registerModels')()
+require('./bootstrap/registerAPIs')(app)
+#require("./routes/users")(app)
 
 app.get('/admin*', (req, res) ->
   res.sendfile('../client/admin-index.html');
