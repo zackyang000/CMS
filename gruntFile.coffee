@@ -17,8 +17,10 @@
             PORT: 30000
           cwd: '_dist/server'
           callback: (nodemon) ->
-            nodemon.on "start", ->
-              require("open") "http://localhost:30000"
+            nodemon.on "config:update", ->
+              setTimeout (->
+                require("open")("http://localhost:30000")
+              ), 1000
 
     watch:
       options:
