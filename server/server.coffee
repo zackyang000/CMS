@@ -1,5 +1,4 @@
-
-#Module dependencies.
+#dependencies
 express = require("express")
 http = require("http")
 path = require("path")
@@ -11,26 +10,16 @@ mongoose = require('mongoose')
 mongoose.connect(config.db)
 
 #express init
-app.set "port", process.env.PORT or config.port or 33000
-app.use express.favicon(path.join(__dirname, '../client/img/favicon.ico'))
+app.set "port", process.env.PORT or config.port or 30000
 app.use express.logger('dev')  #'default', 'short', 'tiny', 'dev'
 app.use express.bodyParser()
 app.use express.methodOverride()
 
-#support static files.
-app.use express.static(path.join(__dirname, "../client"))
-
-app.get('/admin*', (req, res) ->
-  res.sendfile(path.join(__dirname, '../client/admin-index.html'));
-)
-
-app.get(/(?!api).+/, (req, res) ->
-  res.sendfile(path.join(__dirname, '../client/index.html'));
-)
-
-#route init
+#application init
 require('./bootstrap/registerModels')()
-require('./bootstrap/registerAPIs')(app)
+require('./bootstrap/registerStaticFiles')(app)
+require('./bootstrap/registerAPIs')(app, config.apiPrefix)
+
 
 http.createServer(app).listen app.get("port"), ->
   console.log("Server listening on port " + app.get("port"))

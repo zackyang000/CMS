@@ -1,9 +1,9 @@
 users = require('../controllers/users')
 
-module.exports = (app) ->
-  app.get('/users', users.all)
-  app.post('/users', users.create)
-  app.get('/users/:userId', users.get)
-  app.put('/users/:userId', users.update)
-  app.del('/users/:userId', users.destroy)
-  app.param('userId', users.user)
+module.exports = (app, prefix) ->
+  app.get("#{prefix}/users", users.all)
+  app.post("#{prefix}/users", users.create)
+  app.get("#{prefix}/users/:userId", users.get)
+  app.put("#{prefix}/users/:userId", users.update)
+  app.del("#{prefix}/users/:userId", users.destroy)
+  app.param("#{prefix}/userId", users.user)
