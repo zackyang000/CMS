@@ -1,6 +1,8 @@
 {
   "commonJs":[
     "_dist/client/vendor/jquery/*.js",
+    "_dist/client/vendor/jquery-ui/*.js",
+    "_dist/client/vendor/jquery-plugin/*.js",
     "_dist/client/vendor/bootstrap/*.js",
     "_dist/client/vendor/bootstrap-plugin/*.js",
     "_dist/client/vendor/angular/angular.js",
@@ -24,7 +26,7 @@
     "_dist/client/plugin/unify*/**/*.js"
   ],
   "adminJs":[
-    "_dist/client/vendor/jquery-ui/*.js",
+    "_dist/client/app-admin/**/*.js",
     "_dist/client/plugin/ace*/**/*.js",
     "_dist/client/plugin/select2/select2.js"
   ],
