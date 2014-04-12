@@ -1,4 +1,4 @@
-﻿angular.module('admin-article'
-['admin-article-edit'
-'admin-article-list'
+﻿angular.module('article'
+['article-edit'
+'article-list'
 ])

@@ -1,4 +1,4 @@
-﻿angular.module('admin-gallery-list',['resource.galleries'])
+﻿angular.module('gallery-list',['resource.galleries'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider

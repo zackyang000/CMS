@@ -1,5 +1,6 @@
-﻿angular.module('admin-system', 
-['admin-system-history'
- 'admin-system-401'
- 'admin-system-404'
+﻿angular.module('system',
+['system-user'
+ 'system-history'
+ 'system-401'
+ 'system-404'
 ])

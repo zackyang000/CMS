@@ -1,4 +1,4 @@
-﻿angular.module('admin-article-edit',['resource.articles','resource.channels'])
+﻿angular.module('article-edit',['resource.articles','resource.channels'])
 
 .factory("TranslateService", ["$http", ($http) ->
   events: (key) ->
@@ -102,7 +102,7 @@
   #上传图片
   $scope.uploader = $fileUploader.create
     scope: $scope
-    url: "#{config.apiHost}/api/FileManage/upload"
+    url: "#{config.apiHostTemp}/api/FileManage/upload"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
     $scope.entity.Thumbnail = res.result

@@ -12,4 +12,5 @@
 ["$scope","$http", ($scope,$http) ->
   $http.get("/data/words.js").success (data) ->
     $scope.$parent.word = data[Math.floor(Math.random() * data.length + 1)-1]
+    Index.initLayerSlider();
 ])

@@ -1,7 +1,5 @@
 ﻿angular.module("app",
 ['ngRoute'
-'ngSanitize'
-'ngAnimate'
 'ngCookies'
 'index'
 'article'

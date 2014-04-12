@@ -1,14 +1,15 @@
 <!doctype html>
-<html ng-cloak ng-app="app-admin" class="no-js">
+<html ng-cloak ng-app="app" class="no-js">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title ng-bind="config.siteName">Loading...</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="/plugin/ckeditor_3.6.1/ckeditor.js"></script>
     <base href="/admin/" />
     <!--STYLES--><!--STYLES END-->
     <!--SCRIPTS--><!--SCRIPTS END-->
+    <!--LIVERELOAD-->
 </head>
 <body ng-class="{'login-layout':__logoff, 'navbar-fixed breadcrumbs-fixed':__login}">
 
@@ -106,11 +107,26 @@
                                 <span class="menu-text">Gallery</span>
                             </a>
                         </li>
-                        <li active-link="active">
-                            <a href="system/history">
-                                <i class="icon-code-fork"></i>
-                                <span class="menu-text">History</span>
+                        <li active-parent-link="open active">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-gears"></i>
+                                <span class="menu-text">System</span>
+                                <b class="arrow icon-angle-down"></b>
                             </a>
+                            <ul class="submenu">
+                                <li active-link="active">
+                                    <a href="system/user">
+                                        <i class="icon-double-angle-right"></i>
+                                        User
+                                    </a>
+                                </li>
+                                <li active-link="active">
+                                    <a href="system/history">
+                                        <i class="icon-double-angle-right"></i>
+                                        History
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                     <div class="sidebar-collapse" id="sidebar-collapse">

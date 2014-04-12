@@ -1,4 +1,4 @@
-﻿angular.module('admin-board',['resource.messages'])
+﻿angular.module('board',['resource.messages'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
