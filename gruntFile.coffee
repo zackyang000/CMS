@@ -10,16 +10,15 @@
         script: "server.js"
         options:
           args: []
-          ext: "js,html"
+          ext: "js,json,html"
           nodeArgs: ["--debug"]
           delayTime: 1
           env:
             PORT: 30000
           cwd: '_dist/server'
-
-    open:
-      server:
-        url:'http://localhost:30000'
+          callback: (nodemon) ->
+            nodemon.on "start", ->
+              require("open") "http://localhost:30000"
 
     watch:
       options:
@@ -93,8 +92,8 @@
           fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
           appRoot: "_dist/client/"
         files:
-          '_dist/client/index.html': if debug then ["<%= assets.js %>", "<%= assets.commonJs %>"] else "_dist/client/index.js"
-          '_dist/client/admin-index.html': if debug then ["<%= assets.adminJs %>", "<%= assets.commonJs %>"] else "_dist/client/admin-index.js"
+          '_dist/client/index.html': if debug then ["<%= assets.commonJs %>", "<%= assets.js %>"] else "_dist/client/index.js"
+          '_dist/client/admin-index.html': if debug then ["<%= assets.commonJs %>", "<%= assets.adminJs %>"] else "_dist/client/admin-index.js"
       css:
         options:
           startTag: "<!--STYLES-->"
@@ -171,7 +170,7 @@
         ]
 
     concurrent:
-      tasks: ['nodemon', 'watch', 'open']
+      tasks: ['nodemon', 'watch']
       options:
         logConcurrentOutput: true
 
