@@ -1,6 +1,6 @@
 ﻿angular.module("resource.channels", ["ngResource"])
 .factory "Channel", ['$resource',($resource) ->
-  $resource "#{config.apiHostTemp}/odata/Channel:id/:action", {id:'@id',action:'@action'},
+  $resource "#{config.apiHost}/odata/Channel:id/:action", {id:'@id',action:'@action'},
     query:
       method: "GET"
       params:
