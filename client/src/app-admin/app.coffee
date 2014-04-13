@@ -1,6 +1,7 @@
 ﻿angular.module("app",
 ['ngRoute'
 'ngCookies'
+'ngSanitize'
 'dashboard'
 'basedata'
 'article'
