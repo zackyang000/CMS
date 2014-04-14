@@ -1,12 +1,14 @@
-BlogEngine base AngularJS
+***
+[CHINESE README](https://github.com/TossShinHwa/CMS/blob/master/README.md)
+***
+
+BlogEngine
 ===========
 [![Build Status](https://api.travis-ci.org/TossShinHwa/CMS.png)](https://api.travis-ci.org/TossShinHwa/CMS)
 [![Dependency Status](https://david-dm.org/ChrisWren/grunt-nodemon.png)](https://david-dm.org/TossShinHwa/CMS)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/TossShinHwa/cms/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Do you want to see live demo? Visit http://woshinidezhu.com
-***
-[CHINESE README](https://github.com/TossShinHwa/CMS/blob/master/README.md)
 ***
 
 ## Purpose
