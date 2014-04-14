@@ -69,6 +69,9 @@ grunt
 
 It will automatically open a browser and connect to the server.
 
+Default administrator account: `admin` , password: `123`
+
+
 ## License
 
 MIT License.
