@@ -35,7 +35,7 @@ Blog Engine
 
 ### 获取代码
 
-你可以fock本项目, 也可以直接使用如下命令clone当前代码:
+你可以fork本项目, 也可以直接使用如下命令clone当前代码:
 
 ```
 git clone https://github.com/TossShinHwa/CMS.git
