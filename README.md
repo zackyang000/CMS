@@ -1,8 +1,8 @@
 ***
-[CHINESE README](https://github.com/TossShinHwa/CMS/blob/master/README.md)
+[CHINESE README](https://github.com/TossShinHwa/CMS/blob/master/README.cn.md)
 ***
 
-BlogEngine
+Blog Engine
 ===========
 [![Build Status](https://api.travis-ci.org/TossShinHwa/CMS.png)](https://api.travis-ci.org/TossShinHwa/CMS)
 [![Dependency Status](https://david-dm.org/ChrisWren/grunt-nodemon.png)](https://david-dm.org/TossShinHwa/CMS)
