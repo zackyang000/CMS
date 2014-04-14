@@ -6,6 +6,8 @@ BlogEngine base AngularJS
 
 Do you want to see live demo? Visit http://woshinidezhu.com
 ***
+[CHINESE README](https://github.com/TossShinHwa/CMS/blob/master/README.md)
+***
 
 ## Purpose
 
