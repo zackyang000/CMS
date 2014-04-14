@@ -60,11 +60,11 @@ cd CMS
 
 前端应用程序是一个纯HTML/Javascript构建的应用程序, 但是在我们需要使用上面提到基于NodeJS的构建工具 [Grunt.js](gruntjs.com) 来运行它. Grunt 又依赖一些第三方 node modules. 使用以下命令, 我们可以安装它们, 并运行应用.
 
-    ```
-    cd client
-    npm install
-    grunt
-    ```
+```
+cd client
+npm install
+grunt
+```
     
 它将自动打开一个浏览器窗口并链接到后端服务.
 
