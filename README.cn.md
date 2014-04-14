@@ -50,10 +50,10 @@ cd CMS
 
 后端应用程序基于ASP.NET, 所以你需要使用 `nuget` 恢复一些依赖包.
 
-* 使用 Visual Studio 2013 打开解决方案, 其位于 `\server\BlogEngine.By.YangKai.sln`
+* 使用 Visual Studio 2013 打开解决方案
 * 设置启动项目为 `YangKai.BlogEngine.Web.Mvc`
+* 将位于 `YangKai.BlogEngine.Web.Mvc\web.config` 的 `ConnectionString` 修改为您所使用的数据库链接字符串
 * 使用 `nuget` 恢复缺失的依赖包
-* 将配置文件中的 `ConnectionString` 改为您所使用的数据库链接字符串, 其位于 `\server\YangKai.BlogEngine.Web.Mvcweb.config` (至少需要 `MSSQL2005`)
 * 编译并运行, 它将自动创建数据库并插入测试数据
 
 ### 运行前端应用
