@@ -27,8 +27,9 @@ To showcase AngularJS how to write a real project based on communicating with a 
 
 ### Prepare
 
-You need to install Visual Studio and Node.js.
+You need to install Visual Studio, SQL Server and Node.js.
 * [Install Visual Studio](http://www.visualstudio.com/)
+* [Install SQL Server](http://www.microsoft.com/en-us/sqlserver/default.aspx/)
 * [Install node.js](http://nodejs.org/download/)
 * Install Grunt-CLI as global npm modules ```npm install -g grunt-cli```
 
@@ -41,13 +42,18 @@ git clone https://github.com/TossShinHwa/CMS.git
 cd CMS
 ```
 
+## Run
+
+The project is server and client detached, use REST API to change data.
+
 ### Run App Server
 
 Backend application server is a ASP.NET application that relies upon some 3rd Party nuget packages.
 
 * Open the server side solution using Visual Studio 2013
+* Set YangKai.BlogEngine.Web.Mvc as start-up project
 * Use nuget restore lost packages
-* Modify the `ConnectionString` at `web.config` under Mvc project (Required above `MSSQL2005` or above)
+* Modify the `ConnectionString` at `web.config` under `YangKai.BlogEngine.Web.Mvc` project
 * Compile and run, it will automatically create the database and insert test data
 
 ### Run Client App
