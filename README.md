@@ -61,12 +61,12 @@ Backend application server is a ASP.NET application that relies upon some 3rd Pa
 Client application is a straight HTML/Javascript application but our development process uses a Node.js build tool
 [Grunt.js](gruntjs.com). Grunt relies upon some 3rd party libraries that we need to install as local dependencies using npm.
 
-    ```
-    cd client
-    npm install
-    grunt
-    ```
-    
+```
+cd client
+npm install
+grunt
+```
+
 It will automatically open a browser and connect to the server.
 
 ## License
