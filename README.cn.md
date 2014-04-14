@@ -6,6 +6,8 @@ BlogEngine base AngularJS
 
 查看在线演示? 请访问 http://www.woshinidezhu.com
 ***
+[ENGLISH README](https://github.com/TossShinHwa/CMS/blob/master/README.md)
+***
 
 ## 目的
 
@@ -16,14 +18,14 @@ BlogEngine base AngularJS
 * 酷炫的 [AngularJS](http://www.angularjs.org/)
 * CSS使用 [Twitter Bootstrap](http://getbootstrap.com/)
 * REST API基于 [ASP.NET WEB API](http://www.asp.net/web-api/) 构建
-* 使用 [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx) 访问MSSQL来进行持久化
+* 使用 [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx) 访问MSSQL来进行存储
 
 
 ## 安装
 
 ### 准备
 
-首先你需要安装 Visual Studio 2013, SQL Server 和 Node.js.
+首先你需要安装 `Visual Studio`, `SQL Server` 和 `Node.js` 以及一个基于Node的个构建工具 `[Grunt.js](gruntjs.com)`.
 * [安装 Visual Studio](http://www.visualstudio.com/)
 * [安装 SQL Server](http://www.microsoft.com/en-us/sqlserver/default.aspx/)
 * [安装 node.js](http://nodejs.org/download/)
@@ -54,8 +56,7 @@ cd CMS
 
 ### 运行前端应用
 
-前端应用程序是一个纯HTML/Javascript构建的应用程序, 但是在我们需要使用NodeJS的构建工具 [Grunt.js](gruntjs.com) 来运行它.
-Grunt 依赖一些第三方node module, 以下命令, 我们可以安装它们, 并运行.
+前端应用程序是一个纯HTML/Javascript构建的应用程序, 但是在我们需要使用上面提到基于NodeJS的构建工具 [Grunt.js](gruntjs.com) 来运行它. Grunt 又依赖一些第三方 node modules. 使用以下命令, 我们可以安装它们, 并运行应用.
 
     ```
     cd client
