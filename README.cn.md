@@ -4,49 +4,54 @@ BlogEngine base AngularJS
 [![Dependency Status](https://david-dm.org/ChrisWren/grunt-nodemon.png)](https://david-dm.org/TossShinHwa/CMS)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/TossShinHwa/cms/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-Do you want to see live demo? Visit http://woshinidezhu.com
+查看在线演示? 请访问 http://www.woshinidezhu.com
 ***
 
-## Purpose
+## 目的
 
-To showcase AngularJS how to write a real project based on communicating with a REST back-end.
+为了展示如何使用AngularJS编写一个基于REST通信的**前后端分离**实际项目。
 
-## Technology stack
+## 使用的技术
 
-* Awesome [AngularJS](http://www.angularjs.org/)
-* CSS based on [Bootstrap](http://getbootstrap.com/)
-* REST API based on [ASP.NET WEB API](http://www.asp.net/web-api/)
-* Persistence store used [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx) to visit MSSQL
+* 酷炫的 [AngularJS](http://www.angularjs.org/)
+* CSS使用 [Twitter Bootstrap](http://getbootstrap.com/)
+* REST API基于 [ASP.NET WEB API](http://www.asp.net/web-api/) 构建
+* 使用 [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx) 访问MSSQL来进行持久化
 
 
-## Installation
+## 安装
 
-### Prepare
+### 准备
 
-You need to install Visual Studio and Node.js.
-* [Install Visual Studio](http://www.visualstudio.com/)
-* [Install node.js](http://nodejs.org/download/)
-* Install Grunt-CLI as global npm modules ```npm install -g grunt-cli```
+首先你需要安装 Visual Studio 2013 和 Node.js.
+* [安装 Visual Studio](http://www.visualstudio.com/)
+* [安装 node.js](http://nodejs.org/download/)
+* 安装基于全局的npm模块: Grunt-CLI  ```npm install -g grunt-cli```
 
-### Get the Code
+### 获取代码
 
-Either clone this repository or fork it on GitHub and clone your fork:
+你可以fock本项目, 也可以直接使用如下命令clone当前代码:
 
 ```
 git clone https://github.com/TossShinHwa/CMS.git
 cd CMS
 ```
 
-### Run App Server
+## 运行
 
-Backend application server is a ASP.NET application that relies upon some 3rd Party nuget packages.
+因为该项目是前后端分离的, 所以你会看到源码中包括了2个目录: `client`和`server`, 他们使用REST API进行通信.
 
-* Open the server side solution using Visual Studio 2013
-* Use nuget restore lost packages
-* Modify the `ConnectionString` at `web.config` under Mvc project (Required above `MSSQL2005` or above)
-* Compile and run, it will automatically create the database and insert test data
+### 运行后端服务
 
-### Run Client App
+后端应用程序基于ASP.NET, 所以你需要使用 `nuget` 恢复一些依赖包.
+
+* 使用 Visual Studio 2013 打开解决方案, 其位于 `\server\BlogEngine.By.YangKai.sln`
+* 设置启动项目为 `YangKai.BlogEngine.Web.Mvc`
+* 使用 `nuget` 恢复缺失的依赖包
+* 将配置文件中的 `ConnectionString` 改为您所使用的数据库链接字符串, 其位于 `\server\YangKai.BlogEngine.Web.Mvcweb.config` (至少需要 `MSSQL2005`)
+* 编译并运行, 它将自动创建数据库并插入测试数据
+
+### 运行前端应用
 
 Client application is a straight HTML/Javascript application but our development process uses a Node.js build tool
 [Grunt.js](gruntjs.com). Grunt relies upon some 3rd party libraries that we need to install as local dependencies using npm.
