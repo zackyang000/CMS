@@ -44,7 +44,7 @@ cd CMS
 
 ## Run
 
-The project is server and client detached, use REST API to change data.
+The project is back-end and front-end detached, use REST API to change data.
 
 ### Run App Server
 
