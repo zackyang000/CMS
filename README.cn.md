@@ -53,8 +53,8 @@ cd CMS
 
 ### 运行前端应用
 
-Client application is a straight HTML/Javascript application but our development process uses a Node.js build tool
-[Grunt.js](gruntjs.com). Grunt relies upon some 3rd party libraries that we need to install as local dependencies using npm.
+前端应用程序是一个纯HTML/Javascript构建的应用程序, 但是在我们需要使用NodeJS的构建工具 [Grunt.js](gruntjs.com) 来运行它.
+Grunt 依赖一些第三方node module, 以下命令, 我们可以安装它们, 并运行.
 
     ```
     cd client
@@ -62,8 +62,8 @@ Client application is a straight HTML/Javascript application but our development
     grunt
     ```
     
-It will automatically open a browser and connect to the server.
+它将自动打开一个浏览器窗口并链接到后端服务.
 
-## License
+## 许可
 
-MIT License.
+基于 MIT  协议.
