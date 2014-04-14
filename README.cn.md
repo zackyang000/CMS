@@ -23,10 +23,11 @@ BlogEngine base AngularJS
 
 ### 准备
 
-首先你需要安装 Visual Studio 2013 和 Node.js.
+首先你需要安装 Visual Studio 2013, SQL Server 和 Node.js.
 * [安装 Visual Studio](http://www.visualstudio.com/)
+* [安装 SQL Server](http://www.microsoft.com/en-us/sqlserver/default.aspx/)
 * [安装 node.js](http://nodejs.org/download/)
-* 安装基于全局的npm模块: Grunt-CLI  ```npm install -g grunt-cli```
+* 安装基于全局的node模块: Grunt-CLI  ```npm install -g grunt-cli```
 
 ### 获取代码
 
