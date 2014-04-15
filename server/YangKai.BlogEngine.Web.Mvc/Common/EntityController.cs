@@ -37,6 +37,7 @@ namespace YangKai.BlogEngine.Web.Mvc
             return Proxy.Repository<T>().Add(entity);
         }
 
+        [UserAuthorize]
         protected override T UpdateEntity(Guid key, T update)
         {
             var isEdit = Proxy.Repository<T>().Exist(update);
@@ -51,28 +52,21 @@ namespace YangKai.BlogEngine.Web.Mvc
         }
 
         [HttpPost]
+        [UserAuthorize]
         public virtual void Remove([FromODataUri] Guid key, ODataActionParameters parameters)
         {
-            if (!Current.IsLogin)
-            {
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            }
-
             var entity = Proxy.Repository<T>().Get(key);
             entity.IsDeleted = true;
-            Proxy.Repository<T>().Update(entity);
+            UpdateEntity(key, entity);
         }
 
         [HttpPost]
+        [UserAuthorize]
         public virtual void Recover([FromODataUri] Guid key, ODataActionParameters parameters)
         {
-            if (!Current.IsLogin)
-            {
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            }
             var entity = Proxy.Repository<T>().Get(key);
             entity.IsDeleted = false;
-            Proxy.Repository<T>().Update(entity);
+            UpdateEntity(key, entity);
         }
     }
 }

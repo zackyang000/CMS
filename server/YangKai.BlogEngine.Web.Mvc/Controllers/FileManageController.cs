@@ -18,7 +18,6 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers
     {
         public HttpResponseMessage Upload()
         {
-
             var sp = new MultipartMemoryStreamProvider();
             Task.Run(async () => await Request.Content.ReadAsMultipartAsync(sp)).Wait();
 

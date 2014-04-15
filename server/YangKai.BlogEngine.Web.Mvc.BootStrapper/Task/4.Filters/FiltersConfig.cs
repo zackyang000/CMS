@@ -11,7 +11,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
     {
         public static void Run()
         {
-            GlobalConfiguration.Configuration.Filters.Add(new ProfilerFilter());
+            //GlobalConfiguration.Configuration.Filters.Add(new ProfilerFilter());
         }
     }
 }

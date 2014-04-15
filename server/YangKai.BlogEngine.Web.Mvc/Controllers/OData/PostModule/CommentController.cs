@@ -9,6 +9,7 @@ using AtomLab.Utility;
 using YangKai.BlogEngine.Common;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;
+using YangKai.BlogEngine.Web.Mvc.Filters;
 
 namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
@@ -19,7 +20,8 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         {
             return base.Get();
         }
-		
+
+        [UserAuthorize]
         protected override Comment CreateEntity(Comment entity)
         {
             entity.Ip = HttpContext.Current.Request.UserHostAddress;
