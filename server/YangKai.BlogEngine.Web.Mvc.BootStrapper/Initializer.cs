@@ -28,7 +28,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                     .First<DataInitializeConfig>()
                     .DelayStartBy(1).MilliSeconds
                     .Then<WebApiConfig>()
-                    .Then<RoutesConfig>()
                     .Then<FiltersConfig>()
                 ).Start();
         }

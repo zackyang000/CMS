@@ -7,7 +7,6 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
 using AtomLab.Utility;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Service;

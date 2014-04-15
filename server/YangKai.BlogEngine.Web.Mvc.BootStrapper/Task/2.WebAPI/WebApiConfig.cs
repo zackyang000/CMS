@@ -92,8 +92,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             modelBuilder.EntitySet<Gallery>("Gallery");
             modelBuilder.EntitySet<Photo>("Photo");
             modelBuilder.EntitySet<PhotoComment>("PhotoComment");
-
-            modelBuilder.EntitySet<Issue>("Issue");
         }
     }
 }
