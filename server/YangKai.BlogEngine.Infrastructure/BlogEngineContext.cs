@@ -17,8 +17,6 @@ namespace YangKai.BlogEngine.Infrastructure
 
         public DbSet<Gallery> Gallery { get; set; }
 
-        public DbSet<Issue> Issue { get; set; }
-
         public DbSet<Board> Board { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
