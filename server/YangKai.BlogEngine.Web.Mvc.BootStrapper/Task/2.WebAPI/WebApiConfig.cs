@@ -3,7 +3,6 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.OData.Builder;
 using System.Web.Http.OData.Formatter;
-using Bootstrap.Extensions.StartupTasks;
 using Microsoft.Data.Edm;
 using Newtonsoft.Json;
 using YangKai.BlogEngine.Domain;
@@ -11,18 +10,14 @@ using System.Net.Http.Formatting;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
-    public class WebApiConfig : IStartupTask
+    internal class WebApiConfig
     {
-        public void Run()
+        public static void Run()
         {
             RegisterRoutes(GlobalConfiguration.Configuration);
         }
 
-        public void Reset()
-        {
-        }
-
-        private void RegisterRoutes(HttpConfiguration config)
+        private static void RegisterRoutes(HttpConfiguration config)
         {
             config.EnableQuerySupport();
 
@@ -48,7 +43,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             config.Formatters.InsertRange(0, ODataMediaTypeFormatters.Create());
         }
 
-        private void SetAction(ODataConventionModelBuilder modelBuilder)
+        private static void SetAction(ODataConventionModelBuilder modelBuilder)
         {
             //管理员登陆
             var signin = modelBuilder.Entity<User>().Action("Signin");
@@ -75,7 +70,7 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
             modelBuilder.Entity<Board>().Action("Recover");
         }
 
-        private void SetEntity(ODataConventionModelBuilder modelBuilder)
+        private static void SetEntity(ODataConventionModelBuilder modelBuilder)
         {
             var user = modelBuilder.EntitySet<User>("User");
             user.EntityType.Ignore(p => p.Password);

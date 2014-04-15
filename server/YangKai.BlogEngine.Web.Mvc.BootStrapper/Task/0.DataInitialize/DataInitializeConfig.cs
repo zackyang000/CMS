@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using Bootstrap.Extensions.StartupTasks;
 using YangKai.BlogEngine.Domain;
 using YangKai.BlogEngine.Infrastructure;
 using YangKai.BlogEngine.Infrastructure.Migrations;
 
 namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
 {
-    public class DataInitializeConfig : IStartupTask
+    internal class DataInitializeConfig
     {
-        public void Run()
+        public static void Run()
         {
             //若Model发生改变,则自动更新数据库.
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogEngineContext, Configuration>());
@@ -113,10 +112,6 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 Content = "This is message.",
                 Author = "guest",
             };
-        }
-
-        public void Reset()
-        {
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Web;
 using AtomLab.Core;
 using AtomLab.Utility;
-using Bootstrap.Extensions.StartupTasks;
 using YangKai.BlogEngine.Service;
 using YangKai.BlogEngine.Web.Mvc.BootStrapper;
 
@@ -21,15 +20,10 @@ namespace YangKai.BlogEngine.Web.Mvc.BootStrapper
                 
             Auth.GetIp = () => HttpContext.Current != null ? HttpContext.Current.Request.UserHostAddress : "unknown";
 
-            Bootstrap.Bootstrapper.With.StartupTasks()
-                .UsingThisExecutionOrder(s => s
-                    .Then<IoCConfig>()
-                    .DelayStartBy(1).MilliSeconds
-                    .First<DataInitializeConfig>()
-                    .DelayStartBy(1).MilliSeconds
-                    .Then<WebApiConfig>()
-                    .Then<FiltersConfig>()
-                ).Start();
+            IoCConfig.Run();
+            DataInitializeConfig.Run();
+            WebApiConfig.Run();
+            FiltersConfig.Run();
         }
     }
 }
