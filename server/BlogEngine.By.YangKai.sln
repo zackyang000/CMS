@@ -13,11 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YangKai.BlogEngine.Web.Mvc"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YangKai.BlogEngine.Web.Mvc.BootStrapper", "YangKai.BlogEngine.Web.Mvc.BootStrapper\YangKai.BlogEngine.Web.Mvc.BootStrapper.csproj", "{B71D40AE-B337-4672-B85D-8ADB3E31239D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Solution Items", "00 - Solution Items", "{926E93F2-FD20-4A0F-87E3-D50B04A9F43B}"
-	ProjectSection(SolutionItems) = preProject
-		todo.txt = todo.txt
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{47DA3169-2092-4280-94B1-32205ECF4D96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtomLab.Utility", "AtomLab.Utility\AtomLab.Utility.csproj", "{A7C46ED1-14AC-4529-9649-1564D6B11497}"
