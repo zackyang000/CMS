@@ -152,9 +152,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="entry\bg.jpeg" />
-    <Content Include="entry\style.css" />
-    <Content Include="entry\index.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
