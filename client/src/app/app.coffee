@@ -13,6 +13,7 @@
 'zy.filters'
 'pasvaz.bindonce'
 'ngProgress'
+'ngGrid'
 'ui.utils'
 'ui.bootstrap'
 'pascalprecht.translate'

@@ -15,3 +15,7 @@ client/node_modules/
 #other
 .idea
 *.orig
+server/YangKai.BlogEngine.Web.Mvc/error/error-*
+server/YangKai.BlogEngine.Web.Mvc/feed_articles.xml
+server/YangKai.BlogEngine.Web.Mvc/feed_comments.xml
+server/YangKai.BlogEngine.Web.Mvc/UpLoad/
