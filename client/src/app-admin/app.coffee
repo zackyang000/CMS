@@ -13,6 +13,7 @@
 'zy.directives'
 'zy.filters'
 'pasvaz.bindonce'
+'ngGrid'
 'ngProgress'
 'ngStorage'
 'angularFileUpload'

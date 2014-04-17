@@ -6,28 +6,18 @@
             <i class="icon-home home-icon"></i>
             <a href="/admin/">Home</a>
         </li>
-        <li class="active">History</li>
+        <li>System</li>
+        <li class="active">Users</li>
     </ul>
 </div>
 
 <div class="page-content">
-    <div class="dialogs">
-        <div class="itemdiv dialogdiv" ng-repeat="item in versions">
-            <div class="user">
-                <img src="/img/upgrade.png">
-            </div>
-            <div class="body">
-                <div class="time">
-                </div>
-                <div class="name">
-                    <span class="blue">{{ item.ver }}</span>
-                    <i style="margin-left: 20px;" class="icon-time"></i>
-                    <span>{{ item.date | date:'yyyy-MM-dd' }}</span>
-                </div>
-                <div class="text">
-                    <div ng-repeat="detail in item.content">{{ detail }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="gridStyle" ng-grid="gridOptions">
 </div>
+
+<style>
+    .gridStyle {
+        border: 1px solid rgb(212,212,212);
+        height: 300px
+    }
+</style>
