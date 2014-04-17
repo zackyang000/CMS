@@ -60,7 +60,7 @@
       $scope.loading = ""
 
   $scope.remove = (item) ->
-    message.confirm ->
+    messager.confirm ->
       Message.remove id:"(guid'#{item.BoardId}')",->
         item.IsDeleted=true
         messager.success "Message has been removed."
