@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-cloak ng-app="app" class="no-js" ng-controller="GlobalController">
+<html ng-cloak ng-app="app" class="no-js" ng-controller="MainCtrl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
 <div class="loadingbox" zy-when-route-change>{{'global.loading' | translate}}</div>
 
 <!--=== Top ===-->
-<div class="top" ng-controller="TopController">
+<div class="top" ng-controller="TopCtrl">
     <div class="container">
         <ul class="loginbar pull-right">
             <li>
@@ -49,7 +49,7 @@
 <!--=== End Top ===-->
 
 <!--=== Header ===-->
-<div class="header" ng-controller="HeaderController">
+<div class="header" ng-controller="HeaderCtrl">
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="navbar-header">

@@ -7,7 +7,7 @@
 'board'
 'about'
 'gallery'
-'main.controllers'
+'framework.controllers'
 'zy.services'
 'zy.directives'
 'zy.filters'
