@@ -38,14 +38,14 @@
     "dist/plugin/font-awesome/*.css"
   ],
   "css":[
-    "dist/app/**/*.css",
     "dist/plugin/unify*/*.css",
     "dist/plugin/unify*/theme/default/*.css",
-    "dist/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css"
+    "dist/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",
+    "dist/app/**/*.css"
   ],
   "adminCss":[
-    "dist/app-admin/**/*.css",
     "dist/plugin/ace*/*.css",
-    "dist/plugin/select2/select2.css"
+    "dist/plugin/select2/select2.css",
+    "dist/app-admin/**/*.css"
   ]
 }
