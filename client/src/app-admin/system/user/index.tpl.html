@@ -13,52 +13,25 @@
 
 <div class="page-content">
     <div class="clearfix">
-        <div class="itemdiv memberdiv">
+        <div class="itemdiv memberdiv" ng-repeat="item in list" style="margin: 5px;">
             <div class="user">
-                <img alt="Bob Doe's avatar" src="/img/avatar.png">
+                <img alt="Bob Doe's avatar" ng-src="{{item.Avatar}}" ng-show="item.Avatar">
+                <img alt="Bob Doe's avatar" src="/img/avatar.png" ng-hide="item.Avatar">
             </div>
             <div class="body">
-                <div class="name">
-                    <a href="#">Bob Doe</a>
-                </div>
-                <div class="time">
-                    <i class="icon-time"></i>
-                    <span class="green">20 min</span>
+                <div>
+                    {{item.UserName}}
                 </div>
                 <div>
-                    <span class="label label-warning label-sm">pending</span>
-
-                    <div class="inline position-relative">
-                        <button class="btn btn-minier bigger btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-angle-down icon-only bigger-120"></i>
+                    <small class="grey">{{item.LoginName}}</small>
+                </div>
+                <div>
+                    <span class="label label-success label-sm">Normal</span>
+                    <span>
+                        <button class="btn btn-minier bigger btn-info btn-no-border" style="top: 1px;">
+                            <i class="icon-pencil icon-only"></i>
                         </button>
-
-                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-                            <li>
-                                <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Approve">
-																							<span class="green">
-																								<i class="icon-ok bigger-110"></i>
-																							</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="tooltip-warning" data-rel="tooltip" title="" data-original-title="Reject">
-																							<span class="orange">
-																								<i class="icon-remove bigger-110"></i>
-																							</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																							<span class="red">
-																								<i class="icon-trash bigger-110"></i>
-																							</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    </span>
                 </div>
             </div>
         </div>
