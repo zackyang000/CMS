@@ -15,8 +15,7 @@
     <div class="clearfix">
         <div class="itemdiv memberdiv" ng-repeat="item in list" style="margin: 5px;">
             <div class="user">
-                <img alt="Bob Doe's avatar" ng-src="{{item.Avatar}}" ng-show="item.Avatar">
-                <img alt="Bob Doe's avatar" src="/img/avatar.png" ng-hide="item.Avatar">
+                <img ng-src="{{item.Email | gravatar}}">
             </div>
             <div class="body">
                 <div>

@@ -68,7 +68,7 @@
             <!-- Recent Comments -->
             <div class="media" ng-repeat="item in list | orderBy:'-CreateDate'" ng-hide="item.IsDeleted">
                 <span class="pull-left">
-                    <img class="media-object" ng-src="{{item.Avatar}}" alt="" />
+                    <img class="media-object" ng-src="{{item.Email | gravatar}}" alt="" />
                 </span>
                 <div class="media-body">
                     <h4 class="media-heading">

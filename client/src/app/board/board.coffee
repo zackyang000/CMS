@@ -12,13 +12,7 @@
           debugger
           Message.queryOnce 
             $filter:'IsDeleted eq false'
-          , (data) -> 
-            for item in data.value
-              if !item.Avatar
-                if item.Email
-                  item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email) 
-                else
-                  item.Avatar='/img/avatar.png'
+          , (data) ->
             deferred.resolve data.value
           deferred.promise
         ]

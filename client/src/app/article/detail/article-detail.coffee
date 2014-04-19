@@ -55,12 +55,6 @@
     $filter:"PostId eq (guid'#{$scope.item.PostId}') and IsDeleted eq false"
   , (data) ->
     $scope.item.Comments=data.value
-    for item in $scope.item.Comments
-      if !item.Avatar
-        if item.Email
-          item.Avatar='http://www.gravatar.com/avatar/' + md5(item.Email)
-        else
-          item.Avatar='/img/avatar.png'
   #浏览量+1
   Article.browsed id:"(guid'#{$scope.item.PostId}')"
 
