@@ -32,3 +32,10 @@
   (input) ->
     return unless input?
     return config.imgHost + input
+
+.filter 'gravatar', ->
+  (input) ->
+    if input
+      return 'http://www.gravatar.com/avatar/' + md5(input)
+    else
+      return '/img/avatar.png'
