@@ -8,7 +8,7 @@ Blog Engine
 [![Dependency Status](https://david-dm.org/ChrisWren/grunt-nodemon.png)](https://david-dm.org/TossShinHwa/CMS)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/TossShinHwa/cms/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-Do you want to see live demo? Visit http://woshinidezhu.com
+Do you want to see live demo? Visit http://tossshinhwa.github.io/
 ***
 
 ## Purpose
