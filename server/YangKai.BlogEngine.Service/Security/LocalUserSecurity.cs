@@ -17,7 +17,10 @@ namespace YangKai.BlogEngine.Service
     {
         public override User Login(string loginName, string password)
         {
-            var login = Proxy.Repository<User>().Exist(p => p.LoginName == loginName && p.Password == password);
+            var login = Proxy.Repository<User>().Exist(p => p.LoginName == loginName 
+                && p.Password == password
+                && !p.IsDisabled
+                && !p.IsDeleted);
             if (login)
             {
                 var user = Proxy.Repository<User>().Get(p => p.LoginName == loginName);

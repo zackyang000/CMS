@@ -42,5 +42,7 @@ namespace YangKai.BlogEngine.Domain
         /// Token.
         /// </summary>
         public string Token { get; set; }
+
+        public bool IsDisabled { get; set; }
     }
 }

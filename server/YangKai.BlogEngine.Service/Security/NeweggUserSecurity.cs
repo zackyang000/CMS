@@ -14,12 +14,17 @@ namespace YangKai.BlogEngine.Service
 
         public override User Login(string loginName, string password)
         {
+            var login = Proxy.Repository<User>().Exist(p => p.LoginName == loginName
+                && !p.IsDisabled
+                && !p.IsDeleted);
+            if (!login) return null;
+
             var postData = JsonConvert.SerializeObject(new User
             {
                 UserName = loginName,
                 Password = password,
             });
-            var login= Proxy.Repository<User>().Exist(p=>p.LoginName==loginName)
+            login = Proxy.Repository<User>().Exist(p=>p.LoginName==loginName)
                 && WebRequestHelper.Request<Authentication>(URL_AUTHENTICATION, "PUT", postData).Result;
             if (login)
             {

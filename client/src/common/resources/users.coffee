@@ -6,6 +6,8 @@
       params:
         $orderby:'UserName desc'
         $inlinecount:'allpages'
+    update:
+      method: "PUT"
     autoSignin:
       method: "POST"
       params:
@@ -17,5 +19,5 @@
     signout:
       method: "POST"
       params:
-        action:'Signout' 
+        action:'Signout'
 ]
