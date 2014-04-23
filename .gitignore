@@ -4,18 +4,14 @@
 packages/
 *.suo
 *.user
-YangKai.BlogEngine.Web.Mvc/feed*
-YangKai.BlogEngine.Web.Mvc/error/
-YangKai.BlogEngine.Web.Mvc/UpLoad/
 
-#client
-client/dist/
-client/node_modules/
+_dist/
+node_modules/
 
 #other
 .idea
 *.orig
-server/YangKai.BlogEngine.Web.Mvc/error/error-*
-server/YangKai.BlogEngine.Web.Mvc/feed_articles.xml
-server/YangKai.BlogEngine.Web.Mvc/feed_comments.xml
-server/YangKai.BlogEngine.Web.Mvc/UpLoad/
+server-dotnet/YangKai.BlogEngine.Web.Mvc/error/error-*
+server-dotnet/YangKai.BlogEngine.Web.Mvc/feed_articles.xml
+server-dotnet/YangKai.BlogEngine.Web.Mvc/feed_comments.xml
+server-dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/
