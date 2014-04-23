@@ -22,7 +22,7 @@ namespace YangKai.BlogEngine.Service
             var token = HttpContext.Current.Request.Headers.Get("authorization");
             if (token == null) return null;
 
-            var data=Proxy.Repository<User>().GetAll(p => p.Token == token);
+            var data = Proxy.Repository<User>().GetAll(p => !p.IsDeleted && !p.IsDisabled && p.Token == token);
 
             if (data.Count() == 1)
             {
