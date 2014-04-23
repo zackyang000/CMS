@@ -19,7 +19,7 @@ namespace YangKai.BlogEngine.Service
                 && !p.IsDeleted);
             if (!login) return null;
 
-            var postData = JsonConvert.SerializeObject(new User
+            var postData = JsonConvert.SerializeObject(new
             {
                 UserName = loginName,
                 Password = password,
