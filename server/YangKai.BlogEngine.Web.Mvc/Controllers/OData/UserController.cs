@@ -13,6 +13,14 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
 {
     public class UserController : EntityController<User>
     {
+        protected override User UpdateEntity(Guid key, User update)
+        {
+            var data = Proxy.Repository<User>().Get(key);
+            data.Email = update.Email;
+            data.IsDisabled = update.IsDisabled;
+            return Proxy.Repository<User>().Update(data);
+        }
+
         [HttpPost]
         public object Signin([FromODataUri] int key, ODataActionParameters parameters)
         {
