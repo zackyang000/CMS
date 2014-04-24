@@ -19,7 +19,7 @@
           callback: (nodemon) ->
             nodemon.on "config:update", ->
               setTimeout (->
-                require("open")("http://localhost:30000")
+                require("open")("http://localhost:30000", "chrome")
               ), 1000
 
     watch:
