@@ -13,8 +13,8 @@ mongoose.connect(config.db);
 app.use(express.logger('dev')); /*'default', 'short', 'tiny', 'dev'*/
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.favicon(path.join(__dirname, '/client/img/favicon.ico')));
-app.use(express["static"](path.join(__dirname, "/client")));
+app.use(express.favicon(path.join(__dirname, '../client/img/favicon.ico')));
+app.use(express["static"](path.join(__dirname, "../client")));
 
 //application init
 require('./bootstrap/registerModels')();
