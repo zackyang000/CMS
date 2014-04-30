@@ -1,6 +1,6 @@
 config = config || {}
 
-config.apiHost='http://localhost:33333'
-config.imgHost='http://localhost:33333'
+config.apiHost='http://localhost:82'
+config.imgHost='http://localhost:82'
 
 config.siteName='BTS'
