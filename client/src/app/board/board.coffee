@@ -19,8 +19,8 @@
 ])
 
 .controller('BoardCtrl',
-["$scope","$translate","progressbar","Message","messages" ,"messager", "context"
-($scope, $translate, progressbar, Message, messages, messager, context) ->
+["$scope","$translate","Message","messages" ,"messager", "context"
+($scope, $translate, Message, messages, messager, context) ->
   $scope.entity=
     Author:context.account.name
     Email:context.account.email
@@ -35,14 +35,12 @@
     if $scope.form.$invalid
       return
 
-    progressbar.start()
     $scope.loading = $translate("global.post")
     $scope.entity.BoardId=UUID.generate()
     Message.save $scope.entity
     ,(data)->
       $scope.list.unshift(data)
       $scope.entity.Content=""
-      progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""
       context.account =
