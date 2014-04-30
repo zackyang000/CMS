@@ -1,6 +1,5 @@
 ﻿angular.module("zy.directives",
 ['zy.directives.dropzone'
-'zy.directives.whenRouteChange'
 'zy.directives.odataPager'
 'zy.directives.datepicker'
 
