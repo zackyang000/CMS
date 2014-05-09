@@ -17,8 +17,8 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$rootScope","$window","$translate","$routeParams","progressbar","Article","Comment","article","context", "messager"
-($scope,$rootScope,$window,$translate,$routeParams,progressbar,Article,Comment,article,context, messager) ->
+["$scope","$rootScope","$window","$translate","$routeParams","Article","Comment","article","context", "messager"
+($scope,$rootScope,$window,$translate,$routeParams,Article,Comment,article,context, messager) ->
   $window.scroll(0,0)
 
   $scope.item=article
@@ -79,7 +79,6 @@
     if $scope.form.$invalid
       return
 
-    progressbar.start()
     $scope.loading = $translate("global.post")
     $scope.entity.CommentId=UUID.generate()
     $scope.entity.Post=PostId:$scope.item.PostId
@@ -88,7 +87,6 @@
       $scope.item.Comments.push(data)
       $scope.entity.Content=""
       Article.commented id:"(guid'#{$scope.item.PostId}')"
-      progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""
       context.account =

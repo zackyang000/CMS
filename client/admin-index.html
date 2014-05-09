@@ -14,7 +14,6 @@
 <body ng-class="{'login-layout':__logoff , 'navbar-fixed breadcrumbs-fixed':__login}">
 
     <div ng-show="__login" ng-controller="MainCtrl">
-        <div class="loadingbox" zy-when-route-change>Loading</div>
         <div class="navbar navbar-default navbar-fixed-top" id="navbar">
             <div class="navbar-container" id="navbar-container">
                 <div class="navbar-header pull-left">
@@ -219,11 +218,8 @@
         </div>
     </div>
 
-    <div ng-hide="__login || __logoff">
-        <div class="init-loading">
-            <div class="ball"></div>
-            <div class="ball1"></div>
-        </div>
+    <div ng-show="(!__login && !__logoff) || loading">
+        <div ng-class="{'pageload-loading': (!__login && !__logoff) ||  loading}" class="pageload-overlay"></div>
     </div>
 
     <div modal="newVersion.showDialog" options="{backdrop: false,dialogFade:true}">

@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/about",
-      templateUrl: "/app/about/about.tpl.html"
+      templateUrl: "/app/about/about-newegg-bts.tpl.html"
       controller: 'AboutCtrl'
       title: 'About'
       resolve:

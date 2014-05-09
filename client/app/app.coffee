@@ -11,6 +11,7 @@
 'zy.services'
 'zy.directives'
 'zy.filters'
+'zy.untils'
 'pasvaz.bindonce'
 'ngProgress'
 'ngGrid'

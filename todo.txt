@@ -1,0 +1,12 @@
+修改全局loading为provider, begin/end动作可配置.
+//progressbar.start()
+//progressbar.complete()
+
+update to ace 1.3
+
+sidebar:
+category应显示文章数
+基于年月的文章显示
+
+管理员管理页面
+评论管理页面
