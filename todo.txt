@@ -1,4 +1,6 @@
-移除所有手动loading
+修改全局loading为provider, begin/end动作可配置.
+//progressbar.start()
+//progressbar.complete()
 
 update to ace 1.3
 
