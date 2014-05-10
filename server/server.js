@@ -21,5 +21,8 @@ require('./bootstrap/registerModels')();
 require('./bootstrap/registerRewrite')(app);
 require('./bootstrap/registerAPIs')(app);
 
+//data init
+require('./bootstrap/db/init')();
+
 app.listen(process.env.PORT || config.port || 30000);
 
