@@ -13,14 +13,7 @@ var UserSchema = new Schema({
   },
   password: String,
   email: String,
-  avatar: String,
-  token: String,
-  inUser: String,
-  inDate: Date,
-  editUser: String,
-  editDate: Date,
-  isDeleted: Boolean,
-  remark: String
+  token: String
 });
 
 mongoose.model("User", UserSchema);

@@ -3,13 +3,6 @@
     "name": "Administrator",
     "loginName": "admin",
     "password": "123",
-    "email": null,
-    "token": null,
-    "inUser": null,
-    "inDate": null,
-    "editUser": null,
-    "editDate": null,
-    "isDeleted": false,
-    "remark": ""
+    "email": null
   }
 ]
