@@ -7,7 +7,7 @@ var GallerySchema = new Schema({
   description: String,
   cover: String,
   isHidden: String,
-  pubDate: Date
+  date: Date
 });
 
 mongoose.model("Gallery", GallerySchema);

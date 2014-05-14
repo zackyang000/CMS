@@ -14,12 +14,14 @@ var ArticleSchema = new Schema({
   subCategory: String,
   status: String,
   password: String,
-  pubDate: Date,
-  viewCount: String,
-  commentCount: String,
-  tags: [],
-  source: String,
-  thumbnail: String
+  date: Date,
+  meta:{
+    views: Number,
+    comments: comment,
+    tags: [],
+    source: String,
+    thumbnail: String
+  }
 });
 
 mongoose.model("Article", ArticleSchema);
