@@ -17,7 +17,7 @@ var ArticleSchema = new Schema({
   date: Date,
   meta:{
     views: Number,
-    comments: comment,
+    comments: Number,
     tags: [],
     source: String,
     thumbnail: String

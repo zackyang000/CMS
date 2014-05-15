@@ -4,8 +4,7 @@ var Schema = mongoose.Schema;
 
 var TagSchema = new Schema({
   name: String,
-  url: String,
-  type: String
+  collections: {}
 });
 
 mongoose.model("Tag", TagSchema);

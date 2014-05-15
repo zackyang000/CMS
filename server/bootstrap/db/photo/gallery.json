@@ -1,0 +1,9 @@
+[
+  {
+    "name": "MyPhotos",
+    "description": "This is default gallery.",
+    "cover": "/img/avatar.png",
+    "isHidden": false,
+    "date": "2014-01-01"
+  }
+]
