@@ -21,7 +21,7 @@
       ,(data)->
         $scope.entity=data.value[0]
         $scope.options =
-          url: "#{config.apiHost}/api/FileManage/Photo/#{$routeParams.id}"
+          url: "#{config.odataHost}/api/FileManage/Photo/#{$routeParams.id}"
           maxFilesize: 100
           addRemoveLinks: false
           acceptedFiles: "image/*"
@@ -57,7 +57,7 @@
   #上传封面
   $scope.uploader = $fileUploader.create
     scope: $scope
-    url: "#{config.apiHost}/api/FileManage/upload"
+    url: "#{config.odataHost}/api/FileManage/upload"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
     $scope.entity.Cover = res.result

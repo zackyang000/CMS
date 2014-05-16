@@ -1,6 +1,6 @@
 ﻿angular.module("resource.users", ["ngResource"])
 .factory "User", ['$resource',($resource) ->
-  $resource "#{config.apiHost}/odata/User:id/:action", {id:'@id',action:'@action'},
+  $resource "#{config.odataHost}/odata/User:id/:action", {id:'@id',action:'@action'},
     query:
       method: "GET"
       params:
