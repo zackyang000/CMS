@@ -14,10 +14,7 @@ angular.module("framework.controllers.login",['ngRoute'])
     $scope.submitting=true
     $scope.error=''
     security.login($scope.user).then (data)->
-      context.account=
-        name:data.UserName
-        email:data.Email
-        avatar:data.Avatar
+      context.account= data
       context.auth.admin = true
       $rootScope.$broadcast "loginSuccessed"
     , (error) ->

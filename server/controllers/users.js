@@ -94,8 +94,8 @@ exports.autoLogin = function(req, res) {
 
 // login will be refresh user token.
 exports.login = function(req, res) {
-  var name = req.body.UserName;
-  var pwd = req.body.Password;
+  var name = req.body.name;
+  var pwd = req.body.password;
   User.findOne({loginName: name, password: pwd}).exec(function(err, user) {
     if(!user) {
       return res.send(401, "Failed to login.");

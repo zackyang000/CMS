@@ -46,9 +46,8 @@
   $location.path('/login').replace()
   security.autoLogin().then (data) ->
     context.account=
-      name:data.UserName
-      email:data.Email
-      avatar:data.Avatar
+      name:data.name
+      email:data.email
     context.auth.admin = true
     $rootScope.$broadcast "loginSuccessed"
   , ->

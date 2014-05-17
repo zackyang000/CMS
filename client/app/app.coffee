@@ -53,10 +53,7 @@
   ($rootScope,security, context, $localStorage) ->
     security.autoLogin().then (data) ->
       if data
-        context.account =
-          name:data.UserName
-          email:data.Email
-          avatar:data.Avatar
+        context.account = data
         context.auth.admin = true
 
       $rootScope.account=context.account
