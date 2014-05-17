@@ -33,7 +33,7 @@ angular.module("zy.untils.globalLoading", [])
       success = (response) ->
         response
       error = (response) ->
-        messager.error response
+        messager.error response.data
         status.cancel()
         $q.reject(response)
       (promise) ->
