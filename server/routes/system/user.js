@@ -8,9 +8,9 @@ module.exports = function (app, prefix) {
   app.del(prefix + "/users/:userId", users.destroy);
 
   // action
-  app.post(prefix + "/users/autoSignin", users.autoSignin);
-  app.post(prefix + "/users/signin", users.signin);
-  app.post(prefix + "/users/signout", users.signout);
+  app.post(prefix + "/users/autoLogin", users.autoLogin);
+  app.post(prefix + "/users/login", users.login);
+  app.post(prefix + "/users/logout", users.logout);
 
   // Find user by userId param before handle.
   app.param("userId", users.user);

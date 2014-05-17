@@ -72,32 +72,18 @@ exports.all = function(req, res) {
         status: 500
       });
     } else {
-      //todo 仅返回以下字段
-      /*
-      name: user.name,
-      loginName: user.loginName,
-      email: user.email
-      */
-      res.jsonp(users);
+      res.send(JSON.stringify(users, ["name", "loginName", "email"]));
     }
   });
 };
 
-exports.autoSignin = function(req, res) {
-
-}
-
-exports.signin = function(req, res) {
-  var name = req.body.UserName;
-  var pwd = req.body.Password;
-  User.findOne({loginName: name, password: pwd}).exec(function(err, user) {
+// auto-login validate by user token.
+exports.autoLogin = function(req, res) {
+  var token = req.get("authorization");
+  User.findOne({token: token}).exec(function(err, user) {
     if(!user) {
-      return res.send(401, "Failed to login.");
+      return res.send(401, "Failed to auto-login.");
     }
-    user.token = crypto.createHash('md5').update(new Date() + pwd).digest('hex')
-    user.save();
-
-    res.set("token", user.token);
     res.json({
       name: user.name,
       loginName: user.loginName,
@@ -106,6 +92,39 @@ exports.signin = function(req, res) {
   });
 }
 
-exports.signout = function(req, res) {
+// login will be refresh user token.
+exports.login = function(req, res) {
+  var name = req.body.UserName;
+  var pwd = req.body.Password;
+  User.findOne({loginName: name, password: pwd}).exec(function(err, user) {
+    if(!user) {
+      return res.send(401, "Failed to login.");
+    }
+    user.token = crypto.createHash('md5').update(new Date() + pwd).digest('hex')
+    user.save();
+    res.set("authorization", user.token);
 
+    res.json({
+      name: user.name,
+      loginName: user.loginName,
+      email: user.email
+    })
+  });
+}
+
+exports.logout = function(req, res) {
+  var token = req.get("authorization");
+  User.findOne({token: token}).exec(function(err, user) {
+    if(!user) {
+      return res.send(400, "User not found.");
+    }
+    user.token = null
+    user.save();
+
+    res.json({
+      name: user.name,
+      loginName: user.loginName,
+      email: user.email
+    })
+  });
 }

@@ -1,23 +1,18 @@
 ﻿angular.module("resource.users", ["ngResource"])
 .factory "User", ['$resource',($resource) ->
-  $resource "#{config.odataHost}/odata/User:id/:action", {id:'@id',action:'@action'},
-    query:
-      method: "GET"
-      params:
-        $orderby:'UserName desc'
-        $inlinecount:'allpages'
+  $resource "#{config.apiHost}/users/:id/:action", {id:'@id'},
     update:
       method: "PUT"
     autoSignin:
       method: "POST"
       params:
-        action:'AutoSignin'
+        action:'autoLogin'
     signin:
       method: "POST"
       params:
-        action:'Signin' 
+        action:'login'
     signout:
       method: "POST"
       params:
-        action:'Signout'
+        action:'logout'
 ]
