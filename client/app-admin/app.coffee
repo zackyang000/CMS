@@ -26,20 +26,6 @@
   $locationProvider.html5Mode(true)
 ])
 
-#ajax error handle.
-.config(["$httpProvider", ($httpProvider ) ->
-    $httpProvider.responseInterceptors.push ["$rootScope", "$q", "messager", ($rootScope, $q, messager) ->
-      success = (response) ->
-        response
-      error = (response) ->
-        if response.data['odata.error']? and response.data['odata.error'].innererror? and response.data['odata.error'].innererror.message?
-          messager.error response.data['odata.error'].innererror.message
-        $q.reject(response)
-      (promise) ->
-        promise.then success, error
-    ]
-  ])
-
 #when route missing then goto 404 page.
 .config(["$routeProvider",($routeProvider) ->
   $routeProvider.otherwise redirectTo: "/404"
