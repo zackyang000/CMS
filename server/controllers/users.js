@@ -77,7 +77,7 @@ exports.all = function(req, res) {
   });
 };
 
-// auto-login validate by user token.
+// auto-login valid user token.
 exports.autoLogin = function(req, res) {
   var token = req.get("authorization");
   User.findOne({token: token}).exec(function(err, user) {
@@ -92,7 +92,7 @@ exports.autoLogin = function(req, res) {
   });
 }
 
-// login will be refresh user token.
+// login. (will refresh user token)
 exports.login = function(req, res) {
   var name = req.body.name;
   var pwd = req.body.password;
