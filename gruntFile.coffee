@@ -172,7 +172,7 @@
         ]
 
     concurrent:
-      tasks: ['nodemon', 'watch']
+      tasks: ['nodemon']
       options:
         logConcurrentOutput: true
 

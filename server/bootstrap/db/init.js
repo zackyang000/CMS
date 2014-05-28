@@ -4,8 +4,9 @@ var mongoose = require('mongoose');
 
 var initData = function(model, path) {
   require(appPath + path).forEach(function(item) {
-    var user = new model(item);
-    user.save();
+    var data = new model(item);
+    data.save();
+    console.log(path + "import successful.")
   })
 }
 
