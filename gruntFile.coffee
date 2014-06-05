@@ -26,7 +26,7 @@
       options:
         livereload: 30001
       clientFile:
-        files: ['client/**/*.js','client/**/*.html']
+        files: ['client/**/*.js','client/**/*.css','client/**/*.html']
         tasks: ['newer:copy:client','sails-linker','replace:livereload']
       clientCoffee:
         files: ['client/**/*.coffee']
@@ -172,7 +172,7 @@
         ]
 
     concurrent:
-      tasks: ['nodemon']
+      tasks: ['nodemon','watch']
       options:
         logConcurrentOutput: true
 
