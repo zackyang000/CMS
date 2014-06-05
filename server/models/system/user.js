@@ -13,7 +13,8 @@ var UserSchema = new Schema({
   },
   password: String,
   email: String,
-  token: String
+  token: String,
+  disabled: String
 });
 
 mongoose.model("User", UserSchema);

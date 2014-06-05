@@ -23,14 +23,14 @@
             </div>
             <div class="body">
                 <div>
-                    {{item.UserName}}
+                    {{item.name}}
                 </div>
                 <div>
-                    <small class="grey">{{item.LoginName}}</small>
+                    <small class="grey">{{item.loginName}}</small>
                 </div>
                 <div>
-                    <span ng-if="!item.IsDisabled" class="label label-success label-sm">Normal</span>
-                    <span ng-if="item.IsDisabled" class="label label-danger label-sm arrowed-in arrowed-in-right">Disabled</span>
+                    <span ng-if="!item.disabled" class="label label-success label-sm">Normal</span>
+                    <span ng-if="item.disabled" class="label label-danger label-sm arrowed-in arrowed-in-right">Disabled</span>
                     <span>
                         <button class="btn btn-minier bigger btn-info btn-no-border" ng-click="edit(item)">
                             <i class="icon-pencil icon-only"></i>

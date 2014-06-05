@@ -7,8 +7,8 @@
     resolve :
       users : ["$q", "User", ($q, User)->
         deferred = $q.defer()
-        User.query $select : 'UserId, UserName, LoginName, Email, IsDisabled', (data)->
-          deferred.resolve data.value
+        User.query (data)->
+          deferred.resolve data
         deferred.promise
       ]
 ])
