@@ -1,6 +1,6 @@
 ﻿angular.module("resource.users", ["ngResource"])
 .factory "User", ['$resource',($resource) ->
-  $resource "#{config.apiHost}/users/:name", {name:'@name'},
+  $resource "#{config.apiHost}/users/:name/:action", {id:'@name'},
     update:
       method: "PUT"
     autoSignin:
