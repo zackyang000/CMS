@@ -1,70 +1,70 @@
 var mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  crypto = require('crypto');
+  crypto = require('crypto'),
+  _ = require('lodash');
 
-//Find user by id
-exports.user = function(req, res, next, id) {
-  User.load(id, function(err, user) {
+// Create an user.
+exports.create = function(req, res, next) {
+  var user = new User(req.body);
+  console.log(user);
+  user.save(function(err) {
+    if(err) {
+      next(err);
+    }
+    else {
+      res.jsonp(user);
+    }
+  });
+};
+
+// Update an user.
+exports.update = function(req, res, next) {
+  User.findOne(req.query.id, function(err, user) {
     if(err) {
       next(err);
     }
     if(!user) {
       next(new Error("Failed to load user " + id));
     }
-    req.user = user;
-    next();
+    console.log(user);
+    console.log(req.body);
+    user = _.extend(user, req.body);
+    console.log(user);
+
+    user.save(function(err) {
+      if(err) {
+        res.send("users/signup", {
+          errors: err.errors
+        });
+      } else {
+        res.jsonp(user);
+      }
+    });
   });
+
+
 };
 
-//Create an user
-exports.create = function(req, res) {
-  var user = new User(req.body);
-  user.save(function(err) {
-    if(err) {
-      res.send("users/signup", {
-        errors: err.errors
-      });
-    } else {
-      res.jsonp(user);
-    }
-  });
-};
-
-//Update an user
-exports.update = function(req, res) {
-  var user = req.user;
-  user = _.extend(user, req.body);
-  user.save(function(err) {
-    if(err) {
-      res.send("users/signup", {
-        errors: err.errors
-      });
-    } else {
-      res.jsonp(user);
-    }
-  });
-};
-
-//Delete an user
-exports.destroy = function(req, res) {
-  var user = req.user;
-  return user.remove(function(err) {
-    if(err) {
-      res.send("users/signup", {
-        errors: err.errors
-      });
-    } else {
-      res.jsonp(user);
-    }
-  });
-};
-
-//Show an user
+// Show an user.
 exports.get = function(req, res) {
-  res.jsonp(req.user);
+  User.findOne(req.query.id, function(err, user) {
+    if(err) {
+      next(err);
+    }
+    if(!user) {
+      next(new Error("Failed to load user " + id));
+    }
+    res.jsonp({
+      _id: user._id,
+      name: user.name,
+      loginName: user.loginName,
+      email: user.email,
+      disabled: user.disabled
+    });
+  });
 };
 
-//List of users
+// List of users.
 exports.all = function(req, res) {
   User.find().sort("-inDate").exec(function(err, users) {
     if(err) {
@@ -72,12 +72,12 @@ exports.all = function(req, res) {
         status: 500
       });
     } else {
-      res.send(JSON.stringify(users, ["name", "loginName", "email"]));
+      res.send(JSON.stringify(users, ["_id", "name", "loginName", "email", "disabled"]));
     }
   });
 };
 
-// auto-login valid user token.
+// Auto-login valid by user token.
 exports.autoLogin = function(req, res) {
   var token = req.get("authorization");
   User.findOne({token: token}).exec(function(err, user) {
@@ -85,14 +85,16 @@ exports.autoLogin = function(req, res) {
       return res.send(401, "Failed to auto-login.");
     }
     res.json({
+      _id: user._id,
       name: user.name,
       loginName: user.loginName,
-      email: user.email
+      email: user.email,
+      disabled: user.disabled
     })
   });
 }
 
-// login. (will refresh user token)
+// Login, refresh user token.
 exports.login = function(req, res) {
   var name = req.body.name;
   var pwd = req.body.password;
@@ -105,13 +107,16 @@ exports.login = function(req, res) {
     res.set("authorization", user.token);
 
     res.json({
+      _id: user._id,
       name: user.name,
       loginName: user.loginName,
-      email: user.email
+      email: user.email,
+      disabled: user.disabled
     })
   });
 }
 
+// Logout, remove user token.
 exports.logout = function(req, res) {
   var token = req.get("authorization");
   User.findOne({token: token}).exec(function(err, user) {
@@ -122,9 +127,11 @@ exports.logout = function(req, res) {
     user.save();
 
     res.json({
+      _id: user._id,
       name: user.name,
       loginName: user.loginName,
-      email: user.email
+      email: user.email,
+      disabled: user.disabled
     })
   });
 }

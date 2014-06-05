@@ -21,23 +21,21 @@
     $scope.editDialog = true
 
   $scope.edit = (item)->
-    User.get id:"(guid'#{item.UserId}')", (data) ->
-      $scope.entity = data
-      $scope.editDialog = true
+    $scope.entity = angular.copy item
+    $scope.editDialog = true
 
   $scope.close = ->
     $scope.editDialog = false
 
   $scope.save = ->
-    debugger
-    if $scope.entity.UserId?
-      User.update(id:"(guid'#{$scope.entity.UserId}')", $scope.entity, get)
+    if $scope.entity._id
+      User.update($scope.entity, get)
     else
-      $scope.entity.UserId = UUID.generate()
+      $scope.entity._id = UUID.generate()
       User.save($scope.entity, get)
     $scope.editDialog = false
 
   get = ->
-    User.query $select : 'UserId, UserName, LoginName, Email, IsDisabled', (data)->
-      $scope.list = data.value
+    User.query (data)->
+      $scope.list = data
 ])

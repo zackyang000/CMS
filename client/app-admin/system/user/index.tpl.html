@@ -53,30 +53,30 @@
             <div class="modal-body">
                 <div class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">UserName</label>
+                        <label class="col-lg-3 control-label">User Name</label>
                         <div class="col-lg-9">
-                            <span ng-if="entity.UserId" class="form-control-static">{{entity.UserName}}</span>
-                            <span ng-if="!entity.UserId"><input type="text" class="form-control" ng-model="entity.UserName" required /></span>
+                            <span ng-if="entity._id" class="form-control-static">{{entity.name}}</span>
+                            <span ng-if="!entity._id"><input type="text" class="form-control" ng-model="entity.name" required /></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Url</label>
+                        <label class="col-lg-3 control-label">Login Name</label>
                         <div class="col-lg-9">
-                            <span ng-if="entity.UserId" class="form-control-static">{{entity.LoginName}}</span>
-                            <span ng-if="!entity.UserId"><input type="text" class="form-control" ng-model="entity.LoginName" required /></span>
+                            <span ng-if="entity._id" class="form-control-static">{{entity.loginName}}</span>
+                            <span ng-if="!entity._id"><input type="text" class="form-control" ng-model="entity.loginName" required /></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Email</label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" ng-model="entity.Email" required />
+                            <input type="text" class="form-control" ng-model="entity.email" required />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label"></label>
                         <div class="col-lg-9">
                             <label>
-                                <input type="checkbox" class="ace" ng-model="entity.IsDisabled" />
+                                <input type="checkbox" class="ace" ng-model="entity.disabled" />
                                 <span class="lbl"> Disabled</span>
                             </label>
                         </div>
