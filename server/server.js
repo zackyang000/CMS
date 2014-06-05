@@ -10,7 +10,7 @@ var express = require("express"),
 mongoose.connect(config.db);
 
 //express init
-app.use(express.logger('dev')); /*'default', 'short', 'tiny', 'dev'*/
+//app.use(express.logger('dev')); /*'default', 'short', 'tiny', 'dev'*/
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.favicon(path.join(__dirname, '../client/img/favicon.ico')));
