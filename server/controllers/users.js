@@ -19,17 +19,15 @@ exports.create = function(req, res, next) {
 
 // Update an user.
 exports.update = function(req, res, next) {
-  User.findOne(req.query.id, function(err, user) {
+  User.findOne({loginName: req.params.id}, function(err, user) {
     if(err) {
       next(err);
     }
     if(!user) {
-      next(new Error("Failed to load user " + id));
+      next(new Error("Failed to load user " + req.params.id));
     }
-    console.log(user);
-    console.log(req.body);
+
     user = _.extend(user, req.body);
-    console.log(user);
 
     user.save(function(err) {
       if(err) {
@@ -47,15 +45,14 @@ exports.update = function(req, res, next) {
 
 // Show an user.
 exports.get = function(req, res) {
-  User.findOne(req.query.id, function(err, user) {
+  User.findOne({loginName: req.params.id}, function(err, user) {
     if(err) {
       next(err);
     }
     if(!user) {
-      next(new Error("Failed to load user " + id));
+      next(new Error("Failed to load user " + req.query.id));
     }
     res.jsonp({
-      _id: user._id,
       name: user.name,
       loginName: user.loginName,
       email: user.email,
@@ -72,7 +69,7 @@ exports.all = function(req, res) {
         status: 500
       });
     } else {
-      res.send(JSON.stringify(users, ["_id", "name", "loginName", "email", "disabled"]));
+      res.send(JSON.stringify(users, ["name", "loginName", "email", "disabled"]));
     }
   });
 };
@@ -85,7 +82,6 @@ exports.autoLogin = function(req, res) {
       return res.send(401, "Failed to auto-login.");
     }
     res.json({
-      _id: user._id,
       name: user.name,
       loginName: user.loginName,
       email: user.email,
@@ -107,7 +103,6 @@ exports.login = function(req, res) {
     res.set("authorization", user.token);
 
     res.json({
-      _id: user._id,
       name: user.name,
       loginName: user.loginName,
       email: user.email,
@@ -127,7 +122,6 @@ exports.logout = function(req, res) {
     user.save();
 
     res.json({
-      _id: user._id,
       name: user.name,
       loginName: user.loginName,
       email: user.email,

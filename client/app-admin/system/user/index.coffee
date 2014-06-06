@@ -16,23 +16,26 @@
 .controller('SystemUserCtrl', ["$scope", "users", "User", "$route", ($scope, users, User, $route) ->
   $scope.list = users
 
+  $scope.isNew = false
+
   $scope.add = ()->
     $scope.entity = {}
+    $scope.isNew = true
     $scope.editDialog = true
 
   $scope.edit = (item)->
     $scope.entity = angular.copy item
+    $scope.isNew = false
     $scope.editDialog = true
 
   $scope.close = ->
     $scope.editDialog = false
 
   $scope.save = ->
-    if $scope.entity._id
-      User.update($scope.entity, get)
-    else
-      $scope.entity._id = UUID.generate()
+    if $scope.isNew
       User.save($scope.entity, get)
+    else
+      User.update({id: $scope.entity.loginName}, $scope.entity, get)
     $scope.editDialog = false
 
   get = ->
