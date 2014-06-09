@@ -1,6 +1,6 @@
 ﻿angular.module("resource.groups", ["ngResource"])
 .factory "Group", ['$resource',($resource) ->
-  $resource "#{config.apiHost}/odata/Group:id/:action", {id:'@id',action:'@action'},
+  $resource "#{config.apiHost}/Group:id/:action", {id:'@id',action:'@action'},
     query:
       method: "GET"
       params:
