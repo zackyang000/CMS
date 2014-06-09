@@ -1,6 +1,6 @@
 ﻿angular.module("resource.photos", ["ngResource"])
 .factory "Photo", ['$resource',($resource) ->
-  $resource "#{config.apiHost}/Photo:id/:action", {id:'@id',action:'@action'},
+  $resource "#{config.apiHost}/photos/:id/:action", {id:'@id'},
     query:
       method: "GET"
       params:

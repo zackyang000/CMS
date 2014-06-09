@@ -5,15 +5,15 @@
     templateUrl : "/app-admin/system/user/index.tpl.html"
     controller : 'SystemUserCtrl'
     resolve :
-      users : ["$q", "User", ($q, User)->
+      users : ["$q", "Users", ($q, Users)->
         deferred = $q.defer()
-        User.query (data)->
+        Users.query (data)->
           deferred.resolve data
         deferred.promise
       ]
 ])
 
-.controller('SystemUserCtrl', ["$scope", "users", "User", "$route", ($scope, users, User, $route) ->
+.controller('SystemUserCtrl', ["$scope", "users", "Users", "$route", ($scope, users, Users, $route) ->
   $scope.list = users
 
   $scope.isNew = false
@@ -33,12 +33,12 @@
 
   $scope.save = ->
     if $scope.isNew
-      User.save($scope.entity, get)
+      Users.save($scope.entity, get)
     else
-      User.update({id: $scope.entity.loginName}, $scope.entity, get)
+      Users.update({id: $scope.entity.loginName}, $scope.entity, get)
     $scope.editDialog = false
 
   get = ->
-    User.query (data)->
+    Users.query (data)->
       $scope.list = data
 ])

@@ -1,6 +1,6 @@
 ﻿angular.module("resource.messages", ["ngResource"])
-.factory "Message", ['$resource',($resource) ->
-  $resource "#{config.apiHost}/Board:id/:action", {id:'@id',action:'@action'},
+.factory "Messages", ['$resource',($resource) ->
+  $resource "#{config.apiHost}/boards/:id/:action", {id:'@id'},
     query:
       method:"GET"
       params:

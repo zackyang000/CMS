@@ -1,11 +1,11 @@
 ﻿angular.module("zy.services.security", ['resource.users'])
-.factory "security", ['User','$q', "$http", (User, $q, $http) ->
+.factory "security", ['Users','$q', "$http", (Users, $q, $http) ->
   autoLogin: ->
     deferred = $q.defer()
     token = $.cookie('authorization')
     if token
       $http.defaults.headers.common['authorization']=token
-      User.autoSignin {}, {}
+      Users.autoSignin {}, {}
       ,(data)->
         deferred.resolve data
       ,(error)->
@@ -16,7 +16,7 @@
 
   login: (user) ->
     deferred = $q.defer()
-    User.signin {}, user
+    Users.signin {}, user
     ,(data, headers)->
       if user.IsRemember
         $.cookie('authorization', headers('authorization'), {expires: 180, path: '/'})
@@ -29,7 +29,7 @@
 
   logoff: ->
     deferred = $q.defer()
-    User.signout {}
+    Users.signout {}
     ,(data)->
       $.removeCookie('authorization', { path: '/' })
       delete $http.defaults.headers.common['authorization']
