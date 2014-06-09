@@ -6,7 +6,6 @@ var mongoose = require('mongoose'),
 // Create an user.
 exports.create = function(req, res, next) {
   var user = new User(req.body);
-  console.log(user);
   user.save(function(err) {
     if(err) {
       next(err);
@@ -31,9 +30,7 @@ exports.update = function(req, res, next) {
 
     user.save(function(err) {
       if(err) {
-        res.send("users/signup", {
-          errors: err.errors
-        });
+        next(err);
       } else {
         res.jsonp(user);
       }
@@ -63,7 +60,7 @@ exports.get = function(req, res) {
 
 // List of users.
 exports.all = function(req, res) {
-  User.find().sort("-inDate").exec(function(err, users) {
+  User.find().sort("name").exec(function(err, users) {
     if(err) {
       res.render("error", {
         status: 500

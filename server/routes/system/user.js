@@ -1,4 +1,4 @@
-users = require('../../controllers/users');
+users = require('../../controllers/system/users');
 
 module.exports = function (app, prefix) {
   app.get(prefix + "/users", users.all);
