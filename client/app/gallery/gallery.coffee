@@ -7,9 +7,9 @@
       controller: 'GalleryCtrl'
       title: 'Galleries'
       resolve:
-        galleries: ['$q','Gallery',($q,Gallery)->
+        galleries: ['$q','Galleries',($q,Galleries)->
           deferred = $q.defer()
-          Gallery.queryOnce 
+          Galleries.queryOnce
             $filter:'IsDeleted eq false'
           , (data) -> 
             deferred.resolve data.value

@@ -1,4 +1,4 @@
-angular.module("framework.controllers.head",['resource.channels'])
+angular.module("framework.controllers.head",['resource.categories'])
 
 .controller('HeaderCtrl',
   ["$scope","$http","$location",'$window',"Channel" ,"$timeout","channel"

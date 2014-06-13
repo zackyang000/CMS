@@ -1,4 +1,4 @@
-angular.module("framework.controllers.main",['resource.channels'])
+angular.module("framework.controllers.main",['resource.categories'])
 
 .controller('MainCtrl',
   ["$scope", "$rootScope","$http","$location",'$window',"Channel" ,"context","security","channel"

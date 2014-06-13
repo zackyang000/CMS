@@ -1,4 +1,4 @@
-﻿angular.module('board',['resource.messages'])
+﻿angular.module('board',['resource.articles'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
@@ -19,8 +19,8 @@
 ])
 
 .controller('BoardCtrl',
-["$scope","$translate","Message","messages" ,"messager", "context"
-($scope, $translate, Message, messages, messager, context) ->
+["$scope","$translate","messages" ,"messager", "context"
+($scope, $translate, messages, messager, context) ->
   $scope.entity=
     Author:context.account.name
     Email:context.account.email

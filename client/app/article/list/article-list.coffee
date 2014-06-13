@@ -1,4 +1,4 @@
-﻿angular.module('article-list',['resource.articles',"ChannelServices"])
+﻿angular.module('article-list',['resource.articles'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider

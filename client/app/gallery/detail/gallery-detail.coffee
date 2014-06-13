@@ -6,9 +6,9 @@
       templateUrl: "/app/gallery/detail/gallery-detail.tpl.html"
       controller: 'GalleryDetailCtrl'
       resolve:
-        gallery: ['$route','$q','Gallery',($route,$q,Gallery)->
+        gallery: ['$route','$q','Gallery',($route,$q,Galleries)->
           deferred = $q.defer()
-          Gallery.queryOnce 
+          Galleries.queryOnce
             $filter:"Name eq '#{$route.current.params.name}' and IsDeleted eq false"
             $expand:"Photos"
           , (data) -> 

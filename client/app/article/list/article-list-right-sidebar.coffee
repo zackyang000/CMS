@@ -1,4 +1,4 @@
-﻿angular.module('article-list-right-sidebar',['resource.articles','resource.comments','ChannelServices'])
+﻿angular.module('article-list-right-sidebar',['resource.articles','resource.comments'])
 
 .controller('ArticleListRightSidebarCtrl',
 ["$scope","$routeParams","channel"
