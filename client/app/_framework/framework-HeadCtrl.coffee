@@ -1,9 +1,9 @@
 angular.module("framework.controllers.head",['resource.categories'])
 
 .controller('HeaderCtrl',
-  ["$scope","$http","$location",'$window',"Channel" ,"$timeout","channel"
-    ($scope,$http,$location,$window,Channel,$timeout,channel) ->
-      channel.get().then (data) ->
+  ["$scope","$http","$location",'$window',"Categories" ,"$timeout"
+    ($scope,$http,$location,$window,Categories,$timeout) ->
+      Categories.query (data) ->
         $scope.Channels=data
 
       $scope.isActiveChannel = (channel) ->

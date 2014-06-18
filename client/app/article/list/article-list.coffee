@@ -6,14 +6,13 @@
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
-        articles: ['$rootScope','$route','$q','Article','channel',($rootScope,$route,$q,Article,channel)->
+        articles: ['$rootScope','$route','$q','Articles','Categories',($rootScope,$route,$q,Articles,Categories)->
           deferred = $q.defer()
           channel.getdefault().then (channel) ->
             Article.queryOnce
               $filter:"""
-              IsDeleted eq false 
-              and Group/Channel/Url eq '#{channel.Url}' 
-              """
+              IsDeleted eq false       and Group/Channel/Url eq '#{channel.Url}'
+       """
               $skip:($route.current.params.p ? 1)*10 - 10
             , (data)->
               deferred.resolve data
@@ -23,13 +22,13 @@
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
-        articles: ['$route','$q','Article',($route,$q,Article)->
+        articles: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
           Article.queryOnce
             $filter:"""
-            IsDeleted eq false 
-            and Group/Channel/Url eq '#{$route.current.params.channel}' 
-            and Tags/any(tag:tag/Name eq '#{$route.current.params.tag}')
+            IsDeleted eq false
+         ad rop/Channel/Url eq '#{$route.current.params.channel}'
+           nd agsanytag:tag/Name eq '#{$route.current.params.tag}')
             """
             $skip:($route.current.params.p ? 1)*10 - 10
           , (data)->
@@ -40,13 +39,13 @@
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
-        articles: ['$route','$q','Article',($route,$q,Article)->
+        articles: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
           Article.queryOnce
             $filter:"""
-            IsDeleted eq false 
-            and Group/Channel/Url eq '#{$route.current.params.channel}' 
-            and Group/Url eq '#{$route.current.params.group}'
+            IsDeleted eq false
+            ad Grup/Canne/Url eq '#{$route.current.params.channel}'
+            and Grop/Urleq '#$route.current.params.group}'
             """
             $skip:($route.current.params.p ? 1)*10 - 10
           , (data)->
@@ -61,8 +60,8 @@
           deferred = $q.defer()
           Article.queryOnce
             $filter:"""
-            IsDeleted eq false 
-            and Group/Channel/Url eq '#{$route.current.params.channel}'
+            IsDeleted eq false
+            and Group/Chanel/Urleq '#{$route.current.params.channel}'
             """
             $skip:($route.current.params.p ? 1)*10 - 10
           , (data)->
@@ -73,12 +72,12 @@
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
-        articles: ['$route','$q','Article',($route,$q,Article)->
+        articles: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
           Article.queryOnce
             $filter:"""
-            IsDeleted eq false 
-            and indexof(Title, '#{$route.current.params.key}') gt -1
+            IsDeleted eq false
+            and indexof(Title, '#{route.current.params.key}') gt -1
             """
             $skip:($route.current.params.p ? 1)*10 - 10
           , (data)->
@@ -88,8 +87,8 @@
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$rootScope","$window","$routeParams","$location","articles","channel", "context"
-($scope,$rootScope,$window,$routeParams,$location,articles,channel,context) ->
+["$scope","$rootScope","$window","$routeParams","$location","articles", "context"
+($scope,$rootScope,$window,$routeParams,$location,articles,context) ->
   $window.scroll(0,0)
 
   $scope.isAdmin = context.auth.admin
@@ -101,7 +100,7 @@
     else
       channel.getdefault().then (data)->
         $rootScope.title=data.Name
-       
+
   $scope.list = articles
   $scope.currentPage =$routeParams.p ? 1
 
