@@ -4,15 +4,15 @@ angular.module("framework.controllers.head",['resource.categories'])
   ["$scope","$http","$location",'$window',"Categories" ,"$timeout"
     ($scope,$http,$location,$window,Categories,$timeout) ->
       Categories.query (data) ->
-        $scope.Channels=data
+        $scope.categories=data
 
-      $scope.isActiveChannel = (channel) ->
+      $scope.isActiveChannel = (category) ->
         #home page
-        return true if channel.IsDefault && ($location.path() == "/" || $location.path() == "/list")
+        return true if category.isDefault && ($location.path() == "/" || $location.path() == "/list")
         #article list
-        return true if $location.path().indexOf(channel.Url) > -1
+        return true if $location.path().indexOf(category.Url) > -1
         #article detail
-        return $location.path().indexOf("/post") > -1 && channel.Url.indexOf($scope.channelUrl) > -1
+        return $location.path().indexOf("/post") > -1 && category.url.indexOf($scope.category) > -1
 
       $scope.isActive = (route) ->
         route == $location.path()
