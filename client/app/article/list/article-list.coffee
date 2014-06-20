@@ -8,10 +8,10 @@
       resolve:
         articles: ['$rootScope','$route','$q','Articles','Categories',($rootScope,$route,$q,Articles,Categories)->
           deferred = $q.defer()
-          channel.getdefault().then (channel) ->
+          categories.getDefault().then (channel) ->
             Article.queryOnce
               $filter:"""
-              IsDeleted eq false       and Group/Channel/Url eq '#{channel.Url}'
+              IsDeleted eq false and Group/Channel/Url eq '#{channel.Url}'
        """
               $skip:($route.current.params.p ? 1)*10 - 10
             , (data)->
