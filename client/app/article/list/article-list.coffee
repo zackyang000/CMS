@@ -8,7 +8,7 @@
       resolve:
         articles: ['$rootScope','$route','$q','Articles','Categories',($rootScope,$route,$q,Articles,Categories)->
           deferred = $q.defer()
-          categories.getDefault().then (channel) ->
+          Categories.default().then (channel) ->
             Article.queryOnce
               $filter:"""
               IsDeleted eq false and Group/Channel/Url eq '#{channel.Url}'
