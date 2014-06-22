@@ -39,8 +39,21 @@ exports.update = function(req, res, next) {
 
 };
 
+// Get default category.
+exports.default = function(req, res, next) {
+  Category.findOne({isDefault: true}, function(err, category) {
+    if(err) {
+      next(err);
+    }
+    if(!category) {
+      next(new Error("Failed to load category."));
+    }
+    res.jsonp(category);
+  });
+};
+
 // Show category.
-exports.get = function(req, res) {
+exports.get = function(req, res, next) {
   Category.findOne({_id: req.params.id}, function(err, category) {
     if(err) {
       next(err);
