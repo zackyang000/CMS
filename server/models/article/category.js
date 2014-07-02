@@ -9,7 +9,7 @@ var CategorySchema = new Schema({
     unique: true
   },
   description: String,
-  isDefault: Boolean,
+  default: Boolean,
   subCategory:{
     name: String,
     url: {

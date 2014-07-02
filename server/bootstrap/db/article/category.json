@@ -3,7 +3,7 @@
     "name": "Default",
     "url": "default",
     "description": "This is a default category.",
-    "isDefault": true,
+    "default": true,
     "subCategory": {
       "name": "Main",
       "url": "main",
