@@ -6,7 +6,7 @@
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
-        articles: ['$rootScope','$route','$q','Articles','Categories',($rootScope,$route,$q,Articles,Categories)->
+        articles: ['$rootScope', '$route', '$q', 'Articles', 'Categories', ($rootScope,$route,$q,Articles,Categories)->
           deferred = $q.defer()
           Categories.default  (category) ->
             Articles.query
