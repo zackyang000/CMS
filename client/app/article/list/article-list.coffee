@@ -8,13 +8,9 @@
       resolve:
         articles: ['$rootScope','$route','$q','Articles','Categories',($rootScope,$route,$q,Articles,Categories)->
           deferred = $q.defer()
-          Categories.default().then (channel) ->
-            Article.queryOnce
-              $filter:"""
-              IsDeleted eq false and Group/Channel/Url eq '#{channel.Url}'
-       """
-              $skip:($route.current.params.p ? 1)*10 - 10
-            , (data)->
+          Categories.default  (channel) ->
+            Articles.query (data)->
+              debugger
               deferred.resolve data
           deferred.promise
         ]
@@ -90,16 +86,7 @@
 ["$scope","$rootScope","$window","$routeParams","$location","articles", "context"
 ($scope,$rootScope,$window,$routeParams,$location,articles,context) ->
   $window.scroll(0,0)
-
   $scope.isAdmin = context.auth.admin
-
-  $rootScope.title=$routeParams.tag ? $routeParams.group ? $routeParams.channel
-  if !$rootScope.title
-    if $scope.key
-      $rootScope.title="Search Result: '#{$scope.key}'"
-    else
-      channel.getdefault().then (data)->
-        $rootScope.title=data.Name
 
   $scope.list = articles
   $scope.currentPage =$routeParams.p ? 1
