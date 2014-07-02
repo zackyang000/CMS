@@ -9,15 +9,7 @@ var CategorySchema = new Schema({
     unique: true
   },
   description: String,
-  default: Boolean,
-  subCategory:{
-    name: String,
-    url: {
-      type: String,
-      unique: true
-    },
-    description: String
-  }
+  default: Boolean
 });
 
 mongoose.model("Category", CategorySchema);

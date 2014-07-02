@@ -11,7 +11,6 @@ var ArticleSchema = new Schema({
   content: String,
   description: String,
   category: String,
-  subCategory: String,
   status: String,
   password: String,
   date: Date,

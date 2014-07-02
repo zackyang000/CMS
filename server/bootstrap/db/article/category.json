@@ -3,11 +3,6 @@
     "name": "Default",
     "url": "default",
     "description": "This is a default category.",
-    "default": true,
-    "subCategory": {
-      "name": "Main",
-      "url": "main",
-      "description": "This is a default sub category."
-    }
+    "default": true
   }
 ]
