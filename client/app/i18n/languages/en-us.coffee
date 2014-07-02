@@ -19,8 +19,8 @@
     edit: 'Edit'
     comments: 'Comments'
     source: 'Source'
-    views_count: '{{ViewCount}} Views'
-    comments_count: '{{ReplyCount}} Comments'
+    views_count: '{{meta.views}} Views'
+    comments_count: '{{meta.comments}} Comments'
     related_posts: 'Related Posts'
     not_found: 'Not found article.'
     menu:

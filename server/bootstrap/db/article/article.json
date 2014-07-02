@@ -9,6 +9,7 @@
     "password": null,
     "date": "2014-01-01",
     "meta": {
+      "author": "zack",
       "views": 0,
       "comments": 0,
       "tags": ["Tag1", "Tag2"],
