@@ -8,59 +8,35 @@
       resolve:
         articles: ['$rootScope','$route','$q','Articles','Categories',($rootScope,$route,$q,Articles,Categories)->
           deferred = $q.defer()
-          Categories.default  (channel) ->
-            Articles.query (data)->
-              debugger
+          Categories.default  (category) ->
+            Articles.query
+              category: category.url
+            ,(data)->
               deferred.resolve data
           deferred.promise
         ]
-    .when "/list/:channel/:group/tag/:tag",
+    .when "/list/:category/tag/:tag",
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
-        articles: ['$route','$q','Articles',($route,$q,Articles)->
+        articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
-          Article.queryOnce
-            $filter:"""
-            IsDeleted eq false
-         ad rop/Channel/Url eq '#{$route.current.params.channel}'
-           nd agsanytag:tag/Name eq '#{$route.current.params.tag}')
-            """
-            $skip:($route.current.params.p ? 1)*10 - 10
-          , (data)->
+          Articles.query
+            category: $route.current.params.category
+            tag: $route.current.params.tag
+          ,(data)->
             deferred.resolve data
           deferred.promise
         ]
-    .when "/list/:channel/:group",
+    .when "/list/:category",
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
       resolve:
-        articles: ['$route','$q','Articles',($route,$q,Articles)->
+        articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
-          Article.queryOnce
-            $filter:"""
-            IsDeleted eq false
-            ad Grup/Canne/Url eq '#{$route.current.params.channel}'
-            and Grop/Urleq '#$route.current.params.group}'
-            """
-            $skip:($route.current.params.p ? 1)*10 - 10
-          , (data)->
-            deferred.resolve data
-          deferred.promise
-        ]
-    .when "/list/:channel",
-      templateUrl: "/app/article/list/article-list.tpl.html"
-      controller: 'ArticleListCtrl'
-      resolve:
-        articles: ['$route','$q','Article',($route,$q,Article)->
-          deferred = $q.defer()
-          Article.queryOnce
-            $filter:"""
-            IsDeleted eq false
-            and Group/Chanel/Urleq '#{$route.current.params.channel}'
-            """
-            $skip:($route.current.params.p ? 1)*10 - 10
-          , (data)->
+          Articles.query
+            category: $route.current.params.category
+          ,(data)->
             deferred.resolve data
           deferred.promise
         ]
