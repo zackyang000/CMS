@@ -1,7 +1,6 @@
 [
   {
     "name": "Default",
-    "url": "default",
     "description": "This is a default category.",
     "default": true
   }

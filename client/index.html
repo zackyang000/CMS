@@ -70,8 +70,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-class="{active:isActiveChannel(category)}"
                     ng-repeat="category in categories | orderBy:'isDefault':true">
-                        <a ng-href="/" ng-show="category.isDefault">{{category.name}}</a>
-                        <a ng-href="/list/{{category.url}}" ng-hide="category.isDefault">{{category.name}}</a>
+                        <a ng-href="/" ng-show="category.default">{{category.name}}</a>
+                        <a ng-href="/list/{{category.name}}" ng-hide="category.default">{{category.name}}</a>
                     </li>
                     <li ng-class="{active:isActive('/archives')}"><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
                     <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>

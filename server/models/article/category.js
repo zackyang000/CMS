@@ -3,8 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var CategorySchema = new Schema({
-  name: String,
-  url: {
+  name: {
     type: String,
     unique: true
   },

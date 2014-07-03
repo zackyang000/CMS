@@ -10,7 +10,7 @@
           deferred = $q.defer()
           Categories.default  (category) ->
             Articles.query
-              category: category.url
+              category: category.name
             ,(data)->
               deferred.resolve data
           deferred.promise

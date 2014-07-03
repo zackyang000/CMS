@@ -18,20 +18,20 @@
 <!--=== End Breadcrumbs ===-->
 
 <!--=== Content Part ===-->
-<div class="container">	
+<div class="container">
     <div class="row blog-page blog-item">
         <!-- Left Sidebar -->
         <div class="col-md-9 md-margin-bottom-60">
-            <!--Blog Post-->        
+            <!--Blog Post-->
             <div class="blog margin-bottom-40" ng-repeat="item in list">
                 <h2><a ng-href="/post/{{item.url}}" ng-bind-html="item.title | highlight:params.key"></a></h2>
                 <div ng-include="'/app/article/common/article-post-header.tpl.html'"></div>
                 <p ng-bind-html-unsafe="item.description"></p>
                 <p><a class="btn-u btn-u-small" ng-href="/post/{{item.url}}"><i class="icon-plus-sign"></i> Read More</a></p>
             </div>
-            <!--End Blog Post-->   
-            
-            <!--Pagination-->     
+            <!--End Blog Post-->
+
+            <!--Pagination-->
             <div zy-odata-pager="list" class="text-center"></div>
             <!--End Pagination-->
         </div>

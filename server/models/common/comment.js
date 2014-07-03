@@ -7,7 +7,8 @@ var CommentSchema = new Schema({
   content: String,
   email: String,
   date: Date,
-  type: String
+  type: String,
+  linkId: String
 });
 
 mongoose.model("Comment", CommentSchema);

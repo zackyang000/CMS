@@ -10,24 +10,27 @@
           deferred = $q.defer()
           Articles.get
             id: $route.current.params.url
-          , (data) -> deferred.resolve data
+          , (data) ->
+            deferred.resolve data
           deferred.promise
         ]
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$window","article"
-($scope,$window,article) ->
+["$scope","$window","article", "$route", "Comments"
+($scope, $window, article, $route ,Comments) ->
   $window.scroll(0,0)
 
   $scope.item = article
 
   codeformat()#格式化代码
-  #评论
-  #Comment.get
-  #  $filter:"PostId eq (guid'#{$scope.item.PostId}') and IsDeleted eq false"
-  #, (data) ->
-  #  $scope.item.Comments=data.value
+
+  #获取评论
+  Comments.get
+    id: $route.current.params.url
+  , (data) ->
+    $scope.comments = data
+
   #浏览量+1
   #Article.browsed id:"(guid'#{$scope.item.PostId}')"
 
