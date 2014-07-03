@@ -13,7 +13,10 @@ var ArticleSchema = new Schema({
   category: String,
   status: String,
   password: String,
-  date: Date,
+  date: {
+    type: Date,
+    default: Date.now
+  },
   meta:{
     author: String,
     views: Number,

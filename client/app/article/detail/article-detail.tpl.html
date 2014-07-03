@@ -31,21 +31,21 @@
 	        <div class="media">
 	            <h3>{{'article.comments' | translate}}</h3>
 	        </div>
-	        <div class="media" ng-repeat="item in item.Comments | orderBy:'CreateDate'" ng-hide="item.IsDeleted">
+	        <div class="media" ng-repeat="item in comments | orderBy:'date'" ng-hide="item.block">
 	            <span class="pull-left">
-	                <img class="media-object" ng-src="{{item.Email | gravatar}}" alt="" />
+	                <img class="media-object" ng-src="{{item.email | gravatar}}" alt="" />
 	            </span>
 	            <div class="media-body">
 	                <h4 class="media-heading">
-	                    {{item.Author}} 
+	                    {{item.author}}
 	                    <span>
-	                        {{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}
+	                        <time title="{{item.date | date:'yyyy.MM.dd HH:mm' }}">{{item.date | fromNow }}</time>
 	                        <a href="JavaScript:void(0)" ng-click="remove(item)" ng-show="isAdmin">
 	                            <i class="icon-remove"></i>
 	                        </a>
 	                    </span>
 	                </h4>
-	                <p ng-bind-html="item.Content | line"></p>
+	                <p ng-bind-html="item.content | line"></p>
 	            </div>
 	            <hr/>
 	        </div>
@@ -57,8 +57,8 @@
 	        <div class="post-comment">
 	            <h3>{{'article.comment.content' | translate}}</h3>
 	            <form name="form" novalidate ng-submit="save()">
-	                <p bindonce="entity" bo-show="entity.Author">
-	                    {{'article.comment.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
+	                <p bindonce="entity" bo-show="entity.author">
+	                    {{'article.comment.welcome' | translate}}, <strong bo-html="entity.author"></strong>
 	                    <span>
 	                        <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'article.comment.hide' | translate}} »</a>
 	                        <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'article.comment.change' | translate}} »</a>
@@ -68,25 +68,25 @@
 	                    <div class="row form-group">
 	                        <div class="col-md-7 col-md-offset-0">
 	                            <label>{{'article.comment.name' | translate}} <span class="color-red">*</span></label>
-	                            <input class="form-control" name="Author" type="text" ng-model="entity.Author" placeholder="{{'article.comment.name' | translate}}*" required/>
-	                            <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
-	                                <span ng-show="form.Author.$error.required">{{'article.comment.nameValidTxt' | translate}}</span>
+	                            <input class="form-control" name="Author" type="text" ng-model="entity.author" placeholder="{{'article.comment.name' | translate}}*" required/>
+	                            <div class="label label-danger label-invalid" ng-show="form.author.$invalid && submitted">
+	                                <span ng-show="form.author.$error.required">{{'article.comment.nameValidTxt' | translate}}</span>
 	                            </div>
 	                        </div>
 	                    </div>
 	                    <div class="row form-group">
 	                        <div class="col-md-7 col-md-offset-0">
 	                            <label>{{'article.comment.email' | translate}}</label>
-	                            <input class="form-control" name="Email" type="text" ng-model="entity.Email" placeholder="{{'article.comment.email' | translate}}" />
+	                            <input class="form-control" name="email" type="text" ng-model="entity.email" placeholder="{{'article.comment.email' | translate}}" />
 	                        </div>
 	                    </div>
 	                </div>
 	                <div class="row form-group">
 	                    <div class="col-md-11 col-md-offset-0">
 	                        <label>{{'article.comment.content' | translate}}</label>
-	                        <textarea name="Content" class="form-control" rows="8"  ng-model="entity.Content" required></textarea>
-	                        <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
-	                            <span ng-show="form.Content.$error.required">{{'article.comment.contentValidTxt' | translate}}</span>
+	                        <textarea name="content" class="form-control" rows="8"  ng-model="entity.content" required></textarea>
+	                        <div class="label label-danger label-invalid" ng-show="form.content.$invalid && submitted">
+	                            <span ng-show="form.content.$error.required">{{'article.comment.contentValidTxt' | translate}}</span>
 	                        </div>
 	                    </div>
 	                </div>

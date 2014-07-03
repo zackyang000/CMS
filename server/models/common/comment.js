@@ -6,8 +6,12 @@ var CommentSchema = new Schema({
   author: String,
   content: String,
   email: String,
-  date: Date,
+  date: {
+    type: Date,
+    default: Date.now
+  },
   type: String,
+  block: Boolean,
   linkId: String
 });
 
