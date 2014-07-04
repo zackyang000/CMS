@@ -20,10 +20,10 @@
                     <small>({{item.posts.length}})</small>
                 </h3>
                 <ul class="list-unstyled">
-                    <li ng-repeat="post in item.posts | orderBy:'-PubDate'">
-                        {{post.PubDate | date:"yyyy-MM-dd"}}
+                    <li ng-repeat="post in item.posts | orderBy:'-date'">
+                        {{post.date | date:"yyyy-MM-dd"}}
                         »  
-                        <a href="/post/{{post.Url}}" title="{{post.channel}} - {{post.group}}">{{post.Title}}</a>
+                        <a href="/post/{{post.url}}">{{post.title}}</a>
                     </li>
                 </ul>
             </li>
