@@ -7,47 +7,52 @@
       controller: 'BoardCtrl'
       title: 'Message Boards'
       resolve:
-        messages: ['$q','Message',($q,Message)->
+        messages: ['$q','Comments',($q,Comments)->
           deferred = $q.defer()
-          debugger
-          Message.queryOnce 
-            $filter:'IsDeleted eq false'
+          Comments.query
+            id: 'message'
           , (data) ->
-            deferred.resolve data.value
+            deferred.resolve data
           deferred.promise
         ]
 ])
 
 .controller('BoardCtrl',
-["$scope","$translate","messages" ,"messager", "context"
-($scope, $translate, messages, messager, context) ->
+["$scope", "$translate", "messages", "context", "progressbar", "Comments"
+($scope, $translate, messages, context, progressbar, Comments) ->
+
+  $scope.messages = messages
+
+  #初始化新评论
   $scope.entity=
-    Author:context.account.name
-    Email:context.account.email
-    Url:context.account.url
+    author : context.account.name
+    email : context.account.email
+    url : context.account.url
+    type : 'message'
   $scope.editmode = !context.account.name
   $scope.isAdmin = context.auth.admin
 
-  $scope.list = messages
-
-  $scope.save = () ->
+  #提交评论
+  $scope.save = ->
     $scope.submitted=true
     if $scope.form.$invalid
       return
 
+    progressbar.start()
     $scope.loading = $translate("global.post")
-    $scope.entity.BoardId=UUID.generate()
-    Message.save $scope.entity
-    ,(data)->
-      $scope.list.unshift(data)
-      $scope.entity.Content=""
+    Comments.save $scope.entity
+    , (data)->
+      $scope.messages.push(data)
+      $scope.entity.content = ""
+      progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""
       context.account =
-        name: $scope.entity.Author
-        email: $scope.entity.Email
-        url: $scope.entity.Url
+        name: $scope.entity.author
+        email: $scope.entity.email
+        url: $scope.entity.url
     ,(error)->
+      progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""
 

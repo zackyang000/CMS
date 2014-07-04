@@ -27,12 +27,13 @@
 
   #获取评论
   Comments.query
-    id: $route.current.params.url
+    id: 'article/' + $route.current.params.url
   , (data) ->
     $scope.comments = data
 
   #初始化新评论
   $scope.entity=
+    type : 'article'
     author : context.account.name
     email : context.account.email
     url : context.account.url
@@ -50,7 +51,6 @@
     $scope.loading = $translate("global.post")
     Comments.save $scope.entity
     , (data)->
-      debugger
       $scope.comments.push(data)
       $scope.entity.content = ""
       #Article.commented id:"(guid'#{$scope.item.PostId}')"

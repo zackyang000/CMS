@@ -39,7 +39,13 @@ exports.update = function(req, res, next) {
 
 // Show comment.
 exports.get = function(req, res, next) {
-  Comment.find({linkId: req.params.id}, function(err, comment) {
+  var params = req.params.id.split('/')
+  var query = { type: params[0] };
+  if (params.length === 2){
+    query.linkId = params[1];
+  }
+
+  Comment.find(query, function(err, comment) {
     if(err) {
       next(err);
     }
