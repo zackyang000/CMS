@@ -1,4 +1,4 @@
-﻿angular.module('board',['resource.messages'])
+﻿angular.module('board',['resource.comments'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider

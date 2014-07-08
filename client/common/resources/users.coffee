@@ -6,7 +6,7 @@
     autoSignin:
       method: "POST"
       params:
-        action:'autoLogin'
+        action:'auto-login'
     signin:
       method: "POST"
       params:

@@ -1,4 +1,4 @@
-﻿angular.module('basedata-group',['resource.channels','resource.groups'])
+﻿angular.module('basedata-group',['resource.categories'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider

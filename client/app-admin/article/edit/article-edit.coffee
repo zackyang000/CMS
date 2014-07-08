@@ -1,4 +1,4 @@
-﻿angular.module('article-edit',['resource.articles','resource.channels'])
+﻿angular.module('article-edit',['resource.articles','resource.categories'])
 
 .factory("TranslateService", ["$http", ($http) ->
   events: (key) ->

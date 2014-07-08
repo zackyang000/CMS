@@ -5,7 +5,7 @@
     token = $.cookie('authorization')
     if token
       $http.defaults.headers.common['authorization']=token
-      Users.autoSignin {}, {}
+      Users.autoSignin {id: 'user'}, {}
       ,(data)->
         deferred.resolve data
       ,(error)->
@@ -16,7 +16,7 @@
 
   login: (user) ->
     deferred = $q.defer()
-    Users.signin {}, user
+    Users.signin {id: 'user'}, user
     ,(data, headers)->
       if user.IsRemember
         $.cookie('authorization', headers('authorization'), {expires: 180, path: '/'})
@@ -29,7 +29,7 @@
 
   logoff: ->
     deferred = $q.defer()
-    Users.signout {}
+    Users.signout {id: 'user'}
     ,(data)->
       $.removeCookie('authorization', { path: '/' })
       delete $http.defaults.headers.common['authorization']
