@@ -35,8 +35,6 @@ exports.update = function(req, res, next) {
       }
     });
   });
-
-
 };
 
 // Show article.
