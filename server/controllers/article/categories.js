@@ -35,8 +35,6 @@ exports.update = function(req, res, next) {
       }
     });
   });
-
-
 };
 
 // Get default category.

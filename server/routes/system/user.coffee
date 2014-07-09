@@ -7,7 +7,7 @@ module.exports = (app, prefix) ->
   app.get prefix + "/users/:id", users.get
   app.put prefix + "/users/:id", users.update
 
-  # action
+  #ACTION
   app.post prefix + "/users/:id/auto-login", users.autoLogin
   app.post prefix + "/users/:id/login", users.login
   app.post prefix + "/users/:id/logout", users.logout

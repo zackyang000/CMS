@@ -2,6 +2,6 @@
   {
     "name": "Default",
     "description": "This is a default category.",
-    "default": true
+    "main": true
   }
 ]
