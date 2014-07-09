@@ -1,8 +1,8 @@
 ﻿//var targetSite="http://www.woshinidezhu.com"
 //var targetSite="http://localhost:33333"
 
-var server="http://10.16.75.10:18002"
-var client="http://10.16.75.10:8002"
+var server="http://www.woshinidezhu.com"
+var client="http://www.woshinidezhu.com"
 
 try
 {
