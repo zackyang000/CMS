@@ -40,8 +40,8 @@ exports.update = function(req, res, next) {
 };
 
 // Get default category.
-exports.default = function(req, res, next) {
-  Category.findOne({default: true}, function(err, category) {
+exports.main = function(req, res, next) {
+  Category.findOne({main: true}, function(err, category) {
     if(err) {
       next(err);
     }

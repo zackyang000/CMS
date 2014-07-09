@@ -3,7 +3,7 @@ categories = require('../../controllers/article/categories');
 module.exports = function (app, prefix) {
   app.get(prefix + "/categories", categories.all);
   app.post(prefix + "/categories", categories.create);
-  app.get(prefix + "/categories/default", categories.default);
+  app.get(prefix + "/categories/default", categories.main);
   app.get(prefix + "/categories/:id", categories.get);
   app.put(prefix + "/categories/:id", categories.update);
 };

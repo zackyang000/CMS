@@ -8,7 +8,7 @@
       resolve:
         articles: ['$rootScope', '$route', '$q', 'Articles', 'Categories', ($rootScope,$route,$q,Articles,Categories)->
           deferred = $q.defer()
-          Categories.default  (category) ->
+          Categories.main (category) ->
             Articles.query
               category: category.name
             ,(data)->

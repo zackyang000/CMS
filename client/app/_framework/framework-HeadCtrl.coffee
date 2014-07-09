@@ -8,7 +8,7 @@ angular.module("framework.controllers.head",['resource.categories'])
 
       $scope.isActiveChannel = (category) ->
         #home page
-        return true if category.isDefault && ($location.path() == "/" || $location.path() == "/list")
+        return true if category.main && ($location.path() == "/" || $location.path() == "/list")
         #article list
         return true if $location.path().indexOf(category.Url) > -1
         #article detail
