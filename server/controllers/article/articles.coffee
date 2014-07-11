@@ -8,8 +8,7 @@ exports.create = (req, res, next) ->
   article.save (err) ->
     if err
       next(err)
-    else
-      res.jsonp(article)
+    res.jsonp(article)
 
 # Update article.
 exports.update = (req, res, next) ->
@@ -24,8 +23,7 @@ exports.update = (req, res, next) ->
     article.save (err) ->
       if err
         next(err)
-      else
-        res.jsonp(article)
+      res.jsonp(article)
 
 # Show article.
 exports.get = (req, res) ->
@@ -43,5 +41,4 @@ exports.all = (req, res, next) ->
   Article.find().sort("-date").exec (err, article) ->
     if err
       next(err)
-    else
-      res.jsonp(article)
+    res.jsonp(article)

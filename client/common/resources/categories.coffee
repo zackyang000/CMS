@@ -4,7 +4,7 @@
   $resource "#{config.apiHost}/categories/:id/:action", {id:'@id'},
     update:
       method: "PUT"
-    default:
+    main:
       method: "GET"
       params:
         action:'default'

@@ -8,8 +8,7 @@ exports.create = (req, res, next) ->
   category.save (err) ->
     if err
       next(err)
-    else
-      res.jsonp(category)
+    res.jsonp(category)
 
 # Update category.
 exports.update = (req, res, next) ->
@@ -18,16 +17,13 @@ exports.update = (req, res, next) ->
   , (err, category) ->
     if err
       next(err)
-    else
-      unless category
-        next(new Error("Failed to load category " + req.params.id))
-      else
-        category = _.extend(category, req.body)
-        category.save (err) ->
-          if err
-            next(err)
-          else
-            res.jsonp(category)
+    unless category
+      next(new Error("Failed to load category " + req.params.id))
+    category = _.extend(category, req.body)
+    category.save (err) ->
+      if err
+        next(err)
+      res.jsonp(category)
 
 
 # Get default category.
