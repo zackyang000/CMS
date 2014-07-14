@@ -13,13 +13,13 @@
 <!--=== Content Part ===-->
 <div class="container">   
     <div class="row">
-        <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="item in list | filter:{IsHidden:false}">
+        <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="gallery in galleries | filter: {hidden:false}">
             <div class="view view-tenth">
-                <img class="img-responsive" ng-src="{{item.Cover | remoteImage}}" alt="" />
+                <img class="img-responsive" ng-src="{{gallery.cover | remoteImage}}" alt="" />
                 <div class="mask">
-                    <h2>{{item.Name}}</h2>
-                    <p>{{item.Description}}</p>
-                    <a href="/gallery/{{item.Name}}" class="info">Read More</a>
+                    <h2>{{gallery.name}}</h2>
+                    <p>{{gallery.description}}</p>
+                    <a href="/gallery/{{gallery.name}}" class="info">Read More</a>
                 </div>                
             </div>
         </div>

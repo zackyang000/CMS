@@ -9,15 +9,13 @@
       resolve:
         galleries: ['$q','Galleries',($q,Galleries)->
           deferred = $q.defer()
-          Galleries.queryOnce
-            $filter:'IsDeleted eq false'
-          , (data) -> 
-            deferred.resolve data.value
+          Galleries.query  (data) ->
+            deferred.resolve data
           deferred.promise
         ]
 ])
 
 .controller('GalleryCtrl',
 ["$scope","galleries", ($scope,galleries) ->
-  $scope.list=galleries
+  $scope.galleries = galleries
 ])

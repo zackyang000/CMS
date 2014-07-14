@@ -5,8 +5,9 @@ GallerySchema = new Schema(
   name: String
   description: String
   cover: String
-  isHidden: String
+  hidden: String
   date: Date
+  photos: Array
 )
 
 mongoose.model "Gallery", GallerySchema

@@ -1,5 +1,6 @@
 mongoose = require("mongoose")
 Gallery = mongoose.model("Gallery")
+Photo = mongoose.model("Photo")
 crypto = require("crypto")
 _ = require("lodash")
 
@@ -29,16 +30,24 @@ exports.update = (req, res, next) ->
       res.jsonp(gallery)
 
 
-# Show an gallery.
-exports.get = (req, res) ->
+# Show an gallery include photos.
+exports.get = (req, res, next) ->
   Gallery.findOne
-    loginName: req.params.id
+    name: req.params.id
   , (err, gallery) ->
     if err
       next(err)
     unless gallery
       next(new Error("Failed to load gallery " + req.query.id))
-    res.jsonp(gallery)
+    console.log(gallery)
+    Photo.find
+      gallery: req.params.id
+    , (err, photos) ->
+      if err
+        next(err)
+      gallery.photos = photos
+      console.log(photos)
+      res.jsonp(gallery)
 
 
 # List of galleries.

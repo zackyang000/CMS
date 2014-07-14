@@ -6,13 +6,12 @@
       templateUrl: "/app/gallery/detail/gallery-detail.tpl.html"
       controller: 'GalleryDetailCtrl'
       resolve:
-        gallery: ['$route','$q','Gallery',($route,$q,Galleries)->
+        gallery: ['$route', '$q', 'Galleries', ($route, $q, Galleries) ->
           deferred = $q.defer()
-          Galleries.queryOnce
-            $filter:"Name eq '#{$route.current.params.name}' and IsDeleted eq false"
-            $expand:"Photos"
-          , (data) -> 
-            deferred.resolve data.value[0]
+          Galleries.get
+            id: $route.current.params.name
+          , (data) ->
+            deferred.resolve data
           deferred.promise
         ]
 ])
@@ -20,8 +19,8 @@
 .controller('GalleryDetailCtrl',
 ["$scope","$rootScope","$translate","gallery","$timeout"
 ($scope,$rootScope,$translate,gallery,$timeout) ->
-  $rootScope.title='Gallery '+gallery.Name
-  $scope.item=gallery
+  $rootScope.title = 'Gallery '+ gallery.Name
+  $scope.gallery = gallery
 
   #TODO:改为指令加载相册
   $.fn.photobox('prepareDOM')

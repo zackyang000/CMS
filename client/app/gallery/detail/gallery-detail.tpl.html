@@ -1,11 +1,11 @@
 ﻿<!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-30">
     <div class="container">
-        <h1 class="pull-left">{{item.Name}}</h1>
+        <h1 class="pull-left">{{gallery.name}}</h1>
         <ul class="pull-right breadcrumb">
             <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
             <li><a href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
-            <li class="active">{{item.Name}}</li>
+            <li class="active">{{gallery.name}}</li>
         </ul>
     </div>
 </div>
@@ -13,14 +13,14 @@
 
 <!--=== Content Part ===-->
 <div class="container">
-    <blockquote class="hero" ng-show="item.Description">
-        <p>{{item.Description}}</p>
+    <blockquote class="hero" ng-show="gallery.description">
+        <p>{{gallery.description}}</p>
     </blockquote>
     <div class='gallery'>
         <ul>
-            <li ng-repeat="photo in item.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
-                <a ng-href="{{photo.Path | remoteImage}}">
-                    <img ng-src="{{photo.Thumbnail | remoteImage}}" alt="{{photo.Name}}">
+            <li ng-repeat="photo in gallery.photos | orderBy:'Name'">
+                <a ng-href="{{photo.url | remoteImage}}">
+                    <img ng-src="{{photo.thumbnail | remoteImage}}" alt="{{photo.name}}">
                 </a>
             </li>
         </ul>
