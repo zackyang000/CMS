@@ -1,17 +1,6 @@
-#server
-[Bb]in/
-[Oo]bj/
-packages/
-*.suo
-*.user
-
 _dist/
 node_modules/
 
 #other
 .idea
 *.orig
-server-dotnet/YangKai.BlogEngine.Web.Mvc/error/error-*
-server-dotnet/YangKai.BlogEngine.Web.Mvc/feed_articles.xml
-server-dotnet/YangKai.BlogEngine.Web.Mvc/feed_comments.xml
-server-dotnet/YangKai.BlogEngine.Web.Mvc/UpLoad/
