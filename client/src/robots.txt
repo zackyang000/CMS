@@ -1,5 +1,0 @@
-# robots.txt for http://www.woshinidezhu.com/
-
-User-agent: *
-Disallow:/elmah.axd
-Disallow:/admin

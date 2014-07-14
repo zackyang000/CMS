@@ -1,0 +1,46 @@
+﻿<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">
+            Blog
+        </h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li ng-if="params.channel && params.group"><a href="/list/{{params.channel}}">{{params.channel}}</a></li>
+            <li class="active" ng-if="params.channel && !params.group">{{params.channel}}</li>
+            <li ng-if="params.group && !(!params.tag && !params.key)"><a href="/list/{{params.channel}}/{{params.group}}">{{params.group}}</a></li>
+            <li class="active" ng-if="params.group && (!params.tag && !params.key)">{{params.group}}</li>
+            <li class="active" ng-if="params.tag">{{'article.breadcrumb.tag' | translate:params}}</li>
+            <li class="active" ng-if="params.key">{{'article.breadcrumb.key' | translate:params}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+        <div class="col-md-9 md-margin-bottom-60">
+            <!--Blog Post-->
+            <div class="blog margin-bottom-40" ng-repeat="item in list">
+                <h2><a ng-href="/post/{{item.url}}" ng-bind-html="item.title | highlight:params.key"></a></h2>
+                <div ng-include="'/app/article/common/article-post-header.tpl.html'"></div>
+                <p ng-bind-html-unsafe="item.description"></p>
+                <p><a class="btn-u btn-u-small" ng-href="/post/{{item.url}}"><i class="icon-plus-sign"></i> Read More</a></p>
+            </div>
+            <!--End Blog Post-->
+
+            <!--Pagination-->
+            <div zy-odata-pager="list" class="text-center"></div>
+            <!--End Pagination-->
+        </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+	    <div class="col-md-3 magazine-page">
+        </div>
+        <!-- End Right Sidebar -->
+    </div>
+</div>
+<!--=== End Content Part ===-->

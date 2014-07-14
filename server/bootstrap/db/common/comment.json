@@ -1,0 +1,25 @@
+[
+  {
+    "author": "Guest",
+    "content": "This is content of this comment.",
+    "email": null,
+    "date": "2014-01-01",
+    "type": "article",
+    "linkId": "test-article"
+  },
+  {
+    "author": "Zack",
+    "content": "Good article.",
+    "email": "zackyang@outlook.com",
+    "date": "2014-01-02",
+    "type": "article",
+    "linkId": "test-article"
+  },
+  {
+    "author": "Zack",
+    "content": "This is content of this message.",
+    "email": "zackyang@outlook.com",
+    "date": "2014-01-03",
+    "type": "message"
+  }
+]

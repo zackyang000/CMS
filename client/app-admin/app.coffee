@@ -1,0 +1,55 @@
+﻿angular.module("app",
+['ngRoute'
+'ngCookies'
+'ngSanitize'
+'dashboard'
+'basedata'
+'article'
+'board'
+'gallery'
+'system'
+'framework.controllers'
+'zy.services'
+'zy.directives'
+'zy.filters'
+'zy.untils'
+'pasvaz.bindonce'
+'ngGrid'
+'ngProgress'
+'ngStorage'
+'angularFileUpload'
+'ui.utils'
+'ui.bootstrap'
+])
+
+.config(["$locationProvider",($locationProvider) ->
+  $locationProvider.html5Mode(true)
+])
+
+#when route missing then goto 404 page.
+.config(["$routeProvider",($routeProvider) ->
+  $routeProvider.otherwise redirectTo: "/404"
+])
+
+#hide current neg-progress when route start to change.
+.run(["$rootScope","progress", ($rootScope,progress) ->
+  $rootScope.$on '$routeChangeStart', ->
+    progress.complete()
+])
+
+#try to auto login.
+.run(["$rootScope","security","$location","context",
+($rootScope,security,$location, context) ->
+  current = $location.path()
+  if current != '/login'
+    $rootScope.__returnUrl = current
+  $location.path('/login').replace()
+  security.autoLogin().then (data) ->
+    context.account=
+      name:data.name
+      email:data.email
+    context.auth.admin = true
+    $rootScope.$broadcast "loginSuccessed"
+  , ->
+    $rootScope.$broadcast "logoutSuccessed"
+])
