@@ -39,14 +39,13 @@ exports.get = (req, res, next) ->
       next(err)
     unless gallery
       next(new Error("Failed to load gallery " + req.query.id))
-    console.log(gallery)
     Photo.find
       gallery: req.params.id
     , (err, photos) ->
       if err
         next(err)
+      gallery = gallery.toJSON()
       gallery.photos = photos
-      console.log(photos)
       res.jsonp(gallery)
 
 
