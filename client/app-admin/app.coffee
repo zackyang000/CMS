@@ -3,7 +3,7 @@
 'ngCookies'
 'ngSanitize'
 'dashboard'
-'basedata'
+'category'
 'article'
 'board'
 'gallery'

@@ -1,15 +1,15 @@
-﻿angular.module('basedata-channel',['resource.categories'])
+﻿angular.module('category',['resource.categories'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/category",
-      templateUrl: "/app-admin/basedata/channel/basedata-channel.tpl.html"
-      controller: 'ChannelCtrl'
+      templateUrl: "/app-admin/category/category.tpl.html"
+      controller: 'CategoryCtrl'
 ])
 
-.controller('ChannelCtrl',
-["$scope","$dialog","Channel", "messager"
-($scope,$dialog,Channel, messager) ->
+.controller('CategoryCtrl',
+["$scope","$dialog","Categories"
+($scope,$dialog,Categories) ->
   $scope.entity = {}
 
   load = ->
