@@ -28,6 +28,7 @@
 
   $scope.save = ->
     $scope.loading="Saving"
+    $scope.entity.main = !!$scope.entity.main
     if $scope.entity._id
       Categories.update {id:$scope.entity._id}, $scope.entity
       ,(data)->
