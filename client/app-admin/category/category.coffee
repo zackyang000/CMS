@@ -27,10 +27,9 @@
     $scope.editDialog = true
 
   $scope.save = ->
-    debugger
     $scope.loading="Saving"
     if $scope.entity._id
-      Categories.edit {id:$scope.entity._id},$scope.entity
+      Categories.update {id:$scope.entity._id}, $scope.entity
       ,(data)->
         messager.success "Edit category successfully."
         $scope.close()
