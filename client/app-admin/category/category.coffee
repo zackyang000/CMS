@@ -45,9 +45,8 @@
   $scope.remove = (item)->
     messager.confirm ->
       $scope.loading="Deleting"
-      item.IsDeleted = true
-      Categories.edit {id:$scope.entity._id},item
-      ,(data)->
+      Categories.delete {id:item._id}
+      , (data) ->
         messager.success "Delete channel successfully."
         load()
 

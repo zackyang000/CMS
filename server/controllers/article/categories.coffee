@@ -68,8 +68,4 @@ exports.remove = (req, res, next) ->
       next(err)
     unless category
       next(new Error("Failed to load category " + req.params.id))
-    category = _.extend(category, req.body)
-    category.save (err) ->
-      if err
-        next(err)
-      res.jsonp(category)
+    res.jsonp({result:"ok"})
