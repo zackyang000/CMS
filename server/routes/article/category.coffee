@@ -8,3 +8,4 @@ module.exports = (app, prefix) ->
   app.post prefix + "/categories", categories.create
   app.get prefix + "/categories/:id", categories.get
   app.put prefix + "/categories/:id", categories.update
+  app.del prefix + "/categories/:id", categories.remove

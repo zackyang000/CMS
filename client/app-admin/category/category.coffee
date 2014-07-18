@@ -8,13 +8,13 @@
 ])
 
 .controller('CategoryCtrl',
-["$scope","$dialog","Categories"
-($scope,$dialog,Categories) ->
+["$scope","$dialog","Categories", "messager"
+($scope,$dialog,Categories, messager) ->
   $scope.entity = {}
 
   load = ->
     $scope.loading="Loading"
-    Channel.query (data)->
+    Categories.query (data)->
       $scope.list = data
       $scope.loading=""
 
@@ -27,18 +27,18 @@
     $scope.editDialog = true
 
   $scope.save = ->
+    debugger
     $scope.loading="Saving"
-    if $scope.entity.ChannelId
-      Channel.edit {id:"(guid'#{$scope.entity.ChannelId}')"},$scope.entity
+    if $scope.entity._id
+      Categories.edit {id:$scope.entity._id},$scope.entity
       ,(data)->
-        messager.success "Edit channel successfully."
+        messager.success "Edit category successfully."
         $scope.close()
         load()
     else
-      $scope.entity.ChannelId=UUID.generate()
-      Channel.save $scope.entity
+      Categories.save $scope.entity
       ,(data)->
-        messager.success "Add channel successfully."
+        messager.success "Add category successfully."
         $scope.close()
         load()
 
@@ -46,7 +46,7 @@
     messager.confirm ->
       $scope.loading="Deleting"
       item.IsDeleted = true
-      Channel.edit {id:"(guid'#{item.ChannelId}')"},item
+      Categories.edit {id:$scope.entity._id},item
       ,(data)->
         messager.success "Delete channel successfully."
         load()

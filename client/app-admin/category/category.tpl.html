@@ -20,19 +20,15 @@
             <tr>
                 <th>Default</th>
                 <th>Name</th>
-                <th>Url</th>
                 <th>Description</th>
-                <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in list.value">
-                <td><span ng-show="item.IsDefault"><i class="icon-ok"></i></span></td>
-                <td>{{item.Name}}</td>
-                <td>{{item.Url}}</td>
-                <td>{{item.Description}}</td>
-                <td><a ng-href="channel('{{item.Url}}')/group">Groups</a></td>
+            <tr ng-repeat="item in list">
+                <td><span ng-show="item.main"><i class="icon-ok"></i></span></td>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
                 <td>
                     <div class="action-buttons">
                         <a class="green" href="JavaScript:void(0)" ng-click="edit(item)">
@@ -58,26 +54,20 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Name</label>
                             <div class="col-lg-9">
-                                <input type="text" class="form-control" ng-model="entity.Name" required />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Url</label>
-                            <div class="col-lg-9">
-                                <input type="text" class="form-control" ng-model="entity.Url" required />
+                                <input type="text" class="form-control" ng-model="entity.name" required />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Description</label>
                             <div class="col-lg-9">
-                                <textarea class="form-control" ng-model="entity.Description" rows="3"></textarea>
+                                <textarea class="form-control" ng-model="entity.description" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label"></label>
                             <div class="col-lg-9">
                                 <label>
-                                    <input type="checkbox" class="ace" ng-model="entity.IsDefault" />
+                                    <input type="checkbox" class="ace" ng-model="entity.main" />
                                     <span class="lbl">Default</span>
                                 </label>
                             </div>

@@ -2,10 +2,7 @@ mongoose = require("mongoose")
 Schema = mongoose.Schema
 
 CategorySchema = new Schema(
-  name:
-    type: String
-    unique: true
-
+  name: String
   description: String
   main: Boolean
 )

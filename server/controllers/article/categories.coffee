@@ -4,6 +4,7 @@ _ = require("lodash")
 
 # Create category.
 exports.create = (req, res, next) ->
+  debugger
   category = new Category(req.body)
   category.save (err) ->
     if err
@@ -49,6 +50,7 @@ exports.get = (req, res, next) ->
       next new Error("Failed to load category " + req.query.id)
     res.jsonp(category)
 
+
 # List of categories.
 exports.all = (req, res) ->
   Category.find().sort("name").exec (err, category) ->
@@ -56,3 +58,18 @@ exports.all = (req, res) ->
       res.render "error",
         status: 500
     res.jsonp(category)
+
+
+# Delete category.
+exports.remove = (req, res, next) ->
+  Category.remove { _id : req.params.id }
+  , (err, category) ->
+    if err
+      next(err)
+    unless category
+      next(new Error("Failed to load category " + req.params.id))
+    category = _.extend(category, req.body)
+    category.save (err) ->
+      if err
+        next(err)
+      res.jsonp(category)
