@@ -24,7 +24,6 @@
                 <th>category</th>
                 <th>status</th>
                 <th>date</th>
-                <th>password</th>
                 <th>author</th>
                 <th>views</th>
                 <th>comments</th>
@@ -32,20 +31,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in list.value" style="height: 51px;">
-                <td><img style="width: 24px;height: 15px;" ng-src="{{item.Thumbnail | remoteImage}}" ng-show="item.Thumbnail" /></td>
-                <td><a href="article('{{item.PostId}}')">{{item.Title}}</a></td>
-                <td>{{item.CreateUser}}</td>
-                <td>{{item.Group.Channel.Name}}</td>
-                <td>{{item.Group.Name}}</td>
-                <td>
-                    <span ng-repeat="tag in item.Tags">
-                        <span ng-hide="$first">,</span>
-                        <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
-                    </span>
-                </td>
-                <td>{{item.ReplyCount}}</td>
-                <td>{{item.PubDate | date:"yyyy.MM.dd"}}</td>
+            <tr ng-repeat="item in list" style="height: 51px;">
+                <td><img style="width: 24px;height: 15px;" ng-src="{{item.meta.thumbnail | remoteImage}}" ng-show="item.meta.thumbnail" /></td>
+                <td><a href="article/{{item._id}}">{{item.title}}</a></td>
+                <td>{{item.url}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.date | date:'yyyy-MM-dd HH:mm'}}</td>
+                <td>{{item.meta.author}}</td>
+                <td>{{item.meta.views}}</td>
+                <td>{{item.meta.comments}}</td>
+                <td>{{item.meta.tags}}</td>
             </tr>
         </tbody>
     </table>

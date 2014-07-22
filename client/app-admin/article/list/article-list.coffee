@@ -8,14 +8,11 @@
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$routeParams","$location","Article", 
-($scope,$routeParams,$location,Article) ->
+["$scope","$routeParams","$location","Articles",
+($scope,$routeParams,$location,Articles) ->
   $scope.setPage = (pageNo) ->
     $scope.loading="Loading"
-    Article.query
-      $filter:'IsDeleted eq false and Group/IsDeleted eq false and Group/Channel/IsDeleted eq false'
-      $skip:(pageNo-1)*10
-    , (data)->
+    Articles.query (data) ->
       $scope.list = data
       $scope.loading=""
 
