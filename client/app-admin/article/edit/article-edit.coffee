@@ -17,7 +17,6 @@
       controller: 'ArticleEditCtrl'
 ])
 
-
 .controller('ArticleEditCtrl',
 ["$scope","$routeParams","$window","$rootScope","$fileUploader","Article","Channel","$timeout","TranslateService", "messager"
 ($scope,$routeParams,$window,$rootScope,$fileUploader,Article,Channel,$timeout,TranslateService, messager) ->
