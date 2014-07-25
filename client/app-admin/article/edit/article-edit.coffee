@@ -9,7 +9,7 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/article(':id')",
+    .when "/article/:id",
       templateUrl: "/app-admin/article/edit/article-edit.tpl.html"
       controller: 'ArticleEditCtrl'
     .when "/article/new",
@@ -18,14 +18,13 @@
 ])
 
 .controller('ArticleEditCtrl',
-["$scope","$routeParams","$window","$rootScope","$fileUploader","Article","Channel","$timeout","TranslateService", "messager"
-($scope,$routeParams,$window,$rootScope,$fileUploader,Article,Channel,$timeout,TranslateService, messager) ->
-  $scope.channels=Channel.query $expand:'Groups',()->
+["$scope","$routeParams","$window","$rootScope","$fileUploader","Articles","Categories","$timeout","TranslateService", "messager"
+($scope,$routeParams,$window,$rootScope,$fileUploader,Articles,Categories,$timeout,TranslateService, messager) ->
+  $scope.categories = Categories.query (data)->
     if $routeParams.id
       $scope.loading="Loading"
-      Article.get 
-        $filter:"PostId eq (guid'#{$routeParams.id}')"
-        $expand:'Tags,Group/Channel'
+      Articles.get
+        id : $routeParams.id
       , (data)->
           $scope.entity=data.value[0]
           if $scope.entity.Group
@@ -76,13 +75,13 @@
         entity.Tags.push({TagId:UUID.generate(),Name:item})
     if !$routeParams.id
       entity.PostId=UUID.generate()
-      Article.save entity,
+      Articles.save entity,
       (data) ->
         $window.location.href = "/post/#{data.Url}"
       ,(error) ->
         $scope.loading=""
     else
-      Article.update {id:"(guid'#{entity.PostId}')"},entity,
+      Articles.update {id:"(guid'#{entity.PostId}')"},entity,
       (data)->
         $window.location.href = "/post/#{data.Url}"
       ,(error) ->
@@ -93,7 +92,7 @@
       $scope.loading="Deleting"
       entity=$scope.entity
       entity.IsDeleted=true
-      Article.update {id:"(guid'#{entity.PostId}')"},entity
+      Articles.update {id:"(guid'#{entity.PostId}')"},entity
       ,(data)->
         messager.success "Delete post successfully."
         $window.location.href = "article"

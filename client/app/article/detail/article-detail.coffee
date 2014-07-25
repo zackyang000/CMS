@@ -8,10 +8,10 @@
       resolve:
         article: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
-          Articles.get
-            id: $route.current.params.url
+          Articles.query
+            url: $route.current.params.url
           , (data) ->
-            deferred.resolve data
+            deferred.resolve(data[0])
           deferred.promise
         ]
 ])
@@ -20,7 +20,7 @@
 ["$scope","$window", "$translate", "$route", "article", "Comments", "context", "progressbar"
 ($scope, $window, $translate, $route, article, Comments, context, progressbar) ->
   $window.scroll(0,0)
-
+  debugger
   $scope.item = article
 
   codeformat()#格式化代码

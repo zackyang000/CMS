@@ -68,20 +68,11 @@
                 </div>
             </div>
             <div class="sider" ng-class="{'has-error': isSubmit && !channelValid()}">
-                <div>Channel</div>
+                <div>Category</div>
                 <div>
-                    <label class="radio-inline" ng-repeat="item in channels.value">
-                        <input type="radio" value="{{item.ChannelId}}" ng-model="$parent.channelId"> {{item.Name}}
+                    <label class="radio-inline" ng-repeat="item in categories">
+                        <input type="radio" value="{{item.name}}" ng-model="entity.category"> {{item.name}} - {{entity.category}}
                     </label>
-                </div>
-            </div>
-            <div class="sider" ng-class="{'has-error': isSubmit && !groupValid()}">
-                <div>Group</div>
-                <div>
-                    <label class="radio-inline" ng-repeat="item in getGroups() | filter:{IsDeleted:false}">
-                        <input type="radio" value="{{item.GroupId}}" ng-model="$parent.groupId"> {{item.Name}}
-                    </label>
-                    &nbsp;
                 </div>
             </div>
             <div class="sider">

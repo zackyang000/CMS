@@ -26,9 +26,10 @@ exports.update = (req, res, next) ->
       res.jsonp(article)
 
 # Show article.
-exports.get = (req, res) ->
+exports.get = (req, res, next) ->
+  debugger
   Article.findOne
-    url: req.params.id
+    _id: req.params.id
   , (err, article) ->
     if err
       next(err)
@@ -38,7 +39,9 @@ exports.get = (req, res) ->
 
 # List of articles.
 exports.all = (req, res, next) ->
-  Article.find().sort("-date").exec (err, article) ->
+  if req.query.url
+    query = url: req.query.url
+  Article.find(query).sort("-date").exec (err, article) ->
     if err
       next(err)
     res.jsonp(article)
