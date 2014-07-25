@@ -5,21 +5,21 @@
             <a href="/admin">Home</a>
         </li>
         <li><a href="article">Article</a></li>
-        <li class="active" ng-hide="entity.CreateDate">New</li>
-        <li class="active" ng-show="entity.CreateDate">Edit (<span bindonce="entity" bo-html="entity.Title"></span>)</li>
+        <li class="active" ng-hide="entity.date">New</li>
+        <li class="active" ng-show="entity.date">Edit (<span bindonce="entity" bo-html="entity.title"></span>)</li>
     </ul>
 </div>
 
 <div class="page-content">
     <form name="form" novalidate ng-submit="submit()" class="row article-detail">
         <div class="col-lg-8">
-            <div class="form-group" ng-class="{'has-error': isSubmit && form.Title.$invalid}">
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.title.$invalid}">
                 <label class="control-label">Title</label>
                 <div>
-                    <input type="text" class="form-control" name="Title" ng-model="entity.Title" ng-change="translateTitle()" required />
+                    <input type="text" class="form-control" name="title" ng-model="entity.title" ng-change="translateTitle()" required />
                 </div>
             </div>
-            <div class="form-group" ng-class="{'has-error': isSubmit && form.Url.$invalid,'has-warning':Translating}">
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.url.$invalid,'has-warning':Translating}">
                 <label class="control-label">
                     Url
                     <span ng-show="Translating">
@@ -27,19 +27,19 @@
                     </span>
                 </label>
                 <div>
-                    <input type="text" class="form-control" name="Url" ng-model="entity.Url" required />
+                    <input type="text" class="form-control" name="url" ng-model="entity.url" required />
                 </div>
             </div>
-            <div class="form-group" ng-class="{'has-error': isSubmit && form.Content.$invalid}">
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.content.$invalid}">
                 <label class="control-label">Content</label>
                 <div>
-                    <textarea ck-editor name="Content" ng-model="entity.Content" required></textarea>
+                    <textarea ck-editor name="content" ng-model="entity.content" required></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label">Description</label>
                 <div>
-                    <textarea ck-editor name="Description" ng-model="entity.Description"></textarea>
+                    <textarea ck-editor name="description" ng-model="entity.description"></textarea>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
                     <div class="pull-left">
                         <button class="btn btn-primary btn-sm" ng-disabled="loading">Submit</button>
                     </div>
-                    <div class="pull-right" ng-show="entity.CreateDate">
+                    <div class="pull-right" ng-show="entity.date">
                         <button type="button" class="btn btn-danger btn-sm" ng-disabled="loading" ng-click="remove()">Remove</button>
                     </div>
                 </div>
@@ -58,16 +58,16 @@
             <div class="sider">
                 <div>Thumbnail</div>
                 <div>
-                    <div ng-hide="entity.Thumbnail">
+                    <div ng-hide="entity.meta.thumbnail">
                         <input type="file" ng-file-select />
                     </div>
-                    <div ng-show="entity.Thumbnail">
-                        <img class="img-thumbnail img-article-thumbnail" style="width: 160px;height: 120px;" ng-src="{{entity.Thumbnail | remoteImage}}" />
+                    <div ng-show="entity.meta.thumbnail">
+                        <img class="img-thumbnail img-article-thumbnail" style="width: 160px;height: 120px;" ng-src="{{entity.meta.thumbnail | remoteImage}}" />
                         <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeThumbnail()"></a>
                     </div>
                 </div>
             </div>
-            <div class="sider" ng-class="{'has-error': isSubmit && !channelValid()}">
+            <div class="sider" ng-class="{'has-error': isSubmit && !entity.category}">
                 <div>Category</div>
                 <div>
                     <label class="radio-inline" ng-repeat="item in categories">
@@ -85,7 +85,7 @@
                 <div>
                     <div class="form-group">
                         <label class="control-label">Url</label>
-                            <input type="text" class="form-control" ng-model="entity.Source"/>
+                            <input type="text" class="form-control" ng-model="entity.meta.source"/>
                     </div>
                 </div>
             </div>

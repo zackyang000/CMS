@@ -38,7 +38,7 @@
   $scope.submit = ->
     $scope.isSubmit=true
     return if $scope.form.$invalid
-    return if !$scope.channelValid()
+    return if !$scope.entity.category
 
     $scope.loading="Saving"
 
@@ -47,17 +47,8 @@
     else
       save()
 
-  $scope.channelValid=->
-    return $scope.channels.value
-
   save = ->
-    entity=$scope.entity
-    entity.Group={}
-    entity.Group.GroupId=(item for item in $scope.getGroups() when item.GroupId is $scope.groupId)[0].GroupId
-    entity.Tags=[]
-    if $scope.tags
-      for item in $scope.tags.split(",")
-        entity.Tags.push({TagId:UUID.generate(),Name:item})
+    entity = $scope.entity
     if !$routeParams.id
       entity.PostId=UUID.generate()
       Articles.save entity,
