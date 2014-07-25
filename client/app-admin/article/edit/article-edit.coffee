@@ -22,35 +22,23 @@
 ($scope,$routeParams,$window,$rootScope,$fileUploader,Articles,Categories,$timeout,TranslateService, messager) ->
   $scope.categories = Categories.query (data)->
     if $routeParams.id
-      $scope.loading="Loading"
+      $scope.loading = "Loading"
       Articles.get
         id : $routeParams.id
       , (data)->
-          $scope.entity=data.value[0]
-          if $scope.entity.Group
-            $scope.channelId=$scope.entity.Group.Channel.ChannelId
-            $scope.groupId=$scope.entity.Group.GroupId
-          if !$scope.entity.Url
+          $scope.entity=data
+          if !$scope.entity.url
             $scope.translateTitle()
-          if $scope.entity.Tags
-            $scope.tags=''
-            for item in $scope.entity.Tags 
-              $scope.tags+=','+item.Name
-            $scope.tags=$scope.tags.substring(1)
+          if $scope.entity.meta.tags
+            $scope.tags = $scope.entity.meta.tags.join(',')
           $scope.loading=""
     else
       $scope.entity={}
-
-  $scope.getGroups = ->
-    return undefined if $scope.channels.value is undefined
-    for item in $scope.channels.value
-      return item.Groups if item.ChannelId==$scope.channelId
 
   $scope.submit = ->
     $scope.isSubmit=true
     return if $scope.form.$invalid
     return if !$scope.channelValid()
-    return if !$scope.groupValid()
 
     $scope.loading="Saving"
 
@@ -61,9 +49,6 @@
 
   $scope.channelValid=->
     return $scope.channels.value
-
-  $scope.groupValid=->
-    return $scope.groupId
 
   save = ->
     entity=$scope.entity
