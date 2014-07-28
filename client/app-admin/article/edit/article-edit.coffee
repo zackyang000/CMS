@@ -89,16 +89,16 @@
   #URL根据Title翻译获取.
   timeout=undefined
   $scope.translateTitle = ->
-    if $scope.entity.Title
+    if $scope.entity.title
       $timeout.cancel timeout if timeout
-      timeout = $timeout(->
-        $scope.Translating=true
-        TranslateService.events($scope.entity.Title).success (data, status) ->
+      timeout = $timeout( ->
+        $scope.translating=true
+        TranslateService.events($scope.entity.title).success (data) ->
           data = $.trim(data)
           data = data.toLowerCase()
           data = data.replace(/[^_a-zA-Z\d\s]/g, '')
           data = data.replace(/[\s]/g, "-")
-          $scope.entity.Url=data
-          $scope.Translating=false
+          $scope.entity.url=data
+          $scope.translating=false
       , 500)
 ])

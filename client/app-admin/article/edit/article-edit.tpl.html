@@ -19,10 +19,10 @@
                     <input type="text" class="form-control" name="title" ng-model="entity.title" ng-change="translateTitle()" required />
                 </div>
             </div>
-            <div class="form-group" ng-class="{'has-error': isSubmit && form.url.$invalid,'has-warning':Translating}">
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.url.$invalid,'has-warning':translating}">
                 <label class="control-label">
                     Url
-                    <span ng-show="Translating">
+                    <span ng-show="translating">
                         <i class="icon-spinner icon-spin"></i>
                     </span>
                 </label>
