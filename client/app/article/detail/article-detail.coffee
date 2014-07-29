@@ -70,5 +70,5 @@
   #Article.browsed id:"(guid'#{$scope.item.PostId}')"
 
   $scope.edit = (item) ->
-    $window.location.href="/admin/article('#{item.url}')"
+    $window.location.href="/admin/article/#{item._id}"
 ])

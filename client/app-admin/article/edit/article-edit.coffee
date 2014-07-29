@@ -9,10 +9,10 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/article/:id",
+    .when "/article/new",
       templateUrl: "/app-admin/article/edit/article-edit.tpl.html"
       controller: 'ArticleEditCtrl'
-    .when "/article/new",
+    .when "/article/:id",
       templateUrl: "/app-admin/article/edit/article-edit.tpl.html"
       controller: 'ArticleEditCtrl'
 ])
@@ -33,7 +33,7 @@
             $scope.tags = $scope.entity.meta.tags.join(',')
           $scope.loading=""
     else
-      $scope.entity={}
+      $scope.entity = {}
 
   $scope.submit = ->
     $scope.isSubmit=true
@@ -49,17 +49,19 @@
 
   save = ->
     entity = $scope.entity
+    if $scope.tags
+      $scope.entity.meta.tags = $scope.tags.split(',')
+
     if !$routeParams.id
-      entity.PostId=UUID.generate()
       Articles.save entity,
       (data) ->
-        $window.location.href = "/post/#{data.Url}"
+        $window.location.href = "/post/#{data.url}"
       ,(error) ->
         $scope.loading=""
     else
-      Articles.update {id:"(guid'#{entity.PostId}')"},entity,
+      Articles.update {id: $routeParams.id},entity,
       (data)->
-        $window.location.href = "/post/#{data.Url}"
+        $window.location.href = "/post/#{data.url}"
       ,(error) ->
         $scope.loading=""
 
