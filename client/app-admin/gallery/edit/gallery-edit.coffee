@@ -2,20 +2,20 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/gallery(':id')",
+    .when "/gallery/new",
       templateUrl: "/app-admin/gallery/edit/gallery-edit.tpl.html"
       controller: 'GalleryEditCtrl'
-    .when "/gallery/new",
+    .when "/gallery/:id",
       templateUrl: "/app-admin/gallery/edit/gallery-edit.tpl.html"
       controller: 'GalleryEditCtrl'
 ])
 
 .controller('GalleryEditCtrl',
-["$scope","$routeParams","$location","$rootScope","$fileUploader","Gallery","Photo", "messager"
-($scope,$routeParams,$location,$rootScope,$fileUploader,Gallery,Photo, messager) ->
+["$scope","$routeParams","$location","$rootScope","$fileUploader","Galleries","Photos", "messager"
+($scope,$routeParams,$location,$rootScope,$fileUploader,Galleries,Photos, messager) ->
   $scope.get = ->
     if $routeParams.id
-      Gallery.get 
+      Galleries.get
         $filter:"GalleryId eq (guid'#{$routeParams.id}')"
         $expand:"Photos"
       ,(data)->
@@ -45,7 +45,7 @@
     entity=$scope.entity
     if !$routeParams.id
       entity.GalleryId=UUID.generate()
-    Gallery.update {id:"(guid'#{entity.GalleryId}')"},entity,(data)->
+    Galleries.update {id:"(guid'#{entity.GalleryId}')"},entity,(data)->
       messager.success "Save category successfully."
       if entity.CreateDate
         $scope.get()
