@@ -16,10 +16,9 @@
   $scope.get = ->
     if $routeParams.id
       Galleries.get
-        $filter:"GalleryId eq (guid'#{$routeParams.id}')"
-        $expand:"Photos"
+        id: $routeParams.id
       ,(data)->
-        $scope.entity=data.value[0]
+        $scope.entity=data
         $scope.options =
           url: "#{config.apiHost}/api/FileManage/Photo/#{$routeParams.id}"
           maxFilesize: 100
