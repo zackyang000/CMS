@@ -3,7 +3,7 @@
     "name": "MyPhotos",
     "description": "This is default gallery.",
     "cover": "/img/avatar.png",
-    "isHidden": false,
+    "hidden": false,
     "date": "2014-01-01"
   }
 ]

@@ -8,7 +8,7 @@
 ])
 
 .controller('GalleryCtrl',
-["$scope","$routeParams","$location","Gallery"
-($scope,$routeParams,$location,Gallery) ->
-  $scope.list = Gallery.query()
+["$scope", "$routeParams", "$location", "Galleries"
+($scope, $routeParams, $location, Galleries) ->
+  $scope.list = Galleries.query()
 ])

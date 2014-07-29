@@ -5,7 +5,7 @@ GallerySchema = new Schema(
   name: String
   description: String
   cover: String
-  hidden: String
+  hidden: Boolean
   date: Date
 )
 
