@@ -7,3 +7,5 @@ module.exports = (app, prefix) ->
   app.get(prefix + "/galleries/:id", galleriesCtrl.get)
   app.put(prefix + "/galleries/:id", galleriesCtrl.update)
   app.del(prefix + "/galleries/:id", galleriesCtrl.del)
+  app.post(prefix + "/galleries/:id", galleriesCtrl.addPhoto)
+  app.del(prefix + "/galleries/:id/:photoId", galleriesCtrl.delPhoto)

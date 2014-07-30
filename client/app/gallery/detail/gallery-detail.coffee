@@ -8,10 +8,11 @@
       resolve:
         gallery: ['$route', '$q', 'Galleries', ($route, $q, Galleries) ->
           deferred = $q.defer()
-          Galleries.get
-            id: $route.current.params.name
+          Galleries.query
+            name: $route.current.params.name
+            $expand: "photos"
           , (data) ->
-            deferred.resolve data
+            deferred.resolve data[0]
           deferred.promise
         ]
 ])
