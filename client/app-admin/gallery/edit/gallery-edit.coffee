@@ -43,14 +43,21 @@
   save = ->
     entity=$scope.entity
     if !$routeParams.id
-      entity.GalleryId=UUID.generate()
-    Galleries.update {id:"(guid'#{entity.GalleryId}')"},entity,(data)->
-      messager.success "Save category successfully."
-      if entity.CreateDate
-        $scope.get()
-      else
-        $location.path("gallery('#{entity.GalleryId}')")
-      $scope.loading=""
+      Galleries.save entity,(data)->
+        messager.success "Save category successfully."
+        if entity.date
+          $scope.get()
+        else
+          $location.path("gallery/#{entity._id}")
+        $scope.loading=""
+    else
+      Galleries.update {id:"#{entity._id}'"},entity,(data)->
+        messager.success "Save category successfully."
+        if entity.date
+          $scope.get()
+        else
+          $location.path("gallery/#{entity._id}")
+        $scope.loading=""
 
 
   #上传封面
@@ -59,12 +66,12 @@
     url: "#{config.apiHost}/api/FileManage/upload"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
-    $scope.entity.Cover = res.result
+    $scope.entity.cover = res.result
     save()
   )
 
   $scope.removeCover = ->
-    $scope.entity.Cover = undefined
+    $scope.entity.cover = undefined
 
   #上传照片
   $scope.removePhoto = (item)->
