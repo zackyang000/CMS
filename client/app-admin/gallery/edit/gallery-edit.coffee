@@ -1,4 +1,4 @@
-﻿angular.module('gallery-edit',['resource.galleries','resource.photos'])
+﻿angular.module('gallery-edit', ['resource.galleries'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
@@ -11,8 +11,8 @@
 ])
 
 .controller('GalleryEditCtrl',
-["$scope","$routeParams","$location","$rootScope","$fileUploader","Galleries","Photos", "messager"
-($scope,$routeParams,$location,$rootScope,$fileUploader,Galleries,Photos, messager) ->
+["$scope","$routeParams","$location","$rootScope","$fileUploader","Galleries", "messager"
+($scope,$routeParams,$location,$rootScope,$fileUploader,Galleries, messager) ->
   $scope.get = ->
     if $routeParams.id
       Galleries.get
