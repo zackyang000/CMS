@@ -54,7 +54,7 @@ exports.all = (req, res) ->
     res.send JSON.stringify(users, [
       "name"
       "loginName"
-      "email"
+
       "disabled"
     ])
 
@@ -76,9 +76,8 @@ exports.login = (req, res) ->
   name = req.body.name
   pwd = req.body.password
   User.findOne(
-    loginName: name
     password: pwd
-  ).exec (err, user) ->
+  ).or([{ loginName: name }, { email: name }]).exec (err, user) ->
     unless user
       return res.send(401, "Failed to login.")
     user.token = crypto.createHash("md5").update(new Date() + pwd).digest("hex")
