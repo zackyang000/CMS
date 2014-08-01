@@ -1,20 +1,17 @@
 fs = require("fs")
+mkdirp = require('mkdirp')
 
 module.exports = (app, prefix) ->
   app.post prefix + "/file-upload", (req, res) ->
-    # 获得文件的临时路径
-    tmp_path = req.files.file.path
-
-    # 指定文件上传后的目录 - 示例为"images"目录。
-    target_path = "../client/upload/" + req.files.file.name
+    tmpPath = req.files.file.path
+    filename = req.files.file.path.split('\\').pop() + '.' + req.files.file.name.split('.').pop()
+    targetPath = "../client/upload/"+ req.query.path
+    mkdirp(targetPath)
+    targetPath += '/' + filename
     debugger
-
-    # 移动文件
-    fs.rename tmp_path, target_path, (err) ->
+    fs.rename tmpPath, targetPath, (err) ->
       throw err  if err
-      debugger
 
-      # 删除临时文件夹文件,
-      fs.unlink tmp_path, ->
+      fs.unlink tmpPath, ->
         throw err  if err
-        res.send "File uploaded to: " + target_path + " - " + req.files.file.size + " bytes"
+        res.send targetPath

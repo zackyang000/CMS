@@ -12,7 +12,7 @@ angular.module("zy.directives.dropzone",[])
 
     $(elm).addClass("dropzone")
 
-    $(elm).dropzone
+    myDropzone = $(elm).dropzone
       paramName: "file"
       maxFilesize: options.maxFilesize || 2048 #MB
       url: options.url
@@ -21,4 +21,5 @@ angular.module("zy.directives.dropzone",[])
       dictResponseError: "Upload Faild!"
       acceptedFiles: options.acceptedFiles || null
       previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n  <div class=\"dz-success-mark\"><span></span></div>\n  <div class=\"dz-error-mark\"><span></span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+      success: options.success || ->
 )
