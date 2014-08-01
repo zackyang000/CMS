@@ -20,7 +20,7 @@
       ,(data)->
         $scope.entity=data
         $scope.options =
-          url: "#{config.apiHost}/api/FileManage/Photo/#{$routeParams.id}"
+          url: "#{config.apiHost}/file-upload"
           maxFilesize: 100
           addRemoveLinks: false
           acceptedFiles: "image/*"
@@ -32,8 +32,7 @@
 
   $scope.submit = ->
     $scope.isSubmit=true
-
-    return false if !$scope.entity.Name
+    return false if !$scope.entity.name
     $scope.loading="Saving"
     if $scope.uploader.getNotUploadedItems().length
       $scope.uploader.uploadAll()
@@ -41,29 +40,21 @@
       save()
 
   save = ->
-    entity=$scope.entity
+    $scope.loading="Saving"
+    entity = $scope.entity
     if !$routeParams.id
-      Galleries.save entity,(data)->
-        messager.success "Save category successfully."
-        if entity.date
-          $scope.get()
-        else
-          $location.path("gallery/#{entity._id}")
-        $scope.loading=""
+      Galleries.save entity, (data)->
+        messager.success "Save successfully."
+        $location.path("gallery/#{entity._id}")
     else
-      Galleries.update {id:"#{entity._id}'"},entity,(data)->
-        messager.success "Save category successfully."
-        if entity.date
-          $scope.get()
-        else
-          $location.path("gallery/#{entity._id}")
-        $scope.loading=""
+      Galleries.update {id:"#{entity._id}"},entity,(data)->
+        messager.success "Save successfully."
 
 
   #上传封面
   $scope.uploader = $fileUploader.create
     scope: $scope
-    url: "#{config.apiHost}/api/FileManage/upload"
+    url: "#{config.apiHost}/file-upload"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
     $scope.entity.cover = res.result
@@ -71,17 +62,12 @@
   )
 
   $scope.removeCover = ->
-    $scope.entity.cover = undefined
+    $scope.entity.cover = null
 
   #上传照片
   $scope.removePhoto = (item)->
-    messager.confirm ->
-      $scope.loading="Delete"
-      item.IsDeleted=true
-      Photo.update {id:"(guid'#{item.PhotoId}')"},item,(data)->
-        messager.success "Delete successfully."
-        $scope.loading=""
-        $scope.get()
+    $scope.entity.photos.splice($scope.entity.photos.indexOf(item), 1)
+
 
   $scope.get()
 ])

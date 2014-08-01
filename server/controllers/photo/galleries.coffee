@@ -1,6 +1,5 @@
 mongoose = require("mongoose")
 Gallery = mongoose.model("Gallery")
-crypto = require("crypto")
 _ = require("lodash")
 
 
@@ -15,8 +14,9 @@ exports.create = (req, res, next) ->
 
 # Update an gallery.
 exports.update = (req, res, next) ->
+  debugger
   Gallery.findOne
-    name: req.params.id
+    _id: req.params.id
   , (err, gallery) ->
     if err
       next(err)
@@ -37,7 +37,7 @@ exports.get = (req, res, next) ->
     if err
       next(err)
     unless gallery
-      next(new Error("Failed to load gallery " + req.query.id))
+      next(new Error("Failed to load gallery " + req.params.id))
     gallery = gallery.toJSON()
     res.jsonp(gallery)
 
@@ -56,9 +56,4 @@ exports.all = (req, res) ->
     res.jsonp(galleries)
 
 
-# Delete gallery.
-exports.del = (req, res, next) ->
-
 exports.addPhoto = (req, res, next) ->
-
-exports.delPhoto = (req, res, next) ->

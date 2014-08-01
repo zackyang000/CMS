@@ -11,7 +11,9 @@ mongoose.connect config.db
 
 #express init
 #app.use(express.logger('dev')); /*'default', 'short', 'tiny', 'dev'*/
-app.use(express.bodyParser())
+upload_path = path.join(path.dirname(__dirname), 'client/upload/temp')
+
+app.use(express.bodyParser({uploadDir : upload_path}))
 app.use(express.methodOverride())
 app.use(express.favicon(path.join(__dirname, "../client/img/favicon.ico")))
 app.use(express["static"](path.join(__dirname, "../client")))
