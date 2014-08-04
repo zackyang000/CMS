@@ -26,7 +26,7 @@
           acceptedFiles: "image/*"
           success: (req, res) ->
             debugger
-            
+
         galleryInit()
     else
       $scope.entity = {}
