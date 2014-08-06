@@ -7,7 +7,7 @@ initData = (model, path) ->
   require(appPath + path).forEach (item) ->
     data = new model(item)
     data.save()
-    console.log "Database init: #{path} import successful."
+    console.log "data init: #{path} import successful."
 
 module.exports = ->
   User.find().exec (err, users) ->
