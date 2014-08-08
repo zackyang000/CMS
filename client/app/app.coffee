@@ -44,7 +44,7 @@
   ])
 
 .run(["$location", "$rootScope", ($location, $rootScope) ->
-  $rootScope.$on "$routeChangeSuccess", (event, current, previous) ->
+  $rootScope.$on "$routeChangeSuccess", (event, current) ->
     $rootScope.title = current.$$route?.title ? ''
 ])
 
