@@ -7,11 +7,7 @@ GallerySchema = new Schema(
   cover: String
   hidden: Boolean
   date: Date
-  photos :
-    name: String
-    description: String
-    url: String
-    thumbnail: String
+  photos : []
 )
 
 mongoose.model "Gallery", GallerySchema

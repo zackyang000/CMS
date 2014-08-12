@@ -18,7 +18,7 @@
       Galleries.get
         id: $routeParams.id
       ,(data)->
-        $scope.entity=data
+        $scope.entity = data
         $scope.options =
           url: "#{config.apiHost}/file-upload/?path=gallery/#{$routeParams.id}"
           maxFilesize: 100
@@ -26,6 +26,7 @@
           acceptedFiles: "image/*"
           success: (req, res) ->
             debugger
+            $scope.entity.photos.push res
 
         galleryInit()
     else
