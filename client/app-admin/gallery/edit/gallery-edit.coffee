@@ -26,7 +26,11 @@
           acceptedFiles: "image/*"
           success: (req, res) ->
             debugger
-            $scope.entity.photos.push res
+            $scope.entity.photos.push
+              description: "My first photo."
+              name: "Photo1"
+              thumbnail: res.substr(res.indexOf('upload') - 1)
+              url: res.substr(res.indexOf('upload') - 1)
 
         galleryInit()
     else
@@ -54,6 +58,10 @@
       Galleries.update {id:"#{entity._id}"},entity,(data)->
         messager.success "Save successfully."
 
+  $scope.changeUploadStatus = ->
+    debugger
+    save()  if $scope.uploadPhoto
+    $scope.uploadPhoto = !$scope.uploadPhoto
 
   #上传封面
   $scope.uploader = $fileUploader.create

@@ -61,7 +61,7 @@
         <tab heading="Photos" ng-if="entity._id">
             <div ng-hide="uploadPhoto">
                 <div class="clearfix form-group">
-                    <button type="button" class="btn btn-primary pull-right" ng-click="uploadPhoto=true">
+                    <button type="button" class="btn btn-primary pull-right" ng-click="changeUploadStatus()">
                         <i class="icon-cloud-upload"></i>
                         Upload
                     </button>
@@ -89,7 +89,7 @@
             </div>
             <div ng-show="uploadPhoto">
                 <div class="clearfix form-group">
-                    <button type="button" class="btn btn-default pull-right" ng-click="get();uploadPhoto=false">
+                    <button type="button" class="btn btn-default pull-right" ng-click="changeUploadStatus()">
                         <i class="icon-reply"></i>
                         Back
                     </button>
