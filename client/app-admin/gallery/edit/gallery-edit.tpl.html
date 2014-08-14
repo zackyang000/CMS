@@ -67,7 +67,7 @@
                     </button>
                 </div>
                 <ul class="ace-thumbnails clearfix">
-                    <li ng-repeat="item in entity.photos | orderBy:'name'">
+                    <li ng-repeat="item in entity.photos">
                         <a ng-href="{{item.Path | remoteImage}}" data-rel="colorbox">
                             <img alt="" ng-src="{{item.thumbnail | remoteImage}}" style="width: 100px;height: 100px;" />
                             <div class="tags">

@@ -4,7 +4,7 @@ crypto = require('crypto')
 module.exports = (app, prefix) ->
   app.post prefix + "/file-upload", (req, res) ->
     sourcePath = req.files.file.path
-    filename = crypto.createHash('sha1').update('foo').digest('hex') + '.' + req.files.file.name.split('.').pop()
+    filename = crypto.createHash('sha1').update('' + +new Date()).digest('hex') + '.' + req.files.file.name.split('.').pop()
     targetPath = "../client/upload/"+ req.query.path
     mkdirp(targetPath)
     targetPath += '/' + filename
