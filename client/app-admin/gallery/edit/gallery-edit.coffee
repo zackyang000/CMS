@@ -20,7 +20,7 @@
       ,(data)->
         $scope.entity = data
         $scope.options =
-          url: "#{config.apiHost}/file-upload/?path=gallery/#{$routeParams.id}/photo"
+          url: "#{config.apiHost}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1600"
           maxFilesize: 100
           addRemoveLinks: false
           acceptedFiles: "image/*"
@@ -64,7 +64,7 @@
   #上传封面
   $scope.uploader = $fileUploader.create
     scope: $scope
-    url: "#{config.apiHost}/file-upload/?name=cover&path=gallery/#{$routeParams.id}"
+    url: "#{config.apiHost}/file-upload/?name=cover&path=gallery/#{$routeParams.id}&resize=973x615"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
     debugger
