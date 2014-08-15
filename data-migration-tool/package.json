@@ -1,0 +1,14 @@
+﻿{
+  "name": "data-migration-tool",
+  "version": "0.0.1",
+  "private": false,
+  "author": "Zack <zackyang@outlook.com>",
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.4.ex"
+  },
+  "dependencies": {
+    "coffee-script": "*",
+    "request": "*"
+  }
+}
