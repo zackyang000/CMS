@@ -13,15 +13,13 @@ module.exports = (app, prefix) ->
     fileExtension = req.files.file.name.split('.').pop()
     targetPath = targetFolder + '/' + filename + '.' + fileExtension
 
-
-
     #缩略图
     if req.query.thumbnail
       size = req.query.thumbnail.split('x')
       gm(sourcePath)
-      .resize(size[0] || null, size[1] || null)
+      .resize(size[0] || null, size[1] || null, '@')
       .noProfile()
-      .write targetFolder + '/' + filename + '.thumbnail.' + fileExtension
+      .write targetFolder + '/' + filename + '.thumbnail.' + fileExtension, ->
 
     #裁剪
     complated = (err) ->
@@ -31,7 +29,7 @@ module.exports = (app, prefix) ->
     if req.query.resize
       size = req.query.resize.split('x')
       gm(sourcePath)
-      .resize(size[0] || null, size[1] || null)
+      .resize(size[0] || null, size[1] || null, '@')
       .noProfile()
       .write targetPath, complated
     else

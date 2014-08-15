@@ -20,15 +20,16 @@
       ,(data)->
         $scope.entity = data
         $scope.options =
-          url: "#{config.apiHost}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1600"
+          url: "#{config.apiHost}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1600&thumbnail=100x100"
           maxFilesize: 100
           addRemoveLinks: false
           acceptedFiles: "image/*"
           success: (req, res) ->
+            debugger
             $scope.entity.photos.push
               name: req.name.substr(0, req.name.lastIndexOf('.')) || req.name
               description: ""
-              thumbnail: res
+              thumbnail: res.replace(res.split('.').pop(),'thumbnail.' + res.split('.').pop())
               url: res
 
         galleryInit()
