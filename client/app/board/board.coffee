@@ -1,4 +1,4 @@
-﻿angular.module('board',['resource.articles'])
+﻿angular.module('board',['resource.board'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
@@ -7,28 +7,25 @@
       controller: 'BoardCtrl'
       title: 'Message Boards'
       resolve:
-        messages: ['$q','Comments',($q,Comments)->
+        messages: ['$q','Board',($q, Board)->
           deferred = $q.defer()
-          Comments.query
-            id: 'message'
-          , (data) ->
+          Board.query (data) ->
             deferred.resolve data
           deferred.promise
         ]
 ])
 
 .controller('BoardCtrl',
-["$scope", "$translate", "messages", "context", "progressbar", "Comments"
-($scope, $translate, messages, context, progressbar, Comments) ->
+["$scope", "$translate", "messages", "context", "progressbar", "Board"
+($scope, $translate, messages, context, progressbar, Board) ->
 
   $scope.messages = messages
 
   #初始化新评论
   $scope.entity=
-    author : context.account.name
-    email : context.account.email
-    url : context.account.url
-    type : 'message'
+    author :
+      name : context.account.name
+      email : context.account.email
   $scope.editmode = !context.account.name
   $scope.isAdmin = context.auth.admin
 
@@ -40,7 +37,7 @@
 
     progressbar.start()
     $scope.loading = $translate("global.post")
-    Comments.save $scope.entity
+    Board.save $scope.entity
     , (data)->
       $scope.messages.push(data)
       $scope.entity.content = ""
@@ -48,17 +45,11 @@
       $scope.submitted=false
       $scope.loading = ""
       context.account =
-        name: $scope.entity.author
-        email: $scope.entity.email
+        name: $scope.entity.author.name
+        email: $scope.entity.author.email
         url: $scope.entity.url
     ,(error)->
       progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""
-
-  $scope.remove = (item) ->
-    messager.confirm ->
-      Message.remove id:"(guid'#{item.BoardId}')",->
-        item.IsDeleted=true
-        messager.success "Message has been removed."
 ])

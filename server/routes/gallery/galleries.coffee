@@ -1,4 +1,4 @@
-galleriesCtrl = require("../../controllers/photo/galleries")
+galleriesCtrl = require("../../controllers/gallery/galleries")
 
 module.exports = (app, prefix) ->
   #REST

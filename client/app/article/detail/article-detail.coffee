@@ -1,4 +1,4 @@
-﻿angular.module('article-detail',['resource.articles','resource.comments'])
+﻿angular.module('article-detail',['resource.articles'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider

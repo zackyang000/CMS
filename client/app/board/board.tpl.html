@@ -29,7 +29,7 @@
                         <div class="row form-group">
                             <div class="col-md-7 col-md-offset-0">
                                 <label>{{'board.name' | translate}} <span class="color-red">*</span></label>
-                                <input class="form-control" name="author" type="text" ng-model="entity.author" placeholder="{{'board.name' | translate}}*" required />
+                                <input class="form-control" name="author" type="text" ng-model="entity.author.name" placeholder="{{'board.name' | translate}}*" required />
                                 <div class="label label-danger label-invalid" ng-show="form.author.$invalid && submitted">
                                     <span ng-show="form.author.$error.required">{{'board.nameValidTxt' | translate}}</span>
                                 </div>
@@ -38,7 +38,7 @@
                         <div class="row form-group">
                             <div class="col-md-7 col-md-offset-0">
                                 <label>{{'board.email' | translate}}</label>
-                                <input class="form-control" name="email" type="text" ng-model="entity.email" placeholder="{{'board.email' | translate}}" />
+                                <input class="form-control" name="email" type="text" ng-model="entity.author.email" placeholder="{{'board.email' | translate}}" />
                             </div>
                         </div>
                     </div>
@@ -65,11 +65,11 @@
             <!-- Recent Comments -->
             <div class="media" ng-repeat="item in messages | orderBy:'-date'" ng-hide="item.block">
                 <span class="pull-left">
-                    <img class="media-object" ng-src="{{item.email | gravatar}}" alt="" />
+                    <img class="media-object" ng-src="{{item.author.email | gravatar}}" alt="" />
                 </span>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        {{item.author}}
+                        {{item.author.name}}
                         <span>
                             {{item.date | date:"yyyy.MM.dd HH:mm" }}
                             <a href="JavaScript:void(0)" ng-click="remove(item)" ng-show="isAdmin">

@@ -1,8 +1,7 @@
-comments = require("../../controllers/common/comments")
+board = require("../../controllers/board/board")
 
 module.exports = (app, prefix) ->
   #REST
-  app.get prefix + "/comments", comments.all
-  app.post prefix + "/comments", comments.create
-  app.get prefix + "/comments/:id", comments.get
-  app.put prefix + "/comments/:id", comments.update
+  app.get prefix + "/board", board.all
+  app.post prefix + "/board", board.create
+  app.put prefix + "/board/:id", board.update

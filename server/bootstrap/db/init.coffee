@@ -15,6 +15,6 @@ module.exports = ->
       initData(mongoose.model("User"), "/bootstrap/db/system/user.json")
       initData(mongoose.model("Article"), "/bootstrap/db/article/article.json")
       initData(mongoose.model("Category"), "/bootstrap/db/article/category.json")
-      initData(mongoose.model("Comment"), "/bootstrap/db/common/comment.json")
+      initData(mongoose.model("Board"), "/bootstrap/db/board/board.json")
       initData(mongoose.model("Tag"), "/bootstrap/db/common/tag.json")
       initData(mongoose.model("Gallery"), "/bootstrap/db/photo/gallery.json")
