@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "coffee-script": "*",
-    "request": "*"
+    "request": "*",
+    "mongoose": "~3.8.3"
   }
 }

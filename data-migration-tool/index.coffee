@@ -1,9 +1,23 @@
 request = require('request')
+mongoose = require('mongoose')
+require("./models/article/article")
+Article = mongoose.model("Article")
 
 host = "www.woshinidezhu.com"
 port = 80
-url = "http://#{host}:#{port}/odata/Channel?$expand=Groups/Posts/Comments&$filter=IsDeleted+eq+false&$inlinecount=allpages&$orderby=Url&$select=Name,Url,Groups%2FName,Groups%2FUrl,Groups%2FIsDeleted,Groups%2FPosts%2FTitle,Groups%2FPosts%2FUrl,Groups%2FPosts%2FPubDate,Groups%2FPosts%2FIsDeleted"
+url = "http://#{host}:#{port}/odata/Channel?$expand=Groups/Posts/Comments&$inlinecount=allpages"
 
-request.get {url:url, json:true},  (e, r, data) ->
-  debugger
-  console.log(data)
+
+mongoose.connect "mongodb://127.0.0.1/cms-dev"
+
+
+request.get {url:"./data.json", json:true},  (e, r, data) ->
+  data = require(__dirname + '/data.json')
+  for channel in data.value when !channel.IsDeleted
+    for group in channel.Groups when !group.IsDeleted
+      for post in group.Posts when !post.IsDeleted
+        #article = new Article({title:"testImport."})
+        #article.save()
+        for comment in post.Comments when !comment.IsDeleted
+          console.log comment
+
