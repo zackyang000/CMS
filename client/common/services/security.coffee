@@ -6,9 +6,10 @@
     if token
       $http.defaults.headers.common['authorization']=token
       Users.autoSignin {id: 'user'}, {}
-      ,(data)->
+      , (data) ->
         deferred.resolve data
-      ,(error)->
+      , (error) ->
+        $.removeCookie('authorization', { path: '/' })
         deferred.reject undefined
     else
       deferred.reject undefined
@@ -17,20 +18,20 @@
   login: (user) ->
     deferred = $q.defer()
     Users.signin {id: 'user'}, user
-    ,(data, headers)->
+    , (data, headers) ->
       if user.IsRemember
         $.cookie('authorization', headers('authorization'), {expires: 180, path: '/'})
       else
         $.cookie('authorization', headers('authorization'), { path: '/'})
       deferred.resolve data
-    ,(error)->
+    , (error) ->
       deferred.reject undefined
     deferred.promise
 
   logoff: ->
     deferred = $q.defer()
     Users.signout {id: 'user'}
-    ,(data)->
+    , (data) ->
       $.removeCookie('authorization', { path: '/' })
       delete $http.defaults.headers.common['authorization']
       deferred.resolve "OK"
