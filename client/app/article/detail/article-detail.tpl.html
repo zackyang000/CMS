@@ -31,13 +31,13 @@
 	        <div class="media">
 	            <h3>{{'article.comments' | translate}}</h3>
 	        </div>
-	        <div class="media" ng-repeat="item in comments | orderBy:'date'" ng-hide="item.block">
+	        <div class="media" ng-repeat="item in item.comments | orderBy:'date'" ng-hide="item.block">
 	            <span class="pull-left">
-	                <img class="media-object" ng-src="{{item.email | gravatar}}" alt="" />
+	                <img class="media-object" ng-src="{{item.author.email | gravatar}}" alt="" />
 	            </span>
 	            <div class="media-body">
 	                <h4 class="media-heading">
-	                    {{item.author}}
+	                    {{item.author.name}}
 	                    <span>
 	                        <time title="{{item.date | date:'yyyy.MM.dd HH:mm' }}">{{item.date | fromNow }}</time>
 	                        <a href="JavaScript:void(0)" ng-click="remove(item)" ng-show="isAdmin">

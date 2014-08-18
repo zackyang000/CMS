@@ -25,12 +25,6 @@
 
   codeformat()#格式化代码
 
-  #获取评论
-  Comments.query
-    id: 'article/' + $route.current.params.url
-  , (data) ->
-    $scope.comments = data
-
   #初始化新评论
   $scope.entity=
     type : 'article'
@@ -53,7 +47,6 @@
     , (data)->
       $scope.comments.push(data)
       $scope.entity.content = ""
-      #Article.commented id:"(guid'#{$scope.item.PostId}')"
       progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""

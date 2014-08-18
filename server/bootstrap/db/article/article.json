@@ -15,6 +15,24 @@
       "tags": ["Tag1", "Tag2"],
       "source": null,
       "thumbnail": null
-    }
+    },
+    "comments": [
+      {
+        "author": {
+          "name": "Guest",
+          "email": null
+        },
+        "content": "This is content of this comment.",
+        "date": "2014-01-01"
+      },
+      {
+        "author": {
+          "name": "Zack",
+         "email": "zackyang@outlook.com"
+        },
+        "content": "Good article.",
+        "date": "2014-01-02"
+      }
+    ]
   }
 ]
