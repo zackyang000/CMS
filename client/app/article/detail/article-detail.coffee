@@ -17,21 +17,19 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$window", "$translate", "$route", "article", "Comments", "context", "progressbar"
-($scope, $window, $translate, $route, article, Comments, context, progressbar) ->
+["$scope","$window", "$translate", "$route", "article", "Articles", "context", "progressbar"
+($scope, $window, $translate, $route, article, Articles, context, progressbar) ->
   $window.scroll(0,0)
-  debugger
+
   $scope.item = article
 
   codeformat()#格式化代码
 
   #初始化新评论
   $scope.entity=
-    type : 'article'
-    author : context.account.name
-    email : context.account.email
-    url : context.account.url
-    linkId : $route.current.params.url
+    author :
+      name : context.account.name
+      email : context.account.email
   $scope.editmode = !context.account.name
   $scope.isAdmin = context.auth.admin
 
@@ -43,16 +41,17 @@
 
     progressbar.start()
     $scope.loading = $translate("global.post")
-    Comments.save $scope.entity
+    $scope.entity.id = $scope.item._id
+    Articles.addComment $scope.entity
     , (data)->
-      $scope.comments.push(data)
+      $scope.item.comments.push(data)
       $scope.entity.content = ""
       progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""
       context.account =
-        name: $scope.entity.author
-        email: $scope.entity.email
+        name: $scope.entity.author.name
+        email: $scope.entity.author.email
         url: $scope.entity.url
     ,(error)->
       progressbar.complete()

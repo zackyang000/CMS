@@ -7,3 +7,5 @@ module.exports = (app, prefix) ->
   app.get prefix + "/articles/:id", articles.get
   app.put prefix + "/articles/:id", articles.update
   app.del prefix + "/articles/:id", articles.update
+
+  app.post prefix + "/articles/:id/comments", articles.createComment

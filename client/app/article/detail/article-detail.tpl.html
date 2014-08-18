@@ -57,8 +57,8 @@
 	        <div class="post-comment">
 	            <h3>{{'article.comment.content' | translate}}</h3>
 	            <form name="form" novalidate ng-submit="save()">
-	                <p bindonce="entity" bo-show="entity.author">
-	                    {{'article.comment.welcome' | translate}}, <strong bo-html="entity.author"></strong>
+	                <p bindonce="entity" bo-show="entity.author.name">
+	                    {{'article.comment.welcome' | translate}}, <strong bo-html="entity.author.name"></strong>
 	                    <span>
 	                        <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'article.comment.hide' | translate}} »</a>
 	                        <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'article.comment.change' | translate}} »</a>
@@ -68,7 +68,7 @@
 	                    <div class="row form-group">
 	                        <div class="col-md-7 col-md-offset-0">
 	                            <label>{{'article.comment.name' | translate}} <span class="color-red">*</span></label>
-	                            <input class="form-control" name="Author" type="text" ng-model="entity.author" placeholder="{{'article.comment.name' | translate}}*" required/>
+	                            <input class="form-control" name="Author" type="text" ng-model="entity.author.name" placeholder="{{'article.comment.name' | translate}}*" required/>
 	                            <div class="label label-danger label-invalid" ng-show="form.author.$invalid && submitted">
 	                                <span ng-show="form.author.$error.required">{{'article.comment.nameValidTxt' | translate}}</span>
 	                            </div>
@@ -77,7 +77,7 @@
 	                    <div class="row form-group">
 	                        <div class="col-md-7 col-md-offset-0">
 	                            <label>{{'article.comment.email' | translate}}</label>
-	                            <input class="form-control" name="email" type="text" ng-model="entity.email" placeholder="{{'article.comment.email' | translate}}" />
+	                            <input class="form-control" name="email" type="text" ng-model="entity.author.email" placeholder="{{'article.comment.email' | translate}}" />
 	                        </div>
 	                    </div>
 	                </div>

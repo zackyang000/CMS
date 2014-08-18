@@ -2,6 +2,7 @@ mongoose = require("mongoose")
 Article = mongoose.model("Article")
 _ = require("lodash")
 
+
 # Create article.
 exports.create = (req, res, next) ->
   article = new Article(req.body)
@@ -9,6 +10,7 @@ exports.create = (req, res, next) ->
     if err
       next(err)
     res.jsonp(article)
+
 
 # Update article.
 exports.update = (req, res, next) ->
@@ -25,9 +27,9 @@ exports.update = (req, res, next) ->
         next(err)
       res.jsonp(article)
 
+
 # Show article.
 exports.get = (req, res, next) ->
-  debugger
   Article.findOne
     _id: req.params.id
   , (err, article) ->
@@ -37,6 +39,7 @@ exports.get = (req, res, next) ->
       next new Error("Failed to load article " + req.query.id)
     res.jsonp(article)
 
+
 # List of articles.
 exports.all = (req, res, next) ->
   if req.query.url
@@ -45,3 +48,20 @@ exports.all = (req, res, next) ->
     if err
       next(err)
     res.jsonp(article)
+
+
+# Create comment.
+exports.createComment = (req, res, next) ->
+  Article.findOne
+    _id: req.params.id
+  , (err, article) ->
+    if err
+      next(err)
+    unless article
+      next new Error("Failed to load article " + req.query.id)
+    req.body.date = new Date()
+    article.comments.push(req.body)
+    article.save (err) ->
+      if err
+        next(err)
+      res.jsonp(req.body)
