@@ -5,7 +5,6 @@
 'dashboard'
 'category'
 'article'
-'board'
 'gallery'
 'system'
 'framework.controllers'
