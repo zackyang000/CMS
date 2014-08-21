@@ -17,7 +17,7 @@ request.get {url:"./data.json", json:true},  (e, r, data) ->
     for group in channel.Groups when !group.IsDeleted
       for post in group.Posts when !post.IsDeleted
         #article = new Article({title:"testImport."})
-        #article.save()
+        #article.save() 
         for comment in post.Comments when !comment.IsDeleted
           console.log comment
 
