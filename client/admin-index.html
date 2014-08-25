@@ -223,39 +223,39 @@
     </div>
 
     <div modal="newVersion.showDialog" options="{backdrop: false,dialogFade:true}">
-    <div class="modal-dialog">
-        <form name="form" class="modal-content">
-            <div class="modal-header">
-                <i class="icon-bullhorn"></i>
-                New Version Has Been Release.
-            </div>
-            <div class="modal-body">
-                <div>
-                    <div>
-                        <h3 class="blue">
-                            {{newVersion.ver}}
-                            <small>{{newVersion.date | date:'yyyy-MM-dd'}}</small>
-                        </h3>
-                    </div>
-                    <ul>
-                        <li ng-repeat="item in newVersion.content">
-                            {{item}}
-                        </li>
-                    </ul>
+        <div class="modal-dialog">
+            <form name="form" class="modal-content">
+                <div class="modal-header">
+                    <i class="icon-bullhorn"></i>
+                    New Version Has Been Release.
                 </div>
-            </div>
-            <div class="modal-footer">
-                <a href="system/history" class="btn btn-link" ng-click="versionClick()">
-                    More
-                </a>
-                <button type="button" class="btn btn-default btn-success btn-sm" ng-click="versionClick()">
-                    <i class="icon-ok"></i>
-                    Ok
-                </button>
-            </div>
-        </form>
+                <div class="modal-body">
+                    <div>
+                        <div>
+                            <h3 class="blue">
+                                {{newVersion.ver}}
+                                <small>{{newVersion.date | date:'yyyy-MM-dd'}}</small>
+                            </h3>
+                        </div>
+                        <ul>
+                            <li ng-repeat="item in newVersion.content">
+                                {{item}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="system/history" class="btn btn-link" ng-click="versionClick()">
+                        More
+                    </a>
+                    <button type="button" class="btn btn-default btn-success btn-sm" ng-click="versionClick()">
+                        <i class="icon-ok"></i>
+                        Ok
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
 </body>
 </html>
