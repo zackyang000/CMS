@@ -1,5 +1,5 @@
 ﻿angular.module("resource.users", ["ngResource"])
-.factory "Users", ['$resource',($resource) ->
+.factory "Users", ['$resource', ($resource) ->
   $resource "#{config.apiHost}/users/:id/:action", {id:'@id'},
     update:
       method: "PUT"
