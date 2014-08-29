@@ -19,7 +19,6 @@
     return unless input?
     return input.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br />')
 
-#转换文件size单位
 .filter 'fileSize', ->
   (bytes) ->
     return bytes if bytes==null or bytes==undefined

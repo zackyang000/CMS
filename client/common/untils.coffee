@@ -1,3 +1,4 @@
-﻿angular.module("zy.untils",
-['zy.untils.globalLoading'
-])
+﻿angular.module "zy.untils",
+[
+  'zy.untils.globalLoading'
+]
