@@ -1,13 +1,13 @@
 ﻿angular.module("zy.filters", [])
 
+.filter "isFuture", ->
+  (input) ->
+    new Date(input) > new Date()
+
 .filter "utc", ->
   (val) ->
     date = new Date(val)
     new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds())
-
-.filter "isFuture", ->
-  (input) ->
-    new Date(input)>new Date()
 
 .filter 'fromNow', ->
   (input) ->
