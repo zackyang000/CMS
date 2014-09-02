@@ -12,13 +12,10 @@
       maxHeight: "100%"
       onOpen: ->
         document.body.style.overflow = "hidden"
-
       onClosed: ->
         document.body.style.overflow = "auto"
-
       onComplete: ->
         $.colorbox.resize()
-
   ), 1000
 
 #代码高亮
