@@ -2,7 +2,7 @@ angular.module("zy.untils.globalLoading", [])
 
 .constant('global-loading-app', {})
 
-.config(['$httpProvider', 'global-loading-app',($httpProvider, app) ->
+.config(['$httpProvider', 'global-loading-app', ($httpProvider, app) ->
     # global loading status
     status =
       count: 0
@@ -42,7 +42,7 @@ angular.module("zy.untils.globalLoading", [])
   ])
 
 #register global ajax loading
-.run(["$rootScope","global-loading-app", ($rootScope, app) ->
+.run(["$rootScope", "global-loading-app", ($rootScope, app) ->
     app.loading = (val) ->
       $rootScope.loading = val
 ])
