@@ -7,9 +7,7 @@ host = "www.woshinidezhu.com"
 port = 80
 url = "http://#{host}:#{port}/odata/Channel?$expand=Groups/Posts/Comments&$inlinecount=allpages"
 
-
 mongoose.connect "mongodb://127.0.0.1/cms-dev"
-
 
 request.get {url:"./data.json", json:true},  (e, r, data) ->
   data = require(__dirname + '/data.json')
