@@ -18,4 +18,3 @@ request.get {url:"./data.json", json:true},  (e, r, data) ->
         #article.save()
         for comment in post.Comments when !comment.IsDeleted
           console.log comment
-
