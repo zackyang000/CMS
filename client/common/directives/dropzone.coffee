@@ -12,7 +12,7 @@ angular.module("zy.directives.dropzone",[])
 
     $(elm).addClass("dropzone")
 
-    myDropzone = $(elm).dropzone
+    $(elm).dropzone
       paramName: "file"
       maxFilesize: options.maxFilesize || 2048 #MB
       url: options.url
