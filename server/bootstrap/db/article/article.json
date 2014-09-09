@@ -5,7 +5,7 @@
     "content": "This is content of this article.",
     "description": "This is description of this article.",
     "category": "Default",
-    "status": "Normal",
+    "status": "normal",
     "password": null,
     "date": "2014-01-01",
     "meta": {
