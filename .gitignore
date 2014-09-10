@@ -4,6 +4,3 @@ node_modules/
 #other
 .idea
 *.orig
-
-#temp
-/data-migration-tool/data.json

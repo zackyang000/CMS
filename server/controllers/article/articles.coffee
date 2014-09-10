@@ -44,7 +44,7 @@ exports.get = (req, res, next) ->
 exports.all = (req, res, next) ->
   if req.query.url
     query = url: req.query.url
-  Article.find(query).sort("-date").exec (err, article) ->
+  Article.find(query).sort("-date").limit(10).skip(10).exec (err, article) ->
     if err
       next(err)
     res.jsonp(article)
