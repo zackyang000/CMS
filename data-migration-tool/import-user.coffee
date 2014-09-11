@@ -5,7 +5,6 @@ User = mongoose.model("User")
 module.exports = (host) ->
   url = "#{host}/odata/User"
 
-  console.log "[USER] Loading data..."
   request.get {url: url, json: true},  (e, r, data) ->
     userArr = []
     for item, i in data.value

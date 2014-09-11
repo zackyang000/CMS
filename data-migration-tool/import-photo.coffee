@@ -5,7 +5,6 @@ Gallery = mongoose.model("Gallery")
 module.exports = (host) ->
   url = "#{host}/odata/Gallery?$expand=Photos&$filter=IsDeleted+eq+false&$orderby=CreateDate+desc"
 
-  console.log "[PHOTO] Loading data..."
   request.get {url: url, json: true},  (e, r, data) ->
     for item, i in data.value
       gallery = new Gallery
