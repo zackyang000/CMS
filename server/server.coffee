@@ -15,7 +15,6 @@ generateUploadDirectory = ->
   ]
 
 
-
 #db init
 mongoose.connect config.db
 
@@ -33,8 +32,8 @@ require("./bootstrap/registerModels")()
 require("./bootstrap/registerRewrite")(app)
 require("./bootstrap/registerAPIs")(app)
 
-#data init
-require("./bootstrap/db/init")()
+#import test-data
+#require("./bootstrap/test-data/init")()
 
-#start server
+#start web server
 app.listen(process.env.PORT or config.port or 30000)

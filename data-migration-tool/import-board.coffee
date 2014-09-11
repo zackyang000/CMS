@@ -2,12 +2,11 @@ request = require('request')
 mongoose = require('mongoose')
 Board = mongoose.model("Board")
 
-module.exports = (host, db) ->
+module.exports = (host) ->
   url = "#{host}/odata/Board?$orderby=CreateDate+desc"
-  mongoose.connect db
 
+  console.log "[BOARD] Loading data..."
   request.get {url: url, json: true},  (e, r, data) ->
-
     for item, i in data.value
       board = new Board
         author:

@@ -3,12 +3,11 @@ mongoose = require('mongoose')
 Category = mongoose.model("Category")
 Article = mongoose.model("Article")
 
-module.exports = (host, db) ->
+module.exports = (host) ->
   url = "#{host}/odata/Channel?$expand=Groups/Posts/Tags,Groups/Posts/Comments&$inlinecount=allpages"
-  mongoose.connect db
 
+  console.log "[ARTICLE] Loading data..."
   request.get {url: url, json: true},  (e, r, data) ->
-
     for channel in data.value when !channel.IsDeleted
       category = new Category
         name: channel.Name.replace(/[ ]/g,'-')
