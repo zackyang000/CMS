@@ -49,4 +49,35 @@ createREST = (app, url, model) ->
   app.get "#{prefix}/#{url}", (req, res, next) ->
     #todo:
     #odataParser
-    #req.params.$top
+    #req.params.$top $skip $orderby  $expand  $inlineCount $count
+
+###
+$filter
+eq
+Equal
+Address/City eq 'Redmond'
+ne
+Not equal
+Address/City ne 'London'
+gt
+Greater than
+Price gt 20
+ge
+Greater than or equal
+Price ge 10
+lt
+Less than
+Price lt 20
+le
+Less than or equal
+Price le 100
+and
+Logical and
+Price le 200 and Price gt 3.5
+or
+Logical or
+Price le 3.5 or Price gt 200
+not
+Logical negation
+not endswith(Description,'milk')
+###
