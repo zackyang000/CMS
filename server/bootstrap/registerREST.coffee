@@ -53,10 +53,14 @@ createREST = (app, url, model) ->
 
 odataParser = (params) ->
     $top = params['$top']
+    $skip = params['$skip']
+    $orderby = params['$orderby']
+    $expand = params['$expand']
+    $inlineCount = params['$inlineCount']
+    $count = params['$count']
+    $filter = params['$filter']
 
     #todo:
-    #odataParser
-    #req.params.$top $skip $orderby  $expand  $inlineCount $count
 ###
 $filter
 eq
