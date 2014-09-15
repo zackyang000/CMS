@@ -5,19 +5,18 @@ _ = require("lodash")
 module.exports = (app) ->
   createREST(app, 'articles', mongoose.model("Article"))
 
-
 createREST = (app, url, model) ->
   prefix = config.oDataPrefix
 
   #create
-  app.post "#{prefix}/#{url}", (req, res, next) ->
+  app.post "/#{prefix}/#{url}", (req, res, next) ->
     entity = new model(req.body)
     entity.save (err) ->
       next(err)  if err
       res.jsonp(entity)
 
   #update
-  app.put "#{prefix}/#{url}/:id", (req, res, next) ->
+  app.put "/#{prefix}/#{url}/:id", (req, res, next) ->
     model.findOne
       _id: req.params.id
     , (err, entity) ->
@@ -29,7 +28,7 @@ createREST = (app, url, model) ->
         res.jsonp(entity)
 
   #delete
-  app.del "#{prefix}/#{url}/:id", (req, res, next) ->
+  app.del "/#{prefix}/#{url}/:id", (req, res, next) ->
     model.remove
       _id: req.params.id
     , (err) ->
@@ -37,7 +36,7 @@ createREST = (app, url, model) ->
       res.send(204)
 
   #read
-  app.get "#{prefix}/#{url}/:id", (req, res, next) ->
+  app.get "/#{prefix}/#{url}/:id", (req, res, next) ->
     model.findOne
       _id: req.params.id
     , (err, entity) ->
@@ -46,7 +45,7 @@ createREST = (app, url, model) ->
       res.jsonp(entity)
 
   #read(odata)
-  app.get "#{prefix}/#{url}", (req, res, next) ->
+  app.get "/#{prefix}/#{url}", (req, res, next) ->
     query = odataParser(req.params)
     res.jsonp("1")
 
