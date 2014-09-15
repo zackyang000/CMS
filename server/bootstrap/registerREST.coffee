@@ -3,7 +3,7 @@ mongoose = require('mongoose')
 _ = require("lodash")
 
 module.exports = (app) ->
-  createREST(app, 'article', mongoose.model("Article"))
+  createREST(app, 'articles', mongoose.model("Article"))
 
 
 createREST = (app, url, model) ->
@@ -48,7 +48,7 @@ createREST = (app, url, model) ->
   #read(odata)
   app.get "#{prefix}/#{url}", (req, res, next) ->
     query = odataParser(req.params)
-
+    res.jsonp("1")
 
 
 odataParser = (params) ->

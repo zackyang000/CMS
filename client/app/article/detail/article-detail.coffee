@@ -19,7 +19,7 @@
 .controller('ArticleDetailCtrl',
 ["$scope","$window", "$translate", "$route", "article", "Articles", "context", "progressbar"
 ($scope, $window, $translate, $route, article, Articles, context, progressbar) ->
-  $window.scroll(0,0)
+  $window.scroll(0, 0)
 
   $scope.item = article
 

@@ -13,7 +13,7 @@ createUploadDirectory = ->
 
 
 #express init
-#app.use(express.logger('dev')); /*'default', 'short', 'tiny', 'dev'*/
+#app.use(express.logger('dev')); #'default', 'short', 'tiny', 'dev'
 createUploadDirectory()
 uploadPath = path.join(path.dirname(__dirname), 'client/upload/temp')
 app.use(express.bodyParser({uploadDir : uploadPath}))
