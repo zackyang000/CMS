@@ -51,10 +51,10 @@ createREST = (app, url, model) ->
 
 
 odataParser = (params) ->
-    $count = params['$count']
-    $orderby = params['$orderby']
-    $inlineCount = params['$inlineCount']
     $filter = params['$filter']
+    $orderby = params['$orderby']
+    $count = params['$count']
+    $inlineCount = params['$inlineCount']
     $top = params['$top']
     $skip = params['$skip']
     $expand = params['$expand']
