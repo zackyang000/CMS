@@ -47,19 +47,21 @@ createREST = (app, url, model) ->
   #read(odata)
   app.get "/#{prefix}/#{url}", (req, res, next) ->
     query = odataParser(req.params)
+
+    if query.$filter
+      1
+
     res.jsonp("1")
 
 
 odataParser = (params) ->
-    $filter = params['$filter']
-    $orderby = params['$orderby']
-    $count = params['$count']
-    $inlineCount = params['$inlineCount']
-    $top = params['$top']
-    $skip = params['$skip']
-    $expand = params['$expand']
-
-
+  $filter : params['$filter']
+  $orderby : params['$orderby']
+  $count : params['$count']
+  $inlineCount : params['$inlineCount']
+  $top : params['$top']
+  $skip : params['$skip']
+  $expand : params['$expand']
 
     #todo:
 ###
