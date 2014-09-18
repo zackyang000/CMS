@@ -49,7 +49,8 @@ exports.register = (app, url, model) ->
     query = model.find()
 
     if params.$filter
-      1 #todo: query.where
+      1
+    #todo: query.where
 
 
 
