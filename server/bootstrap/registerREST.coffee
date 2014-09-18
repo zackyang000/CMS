@@ -48,8 +48,58 @@ createREST = (app, url, model) ->
   app.get "/#{prefix}/#{url}", (req, res, next) ->
     query = odataParser(req.params)
 
+    resData = {}
+
+    model.find()
+
     if query.$filter
-      1
+      1 #todo: query.where
+
+    # ?$orderby=ReleaseDate asc, Rating desc
+    # ->
+    # query.sort({ ReleaseDate: 'asc', Rating: 'desc' });
+    if query.$orderby
+      orderbyArr = query.$orderby.split(',')
+      sort = {}
+      for orderby in orderbyArr
+        data = orderby.trim().split(' ')
+        if data.length != 2
+          next(new Error("odata: Failed to parser $orderby '#{query.$orderby}', it's should be like 'ReleaseDate asc, Rating desc'"))
+        sort[data[0].trim()] = data[1]
+      query.sort(sort)
+
+    # ?$count=true
+    # ->
+    # @odata.count: 8
+    if query.$count
+      if query.$count == 'true'
+        query.count (err, count) ->
+          resData['@odata.count'] = count
+      else
+        next(new Error('Unknown $count option, only "true" and "false" are supported.'))
+
+
+    # ?$top=10
+    # ->
+    # query.limit(10)
+    if query.$top
+      count = +query.$top
+      if count == count && count > 0
+        query.limit(count)
+      else
+        next(new Error("Incorrect format for $top argument '#{query.$top}'."))
+
+    # ?$skip=10
+    # ->
+    # query.skip(10)
+    if query.$skip
+      count = +query.$skip
+      if count == count && count > 0
+        query.skip(count)
+      else
+        next(new Error("Incorrect format for $skip argument '#{query.$skip}'."))
+
+    # $expand=Customers/Orders
 
     res.jsonp("1")
 
@@ -58,38 +108,44 @@ odataParser = (params) ->
   $filter : params['$filter']
   $orderby : params['$orderby']
   $count : params['$count']
-  $inlineCount : params['$inlineCount']
   $top : params['$top']
   $skip : params['$skip']
   $expand : params['$expand']
 
     #todo:
 ###
-$filter
 eq
 Equal
 Address/City eq 'Redmond'
+
 ne
 Not equal
 Address/City ne 'London'
+
 gt
 Greater than
 Price gt 20
+
 ge
 Greater than or equal
 Price ge 10
+
 lt
 Less than
 Price lt 20
+
 le
 Less than or equal
 Price le 100
+
 and
 Logical and
 Price le 200 and Price gt 3.5
+
 or
 Logical or
 Price le 3.5 or Price gt 200
+
 not
 Logical negation
 not endswith(Description,'milk')
