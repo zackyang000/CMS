@@ -17,6 +17,9 @@ eg.
   http://host/service/Products?$filter=Price lt 10.00
   http://host/service/Categories?$filter=Products/$count lt 10
 ###
+
+_ = require("lodash")
+
 module.exports = (query, $filter) ->
   return unless $filter
 
@@ -25,16 +28,21 @@ module.exports = (query, $filter) ->
     if condition.length != 3
       throw new Error("Syntax error at '#{item}'.")
     [key, odataOperator, value] = condition
-    operatorMap =
-      #odata : mangoose
-      'eq' : 'equals'
-      'ne' : 'ne'
-      'gt' : 'gt'
-      'ge' : 'gte'
-      'lt' : 'lt'
-      'le' : 'lte'
-    mongoOperator = operatorMap[odataOperator]
-    unless mongoOperator
-      throw new Error("Incorrect operator at '#{item}'.")
-    query.where(key)[mongoOperator](value)
-    #todo 查询value中包含空格的问题 需要使用单引号 Price lt 10.00
+    value = validator.formatValue(value)
+    switch odataOperator
+      when 'eq' then query.where(key).equals(value)
+      when 'ne' then query.where(key).ne(value)
+      when 'gt' then query.where(key).gt(value)
+      when 'ge' then query.where(key).gte(value)
+      when 'lt' then query.where(key).lt(value)
+      when 'le' then query.where(key).lte(value)
+      else throw new Error("Incorrect operator at '#{item}'.")
+
+validator =
+  formatValue : (value) ->
+    unless _.isNumber(value)
+      if value[0] == "'" and value[value.length - 1]== "'"
+        value = value.slice(1, -1)
+      else
+        throw new Error("Syntax error at '#{value}'.")
+    value

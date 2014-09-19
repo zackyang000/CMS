@@ -15,8 +15,8 @@ exports.getAll = (req, res, next, mongooseModel) ->
   require('./query-parser/$orderby')(query, req.query['$orderby'])
   require('./query-parser/$skip')(query, req.query['$skip'])
   require('./query-parser/$top')(query, req.query['$top'])
+  require('./query-parser/$select')(query, req.query['$select'])
 
-  # $select
   # $expand=Customers/Orders
   # $search
   query.exec (err, data) ->
