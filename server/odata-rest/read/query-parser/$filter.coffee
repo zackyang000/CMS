@@ -17,7 +17,6 @@ eg.
   http://host/service/Products?$filter=Price lt 10.00
   http://host/service/Categories?$filter=Products/$count lt 10
 ###
-
 module.exports = (query, $filter) ->
   return unless $filter
 
@@ -38,4 +37,4 @@ module.exports = (query, $filter) ->
     unless mongoOperator
       throw new Error("Incorrect operator at '#{item}'.")
     query.where(key)[mongoOperator](value)
-    #todo 查询value中包含空格的问题 需要使用单引号
+    #todo 查询value中包含空格的问题 需要使用单引号 Price lt 10.00
