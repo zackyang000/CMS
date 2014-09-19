@@ -17,8 +17,10 @@ exports.getAll = (req, res, next, mongooseModel) ->
   require('./query-parser/$top')(query, req.query['$top'])
   require('./query-parser/$select')(query, req.query['$select'])
 
+  # todo
   # $expand=Customers/Orders
   # $search
+
   query.exec (err, data) ->
     resData.value = data
     res.jsonp resData
