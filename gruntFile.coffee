@@ -13,7 +13,7 @@
           args: []
           ext: "js,json,html"
           nodeArgs: ["--debug"]
-          delayTime: 0
+          delayTime: 1
           env:
             PORT: 30001
           cwd: '_dist/server'
@@ -33,6 +33,8 @@
                   '^/admin[/](.*)$ /admin-index.html'
                   '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
             ]))
+
+            require('connect-livereload') port:30005
 
             options.base.forEach (base) ->
               middlewares.push(connect.static(base))
@@ -193,7 +195,7 @@
         ]
 
     concurrent:
-      tasks: ['nodemon', 'watch']
+      tasks: ['nodemon', 'watch', 'open']
       options:
         logConcurrentOutput: true
 
@@ -224,6 +226,5 @@
   grunt.registerTask "default", [
     'build'
     'connect'
-    'open'
-    'nodemon'
+    'concurrent'
   ]
