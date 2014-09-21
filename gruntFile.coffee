@@ -5,26 +5,47 @@
   grunt.initConfig
     assets: grunt.file.readJSON('server/config/assets.json')
 
+    #server
     nodemon:
-      dev:
+      server:
         script: "server.js"
         options:
           args: []
           ext: "js,json,html"
           nodeArgs: ["--debug"]
-          delayTime: 1
+          delayTime: 0
           env:
-            PORT: 30000
+            PORT: 30001
           cwd: '_dist/server'
-          callback: (nodemon) ->
-            nodemon.on "config:update", ->
-              setTimeout (->
-                require("open")("http://localhost:30000", "chrome")
-              ), 1000
+
+    #client
+    connect:
+      client:
+        options:
+          port: 30000
+          hostname: 'localhost'
+          base:'_dist/client'
+          middleware:  (connect, options) ->
+            middlewares = []
+
+            middlewares.push(require('connect-modrewrite')([
+                  '^/admin$ /admin-index.html'
+                  '^/admin[/](.*)$ /admin-index.html'
+                  '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
+            ]))
+
+            options.base.forEach (base) ->
+              middlewares.push(connect.static(base))
+
+            return middlewares
+
+    open:
+      server:
+        url:'http://localhost:30000'
 
     watch:
       options:
-        livereload: 30001
+        livereload: 30002
       clientFile:
         files: ['client/**/*.js','client/**/*.css','client/**/*.html']
         tasks: ['newer:copy:client','sails-linker','replace:livereload']
@@ -168,11 +189,11 @@
         overwrite: true
         replacements: [
           from: '<!--LIVERELOAD-->'
-          to: '<script src="//localhost:30001/livereload.js"></script>'
+          to: '<script src="//localhost:30002/livereload.js"></script>'
         ]
 
     concurrent:
-      tasks: ['nodemon','watch']
+      tasks: ['nodemon', 'watch']
       options:
         logConcurrentOutput: true
 
@@ -202,5 +223,7 @@
 
   grunt.registerTask "default", [
     'build'
-    'concurrent'
+    'connect'
+    'open'
+    'nodemon'
   ]

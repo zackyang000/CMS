@@ -1,5 +1,6 @@
 #dependencies
 express = require("express")
+cors = require('cors')
 http = require("http")
 path = require("path")
 app = express()
@@ -18,12 +19,12 @@ createUploadDirectory()
 uploadPath = path.join(path.dirname(__dirname), 'client/upload/temp')
 app.use(express.bodyParser({uploadDir : uploadPath}))
 app.use(express.methodOverride())
-app.use(express.favicon(path.join(__dirname, "../client/img/favicon.ico")))
-app.use(express["static"](path.join(__dirname, "../client")))
+app.use(cors())
+#app.use(express.favicon(path.join(__dirname, "../client/img/favicon.ico")))
+#app.use(express["static"](path.join(__dirname, "../client")))
 
 #application init
 require("./bootstrap/registerModels")()
-require("./bootstrap/registerRewrite")(app)
 require("./bootstrap/registerAPIs")(app)
 require("./bootstrap/registerREST")(app)
 
