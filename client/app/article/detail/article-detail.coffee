@@ -9,9 +9,9 @@
         article: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
           Articles.query
-            url: $route.current.params.url
+            $filter: "url eq '#{$route.current.params.url}'"
           , (data) ->
-            deferred.resolve(data[0])
+            deferred.resolve(data.value[0])
           deferred.promise
         ]
 ])

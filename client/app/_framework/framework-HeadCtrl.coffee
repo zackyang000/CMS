@@ -4,7 +4,7 @@ angular.module("framework.controllers.head",['resource.categories'])
   ["$scope","$http","$location",'$window',"Categories" ,"$timeout"
     ($scope,$http,$location,$window,Categories,$timeout) ->
       Categories.query (data) ->
-        $scope.categories=data
+        $scope.categories = data.value
 
       $scope.isActiveChannel = (category) ->
         #home page

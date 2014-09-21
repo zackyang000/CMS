@@ -16,10 +16,10 @@
             <a href="JavaScript:void(0)" ng-click="edit(item)">{{'article.edit' | translate:item}}</a>
         </li>
     </ul>
-    <ul class="list-unstyled list-inline blog-tags" ng-show="item.Tags.length>0">
+    <ul class="list-unstyled list-inline blog-tags" ng-show="item.meta.tags.length > 0">
         <li>
             <i class="icon-tags"></i> 
-            <a ng-repeat="tag in item.meta.tags" ng-href="/list/tag/{{tag}}">{{tag}}</a>
+            <a ng-repeat="tag in item.meta.tags track by $index" ng-href="/list/tag/{{tag}}">{{tag}}</a>
         </li>
     </ul>   
 </div>
