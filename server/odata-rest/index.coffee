@@ -34,4 +34,4 @@ exports.register = (params) ->
 
 exports.options =
   set: (key, value) ->
-    defaultOptions[key] =value
+    defaultOptions[key] = value

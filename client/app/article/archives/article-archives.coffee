@@ -11,6 +11,7 @@
           deferred = $q.defer()
           Articles.query
             $top: 10000
+            $select: 'title,url,date'
           ,(articles) ->
             obj = []
             for post in articles.value
@@ -32,5 +33,5 @@
 .controller('ArticleArchivesCtrl',
 ["$scope", "archives",
 ($scope, archives) ->
-  $scope.list=archives
+  $scope.list = archives
 ])
