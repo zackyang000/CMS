@@ -9,9 +9,11 @@
       resolve:
         archives: ['$q','Articles',($q,Articles)->
           deferred = $q.defer()
-          Articles.query (articles) ->
+          Articles.query
+            $top: 10000
+          ,(articles) ->
             obj = []
-            for post in articles
+            for post in articles.value
               date = moment(post.date).format('YYYY-MM')
               unless obj[date]
                 obj[date]=[]
