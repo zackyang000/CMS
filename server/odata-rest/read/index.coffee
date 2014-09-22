@@ -6,7 +6,7 @@ exports.get = (req, res, next, mongooseModel) ->
     next(new Error("Failed to find #{url} [#{req.params.id}]"))  unless article
     res.jsonp(entity)
 
-exports.getAll = (req, res, next, mongooseModel) ->
+exports.getAll = (req, res, next, mongooseModel, meta) ->
   resData = {}
   require('./query-parser/$count')(resData, mongooseModel, req.query['$count'], req.query['$filter'])
 
@@ -14,7 +14,7 @@ exports.getAll = (req, res, next, mongooseModel) ->
   require('./query-parser/$filter')(query, req.query['$filter'])
   require('./query-parser/$orderby')(query, req.query['$orderby'])
   require('./query-parser/$skip')(query, req.query['$skip'])
-  require('./query-parser/$top')(query, req.query['$top'])
+  require('./query-parser/$top')(query, req.query['$top'] || meta.maxTop)
   require('./query-parser/$select')(query, req.query['$select'])
 
   # todo
