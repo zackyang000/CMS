@@ -9,8 +9,10 @@
       resolve:
         galleries: ['$q','Galleries',($q,Galleries)->
           deferred = $q.defer()
-          Galleries.query  (data) ->
-            deferred.resolve data
+          Galleries.query
+            $top: 10000
+          ,(data) ->
+            deferred.resolve data.value
           deferred.promise
         ]
 ])

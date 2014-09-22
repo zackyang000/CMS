@@ -9,10 +9,9 @@
         gallery: ['$route', '$q', 'Galleries', ($route, $q, Galleries) ->
           deferred = $q.defer()
           Galleries.query
-            name: $route.current.params.name
-            $expand: "photos"
+            $filter: "name eq '#{$route.current.params.name}'"
           , (data) ->
-            deferred.resolve data[0]
+            deferred.resolve data.value[0]
           deferred.promise
         ]
 ])
@@ -20,7 +19,7 @@
 .controller('GalleryDetailCtrl',
 ["$scope","$rootScope","$translate","gallery","$timeout"
 ($scope,$rootScope,$translate,gallery,$timeout) ->
-  $rootScope.title = 'Gallery '+ gallery.Name
+  $rootScope.title = 'Gallery '+ gallery.name
   $scope.gallery = gallery
 
   #TODO:改为指令加载相册
