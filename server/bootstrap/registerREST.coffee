@@ -8,3 +8,5 @@ module.exports = (app) ->
   client.register(app, 'galleries', mongoose.model("Gallery"))
   client.register(app, 'board', mongoose.model("Board"))
   client.register(app, 'user', mongoose.model("User"))
+
+  #todo: ,{action: [],function: []}
