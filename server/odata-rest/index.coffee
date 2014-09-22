@@ -1,13 +1,28 @@
+###
+  app: express app object,
+  url: request url,
+  model: mongoose model
+  meta:
+    maxTop: 10
+    maxSkip: undefined
+    defaultOrderby: 'date desc'
+    action: undefined
+    function: undefined
+###
+
+_ = require("lodash")
 create = require("./create")
 update = require("./update")
 read = require("./read")
 del = require("./delete")
 
-exports.register = (options) ->
-  app = options.app
-  url = options.url
-  mongooseModel = options.model
-  meta = options.meta || {}
+defaultOptions = {}
+
+exports.register = (params) ->
+  app = params.app
+  url = params.url
+  mongooseModel = params.model
+  options = _.extend(defaultOptions, params.options)
 
   prefix = 'oData'
 
@@ -15,4 +30,8 @@ exports.register = (options) ->
   app.put "/#{prefix}/#{url}/:id", (req, res, next) -> update(req, res, next, mongooseModel)
   app.del "/#{prefix}/#{url}/:id", (req, res, next) -> del(req, res, next, mongooseModel)
   app.get "/#{prefix}/#{url}/:id", (req, res, next) -> read.get(req, res, next, mongooseModel)
-  app.get "/#{prefix}/#{url}", (req, res, next) -> read.getAll(req, res, next, mongooseModel, meta)
+  app.get "/#{prefix}/#{url}", (req, res, next) -> read.getAll(req, res, next, mongooseModel, options)
+
+exports.options =
+  set: (key, value) ->
+    defaultOptions[key] =value
