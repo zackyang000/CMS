@@ -12,8 +12,8 @@ exports.getAll = (req, res, next, mongooseModel, meta) ->
 
   query = mongooseModel.find()
   require('./query-parser/$filter')(query, req.query['$filter'])
-  require('./query-parser/$orderby')(query, req.query['$orderby'])
-  require('./query-parser/$skip')(query, req.query['$skip'])
+  require('./query-parser/$orderby')(query, req.query['$orderby'] || meta.defaultOrderby)
+  require('./query-parser/$skip')(query, req.query['$skip'] || meta.maxSkip)
   require('./query-parser/$top')(query, req.query['$top'] || meta.maxTop)
   require('./query-parser/$select')(query, req.query['$select'])
 

@@ -9,8 +9,8 @@ module.exports = (app) ->
     model: mongoose.model("Article")
     meta:
       maxTop: 10
-      maxSkip: undefined        #todo Not implement
-      defaultOrderby: undefined #todo Not implement
+      maxSkip: undefined
+      defaultOrderby: 'date desc'
       action: undefined         #todo Not implement
       function: undefined       #todo Not implement
   client.register
@@ -29,6 +29,3 @@ module.exports = (app) ->
     app: app,
     url: 'user',
     model: mongoose.model("User")
-
-
-  #todo: ,{action: [],function: []}
