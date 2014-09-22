@@ -12,7 +12,7 @@
             Articles.query
               category: category.name
             ,(data)->
-              deferred.resolve data
+              deferred.resolve data.value
           deferred.promise
         ]
     .when "/list/:category/tag/:tag",
@@ -25,7 +25,7 @@
             category: $route.current.params.category
             tag: $route.current.params.tag
           ,(data)->
-            deferred.resolve data
+            deferred.resolve data.value
           deferred.promise
         ]
     .when "/list/:category",
@@ -37,7 +37,7 @@
           Articles.query
             category: $route.current.params.category
           ,(data)->
-            deferred.resolve data
+            deferred.resolve data.value
           deferred.promise
         ]
     .when "/search/:key",
@@ -53,7 +53,7 @@
             """
             $skip:($route.current.params.p ? 1)*10 - 10
           , (data)->
-            deferred.resolve data
+            deferred.resolve data.value
           deferred.promise
         ]
 ])
