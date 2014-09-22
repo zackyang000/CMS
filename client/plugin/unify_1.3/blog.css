@@ -91,9 +91,15 @@
 	position: absolute;
 }
 
+.blog-item .media h4.media-heading span small {
+	color: #ccc;
+    font-size: 12px;
+}
+
 .blog-item .media h4.media-heading span a {
 	color: #72c02c;
 }
+
 
 /*Blog Medium
 ------------------------------------*/

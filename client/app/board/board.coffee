@@ -9,8 +9,10 @@
       resolve:
         messages: ['$q','Board',($q, Board)->
           deferred = $q.defer()
-          Board.query (data) ->
-            deferred.resolve data
+          Board.query
+            $top: 10000
+          ,(data) ->
+            deferred.resolve data.value
           deferred.promise
         ]
 ])
@@ -22,7 +24,7 @@
   $scope.messages = messages
 
   #初始化新评论
-  $scope.entity=
+  $scope.entity =
     author :
       name : context.account.name
       email : context.account.email
@@ -32,8 +34,7 @@
   #提交评论
   $scope.save = ->
     $scope.submitted=true
-    if $scope.form.$invalid
-      return
+    return  if $scope.form.$invalid
 
     progressbar.start()
     $scope.loading = $translate("global.post")
