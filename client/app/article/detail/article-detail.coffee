@@ -17,8 +17,10 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope","$window", "$translate", "$route", "article", "Articles", "context", "progressbar"
-($scope, $window, $translate, $route, article, Articles, context, progressbar) ->
+["$scope", "$rootScope", "$window", "$translate", "$route", "article", "Articles", "context", "progressbar"
+($scope, $rootScope, $window, $translate, $route, article, Articles, context, progressbar) ->
+  $rootScope.$broadcast("categoryChange", article.category)
+
   $window.scroll(0, 0)
 
   $scope.item = article

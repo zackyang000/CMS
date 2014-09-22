@@ -8,5 +8,5 @@
     main:
       method: "GET"
       params:
-        $filter: 'default eq true'
+        $filter: 'main eq true'
 ]

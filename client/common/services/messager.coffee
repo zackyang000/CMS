@@ -7,10 +7,14 @@ angular.module("zy.services.messager", ['resource.users'])
 
   error : (msg) ->
     msg = 'Unauthorized.' if (msg == '401')
-    Messenger().post({ message : msg, type : 'error', showCloseButton : true, delay : 600 })
+    Messenger().post
+      message : msg
+      type : 'error'
+      showCloseButton : true
+      delay : 600
 
   confirm : (callback,msg) ->
-    msg = Messenger().post(
+    msg = Messenger().post
       message : msg || "Do you want to continue?"
       id : "Only-one-message"
       showCloseButton : true
@@ -25,7 +29,3 @@ angular.module("zy.services.messager", ['resource.users'])
         cancel :
           action : ->
             msg.cancel()
-    )
-
-    prompt : (callback,msg)->
-      #todo

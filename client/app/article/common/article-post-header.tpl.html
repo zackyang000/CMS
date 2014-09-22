@@ -19,7 +19,7 @@
     <ul class="list-unstyled list-inline blog-tags" ng-show="item.meta.tags.length > 0">
         <li>
             <i class="icon-tags"></i> 
-            <a ng-repeat="tag in item.meta.tags track by $index" ng-href="/list/tag/{{tag}}">{{tag}}</a>
+            <a ng-repeat="tag in item.meta.tags track by $index" ng-href="/list/{{item.category}}/tag/{{tag}}">{{tag}}</a>
         </li>
     </ul>   
 </div>

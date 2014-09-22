@@ -10,7 +10,7 @@
           deferred = $q.defer()
           Categories.main (category) ->
             Articles.query
-              category: category.name
+              $filter: "category eq '#{category.value[0].name}'"
             ,(data)->
               deferred.resolve data.value
           deferred.promise
@@ -22,8 +22,7 @@
         articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
           Articles.query
-            category: $route.current.params.category
-            tag: $route.current.params.tag
+            $filter: "category eq '#{$route.current.params.category}'" #todo 不支持tag查询
           ,(data)->
             deferred.resolve data.value
           deferred.promise
@@ -35,7 +34,7 @@
         articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
           Articles.query
-            category: $route.current.params.category
+            $filter: "category eq '#{$route.current.params.category}'"
           ,(data)->
             deferred.resolve data.value
           deferred.promise
@@ -61,7 +60,10 @@
 .controller('ArticleListCtrl',
 ["$scope","$rootScope","$window","$routeParams","$location","articles", "context"
 ($scope,$rootScope,$window,$routeParams,$location,articles,context) ->
+  $rootScope.$broadcast("categoryChange", $routeParams.category)
+
   $window.scroll(0,0)
+
   $scope.isAdmin = context.auth.admin
 
   $scope.list = articles

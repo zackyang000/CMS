@@ -24,9 +24,7 @@ module.exports = (query, $filter) ->
   return unless $filter
 
   for item in $filter.split('and')
-    console.log item
     condition = item.split(' ').filter (n)->n
-    console.log condition
     if condition.length != 3
       throw new Error("Syntax error at '#{item}'.")
     [key, odataOperator, value] = condition
@@ -42,8 +40,6 @@ module.exports = (query, $filter) ->
 
 validator =
   formatValue : (value) ->
-    console.log _.isBoolean(value)
-    console.log value
     if value == 'true' || value == 'false'
       return !!value
     if _.isNumber(value)

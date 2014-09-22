@@ -1,22 +1,27 @@
 angular.module("framework.controllers.head",['resource.categories'])
 
 .controller('HeaderCtrl',
-  ["$scope","$http","$location",'$window',"Categories" ,"$timeout"
-    ($scope,$http,$location,$window,Categories,$timeout) ->
-      Categories.query (data) ->
-        $scope.categories = data.value
+["$scope", "$http", "$location", "$window", "Categories"
+($scope, $http, $location, $window, Categories) ->
 
-      $scope.isActiveChannel = (category) ->
-        #home page
-        return true if category.main && ($location.path() == "/" || $location.path() == "/list")
-        #article list
-        return true if $location.path().indexOf(category.Url) > -1
-        #article detail
-        return $location.path().indexOf("/post") > -1 && category.url.indexOf($scope.category) > -1
+  $scope.$on "categoryChange", (event, categoryName) ->
+    $scope.currentCategoryName = categoryName || $scope.defaultCategoryName
 
-      $scope.isActive = (route) ->
-        route == $location.path()
+  Categories.query (data) ->
+    $scope.categories = data.value
+    $scope.defaultCategoryName = category.name for category in $scope.categories when category.main
 
-      $scope.search = ->
-        $location.path("/search/#{$scope.key}")
-  ])
+  $scope.isActiveCategory = (category) ->
+    #home page
+    return true if category.main && ($location.path() == "/" || $location.path() == "/list")
+    #article list
+    return true if $location.path().indexOf(category.name) > -1
+    #article detail
+    return $location.path().indexOf("/post") > -1 && category.name.indexOf($scope.currentCategoryName) > -1
+
+  $scope.isActive = (route) ->
+    route == $location.path()
+
+  $scope.search = ->
+    $location.path("/search/#{$scope.key}")
+])
