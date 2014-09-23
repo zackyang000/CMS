@@ -33,7 +33,7 @@
 
   #提交评论
   $scope.save = ->
-    $scope.submitted=true
+    $scope.submitted = true
     return  if $scope.form.$invalid
 
     progressbar.start()
