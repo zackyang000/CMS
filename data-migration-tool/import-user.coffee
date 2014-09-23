@@ -8,7 +8,7 @@ module.exports = (host) ->
   request.get {url: url, json: true},  (e, r, data) ->
     userArr = []
     for item, i in data.value
-      if userArr.hasOwnProperty(item.UserName)
+      unless item.UserName in userArr
         userArr.push item.UserName
         user = new User
           name: item.UserName
