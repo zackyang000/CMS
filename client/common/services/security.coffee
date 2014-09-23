@@ -3,12 +3,13 @@
   autoLogin: ->
     deferred = $q.defer()
     token = $.cookie('authorization')
+    debugger
     if token
       $http.defaults.headers.common['authorization'] = token
-      Users.autoSignin {id: 'user'}, {}
-      , (data) ->2
+      $http.post "#{config.apiHost}/auto-login", undefined
+      .success (data) ->
         deferred.resolve data
-      , (error) ->
+      .error (error) ->
         $.removeCookie('authorization', { path: '/' })
         deferred.reject undefined
     else
@@ -17,21 +18,21 @@
 
   login: (user) ->
     deferred = $q.defer()
-    Users.signin {id: 'user'}, user
-    , (data, headers) ->
+    $http.post "#{config.apiHost}/login", { name: user.name, password: user.password }
+    .success (data, status, headers) ->
       if user.IsRemember
         $.cookie('authorization', headers('authorization'), {expires: 180, path: '/'})
       else
         $.cookie('authorization', headers('authorization'), { path: '/'})
       deferred.resolve data
-    , (error) ->
+    .error (error) ->
       deferred.reject undefined
     deferred.promise
 
   logoff: ->
     deferred = $q.defer()
-    Users.signout {id: 'user'}
-    , (data) ->
+    $http.post "#{config.apiHost}/logoff", undefined
+    .success (data) ->
       $.removeCookie('authorization', { path: '/' })
       delete $http.defaults.headers.common['authorization']
       deferred.resolve "OK"

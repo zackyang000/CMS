@@ -7,39 +7,39 @@
     maxSkip: undefined
     defaultOrderby: 'date desc'
   actions: undefined
-  functions: undefined
 ###
 
 _ = require("lodash")
+mongoose = require('mongoose')
 create = require("./create")
 update = require("./update")
 read = require("./read")
 del = require("./delete")
 
-defaultOptions = {}
+_options =
+  prefix : 'oData'
 
 exports.register = (params) ->
-  app = params.app
+  app = _options.app
   url = params.url
-  mongooseModel = params.model
-  options = _.extend(defaultOptions, params.options)
+  mongooseModel = mongoose.model(params.modelName)
+  options = _.extend(_options, params.options)
   actions = params.actions || []
-  functions = params.functions || []
 
-  prefix = 'oData'
+  app.post "/#{_options.prefix}/#{url}", (req, res, next) -> create(req, res, next, mongooseModel)
+  app.put "/#{_options.prefix}/#{url}/:id", (req, res, next) -> update(req, res, next, mongooseModel)
+  app.del "/#{_options.prefix}/#{url}/:id", (req, res, next) -> del(req, res, next, mongooseModel)
+  app.get "/#{_options.prefix}/#{url}/:id", (req, res, next) -> read.get(req, res, next, mongooseModel)
+  app.get "/#{_options.prefix}/#{url}", (req, res, next) -> read.getAll(req, res, next, mongooseModel, options)
 
-  app.post "/#{prefix}/#{url}", (req, res, next) -> create(req, res, next, mongooseModel)
-  app.put "/#{prefix}/#{url}/:id", (req, res, next) -> update(req, res, next, mongooseModel)
-  app.del "/#{prefix}/#{url}/:id", (req, res, next) -> del(req, res, next, mongooseModel)
-  app.get "/#{prefix}/#{url}/:id", (req, res, next) -> read.get(req, res, next, mongooseModel)
-  app.get "/#{prefix}/#{url}", (req, res, next) -> read.getAll(req, res, next, mongooseModel, options)
+  app.post "/#{_options.prefix}/#{url}/:id/#{item.url}", item.handle  for item in actions
 
-  for item in functions
-    app.get "/#{prefix}/#{url}/#{item.url}", item.handle
-
-  for item in actions
-    app.get "/#{prefix}/#{url}/:id/#{item.url}", item.handle
+exports.registerFunction = (params) ->
+  url = params.url
+  method = params.method
+  handle = params.handle
+  _options.app[method.toLowerCase()]("/#{_options.prefix}/#{url}", handle)
 
 exports.options =
   set: (key, value) ->
-    defaultOptions[key] = value
+    _options[key] = value
