@@ -4,9 +4,9 @@
     deferred = $q.defer()
     token = $.cookie('authorization')
     if token
-      $http.defaults.headers.common['authorization']=token
+      $http.defaults.headers.common['authorization'] = token
       Users.autoSignin {id: 'user'}, {}
-      , (data) ->
+      , (data) ->2
         deferred.resolve data
       , (error) ->
         $.removeCookie('authorization', { path: '/' })

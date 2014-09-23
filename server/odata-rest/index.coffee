@@ -2,12 +2,12 @@
   app: express app object,
   url: request url,
   model: mongoose model
-  meta:
+  options:
     maxTop: 10
     maxSkip: undefined
     defaultOrderby: 'date desc'
-    action: undefined
-    function: undefined
+  actions: undefined
+  functions: undefined
 ###
 
 _ = require("lodash")
@@ -23,6 +23,8 @@ exports.register = (params) ->
   url = params.url
   mongooseModel = params.model
   options = _.extend(defaultOptions, params.options)
+  actions = params.actions || []
+  functions = params.functions || []
 
   prefix = 'oData'
 
@@ -31,6 +33,12 @@ exports.register = (params) ->
   app.del "/#{prefix}/#{url}/:id", (req, res, next) -> del(req, res, next, mongooseModel)
   app.get "/#{prefix}/#{url}/:id", (req, res, next) -> read.get(req, res, next, mongooseModel)
   app.get "/#{prefix}/#{url}", (req, res, next) -> read.getAll(req, res, next, mongooseModel, options)
+
+  for item in functions
+    app.get "/#{prefix}/#{url}/#{item.url}", item.handle
+
+  for item in actions
+    app.get "/#{prefix}/#{url}/:id/#{item.url}", item.handle
 
 exports.options =
   set: (key, value) ->

@@ -1,5 +1,5 @@
 module.exports = (req, res, next, mongooseModel) ->
-  query = new mongooseModel(req.body)
-  query.save (err) ->
+  entity = new mongooseModel(req.body)
+  entity.save (err) ->
     next(err)  if err
     res.jsonp(entity)
