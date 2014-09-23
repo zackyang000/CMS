@@ -16,16 +16,15 @@
   $scope.get = ->
     if $routeParams.id
       Galleries.get
-        id: $routeParams.id
-      ,(data)->
-        $scope.entity = data
+        $filter: "_id eq '#{$routeParams.id}'"
+      ,(data) ->
+        $scope.entity = data.value[0]
         $scope.options =
           url: "#{config.apiHost}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1600&thumbnail=100x100"
           maxFilesize: 100
           addRemoveLinks: false
           acceptedFiles: "image/*"
           success: (req, res) ->
-            debugger
             $scope.entity.photos.push
               name: req.name.substr(0, req.name.lastIndexOf('.')) || req.name
               description: ""
@@ -53,7 +52,7 @@
     if !$routeParams.id
       Galleries.save entity, (data)->
         messager.success "Save successfully."
-        $location.path("gallery/#{entity._id}")
+        $location.path("gallery/#{data._id}")
     else
       Galleries.update {id:"#{entity._id}"},entity,(data)->
         messager.success "Save successfully."

@@ -15,7 +15,7 @@
   load = ->
     $scope.loading="Loading"
     Categories.query (data)->
-      $scope.list = data
+      $scope.list = data.value
       $scope.loading=""
 
   $scope.add = ()->

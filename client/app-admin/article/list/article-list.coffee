@@ -13,7 +13,7 @@
   $scope.setPage = (pageNo) ->
     $scope.loading="Loading"
     Articles.query (data) ->
-      $scope.list = data
+      $scope.list = data.value
       $scope.loading=""
 
   $scope.setPage 1

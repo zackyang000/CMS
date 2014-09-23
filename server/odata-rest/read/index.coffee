@@ -3,7 +3,7 @@ exports.get = (req, res, next, mongooseModel) ->
     _id: req.params.id
   , (err, entity) ->
     next(err)  if err
-    next(new Error("Failed to find #{url} [#{req.params.id}]"))  unless article
+    next(new Error("Failed to find #{url} [#{req.params.id}]"))  unless entity
     res.jsonp(entity)
 
 exports.getAll = (req, res, next, mongooseModel, options) ->

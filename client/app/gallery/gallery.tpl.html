@@ -13,7 +13,7 @@
 <!--=== Content Part ===-->
 <div class="container">   
     <div class="row">
-        <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="gallery in galleries | filter: {hidden:false}">
+        <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="gallery in galleries | filter: { hidden:false || undefined }">
             <div class="view view-tenth">
                 <img class="img-responsive" ng-src="{{gallery.cover | remoteImage}}" alt="" />
                 <div class="mask">

@@ -26,7 +26,7 @@
       Articles.get
         id : $routeParams.id
       , (data)->
-          $scope.entity=data
+          $scope.entity=data.value
           if !$scope.entity.url
             $scope.translateTitle()
           if $scope.entity.meta.tags
