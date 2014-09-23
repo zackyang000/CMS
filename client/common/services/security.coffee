@@ -3,7 +3,6 @@
   autoLogin: ->
     deferred = $q.defer()
     token = $.cookie('authorization')
-    debugger
     if token
       $http.defaults.headers.common['authorization'] = token
       $http.post "#{config.apiHost}/auto-login", undefined
@@ -20,7 +19,7 @@
     deferred = $q.defer()
     $http.post "#{config.apiHost}/login", { name: user.name, password: user.password }
     .success (data, status, headers) ->
-      if user.IsRemember
+      if user.remember
         $.cookie('authorization', headers('authorization'), {expires: 180, path: '/'})
       else
         $.cookie('authorization', headers('authorization'), { path: '/'})
