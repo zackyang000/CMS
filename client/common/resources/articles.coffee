@@ -8,5 +8,5 @@
     addComment:
       method: "POST"
       params:
-        action: "comments"
+        action: "add-comment"
 ]

@@ -11,8 +11,10 @@
           Categories.main (category) ->
             Articles.query
               $filter: "category eq '#{category.value[0].name}'"
+              $skip: ($route.current.params.p || 1) * 10 - 10
+              $count: true
             ,(data)->
-              deferred.resolve data.value
+              deferred.resolve data
           deferred.promise
         ]
     .when "/list/:category/tag/:tag",
@@ -23,8 +25,10 @@
           deferred = $q.defer()
           Articles.query
             $filter: "category eq '#{$route.current.params.category}'" #todo 不支持tag查询
+            $skip: ($route.current.params.p || 1) * 10 - 10
+            $count: true
           ,(data)->
-            deferred.resolve data.value
+            deferred.resolve data
           deferred.promise
         ]
     .when "/list/:category",
@@ -35,8 +39,10 @@
           deferred = $q.defer()
           Articles.query
             $filter: "category eq '#{$route.current.params.category}'"
+            $skip: ($route.current.params.p || 1) * 10 - 10
+            $count: true
           ,(data)->
-            deferred.resolve data.value
+            deferred.resolve data
           deferred.promise
         ]
     .when "/search/:key",
@@ -46,11 +52,8 @@
         articles: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
           Article.queryOnce
-            $filter:"""
-            IsDeleted eq false
-            and indexof(Title, '#{route.current.params.key}') gt -1
-            """
-            $skip:($route.current.params.p ? 1)*10 - 10
+            $filter:"indexof(Title, '#{$route.current.params.key}') gt -1"
+            $skip: ($route.current.params.p || 1) * 10 - 10
           , (data)->
             deferred.resolve data.value
           deferred.promise
@@ -67,9 +70,9 @@
   $scope.isAdmin = context.auth.admin
 
   $scope.list = articles
-  $scope.currentPage =$routeParams.p ? 1
+  $scope.currentPage = $routeParams.p ? 1
 
-  $scope.params=$routeParams
+  $scope.category = $routeParams.category || articles.value[0].category
 
   #Turn page
   $scope.setPage = (pageNo) ->

@@ -43,7 +43,7 @@
       $scope.messages.push(data)
       $scope.entity.content = ""
       progressbar.complete()
-      $scope.submitted=false
+      $scope.submitted = false
       $scope.loading = ""
       context.account =
         name: $scope.entity.author.name
@@ -51,12 +51,12 @@
         url: $scope.entity.url
     ,(error)->
       progressbar.complete()
-      $scope.submitted=false
+      $scope.submitted = false
       $scope.loading = ""
 
   $scope.remove = (item, index) ->
     messager.confirm ->
-      Board.remove id:"#{item._id}",->
+      Board.remove id: item._id, ->
         $scope.messages.splice(index, 1)
         messager.success "Message has been removed."
 ])

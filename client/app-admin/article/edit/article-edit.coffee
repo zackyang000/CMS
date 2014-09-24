@@ -1,7 +1,7 @@
 ﻿angular.module('article-edit',['resource.articles','resource.categories'])
 
 .factory("TranslateService", ["$http", ($http) ->
-  events: (key) ->
+  translate: (key) ->
     $http
       method: "JSONP"
       url: "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=JSON_CALLBACK&appId=A4D660A48A6A97CCA791C34935E4C02BBB1BEC1C&from=zh-cn&to=en&text=" + key
@@ -32,16 +32,19 @@
             $scope.translateTitle()
           if $scope.entity.meta.tags
             $scope.tags = $scope.entity.meta.tags.join(',')
-          $scope.loading=""
+          $scope.loading = ""
     else
-      $scope.entity = {}
+      $scope.entity =
+        meta : {}
+        date: new Date()
+        comments : []
 
   $scope.submit = ->
-    $scope.isSubmit=true
+    $scope.isSubmit = true
     return if $scope.form.$invalid
     return if !$scope.entity.category
 
-    $scope.loading="Saving"
+    $scope.loading = "Saving"
 
     if $scope.uploader.getNotUploadedItems().length
       $scope.uploader.uploadAll()
@@ -70,9 +73,7 @@
     messager.confirm ->
       $scope.loading="Deleting"
       entity=$scope.entity
-      entity.IsDeleted=true
-      Articles.update {id:"(guid'#{entity.PostId}')"},entity
-      ,(data)->
+      Articles.delete { id: entity._id }, (data)->
         messager.success "Delete post successfully."
         $window.location.href = "article"
 
@@ -89,19 +90,19 @@
   $scope.removeThumbnail = ()->
     $scope.entity.Thumbnail=undefined
 
-  #URL根据Title翻译获取.
-  timeout=undefined
+  #根据title翻译url.
+  timeout = undefined
   $scope.translateTitle = ->
     if $scope.entity.title
       $timeout.cancel timeout if timeout
       timeout = $timeout( ->
-        $scope.translating=true
-        TranslateService.events($scope.entity.title).success (data) ->
+        $scope.translating = true
+        TranslateService.translate($scope.entity.title).success (data) ->
           data = $.trim(data)
           data = data.toLowerCase()
           data = data.replace(/[^_a-zA-Z\d\s]/g, '')
           data = data.replace(/[\s]/g, "-")
-          $scope.entity.url=data
-          $scope.translating=false
+          $scope.entity.url = data
+          $scope.translating = false
       , 500)
 ])

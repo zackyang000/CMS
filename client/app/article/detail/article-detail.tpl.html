@@ -29,7 +29,7 @@
 
 	        <!-- Recent Comments -->
 	        <div class="media">
-	            <h3>{{'article.comments' | translate}}</h3>
+	            <h3>{{'article.comments' | translate}} ({{ item.comments.length }})</h3>
 	        </div>
 	        <div class="media" ng-repeat="item in item.comments | orderBy:'date'" ng-hide="item.block">
 	            <span class="pull-left">
@@ -50,8 +50,6 @@
 	            <hr/>
 	        </div>
 	        <!-- End Recent Comments -->
-
-	        <hr>
 
 	        <!-- Comment Form -->
 	        <div class="post-comment">
