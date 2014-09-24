@@ -4,6 +4,7 @@ mkdirp = require('mkdirp')
 gm = require('gm')
 mongoose = require("mongoose")
 User = mongoose.model("User")
+Article = mongoose.model("Article")
 
 module.exports = (app) ->
   client = require('../odata-rest')
@@ -17,7 +18,21 @@ module.exports = (app) ->
     options:
       defaultOrderby: 'date desc'
     actions: [
-
+        url: 'add-comment'
+        handle: (req, res, next) ->
+          Article.findOne
+            _id: req.params.id
+          , (err, article) ->
+            if err
+              next(err)
+            unless article
+              next new Error("Failed to load article " + req.query.id)
+            req.body.date = new Date()
+            article.comments.push(req.body)
+            article.save (err) ->
+              if err
+                next(err)
+              res.jsonp(req.body)
       ]
 
   client.register
