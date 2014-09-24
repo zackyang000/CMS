@@ -20,7 +20,8 @@
 .controller('ArticleEditCtrl',
 ["$scope","$routeParams","$window","$rootScope","$fileUploader","Articles","Categories","$timeout","TranslateService", "messager"
 ($scope,$routeParams,$window,$rootScope,$fileUploader,Articles,Categories,$timeout,TranslateService, messager) ->
-  $scope.categories = Categories.query (data)->
+  Categories.query (categories) ->
+    $scope.categories = categories.value
     if $routeParams.id
       $scope.loading = "Loading"
       Articles.get

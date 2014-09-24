@@ -16,6 +16,9 @@ module.exports = (app) ->
     modelName: "Article"
     options:
       defaultOrderby: 'date desc'
+    actions: [
+
+      ]
 
   client.register
     url: 'categories',

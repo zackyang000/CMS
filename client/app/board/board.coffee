@@ -18,8 +18,8 @@
 ])
 
 .controller('BoardCtrl',
-["$scope", "$translate", "messages", "context", "progressbar", "Board"
-($scope, $translate, messages, context, progressbar, Board) ->
+["$scope", "$translate", "messages", "context", "progressbar", "Board", "messager"
+($scope, $translate, messages, context, progressbar, Board, messager) ->
 
   $scope.messages = messages
 
@@ -53,4 +53,10 @@
       progressbar.complete()
       $scope.submitted=false
       $scope.loading = ""
+
+  $scope.remove = (item, index) ->
+    messager.confirm ->
+      Board.remove id:"#{item._id}",->
+        $scope.messages.splice(index, 1)
+        messager.success "Message has been removed."
 ])

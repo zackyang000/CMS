@@ -63,7 +63,7 @@
             <hr>
 
             <!-- Recent Comments -->
-            <div class="media" ng-repeat="item in messages | orderBy:'-date'" ng-hide="item.block">
+            <div class="media" ng-repeat="item in messages | orderBy:'-date'">
                 <span class="pull-left">
                     <img class="media-object" ng-src="{{item.author.email | gravatar}}" alt="" />
                 </span>
@@ -73,7 +73,7 @@
                         <span>
                             <small>#{{ messages.length - $index }}</small>
                             {{item.date | date:"yyyy.MM.dd HH:mm" }}
-                            <a href="JavaScript:void(0)" ng-click="remove(item)" ng-show="isAdmin">
+                            <a href="JavaScript:void(0)" ng-click="remove(item, $index)" ng-show="isAdmin">
                                 <i class="icon-remove"></i>
                             </a>
                         </span>
