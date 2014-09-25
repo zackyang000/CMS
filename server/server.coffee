@@ -28,7 +28,6 @@ app.use(require("./middleware/authorization")())
 #app.use(express["static"](path.join(__dirname, "../client")))
 
 #application init
-require("./bootstrap/registerAPIs")(app)
 require("./bootstrap/registerREST")(app)
 
 #db init
