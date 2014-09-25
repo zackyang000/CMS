@@ -7,12 +7,14 @@ User = mongoose.model("User")
 Article = mongoose.model("Article")
 
 module.exports = (app) ->
-  client = require('../odata-rest')
+  odata = require('../odata-rest')
 
-  client.options.set('app', app)
-  client.options.set('maxTop', 10)
+  odata.options.set('app', app)
+  odata.options.set('maxTop', 10)
 
-  client.register
+  authAdmin = (req) -> !!req.user
+
+  odata.register
     url: 'articles',
     modelName: "Article"
     options:
@@ -35,30 +37,34 @@ module.exports = (app) ->
               res.jsonp(req.body)
       ]
 
-  client.register
+  odata.register
     url: 'categories',
     modelName: "Category"
     options:
       defaultOrderby: 'date desc'
+    auth:
+      POST: authAdmin
+      PUT: authAdmin
+      DELETE: authAdmin
 
-  client.register
+  odata.register
     url: 'galleries',
     modelName: "Gallery"
     options:
       defaultOrderby: 'date desc'
 
-  client.register
+  odata.register
     url: 'board',
     modelName: "Board"
     options:
       defaultOrderby: 'date desc'
 
-  client.register
+  odata.register
     url: 'users',
     modelName: "User"
 
 # Login, refresh user token.
-  client.registerFunction
+  odata.registerFunction
     url: 'login',
     method: 'POST',
     handle: (req, res, next) ->
@@ -79,7 +85,7 @@ module.exports = (app) ->
           disabled: user.disabled
 
 # Auto-login valid by user token.
-  client.registerFunction
+  odata.registerFunction
     url: 'auto-login',
     method: 'POST',
     handle: (req, res, next) ->
@@ -91,7 +97,7 @@ module.exports = (app) ->
         disabled: req.user.disabled
 
 # Logout, remove user token.
-  client.registerFunction
+  odata.registerFunction
     url: 'logout',
     method: 'POST',
     handle: (req, res, next) ->
@@ -107,7 +113,7 @@ module.exports = (app) ->
           email: user.email
           disabled: user.disabled
 
-  client.registerFunction
+  odata.registerFunction
     url: 'file-upload',
     method: 'POST',
     handle: (req, res, next) ->
