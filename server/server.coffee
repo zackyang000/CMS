@@ -23,7 +23,7 @@ uploadPath = path.join(path.dirname(__dirname), 'client/upload/temp')
 app.use(cors({ exposedHeaders: "authorization" }))
 app.use(express.bodyParser({uploadDir : uploadPath}))
 app.use(express.methodOverride())
-app.use(require("./middleware/basicAuth")())
+app.use(require("./middleware/authorization")())
 #app.use(express.favicon(path.join(__dirname, "../client/img/favicon.ico")))
 #app.use(express["static"](path.join(__dirname, "../client")))
 
