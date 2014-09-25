@@ -28,7 +28,7 @@
   codeformat()#格式化代码
 
   #初始化新评论
-  $scope.entity=
+  $scope.entity =
     author :
       name : context.account.name
       email : context.account.email
