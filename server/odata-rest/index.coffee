@@ -31,15 +31,17 @@ exports.register = (params) ->
   app.del "/#{_options.prefix}/#{url}/:id", (req, res, next) -> del(req, res, next, mongooseModel)
   app.get "/#{_options.prefix}/#{url}/:id", (req, res, next) -> read.get(req, res, next, mongooseModel)
   app.get "/#{_options.prefix}/#{url}", (req, res, next) -> read.getAll(req, res, next, mongooseModel, options)
+
   for item in actions
-    console.log "/#{_options.prefix}/#{url}/:id/#{item.url}"
     app.post "/#{_options.prefix}/#{url}/:id/#{item.url}", item.handle
+
 
 exports.registerFunction = (params) ->
   url = params.url
   method = params.method
   handle = params.handle
   _options.app[method.toLowerCase()]("/#{_options.prefix}/#{url}", handle)
+
 
 exports.options =
   set: (key, value) ->

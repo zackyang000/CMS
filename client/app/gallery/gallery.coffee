@@ -11,6 +11,7 @@
           deferred = $q.defer()
           Galleries.query
             $top: 10000
+            $select: 'name,description,cover'
           ,(data) ->
             deferred.resolve data.value
           deferred.promise

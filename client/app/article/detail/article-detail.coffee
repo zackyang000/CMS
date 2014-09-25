@@ -17,8 +17,8 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope", "$rootScope", "$window", "$translate", "$route", "article", "Articles", "context", "progressbar"
-($scope, $rootScope, $window, $translate, $route, article, Articles, context, progressbar) ->
+["$scope", "$rootScope", "$window", "$translate", "$route", "article", "Articles", "context", "progressbar", "messager"
+($scope, $rootScope, $window, $translate, $route, article, Articles, context, progressbar, messager) ->
   $rootScope.$broadcast("categoryChange", article.category)
 
   $window.scroll(0, 0)
@@ -65,4 +65,11 @@
 
   $scope.edit = (item) ->
     $window.location.href="/admin/article/#{item._id}"
+
+  $scope.remove = (item, index) ->
+
+    messager.confirm ->
+      $scope.item.comments.splice(index, 1)
+      Articles.update {id: $scope.item._id}, $scope.item, ->
+        messager.success "Message has been removed."
 ])

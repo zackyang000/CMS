@@ -57,14 +57,14 @@
       $scope.entity.meta.tags = $scope.tags.split(',')
 
     if !$routeParams.id
-      Articles.save entity,
-      (data) ->
+      Articles.save entity
+      ,(data) ->
         $window.location.href = "/post/#{data.url}"
       ,(error) ->
         $scope.loading=""
     else
-      Articles.update {id: $routeParams.id},entity,
-      (data)->
+      Articles.update {id: $routeParams.id}, entity
+      ,(data)->
         $window.location.href = "/post/#{data.url}"
       ,(error) ->
         $scope.loading=""

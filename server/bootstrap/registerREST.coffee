@@ -83,15 +83,12 @@ module.exports = (app) ->
     url: 'auto-login',
     method: 'POST',
     handle: (req, res, next) ->
-      token = req.get("authorization")
-      User.findOne(token: token).exec (err, user) ->
-        unless user
-          return res.send(401, "Failed to auto-login.")
-        res.json
-          name: user.name
-          loginName: user.loginName
-          email: user.email
-          disabled: user.disabled
+      return res.send(401, "Failed to auto-login.")  unless req.user
+      res.json
+        name: req.user.name
+        loginName: req.user.loginName
+        email: req.user.email
+        disabled: req.user.disabled
 
 # Logout, remove user token.
   client.registerFunction
