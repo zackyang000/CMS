@@ -20,22 +20,22 @@ module.exports = (app) ->
     options:
       defaultOrderby: 'date desc'
     actions: [
-        url: 'add-comment'
-        handle: (req, res, next) ->
-          Article.findOne
-            _id: req.params.id
-          , (err, article) ->
+      url: 'add-comment'
+      handle: (req, res, next) ->
+        Article.findOne
+          _id: req.params.id
+        , (err, article) ->
+          if err
+            next(err)
+          unless article
+            next new Error("Failed to load article " + req.query.id)
+          req.body.date = new Date()
+          article.comments.push(req.body)
+          article.save (err) ->
             if err
               next(err)
-            unless article
-              next new Error("Failed to load article " + req.query.id)
-            req.body.date = new Date()
-            article.comments.push(req.body)
-            article.save (err) ->
-              if err
-                next(err)
-              res.jsonp(req.body)
-      ]
+            res.jsonp(req.body)
+    ]
 
   odata.register
     url: 'categories',
@@ -43,9 +43,7 @@ module.exports = (app) ->
     options:
       defaultOrderby: 'date desc'
     auth:
-      POST: authAdmin
-      PUT: authAdmin
-      DELETE: authAdmin
+      "POST,PUT,DELETE": authAdmin
 
   odata.register
     url: 'galleries',
