@@ -7,6 +7,9 @@
     maxSkip: undefined
     defaultOrderby: 'date desc'
   actions: undefined
+  auth:
+    "POST,PUT,DELETE": (req) -> req.user.isAdmin
+    "GET": (req) -> !!req.user
 ###
 
 _ = require("lodash")
@@ -26,11 +29,17 @@ exports.register = (params) ->
   options = _.extend(_options, params.options)
   actions = params.actions || []
 
-  app.post "/#{_options.prefix}/#{url}", (req, res, next) -> create(req, res, next, mongooseModel)
-  app.put "/#{_options.prefix}/#{url}/:id", (req, res, next) -> update(req, res, next, mongooseModel)
-  app.del "/#{_options.prefix}/#{url}/:id", (req, res, next) -> del(req, res, next, mongooseModel)
-  app.get "/#{_options.prefix}/#{url}/:id", (req, res, next) -> read.get(req, res, next, mongooseModel)
-  app.get "/#{_options.prefix}/#{url}", (req, res, next) -> read.getAll(req, res, next, mongooseModel, options)
+  auth = []
+  for key, value of params.auth
+    auth.push
+      methods: key.toLowerCase().split(',')
+      valid: value
+
+  app.post "/#{_options.prefix}/#{url}", (req, res, next) -> checkAuth(req, res, auth, 'post') && create(req, res, next, mongooseModel)
+  app.put "/#{_options.prefix}/#{url}/:id", (req, res, next) -> checkAuth(req, res, auth, 'put') && update(req, res, next, mongooseModel)
+  app.del "/#{_options.prefix}/#{url}/:id", (req, res, next) -> checkAuth(req, res, auth, 'delete') && del(req, res, next, mongooseModel)
+  app.get "/#{_options.prefix}/#{url}/:id", (req, res, next) -> checkAuth(req, res, auth, 'get') && read.get(req, res, next, mongooseModel)
+  app.get "/#{_options.prefix}/#{url}", (req, res, next) -> checkAuth(req, res, auth, 'get') && read.getAll(req, res, next, mongooseModel, options)
 
   for item in actions
     app.post "/#{_options.prefix}/#{url}/:id/#{item.url}", item.handle
@@ -46,3 +55,13 @@ exports.registerFunction = (params) ->
 exports.options =
   set: (key, value) ->
     _options[key] = value
+
+
+checkAuth = (req, res, auth, method) ->
+  for item in auth
+    if method in item.methods && !item.valid(req)
+      res.send 401
+      return false
+  return true
+
+

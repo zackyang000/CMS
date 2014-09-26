@@ -12,7 +12,7 @@ module.exports = (app) ->
   odata.options.set('app', app)
   odata.options.set('maxTop', 10)
 
-  authAdmin = (req) -> !!req.user
+  authAdmin = (req, res) -> !!req.user
 
   odata.register
     url: 'articles',
@@ -61,7 +61,7 @@ module.exports = (app) ->
     options:
       defaultOrderby: 'date desc'
     auth:
-      "POST,DELETE": authAdmin
+      "DELETE,PUT": authAdmin
 
   odata.register
     url: 'users',

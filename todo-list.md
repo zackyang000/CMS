@@ -2,4 +2,4 @@
 更多的odata filter查询条件
 根据tags查询文章列表
 
-权限验证
+action/function权限验证
