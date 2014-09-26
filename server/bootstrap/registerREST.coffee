@@ -19,6 +19,8 @@ module.exports = (app) ->
     modelName: "Article"
     options:
       defaultOrderby: 'date desc'
+    auth:
+      "POST,PUT,DELETE": authAdmin
     actions: [
       url: 'add-comment'
       handle: (req, res, next) ->
@@ -50,16 +52,23 @@ module.exports = (app) ->
     modelName: "Gallery"
     options:
       defaultOrderby: 'date desc'
+    auth:
+      "POST,PUT,DELETE": authAdmin
 
   odata.register
     url: 'board',
     modelName: "Board"
     options:
       defaultOrderby: 'date desc'
+    auth:
+      "POST,DELETE": authAdmin
 
   odata.register
     url: 'users',
     modelName: "User"
+    auth:
+      "POST,PUT,DELETE": authAdmin
+
 
 # Login, refresh user token.
   odata.registerFunction
@@ -82,6 +91,7 @@ module.exports = (app) ->
           email: user.email
           disabled: user.disabled
 
+
 # Auto-login valid by user token.
   odata.registerFunction
     url: 'auto-login',
@@ -93,6 +103,7 @@ module.exports = (app) ->
         loginName: req.user.loginName
         email: req.user.email
         disabled: req.user.disabled
+
 
 # Logout, remove user token.
   odata.registerFunction
@@ -111,9 +122,11 @@ module.exports = (app) ->
           email: user.email
           disabled: user.disabled
 
+
   odata.registerFunction
     url: 'file-upload',
     method: 'POST',
+    auth: authAdmin
     handle: (req, res, next) ->
       sourcePath = req.files.file.path
       targetFolder = "../client/upload/"+ req.query.path
