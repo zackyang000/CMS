@@ -14,7 +14,6 @@
 'zy.untils'
 'pasvaz.bindonce'
 'ngProgress'
-'ngGrid'
 'ui.utils'
 'ui.bootstrap'
 'pascalprecht.translate'
