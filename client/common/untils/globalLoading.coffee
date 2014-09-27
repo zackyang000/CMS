@@ -2,7 +2,7 @@ angular.module("zy.untils.globalLoading", [])
 
 .constant('global-loading-app', {})
 
-.config(['$httpProvider', 'global-loading-app', ($httpProvider, app) ->
+.config(['$httpProvider', '$provide', 'global-loading-app', ($httpProvider, $provide, app) ->
     # global loading status
     status =
       count: 0
@@ -29,7 +29,8 @@ angular.module("zy.untils.globalLoading", [])
       status.cancel()  if status.loading and status.count is 0
       return data
 
-    $httpProvider.responseInterceptors.push ["$rootScope", "$q", "messager", ($rootScope, $q, messager) ->
+
+    $provide.factory 'ajaxErrorHandler', ["$rootScope", "$q", "messager", ($rootScope, $q, messager) ->
       success = (response) ->
         response
       error = (response) ->
@@ -39,6 +40,8 @@ angular.module("zy.untils.globalLoading", [])
       (promise) ->
         promise.then success, error
     ]
+
+    $httpProvider.interceptors.push('ajaxErrorHandler')
   ])
 
 #register global ajax loading

@@ -165,6 +165,12 @@
           dest: '_dist/server'
         ]
 
+    bower:
+      dev:
+        dest: '_dist/client/vendor'
+        options:
+          expand: true
+
     inline_angular_templates:
       _dist:
         options:
@@ -204,6 +210,7 @@
     if debug
       grunt.task.run [
         "clean:all"
+        "bower"
         "copy"
         "coffee"
         "less"
@@ -213,6 +220,7 @@
     else
       grunt.task.run [
         "clean:all"
+        "bower"
         "copy"
         "coffee"
         "less"

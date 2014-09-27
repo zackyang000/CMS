@@ -102,7 +102,7 @@ var App = function () {
 
     return {
         init: function () {
-            handleBootstrap();
+            //handleBootstrap();
             handleIEFixes();
             handleSearch();
             handleSwitcher();
