@@ -18,8 +18,8 @@
 ])
 
 .controller('BoardCtrl',
-["$scope", "$translate", "messages", "context", "progressbar", "Board", "messager"
-($scope, $translate, messages, context, progressbar, Board, messager) ->
+["$scope", "$translate", "messages", "context", "ngProgress", "Board", "messager"
+($scope, $translate, messages, context, ngProgress, Board, messager) ->
 
   $scope.messages = messages
 
@@ -35,14 +35,13 @@
   $scope.save = ->
     $scope.submitted = true
     return  if $scope.form.$invalid
-
-    progressbar.start()
+    ngProgress.start()
     $scope.loading = $translate("global.post")
     Board.save $scope.entity
     , (data)->
       $scope.messages.push(data)
       $scope.entity.content = ""
-      progressbar.complete()
+      ngProgress.complete()
       $scope.submitted = false
       $scope.loading = ""
       context.account =
@@ -50,7 +49,7 @@
         email: $scope.entity.author.email
         url: $scope.entity.url
     ,(error)->
-      progressbar.complete()
+      ngProgress.complete()
       $scope.submitted = false
       $scope.loading = ""
 

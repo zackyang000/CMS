@@ -33,7 +33,7 @@
     "angular-translate-storage-cookie": "2.4.0",
     "angular-translate-storage-local": "2.4.0",
     "angulartics": "0.16.5",
-    "ngprogress": "1.0.4",
+    "ngprogress": "1.0.7",
     "ngstorage": "0.3.0",
     "jquery-cookie": "~1.4.1",
     "ngDialog": "~0.2.13"

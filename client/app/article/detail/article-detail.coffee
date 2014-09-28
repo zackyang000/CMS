@@ -17,8 +17,8 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope", "$rootScope", "$window", "$translate", "$route", "article", "Articles", "context", "progressbar", "messager"
-($scope, $rootScope, $window, $translate, $route, article, Articles, context, progressbar, messager) ->
+["$scope", "$rootScope", "$window", "$translate", "$route", "article", "Articles", "context", "ngProgress", "messager"
+($scope, $rootScope, $window, $translate, $route, article, Articles, context, ngProgress, messager) ->
   $rootScope.$broadcast("categoryChange", article.category)
 
   $window.scroll(0, 0)
@@ -41,14 +41,14 @@
     if $scope.form.$invalid
       return
 
-    progressbar.start()
+    ngProgress.start()
     $scope.loading = $translate("global.post")
     $scope.entity.id = $scope.item._id
     Articles.addComment $scope.entity
     , (data)->
       $scope.item.comments.push(data)
       $scope.entity.content = ""
-      progressbar.complete()
+      ngProgress.complete()
       $scope.submitted=false
       $scope.loading = ""
       context.account =
@@ -56,7 +56,7 @@
         email: $scope.entity.author.email
         url: $scope.entity.url
     ,(error)->
-      progressbar.complete()
+      ngProgress.complete()
       $scope.submitted=false
       $scope.loading = ""
 

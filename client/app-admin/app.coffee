@@ -29,6 +29,10 @@
   $routeProvider.otherwise redirectTo: "/404"
 ])
 
+.run ['ngProgress', (ngProgress) ->
+  ngProgress.color('#5cb85c')
+]
+
 #hide current neg-progress when route start to change.
 .run(["$rootScope","progress", ($rootScope,progress) ->
   $rootScope.$on '$routeChangeStart', ->

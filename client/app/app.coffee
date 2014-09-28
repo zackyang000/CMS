@@ -47,6 +47,10 @@
     $rootScope.title = current.$$route?.title ? ''
 ]
 
+.run ['ngProgress', (ngProgress) ->
+  ngProgress.color('#5cb85c')
+]
+
 #get account info.
 .run ["$rootScope","security","context", ($rootScope, security, context) ->
     security.autoLogin().then (data) ->
