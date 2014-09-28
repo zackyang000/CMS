@@ -101,3 +101,15 @@
         -webkit-transform: rotate(-360deg);
     }
 }
+
+
+@media (min-width: 992px){
+    .navbar-toggle {
+        display: none;
+    }
+}
+@media (max-width: 992px){
+    .navbar-toggle {
+        display: block;
+    }
+}
