@@ -11,13 +11,13 @@
     <!--SCRIPTS--><!--SCRIPTS END-->
     <!--LIVERELOAD-->
 </head>
-<body ng-class="{'login-layout':__logoff , 'navbar-fixed breadcrumbs-fixed':__login}">
+<body ng-class="{'login-layout':__logoff, 'no-skin':__login}">
 
     <div ng-show="__login" ng-controller="MainCtrl">
         <div class="navbar navbar-default navbar-fixed-top" id="navbar">
             <div class="navbar-container" id="navbar-container">
                 <div class="navbar-header pull-left">
-                    <a href="#" class="navbar-brand">
+                    <a href="/" class="navbar-brand">
                         <i class="icon-bug"></i>
                         {{config.siteName}} Admin
                         <small class="white"> - {{newVersion.ver}}</small>
@@ -60,10 +60,18 @@
                 <div class="sidebar sidebar-fixed" id="sidebar">
                     <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                         <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-                            <button class="btn btn-success"></button>
-                            <button class="btn btn-info"></button>
-                            <button class="btn btn-warning"></button>
-                            <button class="btn btn-danger"></button>
+                            <button class="btn btn-success">
+                                <i class="ace-icon fa fa-signal"></i>
+                            </button>
+                            <button class="btn btn-info">
+                                <i class="ace-icon fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-warning">
+                                <i class="ace-icon fa fa-users"></i>
+                            </button>
+                            <button class="btn btn-danger">
+                                <i class="ace-icon fa fa-cogs"></i>
+                            </button>
                         </div>
                         <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
                             <span class="btn btn-success"></span>
@@ -75,55 +83,62 @@
                     <ul class="nav nav-list">
                         <li active-link="active">
                             <a href="#">
-                                <i class="icon-dashboard"></i>
+                                <i class="menu-icon fa fa-dashboard"></i>
                                 <span class="menu-text">Dashboard</span>
                             </a>
                         </li>
-                        <li active-parent-link="open active">
-                            <a href="#" class="dropdown-toggle">
-                                <i class="icon-indent-right"></i>
-                                <span class="menu-text">Article</span>
-                                <b class="arrow icon-angle-down"></b>
+                        <li class="hsub" active-parent-link="open active">
+                            <a href="javascript: void(0)" class="dropdown-toggle">
+                                <i class="menu-icon fa fa-list"></i>
+                                <span class="menu-text"> Article </span>
+                                <b class="arrow fa fa-angle-down"></b>
                             </a>
+                            <b class="arrow"></b>
                             <ul class="submenu">
                                 <li active-link="active">
                                     <a href="article">
-                                        <i class="icon-double-angle-right"></i>
+                                        <i class="menu-icon fa fa-caret-right"></i>
                                         Manage
                                     </a>
+                                    <b class="arrow"></b>
                                 </li>
                                 <li active-link="active">
                                     <a href="category">
-                                        <i class="icon-double-angle-right"></i>
+                                        <i class="menu-icon fa fa-caret-right"></i>
                                         Category
                                     </a>
+                                    <b class="arrow"></b>
                                 </li>
                             </ul>
                         </li>
                         <li active-link="active">
                             <a href="gallery">
-                                <i class="icon-picture"></i>
+                                <i class="menu-icon fa fa-photo"></i>
                                 <span class="menu-text">Gallery</span>
                             </a>
                         </li>
-                        <li active-parent-link="open active">
-                            <a href="#" class="dropdown-toggle">
-                                <i class="icon-gears"></i>
-                                <span class="menu-text">System</span>
-                                <b class="arrow icon-angle-down"></b>
+                        <li class="hsub" active-parent-link="open active">
+                            <a href="javascript: void(0)" class="dropdown-toggle">
+                                <i class="menu-icon fa fa-tag"></i>
+                                <span class="menu-text"> System </span>
+
+                                <b class="arrow fa fa-angle-down"></b>
                             </a>
+                            <b class="arrow"></b>
                             <ul class="submenu">
                                 <li active-link="active">
                                     <a href="system/user">
-                                        <i class="icon-double-angle-right"></i>
+                                        <i class="menu-icon fa fa-caret-right"></i>
                                         User
                                     </a>
+                                    <b class="arrow"></b>
                                 </li>
                                 <li active-link="active">
                                     <a href="system/history">
-                                        <i class="icon-double-angle-right"></i>
+                                        <i class="menu-icon fa fa-caret-right"></i>
                                         History
                                     </a>
+                                    <b class="arrow"></b>
                                 </li>
                             </ul>
                         </li>

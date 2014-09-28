@@ -1,1 +1,1769 @@
-"ace"in window||(window.ace={}),"helper"in window.ace||(window.ace.helper={}),"vars"in window.ace||(window.ace.vars={icon:" ace-icon ",".icon":".ace-icon"}),ace.vars.touch="ontouchstart"in document.documentElement,jQuery(function(e){ace.click_event=ace.vars.touch&&e.fn.tap?"tap":"click";var a=navigator.userAgent;ace.vars.webkit=!!a.match(/AppleWebKit/i),ace.vars.safari=!!a.match(/Safari/i)&&!a.match(/Chrome/i),ace.vars.android=ace.vars.safari&&!!a.match(/Android/i),ace.vars.ios_safari=!!a.match(/OS ([4-8])(_\d)+ like Mac OS X/i)&&!a.match(/CriOS/i),ace.vars.non_auto_fixed=ace.vars.android||ace.vars.ios_safari,ace.vars.non_auto_fixed&&e("body").addClass("mob-safari"),ace.vars.transition="transition"in document.body.style||"WebkitTransition"in document.body.style||"MozTransition"in document.body.style||"OTransition"in document.body.style;var t={general_vars:null,handle_side_menu:null,add_touch_drag:null,sidebar_scrollable:[!0,!0,!1||ace.vars.safari||ace.vars.ios_safari,200,!1],sidebar_hoverable:null,general_things:null,widget_boxes:null,widget_reload_handler:null,settings_box:null,settings_rtl:null,settings_skin:null,enable_searchbox_autocomplete:null,auto_hide_sidebar:null,auto_padding:null,auto_container:null};for(var s in t)if(s in ace){var i=t[s];i!==!1&&(null==i?i=[jQuery]:i instanceof String?i=[jQuery,i]:i instanceof Array&&i.unshift(jQuery),ace[s].apply(null,i))}}),ace.general_vars=function(e){var a="menu-min",t="responsive-min",s="h-sidebar",i=e("#sidebar").eq(0);ace.vars.mobile_style=1,i.hasClass("responsive")&&!e("#menu-toggler").hasClass("navbar-toggle")?ace.vars.mobile_style=2:i.hasClass(t)?ace.vars.mobile_style=3:i.hasClass("navbar-collapse")&&(ace.vars.mobile_style=4),e(window).on("resize.ace.vars",function(){ace.vars.window={width:parseInt(e(this).width()),height:parseInt(e(this).height())},ace.vars.mobile_view=ace.vars.mobile_style<4&&ace.helper.mobile_view(),ace.vars.collapsible=!ace.vars.mobile_view&&ace.helper.collapsible(),ace.vars.nav_collapse=(ace.vars.collapsible||ace.vars.mobile_view)&&e("#navbar").hasClass("navbar-collapse");var i=e(document.getElementById("sidebar"));ace.vars.minimized=!ace.vars.collapsible&&i.hasClass(a)||3==ace.vars.mobile_style&&ace.vars.mobile_view&&i.hasClass(t),ace.vars.horizontal=!(ace.vars.mobile_view||ace.vars.collapsible)&&i.hasClass(s)}).triggerHandler("resize.ace.vars")},ace.general_things=function(e){var a=!!e.fn.ace_scroll;a&&e(".dropdown-content").ace_scroll({reset:!1,mouseWheelLock:!0}),e(window).on("resize.reset_scroll",function(){a&&e(".ace-scroll").ace_scroll("reset")}),e(document).on("settings.ace.reset_scroll",function(t,s){"sidebar_collapsed"==s&&a&&e(".ace-scroll").ace_scroll("reset")}),e(document).on("click.dropdown.pos",'.dropdown-toggle[data-position="auto"]',function(){var a=e(this).offset(),t=e(this.parentNode);parseInt(a.top+e(this).height())+50>ace.helper.scrollTop()+ace.helper.winHeight()-t.find(".dropdown-menu").eq(0).height()?t.addClass("dropup"):t.removeClass("dropup")}),e(document).on("click",".dropdown-navbar .nav-tabs",function(a){a.stopPropagation();{var t;a.target}(t=e(a.target).closest("[data-toggle=tab]"))&&t.length>0&&(t.tab("show"),a.preventDefault())}),e('.ace-nav [class*="icon-animated-"]').closest("a").one("click",function(){var a=e(this).find('[class*="icon-animated-"]').eq(0),t=a.attr("class").match(/icon\-animated\-([\d\w]+)/);a.removeClass(t[0])}),e(".sidebar .nav-list .badge[title],.sidebar .nav-list .badge[title]").each(function(){var a=e(this).attr("class").match(/tooltip\-(?:\w+)/);a=a?a[0]:"tooltip-error",e(this).tooltip({placement:function(a,t){var s=e(t).offset();return parseInt(s.left)<parseInt(document.body.scrollWidth/2)?"right":"left"},container:"body",template:'<div class="tooltip '+a+'"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'})});var t=e(".btn-scroll-up");if(t.length>0){var s=!1;e(window).on("scroll.scroll_btn",function(){ace.helper.scrollTop()>parseInt(ace.helper.winHeight()/4)?s||(t.addClass("display"),s=!0):s&&(t.removeClass("display"),s=!1)}).triggerHandler("scroll.scroll_btn"),t.on(ace.click_event,function(){var a=Math.min(500,Math.max(100,parseInt(ace.helper.scrollTop()/3)));return e("html,body").animate({scrollTop:0},a),!1})}if(ace.vars.webkit){var i=e(".ace-nav").get(0);i&&e(window).on("resize.webkit",function(){ace.helper.redraw(i)})}},ace.helper.collapsible=function(){var e;return null!=document.querySelector("#sidebar.navbar-collapse")&&null!=(e=document.querySelector('.navbar-toggle[data-target*=".sidebar"]'))&&e.scrollHeight>0},ace.helper.mobile_view=function(){var e;return null!=(e=document.getElementById("menu-toggler"))&&e.scrollHeight>0},ace.helper.redraw=function(e){var a=e.style.display;e.style.display="none",e.offsetHeight,e.style.display=a},ace.helper.scrollTop=function(){return document.scrollTop||document.documentElement.scrollTop||document.body.scrollTop},ace.helper.winHeight=function(){return window.innerHeight||document.documentElement.clientHeight},ace.helper.camelCase=function(e){return e.replace(/-([\da-z])/gi,function(e,a){return a?a.toUpperCase():""})},ace.helper.removeStyle="removeProperty"in document.body.style?function(e,a){e.style.removeProperty(a)}:function(e,a){e.style[ace.helper.camelCase(a)]=""},ace.helper.hasClass="classList"in document.documentElement?function(e,a){return e.classList.contains(a)}:function(e,a){return e.className.indexOf(a)>-1},ace.add_touch_drag=function(e){if(ace.vars.touch){var a="touchstart MSPointerDown pointerdown",t="touchend touchcancel MSPointerUp MSPointerCancel pointerup pointercancel",s="touchmove MSPointerMove MSPointerHover pointermove";e.event.special.ace_drag={setup:function(){var i=0,n=e(this);n.on(a,function(a){function r(e){if(c){var a=e.originalEvent.touches?e.originalEvent.touches[0]:e;if(o={coords:[a.pageX,a.pageY]},c&&o&&(h=0,u=0,d=Math.abs(u=c.coords[1]-o.coords[1])>i&&Math.abs(h=c.coords[0]-o.coords[0])<=Math.abs(u)?u>0?"up":"down":Math.abs(h=c.coords[0]-o.coords[0])>i&&Math.abs(u)<=Math.abs(h)?h>0?"left":"right":!1,d!==!1)){var t={};c.origin.trigger({type:"ace_drag",direction:d,dx:h,dy:u,retval:t}),e.preventDefault()}c.coords[0]=o.coords[0],c.coords[1]=o.coords[1]}}var o,l=a.originalEvent.touches?a.originalEvent.touches[0]:a,c={coords:[l.pageX,l.pageY],origin:e(a.target)};c.origin.trigger({type:"ace_dragStart",start:c||[-1,-1]});var d=!1,h=0,u=0;n.on(s,r).one(t,function(){n.off(s,r),c.origin.trigger({type:"ace_dragEnd",stop:o||[-1,-1]}),c=o=void 0})})}}}},ace.handle_side_menu=function(e){var a=e(".sidebar").eq(0);e(document).on(ace.click_event+".ace.menu","#menu-toggler",function(){return a.toggleClass("display"),e(this).toggleClass("display"),e(this).hasClass("display")&&"sidebar_scroll"in ace.helper&&ace.helper.sidebar_scroll.reset(),!1}).on(ace.click_event+".ace.menu",".sidebar-collapse",function(){ace.vars.collapsible||ace.vars.horizontal||(ace.vars.minimized=!ace.vars.minimized,ace.settings.sidebar_collapsed.call(this,ace.vars.minimized))}).on(ace.click_event+".ace.menu",".sidebar-expand",function(){ace.vars.minimized&&ace.settings.sidebar_collapsed.call(this,!1,!1);var t=e(this).find(ace.vars[".icon"]),s=t.attr("data-icon1"),i=t.attr("data-icon2");a.hasClass("responsive-min")?(t.removeClass(s).addClass(i),a.removeClass("responsive-min"),a.addClass("display responsive-max"),ace.vars.minimized=!1):(t.removeClass(i).addClass(s),a.removeClass("display responsive-max"),a.addClass("responsive-min"),ace.vars.minimized=!0),e(document).triggerHandler("settings.ace",["sidebar_collapsed",ace.vars.minimized])});var t=ace.vars.ios_safari;e(document).on(ace.click_event+".ace.submenu",".sidebar .nav-list",function(a){var s=this,i=e(a.target).closest("a");if(i&&0!=i.length){var n=ace.vars.minimized&&!ace.vars.collapsible;if(i.hasClass("dropdown-toggle")){var r=i.siblings(".submenu").get(0);if(!r)return!1;var o=0,l=250,c=r.parentNode.parentNode;if(n&&c==s||e(r.parentNode).hasClass("hover")&&!ace.vars.collapsible)return a.preventDefault(),!1;0==r.scrollHeight&&e(c).find("> .open > .submenu").each(function(){this==r||e(this.parentNode).hasClass("active")||(o-=this.scrollHeight,ace.submenu.hide(this,l))});var d=0;return 1==(d=ace.submenu.toggle(r,l))?0!=o&&(o+=r.scrollHeight):-1==d&&(o-=r.scrollHeight),0!=o&&"sidebar_scroll"in ace.helper&&ace.helper.sidebar_scroll.prehide(o),a.preventDefault(),!1}if("tap"==ace.click_event&&n&&i.get(0).parentNode.parentNode==s){var h=i.find(".menu-text").get(0);if(a.target!=h&&!e.contains(h,a.target))return a.preventDefault(),!1}if(t&&"false"!==i.attr("data-link"))return document.location=i.attr("href"),a.preventDefault(),!1}})},ace.submenu={show:function(e,a){var t,s=$(e);if(s.trigger(t=$.Event("show.ace.submenu")),t.isDefaultPrevented())return!1;s.css({height:0,overflow:"hidden",display:"block"}).removeClass("nav-hide").addClass("nav-show").parent().addClass("open"),a>0&&s.css({height:e.scrollHeight,"transition-property":"height","transition-duration":a/1e3+"s"});var i=function(e){e&&e.stopPropagation(),s.css({"transition-property":"","transition-duration":"",overflow:"",height:""}),ace.vars.transition&&s.off(".trans"),s.trigger($.Event("shown.ace.submenu"))};return a>0&&ace.vars.transition?s.one("transitionend.trans webkitTransitionEnd.trans mozTransitionEnd.trans oTransitionEnd.trans",i):i(),ace.vars.android&&setTimeout(function(){s.css({overflow:"",height:""})},a+10),!0},hide:function(e,a){var t,s=$(e);if(s.trigger(t=$.Event("hide.ace.submenu")),t.isDefaultPrevented())return!1;s.css({height:e.scrollHeight,overflow:"hidden"}).parent().removeClass("open"),e.offsetHeight,a>0&&s.css({height:0,"transition-property":"height","transition-duration":a/1e3+"s"});var i=function(e){e&&e.stopPropagation(),s.css({display:"none",overflow:"",height:"","transition-property":"","transition-duration":""}).removeClass("nav-show").addClass("nav-hide"),ace.vars.transition&&s.off(".trans"),s.trigger($.Event("hidden.ace.submenu"))};return a>0&&ace.vars.transition?s.one("transitionend.trans webkitTransitionEnd.trans mozTransitionEnd.trans oTransitionEnd.trans",i):i(),ace.vars.android&&setTimeout(function(){s.css({display:"none",overflow:"",height:""})},a+10),!0},toggle:function(e,a){if(0==e.scrollHeight){if(ace.submenu.show(e,a))return 1}else if(ace.submenu.hide(e,a))return-1;return 0}},ace.sidebar_scrollable=function(e,a,t,s,i,n){if(e.fn.ace_scroll){var r=ace.vars.safari&&navigator.userAgent.match(/version\/[1-5]/i),o=e(".sidebar"),l=(e(".navbar"),o.find(".nav-list")),c=o.find(".sidebar-toggle"),d=o.find(".sidebar-shortcuts"),h=e(window),u=o.get(0),v=l.get(0);if(u&&v){var p,f,g=null,m=null,b=null,w=null,_=null,y=!1,C=!1,a=a||!1,t=t||!1,s=s||!1,k="getComputedStyle"in window?function(){return u.offsetHeight,"fixed"==window.getComputedStyle(u).position}:function(){return u.offsetHeight,"fixed"==o.css("position")},x=k(),T=o.hasClass("h-sidebar"),H=ace.helper.sidebar_scroll={available_height:function(){var e=l.parent().offset();return x&&(e.top-=ace.helper.scrollTop()),h.innerHeight()-e.top-(s?0:c.outerHeight())},content_height:function(){return v.scrollHeight},initiate:function(h){if(!C&&x){l.wrap('<div style="position: relative;" />'),l.after("<div><div></div></div>"),l.wrap('<div class="nav-wrap" />'),s||c.css({"z-index":1}),t||d.css({"z-index":99}),g=l.parent().next().ace_scroll({size:H.available_height(),reset:!0,mouseWheelLock:!0,hoverReset:!1,dragEvent:!0,touchDrag:!1}).closest(".ace-scroll").addClass("nav-scroll"),_=g.data("ace_scroll"),m=g.find(".scroll-content").eq(0),b=m.find(" > div").eq(0),w=g.find(".scroll-bar").eq(0),t&&(l.parent().prepend(d).wrapInner("<div />"),l=l.parent()),s&&(l.append(c),l.closest(".nav-wrap").addClass("nav-wrap-t")),l.css({position:"relative"}),n===!0&&g.addClass("scrollout"),v=l.get(0),v.style.top=0,m.on("scroll.nav",function(){v.style.top=-1*this.scrollTop+"px"}),l.on("mousewheel.ace_scroll DOMMouseScroll.ace_scroll",function(e){return g.trigger(e)});var u=m.get(0);if(l.on("ace_drag.nav",function(e){if(y&&("up"==e.direction||"down"==e.direction)){_.move_bar(!0),move_nav=!1;var a=e.dy;Math.abs(a)>20&&(a=2*a),0!=a&&(u.scrollTop=u.scrollTop+a,v.style.top=-1*u.scrollTop+"px")}}),i&&l.on("ace_dragStart.nav",function(e){e.stopPropagation(),l.css("transition-property","none"),w.css("transition-property","none")}).on("ace_dragEnd.nav",function(e){e.stopPropagation(),l.css("transition-property","top"),w.css("transition-property","top")}),r&&!s){var p=c.get(0);p&&m.on("scroll.safari",function(){ace.helper.redraw(p)})}if(C=!0,1==h){if(H.reset(),a&&_.is_active()){var f,k=o.find(".nav-list");ace.vars.minimized&&!ace.vars.collapsible?f=k.find("> .active"):(f=l.find("> .active.hover"),0==f.length&&(f=l.find(".active:not(.open)")));var T=f.outerHeight();k=k.get(0);for(var z=f.get(0);z!=k;)T+=z.offsetTop,z=z.parentNode;var E=T-g.height();E>0&&(v.style.top=-E+"px",m.scrollTop(E))}a=!1}if("number"==typeof i&&i>0&&(l.css({"transition-property":"top","transition-duration":(i/1e3).toFixed(2)+"s"}),w.css({"transition-property":"top","transition-duration":(i/1500).toFixed(2)+"s"}),g.on("drag.start",function(e){e.stopPropagation(),l.css("transition-property","none")}).on("drag.end",function(e){e.stopPropagation(),l.css("transition-property","top")})),ace.vars.android){var S=ace.helper.scrollTop();2>S&&(window.scrollTo(S,0),setTimeout(function(){H.reset()},20));var M,P=ace.helper.winHeight();e(window).on("scroll.ace_scroll",function(){y&&_.is_active()&&(M=ace.helper.winHeight(),M!=P&&(P=M,H.reset()))})}}},reset:function(){if(!x)return void H.disable();C||H.initiate();var e=!ace.vars.collapsible&&(!T||T&&ace.vars.mobile_view)&&(p=H.available_height())<(f=v.scrollHeight);y=!0,e&&(b.css({height:f,width:8}),g.prev().css({"max-height":p}),_.update({size:p}).enable().reset()),e&&_.is_active()?o.addClass("sidebar-scroll"):y&&H.disable()},disable:function(){y=!1,g&&(g.css({height:"","max-height":""}),b.css({height:"",width:""}),g.prev().css({"max-height":""}),_.disable()),parseInt(v.style.top)<0&&i&&ace.vars.transition?l.one("transitionend.trans webkitTransitionEnd.trans mozTransitionEnd.trans oTransitionEnd.trans",function(){o.removeClass("sidebar-scroll"),l.off(".trans")}):o.removeClass("sidebar-scroll"),v.style.top=0},prehide:function(e){if(y&&!ace.vars.minimized)if(H.content_height()+e<H.available_height())H.disable();else if(0>e){var a=m.scrollTop()+e;if(0>a)return;v.style.top=-1*a+"px"}}};H.initiate(!0),e(document).on("settings.ace.scroll",function(e,a){"sidebar_collapsed"==a&&x?H.reset():("sidebar_fixed"===a||"navbar_fixed"===a)&&(x=k(),x&&!y?H.reset():x||H.disable())}),h.on("resize.ace.scroll",function(){x=k(),H.reset()}),o.on("hidden.ace.submenu shown.ace.submenu",".submenu",function(e){e.stopPropagation(),ace.vars.minimized||(ace.vars.webkit?setTimeout(function(){H.reset()},0):H.reset())})}}},ace.sidebar_hoverable=function(e){function a(a){var t=e(a);a.style.removeProperty("top"),a.style.removeProperty("bottom");var s=null;ace.vars.minimized&&(s=a.parentNode.querySelector(".menu-text"))&&s.style.removeProperty("margin-top");var i=t.offset(),n=ace.helper.scrollTop(),o=!1,d=n;l&&(d+=r.clientHeight+1);var h=a.scrollHeight;s&&(h+=40,i.top-=40);var u,v=parseInt(i.top+h);if((u=v-(window.innerHeight+n-50))>0)if(c>h-u&&i.top-u>d)a.style.top="auto",a.style.bottom="-10px",s&&(s.style.marginTop=-(h-50)+"px",o=!0);else{i.top-u<d&&(u=i.top-d),v-u<i.top+c&&(u-=c);var p=s?40:20;u>p&&(a.style.top=-u+"px",s&&(s.style.marginTop=-u+"px",o=!0))}var f=this.className.lastIndexOf("pull_up");o?-1==f&&(this.className=this.className+" pull_up"):f>=0&&(this.className=this.className.replace(/(^|\s)pull_up($|\s)/,"")),ace.vars.safari&&ace.helper.redraw(a)}if("querySelector"in document&&"removeProperty"in document.body.style){ace.helper.sidebar_hover={reset:function(){s.find(".submenu").each(function(){var a=this,t=this.parentNode;if(a){a.style.removeProperty("top"),a.style.removeProperty("bottom");var s=t.querySelector(".menu-text");s&&s.style.removeProperty("margin-top")}t.className.lastIndexOf("_up")>=0&&e(t).removeClass("pull_up")})}};var t="getComputedStyle"in window?function(){return r.offsetHeight,"fixed"==window.getComputedStyle(r).position}:function(){return r.offsetHeight,"fixed"==n.css("position")};e(window).on("resize.ace_hover",function(){l=t(),ace.helper.sidebar_hover.reset()}),e(document).on("settings.ace.hover",function(e,a,t){"sidebar_collapsed"==a?ace.helper.sidebar_hover.reset():"navbar_fixed"==a&&(l=t)});var s=e(".sidebar").eq(0),i=(s.get(0),s.find(".nav-list").get(0)),n=e(".navbar").eq(0),r=n.get(0),o=s.hasClass("h-sidebar"),l="fixed"==n.css("position");s.find(".submenu").parent().addClass("hsub"),s.on("mouseenter.ace_hover",".nav-list li.hsub",function(){if(!(ace.vars.collapsible||o&&!ace.vars.mobile_view)){var e=this.querySelector(".submenu");e&&(ace.helper.hasClass(this,"hover")?a.call(this,e):this.parentNode==i&&ace.vars.minimized&&a.call(this,e))}});var c=50}},ace.widget_boxes=function(e){e(document).on("hide.bs.collapse show.bs.collapse",function(a){var t=a.target.getAttribute("id");e('[href*="#'+t+'"]').find(ace.vars[".icon"]).each(function(){var t,s=e(this),i=null,n=null;return(i=s.attr("data-icon-show"))?n=s.attr("data-icon-hide"):(t=s.attr("class").match(/fa\-(.*)\-(up|down)/))&&(i="fa-"+t[1]+"-down",n="fa-"+t[1]+"-up"),i?("show"==a.type?s.removeClass(i).addClass(n):s.removeClass(n).addClass(i),!1):void 0})});var a=function(a){this.$box=e(a);this.reload=function(){var e=this.$box,a=!1;"static"==e.css("position")&&(a=!0,e.addClass("position-relative")),e.append('<div class="widget-box-overlay"><i class="'+ace.vars.icon+'loading-icon fa fa-spinner fa-spin fa-2x white"></i></div>'),e.one("reloaded.ace.widget",function(){e.find(".widget-box-overlay").remove(),a&&e.removeClass("position-relative")})},this.close=function(){var e=this.$box,a=300;e.fadeOut(a,function(){e.trigger("closed.ace.widget"),e.remove()})},this.toggle=function(e,a){var t=this.$box,s=t.find(".widget-body"),i=null,n="undefined"!=typeof e?e:t.hasClass("collapsed")?"show":"hide",r="show"==n?"shown":"hidden";if("undefined"==typeof a&&(a=t.find("> .widget-header a[data-action=collapse]").eq(0),0==a.length&&(a=null)),a){i=a.find(ace.vars[".icon"]).eq(0);var o,l=null,c=null;(l=i.attr("data-icon-show"))?c=i.attr("data-icon-hide"):(o=i.attr("class").match(/fa\-(.*)\-(up|down)/))&&(l="fa-"+o[1]+"-down",c="fa-"+o[1]+"-up")}var d=s.find(".widget-body-inner");s=0==d.length?s.wrapInner('<div class="widget-body-inner"></div>').find(":first-child").eq(0):d.eq(0);var h=300,u=200;"show"==n?(i&&i.removeClass(l).addClass(c),t.removeClass("collapsed"),s.slideUp(0,function(){s.slideDown(h,function(){t.trigger(r+".ace.widget")})})):(i&&i.removeClass(c).addClass(l),s.slideUp(u,function(){t.addClass("collapsed"),t.trigger(r+".ace.widget")}))},this.hide=function(){this.toggle("hide")},this.show=function(){this.toggle("show")},this.fullscreen=function(){var e=this.$box.find("> .widget-header a[data-action=fullscreen]").find(ace.vars[".icon"]).eq(0),a=null,t=null;(a=e.attr("data-icon1"))?t=e.attr("data-icon2"):(a="fa-expand",t="fa-compress"),this.$box.hasClass("fullscreen")?(e.addClass(a).removeClass(t),this.$box.removeClass("fullscreen")):(e.removeClass(a).addClass(t),this.$box.addClass("fullscreen")),this.$box.trigger("fullscreened.ace.widget")}};e.fn.widget_box=function(t,s){var i,n=this.each(function(){var n=e(this),r=n.data("widget_box"),o="object"==typeof t&&t;r||n.data("widget_box",r=new a(this,o)),"string"==typeof t&&(i=r[t](s))});return void 0===i?n:i},e(document).on("click.ace.widget",".widget-header a[data-action]",function(t){t.preventDefault();var s=e(this),i=s.closest(".widget-box");if(0!=i.length&&!i.hasClass("ui-sortable-helper")){var n=i.data("widget_box");n||i.data("widget_box",n=new a(i.get(0)));var r=s.data("action");if("collapse"==r){var o,l=i.hasClass("collapsed")?"show":"hide";if(i.trigger(o=e.Event(l+".ace.widget")),o.isDefaultPrevented())return;n.toggle(l,s)}else if("close"==r){var o;if(i.trigger(o=e.Event("close.ace.widget")),o.isDefaultPrevented())return;n.close()}else if("reload"==r){s.blur();var o;if(i.trigger(o=e.Event("reload.ace.widget")),o.isDefaultPrevented())return;n.reload()}else if("fullscreen"==r){var o;if(i.trigger(o=e.Event("fullscreen.ace.widget")),o.isDefaultPrevented())return;n.fullscreen()}else"settings"==r&&i.trigger("setting.ace.widget")}})},ace.settings_box=function(e){e("#ace-settings-btn").on(ace.click_event,function(a){a.preventDefault(),e(this).toggleClass("open"),e("#ace-settings-box").toggleClass("open")}),e("#ace-settings-navbar").on("click",function(){ace.settings.navbar_fixed(this.checked)}).each(function(){this.checked=ace.settings.is("navbar","fixed")}),e("#ace-settings-sidebar").on("click",function(){ace.settings.sidebar_fixed(this.checked)}).each(function(){this.checked=ace.settings.is("sidebar","fixed")}),e("#ace-settings-breadcrumbs").on("click",function(){ace.settings.breadcrumbs_fixed(this.checked)}).each(function(){this.checked=ace.settings.is("breadcrumbs","fixed")}),e("#ace-settings-add-container").on("click",function(){ace.settings.main_container_fixed(this.checked)}).each(function(){this.checked=ace.settings.is("main-container","fixed")}),e("#ace-settings-compact").removeAttr("checked").on("click",function(){if(this.checked){e("#sidebar").addClass("compact");var a=e("#ace-settings-hover");a.length>0&&!a.get(0).checked&&a.removeAttr("checked").trigger("click")}else e("#sidebar").removeClass("compact"),"sidebar_scroll"in ace.helper&&ace.helper.sidebar_scroll.reset()}),e("#ace-settings-highlight").removeAttr("checked").on("click",function(){this.checked?e("#sidebar .nav-list > li").addClass("highlight"):e("#sidebar .nav-list > li").removeClass("highlight")}),e("#ace-settings-hover").removeAttr("checked").on("click",function(){if(!e(".sidebar").hasClass("h-sidebar")){if(this.checked)ace.vars["no-scroll"]=!0,e("#sidebar li").addClass("hover").filter(".open").removeClass("open").find("> .submenu").css("display","none");else{ace.vars["no-scroll"]=!1,e("#sidebar li.hover").removeClass("hover");var a=e("#ace-settings-compact");a.length>0&&a.get(0).checked&&a.trigger("click"),"sidebar_hover"in ace.helper&&ace.helper.sidebar_hover.reset()}"sidebar_scroll"in ace.helper&&ace.helper.sidebar_scroll.reset()}})},ace.settings_rtl=function(e){e("#ace-settings-rtl").removeAttr("checked").on("click",function(){ace.switch_direction(jQuery)})},ace.switch_direction=function(e){function a(e,a){t.find("."+e).removeClass(e).addClass("tmp-rtl-"+e).end().find("."+a).removeClass(a).addClass(e).end().find(".tmp-rtl-"+e).removeClass("tmp-rtl-"+e).addClass(a)}var t=e(document.body);t.toggleClass("rtl").find(".dropdown-menu:not(.datepicker-dropdown,.colorpicker)").toggleClass("dropdown-menu-right").end().find(".pull-right:not(.dropdown-menu,blockquote,.profile-skills .pull-right)").removeClass("pull-right").addClass("tmp-rtl-pull-right").end().find(".pull-left:not(.dropdown-submenu,.profile-skills .pull-left)").removeClass("pull-left").addClass("pull-right").end().find(".tmp-rtl-pull-right").removeClass("tmp-rtl-pull-right").addClass("pull-left").end().find(".chosen-select").toggleClass("chosen-rtl").next().toggleClass("chosen-rtl"),a("align-left","align-right"),a("no-padding-left","no-padding-right"),a("arrowed","arrowed-right"),a("arrowed-in","arrowed-in-right"),a("tabs-left","tabs-right"),a("messagebar-item-left","messagebar-item-right"),e(".fa").each(function(){if(!(this.className.match(/ui-icon/)||e(this).closest(".fc-button").length>0))for(var a=this.attributes.length,t=0;a>t;t++){var s=this.attributes[t].value;s.match(/fa\-(?:[\w\-]+)\-left/)?this.attributes[t].value=s.replace(/fa\-([\w\-]+)\-(left)/i,"fa-$1-right"):s.match(/fa\-(?:[\w\-]+)\-right/)&&(this.attributes[t].value=s.replace(/fa\-([\w\-]+)\-(right)/i,"fa-$1-left"))}});var s=t.hasClass("rtl");s?e(".scroll-hz").addClass("make-ltr").find(".scroll-content").wrapInner('<div class="make-rtl" />'):e(".scroll-hz").removeClass("make-ltr").find(".make-rtl").children().unwrap(),e.fn.ace_scroll&&e(".scroll-hz").ace_scroll("reset");try{var i=e("#piechart-placeholder");if(i.length>0){var n=e(document.body).hasClass("rtl")?"nw":"ne";i.data("draw").call(i.get(0),i,i.data("chart"),n)}}catch(r){}},ace.settings_skin=function(e){try{e("#skin-colorpicker").ace_colorpicker()}catch(a){}e("#skin-colorpicker").on("change",function(){var a=e(this).find("option:selected").data("skin"),t=e(document.body);t.removeClass("no-skin skin-1 skin-2 skin-3"),t.addClass(a),ace.data.set("skin",a);var s=["red","blue","green",""];e(".ace-nav > li.grey").removeClass("dark"),e(".ace-nav > li").removeClass("no-border margin-1"),e(".ace-nav > li:not(:last-child)").removeClass("light-pink").find("> a > "+ace.vars[".icon"]).removeClass("pink").end().eq(0).find(".badge").removeClass("badge-warning"),e(".sidebar-shortcuts .btn").removeClass("btn-pink btn-white").find(ace.vars[".icon"]).removeClass("white"),e(".ace-nav > li.grey").removeClass("red").find(".badge").removeClass("badge-yellow"),e(".sidebar-shortcuts .btn").removeClass("btn-primary btn-white");var i=0;e(".sidebar-shortcuts .btn").each(function(){e(this).find(ace.vars[".icon"]).removeClass(s[i++])});var n=["btn-success","btn-info","btn-warning","btn-danger"];if("no-skin"==a){var i=0;e(".sidebar-shortcuts .btn").each(function(){e(this).attr("class","btn "+n[i++%4])})}else if("skin-1"==a){e(".ace-nav > li.grey").addClass("dark");var i=0;e(".sidebar-shortcuts").find(".btn").each(function(){e(this).attr("class","btn "+n[i++%4])})}else if("skin-2"==a)e(".ace-nav > li").addClass("no-border margin-1"),e(".ace-nav > li:not(:last-child)").addClass("light-pink").find("> a > "+ace.vars[".icon"]).addClass("pink").end().eq(0).find(".badge").addClass("badge-warning"),e(".sidebar-shortcuts .btn").attr("class","btn btn-white btn-pink").find(ace.vars[".icon"]).addClass("white");else if("skin-3"==a){t.addClass("no-skin"),e(".ace-nav > li.grey").addClass("red").find(".badge").addClass("badge-yellow");var i=0;e(".sidebar-shortcuts .btn").each(function(){e(this).attr("class","btn btn-primary btn-white"),e(this).find(ace.vars[".icon"]).addClass(s[i++])})}"sidebar_scroll"in ace.helper&&ace.helper.sidebar_scroll.reset()})},ace.widget_reload_handler=function(e){e(document).on("reload.ace.widget",".widget-box",function(){var a=e(this);setTimeout(function(){a.trigger("reloaded.ace.widget")},parseInt(1e3*Math.random()+1e3))})},ace.enable_searchbox_autocomplete=function(e){ace.vars.US_STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];try{e("#nav-search-input").typeahead({source:ace.vars.US_STATES,updater:function(a){return e("#nav-search-input").focus(),a}})}catch(a){}};
+/**
+ Required. Ace's Basic File to Initiliaze Different Parts & Some Variables.
+*/
+if( !('ace' in window) ) window['ace'] = {}
+if( !('helper' in window['ace']) ) window['ace'].helper = {}
+if( !('vars' in window['ace']) ) {
+  window['ace'].vars = {
+	 'icon'	: ' ace-icon ',
+	'.icon'	: '.ace-icon'
+  }
+}
+ace.vars['touch']	= 'ontouchstart' in document.documentElement;
+
+
+jQuery(function($) {
+	//sometimes we try to use 'tap' event instead of 'click' if jquery mobile plugin is available
+	ace.click_event = ace.vars['touch'] && $.fn.tap ? 'tap' : 'click';
+
+	//sometimes the only good way to work around browser's pecularities is to detect them using user-agents
+	//though it's not accurate
+	var agent = navigator.userAgent
+	ace.vars['webkit'] = !!agent.match(/AppleWebKit/i)
+	ace.vars['safari'] = !!agent.match(/Safari/i) && !agent.match(/Chrome/i);
+	ace.vars['android'] = ace.vars['safari'] && !!agent.match(/Android/i)
+	ace.vars['ios_safari'] = !!agent.match(/OS ([4-8])(_\d)+ like Mac OS X/i) && !agent.match(/CriOS/i)
+	
+	ace.vars['non_auto_fixed'] = ace.vars['android'] || ace.vars['ios_safari'];
+	// for android and ios we don't use "top:auto" when breadcrumbs is fixed
+	if(ace.vars['non_auto_fixed']) {
+		$('body').addClass('mob-safari');
+	}
+
+	ace.vars['transition'] = 'transition' in document.body.style || 'WebkitTransition' in document.body.style || 'MozTransition' in document.body.style || 'OTransition' in document.body.style
+
+	/////////////////////////////
+
+	//a list of available functions with their arguments
+	// >>> null means enable
+	// >>> false means disable
+	// >>> array means function arguments
+	var available_functions = {
+		'general_vars' : null,//general_vars should come first
+
+		'handle_side_menu' : null,
+		'add_touch_drag' : null,
+				
+		'sidebar_scrollable' : [
+							 //true, //enable only if sidebar is fixed , for 2nd approach only
+							 true //scroll to selected item? (one time only on page load)
+							,true //true = include shortcut buttons in the scrollbars
+							,false || ace.vars['safari'] || ace.vars['ios_safari'] //true = include toggle button in the scrollbars
+							,200 //> 0 means smooth_scroll, time in ms, used in first approach only, better to be almost the same amount as submenu transition time
+							,false//true && ace.vars['touch'] //used in first approach only, true means the scrollbars should be outside of the sidebar
+							],
+
+		'sidebar_hoverable' : null,//automatically move up a submenu, if some part of it goes out of window
+		
+		'general_things' : null,
+		
+		'widget_boxes' : null,
+		'widget_reload_handler' : null,
+								   
+		'settings_box' : null,//settings box
+		'settings_rtl' : null,
+		'settings_skin' : null,
+		
+		'enable_searchbox_autocomplete' : null,
+		
+		'auto_hide_sidebar' : null,//disable?
+		'auto_padding' : null,//disable
+		'auto_container' : null//disable
+	};
+	
+	//enable these functions with related params
+	for(var func_name in available_functions) {
+		if(!(func_name in ace)) continue;
+
+		var args = available_functions[func_name];
+		if(args === false) continue;//don't run this function
+
+		else if(args == null) args = [jQuery];
+		  else if(args instanceof String) args = [jQuery, args];
+		    else if(args instanceof Array) args.unshift(jQuery);//prepend jQuery
+
+		ace[func_name].apply(null, args);
+	}
+
+})
+
+
+
+ace.general_vars = function($) {
+	var minimized_menu_class  = 'menu-min';
+	var responsive_min_class  = 'responsive-min';
+	var horizontal_menu_class = 'h-sidebar';
+	
+	var sidebar = $('#sidebar').eq(0);
+	//differnet mobile menu styles
+	ace.vars['mobile_style'] = 1;//default responsive mode with toggle button inside navbar
+	if(sidebar.hasClass('responsive') && !$('#menu-toggler').hasClass('navbar-toggle')) ace.vars['mobile_style'] = 2;//toggle button behind sidebar
+	 else if(sidebar.hasClass(responsive_min_class)) ace.vars['mobile_style'] = 3;//minimized menu
+	  else if(sidebar.hasClass('navbar-collapse')) ace.vars['mobile_style'] = 4;//collapsible (bootstrap style)
+
+	//update some basic variables
+	$(window).on('resize.ace.vars' , function(){
+		ace.vars['window'] = {width: parseInt($(this).width()), height: parseInt($(this).height())}
+		ace.vars['mobile_view'] = ace.vars['mobile_style'] < 4 && ace.helper.mobile_view();
+		ace.vars['collapsible'] = !ace.vars['mobile_view'] && ace.helper.collapsible();
+		ace.vars['nav_collapse'] = (ace.vars['collapsible'] || ace.vars['mobile_view']) && $('#navbar').hasClass('navbar-collapse');
+
+		var sidebar = $(document.getElementById('sidebar'));
+		ace.vars['minimized'] = 
+		(!ace.vars['collapsible'] && sidebar.hasClass(minimized_menu_class))
+		 ||
+		(ace.vars['mobile_style'] == 3 && ace.vars['mobile_view'] && sidebar.hasClass(responsive_min_class))
+
+		ace.vars['horizontal'] = !(ace.vars['mobile_view'] || ace.vars['collapsible']) && sidebar.hasClass(horizontal_menu_class)
+	}).triggerHandler('resize.ace.vars');
+}
+
+//
+ace.general_things = function($) {
+	//add scrollbars for user dropdowns
+	var has_scroll = !!$.fn.ace_scroll;
+	if(has_scroll) $('.dropdown-content').ace_scroll({reset: false, mouseWheelLock: true})
+	/**
+	//add scrollbars to body
+	 if(has_scroll) $('body').ace_scroll({size: ace.helper.winHeight()})
+	 $('body').css('position', 'static')
+	*/
+
+	//reset scrolls bars on window resize
+	$(window).on('resize.reset_scroll', function() {
+		/**
+		 //reset body scrollbars
+		 if(has_scroll) $('body').ace_scroll('update', {size : ace.helper.winHeight()})
+		*/
+		if(has_scroll) $('.ace-scroll').ace_scroll('reset');
+	});
+	$(document).on('settings.ace.reset_scroll', function(e, name) {
+		if(name == 'sidebar_collapsed' && has_scroll) $('.ace-scroll').ace_scroll('reset');
+	});
+
+
+	//change a dropdown to "dropup" depending on its position
+	$(document).on('click.dropdown.pos', '.dropdown-toggle[data-position="auto"]', function() {
+		var offset = $(this).offset();
+		var parent = $(this.parentNode);
+
+		if ( parseInt(offset.top + $(this).height()) + 50 
+				>
+			(ace.helper.scrollTop() + ace.helper.winHeight() - parent.find('.dropdown-menu').eq(0).height()) 
+			) parent.addClass('dropup');
+		else parent.removeClass('dropup');
+	});
+	
+	
+	//prevent dropdowns from hiding when a tab is selected
+	$(document).on('click', '.dropdown-navbar .nav-tabs', function(e){
+		e.stopPropagation();
+		var $this , href
+		var that = e.target
+		if( ($this = $(e.target).closest('[data-toggle=tab]')) && $this.length > 0) {
+			$this.tab('show');
+			e.preventDefault();
+		}
+	});
+	
+	//prevent dropdowns from hiding when a from is clicked
+	/**$(document).on('click', '.dropdown-navbar form', function(e){
+		e.stopPropagation();		
+	});*/
+
+
+	//disable navbar icon animation upon click
+	$('.ace-nav [class*="icon-animated-"]').closest('a').one('click', function(){
+		var icon = $(this).find('[class*="icon-animated-"]').eq(0);
+		var $match = icon.attr('class').match(/icon\-animated\-([\d\w]+)/);
+		icon.removeClass($match[0]);
+	});
+
+
+	//tooltip in sidebar items
+	$('.sidebar .nav-list .badge[title],.sidebar .nav-list .badge[title]').each(function() {
+		var tooltip_class = $(this).attr('class').match(/tooltip\-(?:\w+)/);
+		tooltip_class = tooltip_class ? tooltip_class[0] : 'tooltip-error';
+		$(this).tooltip({
+			'placement': function (context, source) {
+				var offset = $(source).offset();
+
+				if( parseInt(offset.left) < parseInt(document.body.scrollWidth / 2) ) return 'right';
+				return 'left';
+			},
+			container: 'body',
+			template: '<div class="tooltip '+tooltip_class+'"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+		});
+	});
+	
+	//or something like this if items are dynamically inserted
+	/**$('.sidebar').tooltip({
+		'placement': function (context, source) {
+			var offset = $(source).offset();
+
+			if( parseInt(offset.left) < parseInt(document.body.scrollWidth / 2) ) return 'right';
+			return 'left';
+		},
+		selector: '.nav-list .badge[title],.nav-list .label[title]',
+		container: 'body',
+		template: '<div class="tooltip tooltip-error"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+	});*/
+	
+	
+
+
+	//the scroll to top button
+	var scroll_btn = $('.btn-scroll-up');
+	if(scroll_btn.length > 0) {
+		var is_visible = false;
+		$(window).on('scroll.scroll_btn', function() {
+			if(ace.helper.scrollTop() > parseInt(ace.helper.winHeight() / 4)) {
+				if(!is_visible) {
+					scroll_btn.addClass('display');
+					is_visible = true;
+				}
+			} else {
+				if(is_visible) {
+					scroll_btn.removeClass('display');
+					is_visible = false;
+				}
+			}
+		}).triggerHandler('scroll.scroll_btn');
+
+		scroll_btn.on(ace.click_event, function(){
+			var duration = Math.min(500, Math.max(100, parseInt(ace.helper.scrollTop() / 3)));
+			$('html,body').animate({scrollTop: 0}, duration);
+			return false;
+		});
+	}
+
+
+	//chrome and webkit have a problem here when resizing from 460px to more
+	//we should force them redraw the navbar!
+	if( ace.vars['webkit'] ) {
+		var ace_nav = $('.ace-nav').get(0);
+		if( ace_nav ) $(window).on('resize.webkit' , function(){
+			ace.helper.redraw(ace_nav);
+		});
+	}
+
+}
+
+
+
+
+//some functions
+ace.helper.collapsible = function() {
+	var toggle
+	return (document.querySelector('#sidebar.navbar-collapse') != null)
+	&& ((toggle = document.querySelector('.navbar-toggle[data-target*=".sidebar"]')) != null)
+	&&  toggle.scrollHeight > 0
+	//sidebar is collapsible and collapse button is visible?
+}
+ace.helper.mobile_view = function() {
+	var toggle
+	return ((toggle = document.getElementById('menu-toggler')) != null	&& toggle.scrollHeight > 0)
+}
+
+ace.helper.redraw = function(elem) {
+	var saved_val = elem.style['display'];
+	elem.style.display = 'none';
+	elem.offsetHeight;
+	elem.style.display = saved_val;
+}
+
+ace.helper.scrollTop = function() {
+	return document.scrollTop || document.documentElement.scrollTop || document.body.scrollTop
+	//return $(window).scrollTop();
+}
+ace.helper.winHeight = function() {
+	return window.innerHeight || document.documentElement.clientHeight;
+	//return $(window).innerHeight();
+}
+ace.helper.camelCase = function(str) {
+	return str.replace(/-([\da-z])/gi, function(match, chr) {
+	  return chr ? chr.toUpperCase() : '';
+	});
+}
+ace.helper.removeStyle = 
+  function(elem, prop) { elem.style.removeProperty(prop) }
+
+
+ace.helper.hasClass = 
+  'classList' in document.documentElement
+  ?
+  function(elem, className) { return elem.classList.contains(className); }
+  :
+  function(elem, className) { return elem.className.indexOf(className) > -1; };
+
+/**
+ <b>Custom drag event for touch devices</b> used in scrollbars.
+ For better touch event handling and extra options a more advanced solution such as <u>Hammer.js</u> is recommended.
+*/
+
+//based on but not dependent on jQuery mobile
+/*
+* jQuery Mobile v1.3.2
+* http://jquerymobile.com
+*
+* Copyright 2010, 2013 jQuery Foundation, Inc. and other contributors
+* Released under the MIT license.
+* http://jquery.org/license
+*
+*/
+ace.add_touch_drag = function($) {
+	if(!ace.vars['touch']) return;
+
+	var touchStartEvent = "touchstart MSPointerDown pointerdown",// : "mousedown",
+			touchStopEvent  =  "touchend touchcancel MSPointerUp MSPointerCancel pointerup pointercancel",// : "mouseup",
+			touchMoveEvent  =  "touchmove MSPointerMove MSPointerHover pointermove";// : "mousemove";
+
+
+	$.event.special.ace_drag = {
+		setup: function() {
+			var min_threshold = 0;
+		
+			var $this = $(this);
+			$this.on(touchStartEvent, function(event) {		
+				var data = event.originalEvent.touches ?
+					event.originalEvent.touches[ 0 ] :
+					event,
+					start = {
+						//time: Date.now(),
+						coords: [ data.pageX, data.pageY ],
+						origin: $(event.target)
+					},
+					stop;
+					start.origin.trigger({'type' : 'ace_dragStart', 'start':(start || [-1,-1])});
+					
+					var direction = false, dx = 0, dy = 0;
+
+				function moveHandler(event) {
+					if (!start) {
+						return;
+					}
+					var data = event.originalEvent.touches ?
+							event.originalEvent.touches[ 0 ] :
+							event;
+					stop = {
+						coords: [ data.pageX, data.pageY ]
+					};
+					
+					// prevent scrolling
+					//if ( Math.abs(start.coords[1] - stop.coords[1]) > 0 || Math.abs(start.coords[0] - stop.coords[01]) > 0 ) {
+						//event.preventDefault();
+					//}
+
+
+					if (start && stop) {
+						dx = 0; dy = 0;
+
+						direction = 
+							(
+							 Math.abs(dy = start.coords[ 1 ] - stop.coords[ 1 ]) > min_threshold
+								&& 
+							 Math.abs(dx = start.coords[ 0 ] - stop.coords[ 0 ]) <= Math.abs(dy)
+							)
+							? 
+							(dy > 0 ? 'up' : 'down')
+							:
+							(
+							 Math.abs(dx = start.coords[ 0 ] - stop.coords[ 0 ]) > min_threshold
+								&& 
+							 Math.abs( dy ) <= Math.abs(dx)
+							)
+							?
+							(dx > 0 ? 'left' : 'right')
+							:
+							false;
+							
+
+							if( direction !== false ) {
+							 var retval = {}
+							 start.origin.trigger({
+								'type': 'ace_drag',
+								//'start': start.coords,
+								//'stop': stop.coords,
+								'direction': direction,
+								'dx': dx,
+								'dy': dy,
+								'retval': retval
+							 })
+
+		 					  // prevent scrolling?
+							  //if(retval.cancel === true || event.cancel === undefined) {
+									event.preventDefault();
+							  //}
+							}
+					}
+					start.coords[0] = stop.coords[0];
+					start.coords[1] = stop.coords[1];
+				}
+
+				$this
+				.on(touchMoveEvent, moveHandler)
+				.one(touchStopEvent, function(event) {
+					$this.off(touchMoveEvent, moveHandler);
+					start.origin.trigger({'type' : 'ace_dragEnd', 'stop':(stop || [-1,-1])});
+					
+					start = stop = undefined;
+				
+				});
+			});
+		}
+	}
+};
+
+/**
+ <b>Sidebar functions</b>. Collapsing/expanding, toggling mobile view menu and other sidebar functions.
+*/
+
+ace.handle_side_menu = function($) {
+	var sidebar = $('.sidebar').eq(0);
+
+	$(document).on(ace.click_event+'.ace.menu', '#menu-toggler', function(){
+		sidebar.toggleClass('display');
+		$(this).toggleClass('display');
+
+		if( $(this).hasClass('display') && 'sidebar_scroll' in ace.helper )
+		{
+			ace.helper.sidebar_scroll.reset();
+		}
+
+		return false;
+	})
+	//sidebar collapse/expand button
+	.on(ace.click_event+'.ace.menu', '.sidebar-collapse', function(){
+		if(ace.vars['collapsible'] || ace.vars['horizontal']) return;
+
+		//var minimized = sidebar.hasClass('menu-min');
+		ace.vars['minimized'] = !ace.vars['minimized'];
+		ace.settings.sidebar_collapsed.call(this, ace.vars['minimized']);//@ ace-extra.js
+		//ace.settings.sidebar_collapsed(ace.vars['minimized']);
+	})
+	//this button is used in `mobile_style = 3` responsive menu style to expand minimized sidebar
+	.on(ace.click_event+'.ace.menu', '.sidebar-expand', function(){
+
+		if( ace.vars['minimized'] /**sidebar.hasClass('menu-min')*/ ) {
+			ace.settings.sidebar_collapsed.call(this, false , false);
+			//unminimize (remove .menu-min) but don't save changes to cookies
+		}
+
+		var icon = $(this).find(ace.vars['.icon']);
+		var $icon1 = icon.attr('data-icon1');//the icon for expanded state
+		var $icon2 = icon.attr('data-icon2');//the icon for collapsed state
+		if( sidebar.hasClass('responsive-min') ) {
+			icon.removeClass($icon1).addClass($icon2);
+			sidebar.removeClass('responsive-min');
+			sidebar.addClass('display responsive-max');
+
+			ace.vars['minimized'] = false
+		}
+		else {
+			icon.removeClass($icon2).addClass($icon1);
+			sidebar.removeClass('display responsive-max');
+			sidebar.addClass('responsive-min');
+
+			ace.vars['minimized'] = true
+		}
+
+		$(document).triggerHandler('settings.ace', ['sidebar_collapsed' , ace.vars['minimized']]);
+	});
+
+
+
+	//ios safari only has a bit of a problem not navigating to link address when scrolling down
+	var ios_fix = ace.vars['ios_safari'];//navigator.userAgent.match(/OS (5|6|7)(_\d)+ like Mac OS X/i);
+	//toggling submenu
+	$(document).on(ace.click_event+'.ace.submenu', '.sidebar .nav-list', function (ev) {
+		var nav_list = this;
+
+		//check to see if we have clicked on an element which is inside a .dropdown-toggle element?!
+		//if so, it means we should toggle a submenu
+		var link_element = $(ev.target).closest('a');
+		if(!link_element || link_element.length == 0) return;//return if not clicked inside a link element
+
+		var minimized  = ace.vars['minimized'] && !ace.vars['collapsible'];
+		//if .sidebar is .navbar-collapse and in small device mode, then let minimized be uneffective
+
+		if( !link_element.hasClass('dropdown-toggle') ) {//it doesn't have a submenu return
+			//just one thing before we return
+			//if sidebar is collapsed(minimized) and we click on a first level menu item
+			//and the click is on the icon, not on the menu text then let's cancel event and cancel navigation
+			//Good for touch devices, that when the icon is tapped to see the menu text, navigation is cancelled
+			//navigation is only done when menu text is tapped
+
+			if( ace.click_event == "tap"
+				&&
+				minimized
+				&&
+				link_element.get(0).parentNode.parentNode == nav_list )//only level-1 links
+			{
+				var text = link_element.find('.menu-text').get(0);
+				if( ev.target != text && !$.contains(text , ev.target) ) {//not clicking on the text or its children
+					ev.preventDefault();
+					return false;
+				}
+			}
+
+			//some browsers need to be forced 
+			if(ios_fix && link_element.attr('data-link') !== 'false') {//specify data-link attribute to ignore this
+				//ios safari only has a bit of a problem not navigating to link address when scrolling down
+				//please see issues section
+				document.location = link_element.attr('href');
+				ev.preventDefault();
+				return false;
+			}
+			return;
+		}
+
+
+		var sub = link_element.siblings('.submenu').get(0);
+		if(!sub) return false;
+
+		var height_change = 0;//the amount of height change in .nav-list
+		var duration = 250;//transition duration
+
+		var parent_ul = sub.parentNode.parentNode;
+		if
+		(
+			( minimized && parent_ul == nav_list )
+			 || 
+			( $(sub.parentNode).hasClass('hover') && !ace.vars['collapsible'] )
+		)
+		{
+			ev.preventDefault();
+			return false;
+		}
+
+		//if not open and visible, let's open it and make it visible
+		if( sub.scrollHeight == 0 ) {
+		  $(parent_ul).find('> .open > .submenu').each(function() {
+			//close all other open submenus except for the active one
+			if(this != sub && !$(this.parentNode).hasClass('active')) {
+				height_change -= this.scrollHeight;
+				ace.submenu.hide(this, duration);
+			}
+		  })
+		}
+
+
+		var toggle = 0;
+		if( (toggle = ace.submenu.toggle(sub , duration)) == 1 ) {
+			//== 1 means submenu is being shown
+			//if a submenu is being shown and another one previously started to hide, then we may need to update/hide scrollbars
+			//but if no previous submenu is being hidden, then no need to check if we need to hide the scrollbars in advance
+			if(height_change != 0) height_change += sub.scrollHeight;
+		} else if(toggle == -1) {
+			height_change -= sub.scrollHeight;
+			//== -1 means submenu is being hidden
+		}
+
+		//hide scrollbars if content is going to be small enough that scrollbars is not needed anymore
+		//do this almost before submenu hiding begins
+		if (height_change != 0 && 'sidebar_scroll' in ace.helper) {
+			ace.helper.sidebar_scroll.prehide(height_change);
+		}
+
+		ev.preventDefault();
+		return false;
+	 })
+}
+;
+
+/**
+<b>Toggle sidebar submenus</b>. This approach uses <u>CSS3</u> transitions.
+It's a bit smoother but the transition does not work on IE9 and below and it is sometimes glitchy on Android's default browser.
+*/
+
+//CSS3 transition version, no animation on IE9 and below
+ace.submenu = {
+ show : function(sub, duration) {
+	var $sub = $(sub);
+
+	var event;
+	$sub.trigger(event = $.Event('show.ace.submenu'))
+	if (event.isDefaultPrevented()) return false;
+
+	$sub
+	.css({
+		height: 0,
+		overflow: 'hidden',
+		display: 'block'
+	})
+	.removeClass('nav-hide').addClass('nav-show')//only for window < @grid-float-breakpoint and .navbar-collapse.menu-min
+	.parent().addClass('open');
+
+	if( duration > 0 ) {
+	  $sub.css({height: sub.scrollHeight,
+		'transition-property': 'height',
+		'transition-duration': (duration/1000)+'s'})
+	}
+
+	var complete = function(ev) {
+		ev && ev.stopPropagation();
+		$sub
+		.css({'transition-property': '', 'transition-duration': '', overflow:'', height: ''})
+		//if(ace.vars['webkit']) ace.helper.redraw(sub);//little Chrome issue, force redraw ;)
+
+		if(ace.vars['transition']) $sub.off('.trans');
+		$sub.trigger($.Event('shown.ace.submenu'))
+	}
+	if( duration > 0 && ace.vars['transition'] ) {
+	  $sub.one('transitionend.trans webkitTransitionEnd.trans mozTransitionEnd.trans oTransitionEnd.trans', complete);
+	}
+	else complete();
+	
+	//there is sometimes a glitch, so maybe retry
+	if(ace.vars['android']) {
+		setTimeout(function() {
+			$sub.css({overflow:'', height: ''});
+		}, duration + 10);
+	}
+
+	return true;
+ }
+ ,
+ hide : function(sub, duration) {
+	var $sub = $(sub);
+
+	var event;
+	$sub.trigger(event = $.Event('hide.ace.submenu'))
+	if (event.isDefaultPrevented()) return false;
+
+	$sub
+	.css({
+		height: sub.scrollHeight,
+		overflow: 'hidden'
+	})
+	.parent().removeClass('open');
+
+	sub.offsetHeight;
+	//forces the "sub" to re-consider the new 'height' before transition
+
+	if( duration > 0 ) {
+	  $sub.css({'height': 0,
+		'transition-property': 'height',
+		'transition-duration': (duration/1000)+'s'});
+	}
+
+
+	var complete = function(ev) {
+		ev && ev.stopPropagation();
+		$sub
+		.css({display: 'none', overflow:'', height: '', 'transition-property': '', 'transition-duration': ''})
+		.removeClass('nav-show').addClass('nav-hide')//only for window < @grid-float-breakpoint and .navbar-collapse.menu-min
+
+		if(ace.vars['transition']) $sub.off('.trans');
+		$sub.trigger($.Event('hidden.ace.submenu'))
+	}
+	if( duration > 0 && ace.vars['transition'] ) {
+	  $sub.one('transitionend.trans webkitTransitionEnd.trans mozTransitionEnd.trans oTransitionEnd.trans', complete);
+	}
+	else complete();
+
+
+	//there is sometimes a glitch, so maybe retry
+	if(ace.vars['android']) {
+		setTimeout(function() {
+			$sub.css({display: 'none', overflow:'', height: ''})
+		}, duration + 10);
+	}
+
+	return true;
+ }
+ ,
+ toggle : function(element, duration) {
+	if( element.scrollHeight == 0 ) {//if an element is hidden scrollHeight becomes 0
+		if(ace.submenu.show(element, duration)) return 1;
+	} else {
+		if(ace.submenu.hide(element, duration)) return -1;
+	}
+	return 0;
+ }
+}
+;
+
+/**
+ <b>Scrollbars for sidebar</b>. This approach can <span class="text-danger">only</span> be used on <u>fixed</u> sidebar.
+ It doesn't use <u>"overflow:hidden"</u> CSS property and therefore can be used with <u>.hover</u> submenus and minimized sidebar.
+ Except when in mobile view and menu toggle button is not in the navbar.
+*/
+
+ace.sidebar_scrollable = function($ , scroll_to_active, include_shortcuts, include_toggle, smooth_scroll, scrollbars_outside) {
+	if( !$.fn.ace_scroll ) return;
+
+	var old_safari = ace.vars['safari'] && navigator.userAgent.match(/version\/[1-5]/i)
+	//NOTE
+	//Safari on windows has not been updated for a long time.
+	//And it has a problem when sidebar is fixed&scrollable and there is a CSS3 animation inside page content.
+	//Very probably windows users of safari have migrated to another browser by now!
+
+
+	var $sidebar = $('.sidebar'),
+		$navbar = $('.navbar'),
+		$nav = $sidebar.find('.nav-list'),
+		$toggle = $sidebar.find('.sidebar-toggle'),
+		$shortcuts = $sidebar.find('.sidebar-shortcuts'),
+		$window = $(window),
+
+		sidebar = $sidebar.get(0),
+		nav = $nav.get(0);
+
+		if(!sidebar || !nav) return;
+
+
+	var scroll_div = null,
+		scroll_content = null,
+		scroll_content_div = null,
+		bar = null,
+		ace_scroll = null;
+
+	var is_scrolling = false,
+		_initiated = false;
+		
+	var scroll_to_active = scroll_to_active || false,
+		include_shortcuts = include_shortcuts || false,
+		include_toggle = include_toggle || false,
+		only_if_fixed = true;
+		
+	var is_sidebar_fixed =
+	'getComputedStyle' in window ?
+	//sidebar.offsetHeight is used to force redraw and recalculate 'sidebar.style.position' esp for webkit!
+	function() { sidebar.offsetHeight; return window.getComputedStyle(sidebar).position == 'fixed' }
+	:
+	function() { sidebar.offsetHeight; return $sidebar.css('position') == 'fixed' }
+	//sometimes when navbar is fixed, sidebar automatically becomes fixed without needing ".sidebar-fixed" class
+	//currently when mobile_style == 1
+
+	var $avail_height, $content_height;
+	var sidebar_fixed = is_sidebar_fixed(),
+		horizontal = $sidebar.hasClass('h-sidebar');
+
+
+	var scrollbars = ace.helper.sidebar_scroll = {
+		available_height: function() {
+			//available window space
+			var offset = $nav.parent().offset();//because `$nav.offset()` considers the "scrolled top" amount as well
+			if(sidebar_fixed) offset.top -= ace.helper.scrollTop();
+
+			return $window.innerHeight() - offset.top - ( include_toggle ? 0 : $toggle.outerHeight() );
+		},
+		content_height: function() {
+			return nav.scrollHeight;
+		},
+		initiate: function(on_page_load) {
+			if( _initiated ) return;
+			if( !sidebar_fixed ) return;//eligible??
+			//return if we want scrollbars only on "fixed" sidebar and sidebar is not "fixed" yet!
+
+			//initiate once
+			$nav.wrap('<div style="position: relative;" />');
+			$nav.after('<div><div></div></div>');
+
+			$nav.wrap('<div class="nav-wrap" />');
+			if(!include_toggle) $toggle.css({'z-index': 1});
+			if(!include_shortcuts) $shortcuts.css({'z-index': 99});
+
+			scroll_div = $nav.parent().next()
+			.ace_scroll({
+				size: scrollbars.available_height(),
+				reset: true,
+				mouseWheelLock: true,
+				hoverReset: false,
+				dragEvent: true,
+				touchDrag: false//disable touch drag event on scrollbars, we'll add a custom one later
+			})
+			.closest('.ace-scroll').addClass('nav-scroll');
+			
+			ace_scroll = scroll_div.data('ace_scroll');
+
+			scroll_content = scroll_div.find('.scroll-content').eq(0);
+			scroll_content_div = scroll_content.find(' > div').eq(0);
+			bar = scroll_div.find('.scroll-bar').eq(0);
+
+			if(include_shortcuts) {
+				$nav.parent().prepend($shortcuts).wrapInner('<div />');
+				$nav = $nav.parent();
+			}
+			if(include_toggle) {
+				$nav.append($toggle);
+				$nav.closest('.nav-wrap').addClass('nav-wrap-t');//it just helps to remove toggle button's top border and restore li:last-child's bottom border
+			}
+
+			$nav.css({position: 'relative'});
+			if( scrollbars_outside === true ) scroll_div.addClass('scrollout');
+			
+			nav = $nav.get(0);
+			nav.style.top = 0;
+			scroll_content.on('scroll.nav', function() {
+				nav.style.top = (-1 * this.scrollTop) + 'px';
+			});
+			$nav.on('mousewheel.ace_scroll DOMMouseScroll.ace_scroll', function(event){
+				//transfer $nav's mousewheel event to scrollbars
+				return scroll_div.trigger(event);
+			});
+
+			
+			//you can also use swipe event in a similar way //swipe.nav
+			var content = scroll_content.get(0);
+			$nav.on('ace_drag.nav', function(event) {
+				if(!is_scrolling) return;
+			
+				if(event.direction == 'up' || event.direction == 'down') {
+					//event.stopPropagation();
+					
+					ace_scroll.move_bar(true);
+					move_nav = false;//update "nav.style.top" here no need to do this on('scroll.nav')!
+					
+					var distance = event.dy;
+					
+					//distance = parseInt(Math.min($avail_height, distance))
+					if(Math.abs(distance) > 20) distance = distance * 2;
+					
+					if(distance != 0) {
+						content.scrollTop = content.scrollTop + distance;
+						nav.style.top = (-1 * content.scrollTop) + 'px';
+					}
+				}
+			});
+
+			//for drag only
+			if(smooth_scroll) {
+				$nav.on('ace_dragStart.nav', function(event) {
+					event.stopPropagation();
+					
+					$nav.css('transition-property', 'none');
+					bar.css('transition-property', 'none');
+				}).on('ace_dragEnd.nav', function(event) {
+					event.stopPropagation();
+					
+					$nav.css('transition-property', 'top');
+					bar.css('transition-property', 'top');
+				});
+			}
+			
+			
+
+			if(old_safari && !include_toggle) {
+				var toggle = $toggle.get(0);
+				if(toggle) scroll_content.on('scroll.safari', function() {
+					ace.helper.redraw(toggle);
+				});
+			}
+
+			_initiated = true;
+
+			//if the active item is not visible, scroll down so that it becomes visible
+			//only the first time, on page load
+			if(on_page_load == true) {
+				scrollbars.reset();//try resetting at first
+
+				if( scroll_to_active && ace_scroll.is_active() ) {
+					var $active;
+
+					var nav_list = $sidebar.find('.nav-list')
+					if(ace.vars['minimized'] && !ace.vars['collapsible']) {
+						$active = nav_list.find('> .active')
+					}
+					else {
+						$active = $nav.find('> .active.hover')
+						if($active.length == 0)	$active = $nav.find('.active:not(.open)')
+					}
+
+					var top = $active.outerHeight();
+
+					nav_list = nav_list.get(0);
+					var active = $active.get(0);
+					while(active != nav_list) {
+						top += active.offsetTop;
+						active = active.parentNode;
+					}
+
+					var scroll_amount = top - scroll_div.height();
+					if(scroll_amount > 0) {
+						nav.style.top = -scroll_amount + 'px';
+						scroll_content.scrollTop(scroll_amount);
+					}
+				}
+				scroll_to_active = false;
+			}
+			
+			
+			
+			if( typeof smooth_scroll === 'number' && smooth_scroll > 0) {
+				$nav.css({'transition-property': 'top', 'transition-duration': (smooth_scroll / 1000).toFixed(2)+'s'})
+				bar.css({'transition-property': 'top', 'transition-duration': (smooth_scroll / 1500).toFixed(2)+'s'})
+				
+				scroll_div
+				.on('drag.start', function(e) {
+					e.stopPropagation();
+					$nav.css('transition-property', 'none')
+				})
+				.on('drag.end', function(e) {
+					e.stopPropagation();
+					$nav.css('transition-property', 'top')
+				});
+			}
+			
+			if(ace.vars['android']) {
+				//force hide address bar, because its changes don't trigger window resize and become kinda ugly
+				var val = ace.helper.scrollTop();
+				if(val < 2) {
+					window.scrollTo( val, 0 );
+					setTimeout( function() {
+						scrollbars.reset();
+					}, 20 );
+				}
+				
+				var last_height = ace.helper.winHeight() , new_height;
+				$(window).on('scroll.ace_scroll', function() {
+					if(is_scrolling && ace_scroll.is_active()) {
+						new_height = ace.helper.winHeight();
+						if(new_height != last_height) {
+							last_height = new_height;
+							scrollbars.reset();
+						}
+					}
+				});
+			}
+
+		},
+		
+		reset: function() {
+			if( !sidebar_fixed ) {
+				scrollbars.disable();
+				return;//eligible??
+			}
+			//return if we want scrollbars only on "fixed" sidebar and sidebar is not "fixed" yet!
+
+			if( !_initiated ) scrollbars.initiate();
+			//initiate scrollbars if not yet
+			
+
+			
+
+			//enable if:
+			//menu is not collapsible mode (responsive navbar-collapse mode which has default browser scrollbar)
+			//menu is not horizontal or horizontal but mobile view (which is not navbar-collapse)
+			//and available height is less than nav's height
+			
+			var enable_scroll = !ace.vars['collapsible']
+								&& (!horizontal || (horizontal && ace.vars['mobile_view']))
+								&& ($avail_height = scrollbars.available_height()) < ($content_height = nav.scrollHeight);
+
+			is_scrolling = true;
+			if( enable_scroll ) {
+				scroll_content_div.css({height: $content_height, width: 8});
+				scroll_div.prev().css({'max-height' : $avail_height})
+				ace_scroll.update({size: $avail_height}).enable().reset();
+			}
+			if( !enable_scroll || !ace_scroll.is_active() ) {
+				if(is_scrolling) scrollbars.disable();
+			}
+			else $sidebar.addClass('sidebar-scroll');
+
+			//return is_scrolling;
+		},
+		disable : function() {
+			is_scrolling = false;
+			if(scroll_div) {
+				scroll_div.css({'height' : '', 'max-height' : ''});
+				scroll_content_div.css({height: '', width: ''});//otherwise it will have height and takes up some space even when invisible
+				scroll_div.prev().css({'max-height' : ''})
+				ace_scroll.disable();
+			}
+
+			if(parseInt(nav.style.top) < 0 && smooth_scroll && ace.vars['transition']) {
+				$nav.one('transitionend.trans webkitTransitionEnd.trans mozTransitionEnd.trans oTransitionEnd.trans', function() {
+					$sidebar.removeClass('sidebar-scroll');
+					$nav.off('.trans');
+				});
+			} else {
+				$sidebar.removeClass('sidebar-scroll');
+			}
+
+			nav.style.top = 0;
+		},
+		prehide: function(height_change) {
+			if(!is_scrolling || ace.vars['minimized']) return;
+
+			if(scrollbars.content_height() + height_change < scrollbars.available_height()) {
+				scrollbars.disable();
+			}
+			else if(height_change < 0) {
+				//if content height is decreasing
+				//let's move nav down while a submenu is being hidden
+				var scroll_top = scroll_content.scrollTop() + height_change
+				if(scroll_top < 0) return;
+
+				nav.style.top = (-1 * scroll_top) + 'px';
+			}
+		}
+	}
+	scrollbars.initiate(true);//true = on_page_load
+
+	//reset on document and window changes
+	$(document).on('settings.ace.scroll', function(ev, event_name, event_val){
+		if( event_name == 'sidebar_collapsed' && sidebar_fixed ) {
+			scrollbars.reset();
+		}
+		else if( event_name === 'sidebar_fixed' || event_name === 'navbar_fixed' ) {
+			//sidebar_fixed = event_val;
+			sidebar_fixed = is_sidebar_fixed()
+			
+			if(sidebar_fixed && !is_scrolling) {
+				scrollbars.reset();
+			}
+			else if( !sidebar_fixed ) {
+				scrollbars.disable();
+			}
+		}
+	});
+	$window.on('resize.ace.scroll', function(){
+		sidebar_fixed = is_sidebar_fixed()
+		scrollbars.reset();
+	})
+	
+
+	//change scrollbar size after a submenu is hidden/shown
+	//but don't change if sidebar is minimized
+	$sidebar.on('hidden.ace.submenu shown.ace.submenu', '.submenu', function(e) {
+		e.stopPropagation();
+
+		if(!ace.vars['minimized']) {
+			//webkit has a little bit of a glitch!!!
+			if(ace.vars['webkit']) setTimeout(function() { scrollbars.reset() } , 0);
+			else scrollbars.reset();
+		}
+	});
+
+};
+
+/**
+ <b>Submenu hover adjustment</b>. Automatically move up a submenu to fit into screen when some part of it goes beneath window.
+*/
+
+ace.sidebar_hoverable = function($) {
+ if( !('querySelector' in document) || !('removeProperty' in document.body.style) ) return;
+ //ignore IE8 & below
+
+ //on window resize or sidebar expand/collapse a previously "pulled up" submenu should be reset back to its default position
+ //for example if "pulled up" in "responsive-min" mode, in "fullmode" should not remain "pulled up"
+ ace.helper.sidebar_hover = {
+	reset : function() {
+		$sidebar.find('.submenu').each(function() {
+			var sub = this, li = this.parentNode;
+			if(sub) {
+				sub.style.removeProperty('top')
+				sub.style.removeProperty('bottom');
+				
+				var menu_text = li.querySelector('.menu-text');
+				if(menu_text) {
+					menu_text.style.removeProperty('margin-top')
+				}
+			}
+			
+			if( li.className.lastIndexOf('_up') >= 0 ) {//has .pull_up
+				$(li).removeClass('pull_up');
+			}
+		});
+	}
+ }
+
+ var is_navbar_fixed =
+	'getComputedStyle' in window ?
+	//navbar.offsetHeight is used to force redraw and recalculate 'sidebar.style.position' esp for webkit!
+	function() { navbar.offsetHeight; return window.getComputedStyle(navbar).position == 'fixed' }
+	:
+	function() { navbar.offsetHeight; return $navbar.css('position') == 'fixed' }
+ $(window).on('resize.ace_hover', function() {
+	navbar_fixed = is_navbar_fixed();
+	ace.helper.sidebar_hover.reset();
+ })
+ $(document).on('settings.ace.hover', function(e, event_name, event_val) {
+	if(event_name == 'sidebar_collapsed') ace.helper.sidebar_hover.reset();
+	else if(event_name == 'navbar_fixed') navbar_fixed = event_val;
+ })
+
+ ///////////////////////////////////////////////
+ var $sidebar = $('.sidebar').eq(0),
+	 sidebar = $sidebar.get(0),
+	 nav_list = $sidebar.find('.nav-list').get(0);
+
+ var $navbar = $('.navbar').eq(0),
+	navbar = $navbar.get(0),
+	horizontal = $sidebar.hasClass('h-sidebar'),
+
+	navbar_fixed = $navbar.css('position') == 'fixed';
+
+ $sidebar.find('.submenu').parent().addClass('hsub');//add .hsub (has-sub) class
+
+ //some mobile browsers don't have mouseenter
+ $sidebar.on('mouseenter.ace_hover', '.nav-list li.hsub', function (e) {
+	//ignore if collapsible mode (mobile view .navbar-collapse) so it doesn't trigger submenu movements
+	//or return if horizontal but not mobile_view (style 1&3)
+	if( ace.vars['collapsible'] || (horizontal && !ace.vars['mobile_view']) ) return;
+
+	var sub = this.querySelector('.submenu');
+	if(sub) {
+		//try to move/adjust submenu if the parent is a li.hover
+		if( ace.helper.hasClass(this, 'hover') ) {
+			
+			adjust_submenu.call(this, sub);
+		}
+		//or if submenu is minimized
+		else if( this.parentNode == nav_list && ace.vars['minimized'] ) {
+			
+			adjust_submenu.call(this, sub);
+		}
+	}
+ })
+
+
+ var $diff = 50;
+ function adjust_submenu(sub) {
+	var $sub = $(sub);
+	sub.style.removeProperty('top')
+	sub.style.removeProperty('bottom');
+
+	var menu_text = null
+	if( ace.vars['minimized'] && (menu_text = sub.parentNode.querySelector('.menu-text')) ) {
+		//2nd level items don't have .menu-text
+		menu_text.style.removeProperty('margin-top')
+	}
+
+	var off = $sub.offset();
+	var scroll = ace.helper.scrollTop();
+	var pull_up = false;
+
+	var $scroll = scroll
+	if( navbar_fixed ) {
+		$scroll += navbar.clientHeight + 1;
+		//let's avoid our submenu from going below navbar
+		//because of chrome z-index stacking issue and firefox's normal .submenu over fixed .navbar flicker issue
+	}
+
+
+	var sub_h = sub.scrollHeight;
+	if(menu_text) {
+		sub_h += 40;
+		off.top -= 40;
+	}
+	var sub_bottom = parseInt(off.top + sub_h)
+
+	var diff
+	//if the bottom of menu is going to go below visible window
+	if( (diff = sub_bottom - (window.innerHeight + scroll - 50)) > 0 ) {
+
+		//if it needs to be moved top a lot! use bottom unless it makes it go out of window top
+		if(sub_h - diff < $diff && off.top - diff > $scroll ) {
+			sub.style.top = 'auto';
+			sub.style.bottom = '-10px';
+
+			if( menu_text ) {
+				//menu_text.style.marginTop = -(sub_h - 10)+'px';
+				menu_text.style.marginTop = -(sub_h - 50)+'px';// -10 - 40 for the above  extra 40
+				pull_up = true;
+			}
+		}
+		else {
+			//when top of menu goes out of browser window's top or below fixed navbar
+			if( off.top - diff < $scroll ) {
+				diff = off.top - $scroll;
+			}
+
+			//when bottom of menu goes above bottom of parent LI
+			/** else */
+			if(sub_bottom - diff < off.top + $diff) {
+				diff -= $diff;
+			}
+
+			var at_least = menu_text ? 40 : 20;//it we are going to move up less than at_least, then ignore
+			if( diff > at_least ) {
+				sub.style.top = -(diff) + 'px';
+				if( menu_text ) {
+					menu_text.style.marginTop = -(diff) + 'px';
+					pull_up = true;
+				}
+			}
+		}
+	}
+
+
+
+	//pull_up means, pull the menu up a little bit, and some styling may need to change
+	var pos = this.className.lastIndexOf('pull_up');//pull_up
+	if (pull_up) {
+		if (pos == -1)
+			this.className = this.className + ' pull_up';
+	} else {
+		if (pos >= 0)
+			this.className = this.className.replace(/(^|\s)pull_up($|\s)/ , '');
+	}
+
+
+	//again force redraw for safari!
+	if( ace.vars['safari'] ) {
+		ace.helper.redraw(sub)
+	}
+
+ }
+ 
+}
+
+
+;
+
+/**
+ <b>Widget boxes</b>
+*/
+ace.widget_boxes = function($) {
+	//bootstrap collapse component icon toggle
+	$(document).on('hide.bs.collapse show.bs.collapse', function (ev) {
+		var hidden_id = ev.target.getAttribute('id')
+		$('[href*="#'+ hidden_id+'"]').find(ace.vars['.icon']).each(function(){
+			var $icon = $(this)
+
+			var $match
+			var $icon_down = null
+			var $icon_up = null
+			if( ($icon_down = $icon.attr('data-icon-show')) ) {
+				$icon_up = $icon.attr('data-icon-hide')
+			}
+			else if( $match = $icon.attr('class').match(/fa\-(.*)\-(up|down)/) ) {
+				$icon_down = 'fa-'+$match[1]+'-down'
+				$icon_up = 'fa-'+$match[1]+'-up'
+			}
+
+			if($icon_down) {
+				if(ev.type == 'show') $icon.removeClass($icon_down).addClass($icon_up)
+					else $icon.removeClass($icon_up).addClass($icon_down)
+					
+				return false;//ignore other icons that match, one is enough
+			}
+
+		});
+	})
+
+
+	var Widget_Box = function(box, options) {
+		this.$box = $(box);
+		var that = this;
+		//this.options = $.extend({}, $.fn.widget_box.defaults, options);
+
+		this.reload = function() {
+			var $box = this.$box;
+			var $remove_position = false;
+			if($box.css('position') == 'static') {
+				$remove_position = true;
+				$box.addClass('position-relative');
+			}
+			$box.append('<div class="widget-box-overlay"><i class="'+ ace.vars['icon'] + 'loading-icon fa fa-spinner fa-spin fa-2x white"></i></div>');
+
+			$box.one('reloaded.ace.widget', function() {
+				$box.find('.widget-box-overlay').remove();
+				if($remove_position) $box.removeClass('position-relative');
+			});
+		}
+
+		this.close = function() {
+			var $box = this.$box;
+			var closeSpeed = 300;
+			$box.fadeOut(closeSpeed , function(){
+					$box.trigger('closed.ace.widget');
+					$box.remove();
+				}
+			)
+		}
+		
+		this.toggle = function(type, button) {
+			var $box = this.$box;
+			var $body = $box.find('.widget-body');
+			var $icon = null;
+			
+			var event_name = typeof type !== 'undefined' ? type : ($box.hasClass('collapsed') ? 'show' : 'hide');
+			var event_complete_name = event_name == 'show' ? 'shown' : 'hidden';
+
+			if(typeof button === 'undefined') {
+				button = $box.find('> .widget-header a[data-action=collapse]').eq(0);
+				if(button.length == 0) button = null;
+			}
+
+			if(button) {
+				$icon = button.find(ace.vars['.icon']).eq(0);
+
+				var $match
+				var $icon_down = null
+				var $icon_up = null
+				if( ($icon_down = $icon.attr('data-icon-show')) ) {
+					$icon_up = $icon.attr('data-icon-hide')
+				}
+				else if( $match = $icon.attr('class').match(/fa\-(.*)\-(up|down)/) ) {
+					$icon_down = 'fa-'+$match[1]+'-down'
+					$icon_up = 'fa-'+$match[1]+'-up'
+				}
+			}
+
+			var $body_inner = $body.find('.widget-body-inner')
+			if($body_inner.length == 0) {
+				$body = $body.wrapInner('<div class="widget-body-inner"></div>').find(':first-child').eq(0);
+			} else $body = $body_inner.eq(0);
+
+
+			var expandSpeed   = 300;
+			var collapseSpeed = 200;
+
+			if( event_name == 'show' ) {
+				if($icon) $icon.removeClass($icon_down).addClass($icon_up);
+				$box.removeClass('collapsed');
+				$body.slideUp(0 , function(){//do it once
+					$body.slideDown(expandSpeed, function(){
+						$box.trigger(event_complete_name+'.ace.widget')})
+					}
+				)
+			}
+			else {
+				if($icon) $icon.removeClass($icon_up).addClass($icon_down);
+				$body.slideUp(collapseSpeed, function(){
+						$box.addClass('collapsed')
+						$box.trigger(event_complete_name+'.ace.widget')
+					}
+				);
+			}
+		}
+		
+		this.hide = function() {
+			this.toggle('hide');
+		}
+		this.show = function() {
+			this.toggle('show');
+		}
+		
+		
+		this.fullscreen = function() {
+			var $icon = this.$box.find('> .widget-header a[data-action=fullscreen]').find(ace.vars['.icon']).eq(0);
+			var $icon_expand = null
+			var $icon_compress = null
+			if( ($icon_expand = $icon.attr('data-icon1')) ) {
+				$icon_compress = $icon.attr('data-icon2')
+			}
+			else {
+				$icon_expand = 'fa-expand';
+				$icon_compress = 'fa-compress';
+			}
+			
+			
+			if(!this.$box.hasClass('fullscreen')) {
+				$icon.removeClass($icon_expand).addClass($icon_compress);
+				this.$box.addClass('fullscreen');
+			}
+			else {
+				$icon.addClass($icon_expand).removeClass($icon_compress);
+				this.$box.removeClass('fullscreen');
+			}
+			
+			this.$box.trigger('fullscreened.ace.widget')
+		}
+
+	}
+	
+	$.fn.widget_box = function (option, value) {
+		var method_call;
+
+		var $set = this.each(function () {
+			var $this = $(this);
+			var data = $this.data('widget_box');
+			var options = typeof option === 'object' && option;
+
+			if (!data) $this.data('widget_box', (data = new Widget_Box(this, options)));
+			if (typeof option === 'string') method_call = data[option](value);
+		});
+
+		return (method_call === undefined) ? $set : method_call;
+	};
+
+
+	$(document).on('click.ace.widget', '.widget-header a[data-action]', function (ev) {
+		ev.preventDefault();
+
+		var $this = $(this);
+		var $box = $this.closest('.widget-box');
+		if( $box.length == 0 || $box.hasClass('ui-sortable-helper') ) return;
+
+		var $widget_box = $box.data('widget_box');
+		if (!$widget_box) {
+			$box.data('widget_box', ($widget_box = new Widget_Box($box.get(0))));
+		}
+
+		var $action = $this.data('action');
+		if($action == 'collapse') {
+			var event_name = $box.hasClass('collapsed') ? 'show' : 'hide';
+
+			var event
+			$box.trigger(event = $.Event(event_name+'.ace.widget'))
+			if (event.isDefaultPrevented()) return
+
+			$widget_box.toggle(event_name, $this);
+		}
+		else if($action == 'close') {
+			var event
+			$box.trigger(event = $.Event('close.ace.widget'))
+			if (event.isDefaultPrevented()) return
+
+			$widget_box.close();
+		}
+		else if($action == 'reload') {
+			$this.blur();
+			var event
+			$box.trigger(event = $.Event('reload.ace.widget'))
+			if (event.isDefaultPrevented()) return
+
+			$widget_box.reload();
+		}
+		else if($action == 'fullscreen') {
+			var event
+			$box.trigger(event = $.Event('fullscreen.ace.widget'))
+			if (event.isDefaultPrevented()) return
+		
+			$widget_box.fullscreen();
+		}
+		else if($action == 'settings') {
+			$box.trigger('setting.ace.widget')
+		}
+
+	});
+
+};
+
+/**
+ <b>Settings box</b>. It's good for demo only. You don't need this.
+*/
+ace.settings_box = function($) {
+ $('#ace-settings-btn').on(ace.click_event, function(e){
+	e.preventDefault();
+
+	$(this).toggleClass('open');
+	$('#ace-settings-box').toggleClass('open');
+ });
+
+ $('#ace-settings-navbar').on('click', function(){
+	ace.settings.navbar_fixed(this.checked);//@ ace-extra.js
+	//$(window).triggerHandler('resize.navbar');
+	
+	//force redraw?
+	//if(ace.vars['webkit']) ace.helper.redraw(document.body);
+ }).each(function(){this.checked = ace.settings.is('navbar', 'fixed')})
+
+ $('#ace-settings-sidebar').on('click', function(){
+	ace.settings.sidebar_fixed(this.checked);//@ ace-extra.js
+	
+	//if(ace.vars['webkit']) ace.helper.redraw(document.body);
+ }).each(function(){this.checked = ace.settings.is('sidebar', 'fixed')})
+
+ $('#ace-settings-breadcrumbs').on('click', function(){
+	ace.settings.breadcrumbs_fixed(this.checked);//@ ace-extra.js
+	
+	//if(ace.vars['webkit']) ace.helper.redraw(document.body);
+ }).each(function(){this.checked = ace.settings.is('breadcrumbs', 'fixed')})
+
+ $('#ace-settings-add-container').on('click', function(){
+	ace.settings.main_container_fixed(this.checked);//@ ace-extra.js
+	
+	//if(ace.vars['webkit']) ace.helper.redraw(document.body);
+ }).each(function(){this.checked = ace.settings.is('main-container', 'fixed')})
+
+
+
+ $('#ace-settings-compact').removeAttr('checked').on('click', function(){
+	if(this.checked) {
+		$('#sidebar').addClass('compact');
+		var hover = $('#ace-settings-hover');
+		if( hover.length > 0 && !hover.get(0).checked ) {
+			hover.removeAttr('checked').trigger('click');
+		}
+	}
+	else {
+		$('#sidebar').removeClass('compact');
+		if('sidebar_scroll' in ace.helper) ace.helper.sidebar_scroll.reset();
+	}
+ });
+
+
+ $('#ace-settings-highlight').removeAttr('checked').on('click', function(){
+	if(this.checked) $('#sidebar .nav-list > li').addClass('highlight');
+	else $('#sidebar .nav-list > li').removeClass('highlight');
+ });
+
+
+ $('#ace-settings-hover').removeAttr('checked').on('click', function(){
+	if($('.sidebar').hasClass('h-sidebar')) return;
+	if(this.checked) {
+		ace.vars['no-scroll'] = true;
+
+		$('#sidebar li').addClass('hover')
+		.filter('.open').removeClass('open').find('> .submenu').css('display', 'none');
+		//and remove .open items
+	}
+	else {
+		ace.vars['no-scroll'] = false;
+		$('#sidebar li.hover').removeClass('hover');
+
+		var compact = $('#ace-settings-compact');
+		if( compact.length > 0 && compact.get(0).checked ) {
+			compact.trigger('click');
+		}
+		
+		if('sidebar_hover' in ace.helper) ace.helper.sidebar_hover.reset();
+	}
+	
+	if('sidebar_scroll' in ace.helper) ace.helper.sidebar_scroll.reset();
+ });
+
+};
+
+/**
+<b>RTL</b> (right-to-left direction for Arabic, Hebrew, Persian languages).
+It's good for demo only.
+You should hard code RTL-specific changes inside your HTML/server-side code.
+Dynamically switching to RTL using Javascript is not a good idea.
+Please refer to documentation for more info.
+*/
+
+
+ace.settings_rtl = function($) {
+ //Switching to RTL (right to left) Mode
+ $('#ace-settings-rtl').removeAttr('checked').on('click', function(){
+	ace.switch_direction(jQuery);
+ });
+}
+
+//>>> you should hard code changes inside HTML for RTL direction
+//you shouldn't use this function to switch direction
+//this is only for dynamically switching for demonstration
+//take a look at this function to see what changes should be made
+//also take a look at docs for some tips
+ace.switch_direction = function($) {
+	var $body = $(document.body);
+	$body
+	.toggleClass('rtl')
+	//toggle pull-right class on dropdown-menu
+	.find('.dropdown-menu:not(.datepicker-dropdown,.colorpicker)').toggleClass('dropdown-menu-right')
+	.end()
+	//swap pull-left & pull-right
+	.find('.pull-right:not(.dropdown-menu,blockquote,.profile-skills .pull-right)').removeClass('pull-right').addClass('tmp-rtl-pull-right')
+	.end()
+	.find('.pull-left:not(.dropdown-submenu,.profile-skills .pull-left)').removeClass('pull-left').addClass('pull-right')
+	.end()
+	.find('.tmp-rtl-pull-right').removeClass('tmp-rtl-pull-right').addClass('pull-left')
+	.end()
+	
+	.find('.chosen-select').toggleClass('chosen-rtl').next().toggleClass('chosen-rtl');
+	
+
+	function swap_classes(class1, class2) {
+		$body
+		 .find('.'+class1).removeClass(class1).addClass('tmp-rtl-'+class1)
+		 .end()
+		 .find('.'+class2).removeClass(class2).addClass(class1)
+		 .end()
+		 .find('.tmp-rtl-'+class1).removeClass('tmp-rtl-'+class1).addClass(class2)
+	}
+
+	swap_classes('align-left', 'align-right');
+	swap_classes('no-padding-left', 'no-padding-right');
+	swap_classes('arrowed', 'arrowed-right');
+	swap_classes('arrowed-in', 'arrowed-in-right');
+	swap_classes('tabs-left', 'tabs-right');
+	swap_classes('messagebar-item-left', 'messagebar-item-right');//for inbox page
+	
+	//mirror all icons and attributes that have a "fa-*-right|left" attrobute
+	$('.fa').each(function() {
+		if(this.className.match(/ui-icon/) || $(this).closest('.fc-button').length > 0) return;
+		//skip mirroring icons of plugins that have built in RTL support
+
+		var l = this.attributes.length;
+		for(var i = 0 ; i < l ; i++) {
+			var val = this.attributes[i].value;
+			if(val.match(/fa\-(?:[\w\-]+)\-left/)) 
+				this.attributes[i].value = val.replace(/fa\-([\w\-]+)\-(left)/i , 'fa-$1-right')
+			 else if(val.match(/fa\-(?:[\w\-]+)\-right/)) 
+				this.attributes[i].value = val.replace(/fa\-([\w\-]+)\-(right)/i , 'fa-$1-left')
+		}
+	});
+	
+	//browsers are incosistent with horizontal scroll and RTL
+	//so let's make our scrollbars LTR and wrap the content inside RTL
+	var rtl = $body.hasClass('rtl');
+	if(rtl)	{
+		$('.scroll-hz').addClass('make-ltr')
+		.find('.scroll-content')
+		.wrapInner('<div class="make-rtl" />');
+	}
+	else {
+		//remove the wrap
+		$('.scroll-hz').removeClass('make-ltr')
+		.find('.make-rtl').children().unwrap();
+	}
+	if($.fn.ace_scroll) $('.scroll-hz').ace_scroll('reset') //to reset scrollLeft
+
+	//redraw the traffic pie chart on homepage with a different parameter
+	try {
+		var placeholder = $('#piechart-placeholder');
+		if(placeholder.length > 0) {
+			var pos = $(document.body).hasClass('rtl') ? 'nw' : 'ne';//draw on north-west or north-east?
+			placeholder.data('draw').call(placeholder.get(0) , placeholder, placeholder.data('chart'), pos);
+		}
+	}catch(e) {}
+	
+	
+	//force redraw(because of webkit)
+	/**setTimeout(function() {
+		ace.helper.redraw(document.body);
+		ace.helper.redraw($('.main-content').get(0));
+	}, 10);*/
+}
+;
+
+/**
+ <b>Select a different skin</b>. It's good for demo only.
+ You should hard code skin-specific changes inside your HTML/server-side code.
+ Please refer to documentation for more info.
+*/
+
+ace.settings_skin = function($) {
+  try {
+	$('#skin-colorpicker').ace_colorpicker();
+  } catch(e) {}
+
+  $('#skin-colorpicker').on('change', function(){
+	var skin_class = $(this).find('option:selected').data('skin');
+	//skin cookie tip
+
+	var body = $(document.body);
+	body.removeClass('no-skin skin-1 skin-2 skin-3');
+
+	//if(skin_class != 'skin-0') {
+		body.addClass(skin_class);
+		ace.data.set('skin', skin_class);
+		//save the selected skin to cookies
+		//which can later be used by your server side app to set the skin
+		//for example: <body class="<?php echo $_COOKIE['ace.skin']; ?>"
+	//} else ace.data.remove('skin');
+	
+	var skin3_colors = ['red', 'blue', 'green', ''];
+	
+	
+		//undo skin-1
+		$('.ace-nav > li.grey').removeClass('dark');
+		
+		//undo skin-2
+		$('.ace-nav > li').removeClass('no-border margin-1');
+		$('.ace-nav > li:not(:last-child)').removeClass('light-pink').find('> a > '+ace.vars['.icon']).removeClass('pink').end().eq(0).find('.badge').removeClass('badge-warning');
+		$('.sidebar-shortcuts .btn')
+		.removeClass('btn-pink btn-white')
+		.find(ace.vars['.icon']).removeClass('white');
+		
+		//undo skin-3
+		$('.ace-nav > li.grey').removeClass('red').find('.badge').removeClass('badge-yellow');
+		$('.sidebar-shortcuts .btn').removeClass('btn-primary btn-white')
+		var i = 0;
+		$('.sidebar-shortcuts .btn').each(function() {
+			$(this).find(ace.vars['.icon']).removeClass(skin3_colors[i++]);
+		})
+	
+	
+
+	var skin0_buttons = ['btn-success', 'btn-info', 'btn-warning', 'btn-danger'];
+	if(skin_class == 'no-skin') {
+		var i = 0;
+		$('.sidebar-shortcuts .btn').each(function() {
+			$(this).attr('class', 'btn ' + skin0_buttons[i++%4]);
+		})
+	}
+
+	else if(skin_class == 'skin-1') {
+		$('.ace-nav > li.grey').addClass('dark');
+		var i = 0;
+		$('.sidebar-shortcuts')
+		.find('.btn').each(function() {
+			$(this).attr('class', 'btn ' + skin0_buttons[i++%4]);
+		})
+	}
+
+	else if(skin_class == 'skin-2') {
+		$('.ace-nav > li').addClass('no-border margin-1');
+		$('.ace-nav > li:not(:last-child)').addClass('light-pink').find('> a > '+ace.vars['.icon']).addClass('pink').end().eq(0).find('.badge').addClass('badge-warning');
+		
+		$('.sidebar-shortcuts .btn').attr('class', 'btn btn-white btn-pink')
+		.find(ace.vars['.icon']).addClass('white');
+	}
+
+	//skin-3
+	//change shortcut buttons classes, this should be hard-coded if you want to choose this skin
+	else if(skin_class == 'skin-3') {
+		body.addClass('no-skin');//because skin-3 has many parts of no-skin as well
+		
+		$('.ace-nav > li.grey').addClass('red').find('.badge').addClass('badge-yellow');
+		
+		var i = 0;
+		$('.sidebar-shortcuts .btn').each(function() {
+			$(this).attr('class', 'btn btn-primary btn-white');
+			$(this).find(ace.vars['.icon']).addClass(skin3_colors[i++]);
+		})
+
+	}
+
+	//some sizing differences may be there in skins, so reset scrollbar size
+	if('sidebar_scroll' in ace.helper) ace.helper.sidebar_scroll.reset();
+
+ });
+};
+
+/**
+ The widget box reload button/event handler. You should use your own handler. An example is available at <i class="text-info">examples/widgets.html</i>.
+ <u><i class="glyphicon glyphicon-flash"></i> You don't need this. Used for demo only</u>
+*/
+
+ace.widget_reload_handler = function($) {
+	//***default action for reload in this demo
+	//you should remove this and add your own handler for each specific .widget-box
+	//when data is finished loading or processing is done you can call $box.trigger('reloaded.ace.widget')
+	$(document).on('reload.ace.widget', '.widget-box', function (ev) {
+		var $box = $(this);
+		
+		//trigger the reloaded event to remove the spinner icon after 1-2 seconds
+		setTimeout(function() {
+			$box.trigger('reloaded.ace.widget');
+		}, parseInt(Math.random() * 1000 + 1000));
+	});
+
+	//you may want to do something like this:
+	/**
+	$('#my-widget-box').on('reload.ace.widget', function(){
+		//load new data here
+		//and when finished trigger "reloaded" event
+		$(this).trigger('reloaded.ace.widget');
+	});
+	*/
+};
+
+/**
+The autocomplete dropdown when typing inside search box.
+<u><i class="glyphicon glyphicon-flash"></i> You don't need this. Used for demo only</u>
+*/
+ace.enable_searchbox_autocomplete = function($) {
+	ace.vars['US_STATES'] = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+	try {
+		$('#nav-search-input').typeahead({
+			source: ace.vars['US_STATES'],
+			updater:function (item) {
+				//when an item is selected from dropdown menu, focus back to input element
+				$('#nav-search-input').focus();
+				return item;
+			}
+		});
+	} catch(e) {}
+}
+;
+

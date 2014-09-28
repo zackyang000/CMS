@@ -25,8 +25,9 @@
   restrict: "A"
   link: (scope, element, attrs) ->
     className = attrs.activeParentLink
-    links = $(element).children("a").next().children("li").children("a")
+    links = $(element).children("ul").children("li").children("a")
     paths=[]
+    debugger
     for item in links
       paths.push $(item).attr('href')
     scope.location = location

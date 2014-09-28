@@ -35,7 +35,7 @@
     "_dist/client/plugin/select2/select2.js"
   ],
   "commonCss":[
-    "_dist/client/vendor/fontawesome/*.css",
+    "_dist/client/vendor/fontawesome/**/*.css",
     "_dist/client/vendor/bootstrap/**/*.css",
     "_dist/client/vendor/dropzone/*.css",
     "_dist/client/vendor/messenger/build/css/messenger.css",
