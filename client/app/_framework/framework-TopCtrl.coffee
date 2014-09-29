@@ -4,7 +4,7 @@ angular.module("framework.controllers.top", [])
 ["$scope", "$http", "$location", '$window', "$translate"
 ($scope, $http, $location, $window, $translate) ->
 
-  $scope.uses = $translate.use()
+  $scope.use = $translate.use()
   $scope.changeLanguage = (langKey) ->
     $scope.use = langKey
     $translate.use(langKey)

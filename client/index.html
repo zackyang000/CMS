@@ -22,16 +22,16 @@
                 <i class="icon-globe"></i>
                 <a>Languages</a>
                 <ul class="lenguages">
-                    <li ng-class="{active:uses=='en'}">
+                    <li ng-class="{ active: use=='en' }">
                         <a href="#" ng-click="changeLanguage('en')">
                             English
-                            <i class="fa fa-check" ng-show="uses=='en'"></i>
+                            <i class="fa fa-check" ng-show="use=='en'"></i>
                         </a>
                     </li>
-                    <li ng-class="{active:uses=='zh'}">
+                    <li ng-class="{ active: use=='zh' }">
                         <a href="#" ng-click="changeLanguage('zh')">
                             简体中文
-                            <i class="fa fa-check" ng-show="uses=='zh'"></i>
+                            <i class="fa fa-check" ng-show="use=='zh'"></i>
                         </a>
                     </li>
                 </ul>
