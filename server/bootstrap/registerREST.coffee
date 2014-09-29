@@ -129,7 +129,7 @@ module.exports = (app) ->
     auth: authAdmin
     handle: (req, res, next) ->
       sourcePath = req.files.file.path
-      targetFolder = "../client/upload/"+ req.query.path
+      targetFolder = "./static/upload/" + req.query.path
       mkdirp(targetFolder)
       filename = req.query.name || crypto.createHash('sha1').update('' + +new Date()).digest('hex')
       fileExtension = req.files.file.name.split('.').pop()
@@ -145,9 +145,19 @@ module.exports = (app) ->
 
       #裁剪
       complated = (err) ->
+        console.log targetPath
         throw err  if err
         fs.unlink sourcePath, ->
           throw err  if err
+
+
+      console.log sourcePath
+      console.log sourcePath
+      console.log sourcePath
+      console.log targetPath
+      console.log targetPath
+      console.log targetPath
+
       if req.query.resize
         size = req.query.resize.split('x')
         gm(sourcePath)

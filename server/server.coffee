@@ -14,13 +14,13 @@ config = require("./config/config")
 domainError = require("./middleware/domainError")
 
 createUploadDirectory = ->
-  mkdirp(item) for item in ['../client/upload/temp', '../client/upload/gallery']
+  mkdirp(item) for item in ['./static/upload/temp', './static/upload/gallery']
 
 require("./bootstrap/registerModels")()
 
 #express init
 createUploadDirectory()
-uploadPath = path.join(path.dirname(__dirname), 'client/upload/temp')
+uploadPath = path.join(path.dirname(__dirname), 'server/static/upload/temp')
 app.use cors({ exposedHeaders: "authorization" })
 app.use express.bodyParser({uploadDir : uploadPath})
 app.use express.methodOverride()
@@ -29,6 +29,7 @@ app.use morgan("short")
 app.use domainError()
 app.use errorHandler()
 #application init
+app.use(express["static"](path.join(__dirname, "./static")))
 require("./bootstrap/registerREST")(app)
 
 #db init
