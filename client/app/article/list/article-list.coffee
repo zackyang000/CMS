@@ -55,11 +55,11 @@
       resolve:
         articles: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
-          Articles.queryOnce
-            $filter:"indexof(title, '#{$route.current.params.key}') gt -1"
+          Articles.query
+            $filter:"indexof(title,'#{$route.current.params.key}') gt -1"
             $skip: ($route.current.params.p || 1) * 10 - 10
           , (data)->
-            deferred.resolve data.value
+            deferred.resolve data
           deferred.promise
         ]
 ])
