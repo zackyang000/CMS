@@ -19,16 +19,26 @@ eg.
 ###
 
 _ = require("lodash")
+functions = require("../query-functions")
+utils = require("../../utils")
 
 module.exports = (query, $filter) ->
   return unless $filter
 
   for item in $filter.split('and')
-    condition = item.split(' ').filter (n)->n
-    if condition.length != 3
+    conditionArr = item.split(' ').filter (n)->n
+    if conditionArr.length != 3
       throw new Error("Syntax error at '#{item}'.")
-    [key, odataOperator, value] = condition
+    [key, odataOperator, value] = conditionArr
     value = validator.formatValue(value)
+
+    #has query-functions
+    for oDataFunction in ['indexof']
+      if key.indexOf(oDataFunction) is 0
+        condition = functions[oDataFunction](key, odataOperator, value)
+        query.$where(condition)
+        return
+
     switch odataOperator
       when 'eq' then query.where(key).equals(value)
       when 'ne' then query.where(key).ne(value)
@@ -38,11 +48,12 @@ module.exports = (query, $filter) ->
       when 'le' then query.where(key).lte(value)
       else throw new Error("Incorrect operator at '#{item}'.")
 
+
 validator =
   formatValue : (value) ->
     if value == 'true' || value == 'false'
       return !!value
-    if _.isNumber(value)
+    if +value == +value
       return value
     if value[0] == "'" and value[value.length - 1]== "'"
       value = value.slice(1, -1)
