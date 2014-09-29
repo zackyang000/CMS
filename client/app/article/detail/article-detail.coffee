@@ -6,7 +6,7 @@
       templateUrl: "/app/article/detail/article-detail.tpl.html"
       controller: 'ArticleDetailCtrl'
       resolve:
-        article: ['$route','$q','Articles',($route,$q,Articles)->
+        article: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
           Articles.query
             $filter: "url eq '#{$route.current.params.url}'"
@@ -19,11 +19,16 @@
 .controller('ArticleDetailCtrl',
 ["$scope", "$rootScope", "$window", "$translate", "$route", "article", "Articles", "context", "ngProgress", "messager"
 ($scope, $rootScope, $window, $translate, $route, article, Articles, context, ngProgress, messager) ->
-  $rootScope.$broadcast("categoryChange", article.category)
-
   $window.scroll(0, 0)
 
   $scope.item = article
+
+  if !$scope.item
+    $rootScope.title = '404'
+    return
+  $rootScope.title = $scope.item.title
+
+  $rootScope.$broadcast("categoryChange", article.category)
 
   codeformat()#格式化代码
 

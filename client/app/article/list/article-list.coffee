@@ -5,6 +5,7 @@
     .when "/",
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
+      title: 'Article list'
       resolve:
         articles: ['$rootScope', '$route', '$q', 'Articles', 'Categories', ($rootScope,$route,$q,Articles,Categories)->
           deferred = $q.defer()
@@ -20,6 +21,7 @@
     .when "/list/:category/tag/:tag",
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
+      title: 'Article list'
       resolve:
         articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
@@ -34,6 +36,7 @@
     .when "/list/:category",
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
+      title: 'Article list'
       resolve:
         articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
@@ -48,6 +51,7 @@
     .when "/search/:key",
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
+      title: 'Article list'
       resolve:
         articles: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
