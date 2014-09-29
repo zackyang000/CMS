@@ -1,7 +1,7 @@
 ﻿<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
     <ul class="breadcrumb">
         <li>
-            <i class="icon-home home-icon"></i>
+            <i class="fa fa-home home-icon"></i>
             <a href="/admin">Home</a>
         </li>
         <li><a href="article">Article</a></li>
@@ -23,7 +23,7 @@
                 <label class="control-label">
                     Url
                     <span ng-show="translating">
-                        <i class="icon-spinner icon-spin"></i>
+                        <i class="fa fa-spinner fa-spin"></i>
                     </span>
                 </label>
                 <div>
@@ -48,10 +48,16 @@
                 <div>Action</div>
                 <div class="clearfix">
                     <div class="pull-left">
-                        <button class="btn btn-primary btn-sm" ng-disabled="loading">Submit</button>
+                        <button class="btn btn-primary btn-sm" ng-disabled="loading">
+                            <i class="fa fa-check"></i>
+                            Submit
+                        </button>
                     </div>
                     <div class="pull-right" ng-show="entity.date">
-                        <button type="button" class="btn btn-danger btn-sm" ng-disabled="loading" ng-click="remove()">Remove</button>
+                        <button type="button" class="btn btn-danger btn-sm" ng-disabled="loading" ng-click="remove()">
+                            <i class="fa fa-trash"></i>
+                            Remove
+                        </button>
                     </div>
                 </div>
             </div>

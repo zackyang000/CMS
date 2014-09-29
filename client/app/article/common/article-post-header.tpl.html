@@ -1,15 +1,15 @@
 ﻿<div class="blog-post-tags">
     <ul class="list-unstyled list-inline blog-info">
-        <li><i class="icon-calendar"></i> {{item.date | date:"yyyy/MM/dd"}}</li>
+        <li><i class="fa fa-calendar"></i> {{item.date | date:"yyyy/MM/dd"}}</li>
         <li>
-            <i class="icon-bookmark"></i> 
+            <i class="fa fa-bookmark"></i>
             <a ng-href="/list/{{item.category}}">{{item.category}}</a>
         </li>
-        <li><i class="icon-pencil"></i> {{item.meta.author}}</li>
-        <li><i class="icon-comments"></i> {{'article.comments_count' | translate:item}}</li>
-        <li><i class="icon-eye-open"></i> {{'article.views_count' | translate:item}}</li>
+        <li><i class="fa fa-pencil"></i> {{item.meta.author}}</li>
+        <li><i class="fa fa-comments"></i> {{'article.comments_count' | translate:item}}</li>
+        <li><i class="fa fa-eye"></i> {{'article.views_count' | translate:item}}</li>
         <li ng-show="item.Source">
-            <i class="icon-external-link"></i> 
+            <i class="fa fa-external-link"></i>
             <a  ng-href="{{item.meta.source}}" title="{{item.meta.source}}">{{'article.source' | translate}}</a>
         </li>
         <li ng-show="isAdmin">
@@ -18,7 +18,7 @@
     </ul>
     <ul class="list-unstyled list-inline blog-tags" ng-show="item.meta.tags.length > 0">
         <li>
-            <i class="icon-tags"></i> 
+            <i class="fa fa-tags"></i>
             <a ng-repeat="tag in item.meta.tags track by $index" ng-href="/list/{{item.category}}/tag/{{tag}}">{{tag}}</a>
         </li>
     </ul>   

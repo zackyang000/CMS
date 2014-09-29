@@ -1,7 +1,7 @@
 ﻿<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
     <ul class="breadcrumb">
         <li>
-            <i class="icon-home home-icon"></i>
+            <i class="fa fa-home home-icon"></i>
             <a href="/admin/">Home</a>
         </li>
         <li class="active">Gallery</li>
@@ -11,7 +11,7 @@
 <div class="page-content">
     <div class="text-right">
         <a href="gallery/new" class="btn btn-primary btn-sm">
-            <i class="icon-plus"></i> New
+            <i class="fa fa-plus"></i> New
         </a>
     </div>
     <div class="hr hr-10 dotted hr-double"></div>
@@ -28,7 +28,7 @@
             <tr ng-repeat="item in list">
                 <td><img style="width: 30px;height: 30px;" ng-src="{{item.cover | remoteImage}}"/></td>
                 <td><a href="gallery/{{item._id}}">{{item.name}}</a></td>
-                <td><span ng-show="item.hidden"><i class="icon-ok"></i></span></td>
+                <td><span ng-show="item.hidden"><i class="fa fa-check"></i></span></td>
                 <td>{{item.description}}</td>
             </tr>
         </tbody>

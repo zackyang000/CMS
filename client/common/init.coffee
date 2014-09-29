@@ -4,8 +4,8 @@
       reposition: true
       scalePhotos: true
       scrolling: false
-      previous: "<i class=\"icon-arrow-left\"></i>"
-      next: "<i class=\"icon-arrow-right\"></i>"
+      previous: "<i class=\"fa fa-arrow-left\"></i>"
+      next: "<i class=\"fa fa-arrow-right\"></i>"
       close: "&times;"
       current: "{current} of {total}"
       maxWidth: "100%"

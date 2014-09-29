@@ -1,7 +1,7 @@
 ﻿<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
     <ul class="breadcrumb">
         <li>
-            <i class="icon-home home-icon"></i>
+            <i class="fa fa-home home-icon"></i>
             <a href="/admin/">Home</a>
         </li>
         <li><a href="gallery">Gallery</a></li>
@@ -43,7 +43,7 @@
                         </div>
                         <div ng-show="entity.cover">
                             <img class="img-thumbnail img-article-thumbnail" style="width: 160px;height: 120px;" ng-src="{{entity.cover | remoteImage}}" />
-                            <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeCover()"></a>
+                            <a href="JavaScript:void(0)" class="fa fa-remove" ng-click="removeCover()"></a>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     <label class="col-lg-1 control-label"></label>
                     <div class="col-lg-11">
                         <button type="button" class="btn btn-primary" ng-click="submit()">
-                            <i class="icon-save"></i>
+                            <i class="fa fa-save"></i>
                             Save
                         </button>
                     </div>
@@ -62,7 +62,7 @@
             <div ng-hide="uploadPhoto">
                 <div class="clearfix form-group">
                     <button type="button" class="btn btn-primary pull-right" ng-click="changeUploadStatus()">
-                        <i class="icon-cloud-upload"></i>
+                        <i class="fa fa-cloud-upload"></i>
                         Upload
                     </button>
                 </div>
@@ -78,10 +78,10 @@
                         </a>
                         <div class="tools tools-top">
                             <a ng-href="{{item.path | remoteImage}}" target="_blank">
-                                <i class="icon-link white"></i>
+                                <i class="fa fa-link white"></i>
                             </a>
                             <a href="JavaScript:void(0)" ng-click="removePhoto(item)">
-                                <i class="icon-remove red"></i>
+                                <i class="fa fa-remove red"></i>
                             </a>
                         </div>
                     </li>
@@ -90,7 +90,7 @@
             <div ng-show="uploadPhoto">
                 <div class="clearfix form-group">
                     <button type="button" class="btn btn-default pull-right" ng-click="changeUploadStatus()">
-                        <i class="icon-reply"></i>
+                        <i class="fa fa-reply"></i>
                         Back
                     </button>
                 </div>
