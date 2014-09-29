@@ -55,7 +55,7 @@
       resolve:
         articles: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
-          Article.queryOnce
+          Articles.queryOnce
             $filter:"indexof(Title, '#{$route.current.params.key}') gt -1"
             $skip: ($route.current.params.p || 1) * 10 - 10
           , (data)->

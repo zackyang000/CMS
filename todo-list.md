@@ -6,4 +6,5 @@ action/function权限验证
 
 bower: jquery-ui未添加css
 
-浏览量+1
+浏览量+1 
+SEARCH功能
