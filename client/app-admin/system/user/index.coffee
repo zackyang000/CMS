@@ -35,10 +35,10 @@
     if $scope.isNew
       Users.save($scope.entity, get)
     else
-      Users.update({id: $scope.entity.loginName}, $scope.entity, get)
+      Users.update({id: $scope.entity._id}, $scope.entity, get)
     $scope.editDialog = false
 
   get = ->
     Users.query (data)->
-      $scope.list = data
+      $scope.list = data.value
 ])

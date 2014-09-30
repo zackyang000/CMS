@@ -5,7 +5,7 @@ module.exports = (req, res, next, mongooseModel) ->
     _id: req.params.id
   , (err, entity) ->
     next(err)  if err
-    next(new Error("Failed to find #{url} [#{req.params.id}]"))  unless entity
+    next(new Error("Failed to find #{req.params.id}"))  unless entity
     entity = _.extend(entity, req.body)
     entity.save (err) ->
       next(err)  if err

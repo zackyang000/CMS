@@ -6,9 +6,7 @@ BoardSchema = new Schema(
     name: String
     email: String
   content: String
-  date:
-    type: Date
-    default: Date.now
+  date: Date
   block: Boolean
 )
 

@@ -20,7 +20,6 @@ eg.
 
 _ = require("lodash")
 functions = require("../query-functions")
-utils = require("../../utils")
 
 module.exports = (query, $filter) ->
   return unless $filter
