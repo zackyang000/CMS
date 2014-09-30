@@ -31,7 +31,6 @@ module.exports = (app) ->
             next(err)
           unless article
             next new Error("Failed to load article " + req.query.id)
-          req.body.date = new Date()
           article.comments.push(req.body)
           article.save (err) ->
             if err

@@ -1,7 +1,5 @@
 # indexof(CompanyName,'lfreds') eq 1
 
-utils = require("../../utils")
-
 module.exports =
   indexof: (key, odataOperator, value) ->
     [innerKey, innerValue] = key.substring(key.indexOf('(')+1, key.indexOf(')')).split(',')

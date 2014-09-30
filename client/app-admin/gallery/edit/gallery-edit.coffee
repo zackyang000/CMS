@@ -49,6 +49,7 @@
   save = ->
     $scope.loading="Saving"
     entity = $scope.entity
+    entity.date = new Date()
     if !$routeParams.id
       Galleries.save entity, (data)->
         messager.success "Save successfully."
