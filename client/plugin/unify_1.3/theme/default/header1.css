@@ -175,8 +175,7 @@
 /*Serach Box*/
 .header .navbar .search-open {
 	right: 0; 
-	top: 50px; 
-	display: none;
+	top: 50px;
 	padding: 14px; 
 	position: absolute;
 	background: #fcfcfc; 
