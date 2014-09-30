@@ -69,6 +69,8 @@
 ($scope,$rootScope,$window,$routeParams,$location,articles,context) ->
   $rootScope.$broadcast("categoryChange", $routeParams.category)
 
+  $scope.params = $routeParams
+
   $window.scroll(0,0)
 
   $scope.isAdmin = context.auth.admin
