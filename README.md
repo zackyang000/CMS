@@ -18,10 +18,9 @@ To showcase [`node-odata`](https://github.com/TossShinHwa/node-odata) how easy t
 
 ## Technology stack
 
+* oData Protocol for REST API base on [node-odata](https://github.com/TossShinHwa/node-odata)
 * Awesome [AngularJS](http://www.angularjs.org/)
 * CSS based on [Bootstrap](http://getbootstrap.com/)
-* REST API based on [ASP.NET WEB API](http://www.asp.net/web-api/)
-* oData Protocol for REST API base on [node-odata](https://github.com/TossShinHwa/node-odata)
 
 ## Installation
 
