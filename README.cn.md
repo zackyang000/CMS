@@ -13,24 +13,22 @@ Blog Engine
 
 ## 目的
 
-为了展示如何使用AngularJS + NodeJS编写一个基于纯REST通信的**前后端分离**项目。
+为了展示如何使用 [`node-odata`](https://github.com/TossShinHwa/node-odata) 轻松搭建一个基于纯REST通信的**前后端分离**项目。
 
 ## 使用的技术
 
 * 酷炫的 [AngularJS](http://www.angularjs.org/)
 * CSS使用 [Twitter Bootstrap](http://getbootstrap.com/)
-* OData REST API基于 [node-odata](https://github.com/TossShinHwa/node-odata) 构建
+* oData协议的REST基于 [node-odata](https://github.com/TossShinHwa/node-odata) 构建
 
 
 ## 安装
 
 ### 准备
 
-您只需要安装 `Node.js` 以及一个基于Node的构建工具 [Grunt](http://gruntjs.com).
-* [安装 Visual Studio](http://www.visualstudio.com/)
-* [安装 SQL Server](http://www.microsoft.com/en-us/sqlserver/default.aspx/)
-* [安装 node.js](http://nodejs.org/download/)
-* 安装基于全局的node模块: Grunt-CLI  ```npm install -g grunt-cli```
+您只需要安装 `Node.js` 以及一个基于Node的构建工具 [Grunt](http://gruntjs.com) 和前端组件管理工具 [Bower](http://bower.io/).
+* [下载并安装 node.js](http://nodejs.org/download/)
+* 安装基于全局的node模块: Grunt和Bower  ```npm install -g grunt-cli bower```
 
 ### 获取代码
 
