@@ -39,4 +39,4 @@ mongoose.connect config.db
 #require("./bootstrap/test-data/init")()
 
 #start web server
-app.listen(process.env.PORT or config.port or 30000)
+app.listen(process.env.PORT or config.port)
