@@ -21,7 +21,7 @@
 #代码高亮
 codeformat = ->
   jQuery ->
-    SyntaxHighlighter.highlight()
+    #SyntaxHighlighter.highlight()
 
 #fix Array indexOf() in JavaScript for IE browsers
 unless Array::indexOf
@@ -34,10 +34,3 @@ unless Array::indexOf
       return from  if from of this and this[from] is elt
       from++
     -1
-
-$(document).ready ->
-  #代码高亮配置
-  SyntaxHighlighter.defaults['gutter'] = true;
-  SyntaxHighlighter.defaults['collapse'] = false;
-  SyntaxHighlighter.defaults['quick-code'] = false;
-  SyntaxHighlighter.all();

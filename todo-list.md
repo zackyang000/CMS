@@ -6,11 +6,8 @@ action/function权限验证
 
 bower: jquery-ui未添加css
 
-<<<<<<< HEAD
-浏览量+1
 
-brew install graphicsmagick
-=======
-浏览量+1 
-SEARCH功能
->>>>>>> 80490e8bfcf21a1107192afce9a3314e131f741e
+
+syntaxhighlighter dropzone无法压缩
+inline_angular_templates无法工作
+未安装graphicsmagick

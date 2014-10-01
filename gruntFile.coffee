@@ -172,7 +172,7 @@
           expand: true
 
     inline_angular_templates:
-      _dist:
+      dist:
         options:
           base: '_dist/client'
           prefix: '/'
