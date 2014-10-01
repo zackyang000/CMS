@@ -27,7 +27,7 @@ Blog Engine
 ### 准备
 
 您只需要安装 `Node.js` 以及一个基于Node的构建工具 [Grunt](http://gruntjs.com) 和前端组件管理工具 [Bower](http://bower.io/).
-* [下载并安装 node.js](http://nodejs.org/download/)
+* 下载并安装 [node.js](http://nodejs.org/download/)
 * 安装基于全局的node模块: Grunt和Bower  ```npm install -g grunt-cli bower```
 
 ### 获取代码
