@@ -8,26 +8,25 @@ Blog Engine
 [![Dependency Status](https://david-dm.org/ChrisWren/grunt-nodemon.png)](https://david-dm.org/TossShinHwa/CMS)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/TossShinHwa/cms/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-查看在线演示? 请访问 http://tossshinhwa.github.io/ 或者 http://www.woshinidezhu.com/
+查看在线演示? 请访问  http://www.woshinidezhu.com/
 ***
 
 ## 目的
 
-为了展示如何使用AngularJS编写一个基于REST通信的**前后端分离**实际项目。
+为了展示如何使用AngularJS + NodeJS编写一个基于纯REST通信的**前后端分离**项目。
 
 ## 使用的技术
 
 * 酷炫的 [AngularJS](http://www.angularjs.org/)
 * CSS使用 [Twitter Bootstrap](http://getbootstrap.com/)
-* REST API基于 [ASP.NET WEB API](http://www.asp.net/web-api/) 构建
-* 使用 [Entity Framework](http://msdn.microsoft.com/en-us/data/ef.aspx) 访问MSSQL来进行存储
+* OData REST API基于 [node-odata](https://github.com/TossShinHwa/node-odata) 构建
 
 
 ## 安装
 
 ### 准备
 
-首先你需要安装 `Visual Studio`, `SQL Server` 和 `Node.js` 以及一个基于Node的个构建工具 `[Grunt.js](gruntjs.com)`.
+您只需要安装 `Node.js` 以及一个基于Node的构建工具 [Grunt](http://gruntjs.com).
 * [安装 Visual Studio](http://www.visualstudio.com/)
 * [安装 SQL Server](http://www.microsoft.com/en-us/sqlserver/default.aspx/)
 * [安装 node.js](http://nodejs.org/download/)
@@ -35,7 +34,7 @@ Blog Engine
 
 ### 获取代码
 
-您可以你可以fork本项目, 再clone您fork的项目; 也可以直接使用如下命令clone当前项目:
+使用如下命令clone当前项目:
 
 ```
 git clone https://github.com/TossShinHwa/CMS.git
@@ -46,23 +45,16 @@ cd CMS
 
 因为该项目是前后端分离的, 所以你会看到源码中包括了2个目录: `client`和`server`, 他们使用REST API进行通信.
 
-### 运行后端服务
-
-后端应用程序基于ASP.NET, 所以你需要使用 `nuget` 恢复一些依赖包.
-
-* 使用 Visual Studio 2013 打开解决方案
-* 设置启动项目为 `YangKai.BlogEngine.Web.Mvc`
-* 将位于 `YangKai.BlogEngine.Web.Mvc\web.config` 的 `ConnectionString` 修改为您所使用的数据库链接字符串
-* 使用 `nuget` 恢复缺失的依赖包
-* 编译并运行, 它将自动创建数据库并插入测试数据
-
-### 运行前端应用
-
-前端应用程序是一个纯HTML/Javascript构建的应用程序, 但是在我们需要使用上面提到基于NodeJS的构建工具 [Grunt.js](gruntjs.com) 来运行它. Grunt 又依赖一些第三方 node modules. 使用以下命令, 我们可以安装它们, 并运行应用.
+后端应用程序基于NodeJS, 所以你需要使用 `npm` 和 `bower` 恢复一些依赖项.
 
 ```
-cd client
 npm install
+bower install
+```
+
+我们需要使用上面提到基于NodeJS的构建工具 [Grunt.js](gruntjs.com) 来运行它.
+
+```
 grunt
 ```
     
@@ -73,4 +65,4 @@ grunt
 
 ## 许可
 
-基于 MIT  协议.
+基于 MIT 协议.
