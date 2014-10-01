@@ -26,10 +26,12 @@
     "_dist/client/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
   ],
   "js": [
+    "_dist/client/app/*.js",
     "_dist/client/app/**/*.js",
     "_dist/client/plugin/unify*/**/*.js"
   ],
   "adminJs":[
+    "_dist/client/app-admin/*.js",
     "_dist/client/app-admin/**/*.js",
     "_dist/client/plugin/ace_*/ace.js",
     "_dist/client/plugin/ace_*/**/*.js",

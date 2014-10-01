@@ -95,9 +95,9 @@
         ]
 
     uglify:
-      #options:
-        #mangle: false
-        #beautify: true
+      options:
+        mangle: false
+        beautify: true
       production:
         files:
           '_dist/client/index.js': ["<%= assets.commonJs %>", "<%= assets.js %>"]
