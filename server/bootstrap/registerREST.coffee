@@ -149,14 +149,6 @@ module.exports = (app) ->
         fs.unlink sourcePath, ->
           throw err  if err
 
-
-      console.log sourcePath
-      console.log sourcePath
-      console.log sourcePath
-      console.log targetPath
-      console.log targetPath
-      console.log targetPath
-
       if req.query.resize
         size = req.query.resize.split('x')
         gm(sourcePath)
