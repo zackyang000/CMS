@@ -30,7 +30,7 @@ app.use domainError()
 app.use errorHandler()
 #application init
 app.use(express["static"](path.join(__dirname, "./static")))
-require("./bootstrap/registerREST")(app)
+require("./bootstrap/registerOData")(app)
 
 #db init
 mongoose.connect config.db

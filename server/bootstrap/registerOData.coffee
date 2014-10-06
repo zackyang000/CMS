@@ -1,28 +1,28 @@
+odata = require('node-odata')
 fs = require("fs")
 crypto = require("crypto")
 mkdirp = require('mkdirp')
 gm = require('gm')
-mongoose = require("mongoose")
+
+mongoose = odata.mongoose
 User = mongoose.model("User")
 Article = mongoose.model("Article")
 
 module.exports = (app) ->
-  odata = require('../odata-rest')
-
-  odata.options.set('app', app)
-  odata.options.set('maxTop', 10)
+  odata.set('app', app)
+  odata.set('maxTop', 10)
 
   authAdmin = (req, res) -> !!req.user
 
-  odata.register
-    url: 'articles',
-    modelName: "Article"
+  odata.resources.register
+    url: '/articles',
+    model: "Article"
     options:
       defaultOrderby: 'date desc'
     auth:
       "POST,PUT,DELETE": authAdmin
     actions: [
-      url: 'add-comment'
+      url: '/add-comment'
       handle: (req, res, next) ->
         Article.findOne
           _id: req.params.id
@@ -38,40 +38,40 @@ module.exports = (app) ->
             res.jsonp(req.body)
     ]
 
-  odata.register
-    url: 'categories',
-    modelName: "Category"
+  odata.resources.register
+    url: '/categories',
+    model: "Category"
     options:
       defaultOrderby: 'date desc'
     auth:
       "POST,PUT,DELETE": authAdmin
 
-  odata.register
-    url: 'galleries',
-    modelName: "Gallery"
+  odata.resources.register
+    url: '/galleries',
+    model: "Gallery"
     options:
       defaultOrderby: 'date desc'
     auth:
       "POST,PUT,DELETE": authAdmin
 
-  odata.register
-    url: 'board',
-    modelName: "Board"
+  odata.resources.register
+    url: '/board',
+    model: "Board"
     options:
       defaultOrderby: 'date desc'
     auth:
       "DELETE,PUT": authAdmin
 
-  odata.register
-    url: 'users',
-    modelName: "User"
+  odata.resources.register
+    url: '/users',
+    model: "User"
     auth:
       "POST,PUT,DELETE": authAdmin
 
 
 # Login, refresh user token.
-  odata.registerFunction
-    url: 'login',
+  odata.functions.register
+    url: '/login',
     method: 'POST',
     handle: (req, res, next) ->
       name = req.body.name
@@ -92,8 +92,8 @@ module.exports = (app) ->
 
 
 # Auto-login valid by user token.
-  odata.registerFunction
-    url: 'auto-login',
+  odata.functions.register
+    url: '/auto-login',
     method: 'POST',
     handle: (req, res, next) ->
       return res.send(401, "Failed to auto-login.")  unless req.user
@@ -105,8 +105,8 @@ module.exports = (app) ->
 
 
 # Logout, remove user token.
-  odata.registerFunction
-    url: 'logout',
+  odata.functions.register
+    url: '/logout',
     method: 'POST',
     handle: (req, res, next) ->
       token = req.get("authorization")
@@ -122,8 +122,8 @@ module.exports = (app) ->
           disabled: user.disabled
 
 
-  odata.registerFunction
-    url: 'file-upload',
+  odata.functions.register
+    url: '/file-upload',
     method: 'POST',
     auth: authAdmin
     handle: (req, res, next) ->
