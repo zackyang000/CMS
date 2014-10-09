@@ -19,10 +19,12 @@
     deferred = $q.defer()
     $http.post "#{config.apiHost}/login", { name: user.name, password: user.password }
     .success (data, status, headers) ->
+      token = headers('authorization')
+      $http.defaults.headers.common['authorization'] = token
       if user.remember
-        $.cookie('authorization', headers('authorization'), {expires: 180, path: '/'})
+        $.cookie('authorization', token, {expires: 180, path: '/'})
       else
-        $.cookie('authorization', headers('authorization'), { path: '/'})
+        $.cookie('authorization', token, { path: '/'})
       deferred.resolve data
     .error (error) ->
       deferred.reject undefined
