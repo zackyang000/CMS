@@ -29,7 +29,6 @@ app.use(express["static"](path.join(__dirname, "./static")))
 
 require("./bootstrap/registerOData")(app)
 
-
 #import test-data
 #require("./bootstrap/test-data/init")()
 

@@ -1,6 +1,3 @@
-***
-[CHINESE README](https://github.com/TossShinHwa/CMS/blob/master/README.cn.md)
-***
 
 Blog Engine
 ===========
