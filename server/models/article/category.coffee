@@ -1,10 +1,4 @@
-mongoose = require("mongoose")
-Schema = mongoose.Schema
-
-CategorySchema = new Schema(
+module.exports =
   name: String
   description: String
   main: Boolean
-)
-
-mongoose.model "Category", CategorySchema

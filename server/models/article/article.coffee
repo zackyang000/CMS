@@ -1,10 +1,5 @@
-mongoose = require("mongoose")
-Schema = mongoose.Schema
-
-ArticleSchema = new Schema
-  url:
-    type: String
-    unique: true
+module.exports =
+  url: String
   title: String
   content: String
   description: String
@@ -19,14 +14,11 @@ ArticleSchema = new Schema
     tags: [ String ]
     source: String
     thumbnail: String
-  comments:
-    [
-      author:
-        name: String
-        email: String
-      content: String
-      date: Date
-      block: Boolean
-    ]
-
-mongoose.model "Article", ArticleSchema
+  comments:[
+    author:
+      name: String
+      email: String
+    content: String
+    date: Date
+    block: Boolean
+  ]

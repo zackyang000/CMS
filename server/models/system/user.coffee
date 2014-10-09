@@ -1,17 +1,7 @@
-mongoose = require("mongoose")
-Schema = mongoose.Schema
-
-UserSchema = new Schema(
-  name:
-    type: String
-    unique: true
-  loginName:
-    type: String
-    unique: true
+module.exports =
+  name: String
+  loginName: String
   password: String
   email: String
   token: String
   disabled: Boolean
-)
-
-mongoose.model("User", UserSchema)

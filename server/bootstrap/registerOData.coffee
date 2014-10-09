@@ -3,27 +3,34 @@ fs = require("fs")
 crypto = require("crypto")
 mkdirp = require('mkdirp')
 gm = require('gm')
-
 mongoose = odata.mongoose
-User = mongoose.model("User")
-Article = mongoose.model("Article")
 
+articleModel = require('../models/article/article')
+categoryModel = require('../models/article/category')
+boardModel = require('../models/board/board')
+tagModel = require('../models/article/tag')
+galleryModel = require('../models/gallery/gallery')
+userModel = require('../models/system/user')
+console.log articleModel
 module.exports = (app) ->
   odata.set('app', app)
-  odata.set('maxTop', 10)
+  odata.set('db', 'mongodb://localhost/cms-dev')
 
-  authAdmin = (req, res) -> !!req.user
+  authAdminFn = (req) -> !!req.user
 
   odata.resources.register
-    url: '/articles',
-    model: "Article"
+    url: '/articles'
+    model: articleModel
+    modelName: 'Article'
     options:
       defaultOrderby: 'date desc'
+      maxTop: 10
     auth:
-      "POST,PUT,DELETE": authAdmin
+      "POST,PUT,DELETE": authAdminFn
     actions: [
       url: '/add-comment'
       handle: (req, res, next) ->
+        Article = mongoose.model("Article")
         Article.findOne
           _id: req.params.id
         , (err, article) ->
@@ -39,41 +46,46 @@ module.exports = (app) ->
     ]
 
   odata.resources.register
-    url: '/categories',
-    model: "Category"
+    url: '/categories'
+    model: categoryModel
+    modelName: 'Category'
     options:
       defaultOrderby: 'date desc'
     auth:
-      "POST,PUT,DELETE": authAdmin
+      "POST,PUT,DELETE": authAdminFn
 
   odata.resources.register
-    url: '/galleries',
-    model: "Gallery"
+    url: '/galleries'
+    model: galleryModel
+    modelName: "Gallery"
     options:
       defaultOrderby: 'date desc'
     auth:
-      "POST,PUT,DELETE": authAdmin
+      "POST,PUT,DELETE": authAdminFn
 
   odata.resources.register
-    url: '/board',
-    model: "Board"
+    url: '/board'
+    model: boardModel
+    modelName: "Board"
     options:
       defaultOrderby: 'date desc'
     auth:
-      "DELETE,PUT": authAdmin
+      "DELETE,PUT": authAdminFn
 
   odata.resources.register
-    url: '/users',
-    model: "User"
+    url: '/users'
+    model: userModel
+    modelName: "User"
     auth:
-      "POST,PUT,DELETE": authAdmin
+      "POST,PUT,DELETE": authAdminFn
 
 
 # Login, refresh user token.
   odata.functions.register
-    url: '/login',
-    method: 'POST',
+    url: '/login'
+    method: 'POST'
     handle: (req, res, next) ->
+      User = mongoose.model("User")
       name = req.body.name
       pwd = req.body.password
       User.findOne(
@@ -93,8 +105,8 @@ module.exports = (app) ->
 
 # Auto-login valid by user token.
   odata.functions.register
-    url: '/auto-login',
-    method: 'POST',
+    url: '/auto-login'
+    method: 'POST'
     handle: (req, res, next) ->
       return res.send(401, "Failed to auto-login.")  unless req.user
       res.json
@@ -106,9 +118,10 @@ module.exports = (app) ->
 
 # Logout, remove user token.
   odata.functions.register
-    url: '/logout',
-    method: 'POST',
+    url: '/logout'
+    method: 'POST'
     handle: (req, res, next) ->
+      User = mongoose.model("User")
       token = req.get("authorization")
       User.findOne(token: token).exec (err, user) ->
         unless user
@@ -123,9 +136,9 @@ module.exports = (app) ->
 
 
   odata.functions.register
-    url: '/file-upload',
-    method: 'POST',
-    auth: authAdmin
+    url: '/file-upload'
+    method: 'POST'
+    auth: authAdminFn
     handle: (req, res, next) ->
       sourcePath = req.files.file.path
       targetFolder = "./static/upload/" + req.query.path
