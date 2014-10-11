@@ -11,3 +11,5 @@ rss未实现
 
 最近留言单独保存
 最近浏览功能
+
+使用api.woshinidezhu.com和img.woshinidezhu.com取代端口
