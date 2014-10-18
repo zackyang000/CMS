@@ -15,7 +15,7 @@ angular.module("zy.services.messager", ['resource.users'])
       text: ''
       type: "warning"
       showCancelButton: true
-      #confirmButtonColor: "#DD6B55"
+      confirmButtonColor: "#DD6B55"
       confirmButtonText: "Yes !"
       closeOnConfirm: false
     , ->
