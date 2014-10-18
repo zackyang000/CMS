@@ -76,6 +76,7 @@
     messager.confirm ->
       $scope.item.comments.splice(index, 1)
       $scope.item.meta.comments--
-      Articles.update {id: $scope.item._id}, $scope.item, ->
+      Articles.update {id: $scope.item._id}, $scope.item, (item) ->
         messager.success "Comment has been removed."
+        $scope.item = item
 ])

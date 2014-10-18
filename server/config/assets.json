@@ -13,7 +13,8 @@
     "_dist/client/vendor/blueimp-md5/**/*.js",
     "_dist/client/vendor/moment/**/*.js",
     "_dist/client/vendor/moment-*/**/*.js",
-    "_dist/client/vendor/sweetalert/**/*.js",
+    "_dist/client/vendor/messenger/build/js/messenger.js",
+    "_dist/client/vendor/messenger/build/js/messenger-theme-future.js",
     "_dist/client/vendor/dropzone/**/*.js",
     "_dist/client/vendor/ngprogress/**/*.js",
     "_dist/client/vendor/ngDialog/**/*.js",
@@ -39,7 +40,8 @@
     "_dist/client/vendor/bootstrap/**/*.css",
     "_dist/client/vendor/dropzone/**/*.css",
     "_dist/client/vendor/ngprogress/**/*.css",
-    "_dist/client/vendor/sweetalert/**/*.css",
+    "_dist/client/vendor/messenger/build/css/messenger.css",
+    "_dist/client/vendor/messenger/build/css/messenger-theme-flat.css",
     "_dist/client/common/**/*.css"
   ],
   "css":[
