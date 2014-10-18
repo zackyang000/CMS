@@ -38,6 +38,8 @@ module.exports = (app) ->
           unless article
             next new Error("Failed to load article " + req.query.id)
           article.comments.push(req.body)
+          article.meta.comments = article.meta.comments || 0
+          article.meta.comments++
           article.save (err) ->
             if err
               next(err)
