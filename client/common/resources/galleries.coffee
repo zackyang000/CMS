@@ -3,6 +3,8 @@
   $resource "#{config.apiHost}/galleries/:id/:action", {id:'@id'},
     query:
       method: "GET"
+      params:
+        $orderby: 'date desc'
     update:
       method: "PUT"
 ]
