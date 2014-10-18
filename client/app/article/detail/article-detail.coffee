@@ -38,7 +38,7 @@
       name : context.account.name
       email : context.account.email
   $scope.editmode = !context.account.name
-  $scope.isAdmin = context.auth.admin
+  $scope.auth = context.auth
 
   #提交评论
   $scope.save = ->
@@ -73,9 +73,9 @@
     $window.location.href="/admin/article/#{item._id}"
 
   $scope.remove = (item, index) ->
-
     messager.confirm ->
       $scope.item.comments.splice(index, 1)
+      $scope.item.meta.comments--
       Articles.update {id: $scope.item._id}, $scope.item, ->
         messager.success "Message has been removed."
 ])

@@ -73,7 +73,7 @@
 
   $window.scroll(0,0)
 
-  $scope.isAdmin = context.auth.admin
+  $scope.auth = context.auth
 
   $scope.list = articles
   $scope.currentPage = $routeParams.p ? 1

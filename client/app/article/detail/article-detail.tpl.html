@@ -40,7 +40,7 @@
 	                    <span>
                             <small>#{{ $index + 1 }}</small>
 	                        <time title="{{item.date | date:'yyyy.MM.dd HH:mm' }}">{{item.date | fromNow }}</time>
-	                        <a href="JavaScript:void(0)" ng-click="remove(item, $index)" ng-show="isAdmin">
+	                        <a href="JavaScript:void(0)" ng-click="remove(item, $index)" ng-show="auth.admin">
 	                            <i class="fa fa-remove"></i>
 	                        </a>
 	                    </span>

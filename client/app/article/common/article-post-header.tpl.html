@@ -12,7 +12,7 @@
             <i class="fa fa-external-link"></i>
             <a  ng-href="{{item.meta.source}}" title="{{item.meta.source}}">{{'article.source' | translate}}</a>
         </li>
-        <li ng-show="isAdmin">
+        <li ng-show="auth.admin">
             <a href="JavaScript:void(0)" ng-click="edit(item)">{{'article.edit' | translate:item}}</a>
         </li>
     </ul>
