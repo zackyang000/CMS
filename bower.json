@@ -36,6 +36,7 @@
     "ngprogress": "1.0.7",
     "ngstorage": "0.3.0",
     "jquery-cookie": "~1.4.1",
-    "ngDialog": "~0.2.13"
+    "ngDialog": "~0.2.13",
+    "sweetalert": "~0.2.0"
   }
 }
