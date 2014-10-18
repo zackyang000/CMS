@@ -4,7 +4,6 @@ numCPUs = require("os").cpus().length
 if cluster.isMaster
   # Fork workers.
   i = 0
-  console.log(numCPUs)
   while i < numCPUs
     cluster.fork()
     console.log("start " + i)
