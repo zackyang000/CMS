@@ -20,5 +20,4 @@ module.exports =
       email: String
     content: String
     date: Date
-    block: Boolean
   ]

@@ -6,6 +6,7 @@ gm = require('gm')
 mongoose = odata.mongoose
 
 articleModel = require('../models/article/article')
+commentModel = require('../models/article/comment')
 categoryModel = require('../models/article/category')
 boardModel = require('../models/board/board')
 tagModel = require('../models/article/tag')
@@ -44,6 +45,27 @@ module.exports = (app) ->
               if err
                 next(err)
               res.jsonp(req.body)
+              Comment = mongoose.model('Comment')
+              comment = new Comment
+                author:
+                  name: req.body.author.name
+                  email: req.body.author.email
+                content: req.body.content
+                date: req.body.date
+                articleId: req.params.id
+              comment.save ->
+                Comment.find().sort(date: 'desc').limit(10).exec (err, data) ->
+                  count = 0
+                  for item in data
+                    ((comment)->
+                      Article.findById item.articleId, (err, article) ->
+                        comment.article = article
+                        count++
+                        done()
+                    )(item)
+                  done = ->
+                    return  if count < data.length
+                    require('./../services/rss').generateComments(data)
       '/browsed':
         handle: (req, res, next) ->
           Article = mongoose.model("Article")
@@ -66,6 +88,15 @@ module.exports = (app) ->
         Article.find().sort(date: 'desc').limit(50).exec (err, data) ->
           require('./../services/rss').generateArticles(data)
 
+
+  odata.resources.register
+    url: '/comments'
+    model: commentModel
+    modelName: 'Comment'
+    options:
+      defaultOrderby: 'date desc'
+    auth:
+      "POST,PUT,DELETE": authAdminFn
 
 
   odata.resources.register
