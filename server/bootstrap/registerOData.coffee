@@ -61,6 +61,13 @@ module.exports = (app) ->
               next(err)
             res.send(204)
     ]
+    after:
+      post: (req, res) ->
+        Article = mongoose.model("Article")
+        Article.find().sort(date: 'desc').limit(50).exec (err, data) ->
+          require('./../services/rss').generateArticles(data)
+
+
 
   odata.resources.register
     url: '/categories'

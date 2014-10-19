@@ -20,9 +20,11 @@
 'ui.bootstrap'
 ])
 
-.config(["$locationProvider",($locationProvider) ->
-  $locationProvider.html5Mode(true)
-])
+.config ["$locationProvider", ($locationProvider) ->
+  $locationProvider.html5Mode
+    enabled: true
+    requireBase: false
+]
 
 #when route missing then goto 404 page.
 .config(["$routeProvider",($routeProvider) ->
