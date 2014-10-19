@@ -4,8 +4,7 @@
   require: '?ngModel'
   link: (scope, elm, attr, ngModel)->
     editor = CKEDITOR.instances[elm[0].name]
-    editor.destroy(true) if editor
-    ck = CKEDITOR.replace elm[0], { toolbar: 'Main' }
+    ck = CKEDITOR.replace elm[0]
     unless ngModel then return
     ck.on 'pasteState', ->
       scope.$apply ->
