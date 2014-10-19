@@ -3,7 +3,7 @@
   debug = grunt.option("release") isnt true
 
   grunt.initConfig
-    assets: grunt.file.readJSON('server/config/assets.json')
+    assets: grunt.file.readJSON('assets.json')
 
     #server
     nodemon:
