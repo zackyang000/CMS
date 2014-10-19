@@ -59,7 +59,7 @@ module.exports = (app) ->
             article.save (err) ->
               if err
                 next(err)
-              res.send(204)
+              res.send(200)
     after:
       post: (req, res) ->
         Article = mongoose.model("Article")
