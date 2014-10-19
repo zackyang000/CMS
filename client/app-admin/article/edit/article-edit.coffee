@@ -97,12 +97,15 @@
       $timeout.cancel timeout if timeout
       timeout = $timeout( ->
         $scope.translating = true
-        TranslateService.translate($scope.entity.title).success (data) ->
+        TranslateService.translate($scope.entity.title)
+        .success (data) ->
           data = $.trim(data)
           data = data.toLowerCase()
           data = data.replace(/[^_a-zA-Z\d\s]/g, '')
           data = data.replace(/[\s]/g, "-")
           $scope.entity.url = data
+          $scope.translating = false
+        .error (err) ->
           $scope.translating = false
       , 500)
 ])
