@@ -12,7 +12,6 @@
 'zy.directives'
 'zy.filters'
 'zy.untils'
-'pasvaz.bindonce'
 'ngProgress'
 'ngStorage'
 'angularFileUpload'

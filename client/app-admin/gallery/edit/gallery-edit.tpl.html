@@ -5,8 +5,8 @@
             <a href="/admin/">Home</a>
         </li>
         <li><a href="gallery">Gallery</a></li>
-        <li class="active" ng-hide="entity.date">New</li>
-        <li class="active" ng-show="entity.date">Edit (<span bindonce="entity" bo-html="entity.name"></span>)</li>
+        <li class="active" ng-hide="entity._id">New</li>
+        <li class="active" ng-show="entity._id">Edit (<span>{{ ::entity.name }}</span>)</li>
     </ul>
 </div>
 

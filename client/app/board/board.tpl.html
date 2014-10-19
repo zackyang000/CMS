@@ -18,8 +18,8 @@
             <div class="post-comment">
                 <h3>{{'board.content' | translate}}</h3>
                 <form name="form" novalidate ng-submit="save()">
-                    <p bindonce="entity" bo-show="entity.author">
-                        {{'board.welcome' | translate}}, <strong bo-html="entity.author.name"></strong>
+                    <p ng-show="::entity.author.name">
+                        {{'board.welcome' | translate}}, <strong>{{ ::entity.author.name }}</strong>
                         <span>
                             <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'board.hide' | translate}} »</a>
                             <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'board.change' | translate}} »</a>
