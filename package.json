@@ -23,7 +23,8 @@
     "morgan": "1.3.2",
     "lodash": "^2.4.1",
     "mkdirp": "*",
-    "gm": "*"
+    "gm": "*",
+    "rss": "1.0.0"
   },
   "devDependencies": {
     "open": "~0.0.5",

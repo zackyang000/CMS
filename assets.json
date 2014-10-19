@@ -15,15 +15,12 @@
     "_dist/client/vendor/moment-*/**/*.js",
     "_dist/client/vendor/messenger/build/js/messenger.js",
     "_dist/client/vendor/messenger/build/js/messenger-theme-future.js",
-    "_dist/client/vendor/dropzone/**/*.js",
     "_dist/client/vendor/ngprogress/**/*.js",
     "_dist/client/vendor/ngDialog/**/*.js",
     "_dist/client/vendor/ngstorage/**/*.js",
     "_dist/client/vendor/photobox/**/*.js",
     "_dist/client/config/**/*.js",
-    "_dist/client/common/**/*.js",
-    "_dist/client/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js",
-    "_dist/client/plugin/syntaxhighlighter_3.0.83/scripts/*.js"
+    "_dist/client/common/**/*.js"
   ],
   "js": [
     "_dist/client/app/**/*.js",
