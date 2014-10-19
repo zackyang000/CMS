@@ -55,7 +55,7 @@ module.exports = (app) ->
             next(err)
           unless article
             next new Error("Failed to load article " + req.query.id)
-          article.meta.views = article.meta.comments || 0
+          article.meta.views = article.meta.views || 0
           article.meta.views++
           article.save (err) ->
             if err
