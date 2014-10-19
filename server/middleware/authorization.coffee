@@ -1,4 +1,4 @@
-mongoose = require("node-odata").mongoose
+mongoose = require('node-odata').mongoose
 
 module.exports = (req, res, next) ->
   User = mongoose.model("User")

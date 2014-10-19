@@ -46,6 +46,7 @@ angular.module("zy.untils.globalLoading", [])
 
 #register global ajax loading
 .run(["$rootScope", "global-loading-app", ($rootScope, app) ->
-
+    app.loading = (val) ->
+      $rootScope.loading = val
 ])
 

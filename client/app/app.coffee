@@ -58,6 +58,5 @@
       if data
         context.account = data
         context.auth.admin = true
-
       $rootScope.account=context.account
 ]

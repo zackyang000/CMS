@@ -26,42 +26,40 @@ module.exports = (app) ->
       maxTop: 10
     auth:
       "POST,PUT,DELETE": authAdminFn
-    actions: [
-      url: '/add-comment'
-      handle: (req, res, next) ->
-        Article = mongoose.model("Article")
-        Article.findOne
-          _id: req.params.id
-        , (err, article) ->
-          if err
-            next(err)
-          unless article
-            next new Error("Failed to load article " + req.query.id)
-          article.comments.push(req.body)
-          article.meta.comments = article.meta.comments || 0
-          article.meta.comments++
-          article.save (err) ->
+    actions:
+      '/add-comment':
+        handle: (req, res, next) ->
+          Article = mongoose.model("Article")
+          Article.findOne
+            _id: req.params.id
+          , (err, article) ->
             if err
               next(err)
-            res.jsonp(req.body)
-    ,
-      url: '/browsed'
-      handle: (req, res, next) ->
-        Article = mongoose.model("Article")
-        Article.findOne
-          _id: req.params.id
-        , (err, article) ->
-          if err
-            next(err)
-          unless article
-            next new Error("Failed to load article " + req.query.id)
-          article.meta.views = article.meta.views || 0
-          article.meta.views++
-          article.save (err) ->
+            unless article
+              next new Error("Failed to load article " + req.query.id)
+            article.comments.push(req.body)
+            article.meta.comments = article.meta.comments || 0
+            article.meta.comments++
+            article.save (err) ->
+              if err
+                next(err)
+              res.jsonp(req.body)
+      '/browsed':
+        handle: (req, res, next) ->
+          Article = mongoose.model("Article")
+          Article.findOne
+            _id: req.params.id
+          , (err, article) ->
             if err
               next(err)
-            res.send(204)
-    ]
+            unless article
+              next new Error("Failed to load article " + req.query.id)
+            article.meta.views = article.meta.views || 0
+            article.meta.views++
+            article.save (err) ->
+              if err
+                next(err)
+              res.send(204)
     after:
       post: (req, res) ->
         Article = mongoose.model("Article")
