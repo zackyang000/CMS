@@ -44,6 +44,22 @@ module.exports = (app) ->
             if err
               next(err)
             res.jsonp(req.body)
+    ,
+      url: '/browsed'
+      handle: (req, res, next) ->
+        Article = mongoose.model("Article")
+        Article.findOne
+          _id: req.params.id
+        , (err, article) ->
+          if err
+            next(err)
+          unless article
+            next new Error("Failed to load article " + req.query.id)
+          article.meta.views++
+          article.save (err) ->
+            if err
+              next(err)
+            res.send(204)
     ]
 
   odata.resources.register

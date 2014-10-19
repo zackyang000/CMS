@@ -11,4 +11,8 @@
       method: "POST"
       params:
         action: "add-comment"
+    browsed:
+      method: "POST"
+      params:
+        action: 'browsed'
 ]

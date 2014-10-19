@@ -67,7 +67,7 @@
       $scope.loading = ""
 
   #浏览量+1
-  #Article.browsed id:"(guid'#{$scope.item.PostId}')"
+  Articles.browsed id: $scope.item._id
 
   $scope.edit = (item) ->
     $window.location.href="/admin/article/#{item._id}"
