@@ -49,7 +49,7 @@
       options:
         livereload: 30002
       clientFile:
-        files: ['**/*','!client/**/*.coffee','!client/**/*.less']
+        files: ['client/**/*','!client/**/*.coffee','!client/**/*.less']
         tasks: ['newer:copy:client','sails-linker','replace:livereload']
       clientCoffee:
         files: ['client/**/*.coffee']
