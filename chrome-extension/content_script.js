@@ -1,4 +1,4 @@
-﻿var server = "http://www.woshinidezhu.com"
+﻿var server = "http://api.woshinidezhu.com"
 var client = "http://www.woshinidezhu.com"
 
 try {
@@ -7,15 +7,17 @@ try {
   if(data.description.length > 200)
     data.description = data.description.substring(0, 200) + "...";
 
-  $.post(server + "/odata/Article",
+  $.post(server + "/odata/articles",
     {
-      Content: data.content,
-      Description: data.description.substring(0, 200),
-      Title: data.title,
-      Source: document.URL
+      content: data.content,
+      description: data.description.substring(0, 200),
+      title: data.title,
+      meta : {},
+      date: new Date(),
+      comments : []
     },
     function(data) {
-      window.location.href = client + "/admin/article('" + data.PostId + "')";
+      window.location.href = client + "/admin/article/" + data._id;
     });
 }
 catch (e) {
