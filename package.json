@@ -24,7 +24,8 @@
     "lodash": "^2.4.1",
     "mkdirp": "*",
     "gm": "*",
-    "rss": "1.0.0"
+    "rss": "1.0.0",
+    "coffee-script": "1.7.0"
   },
   "devDependencies": {
     "open": "~0.0.5",

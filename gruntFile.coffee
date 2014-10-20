@@ -8,7 +8,7 @@
     #server
     nodemon:
       server:
-        script: "server.js"
+        script: "server-launcher.js"
         options:
           args: []
           ext: "js,json,html"
@@ -49,7 +49,7 @@
       options:
         livereload: 30002
       clientFile:
-        files: ['client/**/*.js','client/**/*.css','client/**/*.html']
+        files: ['**/*','!client/**/*.coffee','!client/**/*.less']
         tasks: ['newer:copy:client','sails-linker','replace:livereload']
       clientCoffee:
         files: ['client/**/*.coffee']
@@ -57,12 +57,9 @@
       clientLess:
         files: ['client/**/*.less']
         tasks: ['newer:less','sails-linker','replace:livereload']
-      serverFile:
-        files: ['server/**/*','!server/**/*.coffee']
+      server:
+        files: ['server/**/*']
         tasks: ['newer:copy:server']
-      serverCoffee:
-        files: ['server/**/*.coffee']
-        tasks: ['newer:coffee:server']
 
     coffee:
       options:
@@ -73,14 +70,6 @@
           cwd: 'client/'
           src: ['**/*.coffee']
           dest: '_dist/client/'
-          ext: '.js'
-        ]
-      server:
-        files: [
-          expand: true
-          cwd: 'server/'
-          src: ['**/*.coffee']
-          dest: '_dist/server/'
           ext: '.js'
         ]
 
@@ -100,14 +89,14 @@
         #beautify: true
       production:
         files:
-          '_dist/client/index.js': ["<%= assets.commonJs %>", "<%= assets.js %>"]
-          '_dist/client/admin-index.js': ["<%= assets.commonJs %>", "<%= assets.adminJs %>"]
+          '_dist/client/index.js': ["<%= assets.public.js %>"]
+          '_dist/client/admin-index.js': ["<%= assets.admin.js %>"]
 
     cssmin:
       production:
         files:
-          '_dist/client/index.css': ["<%= assets.commonCss %>", "<%= assets.css %>"]
-          '_dist/client/admin-index.css': ["<%= assets.commonCss %>", "<%= assets.adminCss %>"]
+          '_dist/client/index.css': ["<%= assets.public.css %>"]
+          '_dist/client/admin-index.css': ["<%= assets.admin.css %>"]
 
     'sails-linker':
       js:
@@ -117,8 +106,8 @@
           fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
           appRoot: "_dist/client/"
         files:
-          '_dist/client/index.html': if debug then ["<%= assets.commonJs %>", "<%= assets.js %>"] else "_dist/client/index.js"
-          '_dist/client/admin-index.html': if debug then ["<%= assets.commonJs %>", "<%= assets.adminJs %>"] else "_dist/client/admin-index.js"
+          '_dist/client/index.html': if debug then ["<%= assets.public.js %>"] else "_dist/client/index.js"
+          '_dist/client/admin-index.html': if debug then ["<%= assets.admin.js %>"] else "_dist/client/admin-index.js"
       css:
         options:
           startTag: "<!--STYLES-->"
@@ -126,8 +115,8 @@
           fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
           appRoot: "_dist/client/"
         files:
-          '_dist/client/index.html': if debug then ["<%= assets.commonCss %>", "<%= assets.css %>"] else "_dist/client/index.css"
-          '_dist/client/admin-index.html': if debug then ["<%= assets.commonCss %>", "<%= assets.adminCss %>"] else "_dist/client/admin-index.css"
+          '_dist/client/index.html': if debug then ["<%= assets.public.css %>"] else "_dist/client/index.css"
+          '_dist/client/admin-index.html': if debug then ["<%= assets.admin.css %>"] else "_dist/client/admin-index.css"
 
     clean:
       all:
@@ -160,7 +149,6 @@
           cwd: 'server/'
           src: [
             '**/*'
-            '!**/*.coffee'
           ]
           dest: '_dist/server'
         ]

@@ -1,5 +1,4 @@
 cluster = require("cluster")
-#logger = require("./common/logger")
 numCPUs = require("os").cpus().length
 if cluster.isMaster
   # Fork workers.

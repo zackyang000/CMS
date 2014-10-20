@@ -24,6 +24,3 @@ catch (e) {
   alert("解析失败");
   window.location.reload();
 }
-
-
-
