@@ -95,7 +95,7 @@
         ]
 
     uglify:
-      options:
+      #options:
         #mangle: false
         #beautify: true
       production:
