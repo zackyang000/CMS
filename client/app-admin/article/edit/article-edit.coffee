@@ -18,8 +18,8 @@
 ])
 
 .controller('ArticleEditCtrl',
-["$scope","$routeParams","$window","$rootScope","$fileUploader","Articles","Categories","$timeout","TranslateService", "messager"
-($scope,$routeParams,$window,$rootScope,$fileUploader,Articles,Categories,$timeout,TranslateService, messager) ->
+["$scope","$routeParams","$window","$rootScope","$fileUploader","Articles","Categories","$timeout","TranslateService", "messager", "context"
+($scope,$routeParams,$window,$rootScope,$fileUploader,Articles,Categories,$timeout,TranslateService, messager, context) ->
   Categories.query (categories) ->
     $scope.categories = categories.value
     if $routeParams.id
@@ -28,16 +28,20 @@
         id : $routeParams.id
       , (data)->
           $scope.entity = data
-          if !$scope.entity.url
-            $scope.translateTitle()
           if $scope.entity.meta.tags
             $scope.tags = $scope.entity.meta.tags.join(',')
+          unless $scope.entity.url
+            $scope.translateTitle()
+          unless $scope.entity.meta.author
+            $scope.entity.meta.author = context.account.name
           $scope.loading = ""
     else
       $scope.entity =
-        meta : {}
+        meta :
+          author: context.account.name
         date: new Date()
         comments : []
+
 
   $scope.submit = ->
     $scope.isSubmit = true
