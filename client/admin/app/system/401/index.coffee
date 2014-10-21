@@ -4,6 +4,6 @@ angular.module('system-401',['ngRoute'])
     ($routeProvider) ->
       $routeProvider
       .when("/401",
-          templateUrl: "/app-admin/system/401/index.tpl.html"
+          templateUrl: "/app/system/401/index.tpl.html"
           controller: ->)
   ])

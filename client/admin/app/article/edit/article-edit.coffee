@@ -10,10 +10,10 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/article/new",
-      templateUrl: "/app-admin/article/edit/article-edit.tpl.html"
+      templateUrl: "/app/article/edit/article-edit.tpl.html"
       controller: 'ArticleEditCtrl'
     .when "/article/:id",
-      templateUrl: "/app-admin/article/edit/article-edit.tpl.html"
+      templateUrl: "/app/article/edit/article-edit.tpl.html"
       controller: 'ArticleEditCtrl'
 ])
 

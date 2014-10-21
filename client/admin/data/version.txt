@@ -1,0 +1,31 @@
+﻿v1.4.0
+- ASP.NET WEB API (OData)
+- MSSQL
++ NodeJS
++ MongoDB
+Separation the front-client and backend-server.
+Add data migration tool for move data from MSSQL to MongoDB.
+
+v1.3.1 2014-05-20
+Add chrome extension used to fast copy articles from other's site.
+Fix lots of bugs.
+
+v1.3.0 2013-08-30
++ ASP.NET WEB API (OData)
++ Chrome Extension
+- DDD
+
+v1.2.0 2013-08-04
++ AngularJS
++ CoffeeScript
+- Knockout.js
+
+v1.1.0 2013-05-24
++ Knockout.js
++ Bootstrap
+
+v1.0.0 2013-03-14
++ Domain driven design
++ ASP.NET MVC 3
++ Entity Framework 4.0
+

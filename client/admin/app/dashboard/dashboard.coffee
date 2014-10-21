@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/",
-      templateUrl: "/app-admin/dashboard/dashboard.tpl.html"
+      templateUrl: "/app/dashboard/dashboard.tpl.html"
       controller: 'DashboardCtrl'
 ])
 

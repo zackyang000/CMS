@@ -58,7 +58,7 @@
       options:
         livereload: 30003
       clientFile:
-        files: ['client/**/*','!client/**/*.coffee','!client/**/*.less']
+        files: ['client/**/*','!client/**/*.coffee','!client/**/*.less','client/public/plugin/**/*','client/admin/plugin/**/*']
         tasks: ['newer:copy:client','sails-linker','replace:livereload']
       clientCoffee:
         files: ['client/**/*.coffee']
@@ -115,7 +115,7 @@
           fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
           appRoot: "_dist/client/public/"
         files:
-          '_dist/client/index.html': if debug then ["<%= assets.public.js %>"] else "_dist/client/index.js"
+          '_dist/client/public/index.html': if debug then ["<%= assets.public.js %>"] else "_dist/client/public/index.js"
       'public-css':
         options:
           startTag: "<!--STYLES-->"
@@ -123,7 +123,7 @@
           fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
           appRoot: "_dist/client/public/"
         files:
-          '_dist/client/index.html': if debug then ["<%= assets.public.css %>"] else "_dist/client/index.css"
+          '_dist/client/public/index.html': if debug then ["<%= assets.public.css %>"] else "_dist/client/public/index.css"
       'admin-js':
         options:
           startTag: "<!--SCRIPTS-->"
@@ -139,7 +139,7 @@
           fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
           appRoot: "_dist/client/admin/"
         files:
-          '_dist/client/admin-index.html': if debug then ["<%= assets.admin.css %>"] else "_dist/client/admin-index.css"
+          '_dist/client/admin/index.html': if debug then ["<%= assets.admin.css %>"] else "_dist/client/admin/index.css"
 
     clean:
       all:

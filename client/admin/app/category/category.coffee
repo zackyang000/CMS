@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/category",
-      templateUrl: "/app-admin/category/category.tpl.html"
+      templateUrl: "/app/category/category.tpl.html"
       controller: 'CategoryCtrl'
 ])
 
