@@ -1,6 +1,6 @@
 ﻿angular.module("resource.users", ["ngResource"])
 .factory "Users", ['$resource', ($resource) ->
-  $resource "#{config.apiHost}/users/:id/:action", {id:'@id'},
+  $resource "#{config.url.api}/users/:id/:action", {id:'@id'},
     query:
       method: "GET"
     update:

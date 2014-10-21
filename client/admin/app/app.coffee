@@ -56,3 +56,7 @@
   , ->
     $rootScope.$broadcast "logoutSuccessed"
 ])
+
+.run ["$rootScope", ($rootScope) ->
+    $rootScope.config = config
+]

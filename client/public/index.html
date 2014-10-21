@@ -20,7 +20,7 @@
     <div class="container">
         <ul class="loginbar pull-right">
             <li>
-                <i class="icon-globe"></i>
+                <i class="fa fa-globe"></i>
                 <a>Languages</a>
                 <ul class="lenguages">
                     <li ng-class="{ active: use=='en' }">
@@ -39,7 +39,7 @@
             </li>
             <li class="devider"></li>
             <li>
-                <a href="/admin/">
+                <a href="{{ ::config.url.admin }}">
                     <span ng-show="account">{{account.name}}</span>
                     <span ng-hide="account">Admin</span>
                 </a>

@@ -29,7 +29,5 @@ angular.module("framework.controllers.main",[])
   $scope.$on "logoutSuccessed", ->
     $rootScope.__login=false
     $rootScope.__logoff=true
-
-  $rootScope.config = config
 ])
 

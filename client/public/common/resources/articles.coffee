@@ -1,6 +1,6 @@
 ﻿angular.module("resource.articles", ["ngResource"])
 .factory "Articles", ['$resource', ($resource) ->
-  $resource "#{config.apiHost}/articles/:id/:action", {id:'@id'},
+  $resource "#{config.url.api}/articles/:id/:action", {id:'@id'},
     query:
       method: "GET"
       params:

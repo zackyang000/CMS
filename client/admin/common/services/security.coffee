@@ -5,7 +5,7 @@
     token = $.cookie('authorization')
     if token
       $http.defaults.headers.common['authorization'] = token
-      $http.post "#{config.apiHost}/auto-login", undefined
+      $http.post "#{config.url.api}/auto-login", undefined
       .success (data) ->
         deferred.resolve data
       .error (error) ->
@@ -17,7 +17,7 @@
 
   login: (user) ->
     deferred = $q.defer()
-    $http.post "#{config.apiHost}/login", { name: user.name, password: user.password }
+    $http.post "#{config.url.api}/login", { name: user.name, password: user.password }
     .success (data, status, headers) ->
       token = headers('authorization')
       $http.defaults.headers.common['authorization'] = token
@@ -32,7 +32,7 @@
 
   logoff: ->
     deferred = $q.defer()
-    $http.post "#{config.apiHost}/logoff", undefined
+    $http.post "#{config.url.api}/logoff", undefined
     .success (data) ->
       $.removeCookie('authorization', { path: '/' })
       delete $http.defaults.headers.common['authorization']

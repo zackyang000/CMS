@@ -60,3 +60,7 @@
         context.auth.admin = true
       $rootScope.account=context.account
 ]
+
+.run ["$rootScope", ($rootScope) ->
+    $rootScope.config = config
+]

@@ -1,8 +1,5 @@
 config = config || {}
 
-config.apiHost='http://localhost:30002/oData'
-config.imgHost='http://localhost:30002'
-
 #DEV
 config.host =
   public: 'localhost:30000'
@@ -20,5 +17,12 @@ config.host =
   img: 'img.woshinidezhu.com'
   api: 'api.woshinidezhu.com'
 ###
+
+config.url =
+  public: "http://#{config.host.public}"
+  admin: "http://#{config.host.admin}"
+  feed: "http://#{config.host.feed}"
+  img: "http://#{config.host.img}"
+  api: "http://#{config.host.api}/oData"
 
 config.siteName='iShare'

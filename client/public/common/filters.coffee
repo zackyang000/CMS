@@ -30,7 +30,7 @@
 .filter 'remoteImage', ->
   (input) ->
     return unless input?
-    return config.imgHost + input
+    return config.url.img + input
 
 .filter 'gravatar', ->
   (input) ->
