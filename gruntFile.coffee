@@ -15,30 +15,39 @@
           nodeArgs: ["--debug"]
           delayTime: 1
           env:
-            PORT: 30001
+            PORT: 30002
           cwd: '_dist/server'
 
     #client
     connect:
-      client:
+      public:
         options:
           port: 30000
           hostname: 'localhost'
-          base:'_dist/client'
+          base:'_dist/client/public'
           middleware:  (connect, options) ->
             middlewares = []
-
             middlewares.push(require('connect-modrewrite')([
-                  '^/admin$ /admin-index.html'
-                  '^/admin[/](.*)$ /admin-index.html'
-                  '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
+              '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
             ]))
-
             require('connect-livereload') port:30005
-
             options.base.forEach (base) ->
               middlewares.push(connect.static(base))
+            return middlewares
 
+      admin:
+        options:
+          port: 30001
+          hostname: 'localhost'
+          base:'_dist/client/admin'
+          middleware:  (connect, options) ->
+            middlewares = []
+            middlewares.push(require('connect-modrewrite')([
+              '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
+            ]))
+            require('connect-livereload') port:30005
+            options.base.forEach (base) ->
+              middlewares.push(connect.static(base))
             return middlewares
 
     open:
@@ -47,7 +56,7 @@
 
     watch:
       options:
-        livereload: 30002
+        livereload: 30003
       clientFile:
         files: ['**/*','!client/**/*.coffee','!client/**/*.less']
         tasks: ['newer:copy:client','sails-linker','replace:livereload']
@@ -89,33 +98,47 @@
         #beautify: true
       production:
         files:
-          '_dist/client/index.js': ["<%= assets.public.js %>"]
-          '_dist/client/admin-index.js': ["<%= assets.admin.js %>"]
+          '_dist/client/public/index.js': ["<%= assets.public.js %>"]
+          '_dist/client/admin/index.js': ["<%= assets.admin.js %>"]
 
     cssmin:
       production:
         files:
-          '_dist/client/index.css': ["<%= assets.public.css %>"]
-          '_dist/client/admin-index.css': ["<%= assets.admin.css %>"]
+          '_dist/client/public/index.css': ["<%= assets.public.css %>"]
+          '_dist/client/admin/index.css': ["<%= assets.admin.css %>"]
 
     'sails-linker':
-      js:
+      'public-js':
         options:
           startTag: "<!--SCRIPTS-->"
           endTag: "<!--SCRIPTS END-->"
           fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
-          appRoot: "_dist/client/"
+          appRoot: "_dist/client/public/"
         files:
           '_dist/client/index.html': if debug then ["<%= assets.public.js %>"] else "_dist/client/index.js"
-          '_dist/client/admin-index.html': if debug then ["<%= assets.admin.js %>"] else "_dist/client/admin-index.js"
-      css:
+      'public-css':
         options:
           startTag: "<!--STYLES-->"
           endTag: "<!--STYLES END-->"
           fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
-          appRoot: "_dist/client/"
+          appRoot: "_dist/client/public/"
         files:
           '_dist/client/index.html': if debug then ["<%= assets.public.css %>"] else "_dist/client/index.css"
+      'admin-js':
+        options:
+          startTag: "<!--SCRIPTS-->"
+          endTag: "<!--SCRIPTS END-->"
+          fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
+          appRoot: "_dist/client/admin/"
+        files:
+          '_dist/client/admin/index.html': if debug then ["<%= assets.admin.js %>"] else "_dist/client/admin/index.js"
+      'admin-css':
+        options:
+          startTag: "<!--STYLES-->"
+          endTag: "<!--STYLES END-->"
+          fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
+          appRoot: "_dist/client/admin/"
+        files:
           '_dist/client/admin-index.html': if debug then ["<%= assets.admin.css %>"] else "_dist/client/admin-index.css"
 
     clean:
@@ -124,11 +147,16 @@
 
       redundant:
         src: [
-          "_dist/client/*"
-          "!_dist/client/data"
-          "!_dist/client/img"
-          "!_dist/client/plugin"
-          "!_dist/client/*.*"
+          "_dist/client/public/*"
+          "!_dist/client/public/data"
+          "!_dist/client/public/img"
+          "!_dist/client/public/plugin"
+          "!_dist/client/public/*.*"
+          "_dist/client/admin/*"
+          "!_dist/client/admin/data"
+          "!_dist/client/admin/img"
+          "!_dist/client/admin/plugin"
+          "!_dist/client/admin/*.*"
         ]
 
     copy:
@@ -154,8 +182,12 @@
         ]
 
     bower:
-      dev:
-        dest: '_dist/client/vendor'
+      public:
+        dest: '_dist/client/public/vendor'
+        options:
+          expand: true
+      admin:
+        dest: '_dist/client/admin/vendor'
         options:
           expand: true
 
@@ -172,20 +204,20 @@
             '&apos;': '\''
             '&amp;': '&'
         files:
-          '_dist/client/index.html': [
-            '_dist/client/app/**/*.html'
+          '_dist/client/public/index.html': [
+            '_dist/client/public/app/**/*.html'
           ]
-          '_dist/client/admin-index.html': [
-            '_dist/client/app-admin/**/*.html'
+          '_dist/client/admin/index.html': [
+            '_dist/client/admin/app/**/*.html'
           ]
 
     replace:
       livereload:
-        src: ["_dist/client/index.html","_dist/client/admin-index.html"]
+        src: ["_dist/client/public/index.html","_dist/client/admin/index.html"]
         overwrite: true
         replacements: [
           from: '<!--LIVERELOAD-->'
-          to: '<script src="//localhost:30002/livereload.js"></script>'
+          to: '<script src="//localhost:30003/livereload.js"></script>'
         ]
 
     concurrent:
