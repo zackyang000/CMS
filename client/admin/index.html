@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title ng-bind="config.siteName">Loading...</title>
+    <title ng-bind="::config.site.name">Loading...</title>
     <script src="/plugin/ckeditor_4.4.5/ckeditor.js"></script>
     <base href="/admin/" />
     <!--STYLES--><!--STYLES END-->
@@ -169,7 +169,7 @@
                         <div class="center">
                             <h1>
                                 <img src="/img/logo.gif" alt="" width="36px" height="36px" style="margin-top: -6px;" />
-                                <span class="red">{{config.siteName}}</span><span class="white"></span>
+                                <span class="red">{{::config.site.name}}</span><span class="white"></span>
                             </h1>
                             <h4 class="blue">&copy; Zack Yang</h4>
                         </div>

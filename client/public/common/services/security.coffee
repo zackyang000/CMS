@@ -1,15 +1,15 @@
-﻿angular.module("zy.services.security", ['resource.users'])
-.factory "security", ['Users','$q', "$http", (Users, $q, $http) ->
+﻿angular.module("zy.services.security", ['resource.users', 'ipCookie'])
+.factory "security", ['Users','$q', "$http", "ipCookie", (Users, $q, $http, ipCookie) ->
   autoLogin: ->
     deferred = $q.defer()
-    token = $.cookie('authorization')
+    token = ipCookie('authorization')
     if token
       $http.defaults.headers.common['authorization'] = token
       $http.post "#{config.url.api}/auto-login", undefined
       .success (data) ->
         deferred.resolve data
       .error (error) ->
-        #$.removeCookie('authorization', { path: '/' })
+        #ipCookie.remove('authorization', { path: '/' })
         deferred.reject undefined
     else
       deferred.reject undefined
@@ -22,9 +22,9 @@
       token = headers('authorization')
       $http.defaults.headers.common['authorization'] = token
       if user.remember
-        $.cookie('authorization', token, {expires: 180, path: '/'})
+        ipCookie('authorization', token, { expires: 180, path: '/', domain: config.host.domain })
       else
-        $.cookie('authorization', token, { path: '/'})
+        ipCookie('authorization', token, { path: '/', domain: config.host.domain })
       deferred.resolve data
     .error (error) ->
       deferred.reject undefined
@@ -34,7 +34,7 @@
     deferred = $q.defer()
     $http.post "#{config.url.api}/logoff", undefined
     .success (data) ->
-      $.removeCookie('authorization', { path: '/' })
+      ipCookie.remove('authorization', { path: '/' })
       delete $http.defaults.headers.common['authorization']
       deferred.resolve "OK"
     deferred.promise

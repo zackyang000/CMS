@@ -25,4 +25,5 @@ config.url =
   img: "http://#{config.host.img}"
   api: "http://#{config.host.api}/oData"
 
-config.siteName='iShare'
+config.site =
+  name: 'iShare'

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title ng-bind="title + ' | ' + config.siteName">Loading...</title>
+    <title ng-bind="title + ' | ' + config.site.name">Loading...</title>
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 文章" href="http://localhost:30001/articles.xml" />
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 评论" href="http://localhost:30001/comments.xml" />
     <link rel="shortcut icon" href="/img/favicon.ico" />
@@ -63,7 +63,7 @@
                 <h1>
                     <a class="navbar-brand" href="/">
                         <img id="logo-header" src="/img/logo.gif" alt="Logo">
-                        {{config.siteName}}
+                        {{::config.site.name}}
                     </a>
                 </h1>
             </div>

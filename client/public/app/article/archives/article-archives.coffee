@@ -15,7 +15,11 @@
           ,(articles) ->
             obj = []
             for post in articles.value
-              date = moment(post.date).format('YYYY-MM')
+              date = new Date(post.date)
+              year = date.getFullYear()
+              month = date.getMonth() + 1
+              month = '0' + month  if month < 10
+              date = "#{year}-#{month}"
               unless obj[date]
                 obj[date]=[]
               obj[date].push(post)

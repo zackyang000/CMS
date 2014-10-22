@@ -4,5 +4,4 @@ angular.module "zy.services",
   'zy.services.progress'
   'zy.services.security'
   'zy.services.context'
-  'zy.services.version'
 ]

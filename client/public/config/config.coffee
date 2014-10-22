@@ -2,6 +2,7 @@ config = config || {}
 
 #DEV
 config.host =
+  domain: 'localhost'
   public: 'localhost:30000'
   admin: 'localhost:30001'
   feed: 'localhost:30002'
@@ -11,6 +12,7 @@ config.host =
 #PRD
 ###
 config.host =
+  domain: 'woshinidezhu.com'
   public: 'www.woshinidezhu.com'
   admin: 'admin.woshinidezhu.com'
   feed: 'feed.woshinidezhu.com'
@@ -25,4 +27,5 @@ config.url =
   img: "http://#{config.host.img}"
   api: "http://#{config.host.api}/oData"
 
-config.siteName='iShare'
+config.site =
+  name: 'iShare'

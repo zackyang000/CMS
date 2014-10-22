@@ -172,7 +172,7 @@ module.exports = (app) ->
 
 # Logout, remove user token.
   odata.functions.register
-    url: '/logout'
+    url: '/logoff'
     method: 'POST'
     handle: (req, res, next) ->
       User = mongoose.model("User")
@@ -223,5 +223,5 @@ module.exports = (app) ->
         .write targetPath, complated
       else
         fs.rename sourcePath, targetPath, complated
-
+      res.set("Connection", 'keep-alive')
       res.send '/upload/' + req.query.path + '/' + filename + '.' + fileExtension

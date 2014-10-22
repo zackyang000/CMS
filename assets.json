@@ -2,21 +2,19 @@
   "public":{
     "js": [
       "_dist/client/public/vendor/jquery/**/*.js",
-      "_dist/client/public/vendor/jquery-cookie/**/*.js",
       "_dist/client/public/vendor/jquery-plugin/scroll-to-top.js",
       "_dist/client/public/vendor/bootstrap/**/*.js",
       "_dist/client/public/vendor/angular/*.js",
       "_dist/client/public/vendor/angular-translate/**/*.js",
       "_dist/client/public/vendor/angular-*/**/*.js",
+      "_dist/client/public/vendor/angular-cookie/**/*.js",
       "_dist/client/public/vendor/angulartics/**/*.js",
       "_dist/client/public/vendor/blueimp-md5/**/*.js",
       "_dist/client/public/vendor/moment/**/*.js",
-      "_dist/client/public/vendor/moment-*/**/*.js",
       "_dist/client/public/vendor/messenger/build/js/messenger.js",
       "_dist/client/public/vendor/messenger/build/js/messenger-theme-future.js",
       "_dist/client/public/vendor/ngprogress/**/*.js",
       "_dist/client/public/vendor/ngstorage/**/*.js",
-      "_dist/client/public/vendor/photobox/**/*.js",
       "_dist/client/public/config/**/*.js",
       "_dist/client/public/common/**/*.js",
       "_dist/client/public/app/**/*.js",
@@ -29,10 +27,8 @@
       "_dist/client/public/vendor/messenger/build/css/messenger.css",
       "_dist/client/public/vendor/messenger/build/css/messenger-theme-flat.css",
       "_dist/client/public/common/**/*.css",
-      "_dist/client/public/vendor/photobox/**/*.css",
       "_dist/client/public/plugin/unify*/*.css",
       "_dist/client/public/plugin/unify*/theme/default/*.css",
-      "_dist/client/public/plugin/syntaxhighlighter_3.0.83/styles/shCoreDefault.css",
       "_dist/client/public/app/**/*.css"
     ]
   },

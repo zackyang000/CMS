@@ -14,7 +14,6 @@
 'zy.untils'
 'ngProgress'
 'ui.utils'
-'ui.bootstrap'
 'pascalprecht.translate'
 'ngStorage'
 'angulartics'

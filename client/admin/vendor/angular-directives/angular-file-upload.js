@@ -521,7 +521,7 @@ app.factory('$fileUploader', [ '$compile', '$rootScope', '$http', '$window', fun
          */
         _transformResponse: function (response) {
             $http.defaults.transformResponse.forEach(function (transformFn) {
-                response = transformFn(response);
+                response = transformFn(response, function(){});
             });
             return response;
         }

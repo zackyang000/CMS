@@ -12,8 +12,8 @@
 .filter 'fromNow', ->
   (input) ->
     return unless input?
-    return moment(input).fromNow()
-    
+    return input.format()
+
 .filter "line", ->
   (input) ->
     return unless input?
