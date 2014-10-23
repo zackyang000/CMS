@@ -9,12 +9,12 @@
       scope.numData=data['@odata.count']
       scope.numPages=Math.ceil(scope.numData / 10)
       scope.totalItems=scope.numData
-      element.context.innerHTML='<pagination on-select-page="setPage(page)" total-items="totalItems" page="currentPage" max-size="10" boundary-links="true" rotate="false"></pagination>'
+      element[0].innerHTML='<pagination on-select-page="setPage(page)" total-items="totalItems" page="currentPage" max-size="10" boundary-links="true" rotate="false"></pagination>'
       if scope.currentPage < scope.numPages
-        element.context.innerHTML+='<div>{{(currentPage-1)*10+1}} - {{currentPage*10}} of {{numData}}</div>'
+        element[0].innerHTML+='<div>{{(currentPage-1)*10+1}} - {{currentPage*10}} of {{numData}}</div>'
       else
-        element.context.innerHTML+='<div>{{(currentPage-1)*10+1}} - {{numData}} of {{numData}}</div>'
-      element.context.innerHTML='' if scope.numData is '0'
+        element[0].innerHTML+='<div>{{(currentPage-1)*10+1}} - {{numData}} of {{numData}}</div>'
+      element[0].innerHTML='' if scope.numData is '0'
       $compile(element.contents())(scope)
 
     scope.$watch attrs.zyOdataPager, (value) ->

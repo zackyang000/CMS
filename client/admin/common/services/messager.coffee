@@ -1,4 +1,4 @@
-angular.module("zy.services.messager", ['resource.users'])
+angular.module("zy.services.messager", [])
 
 .factory "messager", ->
   Messenger.options =

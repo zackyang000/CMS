@@ -36,6 +36,7 @@
     "ngstorage": "0.3.0",
     "jquery-cookie": "~1.4.1",
     "ngDialog": "~0.2.13",
-    "angular-cookie": "~4.0.6"
+    "angular-cookie": "~4.0.6",
+    "sweetalert": "~0.3.1"
   }
 }

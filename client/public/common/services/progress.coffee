@@ -1,4 +1,4 @@
-angular.module("zy.services.progress", ['resource.users']).provider "progress", ->
+angular.module("zy.services.progress", []).provider "progress", ->
   @$get = ["$document", "$window", "$compile", "$rootScope"
     ($document, $window, $compile, $rootScope) ->
       $scope = $rootScope

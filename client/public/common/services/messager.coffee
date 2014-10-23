@@ -1,37 +1,12 @@
-angular.module("zy.services.messager", ['resource.users'])
+angular.module("zy.services.messager", [])
 
 .factory "messager", ->
-  Messenger.options =
-    extraClasses: 'messenger-fixed messenger-on-top'
-    theme: 'flat'
-
   success : (msg) ->
-    Messenger().post({ message : msg, type : 'success', showCloseButton : true })
+    alert(msg)
 
   error : (msg) ->
-    msg = 'Unauthorized.' if (msg == '401')
-    Messenger().post
-      message : msg
-      type : 'error'
-      showCloseButton : true
-      delay : 600
+    alert(msg)
 
   confirm : (callback,msg) ->
-    Messenger.options =
-      extraClasses: 'messenger-fixed messenger-on-top'
-      theme: 'flat'
-    msg = Messenger().post
-      message : msg || "Do you want to continue?"
-      id : "Only-one-message"
-      showCloseButton : true
-      actions :
-        OK :
-          label : "OK"
-          phrase : "Confirm"
-          delay : 60
-          action : ->
-            callback()
-            msg.cancel()
-        cancel :
-          action : ->
-            msg.cancel()
+    if confirm(msg || "Do you want to continue?")
+      callback()

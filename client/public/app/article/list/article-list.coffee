@@ -14,6 +14,7 @@
               $filter: "category eq '#{category.value[0].name}'"
               $skip: ($route.current.params.p || 1) * 10 - 10
               $count: true
+              $select: 'title,url,meta,description,date,category,tag'
             ,(data)->
               deferred.resolve data
           deferred.promise
@@ -29,6 +30,7 @@
             $filter: "category eq '#{$route.current.params.category}'" #todo 不支持tag查询
             $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
+            $select: 'title,url,meta,description,date,category,tag'
           ,(data)->
             deferred.resolve data
           deferred.promise
@@ -44,6 +46,7 @@
             $filter: "category eq '#{$route.current.params.category}'"
             $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
+            $select: 'title,url,meta,description,date,category,tag'
           ,(data)->
             deferred.resolve data
           deferred.promise
@@ -58,6 +61,8 @@
           Articles.query
             $filter:"indexof(title,'#{$route.current.params.key}') gt -1"
             $skip: ($route.current.params.p || 1) * 10 - 10
+            $count: true
+            $select: 'title,url,meta,description,date,category,tag'
           , (data)->
             deferred.resolve data
           deferred.promise
