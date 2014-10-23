@@ -191,25 +191,39 @@
         options:
           expand: true
 
-    inline_angular_templates:
-      dist:
+    ngtemplates:
+      'public-templates':
+        src: 'app/**/*.html'
+        dest: '_dist/client/public/common/templates.js'
+        cwd: '_dist/client/public'
         options:
-          base: '_dist/client'
           prefix: '/'
-          selector: 'body'
-          method: 'append'
-          unescape:
-            '&lt;': '<'
-            '&gt;': '>'
-            '&apos;': '\''
-            '&amp;': '&'
-        files:
-          '_dist/client/public/index.html': [
-            '_dist/client/public/app/**/*.html'
-          ]
-          '_dist/client/admin/index.html': [
-            '_dist/client/admin/app/**/*.html'
-          ]
+          standalone: true
+          htmlmin:
+            collapseBooleanAttributes:      true
+            collapseWhitespace:             true
+            removeAttributeQuotes:          true
+            removeComments:                 false
+            removeEmptyAttributes:          true
+            removeRedundantAttributes:      true
+            removeScriptTypeAttributes:     true
+            removeStyleLinkTypeAttributes:  true
+      'admin-templates':
+        src: 'app/**/*.html'
+        dest: '_dist/client/admin/common/templates.js'
+        cwd: '_dist/client/admin'
+        options:
+          prefix: '/'
+          standalone: true
+          htmlmin:
+            collapseBooleanAttributes:      true
+            collapseWhitespace:             true
+            removeAttributeQuotes:          true
+            removeComments:                 false
+            removeEmptyAttributes:          true
+            removeRedundantAttributes:      true
+            removeScriptTypeAttributes:     true
+            removeStyleLinkTypeAttributes:  true
 
     replace:
       livereload:
@@ -244,11 +258,10 @@
         "copy"
         "coffee"
         "less"
+        "ngtemplates"
         "uglify"
         "cssmin"
         "sails-linker"
-        "inline_angular_templates"
-        "clean:redundant"
       ]
 
   grunt.registerTask "default", [

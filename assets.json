@@ -21,6 +21,7 @@
       "_dist/client/public/config/**/*.js",
       "_dist/client/public/common/**/*.js",
       "_dist/client/public/app/**/*.js",
+      "_dist/client/public/templates.js",
       "_dist/client/public/plugin/unify*/**/*.js"
     ],
     "css":[
@@ -58,6 +59,7 @@
       "_dist/client/admin/config/**/*.js",
       "_dist/client/admin/common/**/*.js",
       "_dist/client/admin/app/**/*.js",
+      "_dist/client/admin/templates.js",
       "_dist/client/admin/plugin/ace_*/ace.js",
       "_dist/client/admin/plugin/ace_*/**/*.js",
       "_dist/client/admin/plugin/select2/select2.js"

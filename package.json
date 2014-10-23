@@ -48,7 +48,7 @@
     "grunt-rev": "~0.1.0",
     "grunt-text-replace": "~0.3.10",
     "connect-modrewrite": "0.7.9",
-    "grunt-inline-angular-templates": "~0.1.5",
+    "grunt-angular-templates": "0.5.7",
     "grunt-nodemon": "0.2.0",
     "grunt-bower": "~0.14.0"
   }
