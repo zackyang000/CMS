@@ -2,7 +2,7 @@
 ['ngRoute'
 'ngCookies'
 'ngSanitize'
-'public-templates'
+'admin-templates'
 'dashboard'
 'category'
 'article'

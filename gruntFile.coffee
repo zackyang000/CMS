@@ -262,6 +262,7 @@
         "uglify"
         "cssmin"
         "sails-linker"
+        "clean:redundant"
       ]
 
   grunt.registerTask "default", [

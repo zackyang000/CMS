@@ -1,6 +1,6 @@
 利用artile字段 status, password
 
-syntaxhighlighter dropzone无法压缩
+dropzone无法压缩
 inline_angular_templates无法工作
 未安装graphicsmagick
 
