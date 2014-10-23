@@ -81,7 +81,7 @@
   $scope.auth = context.auth
 
   $scope.list = articles
-  $scope.currentPage = $routeParams.p ? 1
+  $scope.currentPage = +$routeParams.p ? 1
 
   $scope.category = $routeParams.category || articles.value[0].category
 

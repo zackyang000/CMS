@@ -4,7 +4,6 @@
       "_dist/client/public/vendor/jquery/**/*.js",
       "_dist/client/public/vendor/bootstrap/**/*.js",
       "_dist/client/public/vendor/angular/*.js",
-      "_dist/client/public/vendor/angular-directives/ui-bootstrap-tpls-0.10.0.js",
       "_dist/client/public/vendor/angular-translate/**/*.js",
       "_dist/client/public/vendor/angular-translate-*/**/*.js",
       "_dist/client/public/vendor/angular-cookie/**/*.js",
