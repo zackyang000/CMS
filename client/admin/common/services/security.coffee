@@ -9,7 +9,7 @@
       .success (data) ->
         deferred.resolve data
       .error (error) ->
-        #$.removeCookie('authorization', { path: '/' })
+        $.removeCookie('authorization', { path: '/' })
         deferred.reject undefined
     else
       deferred.reject undefined
