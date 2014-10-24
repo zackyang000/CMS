@@ -1,6 +1,6 @@
 ﻿module.exports = (grunt) ->
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
-  debug = grunt.option("release") isnt true
+  debug = !grunt.option("release")
 
   grunt.initConfig
     assets: grunt.file.readJSON('assets.json')
