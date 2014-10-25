@@ -1,7 +1,11 @@
 module.exports =
   name: String
   loginName: String
-  password: String
+  password:
+    type: String
+    select: false
   email: String
-  token: String
+  token:
+    type: String
+    select: false
   disabled: Boolean

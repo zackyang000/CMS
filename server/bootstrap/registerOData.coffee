@@ -131,7 +131,7 @@ module.exports = (app) ->
     model: userModel
     modelName: "User"
     auth:
-      "POST,PUT,DELETE": authAdminFn
+      "POST,PUT,DELETE,GET": authAdminFn
 
 
 # Login, refresh user token.
