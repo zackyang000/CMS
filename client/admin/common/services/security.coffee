@@ -9,7 +9,7 @@
       .success (data) ->
         deferred.resolve data
       .error (error) ->
-        #ipCookie.remove('authorization', { path: '/' })
+        ipCookie.remove('authorization', { path: '/' })
         deferred.reject undefined
     else
       deferred.reject undefined

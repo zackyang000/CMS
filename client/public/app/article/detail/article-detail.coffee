@@ -61,7 +61,7 @@
         name: $scope.entity.author.name
         email: $scope.entity.author.email
         url: $scope.entity.url
-    ,(error)->
+    , (error)->
       ngProgress.complete()
       $scope.submitted=false
       $scope.loading = ""
