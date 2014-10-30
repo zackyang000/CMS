@@ -67,7 +67,7 @@
                     </a>
                 </h1>
             </div>
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-class="{active:isActiveCategory(category)}" ng-repeat="category in categories | orderBy:'-main'">
                         <a ng-href="/" ng-show="category.main">{{category.name}}</a>
