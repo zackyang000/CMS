@@ -73,7 +73,6 @@
                         <a ng-href="/" ng-show="category.main">{{category.name}}</a>
                         <a ng-href="/list/{{category.name}}" ng-hide="category.main">{{category.name}}</a>
                     </li>
-                    <li ng-class="{active:isActive('/archives')}"><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
                     <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
                     <li ng-class="{active:isActive('/board')}"><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
                     <li ng-class="{active:isActive('/about')}"><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>

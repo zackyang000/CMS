@@ -1,2 +1,11 @@
-﻿/* 搜索高亮 */
+﻿#archives .group > a,
+#archives .group > a:hover {
+    color: #333;
+}
+#archives ul {
+    padding: 5px;
+    margin-left: 10px;
+}
+
+/* 搜索高亮 */
 .ui-match { background: #FF9632; }

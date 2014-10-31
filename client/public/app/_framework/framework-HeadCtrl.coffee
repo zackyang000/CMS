@@ -23,5 +23,6 @@ angular.module("framework.controllers.head",['resource.categories'])
     route == $location.path()
 
   $scope.search = ->
+    $scope.displaySearchDialog = false
     $location.path("/search/#{$scope.key}")
 ])
