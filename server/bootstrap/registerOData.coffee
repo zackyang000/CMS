@@ -24,7 +24,6 @@ module.exports = (app) ->
     modelName: 'Article'
     options:
       defaultOrderby: 'date desc'
-      maxTop: 10
     auth:
       "POST,PUT,DELETE": authAdminFn
     actions:
