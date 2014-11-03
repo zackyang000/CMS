@@ -20,7 +20,7 @@ exports.generateArticles = (list) ->
   for item in list
     feed.item
       title: item.title
-      description: item.description
+      description: item.content
       url: "http://www.woshinidezhu.com/post/#{item.url}"
       guid: item._id
       author: item.meta.author
