@@ -113,6 +113,15 @@
           '_dist/client/public/index.css': ["<%= assets.public.css %>"]
           '_dist/client/admin/index.css': ["<%= assets.admin.css %>"]
 
+    imagemin:
+      dynamic:
+        files: [
+          expand : true
+          cwd : ''
+          src : ['client/public/img/**/*.{png,jpg,gif}', 'client/admin/img/**/*.{png,jpg,gif}']
+          dest : '_dist'
+        ]
+
     'sails-linker':
       'public-js':
         options:
@@ -265,6 +274,7 @@
         "ngtemplates"
         "uglify"
         "cssmin"
+        "imagemin"
         "sails-linker"
         "clean:redundant"
       ]

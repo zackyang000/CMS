@@ -51,6 +51,7 @@
     "grunt-angular-templates": "0.5.7",
     "grunt-nodemon": "0.2.0",
     "grunt-bower": "~0.14.0",
-    "grunt-coffeelint": "~0.0.13"
+    "grunt-coffeelint": "~0.0.13",
+    "grunt-contrib-imagemin": "0.9.1"
   }
 }
