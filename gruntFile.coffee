@@ -13,7 +13,7 @@
           args: []
           ext: "js,json,html"
           nodeArgs: ["--debug"]
-          delayTime: 1
+          delayTime: 0
           env:
             PORT: 30002
           cwd: '_dist/server'
@@ -69,6 +69,12 @@
       server:
         files: ['server/**/*']
         tasks: ['newer:copy:server']
+
+    coffeelint:
+      app: ['client/**/*.coffee', 'server/**/*.coffee']
+      options:
+        max_line_length:
+          level: 'ignore'
 
     coffee:
       options:
@@ -241,23 +247,21 @@
 
 
   grunt.registerTask "build", ->
-    if debug
-      grunt.task.run [
+    grunt.task.run [
+        "coffeelint"
         "clean:all"
         "bower"
         "copy"
         "coffee"
         "less"
+      ]
+    if debug
+      grunt.task.run [
         "sails-linker"
         "replace:livereload"
       ]
     else
       grunt.task.run [
-        "clean:all"
-        "bower"
-        "copy"
-        "coffee"
-        "less"
         "ngtemplates"
         "uglify"
         "cssmin"

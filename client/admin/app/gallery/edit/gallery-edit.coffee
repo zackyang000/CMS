@@ -68,7 +68,6 @@
     url: "#{config.url.api}/file-upload/?name=cover&path=gallery/#{$routeParams.id}&resize=973x615"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
-    debugger
     $scope.entity.cover = res
     save()
   )

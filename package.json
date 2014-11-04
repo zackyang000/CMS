@@ -50,6 +50,7 @@
     "connect-modrewrite": "0.7.9",
     "grunt-angular-templates": "0.5.7",
     "grunt-nodemon": "0.2.0",
-    "grunt-bower": "~0.14.0"
+    "grunt-bower": "~0.14.0",
+    "grunt-coffeelint": "~0.0.13"
   }
 }

@@ -8,7 +8,7 @@
 ])
 
 .controller('DashboardCtrl',
-["$scope","$http", 
+["$scope","$http",
 ($scope,$http) ->
 
 ])
