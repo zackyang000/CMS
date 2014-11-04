@@ -8,12 +8,16 @@
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$routeParams","$location","Articles",
-($scope,$routeParams,$location,Articles) ->
+["$scope", "$routeParams", "$location", "Articles",
+($scope, $routeParams, $location, Articles) ->
   $scope.setPage = (pageNo) ->
     $scope.loading="Loading"
-    Articles.query (data) ->
-      $scope.list = data.value
+    Articles.query
+      $skip: (pageNo - 1) * 10
+      $top: 10
+      $count: true
+    ,(data) ->
+      $scope.data = data
       $scope.loading=""
 
   $scope.setPage 1
