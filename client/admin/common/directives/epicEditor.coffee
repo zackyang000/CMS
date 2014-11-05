@@ -1,6 +1,6 @@
 angular.module("zy.directives.epicEditor",[])
 
-.directive 'epicEditor', ['$parse', ($parse)->
+.directive 'epicEditor', ->
   require: "ngModel"
   replace: true
   template: "<div class=\"epic-editor\"></div>"
@@ -34,8 +34,6 @@ angular.module("zy.directives.epicEditor",[])
           content = currentContent
           editor.save()
           scope.$apply ->
-            debugger
             scope.md = editor.exportFile()
             htmlContent = editor.exportFile(undefined, 'html')
             ngModel.$setViewValue htmlContent
-]

@@ -101,13 +101,10 @@
   $scope.translateTitle = ->
     if $scope.entity.title
       $timeout.cancel timeout if timeout
-      debugger
       timeout = $timeout( ->
-        debugger
         $scope.translating = true
         TranslateService.translate($scope.entity.title)
         .success (data) ->
-          debugger
           data = $.trim(data)
           data = data.toLowerCase()
           data = data.replace(/[^_a-zA-Z\d\s]/g, '')
@@ -116,7 +113,6 @@
           $scope.translating = false
         .error (err) ->
           $scope.translating = false
-          debugger
       , 500)
 ])
 

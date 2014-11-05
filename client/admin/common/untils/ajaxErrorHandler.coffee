@@ -13,4 +13,4 @@ angular.module("zy.untils.ajaxErrorHandler", [])
 
 .config(['$httpProvider', '$provide', ($httpProvider, $provide) ->
     $httpProvider.interceptors.push('ajaxErrorHandler')
-  ])
+])
