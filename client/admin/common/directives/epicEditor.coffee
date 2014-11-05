@@ -1,14 +1,22 @@
 angular.module("zy.directives.epicEditor",[])
 
-.directive 'epicEditor', ->
+.directive 'epicEditor', ['$parse', ($parse)->
   require: "ngModel"
   replace: true
   template: "<div class=\"epic-editor\"></div>"
+  scope:
+    md: '='
   link: (scope, element, attrs, ngModel) ->
+    new EpicEditor().remove('article')
     opts =
       container: element.get(0)
       file:
+        name: 'article'
+        defaultContent: scope.md
         autoSave: false
+      autogrow:
+        minHeight: 300
+        maxHeight: 300
       theme:
         base: '/../../plugin/EpicEditor-v0.2.2/themes/base/epiceditor.css'
         preview: '/../../plugin/EpicEditor-v0.2.2/themes/preview/epic-light.css'
@@ -17,13 +25,17 @@ angular.module("zy.directives.epicEditor",[])
     editor = new EpicEditor(opts)
 
     editor.load ->
-      iFrameEditor = editor.getElement("editor")
-      contents = $("body", iFrameEditor).html()
+      epicEditor = editor.getElement("editor")
+      content = epicEditor.body.innerHTML
 
-      $("body", iFrameEditor).blur ->
-        unless contents is $(this).html()
-          contents = $(this).html()
+      $("body", epicEditor).blur ->
+        currentContent = $(this).html()
+        if content != currentContent
+          content = currentContent
           editor.save()
-          rawContent = editor.exportFile(undefined, 'html')
-          ngModel.$setViewValue rawContent
-          scope.$apply()
+          scope.$apply ->
+            debugger
+            scope.md = editor.exportFile()
+            htmlContent = editor.exportFile(undefined, 'html')
+            ngModel.$setViewValue htmlContent
+]

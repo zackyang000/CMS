@@ -2,10 +2,12 @@ module.exports =
   url: String
   title: String
   content: String
+  markdown: String
   description: String
   category: String
   status: String
   password: String
+  editor: String
   date: Date
   meta:
     author: String

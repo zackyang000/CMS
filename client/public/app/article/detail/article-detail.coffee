@@ -70,7 +70,7 @@
   Articles.browsed id: $scope.item._id
 
   $scope.edit = (item) ->
-    $window.location.href="/admin/article/#{item._id}"
+    $window.location.href = "#{config.url.admin}/article/#{item._id}"
 
   $scope.remove = (item, index) ->
     messager.confirm ->

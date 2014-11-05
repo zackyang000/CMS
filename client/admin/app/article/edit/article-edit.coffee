@@ -27,6 +27,7 @@
       Articles.get
         id : $routeParams.id
       , (data)->
+          data.editor = ''  unless data.editor
           $scope.entity = data
           if $scope.entity.meta.tags
             $scope.tags = $scope.entity.meta.tags.join(',')
@@ -40,6 +41,7 @@
         meta :
           author: context.account.name
         date: new Date()
+        editor: ''
         comments : []
 
 
@@ -59,19 +61,19 @@
     entity = $scope.entity
     if $scope.tags
       $scope.entity.meta.tags = $scope.tags.split(',')
-
+    debugger
     if !$routeParams.id
       Articles.save entity
       ,(data) ->
-        $window.location.href = "/post/#{data.url}"
+        $window.location.href = "#{config.public}/post/#{data.url}"
       ,(error) ->
-        $scope.loading=""
+        $scope.loading = ""
     else
       Articles.update {id: $routeParams.id}, entity
       ,(data)->
-        $window.location.href = "/post/#{data.url}"
+        $window.location.href = "#{config.url.public}/post/#{data.url}"
       ,(error) ->
-        $scope.loading=""
+        $scope.loading = ""
 
   $scope.remove = ->
     messager.confirm ->
@@ -103,6 +105,7 @@
         $scope.translating = true
         TranslateService.translate($scope.entity.title)
         .success (data) ->
+          debugger
           data = $.trim(data)
           data = data.toLowerCase()
           data = data.replace(/[^_a-zA-Z\d\s]/g, '')
@@ -111,6 +114,7 @@
           $scope.translating = false
         .error (err) ->
           $scope.translating = false
+          debugger
       , 500)
 ])
 
