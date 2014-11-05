@@ -50,7 +50,6 @@
       "_dist/client/admin/vendor/moment-*/**/*.js",
       "_dist/client/admin/vendor/messenger/build/js/messenger.js",
       "_dist/client/admin/vendor/messenger/build/js/messenger-theme-future.js",
-      "_dist/client/admin/vendor/dropzone/**/*.js",
       "_dist/client/admin/vendor/ngprogress/**/*.js",
       "_dist/client/admin/vendor/ngDialog/**/*.js",
       "_dist/client/admin/vendor/ngstorage/**/*.js",
