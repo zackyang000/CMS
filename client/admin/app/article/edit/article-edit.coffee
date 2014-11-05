@@ -61,7 +61,7 @@
     entity = $scope.entity
     if $scope.tags
       $scope.entity.meta.tags = $scope.tags.split(',')
-    debugger
+
     if !$routeParams.id
       Articles.save entity
       ,(data) ->
