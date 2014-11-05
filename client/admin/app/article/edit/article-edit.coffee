@@ -113,3 +113,4 @@
           $scope.translating = false
       , 500)
 ])
+
