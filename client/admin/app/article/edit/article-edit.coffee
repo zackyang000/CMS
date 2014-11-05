@@ -65,7 +65,7 @@
     if !$routeParams.id
       Articles.save entity
       ,(data) ->
-        $window.location.href = "#{config.public}/post/#{data.url}"
+        $window.location.href = "#{config.url.public}/post/#{data.url}"
       ,(error) ->
         $scope.loading = ""
     else
@@ -101,7 +101,9 @@
   $scope.translateTitle = ->
     if $scope.entity.title
       $timeout.cancel timeout if timeout
+      debugger
       timeout = $timeout( ->
+        debugger
         $scope.translating = true
         TranslateService.translate($scope.entity.title)
         .success (data) ->
