@@ -1,3 +1,5 @@
+#todo: 该模块存在bug, 如果ajax出错, 可能无法触发transformResponse导致loading无法关闭
+
 angular.module("zy.untils.globalLoading", [])
 
 .constant('global-loading-app', {})
