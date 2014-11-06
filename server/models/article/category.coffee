@@ -1,4 +1,5 @@
 module.exports =
-  name: String
-  description: String
-  main: Boolean
+  Category:
+    name: String
+    description: String
+    main: Boolean

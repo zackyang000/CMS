@@ -1,7 +1,8 @@
 module.exports =
-  author:
-    name: String
-    email: String
-  content: String
-  date: Date
-  block: Boolean
+  Board:
+    author:
+      name: String
+      email: String
+    content: String
+    date: Date
+    block: Boolean
