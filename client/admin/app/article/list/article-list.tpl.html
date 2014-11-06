@@ -2,7 +2,7 @@
     <ul class="breadcrumb">
         <li>
             <i class="fa fa-home home-icon"></i>
-            <a href="/admin/">Home</a>
+            <a href="/">Home</a>
         </li>
         <li class="active">Article</li>
     </ul>
@@ -31,7 +31,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in list" style="height: 51px;">
+            <tr ng-repeat="item in data.value" style="height: 51px;">
                 <td><img style="width: 24px;height: 15px;" ng-src="{{item.meta.thumbnail | remoteImage}}" ng-show="item.meta.thumbnail" /></td>
                 <td><a href="article/{{item._id}}">{{item.title}}</a></td>
                 <td>{{item.url}}</td>
@@ -45,5 +45,5 @@
             </tr>
         </tbody>
     </table>
-    <div zy-odata-pager="list" class="text-center"></div>
+    <div zy-odata-pager="data" class="text-center"></div>
 </div>

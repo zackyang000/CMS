@@ -1,6 +1,6 @@
 angular.module("framework.controllers.main",[])
 
-.controller('MainCtrl',["$scope","$rootScope","$http","$location","version", "context", "$localStorage"
+.controller('MainCtrl', ["$scope","$rootScope","$http","$location","version", "context", "$localStorage"
 ($scope,$rootScope,$http,$location, version, context, $localStorage) ->
   $scope.$on "loginSuccessed", ->
     version.get().then (data)->

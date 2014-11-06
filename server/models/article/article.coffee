@@ -8,6 +8,8 @@ module.exports =
     status: String
     password: String
     date: Date
+    markdown: String
+    editor: String
     meta:
       author: String
       views: Number

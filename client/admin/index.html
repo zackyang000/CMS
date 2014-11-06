@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title ng-bind="::config.site.name">Loading...</title>
     <script src="/plugin/ckeditor_4.4.5/ckeditor.js"></script>
-    <base href="/admin/" />
+    <script src="/plugin/EpicEditor-v0.2.2/js/epiceditor.js"></script>
+    <script src="/plugin/dropzone.min.js"></script>
     <!--STYLES--><!--STYLES END-->
     <!--SCRIPTS--><!--SCRIPTS END-->
     <!--LIVERELOAD-->
@@ -85,7 +86,7 @@
                     </div>
                     <ul class="nav nav-list">
                         <li active-link="active">
-                            <a href="#">
+                            <a href="/">
                                 <i class="menu-icon fa fa-dashboard"></i>
                                 <span class="menu-text">Dashboard</span>
                             </a>
@@ -99,14 +100,14 @@
                             <b class="arrow"></b>
                             <ul class="submenu">
                                 <li active-link="active">
-                                    <a href="article">
+                                    <a href="/article">
                                         <i class="menu-icon fa fa-caret-right"></i>
                                         Manage
                                     </a>
                                     <b class="arrow"></b>
                                 </li>
                                 <li active-link="active">
-                                    <a href="category">
+                                    <a href="/category">
                                         <i class="menu-icon fa fa-caret-right"></i>
                                         Category
                                     </a>
@@ -115,7 +116,7 @@
                             </ul>
                         </li>
                         <li active-link="active">
-                            <a href="gallery">
+                            <a href="/gallery">
                                 <i class="menu-icon fa fa-photo"></i>
                                 <span class="menu-text">Gallery</span>
                             </a>
@@ -130,14 +131,14 @@
                             <b class="arrow"></b>
                             <ul class="submenu">
                                 <li active-link="active">
-                                    <a href="system/user">
+                                    <a href="/system/user">
                                         <i class="menu-icon fa fa-caret-right"></i>
                                         User
                                     </a>
                                     <b class="arrow"></b>
                                 </li>
                                 <li active-link="active">
-                                    <a href="system/history">
+                                    <a href="/system/history">
                                         <i class="menu-icon fa fa-caret-right"></i>
                                         History
                                     </a>
@@ -155,7 +156,7 @@
                 </div>
                 <div class="main-content" ng-view></div>
             </div>
-            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <a href="Javascript: void(0)" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
                 <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
             </a>
         </div>

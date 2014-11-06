@@ -27,6 +27,7 @@
       Articles.get
         id : $routeParams.id
       , (data)->
+          data.editor = ''  unless data.editor
           $scope.entity = data
           if $scope.entity.meta.tags
             $scope.tags = $scope.entity.meta.tags.join(',')
@@ -40,6 +41,7 @@
         meta :
           author: context.account.name
         date: new Date()
+        editor: ''
         comments : []
 
 
@@ -63,15 +65,15 @@
     if !$routeParams.id
       Articles.save entity
       ,(data) ->
-        $window.location.href = "/post/#{data.url}"
+        $window.location.href = "#{config.url.public}/post/#{data.url}"
       ,(error) ->
-        $scope.loading=""
+        $scope.loading = ""
     else
       Articles.update {id: $routeParams.id}, entity
       ,(data)->
-        $window.location.href = "/post/#{data.url}"
+        $window.location.href = "#{config.url.public}/post/#{data.url}"
       ,(error) ->
-        $scope.loading=""
+        $scope.loading = ""
 
   $scope.remove = ->
     messager.confirm ->
@@ -113,3 +115,4 @@
           $scope.translating = false
       , 500)
 ])
+

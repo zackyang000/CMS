@@ -1,20 +1,23 @@
-﻿angular.module('article-list',['resource.articles'])
+﻿angular.module('article-list', ['resource.articles'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/article",
-      templateUrl: "/app/article/list/article-list.tpl.html"
+    .when '/article',
+      templateUrl: '/app/article/list/article-list.tpl.html'
       controller: 'ArticleListCtrl'
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$routeParams","$location","Articles",
-($scope,$routeParams,$location,Articles) ->
+['$scope', "Articles", ($scope, Articles) ->
   $scope.setPage = (pageNo) ->
-    $scope.loading="Loading"
-    Articles.query (data) ->
-      $scope.list = data.value
-      $scope.loading=""
+    $scope.loading = "Loading"
+    Articles.query
+      $skip: (pageNo - 1) * 10
+      $top: 10
+      $count: true
+    ,(data) ->
+      $scope.data = data
+      $scope.loading = ''
 
   $scope.setPage 1
 ])

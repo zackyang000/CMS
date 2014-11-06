@@ -6,9 +6,9 @@ angular.module("zy.directives.dropzone",[])
     options = scope.$eval(attrs.options)
 
     if (!options)
-      throw "system.directives.negDropzone -> error: required attribute 'options' is not found or empty."
+      throw new Error("system.directives.negDropzone -> error: required attribute 'options' is not found or empty.")
     if (!options.url)
-      throw "system.directives.negDropzone -> error: 'url' in attribute #{attrs.options} is not set or empty."
+      throw new Error("system.directives.negDropzone -> error: 'url' in attribute #{attrs.options} is not set or empty.")
 
     $(elm).addClass("dropzone")
 

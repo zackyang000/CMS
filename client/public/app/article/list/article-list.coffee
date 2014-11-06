@@ -20,9 +20,8 @@
           Categories.main (category) ->
             Articles.query
               $filter: "category eq '#{category.value[0].name}'"
-              $top: 10000
-              $count: true
               $select: 'title,url,meta,description,date,category,tag'
+              $top: 1000
             ,(data)->
               deferred.resolve articleFormat(data)
           deferred.promise

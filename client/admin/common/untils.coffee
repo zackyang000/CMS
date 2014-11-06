@@ -1,4 +1,5 @@
 ﻿angular.module "zy.untils",
 [
-  'zy.untils.globalLoading'
+  'zy.untils.ajaxLoading'
+  'zy.untils.ajaxErrorHandler'
 ]

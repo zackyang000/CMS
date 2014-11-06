@@ -12,4 +12,4 @@ if cluster.isMaster
     console.error "worker #{worker.process.pid} died."
     cluster.fork()
 else
-    require "./server"
+  require "./server"

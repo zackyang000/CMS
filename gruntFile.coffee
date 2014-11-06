@@ -13,7 +13,7 @@
           args: []
           ext: "js,json,html"
           nodeArgs: ["--debug"]
-          delayTime: 1
+          delayTime: 0
           env:
             PORT: 30002
           cwd: '_dist/server'
@@ -58,7 +58,7 @@
       options:
         livereload: 30003
       clientFile:
-        files: ['client/public/**/*','!client/**/*.coffee','!client/**/*.less']
+        files: ['client/**/*','!client/**/*.coffee','!client/**/*.less']
         tasks: ['newer:copy:client','sails-linker','replace:livereload']
       clientCoffee:
         files: ['client/**/*.coffee']
@@ -69,6 +69,12 @@
       server:
         files: ['server/**/*']
         tasks: ['newer:copy:server']
+
+    coffeelint:
+      app: ['client/**/*.coffee', 'server/**/*.coffee']
+      options:
+        max_line_length:
+          level: 'ignore'
 
     coffee:
       options:
@@ -106,6 +112,15 @@
         files:
           '_dist/client/public/index.css': ["<%= assets.public.css %>"]
           '_dist/client/admin/index.css': ["<%= assets.admin.css %>"]
+
+    imagemin:
+      dynamic:
+        files: [
+          expand : true
+          cwd : ''
+          src : ['client/public/img/**/*.{png,jpg,gif}', 'client/admin/img/**/*.{png,jpg,gif}']
+          dest : '_dist'
+        ]
 
     'sails-linker':
       'public-js':
@@ -241,26 +256,25 @@
 
 
   grunt.registerTask "build", ->
-    if debug
-      grunt.task.run [
+    grunt.task.run [
+        "coffeelint"
         "clean:all"
         "bower"
         "copy"
         "coffee"
         "less"
+      ]
+    if debug
+      grunt.task.run [
         "sails-linker"
         "replace:livereload"
       ]
     else
       grunt.task.run [
-        "clean:all"
-        "bower"
-        "copy"
-        "coffee"
-        "less"
         "ngtemplates"
         "uglify"
         "cssmin"
+        "imagemin"
         "sails-linker"
         "clean:redundant"
       ]
