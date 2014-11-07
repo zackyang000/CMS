@@ -13,7 +13,7 @@
           args: []
           ext: "js,json,html"
           nodeArgs: ["--debug"]
-          delayTime: 0
+          delayTime: 1
           env:
             PORT: 30002
           cwd: '_dist/server'
