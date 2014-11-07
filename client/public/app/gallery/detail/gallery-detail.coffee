@@ -21,17 +21,4 @@
 ($scope,$rootScope,$translate,gallery,$timeout) ->
   $rootScope.title = 'Gallery '+ gallery.name
   $scope.gallery = gallery
-
-  #TODO:改为指令加载相册
-  $.fn.photobox('prepareDOM')
-  $('.gallery').photobox('a',{history:false})
-  i=0
-  j=0
-  $timeout(->
-    for item in $(".gallery li")
-      $timeout(->
-        i
-        $($(".gallery li")[j++]).addClass('loaded')
-      25 * i++)
-  500)
 ])

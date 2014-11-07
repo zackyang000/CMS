@@ -16,14 +16,30 @@
     <blockquote class="hero" ng-show="gallery.description">
         <p>{{gallery.description}}</p>
     </blockquote>
-    <div class='gallery'>
-        <ul>
-            <li ng-repeat="photo in gallery.photos | orderBy:'Name'">
-                <a ng-href="{{photo.url | remoteImage}}">
-                    <img ng-src="{{photo.thumbnail | remoteImage}}" alt="{{photo.name}}">
+
+    <div class="gallery-page">
+        <div>
+            <div class="col-md-3 col-sm-6" ng-repeat="photo in gallery.photos | orderBy:'Name'">
+                <a class="thumbnail fancybox-button zoomer" data-rel="fancybox-button" title="" ng-href="{{photo.url | remoteImage}}">
+                    <span class="overlay-zoom">
+                        <img ng-src="{{photo.thumbnail | remoteImage}}" alt="{{photo.name}}" class="img-responsive">
+                        <div class="zoom-icon"></div>
+                    </span>
                 </a>
-            </li>
-        </ul>
+            </div>
+        </div>
+
+        <div class="text-right">
+            <ul class="pagination">
+                <li><a href="#">Prev</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li class="active"><a>3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 <!--=== End Content Part ===-->

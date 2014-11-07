@@ -20,7 +20,7 @@
       ,(data) ->
         $scope.entity = data.value[0]
         $scope.options =
-          url: "#{config.url.api}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1600&thumbnail=100x100"
+          url: "#{config.url.api}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1600x1600&thumbnail=973x615"
           maxFilesize: 100
           addRemoveLinks: false
           acceptedFiles: "image/*"
@@ -65,10 +65,11 @@
   #上传封面
   $scope.uploader = $fileUploader.create
     scope: $scope
-    url: "#{config.url.api}/file-upload/?name=cover&path=gallery/#{$routeParams.id}&resize=973x615"
+    url: "#{config.url.api}/file-upload/?name=cover&path=gallery/#{$routeParams.id}&resize=973x615&thumbnail=973x615"
 
   $scope.uploader.bind('success', (event, xhr, item, res) ->
-    $scope.entity.cover = res
+    #使用等比例的缩略图作为封面
+    $scope.entity.cover = res.replace(res.split('.').pop(),'thumbnail.' + res.split('.').pop())
     save()
   )
 
