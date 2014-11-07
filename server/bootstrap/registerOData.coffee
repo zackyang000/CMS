@@ -204,7 +204,9 @@ module.exports = (app) ->
       if req.query.thumbnail
         size = req.query.thumbnail.split('x')
         gm(sourcePath)
-        .resize(size[0] || null, size[1] || null, '@')
+        .resize(size[0], size[1], '^')
+        .gravity('Center')
+        .crop(size[0], size[1])
         .noProfile()
         .write targetFolder + '/' + filename + '.thumbnail.' + fileExtension, ->
 
@@ -217,7 +219,7 @@ module.exports = (app) ->
       if req.query.resize
         size = req.query.resize.split('x')
         gm(sourcePath)
-        .resize(size[0] || null, size[1] || null, '@')
+        .resize(size[0], size[1], '@')
         .noProfile()
         .write targetPath, complated
       else
