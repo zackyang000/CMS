@@ -11,18 +11,23 @@
 <!--=== End Breadcrumbs ===-->
 
 <!--=== Content Part ===-->
-<div class="container">   
+<div class="container">
     <div class="row">
-        <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="gallery in galleries | filter: { hidden:false || undefined }">
-            <div class="view view-tenth">
-                <img class="img-responsive" ng-src="{{gallery.cover | remoteImage}}" alt="" />
-                <div class="mask">
-                    <h2>{{gallery.name}}</h2>
+        <div class="col-md-4" ng-repeat="gallery in galleries | filter: { hidden:false || undefined }">
+            <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                <div class="thumbnail-img">
+                    <div class="overflow-hidden">
+                        <a href="/gallery/{{gallery.name}}" ><img class="img-responsive" ng-src="{{gallery.cover | remoteImage}}" alt=""></a>
+                    </div>
+                </div>
+                <div class="caption">
+                    <h3><a class="hover-effect" href="/gallery/{{gallery.name}}">{{gallery.name}}</a></h3>
                     <p>{{gallery.description}}</p>
-                    <a href="/gallery/{{gallery.name}}" class="info">Read More</a>
-                </div>                
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <!--=== End Content Part ===-->
