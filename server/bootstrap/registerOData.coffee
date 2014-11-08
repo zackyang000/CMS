@@ -207,6 +207,7 @@ module.exports = (app) ->
         .resize(size[0], size[1], '^')
         .gravity('Center')
         .crop(size[0], size[1])
+        .autoOrient()
         .noProfile()
         .write targetFolder + '/' + filename + '.thumbnail.' + fileExtension, ->
 
@@ -220,6 +221,7 @@ module.exports = (app) ->
         size = req.query.resize.split('x')
         gm(sourcePath)
         .resize(size[0], size[1], '@')
+        .autoOrient()
         .noProfile()
         .write targetPath, complated
       else

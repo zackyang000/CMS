@@ -20,6 +20,6 @@
 ["$scope", '$rootScope', '$translate', "gallery", 'context'
 ($scope, $rootScope, $translate, gallery, context) ->
   $scope.context = context
-  $rootScope.title = $translate("global.menu.gallery") + ' ' + gallery.name[context.language]
+  $rootScope.title = gallery.name[context.language]
   $scope.gallery = gallery
 ])
