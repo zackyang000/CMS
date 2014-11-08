@@ -5,37 +5,40 @@
     .when "/gallery/new",
       templateUrl: "/app/gallery/edit/gallery-edit.tpl.html"
       controller: 'GalleryEditCtrl'
+      resolve:
+        gallery: -> {}
     .when "/gallery/:id",
       templateUrl: "/app/gallery/edit/gallery-edit.tpl.html"
       controller: 'GalleryEditCtrl'
+      resolve:
+        gallery: ["$q", "$route", "Galleries", ($q, $route, Galleries)->
+          deferred = $q.defer()
+          Galleries.get
+            $filter: "_id eq '#{$route.current.params.id}'"
+          ,(data) ->
+            deferred.resolve data.value[0]
+          deferred.promise
+        ]
 ])
 
 .controller('GalleryEditCtrl',
-["$scope","$routeParams","$location","$rootScope","$fileUploader","Galleries", "messager"
-($scope,$routeParams,$location,$rootScope,$fileUploader,Galleries, messager) ->
+["$scope", "$routeParams", "$location", "$rootScope", "$fileUploader", "Galleries", "gallery", "messager"
+($scope, $routeParams, $location, $rootScope, $fileUploader, Galleries, gallery, messager) ->
+  $scope.languages = config.languages
   $scope.get = ->
-    if $routeParams.id
-      Galleries.get
-        $filter: "_id eq '#{$routeParams.id}'"
-      ,(data) ->
-        $scope.entity = data.value[0]
-        $scope.options =
-          url: "#{config.url.api}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1600x1600&thumbnail=973x615"
-          maxFilesize: 100
-          addRemoveLinks: false
-          acceptedFiles: "image/*"
-          success: (req, res) ->
-            $scope.entity.photos.push
-              name: req.name.substr(0, req.name.lastIndexOf('.')) || req.name
-              description: ""
-              thumbnail: res.replace(res.split('.').pop(),'thumbnail.' + res.split('.').pop())
-              url: res
-
-        galleryInit()
-    else
-      $scope.entity = {}
-
-
+    $scope.entity = gallery || {}
+    $scope.options =
+      url: "#{config.url.api}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1600x1600&thumbnail=973x615"
+      maxFilesize: 100
+      addRemoveLinks: false
+      acceptedFiles: "image/*"
+      success: (req, res) ->
+        $scope.entity.photos.push
+          name: req.name.substr(0, req.name.lastIndexOf('.')) || req.name
+          description: ""
+          thumbnail: res.replace(res.split('.').pop(),'thumbnail.' + res.split('.').pop())
+          url: res
+    galleryInit()
 
   $scope.submit = ->
     $scope.isSubmit=true
