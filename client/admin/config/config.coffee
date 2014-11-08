@@ -28,7 +28,6 @@ config.url =
 config.site =
   name: 'iShare'
 
-config.languages = {
-    'English': 'en-us'
-    '中文': 'zh-cn'
-}
+config.languages =
+  'English': 'en-us'
+  '中文': 'zh-cn'

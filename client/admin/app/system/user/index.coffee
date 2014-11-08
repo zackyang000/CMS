@@ -2,7 +2,7 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider.when "/system/user",
-    templateUrl : "/app-admin/system/user/index.tpl.html"
+    templateUrl : "/app/system/user/index.tpl.html"
     controller : 'SystemUserCtrl'
     resolve :
       users : ["$q", "Users", ($q, Users)->
