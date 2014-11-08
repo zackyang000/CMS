@@ -18,7 +18,7 @@
     </blockquote>
 
     <div class="gallery-page">
-        <div>
+        <div class="row">
             <div class="col-md-3 col-sm-6" dir-paginate="photo in gallery.photos | orderBy:'Name' | itemsPerPage: 12">
                 <a class="thumbnail fancybox-button zoomer" data-rel="fancybox-button" fancybox title="{{photo.name}}"
                 ng-href="{{photo.url | remoteImage}}">
