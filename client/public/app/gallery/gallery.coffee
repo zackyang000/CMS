@@ -11,7 +11,7 @@
           deferred = $q.defer()
           Galleries.query
             $top: 10000
-            $select: 'name,description,cover,hidden'
+            $select: '_id, name, description, cover, hidden'
           ,(data) ->
             deferred.resolve data.value
           deferred.promise
@@ -19,6 +19,7 @@
 ])
 
 .controller('GalleryCtrl',
-["$scope","galleries", ($scope,galleries) ->
+["$scope", "galleries", 'context', ($scope, galleries, context) ->
   $scope.galleries = galleries
+  $scope.context = context
 ])

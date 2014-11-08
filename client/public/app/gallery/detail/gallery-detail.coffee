@@ -2,14 +2,14 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/gallery/:name",
+    .when "/gallery/:id",
       templateUrl: "/app/gallery/detail/gallery-detail.tpl.html"
       controller: 'GalleryDetailCtrl'
       resolve:
         gallery: ['$route', '$q', 'Galleries', ($route, $q, Galleries) ->
           deferred = $q.defer()
           Galleries.query
-            $filter: "name eq '#{$route.current.params.name}'"
+            $filter: "_id eq '#{$route.current.params.id}'"
           , (data) ->
             deferred.resolve data.value[0]
           deferred.promise
@@ -17,8 +17,9 @@
 ])
 
 .controller('GalleryDetailCtrl',
-["$scope","$rootScope","$translate","gallery","$timeout"
-($scope,$rootScope,$translate,gallery,$timeout) ->
-  $rootScope.title = 'Gallery ' + gallery.name
+["$scope", '$rootScope', '$translate', "gallery", 'context'
+($scope, $rootScope, $translate, gallery, context) ->
+  $scope.context = context
+  $rootScope.title = $translate("global.menu.gallery") + ' ' + gallery.name[context.language]
   $scope.gallery = gallery
 ])
