@@ -3,8 +3,11 @@
   debug = !grunt.option("release")
 
   grunt.initConfig
-    assets: grunt.file.readJSON('assets.json')
-
+    assets: do ->
+      assets = grunt.file.readJSON('assets.json')
+      #if debug
+        #assets.public.js.push ''
+      assets
     #server
     nodemon:
       server:
@@ -85,6 +88,20 @@
           cwd: 'client/'
           src: ['**/*.coffee']
           dest: '_dist/client/'
+          ext: '.js'
+        ]
+      'client-public-config':
+        files: [
+          expand: true
+          src: if debug then 'config/config.dev.coffee' else 'config/config.prd.coffee'
+          dest: '_dist/client/public'
+          ext: '.js'
+        ]
+      'client-admin-config':
+        files: [
+          expand: true
+          src: if debug then 'config/config.dev.coffee' else 'config/config.prd.coffee'
+          dest: '_dist/client/admin'
           ext: '.js'
         ]
 
