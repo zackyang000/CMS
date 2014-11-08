@@ -19,6 +19,7 @@
 'ngStorage'
 'angulartics'
 'angulartics.google.analytics'
+'angularUtils.directives.dirPagination'
 ])
 
 .config ["$locationProvider", ($locationProvider) ->

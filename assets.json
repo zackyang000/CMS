@@ -13,6 +13,7 @@
       "_dist/client/public/vendor/angular-sanitize/**/*.js",
       "_dist/client/public/vendor/angular-ui-utils/**/*.js",
       "_dist/client/public/vendor/angular-cookie/**/*.js",
+      "_dist/client/public/vendor/angular-utils-pagination/**/*.js",
       "_dist/client/public/vendor/angulartics/**/*.js",
       "_dist/client/public/vendor/blueimp-md5/**/*.js",
       "_dist/client/public/vendor/ngprogress/**/*.js",

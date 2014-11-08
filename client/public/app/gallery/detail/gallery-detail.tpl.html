@@ -19,7 +19,7 @@
 
     <div class="gallery-page">
         <div>
-            <div class="col-md-3 col-sm-6" ng-repeat="photo in gallery.photos | orderBy:'Name'">
+            <div class="col-md-3 col-sm-6" dir-paginate="photo in gallery.photos | orderBy:'Name' | itemsPerPage: 12">
                 <a class="thumbnail fancybox-button zoomer" data-rel="fancybox-button" title="" ng-href="{{photo.url | remoteImage}}">
                     <span class="overlay-zoom">
                         <img ng-src="{{photo.thumbnail | remoteImage}}" alt="{{photo.name}}" class="img-responsive">
@@ -30,15 +30,7 @@
         </div>
 
         <div class="text-right">
-            <ul class="pagination">
-                <li><a href="#">Prev</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li class="active"><a>3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">Next</a></li>
-            </ul>
+            <dir-pagination-controls template-url="/vendor/angular-utils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
         </div>
     </div>
 </div>
