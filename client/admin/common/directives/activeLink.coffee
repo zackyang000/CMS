@@ -6,17 +6,18 @@
   link: (scope, element, attrs) ->
     className = attrs.activeLink
     link = $(element).children("a")[0]
+    debugger
     path = $(link).attr('href')
     scope.location = location
     scope.$watch "location.path()", (currentPath) ->
-      if match(path, currentPath.substr(1))
+      if match(path, currentPath)
         element.addClass className
       else
         element.removeClass className
 
     match = (path, currentPath)->
-      if path is '#'
-        return currentPath is ''
+      if path is '/'
+        return currentPath is '/'
       else
         return currentPath.indexOf(path) is 0
 ])
@@ -33,12 +34,12 @@
     scope.$watch "location.path()", (currentPath) ->
       element.removeClass className
       for path in paths
-        if match(path, currentPath.substr(1))
+        if match(path, currentPath)
           element.addClass className
 
     match = (path, currentPath)->
-      if path is '#'
-        return currentPath is ''
+      if path is '/'
+        return currentPath is '/'
       else
         return currentPath.indexOf(path) is 0
 ])
