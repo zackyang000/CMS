@@ -1,7 +1,7 @@
 module.exports =
   Gallery:
-    name: String
-    description: String
+    name: Object
+    description: Object
     cover: String
     hidden: Boolean
     date: Date
