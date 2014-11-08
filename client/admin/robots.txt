@@ -1,4 +1,4 @@
 # robots.txt for http://admin.woshinidezhu.com
 
 User-agent: *
-Disallow:*
+Disallow: *
