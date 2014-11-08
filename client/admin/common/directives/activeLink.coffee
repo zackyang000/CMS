@@ -6,7 +6,6 @@
   link: (scope, element, attrs) ->
     className = attrs.activeLink
     link = $(element).children("a")[0]
-    debugger
     path = $(link).attr('href')
     scope.location = location
     scope.$watch "location.path()", (currentPath) ->
