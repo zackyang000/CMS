@@ -19,6 +19,6 @@
 .controller('GalleryDetailCtrl',
 ["$scope","$rootScope","$translate","gallery","$timeout"
 ($scope,$rootScope,$translate,gallery,$timeout) ->
-  $rootScope.title = 'Gallery '+ gallery.name
+  $rootScope.title = 'Gallery ' + gallery.name
   $scope.gallery = gallery
 ])

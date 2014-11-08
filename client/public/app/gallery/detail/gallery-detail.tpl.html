@@ -20,7 +20,8 @@
     <div class="gallery-page">
         <div>
             <div class="col-md-3 col-sm-6" dir-paginate="photo in gallery.photos | orderBy:'Name' | itemsPerPage: 12">
-                <a class="thumbnail fancybox-button zoomer" data-rel="fancybox-button" title="" ng-href="{{photo.url | remoteImage}}">
+                <a class="thumbnail fancybox-button zoomer" data-rel="fancybox-button" fancybox title="{{photo.name}}"
+                ng-href="{{photo.url | remoteImage}}">
                     <span class="overlay-zoom">
                         <img ng-src="{{photo.thumbnail | remoteImage}}" alt="{{photo.name}}" class="img-responsive">
                         <div class="zoom-icon"></div>
