@@ -18,15 +18,15 @@
     <table class="table table-hover table-striped table-bordered">
         <thead>
             <tr>
-                <th>Cover</th>
-                <th>Name</th>
-                <th>Hidden</th>
+                <th style="width: 120px">Cover</th>
+                <th style="width: 300px">Name</th>
+                <th style="width: 40px">Hidden</th>
                 <th>Description</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in list">
-                <td><img style="width: 30px;height: 30px;" ng-src="{{item.cover | remoteImage}}"/></td>
+                <td><img style="width: 97px;height: 62px;" ng-src="{{item.cover | remoteImage}}"/></td>
                 <td><a href="gallery/{{item._id}}">{{item.name}}</a></td>
                 <td><span ng-show="item.hidden"><i class="fa fa-check"></i></span></td>
                 <td>{{item.description}}</td>
