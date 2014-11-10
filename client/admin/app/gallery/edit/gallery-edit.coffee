@@ -28,7 +28,7 @@
   $scope.get = ->
     $scope.entity = gallery || {}
     $scope.options =
-      url: "#{config.url.api}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1600x1600&thumbnail=973x615"
+      url: "#{config.url.api}/file-upload/?path=gallery/#{$routeParams.id}/photo&resize=1000x1000&thumbnail=973x615"
       maxFilesize: 100
       addRemoveLinks: false
       acceptedFiles: "image/*"

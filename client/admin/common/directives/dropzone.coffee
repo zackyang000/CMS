@@ -15,6 +15,7 @@ angular.module("zy.directives.dropzone",[])
     $(elm).dropzone
       paramName: "file"
       maxFilesize: options.maxFilesize || 2048 #MB
+      parallelUploads: options.parallelUploads || 1
       url: options.url
       addRemoveLinks: options.addRemoveLinks || false
       dictDefaultMessage: "<span class=\"bigger-150 bolder\"><i class=\"fa fa-caret-right red\"></i>  Drop files</span> to upload 				\t\t\t<span class=\"smaller-80 grey\">(or click)</span> <br /> \t\t\t\t<i class=\"upload-icon fa fa-cloud-upload blue icon-3x\"></i>"
