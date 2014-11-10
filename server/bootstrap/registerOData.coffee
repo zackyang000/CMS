@@ -211,7 +211,7 @@ module.exports = (app) ->
         .noProfile()
         .write targetFolder + '/' + filename + '.thumbnail.' + fileExtension, ->
 
-      #裁剪
+      #缩放
       complated = (err) ->
         throw err  if err
         fs.unlink sourcePath, ->
@@ -226,5 +226,6 @@ module.exports = (app) ->
         .write targetPath, complated
       else
         fs.rename sourcePath, targetPath, complated
+
       res.set("Connection", 'keep-alive')
       res.send '/upload/' + req.query.path + '/' + filename + '.' + fileExtension
