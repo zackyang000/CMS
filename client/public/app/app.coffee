@@ -37,11 +37,10 @@
 ]
 
 .config ["$translateProvider", ($translateProvider) ->
-    $translateProvider.preferredLanguage('en-us')
     $translateProvider.useLocalStorage()
     $translateProvider
-    .translations('en-us',translationsEN)
-    .translations('zh-cn',translationsZH)
+      .translations('en-us',translationsEN)
+      .translations('zh-cn',translationsZH)
 ]
 
 .run ["$location", "$rootScope", ($location, $rootScope) ->

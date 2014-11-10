@@ -90,7 +90,7 @@
 
   $scope.list = articles
 
-  $scope.category = $routeParams.category || articles[0].posts[0].category
+  $scope.category = $routeParams.category || articles[0]?.posts[0].category  unless $routeParams.key
 
   #Turn page
   $scope.setPage = (pageNo) ->

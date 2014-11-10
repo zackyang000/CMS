@@ -10,7 +10,7 @@
         galleries: ['$q','Galleries',($q,Galleries)->
           deferred = $q.defer()
           Galleries.query
-            $top: 10000
+            $top: 1000
             $select: '_id, name, description, cover, hidden'
           ,(data) ->
             deferred.resolve data.value
@@ -22,7 +22,8 @@
 ["$scope", "galleries", 'context', ($scope, galleries, context) ->
   group = []
   current = undefined
-  for item, i in galleries when item.hidden is false
+  galleries = (item for item in galleries when item.hidden is false)
+  for item, i in galleries
     if i % 3 == 0
       current = []
       group.push current

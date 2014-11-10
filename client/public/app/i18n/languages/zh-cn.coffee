@@ -19,8 +19,8 @@
     edit: '编辑'
     comments: '评论'
     source: '来源'
-    views_count: '{{meta.views}} 人浏览'
-    comments_count: '{{meta.comments}} 条回复'
+    views_count: '{{meta.views || 0}} 人浏览'
+    comments_count: '{{meta.comments || 0}} 条回复'
     related_posts: '相关文章'
     not_found: '没有找到文章 T_T'
     menu:

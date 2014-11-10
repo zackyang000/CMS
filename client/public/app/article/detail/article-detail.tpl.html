@@ -12,11 +12,11 @@
 <!--=== End Breadcrumbs ===-->
 
 <!--=== Content Part ===-->
-<div class="container">		
+<div class="container">
 	<div class="row blog-page blog-item">
         <!-- Left Sidebar -->
 	    <div class="col-md-9 md-margin-bottom-60">
-	        <!--Blog Post-->        
+	        <!--Blog Post-->
 	        <div class="blog margin-bottom-40">
 	            <h2>{{item.title}}</h2>
                 <div class="blog-post-tags">
@@ -27,8 +27,8 @@
                             <a ng-href="/list/{{item.category}}">{{item.category}}</a>
                         </li>
                         <li><i class="fa fa-pencil"></i> {{item.meta.author}}</li>
-                        <li><i class="fa fa-comments"></i> {{'article.comments_count' | translate:item}}</li>
-                        <li><i class="fa fa-eye"></i> {{'article.views_count' | translate:item}}</li>
+                        <li><i class="fa fa-comments"></i> {{'article.comments_count' | translate: item}}</li>
+                        <li><i class="fa fa-eye"></i> {{'article.views_count' | translate: item}}</li>
                         <li ng-show="item.Source">
                             <i class="fa fa-external-link"></i>
                             <a  ng-href="{{item.meta.source}}" title="{{item.meta.source}}">{{'article.source' | translate}}</a>
@@ -49,12 +49,12 @@
                 </div>
 	            <p ng-bind-html-unsafe="item.content"></p>
 	        </div>
-	        <!--End Blog Post-->        
+	        <!--End Blog Post-->
 
 	        <hr>
 
 	        <!-- Recent Comments -->
-	        <div class="media">
+	        <div class="media" ng-if='item.comments.length'>
 	            <h3>{{'article.comments' | translate}} ({{ item.comments.length }})</h3>
 	        </div>
 	        <div class="media" ng-repeat="item in item.comments | orderBy:'date'" ng-hide="item.block">
@@ -83,7 +83,7 @@
 	            <h3>{{'article.comment.content' | translate}}</h3>
 	            <form name="form" novalidate ng-submit="save()">
 	                <p ng-show="::entity.author.name">
-	                    {{'article.comment.welcome' | translate}}, <strong>{{ ::entity.author.name }}</strong>
+	                    {{'article.comment.welcome' | translate}}, <strong>{{ entity.author.name }}</strong>
 	                    <span>
 	                        <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'article.comment.hide' | translate}} »</a>
 	                        <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'article.comment.change' | translate}} »</a>
@@ -130,6 +130,6 @@
 	    <div class="col-md-3 magazine-page">
         </div>
         <!-- End Right Sidebar -->
-    </div> 
+    </div>
 </div>
 <!--=== End Content Part ===-->

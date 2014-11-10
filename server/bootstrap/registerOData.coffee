@@ -202,28 +202,29 @@ module.exports = (app) ->
 
       #缩略图
       if req.query.thumbnail
-        size = req.query.thumbnail.split('x')
+        [ width, height ] = req.query.thumbnail.split('x')
         gm(sourcePath)
-        .resize(size[0], size[1], '^')
+        .resize(width, height, '^')
         .gravity('Center')
-        .crop(size[0], size[1])
+        .crop(width, height)
         .autoOrient()
         .noProfile()
         .write targetFolder + '/' + filename + '.thumbnail.' + fileExtension, ->
 
-      #缩放
+
       complated = (err) ->
         throw err  if err
         fs.unlink sourcePath, ->
           throw err  if err
-
+      #缩放
       if req.query.resize
-        size = req.query.resize.split('x')
+        [ width, height ] = req.query.resize.split('x')
         gm(sourcePath)
-        .resize(size[0], size[1], '@')
+        .resize(width, height, '@')
         .autoOrient()
         .noProfile()
         .write targetPath, complated
+      #直接保存
       else
         fs.rename sourcePath, targetPath, complated
 

@@ -20,7 +20,7 @@ angular.module("framework.controllers.head",['resource.categories'])
     return $location.path().indexOf("/post") > -1 && category.name.indexOf($scope.currentCategoryName) > -1
 
   $scope.isActive = (route) ->
-    route == $location.path()
+    $location.path().indexOf(route) == 0
 
   $scope.search = ->
     $scope.displaySearchDialog = false
