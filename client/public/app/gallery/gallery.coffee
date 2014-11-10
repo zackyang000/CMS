@@ -20,6 +20,14 @@
 
 .controller('GalleryCtrl',
 ["$scope", "galleries", 'context', ($scope, galleries, context) ->
-  $scope.galleries = galleries
+  group = []
+  current = undefined
+  for item, i in galleries when item.hidden is false
+    if i % 3 == 0
+      current = []
+      group.push current
+    current.push item
+
+  $scope.group = group
   $scope.context = context
 ])

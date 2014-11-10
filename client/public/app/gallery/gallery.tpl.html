@@ -12,8 +12,8 @@
 
 <!--=== Content Part ===-->
 <div class="container">
-    <div class="row">
-        <div class="col-md-4" ng-repeat="gallery in galleries | filter: { hidden: false }">
+    <div class="row" ng-repeat="galleries in group">
+        <div class="col-md-4" ng-repeat="gallery in galleries">
             <div class="thumbnails thumbnail-style thumbnail-kenburn">
                 <div class="thumbnail-img">
                     <div class="overflow-hidden">
