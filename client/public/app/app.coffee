@@ -29,11 +29,7 @@
 ]
 
 .config ["$routeProvider",($routeProvider) ->
-  $routeProvider
-  .when "/admin",
-    template:" "
-    controller: -> window.location.href = "/admin"
-  .otherwise redirectTo: "/"
+  $routeProvider.otherwise redirectTo: "/"
 ]
 
 .config ["$translateProvider", ($translateProvider) ->
@@ -53,12 +49,29 @@
 ]
 
 #get account info.
-.run ["$rootScope","security","context", ($rootScope, security, context) ->
+.run ["$rootScope", "security", "context", ($rootScope, security, context) ->
     security.autoLogin().then (data) ->
       if data
         context.account = data
         context.auth.admin = true
-      $rootScope.account=context.account
+      $rootScope.account = context.account
+]
+
+# get user language
+.run ['$translate', 'context', ($translate, context) ->
+  # first time visit
+  currentLanguage = $translate.use()
+  supportLanguages = (language for displayName, language of config.languages)
+  unless currentLanguage in supportLanguages
+    $translate.use(supportLanguages[0])
+    browserLanguage = navigator.language || navigator.browserLanguage
+    if browserLanguage
+      for language in supportLanguages
+        if language.toLowerCase() == browserLanguage.toLowerCase()
+          $translate.use(language)
+          break
+
+  context.language = $translate.use()
 ]
 
 .run ["$rootScope", ($rootScope) ->
