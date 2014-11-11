@@ -3,7 +3,7 @@
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when "/gallery",
-      templateUrl: "/app/gallery/gallery.tpl.html"
+      templateUrl: "/app/gallery/list/gallery-list.tpl.html"
       controller: 'GalleryCtrl'
       title: 'Galleries'
       resolve:
@@ -12,6 +12,7 @@
           Galleries.query
             $top: 1000
             $select: 'url, name, description, cover, hidden'
+            $orderby: 'order'
           ,(data) ->
             deferred.resolve data.value
           deferred.promise

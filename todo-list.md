@@ -9,4 +9,3 @@
 
 使用ngDialog替换_modal.js
 category增加排序字段
-相册增加排序字段

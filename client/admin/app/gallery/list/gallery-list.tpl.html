@@ -20,9 +20,10 @@
             <tr>
                 <th style="width: 40px">Hidden</th>
                 <th style="width: 120px">Cover</th>
-                <th style="width: 120px">Url</th>
+                <th style="width: 100px">Url</th>
                 <th style="width: 300px">Name</th>
                 <th>Description</th>
+                <th style="width: 40px">Order</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
                 <td>{{item.url}}</td>
                 <td><a href="gallery/{{item._id}}">{{item.name}}</a></td>
                 <td>{{item.description}}</td>
+                <td>{{item.order}}</td>
             </tr>
         </tbody>
     </table>

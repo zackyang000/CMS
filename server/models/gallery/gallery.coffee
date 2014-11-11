@@ -6,4 +6,5 @@ module.exports =
     cover: String
     hidden: Boolean
     date: Date
+    order: Number
     photos : []
