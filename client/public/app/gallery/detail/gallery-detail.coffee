@@ -9,7 +9,7 @@
         gallery: ['$route', '$q', 'Galleries', ($route, $q, Galleries) ->
           deferred = $q.defer()
           Galleries.query
-            $filter: "_id eq '#{$route.current.params.id}'"
+            $filter: "url eq '#{$route.current.params.id}'"
           , (data) ->
             deferred.resolve data.value[0]
           deferred.promise

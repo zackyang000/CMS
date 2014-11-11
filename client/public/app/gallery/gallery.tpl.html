@@ -17,11 +17,11 @@
             <div class="thumbnails thumbnail-style thumbnail-kenburn">
                 <div class="thumbnail-img">
                     <div class="overflow-hidden">
-                        <a href="/gallery/{{gallery._id}}" ><img class="img-responsive" ng-src="{{gallery.cover | remoteImage}}" alt=""></a>
+                        <a href="/gallery/{{gallery.url}}" ><img class="img-responsive" ng-src="{{gallery.cover | remoteImage}}" alt=""></a>
                     </div>
                 </div>
                 <div class="caption">
-                    <h3><a class="hover-effect" href="/gallery/{{gallery._id}}">{{gallery.name[context.language]}}</a></h3>
+                    <h3><a class="hover-effect" href="/gallery/{{gallery.url}}">{{gallery.name[context.language]}}</a></h3>
                     <p>{{gallery.description[context.language]}}</p>
                 </div>
             </div>
