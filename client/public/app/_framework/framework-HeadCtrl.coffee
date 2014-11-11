@@ -15,7 +15,7 @@ angular.module("framework.controllers.head",['resource.categories'])
 
   $scope.isActiveCategory = (category) ->
     #home page
-    return true if category.url && ($location.path() == "/" || $location.path() == "/list")
+    return true if category.url == $scope.defaultCategoryUrl && $location.path() == "/"
     #article list
     return true if $location.path().indexOf(category.url) > -1
     #article detail
