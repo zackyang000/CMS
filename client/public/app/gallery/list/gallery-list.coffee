@@ -31,5 +31,4 @@
     current.push item
 
   $scope.group = group
-  $scope.context = context
 ])

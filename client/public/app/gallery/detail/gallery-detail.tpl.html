@@ -1,11 +1,11 @@
 ﻿<!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-30">
     <div class="container">
-        <h1 class="pull-left">{{gallery.name[context.language]}}</h1>
+        <h1 class="pull-left">{{gallery.name | i18n}}</h1>
         <ul class="pull-right breadcrumb">
             <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
             <li><a href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
-            <li class="active">{{gallery.name[context.language]}}</li>
+            <li class="active">{{gallery.name | i18n}}</li>
         </ul>
     </div>
 </div>
@@ -14,7 +14,7 @@
 <!--=== Content Part ===-->
 <div class="container">
     <blockquote class="hero" ng-show="gallery.description" style="margin-top: 0;">
-        <p>{{gallery.description[context.language]}}</p>
+        <p>{{gallery.description | i18n}}</p>
     </blockquote>
 
     <div class="gallery-page">

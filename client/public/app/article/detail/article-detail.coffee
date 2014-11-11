@@ -17,8 +17,8 @@
 ])
 
 .controller('ArticleDetailCtrl',
-["$scope", "$rootScope", "$window", "$translate", "$route", "article", "Articles", "context", "ngProgress", "messager"
-($scope, $rootScope, $window, $translate, $route, article, Articles, context, ngProgress, messager) ->
+["$scope", "$rootScope", "$window", "$translate", "$route", "article", "Articles", "Categories", "context", "ngProgress", "messager"
+($scope, $rootScope, $window, $translate, $route, article, Articles, Categories, context, ngProgress, messager) ->
   $window.scroll(0, 0)
 
   $scope.item = article
@@ -26,7 +26,14 @@
   if !$scope.item
     $rootScope.title = '404'
     return
+
   $rootScope.title = $scope.item.title
+
+  Categories.query (data) ->
+    for category in data.value
+      if article.category == category.url
+        $scope.category = category
+        break
 
   $rootScope.$broadcast("categoryChange", article.category)
 

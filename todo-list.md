@@ -8,4 +8,3 @@
 导航文章分类添加英文(需要修改文章category属性, 应增加categoryID, 否则match会变得复杂)
 
 使用ngDialog替换_modal.js
-category增加排序字段

@@ -4,20 +4,22 @@ angular.module("framework.controllers.head",['resource.categories'])
 ["$scope", "$http", "$location", "$window", "Categories"
 ($scope, $http, $location, $window, Categories) ->
 
-  $scope.$on "categoryChange", (event, categoryName) ->
-    $scope.currentCategoryName = categoryName || $scope.defaultCategoryName
+  $scope.$on "categoryChange", (event, categoryUrl) ->
+    $scope.currentCategoryUrl = categoryUrl || $scope.defaultCategoryUrl
 
-  Categories.query (data) ->
+  Categories.query
+    $orderby: 'order'
+  ,(data) ->
     $scope.categories = data.value
-    $scope.defaultCategoryName = category.name for category in $scope.categories when category.main
+    $scope.defaultCategoryUrl = category.url for category in $scope.categories when category.main
 
   $scope.isActiveCategory = (category) ->
     #home page
-    return true if category.main && ($location.path() == "/" || $location.path() == "/list")
+    return true if category.url && ($location.path() == "/" || $location.path() == "/list")
     #article list
-    return true if $location.path().indexOf(category.name) > -1
+    return true if $location.path().indexOf(category.url) > -1
     #article detail
-    return $location.path().indexOf("/post") > -1 && category.name.indexOf($scope.currentCategoryName) > -1
+    return $location.path().indexOf("/post") > -1 && category.url.indexOf($scope.currentCategoryUrl) > -1
 
   $scope.isActive = (route) ->
     $location.path().indexOf(route) == 0

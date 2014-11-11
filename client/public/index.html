@@ -70,8 +70,8 @@
             <div class="collapse navbar-collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-class="{active:isActiveCategory(category)}" ng-repeat="category in categories | orderBy:'-main'">
-                        <a ng-href="/" ng-show="category.main">{{category.name}}</a>
-                        <a ng-href="/list/{{category.name}}" ng-hide="category.main">{{category.name}}</a>
+                        <a ng-href="/" ng-show="category.main">{{category.name | i18n}}</a>
+                        <a ng-href="/list/{{category.url}}" ng-hide="category.main">{{category.name | i18n}}</a>
                     </li>
                     <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
                     <li ng-class="{active:isActive('/board')}"><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>

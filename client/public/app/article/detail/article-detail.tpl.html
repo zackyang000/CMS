@@ -4,7 +4,7 @@
         <h1 class="pull-left">Blog</h1>
         <ul class="pull-right breadcrumb">
             <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
-            <li><a href="/list/{{item.category}}">{{item.category}}</a></li>
+            <li><a href="/list/{{category.url}}">{{category.name | i18n}}</a></li>
             <li class="active">{{item.title}}</li>
         </ul>
     </div>

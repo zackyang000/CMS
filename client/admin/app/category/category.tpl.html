@@ -18,17 +18,22 @@
     <table class="table table-hover table-striped table-bordered">
         <thead>
             <tr>
-                <th>Default</th>
+                <th>Url</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Order</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in list">
-                <td><span ng-show="item.main"><i class="fa fa-check"></i></span></td>
+                <td>{{item.url}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.description}}</td>
+                <td>
+                    <span ng-show="item.main"><i class="fa fa-check"></i></span>
+                    {{item.order}}
+                </td>
                 <td>
                     <div class="action-buttons">
                         <a class="green" href="JavaScript:void(0)" ng-click="edit(item)">
@@ -52,15 +57,28 @@
                 <div class="modal-body">
                     <div class="form-horizontal">
                         <div class="form-group">
+                            <label class="col-lg-3 control-label">Url</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="entity.url" />
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-lg-3 control-label">Name</label>
                             <div class="col-lg-9">
-                                <input type="text" class="form-control" ng-model="entity.name" required />
+                                <div ng-repeat="(key, value) in languages">
+                                    <p class="input-group">
+                                      <span class="input-group-addon">{{key}}</span>
+                                      <input type="text" class="form-control" ng-model="entity.name[value]" placeholder="{{key}}" required />
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Description</label>
                             <div class="col-lg-9">
-                                <textarea class="form-control" ng-model="entity.description" rows="3"></textarea>
+                                <p ng-repeat="(key, value) in languages">
+                                    <textarea class="form-control" ng-model="entity.description[value]" placeholder="{{key}}" rows="3"></textarea>
+                                </p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -70,6 +88,12 @@
                                     <input type="checkbox" class="ace" ng-model="entity.main" />
                                     <span class="lbl">Default</span>
                                 </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Order</label>
+                            <div class="col-lg-9">
+                                <input type="number" class="form-control" ng-model="entity.order" />
                             </div>
                         </div>
                     </div>

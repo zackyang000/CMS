@@ -1,5 +1,7 @@
 module.exports =
   Category:
-    name: String
+    url: String
+    name: Object
     description: String
     main: Boolean
+    order: Number

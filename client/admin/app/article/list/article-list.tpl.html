@@ -18,7 +18,6 @@
     <table class="table table-hover table-striped table-bordered">
         <thead>
             <tr>
-                <th>thumbnail</th>
                 <th>title</th>
                 <th>url</th>
                 <th>category</th>
@@ -32,7 +31,6 @@
         </thead>
         <tbody>
             <tr ng-repeat="item in data.value" style="height: 51px;">
-                <td><img style="width: 24px;height: 15px;" ng-src="{{item.meta.thumbnail | remoteImage}}" ng-show="item.meta.thumbnail" /></td>
                 <td><a href="article/{{item._id}}">{{item.title}}</a></td>
                 <td>{{item.url}}</td>
                 <td>{{item.category}}</td>

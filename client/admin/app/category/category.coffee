@@ -10,6 +10,7 @@
 .controller('CategoryCtrl',
 ["$scope","$dialog","Categories", "messager"
 ($scope,$dialog,Categories, messager) ->
+  $scope.languages = config.languages
   $scope.entity = {}
 
   load = ->

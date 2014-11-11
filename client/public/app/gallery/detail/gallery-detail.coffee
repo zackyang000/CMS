@@ -19,7 +19,6 @@
 .controller('GalleryDetailCtrl',
 ["$scope", '$rootScope', '$translate', "gallery", 'context'
 ($scope, $rootScope, $translate, gallery, context) ->
-  $scope.context = context
   $rootScope.title = gallery.name[context.language]
   $scope.gallery = gallery
 ])
