@@ -19,7 +19,7 @@
           deferred = $q.defer()
           Categories.main (category) ->
             Articles.query
-              $filter: "category eq '#{category.value[0].name}'"
+              $filter: "category eq '#{category.value[0].url}'"
               $select: 'title,url,meta,description,date,category,tag'
               $top: 1000
             ,(data)->
