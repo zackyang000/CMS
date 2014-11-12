@@ -1,12 +1,12 @@
 config = config || {}
 
 config.host =
-  domain: 'woshinidezhu.com'
-  public: 'www.woshinidezhu.com'
-  admin: 'admin.woshinidezhu.com'
-  feed: 'feed.woshinidezhu.com'
-  img: 'img.woshinidezhu.com'
-  api: 'api.woshinidezhu.com'
+  domain: 'zackyang.com'
+  public: 'zackyang.com'
+  admin: 'admin.zackyang.com'
+  feed: 'feed.zackyang.com'
+  img: 'img.zackyang.com'
+  api: 'api.zackyang.com'
 
 config.url =
   public: "http://#{config.host.public}"
