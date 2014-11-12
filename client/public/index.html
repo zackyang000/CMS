@@ -1,100 +1,215 @@
 <!doctype html>
-<html ng-cloak ng-app="app" class="no-js" ng-controller="MainCtrl">
+<html ng-app="app" class="no-js" ng-controller="MainCtrl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title ng-bind="title + ' | ' + config.site.name">Loading...</title>
-    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 文章" href="http://feed.woshinidezhu.com/articles.xml" />
-    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 评论" href="http://feed.woshinidezhu.com/comments.xml" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 文章" href="http://feed.zackyang.com/articles.xml" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 评论" href="http://feed.zackyang.com/comments.xml" />
     <link rel="shortcut icon" href="/img/favicon.ico" />
-    <!--STYLES--><!--STYLES END-->
-    <!--SCRIPTS--><!--SCRIPTS END-->
     <!--LIVERELOAD-->
+    <style>[ng-cloak] {display: none;}</style>
 </head>
 <body>
-<div class="loadingbox" ng-show="loading">{{'global.loading' | translate}}...</div>
-
-<!--=== Top ===-->
-<div class="top" ng-controller="TopCtrl">
-    <div class="container">
-        <ul class="loginbar pull-right">
-            <li>
-                <i class="fa fa-globe"></i>
-                <a>Languages</a>
-                <ul class="lenguages">
-                    <li ng-class="{ active: use=='en-us' }">
-                        <a href="#" ng-click="changeLanguage('en-us')">
-                            English
-                            <i class="fa fa-check" ng-show="use=='en-us'"></i>
-                        </a>
-                    </li>
-                    <li ng-class="{ active: use=='zh-cn' }">
-                        <a href="#" ng-click="changeLanguage('zh-cn')">
-                            简体中文
-                            <i class="fa fa-check" ng-show="use=='zh-cn'"></i>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="devider"></li>
-            <li>
-                <a href="{{ ::config.url.admin }}">
-                    <span ng-show="account">{{account.name}}</span>
-                    <span ng-hide="account">Admin</span>
-                </a>
-            </li>
-        </ul>
+<div style="padding-top: 200px;" ng-hide="loaded">
+    <div class="loading-container">
+        <div class="loading"></div>
+        <div id="loading-text">loading</div>
     </div>
-</div>
-<!--=== End Top ===-->
+    <style>
+    @-moz-keyframes rotate-loading {
+        0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+        100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+    }
 
-<!--=== Header ===-->
-<div class="header" ng-controller="HeaderCtrl">
-    <div class="navbar navbar-default" role="navigation">
+    @-o-keyframes rotate-loading {
+        0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+        100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+    }
+
+    @-webkit-keyframes rotate-loading {
+        0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+        100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+    }
+
+    @keyframes rotate-loading {
+        0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+        100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+    }
+
+    @-moz-keyframes loading-text-opacity {
+        0%  {opacity: 0}
+        20% {opacity: 0}
+        50% {opacity: 1}
+        100%{opacity: 0}
+    }
+
+
+    @-o-keyframes loading-text-opacity {
+        0%  {opacity: 0}
+        20% {opacity: 0}
+        50% {opacity: 1}
+        100%{opacity: 0}
+    }
+
+    @-webkit-keyframes loading-text-opacity {
+        0%  {opacity: 0}
+        20% {opacity: 0}
+        50% {opacity: 1}
+        100%{opacity: 0}
+    }
+
+    @keyframes loading-text-opacity {
+        0%  {opacity: 0}
+        20% {opacity: 0}
+        50% {opacity: 1}
+        100%{opacity: 0}
+    }
+
+    .loading-container,
+    .loading {
+        height: 100px;
+        position: relative;
+        width: 100px;
+        border-radius: 100%;
+    }
+
+    .loading-container { margin: 40px auto; }
+
+    .loading {
+        border: 2px solid transparent;
+        border-color: transparent #000 transparent #000;
+        -moz-animation: rotate-loading 1.5s linear 0s infinite normal;
+        -moz-transform-origin: 50% 50%;
+        -o-animation: rotate-loading 1.5s linear 0s infinite normal;
+        -o-transform-origin: 50% 50%;
+        -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+        -webkit-transform-origin: 50% 50%;
+        animation: rotate-loading 1.5s linear 0s infinite normal;
+        transform-origin: 50% 50%;
+    }
+
+    .loading-container:hover .loading {
+        border-color: transparent #E45635 transparent #E45635;
+    }
+
+    .loading-container:hover .loading,
+    .loading-container .loading {
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+    }
+
+    #loading-text {
+        -moz-animation: loading-text-opacity 2s linear 0s infinite normal;
+        -o-animation: loading-text-opacity 2s linear 0s infinite normal;
+        -webkit-animation: loading-text-opacity 2s linear 0s infinite normal;
+        animation: loading-text-opacity 2s linear 0s infinite normal;
+        color: #000;
+        font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 45px;
+        opacity: 0;
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        top: 0;
+        width: 100px;
+    }
+    </style>
+</div>
+
+<div ng-cloak ng-show="loaded">
+    <div class="loadingbox" ng-show="loading">{{'global.loading' | translate}}...</div>
+
+    <!--=== Top ===-->
+    <div class="top" ng-controller="TopCtrl">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <h1>
-                    <a class="navbar-brand" href="/">
-                        <img id="logo-header" src="/img/logo.gif" alt="Logo">
-                        {{::config.site.name}}
+            <ul class="loginbar pull-right">
+                <li>
+                    <i class="fa fa-globe"></i>
+                    <a>Languages</a>
+                    <ul class="lenguages">
+                        <li ng-class="{ active: use=='en-us' }">
+                            <a href="#" ng-click="changeLanguage('en-us')">
+                                English
+                                <i class="fa fa-check" ng-show="use=='en-us'"></i>
+                            </a>
+                        </li>
+                        <li ng-class="{ active: use=='zh-cn' }">
+                            <a href="#" ng-click="changeLanguage('zh-cn')">
+                                简体中文
+                                <i class="fa fa-check" ng-show="use=='zh-cn'"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="devider"></li>
+                <li>
+                    <a href="{{ ::config.url.admin }}">
+                        <span ng-show="account">{{account.name}}</span>
+                        <span ng-hide="account">Admin</span>
                     </a>
-                </h1>
-            </div>
-            <div class="collapse navbar-collapse navbar-responsive-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li ng-class="{active:isActiveCategory(category)}" ng-repeat="category in categories | orderBy:'-main'">
-                        <a ng-href="/" ng-show="category.main">{{category.name | i18n}}</a>
-                        <a ng-href="/list/{{category.url}}" ng-hide="category.main">{{category.name | i18n}}</a>
-                    </li>
-                    <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
-                    <li ng-class="{active:isActive('/board')}"><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
-                    <li ng-class="{active:isActive('/about')}"><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
-                    <li class="hidden-sm"><a class="search" ng-click="displaySearchDialog = !displaySearchDialog"><i class="fa fa-search search-btn"></i></a></li>
-                </ul>
-                <div class="search-open" ng-show="displaySearchDialog">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" ng-model="key" ui-keyup="{13:'search()'}">
-                        <span class="input-group-btn">
-                            <button class="btn-u" type="button" ng-click="search()">Go</button>
-                        </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--=== End Top ===-->
+
+    <!--=== Header ===-->
+    <div class="header" ng-controller="HeaderCtrl">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1>
+                        <a class="navbar-brand" href="/">
+                            <img id="logo-header" src="/img/logo.gif" alt="Logo">
+                            {{::config.site.name}}
+                        </a>
+                    </h1>
+                </div>
+                <div class="collapse navbar-collapse navbar-responsive-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-class="{active:isActiveCategory(category)}" ng-repeat="category in categories | orderBy:'-main'">
+                            <a ng-href="/" ng-show="category.main">{{category.name | i18n}}</a>
+                            <a ng-href="/list/{{category.url}}" ng-hide="category.main">{{category.name | i18n}}</a>
+                        </li>
+                        <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
+                        <li ng-class="{active:isActive('/board')}"><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
+                        <li ng-class="{active:isActive('/about')}"><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
+                        <li class="hidden-sm"><a class="search" ng-click="displaySearchDialog = !displaySearchDialog"><i class="fa fa-search search-btn"></i></a></li>
+                    </ul>
+                    <div class="search-open" ng-show="displaySearchDialog">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" ng-model="key" ui-keyup="{13:'search()'}">
+                            <span class="input-group-btn">
+                                <button class="btn-u" type="button" ng-click="search()">Go</button>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--=== End Header ===-->
+    <!--=== End Header ===-->
 
-<!--=== Main ===-->
-<div class="body" ng-view></div>
-<!--=== End Main ===-->
+    <!--=== Main ===-->
+    <div class="body" ng-view></div>
+    <!--=== End Main ===-->
+</div>
+
+<!--STYLES--><!--STYLES END-->
+<!--SCRIPTS--><!--SCRIPTS END-->
 
 <script>
     (function (i, s, o, g, r, a, m) {

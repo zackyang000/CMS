@@ -77,3 +77,11 @@
 .run ["$rootScope", ($rootScope) ->
   $rootScope.config = config
 ]
+
+.run ["$rootScope", ($rootScope) ->
+  #todo 初始化数据
+  setTimeout ->
+    $rootScope.$apply ->
+      $rootScope.loaded = true
+  , 2000
+]

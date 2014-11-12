@@ -59,5 +59,5 @@
 ])
 
 .run ["$rootScope", ($rootScope) ->
-    $rootScope.config = config
+  rootScope.config = config
 ]
