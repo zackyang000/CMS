@@ -8,7 +8,7 @@ Blog Engine
 [![Dependency Status](https://david-dm.org/ChrisWren/grunt-nodemon.png)](https://david-dm.org/TossShinHwa/CMS)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/TossShinHwa/cms/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-查看在线演示? 请访问  http://www.woshinidezhu.com/
+查看在线演示? 请访问  http://zackyang.com
 ***
 
 ## 目的
@@ -53,7 +53,7 @@ bower install
 ```
 grunt
 ```
-    
+
 它将自动打开一个浏览器窗口并链接到后端服务.
 
 默认管理员账号: `admin` , 密码: `123`
