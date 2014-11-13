@@ -3,7 +3,7 @@
     menu:
       home: 'Home'
       archive: 'Archives'
-      board: 'Boards'
+      board: 'Guestbook'
       issue: 'Issues'
       gallery: 'Galleries'
       about: 'About'

@@ -2,10 +2,10 @@
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
-    .when "/board",
-      templateUrl: "/app/board/board.tpl.html"
-      controller: 'BoardCtrl'
-      title: 'Board'
+    .when "/guestbook",
+      templateUrl: "/app/guestbook/guestbook.tpl.html"
+      controller: 'GuestbookCtrl'
+      title: 'Guestbook'
       resolve:
         messages: ['$q','Board',($q, Board)->
           deferred = $q.defer()
@@ -17,7 +17,7 @@
         ]
 ])
 
-.controller('BoardCtrl',
+.controller('GuestbookCtrl',
 ["$scope", "$translate", "messages", "context", "ngProgress", "Board", "messager"
 ($scope, $translate, messages, context, ngProgress, Board, messager) ->
 
