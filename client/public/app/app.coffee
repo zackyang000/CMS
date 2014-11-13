@@ -84,7 +84,7 @@
 ]
 
 deferredBootstrapper.bootstrap
-  element: document.body
+  element: document
   module: "app"
   resolve:
     dataCacheCategories: ["$http", '$q', ($http, $q) ->

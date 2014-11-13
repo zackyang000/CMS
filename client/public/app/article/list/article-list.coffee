@@ -13,7 +13,6 @@
     .when "/",
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
-      title: 'Article list'
       resolve:
         articles: ['$route', '$q', 'Articles', 'Categories', ($route, $q, Articles, Categories) ->
           deferred = $q.defer()
@@ -29,7 +28,6 @@
     .when "/list/:category/tag/:tag",
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
-      title: 'Article list'
       resolve:
         articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
@@ -61,7 +59,6 @@
     .when "/search/:key",
       templateUrl: "/app/article/list/article-list.tpl.html"
       controller: 'ArticleListCtrl'
-      title: 'Article list'
       resolve:
         articles: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
@@ -101,6 +98,7 @@
         if category.main
           $scope.category = category
           break
+    $rootScope.title = $scope.category.name[context.language]
 
   #Turn page
   $scope.setPage = (pageNo) ->

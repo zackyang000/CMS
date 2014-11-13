@@ -5,7 +5,7 @@
     .when "/board",
       templateUrl: "/app/board/board.tpl.html"
       controller: 'BoardCtrl'
-      title: 'Message Boards'
+      title: 'Board'
       resolve:
         messages: ['$q','Board',($q, Board)->
           deferred = $q.defer()
