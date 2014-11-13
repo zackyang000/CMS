@@ -1,17 +1,14 @@
-angular.module("framework.controllers.head",['resource.categories'])
+angular.module("framework.controllers.head", [])
 
 .controller('HeaderCtrl',
-["$scope", "$http", "$location", "$window", "Categories"
-($scope, $http, $location, $window, Categories) ->
+["$scope", "$http", "$location", "$window", "dataCacheCategories"
+($scope, $http, $location, $window, dataCacheCategories) ->
 
   $scope.$on "categoryChange", (event, categoryUrl) ->
     $scope.currentCategoryUrl = categoryUrl || $scope.defaultCategoryUrl
 
-  Categories.query
-    $orderby: 'order'
-  ,(data) ->
-    $scope.categories = data.value
-    $scope.defaultCategoryUrl = category.url for category in $scope.categories when category.main
+  $scope.categories = dataCacheCategories
+  $scope.defaultCategoryUrl = category.url for category in $scope.categories when category.main
 
   $scope.isActiveCategory = (category) ->
     #home page

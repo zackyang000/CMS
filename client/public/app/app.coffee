@@ -20,6 +20,7 @@
 'angulartics'
 'angulartics.google.analytics'
 'angularUtils.directives.dirPagination'
+'resource.categories'
 ])
 
 .config ["$locationProvider", ($locationProvider) ->
@@ -78,10 +79,18 @@
   $rootScope.config = config
 ]
 
-.run ["$rootScope", ($rootScope) ->
-  #todo 初始化数据
-  setTimeout ->
-    $rootScope.$apply ->
-      $rootScope.loaded = true
-  , 2000
+.run ["$rootScope", 'Categories', ($rootScope, Categories) ->
+  $rootScope.loaded = true
 ]
+
+deferredBootstrapper.bootstrap
+  element: document.body
+  module: "app"
+  resolve:
+    dataCacheCategories: ["$http", '$q', ($http, $q) ->
+      deferred = $q.defer()
+      $http.get "#{config.url.api}/categories?$orderby=order"
+      .success (data) ->
+        deferred.resolve data.value
+      deferred.promise
+    ]

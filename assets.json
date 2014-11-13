@@ -13,6 +13,7 @@
       "_dist/client/public/vendor/angular-resource/**/*.js",
       "_dist/client/public/vendor/angular-route/**/*.js",
       "_dist/client/public/vendor/angular-sanitize/**/*.js",
+      "_dist/client/public/vendor/angular-deferred-bootstrap/**/*.js",
       "_dist/client/public/vendor/angular-ui-utils/**/*.js",
       "_dist/client/public/vendor/angular-cookie/**/*.js",
       "_dist/client/public/vendor/angular-utils-pagination/**/*.js",

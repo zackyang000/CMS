@@ -78,8 +78,8 @@
 ])
 
 .controller('ArticleListCtrl',
-["$scope","$rootScope","$window","$routeParams","$location","articles", "context"
-($scope,$rootScope,$window,$routeParams,$location,articles,context) ->
+["$scope","$rootScope","$window","$routeParams","$location","articles", "context", 'dataCacheCategories'
+($scope,$rootScope,$window,$routeParams,$location,articles,context, dataCacheCategories) ->
   $rootScope.$broadcast("categoryChange", $routeParams.category)
 
   $scope.params = $routeParams
@@ -90,7 +90,17 @@
 
   $scope.list = articles
 
-  $scope.category = $routeParams.category || articles[0]?.posts[0].category  unless $routeParams.key
+  unless $routeParams.key
+    if $routeParams.category
+      for category in dataCacheCategories
+        if $routeParams.category  == category.url
+          $scope.category = category
+          break
+    else
+      for category in dataCacheCategories
+        if category.main
+          $scope.category = category
+          break
 
   #Turn page
   $scope.setPage = (pageNo) ->
