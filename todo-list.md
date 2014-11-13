@@ -10,3 +10,5 @@
 使用ngDialog替换_modal.js
 release 复制package.json
 hidden全改为disable, 所有集合增加disable
+增加rainbow
+后台生成gravatar
