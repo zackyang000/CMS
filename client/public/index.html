@@ -12,7 +12,7 @@
     <style>[ng-cloak] {display: none;}</style>
 </head>
 <body>
-<div style="padding-top: 200px;" ng-hide="loaded">
+<div ng-show="loading || !loaded">
     <div class="loading-container">
         <div class="loading"></div>
         <div id="loading-text">loading</div>
@@ -75,7 +75,13 @@
         border-radius: 100%;
     }
 
-    .loading-container { margin: 40px auto; }
+    .loading-container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+    }
 
     .loading {
         border: 2px solid transparent;
@@ -124,8 +130,6 @@
 </div>
 
 <div ng-cloak ng-show="loaded">
-    <div class="loadingbox" ng-show="loading">{{'global.loading' | translate}}...</div>
-
     <!--=== Top ===-->
     <div class="top" ng-controller="TopCtrl">
         <div class="container">
