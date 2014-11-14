@@ -63,7 +63,7 @@
             <hr>
 
             <!-- Recent Comments -->
-            <div class="media" ng-repeat="item in messages | orderBy:'-date'">
+            <div class="media animate-comment" ng-repeat="item in messages | orderBy:'-date'">
                 <span class="pull-left">
                     <img class="media-object" ng-src="{{item.author.email | gravatar}}" alt="" />
                 </span>

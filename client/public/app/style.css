@@ -45,3 +45,24 @@
   opacity: 0;
   margin-top: -50px;
 }
+
+.animate-comment.ng-move,
+.animate-comment.ng-enter,
+.animate-comment.ng-leave {
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.animate-comment.ng-leave.ng-leave-active,
+.animate-comment.ng-move,
+.animate-comment.ng-enter {
+  transform: scale3d(.3, .3, .3);
+  opacity: 0
+}
+
+.animate-comment.ng-leave,
+.animate-comment.ng-move.ng-move-active,
+.animate-comment.ng-enter.ng-enter-active {
+  transform: none;
+  opacity: 1;
+}

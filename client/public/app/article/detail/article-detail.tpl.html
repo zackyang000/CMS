@@ -57,7 +57,7 @@
 	        <div class="media" ng-if='item.comments.length'>
 	            <h3>{{'article.comments' | translate}} ({{ item.comments.length }})</h3>
 	        </div>
-	        <div class="media" ng-repeat="item in item.comments | orderBy:'date'" ng-hide="item.block">
+	        <div class="media animate-comment" ng-repeat="item in item.comments | orderBy:'date'" ng-hide="item.block">
 	            <span class="pull-left">
 	                <img class="media-object" ng-src="{{item.author.email | gravatar}}" alt="" />
 	            </span>
