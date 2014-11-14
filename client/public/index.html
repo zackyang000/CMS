@@ -8,11 +8,10 @@
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 文章" href="http://feed.zackyang.com/articles.xml" />
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 评论" href="http://feed.zackyang.com/comments.xml" />
     <link rel="shortcut icon" href="/img/favicon.ico" />
-    <!--LIVERELOAD-->
     <style>[ng-cloak] {display: none;}</style>
 </head>
 <body>
-<div ng-show="loading || !loaded">
+<div ng-hide="loaded">
     <div class="loading-container">
         <div class="loading"></div>
         <div id="loading-text">loading</div>
@@ -78,9 +77,8 @@
     .loading-container {
         position: absolute;
         left: 50%;
-        top: 50%;
+        top: 20%;
         margin-left: -50px;
-        margin-top: -50px;
     }
 
     .loading {
@@ -130,6 +128,8 @@
 </div>
 
 <div ng-cloak ng-show="loaded">
+    <div class="loadingbox" ng-show="loading">{{'global.loading' | translate}}...</div>
+
     <!--=== Top ===-->
     <div class="top" ng-controller="TopCtrl">
         <div class="container">
@@ -214,6 +214,7 @@
 
 <!--STYLES--><!--STYLES END-->
 <!--SCRIPTS--><!--SCRIPTS END-->
+<!--LIVERELOAD-->
 
 <script>
     (function (i, s, o, g, r, a, m) {

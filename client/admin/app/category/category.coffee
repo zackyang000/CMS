@@ -8,13 +8,13 @@
 ])
 
 .controller('CategoryCtrl',
-["$scope","$dialog","Categories", "messager"
-($scope,$dialog,Categories, messager) ->
+["$scope","$dialog","Categories", "messager", "tip"
+($scope,$dialog,Categories, messager, tip) ->
   $scope.languages = config.languages
   $scope.entity = {}
 
   load = ->
-    $scope.loading="Loading"
+    tip.show("Loading")
     Categories.query (data)->
       $scope.list = data.value
       $scope.loading=""
@@ -28,7 +28,7 @@
     $scope.editDialog = true
 
   $scope.save = ->
-    $scope.loading="Saving"
+    tip.show("Saving")
     $scope.entity.main = !!$scope.entity.main
     if $scope.entity._id
       Categories.update {id:$scope.entity._id}, $scope.entity
@@ -45,7 +45,7 @@
 
   $scope.remove = (item)->
     messager.confirm ->
-      $scope.loading="Deleting"
+      tip.show("Deleting")
       Categories.delete {id:item._id}
       , (data) ->
         messager.success "Delete channel successfully."

@@ -35,12 +35,6 @@
   ngProgress.color('#5cb85c')
 ]
 
-#hide current neg-progress when route start to change.
-.run(["$rootScope","progress", ($rootScope,progress) ->
-  $rootScope.$on '$routeChangeStart', ->
-    progress.complete()
-])
-
 #try to auto login.
 .run(["$rootScope","security","$location","context",
 ($rootScope,security,$location, context) ->
@@ -59,5 +53,5 @@
 ])
 
 .run ["$rootScope", ($rootScope) ->
-  rootScope.config = config
+  $rootScope.config = config
 ]

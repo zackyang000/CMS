@@ -21,10 +21,13 @@
     .success (data, status, headers) ->
       token = headers('authorization')
       $http.defaults.headers.common['authorization'] = token
-      if user.remember
-        ipCookie('authorization', token, { expires: 180, path: '/', domain: config.host.domain })
-      else
-        ipCookie('authorization', token, { path: '/', domain: config.host.domain })
+
+      params =
+        path: '/'
+        domain: config.host.domain
+      params.domain = ''  if config.host.domain is 'localhost'
+      params.expires = 180  if user.remember
+      ipCookie('authorization', token, params)
       deferred.resolve data
     .error (error) ->
       deferred.reject undefined

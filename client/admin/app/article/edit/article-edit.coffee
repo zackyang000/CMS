@@ -23,7 +23,6 @@
   Categories.query (categories) ->
     $scope.categories = categories.value
     if $routeParams.id
-      $scope.loading = "Loading"
       Articles.get
         id : $routeParams.id
       , (data)->
@@ -35,7 +34,6 @@
             $scope.translateTitle()
           unless $scope.entity.meta.author
             $scope.entity.meta.author = context.account.name
-          $scope.loading = ""
     else
       $scope.entity =
         meta :
@@ -49,8 +47,6 @@
     $scope.isSubmit = true
     return if $scope.form.$invalid
     return if !$scope.entity.category
-
-    $scope.loading = "Saving"
 
     if $scope.uploader.getNotUploadedItems().length
       $scope.uploader.uploadAll()
@@ -66,18 +62,13 @@
       Articles.save entity
       ,(data) ->
         $window.location.href = "#{config.url.public}/post/#{data.url}"
-      ,(error) ->
-        $scope.loading = ""
     else
       Articles.update {id: $routeParams.id}, entity
       ,(data)->
         $window.location.href = "#{config.url.public}/post/#{data.url}"
-      ,(error) ->
-        $scope.loading = ""
 
   $scope.remove = ->
     messager.confirm ->
-      $scope.loading="Deleting"
       entity=$scope.entity
       Articles.delete { id: entity._id }, (data)->
         messager.success "Delete post successfully."
