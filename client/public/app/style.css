@@ -24,3 +24,24 @@
     -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+[ng-view].ng-enter {
+  transition: .5s .5s margin-top, 1s .5s opacity;
+}
+
+[ng-view].ng-leave {
+  transition: .5s;
+}
+
+[ng-view].ng-enter {
+  opacity: 0;
+  margin-top: -50px;
+}
+[ng-view].ng-enter.ng-enter-active {
+  opacity: 1;
+  margin-top: 0;
+}
+[ng-view].ng-leave.ng-leave-active {
+  opacity: 0;
+  margin-top: -50px;
+}
