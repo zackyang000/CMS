@@ -212,6 +212,15 @@
           ]
           dest: '_dist/server'
         ]
+      package:
+        files: [
+          expand: true
+          cwd: ''
+          src: [
+            'package.json'
+          ]
+          dest: '_dist/server'
+        ]
 
     bower:
       public:
