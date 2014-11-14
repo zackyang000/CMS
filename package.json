@@ -25,7 +25,8 @@
     "mkdirp": "*",
     "gm": "*",
     "rss": "1.0.0",
-    "coffee-script": "1.7.0"
+    "coffee-script": "1.7.0",
+    "migrate": "0.1.5"
   },
   "devDependencies": {
     "open": "~0.0.5",

@@ -12,6 +12,7 @@ boardModel = require('../models/board/board')
 tagModel = require('../models/article/tag')
 galleryModel = require('../models/gallery/gallery')
 userModel = require('../models/system/user')
+
 module.exports = (app) ->
   odata.set('app', app)
   odata.set('db', 'mongodb://localhost/cms-dev')
