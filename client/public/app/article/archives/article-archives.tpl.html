@@ -1,0 +1,37 @@
+﻿<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">
+            Blog
+        </h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li ng-if="category"><a href="/list/{{category.url}}">{{category.name | i18n}}</a></li>
+            <li class="active" ng-if="params.tag">{{'article.breadcrumb.tag' | translate:params}}</li>
+            <li class="active" ng-if="params.key">{{'article.breadcrumb.key' | translate:params}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div id="archives">
+        <ul class="list-unstyled">
+            <li ng-repeat="item in list | orderBy:'-date'">
+                <h3 class="badge archive-title">
+                    {{item.date}}
+                    ({{item.posts.length}})
+                </h3>
+                <ul class="list-unstyled">
+                    <li ng-repeat="post in item.posts | orderBy:'-date'">
+                        {{post.date | date:"yyyy-MM-dd"}}
+                        »
+                        <a href="/post/{{post.url}}" ng-bind-html="post.title | highlight:params.key"></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--=== End Content Part ===-->

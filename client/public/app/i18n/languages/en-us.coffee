@@ -13,6 +13,7 @@
       home: 'Home'
     loading: 'Loading'
     post: 'Submitting'
+    languages: 'Languages'
   article:
     preview: 'Prev'
     next: 'Next'

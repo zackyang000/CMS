@@ -13,6 +13,7 @@
       home: '主页'
     loading: '努力加载中'
     post: '提交中'
+    languages: '语言'
   article:
     preview: '上一篇'
     next: '下一篇'

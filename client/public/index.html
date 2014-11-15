@@ -136,7 +136,7 @@
             <ul class="loginbar pull-right">
                 <li>
                     <i class="fa fa-globe"></i>
-                    <a>Languages</a>
+                    <a>{{'global.languages' | translate}}</a>
                     <ul class="lenguages">
                         <li ng-class="{ active: use=='en-us' }">
                             <a href="#" ng-click="changeLanguage('en-us')">
@@ -188,6 +188,7 @@
                             <a ng-href="/" ng-show="category.main">{{category.name | i18n}}</a>
                             <a ng-href="/list/{{category.url}}" ng-hide="category.main">{{category.name | i18n}}</a>
                         </li>
+                        <li ng-class="{active:isActive('/archives')}"><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
                         <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
                         <li ng-class="{active:isActive('/guestbook')}"><a ng-href="/guestbook">{{'global.menu.board' | translate}}</a></li>
                         <li ng-class="{active:isActive('/about')}"><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>

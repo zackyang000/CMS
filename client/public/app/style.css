@@ -1,4 +1,8 @@
-﻿#logo-header{ width: 30px;height: 30px;position: relative;top: -3px;}
+﻿textarea, input, .badge {
+   border-radius: 0 !important;
+}
+
+#logo-header{ width: 30px;height: 30px;position: relative;top: -3px;}
 
 .body {
     margin-bottom: 55px;
