@@ -16,26 +16,28 @@
 
 <!--=== Content Part ===-->
 <div class="container">
-    <div id="archives">
-        <ul class="list-unstyled">
-            <li ng-repeat="item in list | orderBy:'-date'">
-                <h3 style="border-bottom: 1px solid #999">
-                    {{item.date}}
-                    <small>({{item.posts.length}})</small>
-                </h3>
-                <ul class="list-unstyled">
-                    <li ng-repeat="post in item.posts | orderBy:'-date'">
-                        {{post.date | date:"yyyy-MM-dd"}}
-                        »
-                        <a href="/post/{{post.url}}" ng-bind-html="post.title | highlight:params.key"></a>
-                        <small style="color: #ccc" ng-if="post.meta.comments > 0">
-                            <i class="fa fa-comments"></i>
-                            {{ post.meta.comments }}
-                        </small>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+    <div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+        <div class="col-md-9 md-margin-bottom-60">
+            <!--Blog Post-->
+            <div class="blog margin-bottom-40" ng-repeat="item in list.value">
+                <h2><a ng-href="/post/{{item.url}}" ng-bind-html="item.title | highlight:params.key"></a></h2>
+                <div ng-include="'/app/article/common/article-post-header.tpl.html'"></div>
+                <p ng-bind-html-unsafe="item.description"></p>
+                <p><a class="btn-u btn-u-small" ng-href="/post/{{item.url}}"><i class="fa fa-plus"></i> Read More</a></p>
+            </div>
+            <!--End Blog Post-->
+
+            <!--Pagination-->
+            <div zy-odata-pager="list" class="text-center"></div>
+            <!--End Pagination-->
+        </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+        <div class="col-md-3 magazine-page">
+        </div>
+        <!-- End Right Sidebar -->
     </div>
 </div>
 <!--=== End Content Part ===-->

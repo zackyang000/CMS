@@ -1,14 +1,6 @@
 ﻿angular.module('article-list',['resource.articles'])
 
 .config(["$routeProvider", ($routeProvider) ->
-  articleFormat = (data) ->
-    obj = []
-    for post in data.value
-      date = post.date?.format('yyyy-MM')
-      obj[date]=[]  unless obj[date]
-      obj[date].push(post)
-    { date:key, posts:value } for key, value of obj when obj.hasOwnProperty key
-
   $routeProvider
     .when "/",
       templateUrl: "/app/article/list/article-list.tpl.html"
@@ -20,9 +12,10 @@
             Articles.query
               $filter: "category eq '#{category.value[0].url}'"
               $select: 'title,url,meta,description,date,category,tag'
-              $top: 1000
+              $top: 10
+              $skip: ($route.current.params.p || 1) * 10 - 10
             ,(data)->
-              deferred.resolve articleFormat(data)
+              deferred.resolve data
           deferred.promise
         ]
     .when "/list/:category/tag/:tag",
@@ -33,11 +26,12 @@
           deferred = $q.defer()
           Articles.query
             $filter: "category eq '#{$route.current.params.category}'" #todo 不支持tag查询
-            $top: 10000
+            $top: 10
+            $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
             $select: 'title,url,meta,description,date,category,tag'
           ,(data)->
-            deferred.resolve articleFormat(data)
+            deferred.resolve data
           deferred.promise
         ]
     .when "/list/:category",
@@ -49,11 +43,12 @@
           deferred = $q.defer()
           Articles.query
             $filter: "category eq '#{$route.current.params.category}'"
-            $top: 10000
+            $top: 10
+            $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
             $select: 'title,url,meta,description,date,category,tag'
           ,(data)->
-            deferred.resolve articleFormat(data)
+            deferred.resolve data
           deferred.promise
         ]
     .when "/search/:key",
@@ -64,12 +59,12 @@
           deferred = $q.defer()
           Articles.query
             $filter:"indexof(title,'#{$route.current.params.key}') gt -1"
-            $top: 10000
+            $top: 10
             $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
             $select: 'title,url,meta,description,date,category,tag'
           , (data)->
-            deferred.resolve articleFormat(data)
+            deferred.resolve data
           deferred.promise
         ]
 ])
@@ -101,6 +96,7 @@
     $rootScope.title = $scope.category.name[context.language]
 
   #Turn page
+  $scope.currentPage = +$routeParams.p || 1
   $scope.setPage = (pageNo) ->
     $location.search({p: pageNo})
 
