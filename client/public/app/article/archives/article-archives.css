@@ -1,5 +1,12 @@
 ﻿#archives .archive-title {
 background: #72c02c;
 font-size: 14px;
-margin-top: 20px;
+}
+
+#archives ul {
+    margin-left: 10px;
+}
+
+#archives > ul > li{
+    margin-top: 15px;
 }

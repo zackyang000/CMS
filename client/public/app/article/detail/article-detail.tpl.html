@@ -23,7 +23,7 @@
                 <div class="blog-img" ng-if="item.meta.thumbnail">
                     <img class="img-responsive" ng-src="{{item.meta.thumbnail | remoteImage}}" alt="" />
                 </div>
-	            <p ng-bind-html-unsafe="item.content"></p>
+	            <p ng-bind-html-unsafe="item.content" class="article-content"></p>
 	        </div>
 	        <!--End Blog Post-->
 
