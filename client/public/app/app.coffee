@@ -91,7 +91,7 @@ deferredBootstrapper.bootstrap
   resolve:
     dataCacheCategories: ["$http", '$q', ($http, $q) ->
       deferred = $q.defer()
-      $http.get "#{config.url.api}/categories?$orderby=order"
+      $http.get "#{config.url.api}/categories?$orderby=order&$filter=disable eq false"
       .success (data) ->
         deferred.resolve data.value
       deferred.promise

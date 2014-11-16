@@ -5,3 +5,4 @@ module.exports =
     description: String
     main: Boolean
     order: Number
+    disable: Boolean

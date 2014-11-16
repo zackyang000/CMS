@@ -18,16 +18,19 @@
     <table class="table table-hover table-striped table-bordered">
         <thead>
             <tr>
-                <th>Url</th>
+                <th style="width:120px;">Url</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Order</th>
-                <th></th>
+                <th style="width:100px;">Order</th>
+                <th style="width:100px;"></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in list">
-                <td>{{item.url}}</td>
+                <td>
+                    {{item.url}}
+                    <span class="label label-danger" ng-if="item.disable">Disable</span>
+                </td>
                 <td>{{item.name}}</td>
                 <td>{{item.description}}</td>
                 <td>
@@ -82,18 +85,22 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-lg-3 control-label">Order</label>
+                            <div class="col-lg-9">
+                                <input type="number" class="form-control" ng-model="entity.order" />
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-lg-3 control-label"></label>
                             <div class="col-lg-9">
                                 <label>
                                     <input type="checkbox" class="ace" ng-model="entity.main" />
-                                    <span class="lbl">Default</span>
+                                    <span class="lbl"> Default</span>
                                 </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Order</label>
-                            <div class="col-lg-9">
-                                <input type="number" class="form-control" ng-model="entity.order" />
+                                <label>
+                                    <input type="checkbox" class="ace" ng-model="entity.disable" />
+                                    <span class="lbl"> Disable</span>
+                                </label>
                             </div>
                         </div>
                     </div>
