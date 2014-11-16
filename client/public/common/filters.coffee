@@ -1,6 +1,6 @@
 ﻿angular.module("zy.filters", [])
 
-.filter("i18n", ["context",(context)->
+.filter("i18n", ["context", (context)->
   (input) ->
     return input  unless input
     input[context.language]
