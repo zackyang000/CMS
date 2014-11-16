@@ -2,6 +2,6 @@ _dist/
 node_modules/
 bower_components/
 
-#other
+npm-debug.log
 .idea
 *.orig
