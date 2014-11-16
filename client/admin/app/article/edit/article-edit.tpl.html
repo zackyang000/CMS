@@ -47,6 +47,14 @@
                     <div epic-editor md="entity.markdown" ng-model="entity.content"></div>
                 </div>
             </div>
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.content.$invalid}">
+                <label class="control-label">
+                    Description
+                </label>
+                <div>
+                    <textarea ck-editor name="description" ng-model="entity.description"></textarea>
+                </div>
+            </div>
         </div>
         <div class="col-lg-4">
             <div class="sider">
