@@ -13,6 +13,7 @@
             $top: 1000
             $select: 'url, name, description, cover, hidden'
             $orderby: 'order'
+            $filter: 'hidden eq false'
           ,(data) ->
             deferred.resolve data.value
           deferred.promise
@@ -23,7 +24,6 @@
 ["$scope", "galleries", 'context', ($scope, galleries, context) ->
   group = []
   current = undefined
-  galleries = (item for item in galleries when item.hidden is false)
   for item, i in galleries
     if i % 3 == 0
       current = []
