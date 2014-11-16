@@ -101,5 +101,5 @@
     $location.search({p: pageNo})
 
   $scope.edit = (item) ->
-    $window.location.href="/admin/article/#{item._id}"
+    $window.location.href = "#{config.url.admin}/article/#{item._id}"
 ])
