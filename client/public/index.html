@@ -192,16 +192,7 @@
                         <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
                         <li ng-class="{active:isActive('/guestbook')}"><a ng-href="/guestbook">{{'global.menu.board' | translate}}</a></li>
                         <li ng-class="{active:isActive('/about')}"><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
-                        <li class="hidden-sm"><a class="search" ng-click="displaySearchDialog = !displaySearchDialog"><i class="fa fa-search search-btn"></i></a></li>
                     </ul>
-                    <div class="search-open" ng-show="displaySearchDialog">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" ng-model="key" ui-keyup="{13:'search()'}">
-                            <span class="input-group-btn">
-                                <button class="btn-u" type="button" ng-click="search()">Go</button>
-                            </span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

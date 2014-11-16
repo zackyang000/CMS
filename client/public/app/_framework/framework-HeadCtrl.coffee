@@ -20,8 +20,4 @@ angular.module("framework.controllers.head", [])
 
   $scope.isActive = (route) ->
     $location.path().indexOf(route) == 0
-
-  $scope.search = ->
-    $scope.displaySearchDialog = false
-    $location.path("/search/#{$scope.key}")
 ])

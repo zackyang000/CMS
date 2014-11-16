@@ -3,6 +3,7 @@
   'article-list'
   'article-detail'
   'article-archives'
+  'article-sider-search'
 ])
 
 .filter "i18nCategory", ['dataCacheCategories', (dataCacheCategories) ->
