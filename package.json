@@ -15,7 +15,7 @@
     "start": "grunt"
   },
   "dependencies": {
-    "node-odata": "0.1.5",
+    "node-odata": "0.1.6",
     "grunt-cli": "~0.1.11",
     "express": "3.2.0",
     "cors": "2.4.2",
