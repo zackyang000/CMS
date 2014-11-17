@@ -8,7 +8,6 @@
       gallery: '相册'
       about: '关于'
       admin: '管理'
-      search: '搜索'
     breadcrumb:
       home: '主页'
     loading: '努力加载中'
@@ -41,6 +40,8 @@
       complete:"评论发布成功."
       nameValidTxt:"请输入您的昵称."
       contentValidTxt:"请输入评论内容."
+    sider:
+      search: '搜索'
   board:
     welcome:"欢迎"
     hide:"隐藏"

@@ -8,7 +8,6 @@
       gallery: 'Galleries'
       about: 'About'
       admin: 'Admin'
-      search: 'search'
     breadcrumb:
       home: 'Home'
     loading: 'Loading'
@@ -41,6 +40,8 @@
       complete:"Comment has been submitted."
       nameValidTxt:"Please input your name."
       contentValidTxt:"Please input comment content."
+    sider:
+      search: 'Search'
   board:
     welcome:"Welcome"
     hide:"Hide"

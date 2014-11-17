@@ -1,9 +1,9 @@
 <div class="headline headline-md">
-    <h2>Search</h2>
+    <h2>{{'article.sider.search' | translate}}</h2>
 </div>
 
 <div class="input-group margin-bottom-40" ng-controller="article-sider-search">
-    <input type="text" class="form-control" placeholder="Search" ng-model="key" ui-keyup="{13:'search()'}">
+    <input type="text" class="form-control" placeholder="{{'article.sider.search' | translate}}" ng-model="key" ui-keyup="{13:'search()'}">
     <span class="input-group-btn">
         <button class="btn-u" type="button" ng-click="search()">
           <i class="fa fa-search"></i>
