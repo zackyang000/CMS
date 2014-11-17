@@ -1,4 +1,4 @@
-﻿angular.module('category',['resource.categories'])
+﻿angular.module('category',['resource.categories', 'category-edit'])
 
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
@@ -8,40 +8,28 @@
 ])
 
 .controller('CategoryCtrl',
-["$scope","$dialog","Categories", "messager", "tip"
-($scope,$dialog,Categories, messager, tip) ->
+["$scope", "ngDialog", "Categories", "messager", "tip"
+($scope, ngDialog, Categories, messager, tip) ->
   $scope.languages = config.languages
-  $scope.entity = {}
 
   load = ->
-    tip.show("Loading")
     Categories.query (data)->
       $scope.list = data.value
-      $scope.loading=""
 
-  $scope.add = ()->
+  $scope.openAddDialog = ()->
     $scope.entity = {}
-    $scope.editDialog = true
+    openDialog()
 
-  $scope.edit = (item)->
-    $scope.entity = angular.copy(item)
-    $scope.editDialog = true
+  $scope.openEditDialog = (item) ->
+    $scope.entity = item
+    openDialog()
 
-  $scope.save = ->
-    tip.show("Saving")
-    $scope.entity.main = !!$scope.entity.main
-    if $scope.entity._id
-      Categories.update {id:$scope.entity._id}, $scope.entity
-      ,(data)->
-        messager.success "Edit category successfully."
-        $scope.close()
-        load()
-    else
-      Categories.save $scope.entity
-      ,(data)->
-        messager.success "Add category successfully."
-        $scope.close()
-        load()
+  openDialog = ->
+    dialog = ngDialog.open
+      template: '/app/category/category-edit-dialog.tpl.html'
+      controller: 'CategoryEditDialogCtrl'
+      scope: $scope
+    dialog.closePromise.then load
 
   $scope.remove = (item)->
     messager.confirm ->
@@ -50,9 +38,6 @@
       , (data) ->
         messager.success "Delete channel successfully."
         load()
-
-  $scope.close = ->
-    $scope.editDialog = false
 
   load()
 ])

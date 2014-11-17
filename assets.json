@@ -71,6 +71,7 @@
       "_dist/client/admin/vendor/bootstrap/**/*.css",
       "_dist/client/admin/vendor/dropzone/**/*.css",
       "_dist/client/admin/vendor/ngprogress/**/*.css",
+      "_dist/client/admin/vendor/ngDialog/css/ngDialog.css",
       "_dist/client/admin/vendor/messenger/build/css/messenger.css",
       "_dist/client/admin/vendor/messenger/build/css/messenger-theme-flat.css",
       "_dist/client/admin/vendor/ace*/*.css",

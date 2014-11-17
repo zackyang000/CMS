@@ -15,6 +15,7 @@
 'zy.untils'
 'ngProgress'
 'ngStorage'
+'ngDialog'
 'angularFileUpload'
 'ui.utils'
 'ui.bootstrap'

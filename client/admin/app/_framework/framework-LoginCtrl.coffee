@@ -10,14 +10,12 @@ angular.module("framework.controllers.login",['ngRoute'])
 .controller('LoginCtrl',["$scope", "$rootScope", "security", "context"
 ($scope,$rootScope,security, context) ->
   $scope.login = ->
-    $scope.submitting = true
     $scope.error = ''
     security.login($scope.user).then (data)->
       context.account = data
       context.auth.admin = true
       $rootScope.$broadcast "loginSuccessed"
     , () ->
-      $scope.submitting = false
       $scope.user.Password = ''
       $scope.error = "Username or password wrong."
 

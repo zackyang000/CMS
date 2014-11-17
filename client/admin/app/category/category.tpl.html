@@ -10,7 +10,7 @@
 
 <div class="page-content">
     <div class="text-right">
-        <button class="btn btn-primary btn-sm" type="button" ng-click="add()" >
+        <button class="btn btn-primary btn-sm" type="button" ng-click="openAddDialog()" >
             <i class="fa fa-plus"></i> New Channel
         </button>
     </div>
@@ -39,7 +39,7 @@
                 </td>
                 <td>
                     <div class="action-buttons">
-                        <a class="green" href="JavaScript:void(0)" ng-click="edit(item)">
+                        <a class="green" href="JavaScript:void(0)" ng-click="openEditDialog(item)">
                             <i class="fa fa-pencil bigger-130"></i>
                         </a>
                         <a class="red" href="JavaScript:void(0)" ng-click="remove(item)">
@@ -50,72 +50,4 @@
             </tr>
         </tbody>
     </table>
-
-    <div modal="editDialog" close="close()" options="{backdrop: true,dialogFade:true}">
-        <div class="modal-dialog">
-            <form name="form" class="modal-content" ng-submit="save()">
-                <div class="modal-header">
-                    Edit Channel
-                </div>
-                <div class="modal-body">
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Url</label>
-                            <div class="col-lg-9">
-                                <input type="text" class="form-control" ng-model="entity.url" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Name</label>
-                            <div class="col-lg-9">
-                                <div ng-repeat="(key, value) in languages">
-                                    <p class="input-group">
-                                      <span class="input-group-addon">{{key}}</span>
-                                      <input type="text" class="form-control" ng-model="entity.name[value]" placeholder="{{key}}" required />
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Description</label>
-                            <div class="col-lg-9">
-                                <p ng-repeat="(key, value) in languages">
-                                    <textarea class="form-control" ng-model="entity.description[value]" placeholder="{{key}}" rows="3"></textarea>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Order</label>
-                            <div class="col-lg-9">
-                                <input type="number" class="form-control" ng-model="entity.order" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label"></label>
-                            <div class="col-lg-9">
-                                <label>
-                                    <input type="checkbox" class="ace" ng-model="entity.main" />
-                                    <span class="lbl"> Default</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" class="ace" ng-model="entity.disable" />
-                                    <span class="lbl"> Disable</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary btn-sm" ng-disabled="form.$invalid || loading">
-                        <i class="fa fa-save"></i>
-                        Save
-                    </button>
-                    <button type="button" class="btn btn-default btn-sm" ng-click="close()">
-                        <i class="fa fa-undo"></i>
-                        Cancel
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>

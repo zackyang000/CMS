@@ -327,8 +327,8 @@
                                                     </label>
 
                                                     <button class="width-35 pull-right btn btn-sm btn-primary" ng-disabled="submitting || form.$invalid">
-                                                        <i ng-show="submitting" class="fa fa-spinner fa-spin fa-large"></i>
-                                                        <i ng-show="!submitting" class="fa fa-key"></i>
+                                                        <i ng-show="loading" class="fa fa-spinner fa-spin fa-large"></i>
+                                                        <i ng-hide="loading" class="fa fa-key"></i>
                                                         Login
                                                     </button>
                                                 </div>
@@ -351,7 +351,7 @@
         </div>
     </div>
 
-    <div ng-cloak modal="newVersion.showDialog" options="{backdrop: false,dialogFade:true}">
+    <div ng-cloak style="display: none;">
         <div class="modal-dialog">
             <form name="form" class="modal-content">
                 <div class="modal-header">
