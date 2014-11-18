@@ -1,33 +1,30 @@
 angular.module("framework.controllers.main",[])
 
-.controller('MainCtrl', ["$scope","$rootScope","$http","$location","version", "context", "$localStorage"
-($scope,$rootScope,$http,$location, version, context, $localStorage) ->
+.controller('MainCtrl', ["$scope","$rootScope","$http","$location","version", "context", "$localStorage", 'ngDialog'
+($scope,$rootScope,$http,$location, version, context, $localStorage, ngDialog) ->
   $scope.$on "loginSuccessed", ->
     version.get().then (data)->
       return if !data.length
-      $scope.newVersion=data[0]
-      if $scope.newVersion.ver!=$localStorage.ver
-        $scope.newVersion.showDialog=true
-
-    $scope.versionClick = ->
-      $localStorage.ver=$scope.newVersion.ver
-      $scope.newVersion.showDialog=false
+      $scope.newVersion = data[0]
+      if $scope.newVersion.ver != $localStorage.ver
+        dialog = ngDialog.open
+          template: '/app/dialogs/version-upgrade/version-upgrade-dialog.tpl.html'
+          controller: 'VersionUpgradeDialogCtrl'
+          scope: $scope
+        dialog.closePromise.then ->
+          $localStorage.ver = $scope.newVersion.ver
 
     $rootScope.account = context.account
 
-    $rootScope.__login=true
-    $rootScope.__logoff=false
+    $rootScope.__login = true
+    $rootScope.__logoff = false
 
     #Back to page.
-    url = $scope.__returnUrl
-    if url
-      $scope.__returnUrl = null
-      $location.path(url).replace()
-    else if $location.path()=='/login'
-      $location.path('/').replace()
+    $location.path($scope.__returnUrl || '/').replace()
+    $scope.__returnUrl = null
 
   $scope.$on "logoutSuccessed", ->
-    $rootScope.__login=false
-    $rootScope.__logoff=true
+    $rootScope.__login = false
+    $rootScope.__logoff = true
 ])
 

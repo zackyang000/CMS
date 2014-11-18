@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <i class="fa fa-bullhorn"></i>
+    New Version Has Been Release.
+</div>
+<div class="modal-body">
+    <div>
+        <div>
+            <h3 class="blue">
+                {{newVersion.ver}}
+                <small>{{newVersion.date | date:'yyyy-MM-dd'}}</small>
+            </h3>
+        </div>
+        <ul>
+            <li ng-repeat="item in newVersion.content">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="modal-footer">
+    <a href="Javascript:void(0)" class="btn btn-link" ng-click="more()">
+        More
+    </a>
+    <button type="button" class="btn btn-default btn-success btn-sm" ng-click="close()">
+        <i class="fa fa-check"></i>
+        Ok
+    </button>
+</div>

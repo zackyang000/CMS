@@ -8,6 +8,7 @@
 'article'
 'gallery'
 'system'
+'dialogs'
 'framework.controllers'
 'zy.services'
 'zy.directives'
