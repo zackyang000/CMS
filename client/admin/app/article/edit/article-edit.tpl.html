@@ -16,7 +16,7 @@
             <div class="form-group" ng-class="{'has-error': isSubmit && form.title.$invalid}">
                 <label class="control-label">Title</label>
                 <div>
-                    <input type="text" class="form-control" name="title" ng-model="entity.title" ng-change="translateTitle()" required />
+                    <input type="text" class="form-control" name="title" ng-model="entity.title" ng-model-options="{debounce:3000}" required />
                 </div>
             </div>
             <div class="form-group" ng-class="{'has-error': isSubmit && form.url.$invalid,'has-warning':translating}">

@@ -30,8 +30,6 @@
           $scope.entity = data
           if $scope.entity.meta.tags
             $scope.tags = $scope.entity.meta.tags.join(',')
-          unless $scope.entity.url
-            $scope.translateTitle()
           unless $scope.entity.meta.author
             $scope.entity.meta.author = context.account.name
     else
@@ -41,7 +39,6 @@
         date: new Date()
         editor: ''
         comments : []
-
 
   $scope.submit = ->
     $scope.isSubmit = true
@@ -88,22 +85,20 @@
     $scope.entity.Thumbnail=undefined
 
   #根据title翻译url.
-  timeout = undefined
-  $scope.translateTitle = ->
-    if $scope.entity.title
-      $timeout.cancel timeout if timeout
-      timeout = $timeout( ->
-        $scope.translating = true
-        TranslateService.translate($scope.entity.title)
-        .success (data) ->
-          data = $.trim(data)
-          data = data.toLowerCase()
-          data = data.replace(/[^_a-zA-Z\d\s]/g, '')
-          data = data.replace(/[\s]/g, "-")
-          $scope.entity.url = data
-          $scope.translating = false
-        .error (err) ->
-          $scope.translating = false
-      , 500)
+  $scope.$watch 'entity.title', ->
+    if $scope.entity and $scope.entity.title and !$scope.entity.url
+      $scope.translating = true
+      TranslateService.translate($scope.entity.title)
+      .success (data) ->
+        data = $.trim(data)
+        data = data.toLowerCase()
+        data = data.replace(/[^_a-zA-Z\d\s]/g, '')
+        data = data.replace(/[\s]/g, "-")
+        $scope.entity.url = data
+        $scope.translating = false
+      .error (err) ->
+        $scope.translating = false
+    else if $scope.entity and !$scope.entity.title
+      $scope.entity.url = undefined
 ])
 
