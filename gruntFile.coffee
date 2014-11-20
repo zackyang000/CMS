@@ -234,7 +234,7 @@
 
     ngtemplates:
       'public-templates':
-        src: 'app/**/*.html'
+        src: ['app/**/*.html', 'vendor/angular-utils-pagination/*.tpl.html']
         dest: '_dist/client/public/common/templates.js'
         cwd: '_dist/client/public'
         options:
@@ -250,7 +250,7 @@
             removeScriptTypeAttributes:     true
             removeStyleLinkTypeAttributes:  true
       'admin-templates':
-        src: 'app/**/*.html'
+        src: ['app/**/*.html']
         dest: '_dist/client/admin/common/templates.js'
         cwd: '_dist/client/admin'
         options:

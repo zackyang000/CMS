@@ -36,11 +36,15 @@
 ]
 
 .config ["$translateProvider", ($translateProvider) ->
-    $translateProvider.useLocalStorage()
-    $translateProvider
-      .translations('en-us',translationsEN)
-      .translations('zh-cn',translationsZH)
+  $translateProvider.useLocalStorage()
+  $translateProvider
+    .translations('en-us',translationsEN)
+    .translations('zh-cn',translationsZH)
 ]
+
+.config(['paginationTemplateProvider', (paginationTemplateProvider) ->
+  paginationTemplateProvider.setPath '/vendor/angular-utils-pagination/dirPagination.tpl.html'
+])
 
 .run ["$location", "$rootScope", ($location, $rootScope) ->
   $rootScope.$on "$routeChangeSuccess", (event, current) ->
@@ -53,11 +57,11 @@
 
 #get account info.
 .run ["$rootScope", "security", "context", ($rootScope, security, context) ->
-    security.autoLogin().then (data) ->
-      if data
-        context.account = data
-        context.auth.admin = true
-      $rootScope.account = context.account
+  security.autoLogin().then (data) ->
+    if data
+      context.account = data
+      context.auth.admin = true
+    $rootScope.account = context.account
 ]
 
 # get user language
