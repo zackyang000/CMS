@@ -40,6 +40,7 @@
     "sweetalert": "~0.3.1",
     "fancybox": "~2.1.5",
     "angular-deferred-bootstrap": "~0.1.5",
-    "angular-utils-pagination": "~0.4.0"
+    "angular-utils-pagination": "~0.4.0",
+    "angular-ui-router": "~0.2.13"
   }
 }

@@ -8,7 +8,10 @@
     margin-bottom: 55px;
 }
 
-.navbar-brand { font-size: 30px;}
+.navbar-brand{
+  font-size: 26px;
+  padding: 14px 0px 0px 60px !important;
+}
 
 .loadingbox {
     text-align: center;

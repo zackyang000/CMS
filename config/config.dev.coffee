@@ -16,7 +16,7 @@ config.url =
   api: "http://#{config.host.api}/oData"
 
 config.site =
-  name: 'iShare'
+  name: 'Zack Yang'
 
 config.languages =
   'English': 'en-us'
