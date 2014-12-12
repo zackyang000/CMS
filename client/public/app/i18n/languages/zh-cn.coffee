@@ -1,6 +1,7 @@
 ﻿translationsZH=
   global:
     menu:
+      logotip: '根本停不下来!'
       home: '首页'
       archive: '归档'
       board: '留言板'

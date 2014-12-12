@@ -1,6 +1,7 @@
 ﻿translationsEN=
   global:
     menu:
+      logotip: 'I can\'t stop myself!'
       home: 'Home'
       archive: 'Archives'
       board: 'Guestbook'
