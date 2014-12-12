@@ -7,7 +7,7 @@
 
 /*Navber Toggle*/
 .navbar-toggle,
-.navbar-default .navbar-toggle:hover, 
+.navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
 	background: #787d80;
 }
@@ -26,12 +26,12 @@
 	border-bottom-color: #787d80;
 }
 
-/*Responsive @Media 
+/*Responsive @Media
 ------------------------------------*/
 @media (min-width: 767px) {
 	/*Navbar*/
 	.header .navbar-default .navbar-nav > li > a:hover,
-	.header .navbar-default .navbar-nav > .active > a {
+	.header .navbar-default .navbar-nav > li.active > a {
 		border-bottom: solid 2px #787d80;
 	}
 
@@ -42,8 +42,8 @@
 	}
 
 	/*Dropdown Menu*/
-	.header .dropdown-menu { 
-		border-top: solid 2px #787d80; 
+	.header .dropdown-menu {
+		border-top: solid 2px #787d80;
 	}
 
 }

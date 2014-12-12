@@ -17,7 +17,7 @@
 	padding-bottom: 15px;
 }
 
-.top ul.loginbar > li > a, 
+.top ul.loginbar > li > a,
 .top ul.loginbar > li > a:hover {
     cursor: pointer;
 	color: #7c8082;
@@ -26,7 +26,7 @@
 	font-family: 'Open Sans', sans-serif;
 }
 
-.top ul.loginbar li.devider { 
+.top ul.loginbar li.devider {
 	top: -1px;
 	padding: 0;
 	font-size: 8px;
@@ -36,7 +36,7 @@
 	border-right: solid 1px #bbb;
 }
 
-.top ul.loginbar li i.icon-globe { 
+.top ul.loginbar li i.icon-globe {
 	color: #bbb;
 }
 
@@ -46,7 +46,7 @@
 	left: -5px;
 	display: none;
 	padding: 4px 0;
-	padding-left: 0; 
+	padding-left: 0;
 	list-style: none;
 	min-width: 100px;
 	position: absolute;
@@ -59,13 +59,13 @@
 
 .top ul.lenguages:after {
 	top: -4px;
-	width: 0; 
+	width: 0;
 	height: 0;
 	left: 8px;
-	content: " "; 
-	display: block; 
+	content: " ";
+	display: block;
 	position: absolute;
-	border-bottom: 6px solid #f0f0f0;	
+	border-bottom: 6px solid #f0f0f0;
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
 	border-left-style: inset; /*FF fixes*/
@@ -78,8 +78,8 @@
 	font-size: 10px;
 	padding: 2px 12px;
 	margin-bottom: 1px;
-	text-transform: uppercase; 
-	font-family:'Open Sans', sans-serif;	
+	text-transform: uppercase;
+	font-family:'Open Sans', sans-serif;
 }
 
 .top ul.lenguages li.active a i {
@@ -88,13 +88,13 @@
 	margin-top: 2px;
 }
 
-.top ul.lenguages li a:hover, 
+.top ul.lenguages li a:hover,
 .top ul.lenguages li.active a {
 	background: #fafafa;
 }
 
 .top ul.lenguages li a:hover {
-	text-decoration: none; 
+	text-decoration: none;
 }
 
 /*Header Default
@@ -121,7 +121,7 @@
 }
 
 /*Brand*/
-.header .navbar-brand { 
+.header .navbar-brand {
 	z-index: 2;
 	position: relative;
 	padding: 0 10px 10px;
@@ -155,7 +155,7 @@
 
 /*Navber Toggle*/
 .navbar-toggle,
-.navbar-default .navbar-toggle:hover, 
+.navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
 	background: #72c02c;
 }
@@ -174,13 +174,13 @@
 
 /*Serach Box*/
 .header .navbar .search-open {
-	right: 0; 
+	right: 0;
 	top: 50px;
-	padding: 14px; 
+	padding: 14px;
 	position: absolute;
-	background: #fcfcfc; 
+	background: #fcfcfc;
 	border-top: solid 2px #eee;
-	box-shadow: 0 1px 3px #ddd; 
+	box-shadow: 0 1px 3px #ddd;
 }
 
 .header .navbar .nav > li > a.search {
@@ -197,7 +197,7 @@
 }
 
 .header .navbar .search-open form {
-	margin: 0;	
+	margin: 0;
 }
 
 .header .navbar a.search [class^="icon-"],
@@ -213,7 +213,7 @@
   width: 1.5625em;
 }
 
-/*Responsive @Media 
+/*Responsive @Media
 ------------------------------------*/
 @media (min-width: 767px) {
 	/*Navbar Collapse*/
@@ -229,20 +229,20 @@
 	}
 
 	.header .navbar-default .navbar-nav > li > a,
-	.header .navbar-default .navbar-nav > li > a:focus {	
+	.header .navbar-default .navbar-nav > li > a:focus {
 		border-bottom: solid 2px transparent;
 	}
 
 	.header .navbar-default .navbar-nav > li > a:hover,
-	.header .navbar-default .navbar-nav > .active > a {
+	.header .navbar-default .navbar-nav > li.active > a {
 		border-bottom: solid 2px #72c02c;
 	}
 
 	.header .navbar-default .navbar-nav > li > a,
 	.header .navbar-default .navbar-nav > li > a:hover,
-	.header .navbar-default .navbar-nav > li > a:focus,	
-	.header .navbar-default .navbar-nav > .active > a, 
-	.header .navbar-default .navbar-nav > .active > a:hover, 
+	.header .navbar-default .navbar-nav > li > a:focus,
+	.header .navbar-default .navbar-nav > .active > a,
+	.header .navbar-default .navbar-nav > .active > a:hover,
 	.header .navbar-default .navbar-nav > .active > a:focus {
 		background: none;
 	}
@@ -254,22 +254,22 @@
 	}
 
 	/*Dropdown Menu*/
-	.header .dropdown-menu { 
+	.header .dropdown-menu {
 		padding: 0;
 		border: none;
 		min-width: 200px;
-		border-radius: 0; 
+		border-radius: 0;
 		z-index: 9999 !important;
-		margin-top: -2px !important; 
-		border-top: solid 2px #72c02c; 
-		border-bottom: solid 2px #687074; 
+		margin-top: -2px !important;
+		border-top: solid 2px #72c02c;
+		border-bottom: solid 2px #687074;
 	}
 
-	.header .dropdown-menu li a { 
-		color: #687074; 
-		font-size: 13px; 
-		font-weight: 400; 
-		padding: 6px 15px; 
+	.header .dropdown-menu li a {
+		color: #687074;
+		font-size: 13px;
+		font-weight: 400;
+		padding: 6px 15px;
 		border-bottom: solid 1px #eee;
 	}
 
@@ -292,18 +292,18 @@
 	/*Search Box*/
 	.header .navbar .search-open {
 		width: 330px;
-	}	
+	}
 }
 
 @media (max-width: 767px) {
 	/*Search Box*/
 	.header .navbar .search-open {
-		left: 20px; 
+		left: 20px;
 		top: inherit;
-		bottom: -5px; 
+		bottom: -5px;
 		padding: 15px;
 		border-top: none;
 		box-shadow: none;
-		background: none; 
-	}	
+		background: none;
+	}
 }
