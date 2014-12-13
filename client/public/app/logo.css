@@ -345,7 +345,7 @@ z-index: 99999
   left:50%
 }
 .navbar-header:hover .cube
- {
+{
     -webkit-animation:keepslowspin .5s linear infinite;
 }
 .cube,.cube li {
@@ -478,7 +478,7 @@ z-index: 99999
   -ms-animation:fastspin 10s ease-in-out infinite 2s;
   animation:fastspin 10s ease-in-out infinite 2s
 }
-.logo:hover .cube-inner {
+.navbar-header:hover .cube-inner {
     -webkit-animation:keepfastspin .5s linear infinite;
 }
 .cube-inner,.cube-inner li {
