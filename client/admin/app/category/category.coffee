@@ -8,8 +8,8 @@
 ])
 
 .controller('CategoryCtrl',
-["$scope", "ngDialog", "Categories", "messager", "tip"
-($scope, ngDialog, Categories, messager, tip) ->
+["$scope", "ngDialog", "Categories", "messager"
+($scope, ngDialog, Categories, messager) ->
   $scope.languages = config.languages
 
   load = ->

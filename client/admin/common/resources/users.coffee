@@ -17,4 +17,8 @@
       method: "POST"
       params:
         action:'logout'
+    updateUsername:
+      method: "POST"
+      params:
+        action:'update-username'
 ]

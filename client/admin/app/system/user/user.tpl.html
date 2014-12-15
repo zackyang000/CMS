@@ -1,0 +1,43 @@
+﻿<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home home-icon"></i>
+            <a href="/">Home</a>
+        </li>
+        <li>System</li>
+        <li class="active">Users</li>
+    </ul>
+</div>
+
+<div class="page-content user-page">
+    <div class="text-right">
+        <button class="btn btn-sm btn-info" ng-click="openAddDialog()">
+            <i class="fa fa-plus"></i>
+            Add
+        </button>
+    </div>
+    <div class="clearfix">
+        <div class="itemdiv memberdiv" ng-repeat="item in list | orderBy:'IsDisabled'">
+            <div class="user">
+                <img ng-src="{{item.Email | gravatar}}">
+            </div>
+            <div class="body">
+                <div>
+                    {{item.name}}
+                </div>
+                <div>
+                    <small class="grey">{{item.loginName}}</small>
+                </div>
+                <div>
+                    <span ng-if="!item.disabled" class="label label-success label-sm">Normal</span>
+                    <span ng-if="item.disabled" class="label label-danger label-sm arrowed-in arrowed-in-right">Disabled</span>
+                    <span>
+                        <button class="btn btn-minier bigger btn-info btn-no-border" ng-click="openEditDialog(item)">
+                            <i class="fa fa-pencil fa fa-only"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

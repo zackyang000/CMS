@@ -132,7 +132,19 @@ module.exports = (app) ->
     modelName: "User"
     auth:
       "POST,PUT,DELETE,GET": authAdminFn
+    actions:
+      'update-username':
+        handle: (req, res, next) ->
+          Article = mongoose.model("Article")
 
+          oldName = req.body.oldName
+          newName = req.body.newName
+          Article.find( {'meta.author': oldName }).exec (err, articles) ->
+            for article in articles
+              article.meta.author = newName
+              article.save()
+            res.send(202, "processing...")
+        auth: authAdminFn
 
 # Login, refresh user token.
   odata.functions.register
@@ -142,9 +154,7 @@ module.exports = (app) ->
       User = mongoose.model("User")
       name = req.body.name
       pwd = req.body.password
-      User.findOne(
-        password: pwd
-      ).or([{ loginName: name }, { email: name }]).exec (err, user) ->
+      User.findOne({password: pwd}).or([{ loginName: name }, { email: name }]).exec (err, user) ->
         unless user
           return res.send(401, "Failed to login.")
         user.token = crypto.createHash("md5").update(new Date() + pwd).digest("hex")
