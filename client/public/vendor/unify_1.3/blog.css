@@ -16,13 +16,13 @@
 	text-decoration: none;
 }
 
-.blog .blog-img { 
+.blog .blog-img {
 	margin: 20px 0;
 }
 
 /*Blog Content Tags*/
 .blog-post-tags {
-	padding: 5px 0 8px;
+	padding: 5px 0 3px;
 	margin-bottom: 10px;
 	border-top: solid 1px #eee;
 	border-bottom: solid 1px #eee;
@@ -50,7 +50,7 @@
 	font-size: 11px;
 	display: inline;
 	padding: 3px 7px;
-	margin-right: 2px;
+	margin-right: 5px;
 	background: #f4f4f4;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .blog-item .media h4.media-heading span {
-	top: 3px; 
+	top: 3px;
 	right: 0;
 	color: #777;
 	font-size: 12px;
