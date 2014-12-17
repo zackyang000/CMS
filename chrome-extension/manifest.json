@@ -14,5 +14,5 @@
     //"default_popup": "popup.html",
     "default_title": "Blog"
 	},
-	"permissions" : ["tabs","http://*/*","https://*/*"]
+	"permissions" : ["tabs","http://*/*","https://*/*", "storage"]
 }
