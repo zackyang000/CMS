@@ -6,7 +6,10 @@
         </h1>
         <ul class="pull-right breadcrumb">
             <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
-            <li ng-if="category"><a href="/list/{{category.url}}">{{category.name | i18n}}</a></li>
+
+            <li class="active" ng-if="!(params.tag || params.key)">{{category.name | i18n}}</li>
+            <li ng-if="params.tag"><a href="/list/{{category.url}}">{{category.name | i18n}}</a></li>
+
             <li class="active" ng-if="params.tag">{{'article.breadcrumb.tag' | translate:params}}</li>
             <li class="active" ng-if="params.key">{{'article.breadcrumb.key' | translate:params}}</li>
         </ul>
