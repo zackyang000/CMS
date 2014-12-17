@@ -11,7 +11,7 @@
           Categories.main (category) ->
             Articles.query
               $filter: "category eq '#{category.value[0].url}'"
-              $select: 'title,url,meta,description,date,category,tag'
+              $select: '_id,title,url,meta,description,date,category,tag'
               $top: 10
               $skip: ($route.current.params.p || 1) * 10 - 10
             ,(data)->
@@ -29,7 +29,7 @@
             $top: 10
             $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
-            $select: 'title,url,meta,description,date,category,tag'
+            $select: '_id,title,url,meta,description,date,category,tag'
           ,(data)->
             deferred.resolve data
           deferred.promise
@@ -46,7 +46,7 @@
             $top: 10
             $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
-            $select: 'title,url,meta,description,date,category,tag'
+            $select: '_id,title,url,meta,description,date,category,tag'
           ,(data)->
             deferred.resolve data
           deferred.promise
@@ -62,7 +62,7 @@
             $top: 10
             $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
-            $select: 'title,url,meta,description,date,category,tag'
+            $select: '_id,title,url,meta,description,date,category,tag'
           , (data)->
             deferred.resolve data
           deferred.promise
