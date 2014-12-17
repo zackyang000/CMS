@@ -43,6 +43,7 @@
       contentValidTxt:"请输入评论内容."
     sider:
       search: '搜索'
+      lastestComments: '最新评论'
   board:
     welcome:"欢迎"
     hide:"隐藏"

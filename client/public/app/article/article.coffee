@@ -4,6 +4,7 @@
   'article-detail'
   'article-archives'
   'article-sider-search'
+  'article-sider-comments'
 ])
 
 .filter "i18nCategory", ['dataCacheCategories', (dataCacheCategories) ->

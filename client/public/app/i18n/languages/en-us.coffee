@@ -43,6 +43,7 @@
       contentValidTxt:"Please input comment content."
     sider:
       search: 'Search'
+      lastestComments: 'Lastest Comments'
   board:
     welcome:"Welcome"
     hide:"Hide"
