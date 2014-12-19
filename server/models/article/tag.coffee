@@ -1,4 +1,3 @@
 module.exports =
-  Tag:
-    name: String
-    collections: {}
+  name: String
+  collections: []

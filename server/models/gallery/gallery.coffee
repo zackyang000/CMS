@@ -1,10 +1,9 @@
 module.exports =
-  Gallery:
-    url: String
-    name: Object
-    description: Object
-    cover: String
-    hidden: Boolean
-    date: Date
-    order: Number
-    photos : []
+  url: String
+  name: Object
+  description: Object
+  cover: String
+  hidden: Boolean
+  date: Date
+  order: Number
+  photos : []

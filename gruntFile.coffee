@@ -3,11 +3,8 @@
   debug = !grunt.option("release")
 
   grunt.initConfig
-    assets: do ->
-      assets = grunt.file.readJSON('assets.json')
-      #if debug
-        #assets.public.js.push ''
-      assets
+    assets: grunt.file.readJSON('assets.json')
+
     #server
     nodemon:
       server:

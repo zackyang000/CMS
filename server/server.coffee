@@ -8,6 +8,8 @@ mkdirp = require('mkdirp')
 errorHandler = require('errorhandler')
 morgan = require('morgan')
 
+odata = require("./odata")
+
 app = express()
 domainError = require("./middleware/domainError")
 
@@ -27,7 +29,7 @@ app.use errorHandler()
 #application init
 app.use(express["static"](path.join(__dirname, "./static")))
 
-require("./bootstrap/registerOData")(app)
+odata.setup(app, 'mongodb://localhost/cms-dev')
 
 #import test-data
 #require("./bootstrap/test-data/init")()
