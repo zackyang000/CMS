@@ -11,3 +11,6 @@ hidden全改为disable, 所有集合增加disable
 
 admin相册删除功能
 public相册显示照片数量
+user修改密码
+user删除
+调整init data
