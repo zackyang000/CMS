@@ -8,3 +8,6 @@
 hidden全改为disable, 所有集合增加disable
 增加rainbow
 后台生成gravatar
+
+admin相册删除功能
+public相册显示照片数量
