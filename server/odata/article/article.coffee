@@ -6,19 +6,35 @@ rss = require('../../services/rss')
 
 rest = {}
 
+rest.get =
+  after: (entity) ->
+    addViewCount(entity)
+
+rest.getAll =
+  after: (data) ->
+    if data.value.length == 1
+      addViewCount(data.value[0])
+
 rest.post =
   auth: auth.admin
-  after: (req, res) ->
-    Article = repository.get('article')
-    Article.find().sort(date: 'desc').limit(50).exec (err, data) ->
-      rss.generateArticles(data)
+  after: generateRss
 
 rest.put =
   auth: auth.admin
+  after: generateRss
 
 rest.delete =
   auth: auth.admin
+  after: generateRss
 
+addViewCount = (entity) ->
+  entity.meta.views = entity.meta.views || 0
+  entity.meta.views++
+  entity.save()
+
+generateRss = ->
+  repository.get('article').find().sort(date: 'desc').limit(50).exec (err, data) ->
+    rss.generateArticles(data)
 
 actions = {}
 
@@ -45,22 +61,6 @@ actions['/add-comment'] = (req, res, next) ->
                 if count == data.length
                   rss.generateComments(data)
             )(item)
-
-# 增加浏览量
-actions['/browsed'] = (req, res, next) ->
-  Article = repository.get('article')
-  Article.findOne
-    _id: req.params.id
-  , (err, article) ->
-    return next(err)  if err
-    return next new Error('Failed to load article ' + req.query.id)  unless article
-
-    article.meta.views = article.meta.views || 0
-    article.meta.views++
-    article.save (err) ->
-      if err
-        next(err)
-      res.send(200)
 
 
 module.exports =

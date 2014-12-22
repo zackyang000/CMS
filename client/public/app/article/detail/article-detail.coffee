@@ -72,9 +72,6 @@
       $scope.submitted=false
       $scope.loading = ""
 
-  #浏览量+1
-  Articles.browsed id: $scope.item._id
-
   $scope.edit = (item) ->
     $window.location.href = "#{config.url.admin}/article/#{item._id}"
 
