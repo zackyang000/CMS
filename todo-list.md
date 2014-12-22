@@ -9,8 +9,9 @@ hidden全改为disable, 所有集合增加disable
 增加rainbow
 后台生成gravatar
 
-admin相册删除功能
+相册删除功能
 public相册显示照片数量
 user修改密码
 user删除
 调整init data
+相册翻到第二页之后放大遮罩层有误

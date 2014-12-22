@@ -16,6 +16,13 @@ rest.post =
 
 rest.put =
   auth: auth.admin
+  after: (newEntity, oldEntity) ->
+    debugger
+    repository.get('article').find( {'meta.author': oldEntity.name }).exec (err, articles) ->
+      debugger
+      for article in articles
+        article.meta.author = newEntity.name
+        article.save()
 
 rest.delete =
   auth: auth.admin
@@ -25,13 +32,7 @@ actions = {}
 
 # 添加评论 todo: 改为user put after
 actions['/update-username'] = (req, res, next) ->
-  oldName = req.body.oldName
-  newName = req.body.newName
-  repository.get('article').find( {'meta.author': oldName }).exec (err, articles) ->
-    for article in articles
-      article.meta.author = newName
-      article.save()
-    res.send(202, "processing...")
+
 actions['/update-username'].auth = auth.admin
 
 

@@ -3,7 +3,7 @@ mongoose = require('node-odata').mongoose
 module.exports =
   get: (name) ->
     if name is 'article'
-      return mongoose.model('/article')
+      return mongoose.model('/articles')
     if name is 'comment'
       return mongoose.model('/comments')
     if name is 'category'

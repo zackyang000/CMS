@@ -11,17 +11,8 @@ angular.module('user-edit',[])
     if $scope.entity._id
       Users.update {id:$scope.entity._id}, $scope.entity
       ,(data)->
-        # 若改变用户名, 则需更新所有文章作者.
-        if $scope.$parent.entity.name != $scope.entity.name
-          params =
-            oldName : $scope.$parent.entity.name
-            newName : $scope.entity.name
-          Users.updateUsername params, (data) ->
-            messager.success "Edit user successfully."
-            $scope.closeThisDialog()
-        else
-          messager.success "Edit user successfully."
-          $scope.closeThisDialog()
+        messager.success "Edit user successfully."
+        $scope.closeThisDialog()
     else
       Users.save $scope.entity
       ,(data)->
