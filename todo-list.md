@@ -17,3 +17,6 @@ user删除
 相册翻到第二页之后放大遮罩层有误
 
 修改登陆token记录方式
+
+
+node-odata建立metadata, API function一览
