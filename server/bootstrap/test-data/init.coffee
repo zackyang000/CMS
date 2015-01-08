@@ -1,7 +1,6 @@
 fs = require("fs")
 appPath = process.cwd()
-mongoose = require("mongoose")
-User = mongoose.model("User")
+repository = require './../../repositories'
 
 initData = (model, path) ->
   require(appPath + path).forEach (item) ->
@@ -10,11 +9,11 @@ initData = (model, path) ->
     console.log "data init: #{path} import successful."
 
 module.exports = ->
-  User.find().exec (err, users) ->
-    unless users.length
-      initData(mongoose.model("User"), "/bootstrap/test-data/system/user.json")
-      initData(mongoose.model("Article"), "/bootstrap/test-data/article/article.json")
-      initData(mongoose.model("Category"), "/bootstrap/test-data/article/category.json")
-      initData(mongoose.model("Board"), "/bootstrap/test-data/board/board.json")
-      initData(mongoose.model("Tag"), "/bootstrap/test-data/common/tag.json")
-      initData(mongoose.model("Gallery"), "/bootstrap/test-data/photo/gallery.json")
+  repository.get('user').find().exec (err, users) ->
+    #unless users.length
+    initData(repository.get('user'), "/bootstrap/test-data/system/user.json")
+    initData(repository.get('article'), "/bootstrap/test-data/article/article.json")
+    initData(repository.get('category'), "/bootstrap/test-data/article/category.json")
+    initData(repository.get('board'), "/bootstrap/test-data/board/board.json")
+    #initData(repository.get('tag'), "/bootstrap/test-data/common/tag.json")
+    initData(repository.get('gallery'), "/bootstrap/test-data/photo/gallery.json")

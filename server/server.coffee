@@ -29,10 +29,10 @@ app.use errorHandler()
 #application init
 app.use(express["static"](path.join(__dirname, "./static")))
 
-odata.setup(app, 'mongodb://localhost/cms-dev')
+odata.setup(app, 'mongodb://localhost/cms-dev5')
 
 #import test-data
-#require("./bootstrap/test-data/init")()
+require("./bootstrap/test-data/init")()
 
 #start web server
 app.listen(process.env.PORT or 30002)

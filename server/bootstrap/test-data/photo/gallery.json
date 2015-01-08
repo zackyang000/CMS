@@ -1,6 +1,10 @@
 [
   {
-    "name": "MyPhotos",
+    "name": {
+      "zh-cn": "我的相册",
+      "en-us": "My album"
+    },
+    "url": "my-album",
     "description": "This is default gallery.",
     "cover": "/img/avatar.png",
     "hidden": false,

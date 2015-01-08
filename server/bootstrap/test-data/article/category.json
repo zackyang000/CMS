@@ -1,7 +1,12 @@
 [
   {
-    "name": "Default",
+    "name": {
+      "zh-cn": "默认",
+      "en-us": "Default"
+    },
+    "url": "default",
     "description": "This is a default category.",
-    "main": true
+    "main": true,
+    "disable": false
   }
 ]
