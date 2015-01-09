@@ -2,8 +2,7 @@ odata = require('node-odata')
 requires = require('./../utils/requires')
 
 module.exports =
-  setup : (app, conn) ->
-    odata.set('app', app)
+  setup : (conn) ->
     odata.set('db', conn)
 
     dirs = ['article', 'board', 'gallery', 'system']
