@@ -6,15 +6,18 @@ fs = require("fs")
 mkdirp = require('mkdirp')
 errorHandler = require('errorhandler')
 morgan = require('morgan')
+domainError = require("./middleware/domainError")
 
 odata = require("./odata")
 app = require("node-odata")._app
 express = require("node-odata")._express
 
-domainError = require("./middleware/domainError")
 
 createUploadDirectory = ->
-  mkdirp(item) for item in ['./static/upload/temp', './static/upload/gallery']
+  mkdirp(item) for item in [
+    './static/upload/temp'
+    './static/upload/gallery'
+  ]
 
 #express init
 createUploadDirectory()
