@@ -7,7 +7,7 @@
 .top ul.loginbar {
 	margin: 0;
 	padding: 0;
-	z-index: 9999;
+	z-index: 4000;
 	position: relative;
 }
 

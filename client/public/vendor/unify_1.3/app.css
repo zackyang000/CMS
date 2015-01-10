@@ -638,7 +638,7 @@ a.read-more:hover {
 ------------------------------------*/
 /*For Topbar*/
 .fancybox-overlay.fancybox-overlay-fixed {
-   z-index:9999;
+   z-index:5000;
 }
 
 /*FancyBox Hover Effect*/
