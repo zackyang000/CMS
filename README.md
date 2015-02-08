@@ -53,7 +53,7 @@ grunt
 
 It will automatically open a browser and connect to the server.
 
-Default administrator page: `/admin`, account: `admin` , password: `123`
+Default admin account: `admin` , password: `123`
 
 
 ## License
