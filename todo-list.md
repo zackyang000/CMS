@@ -8,7 +8,7 @@
 - 增加rainbow
 - 后台生成gravatar
 - 相册显示照片数量
-- 
+
 #### admin
 
 - 相册删除功能
