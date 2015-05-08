@@ -5,9 +5,6 @@ auth = require('../auth')
 
 rest = {}
 
-rest.post =
-  auth: auth.admin
-
 rest.put =
   auth: auth.admin
 
