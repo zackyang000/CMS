@@ -13,7 +13,7 @@
         scope.currentPage = count
         scope.setPage(count) if scope.setPage
       $http.get("template/odata-pager.html", {cache: $templateCache}).success (tplContent) ->
-         element.replaceWith($compile(tplContent.trim())(scope));
+         element.replaceWith($compile(tplContent.trim())(scope))
 
     scope.$watch attrs.zyOdataPager, (value) ->
       data=value

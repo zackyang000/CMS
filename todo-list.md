@@ -19,3 +19,5 @@
 #### code
 - 调整init data
 - config 改为 $config
+- 调整 odata 代码
+- server 端代码不需 _dist

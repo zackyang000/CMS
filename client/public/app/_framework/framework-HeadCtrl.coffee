@@ -8,7 +8,7 @@ angular.module("framework.controllers.head", [])
     $scope.currentCategoryUrl = categoryUrl || $scope.defaultCategoryUrl
 
   $scope.categories = dataCacheCategories
-  $scope.defaultCategoryUrl = category.url for category in $scope.categories when category.main
+  $scope.defaultCategoryUrl = (category.url for category in $scope.categories when category.main)
 
   $scope.isActiveCategory = (category) ->
     #home page
