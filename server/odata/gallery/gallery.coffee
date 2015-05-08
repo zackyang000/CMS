@@ -14,8 +14,8 @@ rest.put =
 rest.delete =
   auth: auth.admin
 
-odata.resources.register
-  url: '/galleries'
+module.exports =
+  url: 'galleries'
   model: model.gallery
   options:
     defaultOrderby: 'date desc'

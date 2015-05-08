@@ -51,7 +51,7 @@
             return middlewares
 
     open:
-      server:
+      app:
         url:'http://localhost:30000'
 
     watch:
@@ -218,6 +218,26 @@
           ]
           dest: '_dist/server'
         ]
+      'client-public-font':
+        files: [
+          expand: true
+          cwd: '_dist/client/public/vendor/fontawesome'
+          src: [
+            '*'
+          ]
+          dest: '_dist/client/public/vendor/fonts'
+        ]
+      'client-admin-font':
+        files: [
+          expand: true
+          cwd: '_dist/client/admin/vendor/fontawesome'
+          src: [
+            '*'
+          ]
+          dest: '_dist/client/admin/vendor/fonts'
+        ]
+
+
 
     bower:
       public:

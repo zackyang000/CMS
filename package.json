@@ -8,14 +8,14 @@
     "url": "https://github.com/TossShinHwa/CMS.git"
   },
   "engines": {
-    "node": "0.10.x",
-    "npm": "1.4.x"
+    "node": "0.12.x",
+    "npm": "2.5.x"
   },
   "scripts": {
     "start": "grunt"
   },
   "dependencies": {
-    "node-odata": "0.3.1",
+    "node-odata": "0.5.0",
     "grunt-cli": "0.1.11",
     "cors": "2.4.2",
     "errorhandler": "1.2.0",
@@ -43,7 +43,7 @@
     "grunt-concurrent": "0.5.0",
     "grunt-sails-linker": "0.9.2",
     "connect-livereload": "0.3.1",
-    "grunt-open": "0.2.2",
+    "grunt-open": "0.2.3",
     "grunt-newer": "0.6.0",
     "grunt-rev": "0.1.0",
     "grunt-text-replace": "0.3.10",

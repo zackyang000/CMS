@@ -64,7 +64,7 @@ actions['/add-comment'] = (req, res, next) ->
 
 
 module.exports =
-  url: '/articles'
+  url: 'articles'
   model: model.article
   options:
     defaultOrderby: 'date desc'

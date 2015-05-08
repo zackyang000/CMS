@@ -14,8 +14,8 @@ rest.put =
 rest.delete =
   auth: auth.admin
 
-odata.resources.register
-  url: '/categories'
+module.exports =
+  url: 'categories'
   model: model.category
   options:
     defaultOrderby: 'date desc'

@@ -1,17 +1,14 @@
 #dependencies
-cors = require('cors')
-http = require("http")
-path = require("path")
-fs = require("fs")
-mkdirp = require('mkdirp')
-errorHandler = require('errorhandler')
-morgan = require('morgan')
-domainError = require("./middleware/domainError")
+odata = require 'node-odata'
+cors = require 'cors'
+path = require "path"
+fs = require 'fs'
+mkdirp = require 'mkdirp'
+errorHandler = require 'errorhandler'
+morgan = require 'morgan'
+domainError = require './middleware/domainError'
 
-odata = require("./odata")
-app = require("node-odata")._app
-express = require("node-odata")._express
-
+server = odata('mongodb://localhost/cms')
 
 createUploadDirectory = ->
   mkdirp(item) for item in [
@@ -19,22 +16,22 @@ createUploadDirectory = ->
     './static/upload/gallery'
   ]
 
-#express init
+# odata init
 createUploadDirectory()
-app.use cors({ exposedHeaders: "authorization" })
-app.use express.bodyParser({uploadDir : path.join(path.dirname(__dirname), 'server/static/upload/temp')})
-app.use require("./middleware/authorization")
-app.use morgan("short")
-app.use domainError()
-app.use errorHandler()
+server.use cors exposedHeaders: "authorization"
+server.use odata.express.bodyParser({uploadDir : path.join(path.dirname(__dirname), 'server/static/upload/temp')})
+server.use require("./middleware/authorization")
+server.use morgan("short")
+server.use domainError()
+server.use errorHandler()
 
 #application init
-app.use(express["static"](path.join(__dirname, "./static")))
+server.use(odata.express["static"](path.join(__dirname, "./static")))
 
-odata.setup('mongodb://localhost/cms-dev')
+require('./odata').setup(server)
 
 #import test-data
 require("./bootstrap/test-data/init")()
 
 #start web server
-app.listen(process.env.PORT or 30002)
+server.listen(process.env.PORT or 30002)

@@ -14,8 +14,8 @@ rest.put =
 rest.delete =
   auth: auth.admin
 
-odata.resources.register
-  url: '/comments'
+module.exports =
+  url: 'comments'
   model: model.comment
   options:
     defaultOrderby: 'date desc'

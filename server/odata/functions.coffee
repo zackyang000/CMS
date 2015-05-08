@@ -1,4 +1,3 @@
-odata = require('node-odata')
 fs = require("fs")
 crypto = require("crypto")
 mkdirp = require('mkdirp')
@@ -6,9 +5,9 @@ gm = require('gm')
 auth = require('./auth')
 repository = require('../repositories')
 
-module.exports = ->
+module.exports = (server) ->
   # Login, refresh user token.
-  odata.functions.register
+  server.functions.register
     url: '/login'
     method: 'POST'
     handle: (req, res, next) ->
@@ -28,7 +27,7 @@ module.exports = ->
 
 
   # Auto-login valid by user token.
-  odata.functions.register
+  server.functions.register
     url: '/auto-login'
     method: 'POST'
     handle: (req, res, next) ->
@@ -41,7 +40,7 @@ module.exports = ->
 
 
   # Logout, remove user token.
-  odata.functions.register
+  server.functions.register
     url: '/logoff'
     method: 'POST'
     handle: (req, res, next) ->
@@ -57,7 +56,7 @@ module.exports = ->
           email: user.email
           disabled: user.disabled
 
-  odata.functions.register
+  server.functions.register
     url: '/file-upload'
     method: 'POST'
     auth: auth.admin

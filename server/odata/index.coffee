@@ -1,13 +1,10 @@
-odata = require('node-odata')
 requires = require('./../utils/requires')
 
 module.exports =
-  setup : (conn) ->
-    odata.set('db', conn)
-
+  setup : (server) ->
     dirs = ['article', 'board', 'gallery', 'system']
     for dir in dirs
       for item in requires("#{__dirname}/#{dir}") when item.url
-        odata.resources.register item
+        server.resources.register item
 
-    require('./functions')()
+    require('./functions')(server)

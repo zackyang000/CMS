@@ -34,8 +34,8 @@ actions['/update-username'] = (req, res, next) ->
 actions['/update-username'].auth = auth.admin
 
 
-odata.resources.register
-  url: '/users'
+module.exports =
+  url: 'users'
   model: model.user
   options:
     defaultOrderby: 'date desc'

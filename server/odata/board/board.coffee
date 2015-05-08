@@ -14,8 +14,8 @@ rest.put =
 rest.delete =
   auth: auth.admin
 
-odata.resources.register
-  url: '/board'
+module.exports =
+  url: 'board'
   model: model.board
   options:
     defaultOrderby: 'date desc'
