@@ -17,9 +17,7 @@ rest.post =
 rest.put =
   auth: auth.admin
   after: (newEntity, oldEntity) ->
-    debugger
     repository.get('article').find( {'meta.author': oldEntity.name }).exec (err, articles) ->
-      debugger
       for article in articles
         article.meta.author = newEntity.name
         article.save()
