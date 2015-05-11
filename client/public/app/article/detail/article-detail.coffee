@@ -54,7 +54,7 @@
 
     ngProgress.start()
     $scope.loading = $translate("global.post")
-    $scope.entity.id = $scope.item._id
+    $scope.entity.id = $scope.item.id
     $scope.entity.date = new Date()
     Articles.addComment $scope.entity
     , (data)->
