@@ -8,13 +8,13 @@ angular.module('user-edit',[])
 
   $scope.save = ->
     tip.show("Saving")
-    if $scope.entity._id
-      Users.update {id:$scope.entity._id}, $scope.entity
+    if $scope.entity.id
+      Users.put {id:$scope.entity.id}, $scope.entity
       ,(data)->
         messager.success "Edit user successfully."
         $scope.closeThisDialog()
     else
-      Users.save $scope.entity
+      Users.post $scope.entity
       ,(data)->
         messager.success "Add user successfully."
         $scope.closeThisDialog()

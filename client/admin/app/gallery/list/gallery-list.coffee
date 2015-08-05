@@ -7,7 +7,7 @@
     resolve :
       galleries : ["$q", "Galleries", ($q, Galleries)->
         deferred = $q.defer()
-        Galleries.query (data) ->
+        Galleries.list (data) ->
           deferred.resolve data.value
         deferred.promise
       ]

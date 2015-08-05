@@ -5,8 +5,8 @@
             <a href="/">Home</a>
         </li>
         <li><a href="/gallery">Gallery</a></li>
-        <li class="active" ng-hide="entity._id">New</li>
-        <li class="active" ng-show="entity._id">Edit (<span>{{ ::entity.name }}</span>)</li>
+        <li class="active" ng-hide="entity.id">New</li>
+        <li class="active" ng-show="entity.id">Edit (<span>{{ ::entity.name }}</span>)</li>
     </ul>
 </div>
 
@@ -54,7 +54,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="form-group" ng-if="entity._id">
+                <div class="form-group" ng-if="entity.id">
                     <label class="col-lg-1 control-label">Cover</label>
                     <div class="col-lg-11">
                         <div ng-hide="entity.cover">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </tab>
-        <tab heading="Photos" ng-if="entity._id">
+        <tab heading="Photos" ng-if="entity.id">
             <div ng-hide="uploadPhoto">
                 <div class="clearfix form-group">
                     <button type="button" class="btn btn-primary pull-right" ng-click="changeUploadStatus()">

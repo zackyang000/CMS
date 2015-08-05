@@ -10,7 +10,7 @@
 .controller('ArticleListCtrl',
 ['$scope', "Articles", ($scope, Articles) ->
   $scope.setPage = (pageNo) ->
-    Articles.query
+    Articles.list
       $skip: (pageNo - 1) * 10
       $top: 10
       $count: true

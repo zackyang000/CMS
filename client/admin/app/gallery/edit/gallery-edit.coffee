@@ -13,10 +13,8 @@
       resolve:
         gallery: ["$q", "$route", "Galleries", ($q, $route, Galleries)->
           deferred = $q.defer()
-          Galleries.get
-            $filter: "_id eq '#{$route.current.params.id}'"
-          ,(data) ->
-            deferred.resolve data.value[0]
+          Galleries.get {id: $route.current.params.id} ,(data) ->
+            deferred.resolve data
           deferred.promise
         ]
 ])
@@ -54,11 +52,11 @@
     entity = $scope.entity
     entity.date = new Date()
     if !$routeParams.id
-      Galleries.save entity, (data)->
+      Galleries.post entity, (data)->
         messager.success "Save successfully."
-        $location.path("gallery/#{data._id}")
+        $location.path("gallery/#{data.id}")
     else
-      Galleries.update {id:"#{entity._id}"},entity,(data)->
+      Galleries.put {id:"#{entity.id}"},entity,(data)->
         messager.success "Save successfully."
 
   $scope.changeUploadStatus = ->

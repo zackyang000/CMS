@@ -18,9 +18,9 @@
 ])
 
 .controller('ArticleEditCtrl',
-["$scope","$routeParams","$window","$rootScope","$fileUploader","Articles","Categories","$timeout","TranslateService", "messager", "context"
-($scope,$routeParams,$window,$rootScope,$fileUploader,Articles,Categories,$timeout,TranslateService, messager, context) ->
-  Categories.query (categories) ->
+["$scope","$routeParams","$window","$location","$rootScope","$fileUploader","Articles","Categories","$timeout","TranslateService", "messager", "context"
+($scope,$routeParams,$window,$location,$rootScope,$fileUploader,Articles,Categories,$timeout,TranslateService, messager, context) ->
+  Categories.list (categories) ->
     $scope.categories = categories.value
     if $routeParams.id
       Articles.get
@@ -55,21 +55,19 @@
     if $scope.tags
       $scope.entity.meta.tags = $scope.tags.split(',')
 
-    if !$routeParams.id
-      Articles.save entity
-      ,(data) ->
+    if $routeParams.id
+      Articles.put entity, (data) ->
         $window.location.href = "#{config.url.public}/post/#{data.url}"
     else
-      Articles.update {id: $routeParams.id}, entity
-      ,(data)->
+      Articles.post entity, (data) ->
         $window.location.href = "#{config.url.public}/post/#{data.url}"
 
   $scope.remove = ->
     messager.confirm ->
       entity=$scope.entity
-      Articles.delete { id: entity._id }, (data)->
+      Articles.delete { id: entity.id }, (data)->
         messager.success "Delete post successfully."
-        $window.location.href = "article"
+        $location.path("/article")
 
   #上传图片
   $scope.uploader = $fileUploader.create

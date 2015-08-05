@@ -8,21 +8,20 @@
     #server
     nodemon:
       server:
-        script: "server-launcher.js"
+        script: "index.js"
         options:
           args: []
           ext: "js,json,html"
-          nodeArgs: ["--debug"]
           delayTime: 1
           env:
-            PORT: 30002
+            PORT: 40002
           cwd: '_dist/server'
 
     #client
     connect:
       public:
         options:
-          port: 30000
+          port: 40000
           hostname: 'localhost'
           base:'_dist/client/public'
           middleware:  (connect, options) ->
@@ -30,14 +29,13 @@
             middlewares.push(require('connect-modrewrite')([
               '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
             ]))
-            require('connect-livereload') port:30005
+            require('connect-livereload') port:40005
             options.base.forEach (base) ->
               middlewares.push(connect.static(base))
             return middlewares
-
       admin:
         options:
-          port: 30001
+          port: 40001
           hostname: 'localhost'
           base:'_dist/client/admin'
           middleware:  (connect, options) ->
@@ -45,18 +43,18 @@
             middlewares.push(require('connect-modrewrite')([
               '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
             ]))
-            require('connect-livereload') port:30005
+            require('connect-livereload') port:40005
             options.base.forEach (base) ->
               middlewares.push(connect.static(base))
             return middlewares
 
     open:
       app:
-        url:'http://localhost:30000'
+        url:'http://localhost:40000'
 
     watch:
       options:
-        livereload: 30003
+        livereload: 40003
       clientFile:
         files: ['client/**/*','!client/**/*.coffee','!client/**/*.less']
         tasks: ['newer:copy:client','sails-linker','replace:livereload']
@@ -289,7 +287,7 @@
         overwrite: true
         replacements: [
           from: '<!--LIVERELOAD-->'
-          to: '<script src="//localhost:30003/livereload.js"></script>'
+          to: '<script src="//localhost:40003/livereload.js"></script>'
         ]
 
     concurrent:
@@ -324,6 +322,7 @@
 
   grunt.registerTask "default", [
     'build'
-    'connect'
+    'connect:public'
+    'connect:admin'
     'concurrent'
   ]

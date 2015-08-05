@@ -16,7 +16,7 @@
       resolve:
         articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
-          Articles.query
+          Articles.list
             $select: 'title, url, date, category'
             $top: 1000
           ,(data)->

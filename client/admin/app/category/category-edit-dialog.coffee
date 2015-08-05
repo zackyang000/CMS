@@ -7,13 +7,14 @@ angular.module('category-edit',[])
 
   $scope.save = ->
     tip.show("Saving")
-    if $scope.entity._id
-      Categories.update {id:$scope.entity._id}, $scope.entity
+    if $scope.entity.id
+      debugger
+      Categories.put $scope.entity
       ,(data)->
         messager.success "Edit category successfully."
         $scope.closeThisDialog()
     else
-      Categories.save $scope.entity
+      Categories.post $scope.entity
       ,(data)->
         messager.success "Add category successfully."
         $scope.closeThisDialog()

@@ -13,7 +13,7 @@
   $scope.languages = config.languages
 
   load = ->
-    Categories.query (data)->
+    Categories.list (data)->
       $scope.list = data.value
 
   $scope.openAddDialog = ()->
@@ -34,7 +34,7 @@
   $scope.remove = (item)->
     messager.confirm ->
       tip.show("Deleting")
-      Categories.delete {id:item._id}
+      Categories.delete {id:item.id}
       , (data) ->
         messager.success "Delete channel successfully."
         load()

@@ -1,10 +1,6 @@
 ﻿angular.module("resource.users", ["ngResource"])
-.factory "Users", ['$resource', ($resource) ->
-  $resource "#{config.url.api}/users/:id/:action", {id:'@id'},
-    query:
-      method: "GET"
-    update:
-      method: "PUT"
+.factory "Users", ['odataResource', (odataResource) ->
+  odataResource "#{config.url.api}/user",
     autoSignin:
       method: "POST"
       params:
@@ -17,8 +13,4 @@
       method: "POST"
       params:
         action:'logout'
-    updateUsername:
-      method: "POST"
-      params:
-        action:'update-username'
 ]

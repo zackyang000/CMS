@@ -9,9 +9,9 @@
         articles: ['$route', '$q', 'Articles', 'Categories', ($route, $q, Articles, Categories) ->
           deferred = $q.defer()
           Categories.main (category) ->
-            Articles.query
+            Articles.list
               $filter: "category eq '#{category.value[0].url}'"
-              $select: '_id,title,url,meta,description,date,category,tag'
+              $select: 'id,title,url,meta,description,date,category,tag'
               $top: 10
               $skip: ($route.current.params.p || 1) * 10 - 10
             ,(data)->
@@ -24,12 +24,12 @@
       resolve:
         articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
-          Articles.query
+          Articles.list
             $filter: "category eq '#{$route.current.params.category}'" #todo 不支持tag查询
             $top: 10
             $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
-            $select: '_id,title,url,meta,description,date,category,tag'
+            $select: 'id,title,url,meta,description,date,category,tag'
           ,(data)->
             deferred.resolve data
           deferred.promise
@@ -41,12 +41,12 @@
       resolve:
         articles: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
-          Articles.query
+          Articles.list
             $filter: "category eq '#{$route.current.params.category}'"
             $top: 10
             $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
-            $select: '_id,title,url,meta,description,date,category,tag'
+            $select: 'id,title,url,meta,description,date,category,tag'
           ,(data)->
             deferred.resolve data
           deferred.promise
@@ -57,12 +57,12 @@
       resolve:
         articles: ['$route','$q','Articles',($route,$q,Articles)->
           deferred = $q.defer()
-          Articles.query
+          Articles.list
             $filter:"indexof(title,'#{$route.current.params.key}') gt -1"
             $top: 10
             $skip: ($route.current.params.p || 1) * 10 - 10
             $count: true
-            $select: '_id,title,url,meta,description,date,category,tag'
+            $select: 'id,title,url,meta,description,date,category,tag'
           , (data)->
             deferred.resolve data
           deferred.promise
@@ -101,5 +101,5 @@
     $location.search({p: pageNo})
 
   $scope.edit = (item) ->
-    $window.location.href = "#{config.url.admin}/article/#{item._id}"
+    $window.location.href = "#{config.url.admin}/article/#{item.id}"
 ])

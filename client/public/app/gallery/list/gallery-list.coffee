@@ -9,7 +9,7 @@
       resolve:
         galleries: ['$q','Galleries',($q,Galleries)->
           deferred = $q.defer()
-          Galleries.query
+          Galleries.list
             $top: 1000
             $select: 'url, name, description, cover, hidden'
             $orderby: 'order'

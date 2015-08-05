@@ -8,7 +8,7 @@
       resolve:
         article: ['$route', '$q', 'Articles', ($route, $q, Articles) ->
           deferred = $q.defer()
-          Articles.query
+          Articles.list
             $filter: "url eq '#{$route.current.params.url}'"
           , (data) ->
             deferred.resolve(data.value[0])
@@ -73,13 +73,13 @@
       $scope.loading = ""
 
   $scope.edit = (item) ->
-    $window.location.href = "#{config.url.admin}/article/#{item._id}"
+    $window.location.href = "#{config.url.admin}/article/#{item.id}"
 
   $scope.remove = (item, index) ->
     messager.confirm ->
       $scope.item.comments.splice(index, 1)
       $scope.item.meta.comments--
-      Articles.update {id: $scope.item._id}, $scope.item, (item) ->
+      Articles.put {id: $scope.item.id}, $scope.item, (item) ->
         messager.success "Comment has been removed."
         $scope.item = item
 ])

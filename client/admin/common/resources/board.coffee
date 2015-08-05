@@ -1,7 +1,7 @@
 ﻿angular.module("resource.board", ["ngResource"])
-.factory "Board", ['$resource', ($resource) ->
-  $resource "#{config.url.api}/board/:id/:action", {id:'@id'},
-    query:
+.factory "Board", ['odataResource', (odataResource) ->
+  odataResource "#{config.url.api}/board",
+    list:
       method: "GET"
       params:
         $orderby: 'date desc'

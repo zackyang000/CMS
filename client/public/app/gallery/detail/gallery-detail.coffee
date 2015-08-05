@@ -8,7 +8,7 @@
       resolve:
         gallery: ['$route', '$q', 'Galleries', ($route, $q, Galleries) ->
           deferred = $q.defer()
-          Galleries.query
+          Galleries.list
             $filter: "url eq '#{$route.current.params.id}'"
           , (data) ->
             deferred.resolve data.value[0]

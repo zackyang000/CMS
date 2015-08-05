@@ -7,7 +7,7 @@
     resolve :
       users : ["$q", "Users", ($q, Users)->
         deferred = $q.defer()
-        Users.query (data) ->
+        Users.list (data) ->
           deferred.resolve data.value
         deferred.promise
       ]
@@ -19,7 +19,7 @@
   $scope.list = users
 
   load = ->
-    Users.query (data) ->
+    Users.list (data) ->
       $scope.list = data.value
 
   $scope.openAddDialog = ()->

@@ -59,8 +59,10 @@
 }
 
 .ngdialog.ngdialog-theme-default {
-  padding-bottom: 160px;
-  padding-top: 160px;
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  margin-left: -300px;
 }
 
 .ngdialog.ngdialog-theme-default.ngdialog-closing .ngdialog-content {

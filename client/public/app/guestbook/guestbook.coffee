@@ -9,7 +9,7 @@
       resolve:
         messages: ['$q','Board',($q, Board)->
           deferred = $q.defer()
-          Board.query
+          Board.list
             $top: 10000
           ,(data) ->
             deferred.resolve data.value

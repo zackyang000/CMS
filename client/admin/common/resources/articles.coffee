@@ -1,12 +1,10 @@
 ﻿angular.module("resource.articles", ["ngResource"])
-.factory "Articles", ['$resource', ($resource) ->
-  $resource "#{config.url.api}/articles/:id/:action", {id:'@id'},
-    query:
+.factory "Articles", ['odataResource', (odataResource) ->
+  odataResource "#{config.url.api}/article",
+    list:
       method: "GET"
       params:
         $orderby: 'date desc'
-    update:
-      method: "PUT"
     addComment:
       method: "POST"
       params:

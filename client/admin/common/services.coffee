@@ -5,4 +5,5 @@ angular.module "zy.services",
   'zy.services.security'
   'zy.services.context'
   'zy.services.version'
+  'zy.services.odataResource'
 ]

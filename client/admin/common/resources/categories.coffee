@@ -1,11 +1,11 @@
 ﻿angular.module("resource.categories", ["ngResource"])
-.factory "Categories", ['$resource', ($resource) ->
-  $resource "#{config.url.api}/categories/:id/:action", {id:'@id'},
-    query:
+.factory "Categories", ['odataResource', (odataResource) ->
+  odataResource "#{config.url.api}/category",
+    list:
       method: "GET"
-    update:
-      method: "PUT"
     main:
+      url: "#{config.url.api}/category"
+      cache: true
       method: "GET"
       params:
         $filter: 'main eq true'

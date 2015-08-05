@@ -13,7 +13,7 @@ config.url =
   admin: "http://#{config.host.admin}"
   feed: "http://#{config.host.feed}"
   img: "http://#{config.host.img}"
-  api: "http://#{config.host.api}/oData"
+  api: "http://#{config.host.api}"
 
 config.site =
   name: 'Zack Yang'
