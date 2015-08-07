@@ -1,0 +1,10 @@
+﻿{
+  "dependencies": {
+    "express": "4.13.3",
+    "consolidate": "0.13.1",
+    "handlebars": "3.0.3",
+    "request": "2.60.0"
+  },
+  "devDependencies": {
+  }
+}

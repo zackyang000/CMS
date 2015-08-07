@@ -85,20 +85,6 @@
           dest: '_dist/client/'
           ext: '.js'
         ]
-      'client-public-config':
-        files: [
-          expand: true
-          src: if debug then 'config/config.dev.coffee' else 'config/config.prd.coffee'
-          dest: '_dist/client/public'
-          ext: '.js'
-        ]
-      'client-admin-config':
-        files: [
-          expand: true
-          src: if debug then 'config/config.dev.coffee' else 'config/config.prd.coffee'
-          dest: '_dist/client/admin'
-          ext: '.js'
-        ]
 
     less:
       client:
@@ -233,6 +219,20 @@
             '*'
           ]
           dest: '_dist/client/admin/vendor/fonts'
+        ]
+      'client-public-config':
+        files: [
+          expand: true
+          src: if debug then 'config/config.dev.js' else 'config/config.prd.js'
+          dest: '_dist/client/public'
+          ext: '.js'
+        ]
+      'client-admin-config':
+        files: [
+          expand: true
+          src: if debug then 'config/config.dev.js' else 'config/config.prd.js'
+          dest: '_dist/client/admin'
+          ext: '.js'
         ]
 
 
