@@ -4,8 +4,6 @@ auth = require('../auth')
 
 module.exports = Resource('board', model.board)
 .orderBy('date desc')
-.post()
-  .auth(auth.admin)
 .put()
   .auth(auth.admin)
 .delete()

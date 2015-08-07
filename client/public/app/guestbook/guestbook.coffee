@@ -38,7 +38,7 @@
     ngProgress.start()
     $scope.loading = $translate("global.post")
     $scope.entity.date = new Date()
-    Board.save $scope.entity
+    Board.post $scope.entity
     , (data)->
       $scope.messages.push(data)
       $scope.entity.content = ""
