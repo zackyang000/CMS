@@ -11,7 +11,7 @@ app.set('views', __dirname + '/views');
 
 app.get('/', function(req, res){
   request({ url: 'http://localhost:40002/article?$top=10&$select=title,date', json: true }, function(error, response, body) {
-    res.render('index', { articles: body.value });
+    res.render('index', body.value);
   });
 });
 
