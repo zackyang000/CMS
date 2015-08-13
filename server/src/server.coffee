@@ -36,4 +36,5 @@ server.use require('./functions/upload')
 server.listen(process.env.PORT or 40002, ->
   # import data
   require('./bootstrap/init-data').import()
+  console.log("services has be started at localhost:40002")
 )

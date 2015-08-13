@@ -1,0 +1,15 @@
+{
+  "name": "Zack Yang",
+  "author": "Zack Yang",
+  "host": {
+    "public": "zackyang.com",
+    "admin": "admin.zackyang.com",
+    "feed": "feed.zackyang.com",
+    "image": "img.zackyang.com",
+    "api": "api.zackyang.com"
+  },
+  "languages": {
+    "English": "en-us",
+    "中文": "zh-cn"
+  }
+}
