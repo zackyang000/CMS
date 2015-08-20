@@ -12,8 +12,6 @@
           watch: '.'
           args: []
           ext: "js,json,html"
-          env:
-            PORT: 40002
           cwd: '_dist'
 
     clean:
@@ -34,17 +32,16 @@
         files: [
           expand: true
           cwd: ''
-          src: [
-            'package.json'
-          ]
+          src: 'package.json'
           dest: '_dist'
         ]
       configFile:
         files: [
           expand: true
-          src: if debug then '../config/config.dev.json' else 'config/config.prd.json'
-          dest: '_dist'
-          ext: '.js'
+          cwd: ''
+          src: if debug then '../config.dev.json' else '../config.prd.json'
+          dest: '_dist/_dist'
+          ext: '.json'
         ]
 
     watch:
