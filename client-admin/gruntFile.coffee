@@ -5,34 +5,7 @@
   grunt.initConfig
     assets: grunt.file.readJSON('assets.json')
 
-    #server
-    nodemon:
-      server:
-        script: "index.js"
-        options:
-          args: []
-          ext: "js,json,html"
-          delayTime: 1
-          env:
-            PORT: 40002
-          cwd: '_dist/server'
-
-    #client
     connect:
-      public:
-        options:
-          port: 40000
-          hostname: 'localhost'
-          base:'_dist/client/public'
-          middleware:  (connect, options) ->
-            middlewares = []
-            middlewares.push(require('connect-modrewrite')([
-              '!\\.html|\\.js|\\.css|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|\\.jpg|\\.bmp|\\.gif|\\.png|\\.txt$ /index.html'
-            ]))
-            require('connect-livereload') port:40005
-            options.base.forEach (base) ->
-              middlewares.push(connect.static(base))
-            return middlewares
       admin:
         options:
           port: 40001
