@@ -70,9 +70,6 @@
         ]
 
     uglify:
-      #options:
-        #mangle: false
-        #beautify: true
       production:
         files:
           '_dist/client/public/index.js': ["<%= assets.public.js %>"]
