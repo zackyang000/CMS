@@ -72,13 +72,11 @@
     uglify:
       production:
         files:
-          '_dist/client/public/index.js': ["<%= assets.public.js %>"]
           '_dist/client/admin/index.js': ["<%= assets.admin.js %>"]
 
     cssmin:
       production:
         files:
-          '_dist/client/public/index.css': ["<%= assets.public.css %>"]
           '_dist/client/admin/index.css': ["<%= assets.admin.css %>"]
 
     imagemin:
@@ -91,22 +89,6 @@
         ]
 
     'sails-linker':
-      'public-js':
-        options:
-          startTag: "<!--SCRIPTS-->"
-          endTag: "<!--SCRIPTS END-->"
-          fileTmpl:  if debug then "<script src='/%s\'><\/script>" else "<script src='/%s?v=#{+new Date()}\'><\/script>"
-          appRoot: "_dist/client/public/"
-        files:
-          '_dist/client/public/index.html': if debug then ["<%= assets.public.js %>"] else "_dist/client/public/index.js"
-      'public-css':
-        options:
-          startTag: "<!--STYLES-->"
-          endTag: "<!--STYLES END-->"
-          fileTmpl: if debug then "<link href='/%s' rel='stylesheet' />" else "<link href='/%s?v=#{+new Date()}' rel='stylesheet' />"
-          appRoot: "_dist/client/public/"
-        files:
-          '_dist/client/public/index.html': if debug then ["<%= assets.public.css %>"] else "_dist/client/public/index.css"
       'admin-js':
         options:
           startTag: "<!--SCRIPTS-->"
