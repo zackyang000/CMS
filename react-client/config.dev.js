@@ -1,5 +1,5 @@
 export default {
   isProduction: false,
   enableDevTools: false,
-  apiRoot: '',
+  apiRoot: 'http://api.zackyang.com',
 };
