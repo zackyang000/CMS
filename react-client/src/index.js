@@ -4,7 +4,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
-import createStore from './onekit/store/store';
 import createRoutes from './routes';
 import reducers from './app/reducers';
 import config from './config';
