@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './onekit/containers/App';
+import App from './app/framework/containers/App';
 import Home from './app/home/containers/Home';
 
 export default function() {
