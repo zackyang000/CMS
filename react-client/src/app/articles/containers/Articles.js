@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import * as actions from '../redux/articles';
+import * as actions from '../../redux/articles';
 import ArticlesList from '../components/ArticlesList';
 
 @connect(state => state.articles, actions)
