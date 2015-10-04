@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import createRoutes from './routes';
-import reducers from './app/reducers';
+import reducers from './redux/index';
 import config from './config';
 
 const store = createStore(reducers, config);
