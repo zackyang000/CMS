@@ -4,7 +4,7 @@ export function fetchArticles() {
   return (dispatch, getState) => {
     return dispatch({
       type: FETCH_ARTICLES,
-      promise: (request) => request.get(`/articles`)
+      promise: (request) => request.get(`/articles?$top=10&$select=title,date`)
     });
   };
 }
