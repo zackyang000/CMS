@@ -24,7 +24,7 @@ export default function reducer(state = initState, action) {
         case 'success':
           return {
             ...state,
-            articles: action.data,
+            articles: action.result.value,
         }
     }
     default:
