@@ -10,7 +10,9 @@ export default function requestMiddleware(apiRoot) {
       }
 
       const { promise, type, ...params } = action;
+
       if (!promise) {
+        action.readyState = 'success';
         return next(action);
       }
 
