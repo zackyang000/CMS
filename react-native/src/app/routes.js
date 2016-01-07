@@ -1,5 +1,6 @@
 import App from './framework/App';
 import Home from './home/containers/Home';
+import Post from './home/containers/Post';
 
 export default class Routes {
   static initialRoute = {
@@ -18,6 +19,10 @@ export default class Routes {
     }
   }
 
+  pop() {
+    this.navigator.pop();
+  }
+
   getCurrentRoute() {
     let routeList = this.navigator.getCurrentRoutes();
     return routeList[routeList.length - 1];
@@ -32,6 +37,14 @@ export default class Routes {
       id: 'home',
       title: '最新',
       component: Home
+    });
+  }
+
+  toPost() {
+    this.push({
+      id: 'post',
+      title: '文章列表',
+      component: Post
     });
   }
 }

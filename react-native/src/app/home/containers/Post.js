@@ -1,25 +1,15 @@
 import React, { Component, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default class App extends Component {
-  toPost() {
-    this.props.router.toPost();
+  toHome() {
+    this.props.router.pop();
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-        <TouchableOpacity onPress={this.toPost.bind(this)}>
-            <Text>Go!!</Text>
+        <TouchableOpacity onPress={this.toHome.bind(this)}>
+            <Text>Back</Text>
         </TouchableOpacity>
       </View>
     );
