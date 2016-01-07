@@ -2,7 +2,7 @@ import React, { Component, StyleSheet, Text, View, TouchableOpacity } from 'reac
 
 export default class App extends Component {
   toPost() {
-    this.props.router.toPost();
+    this.props.router.push('post');
   }
 
   render() {

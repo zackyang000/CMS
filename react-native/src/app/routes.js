@@ -4,17 +4,29 @@ import Post from './home/containers/Post';
 
 export default class Routes {
   static initialRoute = {
-    name: 'Home',
+    name: '首页',
     component: Home,
+  };
+
+  static routes = {
+    home: {
+      name: '首页',
+      component: Home,
+    },
+    post: {
+      name: '最新文章',
+      component: Post,
+    }
   };
 
   constructor(navigator) {
     this.navigator = navigator;
   }
 
-  push(route) {
-    let currentRoute = this.getCurrentRoute();
-    if (route.id !== currentRoute.id) {
+  push(name) {
+    const route = Routes.routes[name];
+    const currentRoute = this.getCurrentRoute();
+    if (route.name !== currentRoute.name) {
       this.navigator.push(route);
     }
   }
@@ -24,27 +36,11 @@ export default class Routes {
   }
 
   getCurrentRoute() {
-    let routeList = this.navigator.getCurrentRoutes();
+    const routeList = this.navigator.getCurrentRoutes();
     return routeList[routeList.length - 1];
   }
 
   isCurrentRoute(routeId) {
     return routeId === getCurrentRoute().id;
-  }
-
-  toHome() {
-    this.push({
-      id: 'home',
-      title: '最新',
-      component: Home
-    });
-  }
-
-  toPost() {
-    this.push({
-      id: 'post',
-      title: '文章列表',
-      component: Post
-    });
   }
 }
