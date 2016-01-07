@@ -12,9 +12,6 @@ var environment = {
   }
 }[process.env.NODE_ENV || 'development'];
 
-module.exports = Object.assign({
-  port: 5000,
-  //publicPath: 'http://xxx/{name}/{version}',
-  theme: { cuz: '1.3.5' },
-  html5Mode: true
-}, environment);
+module.exports = { 
+  platform: 'mobile'
+};

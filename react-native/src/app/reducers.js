@@ -1,6 +1,6 @@
-import { reducer as formReducer } from 'redux-form';
+import {default as home} from './home/redux/home';
 
 export default {
-  form: formReducer,
+  home
 };
 

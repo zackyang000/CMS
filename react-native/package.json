@@ -1,12 +1,7 @@
 {
   "name": "CMS",
   "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "react-native start"
-  },
   "dependencies": {
-    "cuz": "0.1.9",
-    "react-native": "^0.17.0"
+    "cuz": "0.1.9"
   }
 }
