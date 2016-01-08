@@ -1,10 +1,16 @@
-import React, { Component, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React, { Component, StyleSheet, Text, View, ListView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux/native';
 import * as actions from '../redux/posts';
 
 const App  = class App extends Component {
+  constructor(props) {
+    super(props);
+    this.dataSource = new ListView.DataSource({
+      rowHasChanged: (row1, row2) => row1 !== row2,
+    });
+  }
+
   componentDidMount() {
-    console.log(this.props);
     this.props.fetchPosts();
   }
 
@@ -12,11 +18,25 @@ const App  = class App extends Component {
     this.props.router.pop();
   }
 
-  render() {
-    const { posts } = this.props;
-    console.log(posts);
+  renderPost(post) {
     return (
       <View style={styles.container}>
+        <View style={styles.rightContainer}>
+          <Text style={styles.title}>{post.title}</Text>
+        </View>
+      </View>
+    );
+  }
+
+  render() {
+    const { posts } = this.props;
+    return (
+      <View style={styles.container}>
+        <ListView
+          dataSource={this.dataSource.cloneWithRows(posts)}
+          renderRow={this.renderPost}
+          style={styles.listView}
+        />
         <TouchableOpacity onPress={this.toHome.bind(this)}>
             <Text>Back</Text>
         </TouchableOpacity>
@@ -32,15 +52,14 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  listView: {
+    paddingTop: 30,
+    backgroundColor: '#F5FCFF',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  title: {
+    fontSize: 10,
+    marginBottom: 8,
+    textAlign: 'left',
   },
 });
 
