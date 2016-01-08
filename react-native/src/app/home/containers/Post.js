@@ -1,11 +1,20 @@
 import React, { Component, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux/native';
+import * as actions from '../redux/posts';
 
-export default class App extends Component {
+const App  = class App extends Component {
+  componentDidMount() {
+    console.log(this.props);
+    this.props.fetchPosts();
+  }
+
   toHome() {
     this.props.router.pop();
   }
 
   render() {
+    const { posts } = this.props;
+    console.log(posts);
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this.toHome.bind(this)}>
@@ -35,4 +44,4 @@ var styles = StyleSheet.create({
   },
 });
 
-
+export default connect(state => state.posts, actions)(App);
