@@ -5,7 +5,7 @@ const FETCH_POSTS = 'fetch posts';
 export function fetchPosts() {
   return {
     type: FETCH_POSTS,
-    promise: (request) => request.get(`/articles?$top=10&$select=title&$orderby=date desc`)
+    promise: (request) => request.get(`/articles?$top=50&$select=title, meta.author, date&$orderby=date desc`)
   };
 }
 
