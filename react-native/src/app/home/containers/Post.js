@@ -3,6 +3,7 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 import { connect } from 'react-redux/native';
 import * as actions from '../redux/posts';
+import Header from '../../framework/Header';
 
 const App  = class App extends Component {
   constructor(props) {
@@ -47,15 +48,20 @@ const App  = class App extends Component {
     const { posts } = this.props;
     return (
       <View style={styles.container}>
+        <View style={styles.header}>
+          <Header />
+        </View>
         <ListView
           dataSource={this.dataSource.cloneWithRows(posts)}
           renderRow={this.renderPost}
           style={styles.listView}
           initialListSize={4}
         />
-        <TouchableOpacity onPress={this.toHome.bind(this)}>
-            <Text>Back</Text>
-        </TouchableOpacity>
+        <View style={styles.footer}>
+          <TouchableOpacity onPress={this.toHome.bind(this)}>
+              <Text>Back</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -68,18 +74,23 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  header: {
+    flex: 2,
+  },
   listView: {
-    flex: 1,
-    paddingTop: 50,
+    flex: 18,
     backgroundColor: '#F5FCFF',
+  },
+  footer: {
+    flex: 1,
   },
   item: {
     flex: 1,
     justifyContent: 'center',
     paddingBottom: 15,
     paddingTop: 20,
-    paddingLeft: 5,
-    paddingRight: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
     backgroundColor: '#F6F6F6',
   },
   title: {
@@ -105,6 +116,7 @@ var styles = StyleSheet.create({
   },
   separator: {
     height: 1,
+    width: 300,
     backgroundColor: '#ff0000',
   },
 });

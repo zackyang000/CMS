@@ -1,4 +1,3 @@
-import App from './framework/App';
 import Home from './home/containers/Home';
 import Post from './home/containers/Post';
 
