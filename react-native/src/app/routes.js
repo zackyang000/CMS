@@ -1,5 +1,5 @@
 import Home from './home/containers/Home';
-import Post from './home/containers/Post';
+import PostList from './post/containers/List';
 
 export default class Routes {
   static initialRoute = {
@@ -14,7 +14,7 @@ export default class Routes {
     },
     post: {
       name: '最新文章',
-      component: Post,
+      component: PostList,
     }
   };
 

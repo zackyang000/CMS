@@ -1,28 +1,14 @@
 import React, { Component, StyleSheet, Text, View, ListView, TouchableOpacity } from 'react-native';
-import Dimensions from 'Dimensions';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
-import { connect } from 'react-redux/native';
-import * as actions from '../redux/posts';
-import Header from '../../framework/Header';
 
-const App  = class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
-    this.dataSource = new ListView.DataSource({
-      rowHasChanged: (row1, row2) => row1 !== row2,
-    });
   }
 
-  componentDidMount() {
-    this.props.fetchPosts();
-  }
-
-  toHome() {
-    this.props.router.pop();
-  }
-
-  renderPost(post) {
+  render() {
+    const { post } = this.props;
     return (
       <View>
         <View style={styles.item}>
@@ -44,43 +30,9 @@ const App  = class App extends Component {
       </View>
     );
   }
-
-  render() {
-    const { posts } = this.props;
-    const { width, height } = Dimensions.get('window');
-    return (
-      <View style={{width, height}}>
-        <View style={styles.header}>
-          <Header
-            leftContainer={
-              <TouchableOpacity onPress={this.toHome.bind(this)}>
-                <Text>返回</Text>
-              </TouchableOpacity>
-            }
-            centerContainer={
-              <Text>文章列表</Text>
-            }
-          />
-        </View>
-        <ListView
-          dataSource={this.dataSource.cloneWithRows(posts)}
-          renderRow={this.renderPost}
-          style={styles.listView}
-          initialListSize={4}
-        />
-      </View>
-    );
-  }
 }
 
 var styles = StyleSheet.create({
-  listView: {
-    flex: 18,
-    backgroundColor: '#F5FCFF',
-  },
-  footer: {
-    flex: 1,
-  },
   item: {
     flex: 1,
     justifyContent: 'center',
@@ -117,5 +69,3 @@ var styles = StyleSheet.create({
     backgroundColor: '#ccc',
   },
 });
-
-export default connect(state => state.posts, actions)(App);
