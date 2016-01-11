@@ -1,4 +1,5 @@
 import React, { Component, StyleSheet, Text, View, ListView, TouchableOpacity } from 'react-native';
+import Dimensions from 'Dimensions';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import { connect } from 'react-redux/native';
@@ -46,8 +47,9 @@ const App  = class App extends Component {
 
   render() {
     const { posts } = this.props;
+    const { width, height } = Dimensions.get('window');
     return (
-      <View style={styles.container}>
+      <View style={{width}}>
         <View style={styles.header}>
           <Header />
         </View>
@@ -68,12 +70,6 @@ const App  = class App extends Component {
 }
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
   header: {
     flex: 2,
   },
@@ -115,9 +111,9 @@ var styles = StyleSheet.create({
     color: "#999",
   },
   separator: {
+    flex: 1,
     height: 1,
-    width: 300,
-    backgroundColor: '#ff0000',
+    backgroundColor: '#ccc',
   },
 });
 

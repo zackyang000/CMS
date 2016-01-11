@@ -38,7 +38,6 @@ var styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
     paddingTop: 15,
-    width: 300,
   },
 });
 
