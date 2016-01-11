@@ -4,6 +4,7 @@ import { connect } from 'react-redux/native';
 import HTMLView from 'react-native-htmlview';
 import * as actions from '../redux/post';
 import Header from '../../framework/Header';
+import Title from '../components/Title';
 
 const App = class App extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ const App = class App extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPostByUrl(this.props.params.url);
+    this.props.fetchPostByUrl(this.props.params.post.url);
   }
 
   toList() {
@@ -20,15 +21,13 @@ const App = class App extends Component {
 
   render() {
     let { post = {}, params } = this.props;
-    post = post[this.props.params.url] || {};
+    post = post[this.props.params.post.url] || this.props.params.post;
     const { width, height } = Dimensions.get('window');
     return (
       <View style={{width, height}}>
         <Header />
         <ScrollView>
-          <View style={styles.titleView}>
-            <Text style={styles.title}>{post.title}</Text>
-          </View>
+          <Title post={post} />
           <View style={styles.contentView}>
             {post.content &&
               <HTMLView value={post.content} stylesheet={styles} />

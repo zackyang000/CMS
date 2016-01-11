@@ -22,7 +22,7 @@ const App = class App extends Component {
   }
 
   toDetail(post) {
-    this.props.router.push('post/detail', {url: post.url});
+    this.props.router.push('post/detail', { post });
   }
 
   render() {
