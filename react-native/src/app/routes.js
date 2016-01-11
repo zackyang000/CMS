@@ -28,14 +28,10 @@ export default class Routes {
   }
 
   push(name, params) {
-    const route = Routes.routes[name];
-    const currentRoute = this.getCurrentRoute();
-    if (route.name !== currentRoute.name) {
-      this.navigator.push({
-        ...route,
-        ...params
-      });
-    }
+    this.navigator.push({
+      ...Routes.routes[name],
+      ...params
+    });
   }
 
   pop() {
