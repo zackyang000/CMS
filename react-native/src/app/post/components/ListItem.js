@@ -12,7 +12,7 @@ export default class App extends Component {
     return (
       <View>
         <View style={styles.item}>
-          <View>
+          <TouchableOpacity onPress={this.props.toDetail.bind(this, post)}>
             <Text style={styles.title}>
               {post.title}
             </Text>
@@ -24,7 +24,7 @@ export default class App extends Component {
                 {moment(post.date).fromNow()}
               </Text>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.separator} />
       </View>

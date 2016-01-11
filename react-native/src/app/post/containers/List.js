@@ -3,7 +3,7 @@ import Dimensions from 'Dimensions';
 import { connect } from 'react-redux/native';
 import * as actions from '../redux/posts';
 import Header from '../../framework/Header';
-import Item from '../components/Item';
+import ListItem from '../components/ListItem';
 
 const App = class App extends Component {
   constructor(props) {
@@ -21,28 +21,29 @@ const App = class App extends Component {
     this.props.router.pop();
   }
 
+  toDetail(post) {
+    this.props.router.push('post/detail', {url: post.url});
+  }
+
   render() {
-    const { posts } = this.props;
+    const { posts, params } = this.props;
     const { width, height } = Dimensions.get('window');
     return (
       <View style={{width, height}}>
-        <View style={styles.header}>
-          <Header
-            leftContainer={
-              <TouchableOpacity onPress={this.toHome.bind(this)}>
-                <Text>返回</Text>
-              </TouchableOpacity>
-            }
-            centerContainer={
-              <Text>最新文章</Text>
-            }
-          />
-        </View>
+        <Header
+          leftContainer={
+            <TouchableOpacity onPress={this.toHome.bind(this)}>
+              <Text>返回</Text>
+            </TouchableOpacity>
+          }
+          centerContainer={
+            <Text>{params.name}</Text>
+          }
+        />
         <ListView
           dataSource={this.dataSource.cloneWithRows(posts)}
-          renderRow={(post) => <Item post={post} />}
+          renderRow={(post) => <ListItem post={post} toDetail={this.toDetail.bind(this)} />}
           style={styles.listView}
-          initialListSize={4}
         />
       </View>
     );
@@ -51,7 +52,7 @@ const App = class App extends Component {
 
 var styles = StyleSheet.create({
   listView: {
-    flex: 18,
+    flex: 1,
     backgroundColor: '#F5FCFF',
   },
 });

@@ -1,5 +1,6 @@
 import Home from './home/containers/Home';
 import PostList from './post/containers/List';
+import PostDetail from './post/containers/Detail';
 
 export default class Routes {
   static initialRoute = {
@@ -13,20 +14,27 @@ export default class Routes {
       component: Home,
     },
     post: {
-      name: '最新文章',
+      name: '文章列表',
       component: PostList,
-    }
+    },
+    'post/detail': {
+      name: '文章明细',
+      component: PostDetail,
+    },
   };
 
   constructor(navigator) {
     this.navigator = navigator;
   }
 
-  push(name) {
+  push(name, params) {
     const route = Routes.routes[name];
     const currentRoute = this.getCurrentRoute();
     if (route.name !== currentRoute.name) {
-      this.navigator.push(route);
+      this.navigator.push({
+        ...route,
+        ...params
+      });
     }
   }
 

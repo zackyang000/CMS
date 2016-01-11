@@ -625,7 +625,7 @@
 				INFOPLIST_FILE = CMS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zackyang;
+				PRODUCT_BUNDLE_IDENTIFIER = a.com.zackyang;
 				PRODUCT_NAME = Zack;
 			};
 			name = Debug;
@@ -644,7 +644,7 @@
 				INFOPLIST_FILE = CMS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zackyang;
+				PRODUCT_BUNDLE_IDENTIFIER = a.com.zackyang;
 				PRODUCT_NAME = Zack;
 			};
 			name = Release;
