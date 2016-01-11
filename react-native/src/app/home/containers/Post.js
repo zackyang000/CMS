@@ -49,9 +49,18 @@ const App  = class App extends Component {
     const { posts } = this.props;
     const { width, height } = Dimensions.get('window');
     return (
-      <View style={{width}}>
+      <View style={{width, height}}>
         <View style={styles.header}>
-          <Header />
+          <Header
+            leftContainer={
+              <TouchableOpacity onPress={this.toHome.bind(this)}>
+                <Text>返回</Text>
+              </TouchableOpacity>
+            }
+            centerContainer={
+              <Text>文章列表</Text>
+            }
+          />
         </View>
         <ListView
           dataSource={this.dataSource.cloneWithRows(posts)}
@@ -59,20 +68,12 @@ const App  = class App extends Component {
           style={styles.listView}
           initialListSize={4}
         />
-        <View style={styles.footer}>
-          <TouchableOpacity onPress={this.toHome.bind(this)}>
-              <Text>Back</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     );
   }
 }
 
 var styles = StyleSheet.create({
-  header: {
-    flex: 2,
-  },
   listView: {
     flex: 18,
     backgroundColor: '#F5FCFF',

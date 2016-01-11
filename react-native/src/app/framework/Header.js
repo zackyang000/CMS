@@ -1,4 +1,5 @@
 import React, { Component, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import styles from './Header.styles';
 
 export default class App extends Component {
   componentDidMount() {
@@ -12,34 +13,16 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View>
-          <TouchableOpacity onPress={this.toPost.bind(this)}>
-            <Text>&lt;&lt;</Text>
-          </TouchableOpacity>
+          {this.props.leftContainer}
         </View>
         <View>
-            <Text>Title</Text>
+          {this.props.centerContainer}
         </View>
         <View>
-          <TouchableOpacity onPress={this.toPost.bind(this)}>
-            <Text>Right</Text>
-          </TouchableOpacity>
+          {this.props.rightContainer}
         </View>
       </View>
     );
   }
 }
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderBottomColor: '#ccc',
-    borderBottomWidth: 1,
-    paddingTop: 15,
-  },
-});
-
-
 
