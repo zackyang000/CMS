@@ -1,4 +1,6 @@
 module.exports = { 
-  platform: 'mobile',
+  ENV: {
+    PLATFORM: 'mobile'
+  },
   apiRoot: 'http://api.zackyang.com/oData',
 };
