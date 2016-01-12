@@ -53,8 +53,10 @@ const App = class App extends Component {
 var styles = StyleSheet.create({
   listView: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
   },
 });
 
-export default connect(state => state.posts, actions)(App);
+export default connect(state => ({
+  posts: state.posts.posts,
+  post: state.post.post,
+}), actions)(App);

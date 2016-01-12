@@ -7,11 +7,14 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    height: 25,
+  },
+  hasContent: {
+    height: 55,
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
-    height: 55,
     paddingTop: 15,
-  },
+  }
 });
 
 

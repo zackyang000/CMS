@@ -10,8 +10,12 @@ export default class App extends Component {
   }
 
   render() {
+    const containerStyle = [ styles.container ];
+    if (this.props.leftContainer || this.props.centerContainer || this.props.rightContainer) {
+      containerStyle.push(styles.hasContent);
+    }
     return (
-      <View style={styles.container}>
+      <View style={containerStyle}>
         <View>
           {this.props.leftContainer}
         </View>

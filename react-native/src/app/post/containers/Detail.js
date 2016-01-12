@@ -40,11 +40,6 @@ const App = class App extends Component {
 }
 
 var styles = StyleSheet.create({
-  title: {
-    padding: 10,
-    fontSize: 18,
-    fontWeight: "700",
-  },
   contentView: {
     padding: 10,
     flex: 1,
@@ -52,7 +47,7 @@ var styles = StyleSheet.create({
   content: {
   },
   p: {
-    fontSize: 16,
+    fontSize: 18,
     lineHeight: 23,
     padding: 0,
     margin: 0,

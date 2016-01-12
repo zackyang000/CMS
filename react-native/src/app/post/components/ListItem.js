@@ -10,7 +10,7 @@ export default class App extends Component {
     const { post } = this.props;
     return (
       <View>
-        <TouchableOpacity onPress={this.props.toDetail.bind(this, post)}>
+        <TouchableOpacity activeOpacity={1} onPress={this.props.toDetail.bind(this, post)}>
           <Title post={post} />
         </TouchableOpacity>
         <View style={styles.separator} />
@@ -23,6 +23,6 @@ var styles = StyleSheet.create({
   separator: {
     flex: 1,
     height: 1,
-    backgroundColor: '#ccc',
+    backgroundColor: '#f5f5f5',
   },
 });
