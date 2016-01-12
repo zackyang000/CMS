@@ -8,19 +8,12 @@ export default class Routes {
     component: Home,
   };
 
+  // <Route path="world" component={World} />
+
   static routes = {
-    home: {
-      name: '首页',
-      component: Home,
-    },
-    post: {
-      name: '文章列表',
-      component: PostList,
-    },
-    'post/detail': {
-      name: '文章明细',
-      component: PostDetail,
-    },
+    home: Home,
+    post: PostList,
+    'post/detail': PostDetail,
   };
 
   constructor(navigator) {
@@ -29,21 +22,12 @@ export default class Routes {
 
   push(name, params) {
     this.navigator.push({
-      ...Routes.routes[name],
+      component: Routes.routes[name],
       ...params
     });
   }
 
   pop() {
     this.navigator.pop();
-  }
-
-  getCurrentRoute() {
-    const routeList = this.navigator.getCurrentRoutes();
-    return routeList[routeList.length - 1];
-  }
-
-  isCurrentRoute(routeId) {
-    return routeId === getCurrentRoute().id;
   }
 }

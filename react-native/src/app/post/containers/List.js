@@ -37,7 +37,7 @@ const App = class App extends Component {
             </TouchableOpacity>
           }
           centerContainer={
-            <Text>{params.name}</Text>
+            <Text>文章列表</Text>
           }
         />
         <ListView
