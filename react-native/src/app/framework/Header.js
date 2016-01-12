@@ -2,13 +2,6 @@ import React, { Component, StyleSheet, Text, View, TouchableOpacity } from 'reac
 import styles from './Header.styles';
 
 export default class App extends Component {
-  componentDidMount() {
-  }
-
-  toPost() {
-
-  }
-
   render() {
     const containerStyle = [ styles.container ];
     if (this.props.leftContainer || this.props.centerContainer || this.props.rightContainer) {

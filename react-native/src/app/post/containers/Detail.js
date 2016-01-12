@@ -1,3 +1,4 @@
+import styles from './Detail.styles';
 import React, { Component, StyleSheet, ScrollView, Text, View, ListView, TouchableOpacity } from 'react-native';
 import Dimensions from 'Dimensions';
 import { connect } from 'react-redux/native';
@@ -38,21 +39,6 @@ const App = class App extends Component {
     );
   }
 }
-
-var styles = StyleSheet.create({
-  contentView: {
-    padding: 10,
-    flex: 1,
-  },
-  content: {
-  },
-  p: {
-    fontSize: 16,
-    lineHeight: 23,
-    padding: 0,
-    margin: 0,
-  },
-});
 
 export default connect(state => state.post, actions)(App);
 

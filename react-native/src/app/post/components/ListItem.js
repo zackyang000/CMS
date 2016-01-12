@@ -1,3 +1,4 @@
+import styles from './ListItem.styles';
 import React, { Component, StyleSheet, Text, View, ListView, TouchableOpacity } from 'react-native';
 import Title from './Title';
 
@@ -19,10 +20,3 @@ export default class App extends Component {
   }
 }
 
-var styles = StyleSheet.create({
-  separator: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#f5f5f5',
-  },
-});

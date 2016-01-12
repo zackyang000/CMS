@@ -1,3 +1,4 @@
+import styles from './List.styles';
 import React, { Component, StyleSheet, Text, View, ListView, TouchableOpacity } from 'react-native';
 import Dimensions from 'Dimensions';
 import { connect } from 'react-redux/native';
@@ -49,12 +50,6 @@ const App = class App extends Component {
     );
   }
 }
-
-var styles = StyleSheet.create({
-  listView: {
-    flex: 1,
-  },
-});
 
 export default connect(state => ({
   posts: state.posts.posts,
