@@ -37,7 +37,7 @@ var styles = StyleSheet.create({
     paddingRight: 10,
   },
   title: {
-    fontSize: 28,
+    fontSize: 18,
     marginBottom: 2,
     textAlign: 'left',
   },
@@ -46,12 +46,12 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
   },
   author: {
-    fontSize: 18,
+    fontSize: 12,
     textAlign: 'left',
     color: "#999",
   },
   date: {
-    fontSize: 18,
+    fontSize: 12,
     textAlign: 'left',
     marginLeft: 10,
     color: "#999",

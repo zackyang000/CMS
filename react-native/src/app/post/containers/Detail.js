@@ -47,7 +47,7 @@ var styles = StyleSheet.create({
   content: {
   },
   p: {
-    fontSize: 18,
+    fontSize: 16,
     lineHeight: 23,
     padding: 0,
     margin: 0,
