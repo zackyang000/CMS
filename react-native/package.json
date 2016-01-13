@@ -2,6 +2,7 @@
   "name": "CMS",
   "version": "0.0.1",
   "dependencies": {
-    "cuz": "0.1.9"
+    "cuz": "0.2.0-alpha2",
+    "react-native-htmlview": "^0.2.0"
   }
 }
