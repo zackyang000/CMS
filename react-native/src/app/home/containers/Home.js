@@ -2,7 +2,6 @@ import React, { Component, StyleSheet, Text, View, TouchableOpacity } from 'reac
 
 export default class App extends Component {
   componentDidMount() {
-    this.props.router.push('post');
   }
 
   toPost() {
@@ -13,7 +12,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this.toPost.bind(this)}>
-            <Text>Go!!</Text>
+            <Text>Goasefsaf!!</Text>
         </TouchableOpacity>
       </View>
     );

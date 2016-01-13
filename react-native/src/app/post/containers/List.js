@@ -27,6 +27,7 @@ const App = class App extends Component {
   }
 
   render() {
+    console.log(123)
     const { posts, params } = this.props;
     const { width, height } = Dimensions.get('window');
     return (

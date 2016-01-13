@@ -12,17 +12,17 @@ export default class App extends Component {
     const { post } = this.props;
     return (
       <View style={styles.item}>
-          <Text style={styles.title}>
-            {post.title}
+        <Text style={styles.title}>
+          {post.title}
+        </Text>
+        <View style={styles.sub}>
+          <Text style={styles.author}>
+            {post.meta.author}
           </Text>
-          <View style={styles.sub}>
-            <Text style={styles.author}>
-              {post.meta.author}
-            </Text>
-            <Text style={styles.date}>
-              {moment(post.date).fromNow()}
-            </Text>
-          </View>
+          <Text style={styles.date}>
+            {moment(post.date).fromNow()}
+          </Text>
+        </View>
       </View>
     );
   }
