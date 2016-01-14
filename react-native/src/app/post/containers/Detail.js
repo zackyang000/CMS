@@ -7,7 +7,10 @@ import * as actions from '../redux/post';
 import Header from '../../framework/Header';
 import Title from '../components/Title';
 
-const App = class App extends Component {
+@connect((state) => ({
+  post: state.post.post,
+}), actions)
+export default class App extends Component {
   constructor(props) {
     super(props);
   }
@@ -39,6 +42,3 @@ const App = class App extends Component {
     );
   }
 }
-
-export default connect(state => state.post, actions)(App);
-

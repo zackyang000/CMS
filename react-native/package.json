@@ -2,7 +2,8 @@
   "name": "CMS",
   "version": "0.0.1",
   "dependencies": {
-    "cuz": "0.2.0-alpha2",
+    "cuz": "0.2.0-beta",
     "react-native-htmlview": "^0.2.0"
-  }
+  },
+  "postinstall": "node patch-react-native-babelrc.js"
 }

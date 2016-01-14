@@ -6,7 +6,11 @@ import * as actions from '../redux/posts';
 import Header from '../../framework/Header';
 import ListItem from '../components/ListItem';
 
-const App = class App extends Component {
+@connect((state) => ({
+  posts: state.posts.posts,
+  post: state.post.post,
+}), actions)
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.dataSource = new ListView.DataSource({
@@ -33,7 +37,7 @@ const App = class App extends Component {
       <View style={{width, height}}>
         <Header
           leftContainer={
-            <TouchableOpacity onPress={this.toHome.bind(this)}>
+            <TouchableOpacity onPress={::this.toHome}>
               <Text>返回</Text>
             </TouchableOpacity>
           }
@@ -43,15 +47,10 @@ const App = class App extends Component {
         />
         <ListView
           dataSource={this.dataSource.cloneWithRows(posts)}
-          renderRow={(post) => <ListItem post={post} toDetail={this.toDetail.bind(this)} />}
+          renderRow={(post) => <ListItem post={post} toDetail={::this.toDetail} />}
           style={styles.listView}
         />
       </View>
     );
   }
 }
-
-export default connect(state => ({
-  posts: state.posts.posts,
-  post: state.post.post,
-}), actions)(App);
