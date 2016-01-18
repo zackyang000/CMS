@@ -1,5 +1,5 @@
 import React from 'react-native';
-import { Route } from 'cuz/native';
+import { Route } from 'cuz-native';
 import Home from './home/containers/Home';
 import PostList from './post/containers/List';
 import PostDetail from './post/containers/Detail';

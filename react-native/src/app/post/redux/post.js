@@ -1,4 +1,4 @@
-import { createReducer } from 'cuz/native';
+import { createReducer } from 'cuz-native';
 
 const FETCH_POST = 'fetch post';
 

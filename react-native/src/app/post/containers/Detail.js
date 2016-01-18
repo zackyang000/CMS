@@ -4,7 +4,7 @@ import Dimensions from 'Dimensions';
 import { connect } from 'react-redux/native';
 import HTMLView from 'react-native-htmlview';
 import * as actions from '../redux/post';
-import Header from '../../framework/Header';
+import Header from '../../layout/Header';
 import Title from '../components/Title';
 
 @connect((state) => ({

@@ -13,7 +13,7 @@ const fs = require('fs');
 // This value can change as we update react-native.
 const babelRcPath = path.resolve(
   __dirname,
-  '../node_modules/react-native/',
+  './node_modules/react-native/',
   'packager/react-packager/.babelrc'
 );
 
@@ -38,3 +38,17 @@ if (babelRcJson.plugins[0] !== decoratorPlugin) {
     'utf8'
   );
 }
+
+
+
+/* remove other .babelrc */
+const uselessBabelRcPath = path.resolve(
+  __dirname,
+  './node_modules/cuz-native/',
+  'node_modules/redux-request/',
+  '.babelrc'
+);
+fs.unlink(uselessBabelRcPath, (err) => {
+  if (err) throw err;
+  console.log('Removed uesless .babelrc');
+});

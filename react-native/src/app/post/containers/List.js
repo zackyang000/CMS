@@ -3,7 +3,7 @@ import React, { Component, StyleSheet, Text, View, ListView, TouchableOpacity } 
 import Dimensions from 'Dimensions';
 import { connect } from 'react-redux/native';
 import * as actions from '../redux/posts';
-import Header from '../../framework/Header';
+import Header from '../../layout/Header';
 import ListItem from '../components/ListItem';
 
 @connect((state) => ({
@@ -37,7 +37,7 @@ export default class App extends Component {
       <View style={{width, height}}>
         <Header
           leftContainer={
-            <TouchableOpacity onPress={::this.toHome}>
+            <TouchableOpacity onPress={this.toHome.bind(this)}>
               <Text>返回</Text>
             </TouchableOpacity>
           }
@@ -47,7 +47,7 @@ export default class App extends Component {
         />
         <ListView
           dataSource={this.dataSource.cloneWithRows(posts)}
-          renderRow={(post) => <ListItem post={post} toDetail={::this.toDetail} />}
+          renderRow={(post) => <ListItem post={post} toDetail={this.toDetail.bind(this)} />}
           style={styles.listView}
         />
       </View>
