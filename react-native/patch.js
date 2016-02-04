@@ -52,3 +52,19 @@ fs.unlink(uselessBabelRcPath, (err) => {
   if (err) throw err;
   console.log('Removed uesless .babelrc');
 });
+
+
+
+/* remove dump files. */
+[
+  path.resolve( __dirname, './node_modules/', 'react-native/node_modules/react'),
+  path.resolve( __dirname, './node_modules/', 'react-native-mock/node_modules/react-native'),
+  path.resolve( __dirname, './node_modules/', 'react-native-mock/node_modules/react'),
+  path.resolve( __dirname, './node_modules/', 'react-native/node_modules/fbjs'),
+].forEach((dir) => {
+  require('child_process').exec('rm -rf ' + dir, (err, out) => {
+    if (err) throw err;
+    console.log('Removed dump ' + dir);
+  });
+});
+
