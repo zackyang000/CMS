@@ -2,6 +2,6 @@
   "name": "cuz-native-templete",
   "version": "0.1.0",
   "dependencies": {
-    "cuz-native": "0.0.12"
+    "cuz-native": "0.0.13"
   }
 }
