@@ -4,6 +4,18 @@ import path from "path";
 import errorHandler from 'errorhandler';
 import morgan from 'morgan';
 
+import authorizationMiddleware from './middleware/authorization';
+
+import article from './resources/article/article';
+import category from './resources/article/category';
+import comment from './resources/article/comment';
+import gallery from './resources/gallery/gallery';
+import board from './resources/board/board';
+import user from './resources/system/user';
+
+import login from './functions/login';
+import upload from '.functions/upload';
+
 server = odata('mongodb://localhost/cms');
 
 // hack: persistence current all resouces for actions and functions to use.
@@ -13,21 +25,25 @@ odata.resources = server.resources;
 server.use(cors({exposedHeaders: "authorization"}));
 server.use(odata._express.bodyParser({uploadDir : path.join(path.dirname(__dirname), 'server/static/upload/temp')}));
 server.use(odata._express["static"](path.join(__dirname, "./static")));
-server.use(require("./middleware/authorization"));
+server.use(authorizationMiddleware);
 server.use(morgan("short"));
 server.use(errorHandler());
 
 // init resources
-server.use(require('./resources/article/article'));
-server.use(require('./resources/article/category'));
-server.use(require('./resources/article/comment'));
-server.use(require('./resources/gallery/gallery'));
-server.use(require('./resources/board/board'));
-server.use(require('./resources/system/user'));
+[
+  article,
+  category,
+  comment,
+  gallery,
+  board,
+  user,
+].map(server.use);
 
 // init functions
-server.use(require('./functions/login'));
-server.use(require('./functions/upload'));
+[
+  login,
+  upload,
+].map(server.use);
 
 // start web server
 server.listen(process.env.PORT or 40002, ->
