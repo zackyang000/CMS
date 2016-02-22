@@ -8,11 +8,13 @@
     "url": "https://github.com/TossShinHwa/CMS.git"
   },
   "dependencies": {
-    "node-odata": "0.7.6",
+    "node-odata": "0.7.10",
     "gm": "*",
     "rss": "1.0.0",
     "migrate": "0.1.5"
   },
   "devDependencies": {
+    "eslint": "1.6.0",
+    "eslint-config-airbnb": "0.1.0"
   }
 }
