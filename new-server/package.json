@@ -3,6 +3,9 @@
   "version": "1.5.0",
   "private": false,
   "author": "Zack <zackyang@outlook.com>",
+  "scripts": {
+    "lint": "node_modules/.bin/eslint src/"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/TossShinHwa/CMS.git"
@@ -14,7 +17,7 @@
     "migrate": "0.1.5"
   },
   "devDependencies": {
-    "eslint": "1.6.0",
-    "eslint-config-airbnb": "0.1.0"
+    "eslint": "2.7.0",
+    "eslint-config-airbnb": "7.0.0"
   }
 }
