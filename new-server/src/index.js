@@ -1,6 +1,6 @@
 import odata from 'node-odata';
 import cors from 'cors';
-import path from "path";
+import path from 'path';
 import errorHandler from 'errorhandler';
 import morgan from 'morgan';
 
@@ -16,17 +16,19 @@ import user from './resources/system/user';
 import login from './functions/login';
 import upload from '.functions/upload';
 
-server = odata('mongodb://localhost/cms');
+const server = odata('mongodb://localhost/cms');
 
 // hack: persistence current all resouces for actions and functions to use.
 odata.resources = server.resources;
 
 // odata config
-server.use(cors({exposedHeaders: "authorization"}));
-server.use(odata._express.bodyParser({uploadDir : path.join(path.dirname(__dirname), 'server/static/upload/temp')}));
-server.use(odata._express["static"](path.join(__dirname, "./static")));
+server.use(cors({ exposedHeaders: 'authorization' }));
+server.use(odata._express.bodyParser({
+  uploadDir: path.join(path.dirname(__dirname), 'server/static/upload/temp'),
+}));
+server.use(odata._express('static')(path.join(__dirname, './static')));
 server.use(authorizationMiddleware);
-server.use(morgan("short"));
+server.use(morgan('short'));
 server.use(errorHandler());
 
 // init resources
@@ -46,7 +48,7 @@ server.use(errorHandler());
 ].map(server.use);
 
 // start web server
-server.listen(process.env.PORT or 40002, ->
+server.listen(process.env.PORT || 40002, () =>
   // import data
   require('./bootstrap/init-data').import()
-)
+);
