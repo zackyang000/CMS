@@ -1,32 +1,32 @@
 import { Function as func } from 'node-odata';
-import { resources } from 'node-odata';
 import gm from 'gm';
 import fs from 'fs';
 import mkdirp from 'mkdirp';
 
-router = func();
+const router = func();
 
-router.post('/file-upload', (req, res, next) => {
+router.post('/file-upload', (req, res) => {
   const sourcePath = req.files.file.path;
-  const targetFolder = "./static/upload/" + req.query.path;
+  const targetFolder = `./static/upload/${req.query.path}`;
   mkdirp(targetFolder);
-  const filename = req.query.name || crypto.createHash('sha1').update('' + +new Date()).digest('hex');
+  const filename = req.query.name ||
+    crypto.createHash('sha1').update(+new Date()).digest('hex');
   const fileExtension = req.files.file.name.split('.').pop();
-  const targetPath = targetFolder + '/' + filename + '.' + fileExtension;
+  const targetPath = `${targetFolder}/${filename}.${fileExtension}`;
 
   // 缩略图
-  if(req.query.thumbnail) {
-    const [ width, height ] = req.query.thumbnail.split('x');
+  if (req.query.thumbnail) {
+    const [width, height] = req.query.thumbnail.split('x');
     gm(sourcePath)
     .resize(width, height, '^')
     .gravity('Center')
     .crop(width, height)
     .autoOrient()
     .noProfile()
-    .write(targetFolder + '/' + filename + '.thumbnail.' + fileExtension, () => {});
+    .write(`${targetFolder}/${filename}.thumbnail.${fileExtension}`, () => {});
   }
 
-  complated = (err) => {
+  const complated = (err) => {
     if (err) {
       throw err;
     }
@@ -38,8 +38,8 @@ router.post('/file-upload', (req, res, next) => {
   };
 
   // 缩放
-  if(req.query.resize) {
-    const [ width, height ] = req.query.resize.split('x');
+  if (req.query.resize) {
+    const [width, height] = req.query.resize.split('x');
     gm(sourcePath)
     .resize(width, height, '@')
     .autoOrient()
@@ -50,8 +50,8 @@ router.post('/file-upload', (req, res, next) => {
     fs.rename(sourcePath, targetPath, complated);
   }
 
-  res.set("Connection", 'keep-alive'):
-  res.send('/upload/' + req.query.path + '/' + filename + '.' + fileExtension);
+  res.set('Connection', 'keep-alive');
+  res.send(`/upload/${req.query.path}/${filename}.${fileExtension}`);
 });
 
 module.exports = router;
