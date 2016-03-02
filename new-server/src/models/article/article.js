@@ -13,16 +13,16 @@ module.exports = {
     author: String,
     views: Number,
     comments: Number,
-    tags: [ String ],
+    tags: [{ String }],
     source: String,
     thumbnail: String,
   },
-  comments:[{
+  comments: [{
     author: {
       name: String,
       email: String,
     },
     content: String,
     date: Date,
-  }]
+  }],
 };
