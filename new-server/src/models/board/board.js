@@ -6,4 +6,4 @@ module.exports = {
   content: String,
   date: Date,
   block: Boolean,
-}
+};
