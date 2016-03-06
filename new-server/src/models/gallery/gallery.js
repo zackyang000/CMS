@@ -6,5 +6,5 @@ module.exports = {
   hidden: Boolean,
   date: Date,
   order: Number,
-  photos : [],
-}
+  photos: [],
+};
