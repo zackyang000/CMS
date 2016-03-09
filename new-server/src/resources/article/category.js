@@ -1,6 +1,6 @@
-import { Resource } from 'node-odata'
-import model from '../../models'
-import auth from '../auth'
+import { Resource } from 'node-odata';
+import model from '../../models';
+import auth from '../auth';
 
 module.exports = Resource('category', model.category)
 .orderBy('date desc')
@@ -9,4 +9,4 @@ module.exports = Resource('category', model.category)
 .put()
   .auth(auth.admin)
 .delete()
-  .auth(auth.admin)
+  .auth(auth.admin);
