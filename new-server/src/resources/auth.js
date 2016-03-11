@@ -1,3 +1,3 @@
 module.exports = {
-  admin: (req) => (!!req.user)
+  admin: (req) => !!req.user,
 };
