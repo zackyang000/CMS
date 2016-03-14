@@ -1,6 +1,6 @@
-import { Resource, resources } from 'node-odata'
-import model from '../../models'
-import auth from '../auth'
+import { Resource, resources } from 'node-odata';
+import model from '../../models';
+import auth from '../auth';
 
 module.exports = Resource('user', model.user)
 .orderBy('date desc')
@@ -14,12 +14,11 @@ module.exports = Resource('user', model.user)
   .auth(auth.admin)
 .put()
   .auth(auth.admin)
-  .after((newEntity, oldEntity) => {
-    resources.article.find( {'meta.author': oldEntity.name }).exec((err, articles) => {
+  .after((newEntity, oldEntity) =>
+    resources.article.find({ 'meta.author': oldEntity.name }).exec((err, articles) => {
       articles.map((article) => {
         article.meta.author = newEntity.name;
-        article.save();
+        return article.save();
       });
-    });
-  });
-
+    })
+  );
