@@ -3,7 +3,11 @@ import { resources } from 'node-odata';
 const initData = (model, path) => {
   require(path).forEach((item) => {
     const data = new model(item);
-    data.save();
+    data.save((err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
     console.log(`data init: ${path} import successful.`);
   });
 };
