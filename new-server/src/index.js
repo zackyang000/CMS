@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import errorHandler from 'errorhandler';
 import morgan from 'morgan';
+import bodyParser from 'body-parser';
 
 import authorizationMiddleware from './middleware/authorization';
 
@@ -14,7 +15,7 @@ import board from './resources/board/board';
 import user from './resources/system/user';
 
 import login from './functions/login';
-import upload from '.functions/upload';
+import upload from './functions/upload';
 
 const server = odata('mongodb://localhost/cms');
 
@@ -23,10 +24,10 @@ odata.resources = server.resources;
 
 // odata config
 server.use(cors({ exposedHeaders: 'authorization' }));
-server.use(odata._express.bodyParser({
+server.use(bodyParser({
   uploadDir: path.join(path.dirname(__dirname), 'server/static/upload/temp'),
 }));
-server.use(odata._express('static')(path.join(__dirname, './static')));
+server.use(odata._express.static(path.join(__dirname, './static')));
 server.use(authorizationMiddleware);
 server.use(morgan('short'));
 server.use(errorHandler());
@@ -39,13 +40,13 @@ server.use(errorHandler());
   gallery,
   board,
   user,
-].map(server.use);
+].map((resource) => server.use(resource));
 
 // init functions
 [
   login,
   upload,
-].map(server.use);
+].map((resource) => server.use(resource));
 
 // start web server
 server.listen(process.env.PORT || 40002, () =>
