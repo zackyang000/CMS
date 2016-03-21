@@ -13,7 +13,7 @@ module.exports = {
     author: String,
     views: Number,
     comments: Number,
-    tags: [{ String }],
+    tags: [String],
     source: String,
     thumbnail: String,
   },
