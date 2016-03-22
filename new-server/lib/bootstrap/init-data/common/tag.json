@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Tag1",
+    "collections": {
+      "key": "test-article",
+      "type": "Article"
+    }
+  },
+  {
+    "name": "Tag2",
+    "collections": {
+      "key": "test-article",
+      "type": "Article"
+    }
+  }
+]

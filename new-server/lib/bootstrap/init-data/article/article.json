@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Test Article",
+    "url": "test-article",
+    "content": "This is content of this article.",
+    "description": "This is description of this article.",
+    "category": "default",
+    "status": "normal",
+    "password": null,
+    "date": "2014-01-01",
+    "meta": {
+      "author": "zack",
+      "views": 0,
+      "comments": 2,
+      "tags": ["Tag1", "Tag2"],
+      "source": null,
+      "thumbnail": null
+    },
+    "comments": [
+      {
+        "author": {
+          "name": "Guest",
+          "email": null
+        },
+        "content": "This is content of this comment.",
+        "date": "2014-01-01"
+      },
+      {
+        "author": {
+          "name": "Zack",
+         "email": "zackyang@outlook.com"
+        },
+        "content": "Good article.",
+        "date": "2014-01-02"
+      }
+    ]
+  }
+]
